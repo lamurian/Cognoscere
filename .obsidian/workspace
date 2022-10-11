@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "7336a1ec542709e4",
+        "id": "e13ca99bcf277b31",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "README.md",
+            "file": "tech/sync-obsidian-with-git.md",
             "mode": "source",
             "source": false
           }
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "tech/sync-obsidian-with-git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -94,7 +94,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "tech/sync-obsidian-with-git.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -117,7 +117,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "tech/sync-obsidian-with-git.md"
               }
             }
           }
@@ -128,9 +128,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "7336a1ec542709e4",
+  "active": "e13ca99bcf277b31",
   "lastOpenFiles": [
-    "test-file.md",
-    "README.md"
+    "tech/sync-obsidian-with-git.md",
+    "README.md",
+    "test-file.md"
   ]
 }
