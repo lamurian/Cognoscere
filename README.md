@@ -1,1 +1,1 @@
-This is a personal wiki repository, i.e. a knowledge base, containing short notes on medical science, computer stuffs, statistics, maths, pyschology, and others. I use this repository to synchronize my notes across all devices.
+This is a personal wiki repository, i.e. a knowledge base, containing short notes on medical science, computer stuffs, statistics, maths, pyschology, and others. I use this repository to synchronize my notes across all devices. 
