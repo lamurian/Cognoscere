@@ -8,4 +8,4 @@ I've been using `vim` for quite some time, and I really enjoy the agility in its
 
 I have configured `vim` in a way that it plays nicely with `tmux` and other command line tools I'm using. The configuration file, i.e. `.vimrc`, is rather short with only 145 line of configurations (I've seen worse). I will talk about my `.vimrc` content in [[configuring-vim|configuring vim]], and for now I will focus on how I use `vim` to take note during class, meeting, and discussion.
 
-![[tech/vimrc.png]]
+![[vimrc.png]]

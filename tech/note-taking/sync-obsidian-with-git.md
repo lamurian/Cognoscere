@@ -23,12 +23,12 @@ git push # I've set the upstream, so I don't need to specify `origin` nor `maste
 
 I also set a git integration in Obsidian using [`obsidian-git`](https://github.com/denolehov/obsidian-git) plugin, which allow me to perform git action automatically when I'm running Obsidian. In the plugin configuration, I only set to automatically pull from remote repository when I start Obsidian.
 
-![[tech/obs-pc.png]]
+![[obs-pc.png]]
 
 ## From iPad
 
 Synchronizing from iPad is a different story though, because I need two applications to push and pull the notes. Pulling the note is done automatically every time I launch Obsidian, however, due to some strange occurrences, I'm unable to push my changes from Obsidian. Everytime I push, it always cough up an error saying that authentication failed. As a solution, I'm currently using [MarkGit](https://apps.apple.com/us/app/markgit/id1576100771). Other people and Obsidian help document mentioned that [Working Copy](https://apps.apple.com/us/app/working-copy-git-client/id896694807) also *works* (bad pun intended). My only reason to use MarkGit is because it's way more affordable compared to other git client options in the app store. To be noted though, you might encounter error with your credentials when using this application. Give it a week or two and the developer will solve the issue in the next update (it's working fine as of 11 Oct 2022).
 
-![[tech/obs-ipad.jpeg]]
-
-![[tech/markgit-ipad.jpeg]]
+![[obs-ipad.jpeg]]
+/comm
+![[markgit-ipad.jpeg]]
