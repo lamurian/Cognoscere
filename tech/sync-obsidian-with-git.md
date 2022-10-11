@@ -9,3 +9,5 @@ As a user, I want to have a decentralized and personal knowledge base. In an ide
 # How far do I get with Obsidian?
 
 Obsidian solve some hassles for me, as it provides me a cross-platform text editor which I can synchronize using `git`. However, so far I haven't been able to resolve the `git push` error in `obsidian-git` plugin when I push from mobile devices. I understand there are caveats in using git from mobile devices, and it is still the most suitable solution at the moment. Although I'm unable to sync from my phone/tablet, at least I know there's a possibility that this might be feasible in the future. Furthermore, there's an interesting plugin where I can possibly convert Obsidian #markdown to #hugo format, which I will delve further in a different post.
+
+![[03A20845-A98A-440B-9AC2-648574040716.png]]
