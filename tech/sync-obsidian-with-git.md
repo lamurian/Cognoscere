@@ -4,4 +4,6 @@ As a user, I want to have a decentralized and personal knowledge base. In an ide
 
 # How far do I get with Obsidian?
 
-Obsidian solve some hassles for me, as it provides me a cross-platform text editor which I can synchronize using `git`. However, so far I haven't been able to resolve the `git push` error in `obsidian-git` plugin when I push from mobile devices. /comm
+Obsidian solve some hassles for me, as it provides me a cross-platform text editor which I can synchronize using `git`.
+
+However, so far I haven't been able to resolve the `git push` error in `obsidian-git` plugin when I push from mobile devices.
