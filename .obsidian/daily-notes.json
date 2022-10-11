@@ -1,4 +1,4 @@
 {
   "folder": "meet",
-  "format": "YYMMDD"
+  "format": "YYMMDD-MMM-ddd"
 }
