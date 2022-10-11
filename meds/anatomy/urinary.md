@@ -20,7 +20,7 @@ The inside of each pair of kidney is highly intricate, where we can find incomin
 | Weigh (female) | 115 - 155 g |
 | Length         | 11 - 14 cm  |
 | Width          | 6 cm        |
-| Thickness      | 4cm         |
+| Thickness      | 4 cm        |
 
 Each kidney is encapsulated by dense, irregular, fibrous connective tissue that protect the kidney. On top of the connective tissue, we can find the renal fat pad which absorb corporal trauma and mechanical shock. On the outer layer, there is a tough renal fascia which together with peritoneum secure the kidney position. On the "peak" of each kidney, there lies an adrenal gland, looking like a cap covering the head.
 
