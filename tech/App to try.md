@@ -7,4 +7,4 @@ I am curating a list of interesting apps worth a try. This app may either improv
 - [Bubble](https://bubble.io): No-code platform for creating digital products
 - [Markerpad](https://www.makerpad.co/): No-code learning platform
 - [Rainloop](https://www.rainloop.net/): A lightweight webmail service
-- [Easy!Apointment](https://easyappointments.org/): Appointment scheduler
+- [Easy!Apointments](https://easyappointments.org/): Appointment scheduler
