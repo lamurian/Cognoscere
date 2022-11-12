@@ -1,0 +1,153 @@
+{
+  "main": {
+    "id": "f814ee98bd545282",
+    "type": "split",
+    "children": [
+      {
+        "id": "84c537ee29bbd070",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6e2e127e9e013313",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "tech/App to try.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "408a3e2c3861b0f9",
+    "type": "split",
+    "children": [
+      {
+        "id": "664f3ba1885a995e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d610ec1b73738118",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "ab77b3992a5cbb75",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": true,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "5d62020b3d1c90b8",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "33cbfe7b3652ee4a",
+    "type": "split",
+    "children": [
+      {
+        "id": "fc05c0648f1fe892",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e1b4e6720be46b99",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "tech/App to try.md",
+                "collapseAll": true,
+                "extraContext": true,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "dfa78406dc2b958e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "tech/App to try.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "10b91fbfb015290d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "bb4f7694fac9cdbd",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "tech/App to try.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "active": "6e2e127e9e013313",
+  "lastOpenFiles": [
+    "tech/App to try.md",
+    "tech/note-taking/taking-note-with-vim.md",
+    "tech/note-taking/sync-obsidian-with-git.md",
+    "life/structure/urinary.md",
+    "Scratchpad.md",
+    "life/function/urinary.md",
+    "life/function/haematology.md",
+    "life/function/gastrointestinal.md",
+    "README.md",
+    "meet/221011-Oct-Tue.md"
+  ]
+}

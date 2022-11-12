@@ -3,3 +3,6 @@ I am curating a list of interesting apps worth a try. This app may either improv
 - [Syncthing](https://syncthing.net/): Continuous, bidirectional file synchronization (no cloud needed!)
 - [Kimai](https://www.kimai.org/demo/): Open-source time tracking application
 - [N8N](https://n8n.io/): Workflow automation, akin to Zapier or IFTTT, but you can self host it. List of triggers is available [here](https://docs.n8n.io/integrations/builtin/trigger-nodes/).
+- [Jellyfin](https://jellyfin.org/): Free software media system
+- [Bubble](https://bubble.io): No-code platform for creating digital products
+- [Markerpad](https://www.makerpad.co/): Another no-code platform for creating digital products
