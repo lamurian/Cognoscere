@@ -2,3 +2,4 @@ I am curating a list of interesting apps worth a try. This app may either improv
 - [Cloudron](https://www.cloudron.io/appstatus.html): Simple self hosting solution $\to$ Provide free solution for up to two apps
 - [Syncthing](https://syncthing.net/): Continuous, bidirectional file synchronization (no cloud needed!)
 - [Kimai](https://www.kimai.org/demo/): Open-source time tracking application
+- [N8N](https://n8n.io/): Workflow automation, akin to Zapier or IFTTT, but you can self host it
