@@ -1,5 +1,6 @@
 {
   "pinned": [
-    "obsidian-git:pull"
+    "obsidian-git:pull",
+    "obsidian-git:push2"
   ]
 }

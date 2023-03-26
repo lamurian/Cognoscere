@@ -1,0 +1,157 @@
+{
+  "main": {
+    "id": "848063d4a9df340a",
+    "type": "split",
+    "children": [
+      {
+        "id": "8e05ebdb736cd01b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "51003440fccea3e7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Scratchpad.md",
+                "mode": "preview",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0ab4b1b87f335601",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "0e62f080c1c14723",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "9be602f11b6e3b79",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "tag:#Histology",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "015f3dbeeda0e905",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true
+          }
+        }
+      },
+      {
+        "id": "867aea6466b916cc",
+        "type": "leaf",
+        "state": {
+          "type": "starred",
+          "state": {}
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "b013cc44e2b06b58",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "b60a34d05dbe6ee7",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "Scratchpad.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "4cf74383352170ba",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "Scratchpad.md",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "2e98958381dae736",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "Scratchpad.md"
+          }
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "audio-recorder:Start/stop recording": false
+    }
+  },
+  "active": "51003440fccea3e7",
+  "lastOpenFiles": [
+    "Untitled.canvas",
+    "Untitled 1.canvas",
+    "meet/221011-Oct-Tue.md",
+    "meet/230327-Mar-Mon.md",
+    "life/structure/urinary.md",
+    "Recording 20230327020747.m4a",
+    "life/structure/gastrointestinal.md",
+    "configuring-vim.md",
+    "Scratchpad.md",
+    "meet/Recording 20221011160701.webm",
+    "tech/note-taking/taking-note-with-vim.md",
+    "tech/note-taking/sync-obsidian-with-git.md",
+    "tech/App to try.md",
+    "README.md",
+    "meds/anatomy/urinary.md",
+    "meet/221011 Oct 11.md",
+    "//meet/221011 Oct 11.md",
+    "//meds/anatomy/urinary.md"
+  ]
+}
