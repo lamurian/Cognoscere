@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scratchpad.md",
+                "file": "meet/221011-Oct-Tue.md",
                 "mode": "preview",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "Scratchpad.md",
+            "file": "meet/221011-Oct-Tue.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
         "state": {
           "type": "outgoing-link",
           "state": {
-            "file": "Scratchpad.md",
+            "file": "meet/221011-Oct-Tue.md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           }
@@ -115,7 +115,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "Scratchpad.md"
+            "file": "meet/221011-Oct-Tue.md"
           }
         }
       }
@@ -135,18 +135,18 @@
   },
   "active": "51003440fccea3e7",
   "lastOpenFiles": [
+    "meet/230327-Mar-Mon.md",
+    "tech/note-taking/sync-obsidian-with-git.md",
+    "Scratchpad.md",
     "Untitled.canvas",
     "Untitled 1.canvas",
     "meet/221011-Oct-Tue.md",
-    "meet/230327-Mar-Mon.md",
     "life/structure/urinary.md",
     "Recording 20230327020747.m4a",
     "life/structure/gastrointestinal.md",
     "configuring-vim.md",
-    "Scratchpad.md",
     "meet/Recording 20221011160701.webm",
     "tech/note-taking/taking-note-with-vim.md",
-    "tech/note-taking/sync-obsidian-with-git.md",
     "tech/App to try.md",
     "README.md",
     "meds/anatomy/urinary.md",
