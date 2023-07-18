@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "meet/221011-Oct-Tue.md",
+                "file": "README.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -49,10 +49,10 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#BDC",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
-                "collapseAll": false,
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
               }
@@ -66,8 +66,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -87,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "meet/221011-Oct-Tue.md",
+                "file": "README.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -104,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "meet/221011-Oct-Tue.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -127,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "meet/221011-Oct-Tue.md"
+                "file": "README.md"
               }
             }
           }
@@ -139,17 +138,29 @@
     "width": 300,
     "collapsed": true
   },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "audio-recorder:Start/stop recording": false
+    }
+  },
   "active": "6e2e127e9e013313",
   "lastOpenFiles": [
-    "life/function/gastrointestinal.md",
+    "Scratchpad.md",
+    "meet/221011-Oct-Tue.md",
+    "Recording 20230327020747.m4a",
     "tech/App to try.md",
+    "life/function/gastrointestinal.md",
     "tech/note-taking/taking-note-with-vim.md",
     "tech/note-taking/sync-obsidian-with-git.md",
     "life/structure/urinary.md",
-    "Scratchpad.md",
     "life/function/urinary.md",
     "life/function/haematology.md",
-    "README.md",
-    "meet/221011-Oct-Tue.md"
+    "README.md"
   ]
 }
