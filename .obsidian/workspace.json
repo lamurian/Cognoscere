@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "journals/meet/221011-Oct-Tue.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#Dev-247",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -65,8 +65,17 @@
               "type": "starred",
               "state": {}
             }
+          },
+          {
+            "id": "db2693a676e07255",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -86,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "journals/meet/221011-Oct-Tue.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -103,7 +112,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "journals/meet/221011-Oct-Tue.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "journals/meet/221011-Oct-Tue.md"
               }
             }
           }
@@ -149,18 +158,21 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "6e2e127e9e013313",
+  "active": "ab77b3992a5cbb75",
   "lastOpenFiles": [
+    "journals/meet/Recording 20221011160701.webm",
+    "journals/meet/221011-Oct-Tue.md",
+    "pages/life/structure/urinary.md",
+    "pages",
+    "journals",
+    "pages/life/function/urinary.md",
+    "pages/life/function/haematology.md",
+    "pages/life/function/gastrointestinal.md",
+    "README.md",
     "Scratchpad.md",
-    "meet/221011-Oct-Tue.md",
     "Recording 20230327020747.m4a",
-    "tech/App to try.md",
-    "life/function/gastrointestinal.md",
-    "tech/note-taking/taking-note-with-vim.md",
-    "tech/note-taking/sync-obsidian-with-git.md",
-    "life/structure/urinary.md",
-    "life/function/urinary.md",
-    "life/function/haematology.md",
-    "README.md"
+    "pages/tech/App to try.md",
+    "pages/tech/note-taking/taking-note-with-vim.md",
+    "pages/tech/note-taking/sync-obsidian-with-git.md"
   ]
 }

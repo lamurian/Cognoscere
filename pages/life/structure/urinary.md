@@ -1,6 +1,6 @@
 # The #Anatomy of the Urinary System
 
-The #anatomy of urinary system encompasses the upper and lower tract, where the blood is filtered of its wastes/byproducts. When we ingest and extract the nutritional components of our food, the unneeded components are then excreted through the [[life/function/gastrointestinal|gastrointestinal]] system or the [[haematology|blood]]. To understand the #physiology of the [[life/function/urinary|urinary tract]], a comprehension of its #anatomy is desirable.
+The #anatomy of urinary system encompasses the upper and lower tract, where the blood is filtered of its wastes/byproducts. When we ingest and extract the nutritional components of our food, the unneeded components are then excreted through the [[pages/life/function/gastrointestinal|gastrointestinal]] system or the [[haematology|blood]]. To understand the #physiology of the [[pages/life/function/urinary|urinary tract]], a comprehension of its #anatomy is desirable.
 
 ## Kidney
 
