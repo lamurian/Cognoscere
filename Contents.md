@@ -8,3 +8,7 @@
 		- [[Synchronize obsidian with git]]
 	- [[Configuring vim]]
 	- [[App to try]]
+- Entertainment
+	- [Movies](Movies)
+	- [TV Series](TV%20Series)
+	- [Music](Music)

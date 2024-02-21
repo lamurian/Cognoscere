@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "journals/2024-02-21.md",
+                "file": "Contents.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "journals/2024-02-21.md",
+                "file": "Contents.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -111,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "journals/2024-02-21.md",
+                "file": "Contents.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "journals/2024-02-21.md"
+                "file": "Contents.md"
               }
             }
           },
@@ -166,24 +166,26 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "audio-recorder:Start/stop recording": false,
-      "publish:Publish changes...": false
+      "audio-recorder:Start/stop recording": false
     }
   },
   "active": "9764e995fcf9d9e5",
   "lastOpenFiles": [
+    "pages/Synchronize obsidian with git.md",
+    "pages/Configuring vim.md",
+    "pages/Movies.md",
+    "pages/TV Series.md",
+    "Contents.md",
+    "README.md",
     "templates/Daily note.md",
+    "pages/TV.md",
     "journals/2024-02-21.md",
     "pages/The anatomy of the urinary system.md",
     "pages/Taking note with vim.md",
-    "pages/Synchronize obsidian with git.md",
-    "pages/Configuring vim.md",
     "pages/App to try.md",
-    "Contents.md",
     "medias/_fig-markgit-ipad.jpeg",
     "medias",
     "Graph Theory.md",
-    "README.md",
     "Untitled.md",
     "templates",
     "journals/meet/221011-Oct-Tue.md",
