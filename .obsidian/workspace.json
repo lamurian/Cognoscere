@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "journals/meet/221011-Oct-Tue.md",
+                "file": "Scratchpad.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#Dev-247",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -74,8 +74,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -95,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "journals/meet/221011-Oct-Tue.md",
+                "file": "Scratchpad.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -112,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "journals/meet/221011-Oct-Tue.md",
+                "file": "Scratchpad.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "journals/meet/221011-Oct-Tue.md"
+                "file": "Scratchpad.md"
               }
             }
           }
@@ -158,10 +157,10 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "ab77b3992a5cbb75",
+  "active": "6e2e127e9e013313",
   "lastOpenFiles": [
-    "journals/meet/Recording 20221011160701.webm",
     "journals/meet/221011-Oct-Tue.md",
+    "journals/meet/Recording 20221011160701.webm",
     "pages/life/structure/urinary.md",
     "pages",
     "journals",
