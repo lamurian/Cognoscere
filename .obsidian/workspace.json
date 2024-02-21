@@ -49,21 +49,13 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#Physiology",
+                "query": "tag:#physiology",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
               }
-            }
-          },
-          {
-            "id": "5d62020b3d1c90b8",
-            "type": "leaf",
-            "state": {
-              "type": "starred",
-              "state": {}
             }
           },
           {
@@ -171,6 +163,9 @@
   },
   "active": "9764e995fcf9d9e5",
   "lastOpenFiles": [
+    "Untitled.canvas",
+    "pages/The anatomy of the urinary system.md",
+    "journals/2024-02-21.md",
     "pages/Synchronize obsidian with git.md",
     "pages/Configuring vim.md",
     "pages/Movies.md",
@@ -179,8 +174,6 @@
     "README.md",
     "templates/Daily note.md",
     "pages/TV.md",
-    "journals/2024-02-21.md",
-    "pages/The anatomy of the urinary system.md",
     "pages/Taking note with vim.md",
     "pages/App to try.md",
     "medias/_fig-markgit-ipad.jpeg",
