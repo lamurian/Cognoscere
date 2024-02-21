@@ -19,13 +19,13 @@
   "random-note": false,
   "outline": true,
   "word-count": true,
-  "slides": false,
+  "slides": true,
   "audio-recorder": true,
   "workspaces": false,
   "file-recovery": true,
-  "publish": false,
+  "publish": true,
   "sync": false,
   "canvas": true,
   "bookmarks": true,
-  "properties": false
+  "properties": true
 }
