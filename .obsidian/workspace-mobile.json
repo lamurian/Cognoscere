@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "8e05ebdb736cd01b",
+        "id": "f978e757307114c0",
         "type": "tabs",
         "children": [
           {
-            "id": "51003440fccea3e7",
+            "id": "e01fffcc1a16beb3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "meet/221011-Oct-Tue.md",
+                "file": "templates/Daily note.md",
                 "mode": "preview",
                 "backlinks": true,
                 "source": false
@@ -45,7 +45,7 @@
         "state": {
           "type": "search",
           "state": {
-            "query": "tag:#Histology",
+            "query": "tag:#physiology",
             "matchingCase": false,
             "explainSearch": false,
             "collapseAll": false,
@@ -72,6 +72,14 @@
           "type": "starred",
           "state": {}
         }
+      },
+      {
+        "id": "f2a81a9a14d5f0c9",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {}
+        }
       }
     ],
     "currentTab": 0
@@ -86,7 +94,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "meet/221011-Oct-Tue.md",
+            "file": "templates/Daily note.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -103,7 +111,7 @@
         "state": {
           "type": "outgoing-link",
           "state": {
-            "file": "meet/221011-Oct-Tue.md",
+            "file": "templates/Daily note.md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           }
@@ -115,7 +123,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "meet/221011-Oct-Tue.md"
+            "file": "templates/Daily note.md"
           }
         }
       }
@@ -133,25 +141,54 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "51003440fccea3e7",
+  "active": "0e62f080c1c14723",
   "lastOpenFiles": [
-    "meet/230327-Mar-Mon.md",
-    "tech/note-taking/sync-obsidian-with-git.md",
+    "pages/The anatomy of the urinary system.md",
+    "pages/Movies.md",
+    "journals/2024-02-21.md",
+    "templates/Daily note.md",
+    "Contents.md",
+    "Music.md",
+    "pages/Taking note with vim.md",
+    "pages/TV Series.md",
+    "pages/life/function/urinary.md",
+    "pages/Synchronize obsidian with git.md",
+    "pages/App to try.md",
+    "pages/Configuring vim.md",
+    "templates",
+    "medias/_fig-vimrc.png",
+    "medias/_fig-markgit-ipad.jpeg",
+    "medias/_fig-obs-ipad.jpeg",
+    "medias/_fig-obs-pc.png",
+    "medias",
+    "pages/life/structure/urinary.md",
+    "pages/life/structure/gastrointestinal.md",
     "Scratchpad.md",
-    "Untitled.canvas",
-    "Untitled 1.canvas",
-    "meet/221011-Oct-Tue.md",
+    "pages/tech/note-taking/sync-obsidian-with-git.md",
+    "pages/tech/note-taking/obs-ipad.jpeg",
+    "pages/tech/note-taking/obs-pc.png",
+    "pages/tech/note-taking/taking-note-with-vim.md",
+    "pages/tech/note-taking/markgit-ipad.jpeg",
+    "pages/tech/note-taking/vimrc.png",
+    "pages/life/function/haematology.md",
+    "pages/life/function/gastrointestinal.md",
+    "pages/tech/note-taking",
+    "pages/tech/App to try.md",
+    "pages/life/structure",
+    "pages/life/function",
+    "pages/tech",
+    "pages/life",
+    "pages",
+    "journals/meet/Recording 20221011160701.webm",
+    "journals/meet/221011-Oct-Tue.md",
+    "journals/meet",
+    "meet/240220-Feb-Tue.md",
     "life/structure/urinary.md",
-    "Recording 20230327020747.m4a",
-    "life/structure/gastrointestinal.md",
-    "configuring-vim.md",
-    "meet/Recording 20221011160701.webm",
-    "tech/note-taking/taking-note-with-vim.md",
-    "tech/App to try.md",
-    "README.md",
-    "meds/anatomy/urinary.md",
-    "meet/221011 Oct 11.md",
-    "//meet/221011 Oct 11.md",
-    "//meds/anatomy/urinary.md"
+    "life/function/urinary.md",
+    "life/function/haematology.md",
+    "life/function/gastrointestinal.md",
+    "tech/note-taking/markgit-ipad.jpeg",
+    "Untitled.canvas",
+    "Untitled 1.canvas"
   ]
 }
