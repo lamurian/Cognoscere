@@ -1,4 +1,5 @@
 {
-  "folder": "meet",
-  "format": "YYMMDD-MMM-ddd"
+  "folder": "journals",
+  "format": "YYYY-MM-DD",
+  "autorun": true
 }

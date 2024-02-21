@@ -1,0 +1,10 @@
+- [[README]]
+- Life Science
+	- Anatomy
+		- [[The anatomy of the urinary system]]
+- Technology
+	- Note Taking
+		- [[Taking note with vim]]
+		- [[Synchronize obsidian with git]]
+	- [[Configuring vim]]
+	- [[App to try]]
