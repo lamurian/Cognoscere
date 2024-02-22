@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "journals/2024-02-21.md",
+                "file": "journals/2024-02-22.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "journals/2024-02-21.md",
+                "file": "journals/2024-02-22.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "journals/2024-02-21.md",
+                "file": "journals/2024-02-22.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "journals/2024-02-21.md"
+                "file": "journals/2024-02-22.md"
               }
             }
           },
@@ -163,10 +163,11 @@
   },
   "active": "9764e995fcf9d9e5",
   "lastOpenFiles": [
+    "journals/2024-02-21.md",
+    "journals/2024-02-22.md",
     "Contents.md",
     "Untitled.canvas",
     "pages/The anatomy of the urinary system.md",
-    "journals/2024-02-21.md",
     "pages/Synchronize obsidian with git.md",
     "pages/Configuring vim.md",
     "pages/Movies.md",
