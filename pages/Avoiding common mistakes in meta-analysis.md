@@ -1,0 +1,42 @@
+---
+title: Avoiding common mistakes in meta-analysis
+tags:
+  - statistics
+  - meta-analysis
+  - summary
+aliases:
+  - avoid-common-mistake-meta-analysis
+---
+# Borenstein, *Avoiding Common Mistakes in Meta‐analysis.*
+- $I^2$ does not directly quantify heterogeneity
+- Interpreting $I^2$ on its own, lest using an arbitrary cutoff, is erroneous
+- $I^2$ alongside $\tau^2$ should be interpreted with its prediction interval
+	- Both $I^2$ and $\tau^2$ are interrelated with Q statistics, where $Q = \sum w_i \left(y_i - \frac{\sum w_i y_i}{\sum y_i}\right)^2$
+	- $I^2$ is calculated using the $Q$ statistics, where $I^2 = \frac{Q - (n - 1)}{Q} \cdot 100\%$
+	- Similarly, $\tau^2$ is also calculated using the $Q$ statistics, where $\tau^2 = \frac{Q - (n-1)}{\sum w_i - \frac{\sum w_i^2}{\sum w_i}}$
+	- Notes:
+		- $y_i$: Effect size (`TE` in `meta` package)
+		- $w_i$: Within-study variance (`seTE` in `meta` package)
+		- $n$: Number of studies (`k` in `meta` package)
+- Questions we can answer:
+	- Is there any variation in effect size?
+		- Null value of $Q$-test: True effect size is precisely the same in all studies
+		- Significance implies that the true effect is not precisely the same
+		- Non-significance is most likely related to type-II error
+	- What proportion of observed variance reflects the variance in true effects?
+		- $I^2$ statistics describes the proportion of the variance in true effects ^270370
+		- $I^2$ does not address the proportion of the variance due to sampling error
+		- Heterogeneity should account for both type of variances, i.e. in true effects and due to sampling error
+	- What is the variance of true effects?
+		- $\tau^2$ reports the absolute amount of dispersion, i.e. the varianc eof true effects
+		- However, this absolute dispersion is not in relation with the mean effect
+		- $\tau^2$ is useful for calculating the [prediction interval](https://training.cochrane.org/handbook/current/chapter-10#section-10-10-4-3) $PI = \bar{x} \pm t_{k-2} \sqrt{\tau^2 + SE^2}$
+	- What is the interval most true effects are expected to fall?
+		- This is explained by the prediction interval (PI)
+		- In a way, PI is similar to the confidence interval (CI)
+		- However, PI uses the quantile function of a T-distribution instead of Z distribution
+		- Given a very large degree of freedom, $t = z$
+		- Though, with a small degree of freedom, $t > z$, contributing to  wider range of interval
+- Confidence interval and prediction interval are **different**:
+	- Confidence interval is an index of *precision*, i.e. how precise we estimated the mean
+	- Prediction interval is an index of *dispersion*, i.e. how the effect size varies across studies
