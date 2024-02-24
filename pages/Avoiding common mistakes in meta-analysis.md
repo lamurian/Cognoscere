@@ -28,7 +28,7 @@ aliases:
 		- $I^2$ does not address the proportion of the variance due to sampling error
 		- Heterogeneity should account for both type of variances, i.e. in true effects and due to sampling error
 	- What is the variance of true effects?
-		- $\tau^2$ reports the absolute amount of dispersion, i.e. the varianc eof true effects
+		- $\tau^2$ reports the absolute amount of dispersion, i.e. the variance of true effects
 		- However, this absolute dispersion is not in relation with the mean effect
 		- $\tau^2$ is useful for calculating the [prediction interval](https://training.cochrane.org/handbook/current/chapter-10#section-10-10-4-3) $PI = \bar{x} \pm t_{k-2} \sqrt{\tau^2 + SE^2}$
 	- What is the interval most true effects are expected to fall?
