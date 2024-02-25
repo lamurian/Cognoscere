@@ -8,6 +8,19 @@
         "type": "tabs",
         "children": [
           {
+            "id": "e4c2aabbcd67f239",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "journals/2024-02-22.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          },
+          {
             "id": "4548983077d9d025",
             "type": "leaf",
             "state": {
@@ -19,8 +32,22 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "05eca4f96ea4d219",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "journals/2024-02-25.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -86,7 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "journals/2024-02-22.md",
+                "file": "journals/2024-02-25.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -103,7 +130,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "journals/2024-02-22.md",
+                "file": "journals/2024-02-25.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +153,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "journals/2024-02-22.md"
+                "file": "journals/2024-02-25.md"
               }
             }
           },
@@ -160,13 +187,13 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "4548983077d9d025",
+  "active": "05eca4f96ea4d219",
   "lastOpenFiles": [
-    "pages/Avoiding common mistakes in meta-analysis.md",
-    "journals/2024-02-22.md",
-    "journals/2024-02-24.md",
+    "journals/2024-02-25.md",
     "pages/Meta‐analysis of prevalence.md",
     "Contents.md",
+    "journals/2024-02-22.md",
+    "pages/Avoiding common mistakes in meta-analysis.md",
     "pages/Introduction to meta-analysis.md",
     "pages/Power of statistical tests for subgroup analysis in meta-analysis.md",
     "pages/TV Series.md",
