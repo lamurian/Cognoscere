@@ -8,6 +8,7 @@
 		- [[Power of statistical tests for subgroup analysis in meta-analysis]]
 		- [[Avoiding common mistakes in meta-analysis]]
 		- [[Meta‐analysis of prevalence]]
+	- Time-series analysis
 - Technology
 	- Note Taking
 		- [[Taking note with vim]]
