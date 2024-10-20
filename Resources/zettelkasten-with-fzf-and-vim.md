@@ -11,7 +11,7 @@ Starting a Zettelkasten using Vim and FZF (Fuzzy Finder) can be an incredibly po
 
 # Overview of the Script
 
-This script implements a simplified version of the Zettelkasten note-taking system using FZF, a fuzzy finder for the command line. The Zettelkasten method involves creating atomic, interconnected notes, which can later be retrieved, searched, and linked. The script allows the user to create new notes, search for existing notes, and organize them into broad categories such as Projects, Areas, Resources, and Archives (based on the PARA method).
+[This script](https://github.com/lamurian/dotfiles/blob/d63f437635d81fc884e462fa570ae23ceddcc83f/bin/zk) implements a simplified version of the Zettelkasten note-taking system using FZF, a fuzzy finder for the command line. The Zettelkasten method involves creating atomic, interconnected notes, which can later be retrieved, searched, and linked. The script allows the user to create new notes, search for existing notes, and organize them into broad categories such as Projects, Areas, Resources, and Archives (based on the PARA method).
 
 Let's break down each part of the script.
 
@@ -212,4 +212,5 @@ If no arguments are passed, the script defaults to calling `find_note`.
 ---
 
 # Conclusion
+
 This script efficiently implements a Zettelkasten-style note-taking system, with the ability to create, organize, and search notes. Its modularity, reliance on simple command-line tools like `fzf`, and the PARA organization method make it highly adaptable. Whether you're creating new notes or searching for existing ones, this script offers a minimalistic yet powerful workflow for personal knowledge management.
