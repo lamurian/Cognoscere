@@ -8,7 +8,7 @@ tags:
 - probability
 ---
 
-Here’s how you can compute the joint probability of events $ A $ and $ B $ using a **Gaussian copula** in R. This involves the following steps:
+Here’s how you can compute the joint probability of events $A$ and $B$ using a **Gaussian copula** in R. This involves the following steps:
 
 1. **Transform the marginal probabilities** using the inverse CDF of the normal distribution (i.e., the quantiles).
 2. **Use a bivariate normal distribution** with a specified correlation to calculate the joint distribution.
@@ -45,13 +45,13 @@ cat("The joint probability of A and B occurring is:", joint_prob, "\n")
 ```
 
 ### Explanation:
-1. **`qnorm(p)`**: This function calculates the quantile (inverse CDF) for the standard normal distribution corresponding to probability $ p $.
-   - For $ P(A) = 0.3 $, it returns the 30th percentile of the standard normal distribution.
-   - For $ P(B) = 0.1 $, it returns the 10th percentile of the standard normal distribution.
+1. **`qnorm(p)`**: This function calculates the quantile (inverse CDF) for the standard normal distribution corresponding to probability $p$.
+   - For $P(A) = 0.3$, it returns the 30th percentile of the standard normal distribution.
+   - For $P(B) = 0.1$, it returns the 10th percentile of the standard normal distribution.
    
 2. **`pmvnorm`**: This function computes the cumulative distribution function (CDF) of a multivariate normal distribution. It calculates the probability that both random variables are below the specified limits, given the correlation structure.
 
-3. **`mean_vec` and `cov_matrix`**: These specify the parameters of the bivariate normal distribution. Since we are working with standard normal variables, the means are 0. The covariance matrix includes the correlation $ \rho = 0.6 $.
+3. **`mean_vec` and `cov_matrix`**: These specify the parameters of the bivariate normal distribution. Since we are working with standard normal variables, the means are 0. The covariance matrix includes the correlation $\rho = 0.6$.
 
 ### Output:
-This code will output the joint probability $ P(A \text{ and } B) $, given the marginal probabilities and the correlation between $ A $ and $ B $. The result should match the value computed previously (around 0.052).
+This code will output the joint probability $P(A \text{ and } B)$, given the marginal probabilities and the correlation between $A$ and $B$. The result should match the value computed previously (around 0.052).
