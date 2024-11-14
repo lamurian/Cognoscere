@@ -3,8 +3,6 @@ author: Lam
 date: 2024-10-22T22:49:34+02:00
 title: Prompt for GPT-based thematic analysis
 source:
-- https://chatgpt.com/share/6721365b-c4cc-8006-84e5-0f75861b638d
-- https://chatgpt.com/share/6721413b-931c-8006-a05d-f590a2a3dbf2
 tags:
 - qualitative analysis
 - resilience
@@ -75,15 +73,15 @@ Now, the user will send you a series of twenty IDs, tags, and contents. You will
 
 # Results
 
-[Factors associated with stress](Projects/factors-associated-with-stress.md)
-[Cause of stress](Projects/cause-of-stress.md)
-[The scope of stress as a problem](Projects/scope-of-stress.md)
-[The impact of stress](Projects/impact-of-stress.md)
-[Factors mediating stress](Projects/factors-mediating-stress.md)
-[Adverse impact of stress on mental health](Projects/adverse-impact-of-stress-on-mental-health.md)
-[The definition of resilience](Projects/definition-of-resilience.md)
-[The mechanism of resilience](Projects/mechanism-of-resilience.md)
-[The impact of resilience](Projects/impact-of-resilience.md)
-[The dynamics of resilience](Projects/dynamics-of-resilience.md)
-[Resources for resilience](Projects/resources-for-resilience.md)
-[Interventions on resilience](Projects/interventions-on-resilience.md)
+- [Factors associated with stress](Projects/factors-associated-with-stress.md)
+- [Cause of stress](Projects/cause-of-stress.md)
+- [The scope of stress as a problem](Projects/scope-of-stress.md)
+- [The impact of stress](Projects/impact-of-stress.md)
+- [Factors mediating stress](Projects/factors-mediating-stress.md)
+- [Adverse impact of stress on mental health](Projects/adverse-impact-of-stress-on-mental-health.md)
+- [The definition of resilience](Projects/definition-of-resilience.md)
+- [The mechanism of resilience](Projects/mechanism-of-resilience.md)
+- [The impact of resilience](Projects/impact-of-resilience.md)
+- [The dynamics of resilience](Projects/dynamics-of-resilience.md)
+- [Resources for resilience](Projects/resources-for-resilience.md)
+- [Interventions on resilience](Projects/interventions-on-resilience.md)
