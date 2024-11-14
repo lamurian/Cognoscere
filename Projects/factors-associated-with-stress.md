@@ -4,7 +4,8 @@ date: 2024-11-14T13:04:50+01:00
 title: Factors associated with stress
 source: https://chatgpt.com/share/6720decb-40ac-8006-975c-2e788f9138c7
 tags:
-- qualitative analysis
+- qualitative
+- analysis
 - resilience
 ---
 

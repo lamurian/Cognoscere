@@ -4,7 +4,8 @@ date: 2024-11-14T13:20:44+01:00
 title: Impact of stress
 source: https://chatgpt.com/share/6720b007-5804-8006-8d9f-8fff7970d9ee
 tags:
-- qualitative analysis
+- qualitative
+- analysis
 - resilience
 ---
 

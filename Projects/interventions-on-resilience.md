@@ -4,7 +4,8 @@ date: 2024-11-14T13:33:46+01:00
 title: Interventions on resilience
 source: https://chatgpt.com/share/6721365b-c4cc-8006-84e5-0f75861b638d
 tags:
-- qualitative analysis
+- qualitative
+- analysis
 - resilience
 ---
 

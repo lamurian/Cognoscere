@@ -4,7 +4,8 @@ date: 2024-11-14T13:28:09+01:00
 title: Impact of resilience
 source: https://chatgpt.com/share/67213149-0414-8006-9ce1-3354fe060957
 tags:
-- qualitative analysis
+- qualitative
+- analysis
 - resilience
 ---
 

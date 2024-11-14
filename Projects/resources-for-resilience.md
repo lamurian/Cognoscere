@@ -4,7 +4,8 @@ date: 2024-11-14T13:30:46+01:00
 title: Resources for resilience
 source: https://chatgpt.com/share/6721413b-931c-8006-a05d-f590a2a3dbf2
 tags:
-- qualitative analysis
+- qualitative
+- analysis
 - resilience
 ---
 

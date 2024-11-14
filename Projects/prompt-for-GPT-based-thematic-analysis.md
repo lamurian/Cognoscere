@@ -3,7 +3,8 @@ author: Lam
 date: 2024-10-22T22:49:34+02:00
 title: Prompt for GPT-based thematic analysis
 tags:
-- qualitative analysis
+- qualitative
+- analysis
 - resilience
 ---
 

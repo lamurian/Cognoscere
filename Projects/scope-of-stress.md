@@ -4,7 +4,8 @@ date: 2024-11-14T13:19:10+01:00
 title: Scope of stress
 source: https://chatgpt.com/share/6720be74-2218-8006-ad0f-f77a4b5c1186
 tags:
-- qualitative analysis
+- qualitative
+- analysis
 - resilience
 ---
 

@@ -4,7 +4,8 @@ date: 2024-11-14T13:24:00+01:00
 title: Definition of resilience
 source: https://chatgpt.com/share/6721020d-d588-8006-a062-4cab6b60164c
 tags:
-- qualitative analysis
+- qualitative
+- analysis
 - resilience
 ---
 

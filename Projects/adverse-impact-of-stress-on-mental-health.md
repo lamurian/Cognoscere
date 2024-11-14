@@ -4,7 +4,8 @@ date: 2024-11-14T13:22:55+01:00
 title: Adverse impact of stress on mental health
 source: https://chatgpt.com/share/6718380d-8428-8006-8ada-d83455eb67ea
 tags:
-- qualitative analysis
+- qualitative
+- analysis
 - resilience
 ---
 

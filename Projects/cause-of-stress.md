@@ -4,7 +4,8 @@ date: 2024-11-14T13:17:54+01:00
 title: Cause of stress
 source: https://chatgpt.com/share/6720a28c-f4e0-8006-9daa-32ca32190703
 tags:
-- qualitative analysis
+- qualitative
+- analysis
 - resilience
 ---
 

@@ -4,7 +4,8 @@ date: 2024-11-14T13:25:25+01:00
 title: Mechanism of resilience
 source: https://chatgpt.com/share/67184b47-a6f0-8006-9f3c-9e6a1ba701b9
 tags:
-- qualitative analysis
+- qualitative
+- analysis
 - resilience
 ---
 

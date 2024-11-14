@@ -4,7 +4,8 @@ date: 2024-11-14T13:21:37+01:00
 title: Factors mediating stress
 source: https://chatgpt.com/share/6720b5d6-523c-8006-a38a-314dcd5c2fed
 tags:
-- qualitative analysis
+- qualitative
+- analysis
 - resilience
 ---
 

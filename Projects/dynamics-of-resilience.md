@@ -4,7 +4,8 @@ date: 2024-11-14T13:29:48+01:00
 title: Dynamics of resilience
 source: https://chatgpt.com/share/6721063a-ba70-8006-b063-14e997342291
 tags:
-- qualitative analysis
+- qualitative
+- analysis
 - resilience
 ---
 
