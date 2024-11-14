@@ -1,4 +1,8 @@
-.obsidian/app.json
-.obsidian/appearance.json
-.obsidian/hotkeys.json
-.obsidian/workspace
+# Blacklist all Obsidian config files
+.obsidian/*
+
+# Whitelist several configuration files that needs to be synced
+!.obsidian/app.json
+!.obsidian/command-palette.json
+!.obsidian/hotkeys.json
+!.obsidian/*plugins.json

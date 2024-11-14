@@ -1,0 +1,10 @@
+{
+  "promptDelete": false,
+  "showLineNumber": true,
+  "vimMode": true,
+  "attachmentFolderPath": "Archives/media",
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "Resources",
+  "useMarkdownLinks": true
+}
