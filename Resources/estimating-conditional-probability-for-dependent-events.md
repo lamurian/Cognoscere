@@ -54,6 +54,7 @@ $$
 If no data is available, using Bayesian inference with prior beliefs (as discussed) or assuming independence (maximum entropy) are practical solutions.
 
 ### Summary of Approaches:
+
 - **Independence assumption** (based on maximum entropy) if no other information is available.
 - **Bayesian inference** to estimate conditional probabilities when partial data or prior knowledge exists.
 - **Copulas** to model dependence when the relationship between $A$ and $B$ is suspected but not precisely known.
@@ -61,3 +62,10 @@ If no data is available, using Bayesian inference with prior beliefs (as discuss
 - **Empirical estimation** of conditional probabilities from data, if available.
 
 In the absence of detailed information, starting with the assumption of independence or using Bayesian methods to estimate the dependence can help build a model that can be refined as more data becomes available.
+
+# Relevant notes
+
+- [copula-for-dependent-events](Resources/copula-for-dependent-events.md)
+- [R-code-example-of-copula-for-dependent-events](Resources/R-code-example-of-copula-for-dependent-events.md)
+- [calculation-example-of-copula-for-dependent-events](Resources/calculation-example-of-copula-for-dependent-events.md)
+- [co-occurrences-probability-dependent-events](Resources/co-occurrences-probability-dependent-events.md)

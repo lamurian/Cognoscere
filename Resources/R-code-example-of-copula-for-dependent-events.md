@@ -55,3 +55,10 @@ cat("The joint probability of A and B occurring is:", joint_prob, "\n")
 
 ### Output:
 This code will output the joint probability $P(A \text{ and } B)$, given the marginal probabilities and the correlation between $A$ and $B$. The result should match the value computed previously (around 0.052).
+
+# Relevant notes
+
+- [copula-for-dependent-events](Resources/copula-for-dependent-events.md)
+- [calculation-example-of-copula-for-dependent-events](Resources/calculation-example-of-copula-for-dependent-events.md)
+- [co-occurrences-probability-dependent-events](Resources/co-occurrences-probability-dependent-events.md)
+- [estimating-conditional-probability-for-dependent-events](Resources/estimating-conditional-probability-for-dependent-events.md)

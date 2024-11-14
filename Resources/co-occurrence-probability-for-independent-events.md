@@ -19,3 +19,7 @@ P(A \text{ and } B) = P(A) \times P(B) = 0.3 \times 0.1 = 0.03
 $$
 
 So, the probability that both $A$ and $B$ occur for the same object $O$ is 0.03 or 3%.
+
+# Relevant notes
+
+[co-occurrences-probability-dependent-events](Resources/co-occurrences-probability-dependent-events.md)

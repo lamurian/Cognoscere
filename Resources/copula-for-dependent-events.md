@@ -93,3 +93,10 @@ Let’s say $A$ and $B$ represent two dependent events, and their marginal proba
 - **Applications in Multivariate Scenarios**: Copulas can be extended to model multiple events or variables, making them useful in multivariate statistics, finance, and risk analysis.
 
 In summary, copulas provide a versatile framework for modeling dependent events, allowing for greater flexibility and precision in capturing the joint behavior of variables while respecting their individual marginal distributions.
+
+# Relevant notes
+
+- [R-code-example-of-copula-for-dependent-events](Resources/R-code-example-of-copula-for-dependent-events.md)
+- [calculation-example-of-copula-for-dependent-events](Resources/calculation-example-of-copula-for-dependent-events.md)
+- [co-occurrences-probability-dependent-events](Resources/co-occurrences-probability-dependent-events.md)
+- [estimating-conditional-probability-for-dependent-events](Resources/estimating-conditional-probability-for-dependent-events.md)

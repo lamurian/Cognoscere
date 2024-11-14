@@ -38,3 +38,11 @@ $$
 In this case, the probability of both $A$ and $B$ occurring would be 0.15 or 15%.
 
 The key is knowing the conditional probability that relates the two events. If you have that information, you can compute the joint probability accordingly.
+
+# Relevant notes
+
+- [copula-for-dependent-events](Resources/copula-for-dependent-events.md)
+- [R-code-example-of-copula-for-dependent-events](Resources/R-code-example-of-copula-for-dependent-events.md)
+- [calculation-example-of-copula-for-dependent-events](Resources/calculation-example-of-copula-for-dependent-events.md)
+- [estimating-conditional-probability-for-dependent-events](Resources/estimating-conditional-probability-for-dependent-events.md)
+- [co-occurrence-probability-for-independent-events](Resources/co-occurrence-probability-for-independent-events.md)

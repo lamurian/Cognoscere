@@ -68,8 +68,16 @@ $$
 The result $P(A \text{ and } B) \approx 0.052$ means there is approximately a 5.2% chance that both events $A$ and $B$ will occur simultaneously, given the correlation of 0.6 between them.
 
 ### Summary of the Steps:
+
 1. **Map the marginal probabilities** $P(A) = 0.3$ and $P(B) = 0.1$ to the corresponding standard normal quantiles: $u_A = -0.524$ and $u_B = -1.282$.
 2. **Apply the Gaussian copula** with correlation $\rho = 0.6$ to compute the joint probability using the bivariate normal CDF.
 3. **Result**: The joint probability $P(A \text{ and } B) \approx 0.052$.
 
 This approach allows you to model the dependency between events $A$ and $B$ while maintaining their original marginal distributions.
+
+# Relevant notes
+
+- [copula-for-dependent-events](Resources/copula-for-dependent-events.md)
+- [R-code-example-of-copula-for-dependent-events](Resources/R-code-example-of-copula-for-dependent-events.md)
+- [co-occurrences-probability-dependent-events](Resources/co-occurrences-probability-dependent-events.md)
+- [estimating-conditional-probability-for-dependent-events](Resources/estimating-conditional-probability-for-dependent-events.md)
