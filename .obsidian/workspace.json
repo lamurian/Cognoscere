@@ -4,37 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "e57127e9b40b9c9d",
+        "id": "7a78f6a262f56928",
         "type": "tabs",
         "children": [
           {
-            "id": "4548983077d9d025",
+            "id": "48ebaa5d213a686d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "journals/2024-02-22.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "3c3159ec77985a13",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "pages/Avoiding common mistakes in meta-analysis.md",
-                "mode": "preview",
-                "backlinks": true,
-                "source": false
-              }
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -54,7 +37,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -69,7 +54,9 @@
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -77,7 +64,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -100,7 +89,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "pages/Avoiding common mistakes in meta-analysis.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -108,7 +96,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": false
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
             }
           },
           {
@@ -117,10 +107,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "pages/Avoiding common mistakes in meta-analysis.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
             }
           },
           {
@@ -131,7 +122,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -139,9 +132,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "pages/Avoiding common mistakes in meta-analysis.md"
-              }
+              "state": {},
+              "icon": "lucide-list",
+              "title": "Outline"
             }
           },
           {
@@ -153,7 +146,9 @@
                 "sortOrder": "frequency",
                 "showSearch": false,
                 "searchQuery": ""
-              }
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
             }
           }
         ]
@@ -174,8 +169,16 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "3c3159ec77985a13",
+  "active": "48ebaa5d213a686d",
   "lastOpenFiles": [
+    "Resources/co-occurrences-probability-dependent-events.md",
+    "Resources/estimating-conditional-probability-for-dependent-events.md",
+    "Resources/co-occurrence-probability-for-independent-events.md",
+    "Resources/calculation-example-of-copula-for-dependent-events.md",
+    "Areas/course-to-take-to-pursue-a-career-as-a-product-manager.md",
+    "Projects/prompt-for-GPT-based-thematic-analysis.md",
+    "Projects/adverse-impact-of-stress-on-mental-health.md",
+    "Archives/media",
     "Contents.md",
     "pages/Introduction to meta-analysis.md",
     "pages/Avoiding common mistakes in meta-analysis.md",
@@ -196,19 +199,12 @@
     "pages/Movies.md",
     "README.md",
     "templates/Daily note.md",
-    "pages/TV.md",
-    "pages/Taking note with vim.md",
-    "pages/App to try.md",
     "medias/_fig-markgit-ipad.jpeg",
     "medias",
-    "Graph Theory.md",
-    "Untitled.md",
     "templates",
-    "journals/meet/221011-Oct-Tue.md",
     "medias/_fig-vimrc.png",
     "medias/_fig-obs-pc.png",
     "medias/_fig-obs-ipad.jpeg",
-    "pages/life-function-urinary.md",
     "journals/meet/Recording 20221011160701.webm",
     "pages",
     "journals",
