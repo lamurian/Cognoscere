@@ -3,8 +3,7 @@ author: Lam
 date: 2024-10-21T01:20:36+02:00
 title: Useful git commands with fzf
 tags:
-- command line
-- git
+  - git
 ---
 
 Combining `git` commands with `fzf` for previewing can enhance your workflow by making it easier to browse through files, commits, branches, and other Git-related data. Here’s a list of useful `git` commands paired with `fzf` that include previewing capabilities.

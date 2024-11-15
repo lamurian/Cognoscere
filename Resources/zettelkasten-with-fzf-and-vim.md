@@ -2,9 +2,11 @@
 author: Lam
 date: 2024-10-20T20:47:10+02:00
 title: Zettelkasten with fzf and vim
-source: https://chatgpt.com/share/6715531d-7dbc-8006-bb37-7baebf276142
+source:
+  - https://chatgpt.com/share/6715531d-7dbc-8006-bb37-7baebf276142
 tags:
-- command line
+  - vim
+  - note-taking
 ---
 
 Starting a Zettelkasten using Vim and FZF (Fuzzy Finder) can be an incredibly powerful and lightweight workflow. The goal is to minimize Vim-specific functions and let external scripts handle the bulk of the Zettelkasten management tasks. In this article, we'll explore how the Zettelkasten note-taking approach is implemented using the script provided, breaking down each section of the code to explain its functionality and how it ties together.

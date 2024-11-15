@@ -2,9 +2,10 @@
 author: Lam
 date: 2024-10-20T21:00:49+02:00
 title: Conceptual overview of linking Zettelkasten notes in command line
-source: https://chatgpt.com/share/6715531d-7dbc-8006-bb37-7baebf276142
+source:
+  - https://chatgpt.com/share/6715531d-7dbc-8006-bb37-7baebf276142
 tags:
-- command line
+  - note-taking
 ---
 
 Linking notes is a crucial part of the Zettelkasten method, enabling you to create connections between ideas and topics effectively. To simplify this process, you can use FZF alongside Vim to quickly find and insert note filenames in the linking format. Below, I’ll revise your initial script and explain the concept step by step.

@@ -2,10 +2,12 @@
 author: Lam
 date: 2024-10-21T02:22:53+02:00
 title: Co-occurrence probability for independent events
-source: https://chatgpt.com/share/67159f01-b710-8006-bc1f-ce8093ec9297
-tag:
-- statistics
-- probability
+source:
+  - https://chatgpt.com/share/67159f01-b710-8006-bc1f-ce8093ec9297
+tags:
+  - statistics
+  - probability
+  - mathematics
 ---
 
 In this scenario, we're describing a system where two independent events, $A$ and $B$, can occur for a given object $O$. The goal is to find the probability that both $A$ and $B$ occur for the same object $O$.

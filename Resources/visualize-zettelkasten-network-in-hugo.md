@@ -2,7 +2,11 @@
 author: Lam
 date: 2024-10-30T08:09:30+01:00
 title: Visualize Zettelkasten network in Hugo
-source: https://chatgpt.com/share/6721dbbb-b510-8006-8432-cb6b532d4540
+source:
+  - https://chatgpt.com/share/6721dbbb-b510-8006-8432-cb6b532d4540
+tags:
+  - hugo
+  - note-taking
 ---
 
 # Introduction

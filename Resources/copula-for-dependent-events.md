@@ -1,11 +1,13 @@
 ---
 author: Lam
 date: 2024-10-21T02:28:11+02:00
-source: https://chatgpt.com/share/67159f01-b710-8006-bc1f-ce8093ec9297
+source:
+  - https://chatgpt.com/share/67159f01-b710-8006-bc1f-ce8093ec9297
 title: Copula for dependent events
 tags:
-- statistics
-- probability
+  - statistics
+  - probability
+  - mathematics
 ---
 
 A **copula** is a powerful statistical tool used to model the dependency structure between random variables while preserving their individual (marginal) distributions. It separates the marginal behavior of individual variables from their joint dependency, making it especially useful when you want to model dependent events where traditional correlation measures may not fully capture the relationship.

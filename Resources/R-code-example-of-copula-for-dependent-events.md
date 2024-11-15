@@ -2,10 +2,13 @@
 author: Lam
 date: 2024-10-21T02:32:05+02:00
 title: R-code example of copula for dependent events
-source: https://chatgpt.com/share/67159f01-b710-8006-bc1f-ce8093ec9297
+source:
+  - https://chatgpt.com/share/67159f01-b710-8006-bc1f-ce8093ec9297
 tags:
-- statistics
-- probability
+  - statistics
+  - probability
+  - mathematics
+  - R
 ---
 
 Here’s how you can compute the joint probability of events $A$ and $B$ using a **Gaussian copula** in R. This involves the following steps:

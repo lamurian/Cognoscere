@@ -2,7 +2,10 @@
 author: Lam
 date: 2024-10-30T08:13:11+01:00
 title: Read Zettelkasten link using Python
-source: https://chatgpt.com/share/6721dbbb-b510-8006-8432-cb6b532d4540
+source:
+  - https://chatgpt.com/share/6721dbbb-b510-8006-8432-cb6b532d4540
+tags:
+  - note-taking
 ---
 
 # Introduction

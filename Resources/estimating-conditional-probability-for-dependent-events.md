@@ -2,10 +2,12 @@
 author: Lam
 date: 2024-10-21T02:25:53+02:00
 title: Estimating conditional probability for dependent events
-source: https://chatgpt.com/share/67159f01-b710-8006-bc1f-ce8093ec9297
+source:
+  - https://chatgpt.com/share/67159f01-b710-8006-bc1f-ce8093ec9297
 tags:
-- statistics
-- probability
+  - statistics
+  - probability
+  - mathematics
 ---
 
 When you lack sufficient information about the conditional probability between events $A$ and $B$, there are several approaches and considerations you can use based on the available information and assumptions about the system. Additionally, properties of the Binomial distribution could offer insights depending on the nature of the events.
