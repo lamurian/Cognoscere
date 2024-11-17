@@ -7,6 +7,7 @@ tags:
 - qualitative
 - analysis
 - resilience
+- LLM
 ---
 
 # Factors associated with stress

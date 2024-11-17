@@ -6,6 +6,7 @@ tags:
 - qualitative
 - analysis
 - resilience
+- LLM
 ---
 
 # Persona

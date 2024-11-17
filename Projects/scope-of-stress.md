@@ -7,6 +7,7 @@ tags:
 - qualitative
 - analysis
 - resilience
+- LLM
 ---
 
 # The scope of stress as a problem
