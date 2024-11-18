@@ -52,7 +52,7 @@ tags:
 - $ROI = \frac{Revenue - Investment}{Investment} \times 100\%$
 - However, total revenue attributable to HEOR works is not straightforward to calculate
 - Prior research:
-  - Returns to scientific publications for pharmaceutical products in the United States
-  - The value of comparative effectiveness research: Projected return on investment of the RxPONDER Trial
-  - Intelligent attribution modelling for enhanced digital marketing performance
-  - Quantifying the value of a day of delay in drug development
+  - [Returns to scientific publications for pharmaceutical products in the United States](https://onlinelibrary.wiley.com/doi/abs/10.1002/hec.3546)
+  - [The value of comparative effectiveness research: Projected return on investment of the RxPONDER Trial](https://www.sciencedirect.com/science/article/abs/pii/S1551714412002005)
+  - [Intelligent attribution modelling for enhanced digital marketing performance](https://www.sciencedirect.com/science/article/pii/S2667305324000139)
+  - [Quantifying the value of a day of delay in drug development](https://9468915.fs1.hubspotusercontent-na1.net/hubfs/9468915/Day%20of%20Day%20White%20Paper%20Final.pdf)
