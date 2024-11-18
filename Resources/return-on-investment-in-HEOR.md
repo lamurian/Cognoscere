@@ -17,8 +17,7 @@ tags:
 - Executive/company leaderships have the lowest understanding of HEOR values
 - Key gaps in HEOR professionals' skills:
   - Business acumen and strategic thinking
-  -
-  -
+  - Business communication
 
 # HEOR benchmarking
 
