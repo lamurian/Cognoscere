@@ -34,3 +34,7 @@ tags:
 - Converting an existing model from one platform to another
 - Conduct a structural uncertainty analysis
 - Generation of standardized reports
+
+# Relevant notes
+
+[LLM-as-the-next-frontier-in-health-economic-modelling-conceptualization](Resources/LLM-as-the-next-frontier-in-health-economic-modelling-conceptualization.md) 

@@ -3,6 +3,9 @@ author: Lam
 date: 2024-11-02T08:39:15+01:00
 title: Integrate chatbot in Konsulin static landing page
 source: https://chatgpt.com/share/de00b1f2-7524-489a-a369-74db787ec962
+tags:
+- tech
+- konsulin
 ---
 
 To implement the chatbot widget with the desired functionality, we'll break down the task into two main parts: **Backend (Golang)** and **Frontend (Hugo + Tailwind CSS + JavaScript)**. The solution will involve setting up a Go server to handle requests to the ChatGPT API, and integrating a frontend widget into your Hugo static site.

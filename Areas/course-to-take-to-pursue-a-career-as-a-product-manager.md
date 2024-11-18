@@ -3,6 +3,9 @@ author: Lam
 date: 2024-11-13T20:23:58+01:00
 title: Course to take to pursue a career as a product manager
 source: https://chatgpt.com/share/6734fcdf-7998-8006-8f01-232c46c8cf36
+tags:
+- career
+- skills
 ---
 
 There are several reputable free certification options for gaining foundational skills in product management, Agile practices, and other relevant areas for a career in healthcare-focused product management. Here are some good options to consider:

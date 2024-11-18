@@ -3,6 +3,8 @@ author: Lam
 date: 2024-11-02T08:36:41+01:00
 title: Immutable OS comparison
 source: https://chatgpt.com/share/6725d69c-94b4-8006-9498-8fec413da6a8
+tags:
+- tech
 ---
 
 Here’s a comparison table evaluating the stability and compatibility of the seven operating systems based on your needs as a data scientist, focusing on tools like Vim, tmux, R, Python, SQL, curl, and the ability to set up development environments:
