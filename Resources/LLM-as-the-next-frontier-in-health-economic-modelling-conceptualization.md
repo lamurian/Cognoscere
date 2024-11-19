@@ -44,3 +44,5 @@ tags:
 
 - [conceptualizing-model-using-LLM](Resources/conceptualizing-model-using-LLM.md) 
 - [economic-modelling-using-generative-AI](Resources/economic-modelling-using-generative-AI.md) 
+- [navigating-LLM-for-HEOR](Resources/navigating-LLM-for-HEOR.md) 
+- [HTA-perspective-of-LLM-in-HEOR](Resources/HTA-perspective-of-LLM-in-HEOR.md) 

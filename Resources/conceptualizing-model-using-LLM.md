@@ -23,3 +23,11 @@ You act as an HEOR modeler. Your task is to collect data to build a Markov HEOR 
 # Relevant notes
 
 - [economic-modelling-using-generative-AI](Resources/economic-modelling-using-generative-AI.md) 
+- [LLM-for-HE-modelling](Resources/LLM-for-HE-modelling.md) 
+- [conceptualizing-model-using-LLM](Resources/conceptualizing-model-using-LLM.md) 
+- [economic-modelling-using-generative-AI](Resources/economic-modelling-using-generative-AI.md) 
+- [LLM-as-the-next-frontier-in-health-economic-modelling-conceptualization](Resources/LLM-as-the-next-frontier-in-health-economic-modelling-conceptualization.md) 
+- [navigating-LLM-for-HEOR](Resources/navigating-LLM-for-HEOR.md) 
+- [LLM-as-the-next-frontier-in-health-economic-modelling-conceptualization](Resources/LLM-as-the-next-frontier-in-health-economic-modelling-conceptualization.md) 
+- [HTA-perspective-of-LLM-in-HEOR](Resources/HTA-perspective-of-LLM-in-HEOR.md) 
+- [prompt-for-GPT-based-HE-model-conceptualization](Resources/prompt-for-GPT-based-HE-model-conceptualization.md) 

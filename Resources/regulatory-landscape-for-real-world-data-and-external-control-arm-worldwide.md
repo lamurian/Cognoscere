@@ -17,7 +17,7 @@ tags:
   - Population representation: Cohort does not represent the diversity in the population
   - Endpoint comparability and meaningfulness
   - Regulatory and ethical considerations
-- AI role:
+- [AI role](Resources/navigating-LLM-for-HEOR.md):
   - Synthetic data using generative adversarial networks
   - NLP and LLM to improve model building
   - Machine learning approaches for improved matching between RCT, cohort, and the population
@@ -32,3 +32,6 @@ tags:
 
 - [connect-health-information-from-social-media](Resources/connect-health-information-from-social-media.md) 
 - [create-external-control-arm-using-RWD](Resources/create-external-control-arm-using-RWD.md) 
+- [RWE-generation-and-external-control-arms-powered-by-LLM](Resources/RWE-generation-and-external-control-arms-powered-by-LLM.md) 
+- [navigating-LLM-for-HEOR](Resources/navigating-LLM-for-HEOR.md) 
+- [HTA-perspective-of-LLM-in-HEOR](Resources/HTA-perspective-of-LLM-in-HEOR.md) 

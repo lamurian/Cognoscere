@@ -3,9 +3,9 @@ author: Lam
 date: 2024-11-18T16:54:06+01:00
 title: Return on investment in HEOR
 tags:
-- ISPOR
-- conference
-- RWE
+  - ISPOR
+  - conference
+  - RWE
 ---
 
 # Current issues

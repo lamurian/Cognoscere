@@ -13,7 +13,7 @@ tags:
 # Key steps of health economic modelling
 
 - [Evidence synthesis](Resources/rethink-biomedical-literature-review-using-LLM.md) 
-- Conceptual model development
+- [Conceptual model development](Resources/conceptualizing-model-using-LLM.md) 
   - Model structure
   - Selection of input parameters
 - Model coding or development
@@ -26,7 +26,7 @@ tags:
 
 # LLM use case in health economic modelling^[https://valuegen.ai/]
 
-- Summary of existing models
+- [Summary of existing models](Resources/LLM-in-literature-summarization-and-systematic-literature-review.md) 
 - [Model parameterization and data extraction](Resources/LLM-in-literature-summarization-and-systematic-literature-review.md) 
 - [Create a new health economic model](Resources/conceptualizing-model-using-LLM.md) 
 - Validation of previously-developed health economic model
@@ -37,4 +37,9 @@ tags:
 
 # Relevant notes
 
-[LLM-as-the-next-frontier-in-health-economic-modelling-conceptualization](Resources/LLM-as-the-next-frontier-in-health-economic-modelling-conceptualization.md) 
+- [LLM-as-the-next-frontier-in-health-economic-modelling-conceptualization](Resources/LLM-as-the-next-frontier-in-health-economic-modelling-conceptualization.md) 
+- [navigating-LLM-for-HEOR](Resources/navigating-LLM-for-HEOR.md) 
+- [LLM-for-HE-modelling](Resources/LLM-for-HE-modelling.md) 
+- [conceptualizing-model-using-LLM](Resources/conceptualizing-model-using-LLM.md) 
+- [economic-modelling-using-generative-AI](Resources/economic-modelling-using-generative-AI.md) 
+- [HTA-perspective-of-LLM-in-HEOR](Resources/HTA-perspective-of-LLM-in-HEOR.md) 

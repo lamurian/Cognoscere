@@ -7,6 +7,7 @@ tags:
 - conference
 - workshop
 - LLM
+- literature-review
 ---
 
 - Use LLM for topic discovery and trend analysis^[https://vitality-vis.github.io/]
@@ -17,5 +18,7 @@ tags:
 
 # Relevant notes
 
-- [intro-of-LLM-in-HEOR](Resources/intro-of-LLM-in-HEOR.md) 
 - [LLM-in-literature-summarization-and-systematic-literature-review](Resources/LLM-in-literature-summarization-and-systematic-literature-review.md) 
+- [LLM-for-systematic-literature-review](Resources/LLM-for-systematic-literature-review.md) 
+- [HTA-perspective-of-LLM-in-HEOR](Resources/HTA-perspective-of-LLM-in-HEOR.md) 
+- [navigating-LLM-for-HEOR](Resources/navigating-LLM-for-HEOR.md) 

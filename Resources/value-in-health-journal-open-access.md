@@ -6,6 +6,7 @@ tags:
 - ISPOR
 - conference
 - open-access
+- publish
 ---
 
 # Value in Health Regional Issues
@@ -29,3 +30,9 @@ tags:
 - Advancing open access:
   - Research4Life: APC discounted based on a variety of World Bank/WHO criteria, resulting in Group A and Group B country-level discounts
   - Elsevier Geo-Pricing Pilot: Support authors in low and middle-income countries with equitable pricing options
+
+# Relevant notes
+
+- [about-Value-in-Health](Resources/about-Value-in-Health.md) 
+- [article-assessment-in-the-Value-in-Health-journal](Resources/article-assessment-in-the-Value-in-Health-journal.md) 
+- [amplify-impact-of-published-articles-in-the-Value-in-Health-journal](Resources/amplify-impact-of-published-articles-in-the-Value-in-Health-journal.md) 
