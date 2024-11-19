@@ -21,4 +21,4 @@ tags:
 
 # Relevant notes
 
-- [joint-clinical-assessment](Resources/joint-clinical-assessment.md) 
+- [decision-problem-in-joint-clinical-assessment](Resources/decision-problem-in-joint-clinical-assessment.md) 
