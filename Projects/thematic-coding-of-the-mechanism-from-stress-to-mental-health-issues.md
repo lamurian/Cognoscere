@@ -25,12 +25,12 @@ tags:
 
 # Codebook
 
-- Imbalance
-- Appraisal
-- Bidirectional causality
-- Symptoms dynamics
-- Instant gratification
-- Substance use
+- Imbalance: The imbalance between protective and deteriorating factors
+- Appraisal: The process/mechanism of appraising stressful events
+- Bidirectional causality: A two-way influence between stress and mental health outcomes
+- Symptoms dynamics: The dynamics of symptoms, which may persist or fluctuate over time
+- Instant gratification: The tendency to seek for an immediate stress relief
+- Substance use: The use of substance to ameliorate perceived negative emotions due to stressful events
 
 # Coding example
 
