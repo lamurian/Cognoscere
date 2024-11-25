@@ -4,7 +4,9 @@ tags:
   - tech
   - note-taking
   - markdown
+  - git
 ---
+
 # What do I want to achieve?
 
 As a user, I want to have a decentralized and personal knowledge base. In an ideal workflow, I can update my  knowledge base asynchronously from *any* device then periodically sync them, either automatically or manually. Throughout the years, I enjoy writing my notes using #markdown syntax, as it is highly versatile and convertible to other formats. Naturally, I would love to incorporate my usual workflow using #markdown to create my personal knowledge base. My previous solution was to create a [static website](https://lamurian.rbind.io) using #hugo, so that I can keep all my notes in #markdown. To my regret though, it is rather difficult to incorporate this workflow in a mobile setting. I require a more dynamic solution, where I can use my phone/tablet to quickly jot down my ideas then process it later on my PC.
