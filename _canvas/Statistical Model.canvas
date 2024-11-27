@@ -1,0 +1,29 @@
+{
+	"nodes":[
+		{"id":"7d5baa0c84694fd4","type":"text","text":"# Linear Model","x":-556,"y":-233,"width":216,"height":60,"color":"1"},
+		{"id":"ee98398a241fea4a","type":"file","file":"General Mindmap.canvas","x":-280,"y":-500,"width":193,"height":90,"color":"5"},
+		{"id":"d509bd27854448cb","type":"link","url":"https://qingys.quarto.pub/introduction-to-linear-regression","x":-1220,"y":0,"width":711,"height":1080},
+		{"id":"653a3e64dbc6bb53","type":"text","text":"![Basic concept of linear regression](introduction-to-linear-regression.md#Basic%20concept%20of%20linear%20regression)","x":-1720,"y":1283,"width":500,"height":434},
+		{"id":"cab0192e33100638","type":"text","text":"![The Role of the Residual ($\\epsilon_i$):](elaborate-introduction-to-linear-regression.md#The%20Role%20of%20the%20Residual%20($%20epsilon_i$))","x":-2680,"y":1377,"width":617,"height":240},
+		{"id":"a2949643687defb9","type":"text","text":"![Modelling the Error Term](elaborate-introduction-to-linear-regression.md#Modelling%20the%20Error%20Term)","x":-1880,"y":1920,"width":900,"height":460},
+		{"id":"3861f39c4819aa56","type":"text","text":"![Takeaways](elaborate-introduction-to-linear-regression.md#Takeaways)","x":-2120,"y":420,"width":575,"height":240},
+		{"id":"60bd9ca82f51912e","type":"text","text":"![Basic Concept of Linear Regression](elaborate-introduction-to-linear-regression.md#Basic%20Concept%20of%20Linear%20Regression)","x":-2680,"y":920,"width":617,"height":406},
+		{"id":"afa38656af5b1bc8","type":"text","text":"![Common Assumptions on the Error Term ($\\epsilon_i$):](elaborate-introduction-to-linear-regression.md#Common%20Assumptions%20on%20the%20Error%20Term%20($%20epsilon_i$))","x":-2680,"y":1660,"width":617,"height":360},
+		{"id":"0daa4bfaede3f734","type":"text","text":"![Modelling the error term](introduction-to-linear-regression.md#Modelling%20the%20error%20term)","x":-1106,"y":1283,"width":484,"height":400},
+		{"id":"749c952c510ef7a4","type":"text","text":"![Shifts in modern statistics](introduction-to-linear-regression.md#Shifts%20in%20modern%20statistics)","x":-509,"y":1283,"width":484,"height":200},
+		{"id":"87676e3c44a2a86b","type":"text","text":"![Shifts in Modern Statistics](elaborate-introduction-to-linear-regression.md#Shifts%20in%20Modern%20Statistics)","x":-714,"y":1920,"width":895,"height":460}
+	],
+	"edges":[
+		{"id":"58572c7e1758a7c6","fromNode":"7d5baa0c84694fd4","fromSide":"bottom","toNode":"d509bd27854448cb","toSide":"top"},
+		{"id":"d1cf326edeae8b90","fromNode":"ee98398a241fea4a","fromSide":"bottom","toNode":"7d5baa0c84694fd4","toSide":"top"},
+		{"id":"a92413156782605b","fromNode":"d509bd27854448cb","fromSide":"bottom","toNode":"653a3e64dbc6bb53","toSide":"top"},
+		{"id":"4a01add549aee8dd","fromNode":"653a3e64dbc6bb53","fromSide":"left","toNode":"60bd9ca82f51912e","toSide":"right"},
+		{"id":"335b8556d68b1592","fromNode":"653a3e64dbc6bb53","fromSide":"left","toNode":"cab0192e33100638","toSide":"right"},
+		{"id":"909d4ce00b5dce14","fromNode":"653a3e64dbc6bb53","fromSide":"left","toNode":"afa38656af5b1bc8","toSide":"right"},
+		{"id":"4c4bd6d0856bbd6d","fromNode":"d509bd27854448cb","fromSide":"bottom","toNode":"0daa4bfaede3f734","toSide":"top"},
+		{"id":"8af5d94a377d58db","fromNode":"d509bd27854448cb","fromSide":"bottom","toNode":"749c952c510ef7a4","toSide":"top"},
+		{"id":"4d2e692b58c1fc8f","fromNode":"0daa4bfaede3f734","fromSide":"bottom","toNode":"a2949643687defb9","toSide":"top"},
+		{"id":"485ffeafcd6646a7","fromNode":"749c952c510ef7a4","fromSide":"bottom","toNode":"87676e3c44a2a86b","toSide":"top"},
+		{"id":"87c3a355c80e7365","fromNode":"d509bd27854448cb","fromSide":"left","toNode":"3861f39c4819aa56","toSide":"right"}
+	]
+}

@@ -1,0 +1,20 @@
+{
+	"nodes":[
+		{"id":"375ca96ec178ea96","type":"text","text":"![Best practices](approach-to-code-an-agent-based-model.md#Best%20practices)","x":-620,"y":-480,"width":580,"height":320},
+		{"id":"4a258b7f7d91fe99","type":"text","text":"![An agent may have:](characteristics-of-an-agent-in-agent-based-model.md#An%20agent%20may%20have)","x":101,"y":-1152,"width":539,"height":332},
+		{"id":"2864c5471bfeeae1","type":"text","text":"![Needs:](characteristics-of-an-agent-in-agent-based-model.md#Needs)","x":-573,"y":-1152,"width":486,"height":489},
+		{"id":"6dcc441c95a9a792","type":"text","text":"# Agent-Based Model","x":-140,"y":-1400,"width":294,"height":60,"color":"1"},
+		{"id":"b503662ff056ac0a","type":"file","file":"General Mindmap.canvas","x":-573,"y":-1415,"width":193,"height":90,"color":"5"},
+		{"id":"ed33ae47d690fea8","type":"text","text":"![Good parameters should be:](choice-of-parameters-in-an-agent-based-model.md#Good%20parameters%20should%20be)","x":-620,"y":0,"width":580,"height":291},
+		{"id":"d24c2685636d4551","type":"text","text":"![Bad parameters would be:](choice-of-parameters-in-an-agent-based-model.md#Bad%20parameters%20would%20be)","x":5,"y":63,"width":415,"height":157}
+	],
+	"edges":[
+		{"id":"fa28974573ac8df2","fromNode":"6dcc441c95a9a792","fromSide":"bottom","toNode":"4a258b7f7d91fe99","toSide":"top"},
+		{"id":"c310fd048b99b100","fromNode":"6dcc441c95a9a792","fromSide":"bottom","toNode":"2864c5471bfeeae1","toSide":"top"},
+		{"id":"579db1a39d029810","fromNode":"2864c5471bfeeae1","fromSide":"bottom","toNode":"375ca96ec178ea96","toSide":"top"},
+		{"id":"5c886c62f6f9a53a","fromNode":"4a258b7f7d91fe99","fromSide":"bottom","toNode":"375ca96ec178ea96","toSide":"top"},
+		{"id":"1370b0d58a3f3af1","fromNode":"b503662ff056ac0a","fromSide":"right","toNode":"6dcc441c95a9a792","toSide":"left"},
+		{"id":"b698362f70b25c54","fromNode":"375ca96ec178ea96","fromSide":"bottom","toNode":"ed33ae47d690fea8","toSide":"top"},
+		{"id":"5b832e80a4f5bdd9","fromNode":"375ca96ec178ea96","fromSide":"bottom","toNode":"d24c2685636d4551","toSide":"top"}
+	]
+}

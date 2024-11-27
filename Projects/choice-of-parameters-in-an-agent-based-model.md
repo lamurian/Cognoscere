@@ -9,7 +9,7 @@ tags:
 - model
 ---
 
-Good parameters should be:
+# Good parameters should be:
 
 - Interpretable, have a direct implication to the simulated agent
 - Measurable, can be represented as numbers
@@ -19,7 +19,7 @@ Good parameters should be:
   1. Good predictive power
   1. As simple as it is still deemed adequate, i.e., has less variables
 
-Bad parameters would be:
+# Bad parameters would be:
 
 - Meaningless
 - Purely descriptive, no explanatory remark

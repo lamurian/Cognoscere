@@ -9,7 +9,7 @@ tags:
 - model
 ---
 
-Needs:
+# Needs:
 
 - Self-contained, modular, uniquely identifiable
 - Have attributes that may serve two purposes:
@@ -24,7 +24,7 @@ Needs:
   - Protocol depends on attributes and states
   - An agent is able to recognize and distinguish the attribute of other agents
 
-An agent may have:
+# An agent may have:
 
 - An abstract mechanism that allows adaptation
 - A goal to achieve, where an agent can:

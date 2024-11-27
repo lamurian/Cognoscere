@@ -1,0 +1,7 @@
+{
+	"nodes":[
+		{"id":"78980b5937b29078","type":"file","file":"_canvas/Agent-Based Model.canvas","x":-680,"y":-400,"width":542,"height":584},
+		{"id":"bc69ff7e8dc3bab7","x":-80,"y":-400,"width":400,"height":440,"type":"file","file":"_canvas/Statistical Model.canvas"}
+	],
+	"edges":[]
+}
