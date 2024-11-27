@@ -6,6 +6,7 @@ source: https://doi.org/10.1007/978-3-642-24004-1_2
 tags:
 - simulation
 - ABM
+- model
 ---
 
 # Software and packages
@@ -25,3 +26,8 @@ tags:
 - Do not hard-code the parameters to the code, read it from a separate input file
 - Initialize all parameters and variables immediately when they are introduced in the code
 - Make small iterative changes overtime, avoid implementing a big change in one go
+
+# Relevant notes
+
+- [choice-of-parameters-in-an-agent-based-model](Projects/choice-of-parameters-in-an-agent-based-model.md) 
+- [characteristics-of-an-agent-in-agent-based-model](Projects/characteristics-of-an-agent-in-agent-based-model.md) 

@@ -6,6 +6,7 @@ source: https://doi.org/10.1007/978-3-642-24004-1_2
 tags:
 - simulation
 - ABM
+- model
 ---
 
 Good parameters should be:
@@ -22,3 +23,8 @@ Bad parameters would be:
 
 - Meaningless
 - Purely descriptive, no explanatory remark
+
+# Relevant notes
+
+- [approach-to-code-an-agent-based-model](Projects/approach-to-code-an-agent-based-model.md) 
+- [characteristics-of-an-agent-in-agent-based-model](Projects/characteristics-of-an-agent-in-agent-based-model.md) 

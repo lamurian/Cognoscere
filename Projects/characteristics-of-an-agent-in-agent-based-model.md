@@ -6,6 +6,7 @@ source: https://link.springer.com/content/pdf/10.1057/jos.2010.3.pdf
 tags:
 - simulation
 - ABM
+- model
 ---
 
 Needs:
