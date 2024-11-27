@@ -61,3 +61,7 @@ There are several reputable free certification options for gaining foundational 
    - [Link](https://alison.com/course/diploma-in-product-management)
 
 These options provide accessible, foundational knowledge and are great for understanding core product management principles and methodologies. Auditing courses on platforms like Coursera and edX also allows you to learn at no cost before deciding if a certificate is essential.
+
+# Relevant notes
+
+- [GPT-prompt-to-aid-in-looking-for-a-job](Resources/GPT-prompt-to-aid-in-looking-for-a-job.md) 

@@ -111,3 +111,4 @@ This approach will solidify your expertise and position you as a thought leader,
 # Relevant notes
 
 - [course-to-take-to-pursue-a-career-as-a-product-manager](Areas/course-to-take-to-pursue-a-career-as-a-product-manager.md) 
+- [GPT-prompt-to-aid-in-looking-for-a-job](Resources/GPT-prompt-to-aid-in-looking-for-a-job.md) 
