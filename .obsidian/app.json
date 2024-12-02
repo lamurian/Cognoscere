@@ -6,5 +6,8 @@
   "alwaysUpdateLinks": true,
   "newFileLocation": "folder",
   "newFileFolderPath": "Resources",
-  "useMarkdownLinks": true
+  "useMarkdownLinks": true,
+  "defaultViewMode": "preview",
+  "propertiesInDocument": "visible",
+  "tabSize": 2
 }
