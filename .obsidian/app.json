@@ -6,5 +6,6 @@
   "alwaysUpdateLinks": true,
   "newFileLocation": "folder",
   "newFileFolderPath": "Resources",
-  "useMarkdownLinks": true
+  "useMarkdownLinks": true,
+  "defaultViewMode": "preview"
 }
