@@ -32,6 +32,7 @@ $$
 - Model the third assumption using empirical risk minimization estimation $\to$ Assume neither normality nor variance; this is the essence of machine learning
 - Alternatively, we can model the third assumption using moment condition model $\to$ This is the essence of generalized estimation equation (GEE)
 - It is recommended to use moment conditional model with sandwich variance estimation
+- Sandwich variance estimation has similar performance as the bootstrap approach, but with a lower computational demand
 
 # Shifts in modern statistics
 
