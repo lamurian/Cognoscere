@@ -9,6 +9,8 @@ tags:
 
 ## **Week 1: Core JavaScript Basics**
 
+[Detailed plan](Resources/week-1-learning-JavaScript.md) 
+
 ### Focus: Build a strong foundation in JavaScript.
 
 **Milestones**:
@@ -36,6 +38,8 @@ tags:
 
 ## **Week 2: Intermediate JavaScript**
 
+[Detailed plan](Resources/week-2-learning-JavaScript.md) 
+
 ### Focus: Learn advanced JavaScript concepts for building dynamic web widgets.
 
 **Milestones**:
@@ -60,6 +64,8 @@ tags:
 ---
 
 ## **Week 3: React Fundamentals**
+
+[Detailed plan](Resources/week-3-learning-JavaScript.md) 
 
 ### Focus: Understand React's core concepts and start building components.
 
@@ -86,6 +92,8 @@ tags:
 
 ## **Week 4: React with State Management**
 
+[Detailed plan](Resources/week-4-learning-JavaScript.md) 
+
 ### Focus: Use React’s state management to build interactive widgets.
 
 **Milestones**:
@@ -110,6 +118,8 @@ tags:
 
 ## **Week 5: Advanced React Concepts**
 
+[Detailed plan](Resources/week-5-learning-JavaScript.md) 
+
 ### Focus: Learn advanced React concepts and best practices.
 
 **Milestones**:
@@ -131,6 +141,8 @@ tags:
 ---
 
 ## **Week 6: Authentication and API Integration**
+
+[Detailed plan](Resources/week-6-learning-JavaScript.md) 
 
 ### Focus: Secure your app and integrate with FHIR.
 
@@ -154,6 +166,8 @@ tags:
 
 ## **Week 7: Styling and Optimization**
 
+[Detailed plan](Resources/week-7-learning-JavaScript.md) 
+
 ### Focus: Enhance the look and feel of your widgets.
 
 **Milestones**:
@@ -174,6 +188,8 @@ tags:
 ---
 
 ## **Week 8: Deployment and Final Project**
+
+[Detailed plan](Resources/week-8-learning-JavaScript.md) 
 
 ### Focus: Deploy your widgets and integrate them into Hugo.
 
@@ -204,3 +220,5 @@ By the end of 2 months, you’ll have:
 # Relevant notes
 
 - [consideration-to-use-React-JS-when-developing-Konsulin-widgets](Projects/consideration-to-use-React-JS-when-developing-Konsulin-widgets.md) 
+- [learn-web-development-from-scratch](Resources/learn-web-development-from-scratch.md) 
+- [learn-JavaScript-HTML-CSS](Resources/learn-JavaScript-HTML-CSS.md) 
