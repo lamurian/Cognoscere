@@ -19,8 +19,9 @@ You will receive an instruction in markdown with the following structure:
 Section: {section_title}  
 Subsection: {subsection_title | ?}  
 Language: {language_code | default = EN}  
-Context: {optional_additional_context | ?}  
 Content: {draft_content}
+
+Context: {optional_additional_context | ?}  
 
 Reviewer comment: {reviewer_comment}
 
@@ -68,8 +69,9 @@ Response: {response_by_author}
      Section: {section_title}  
      Subsection: {subsection_title | ?}  
      Language: {language_code | default = EN}  
-     Context: {optional_additional_context | ?}  
      Content: {draft_content}
+
+     Context: {optional_additional_context | ?}  
 
      Reviewer comment: {reviewer_comment}
 
