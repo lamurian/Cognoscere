@@ -7,7 +7,7 @@
  *
  * Tools:
  *   search_para_docs   — query the index by tags + content text
- *   fetch_reputable_web — web search (unchanged, no DB involvement)
+ *   fetch_reputable_web — web search (uses DDG HTML API)
  *   create_para_doc    — create file + insert into index
  *   update_para_doc    — update file + refresh index row
  */
@@ -22,6 +22,9 @@ import duckdb from "duckdb";
 
 const PARA_DIRS = ["Areas", "Projects", "Resources"] as const;
 const DB_FILE   = "notes.duckdb";
+
+/** DuckDB error message indicating an aborted transaction needs rollback. */
+const TX_ABORTED_MSG = "Current transaction is aborted (please ROLLBACK)";
 
 // ── Helpers ─────────────────────────────────────────────────────
 
@@ -73,24 +76,85 @@ function slugify(title: string): string {
     .replace(/^-|-$/g, "");
 }
 
-// ── DuckDB wrappers ─────────────────────────────────────────────
+// ── DuckDB wrappers with recovery ──────────────────────────────
 
-function allAsync(db: duckdb.Database, sql: string, ...params: unknown[]): Promise<Record<string, unknown>[]> {
-  return new Promise((resolve, reject) => {
-    (db.all as Function)(sql, ...params, (err: Error | null, rows: Record<string, unknown>[]) => {
-      if (err) reject(err);
-      else resolve(rows);
+/**
+ * Attempt to heal a broken DuckDB connection by rolling back any
+ * aborted transaction.  Swallows "no transaction is active" errors.
+ */
+async function healAbortedTx(db: duckdb.Database): Promise<void> {
+  try {
+    await new Promise<void>((resolve, reject) => {
+      (db.run as Function)("ROLLBACK", (err: Error | null) => {
+        if (err) {
+          // "cannot rollback - no transaction is active" is harmless
+          const msg = err.message ?? "";
+          if (msg.includes("no transaction is active")) resolve();
+          else reject(err);
+        } else resolve();
+      });
     });
-  });
+  } catch {
+    // ignore unexpected rollback errors — db is likely beyond repair
+  }
 }
 
-function runAsync(db: duckdb.Database, sql: string, ...params: unknown[]): Promise<void> {
-  return new Promise((resolve, reject) => {
-    (db.run as Function)(sql, ...params, (err: Error | null) => {
-      if (err) reject(err);
-      else resolve();
+/**
+ * Run a SQL statement and recover from aborted-transaction errors
+ * by rolling back and retrying once.
+ */
+async function runWithRecovery(db: duckdb.Database, sql: string, ...params: unknown[]): Promise<void> {
+  try {
+    await new Promise<void>((resolve, reject) => {
+      (db.run as Function)(sql, ...params, (err: Error | null) => {
+        if (err) reject(err);
+        else resolve();
+      });
     });
-  });
+  } catch (e: unknown) {
+    const msg = e instanceof Error ? e.message : String(e);
+    if (msg.includes(TX_ABORTED_MSG)) {
+      await healAbortedTx(db);
+      // Retry once
+      await new Promise<void>((resolve, reject) => {
+        (db.run as Function)(sql, ...params, (err: Error | null) => {
+          if (err) reject(err);
+          else resolve();
+        });
+      });
+    } else {
+      throw e;
+    }
+  }
+}
+
+/**
+ * Run a query and recover from aborted-transaction errors.
+ */
+async function allWithRecovery(
+  db: duckdb.Database, sql: string, ...params: unknown[]
+): Promise<Record<string, unknown>[]> {
+  try {
+    return await new Promise<Record<string, unknown>[]>((resolve, reject) => {
+      (db.all as Function)(sql, ...params, (err: Error | null, rows: Record<string, unknown>[]) => {
+        if (err) reject(err);
+        else resolve(rows);
+      });
+    });
+  } catch (e: unknown) {
+    const msg = e instanceof Error ? e.message : String(e);
+    if (msg.includes(TX_ABORTED_MSG)) {
+      await healAbortedTx(db);
+      // Retry once
+      return await new Promise<Record<string, unknown>[]>((resolve, reject) => {
+        (db.all as Function)(sql, ...params, (err: Error | null, rows: Record<string, unknown>[]) => {
+          if (err) reject(err);
+          else resolve(rows);
+        });
+      });
+    }
+    throw e;
+  }
 }
 
 // ── File-system scanning ────────────────────────────────────────
@@ -124,7 +188,7 @@ function scanAllParaDirs(base: string): Promise<FileEntry[]> {
 // ── Database initialisation & sync ──────────────────────────────
 
 async function initDb(db: duckdb.Database): Promise<void> {
-  await runAsync(db, `
+  await runWithRecovery(db, `
     CREATE TABLE IF NOT EXISTS files (
       path        VARCHAR PRIMARY KEY,
       title       VARCHAR NOT NULL DEFAULT '',
@@ -136,14 +200,14 @@ async function initDb(db: duckdb.Database): Promise<void> {
       file_mtime  TIMESTAMP
     )
   `);
-  await runAsync(db, `
+  await runWithRecovery(db, `
     CREATE TABLE IF NOT EXISTS tags (
       file_path VARCHAR NOT NULL,
       tag       VARCHAR NOT NULL
     )
   `);
-  await runAsync(db, "CREATE INDEX IF NOT EXISTS idx_tags_tag  ON tags(tag)");
-  await runAsync(db, "CREATE INDEX IF NOT EXISTS idx_tags_path ON tags(file_path)");
+  await runWithRecovery(db, "CREATE INDEX IF NOT EXISTS idx_tags_tag  ON tags(tag)");
+  await runWithRecovery(db, "CREATE INDEX IF NOT EXISTS idx_tags_path ON tags(file_path)");
 }
 
 /** Parse frontmatter + body from a file entry. */
@@ -175,7 +239,7 @@ async function parseFile(
  */
 async function syncIndex(db: duckdb.Database, cwd: string): Promise<boolean> {
   const files = await scanAllParaDirs(cwd);
-  const stored = await allAsync(db, "SELECT path, file_mtime FROM files");
+  const stored = await allWithRecovery(db, "SELECT path, file_mtime FROM files");
   const storedMap = new Map(stored.map((r: any) => [r.path, new Date(r.file_mtime ?? 0).getTime()]));
 
   const fsMap = new Map(files.map((f) => [f.path, f.mtimeMs]));
@@ -196,32 +260,33 @@ async function syncIndex(db: duckdb.Database, cwd: string): Promise<boolean> {
   if (changed.length === 0 && toDelete.length === 0) return false;
 
   // Everything in one transaction
-  await runAsync(db, "BEGIN TRANSACTION");
+  await runWithRecovery(db, "BEGIN TRANSACTION");
   try {
     for (const p of toDelete) {
-      await runAsync(db, "DELETE FROM tags WHERE file_path = ?", p);
-      await runAsync(db, "DELETE FROM files WHERE path = ?", p);
+      await runWithRecovery(db, "DELETE FROM tags WHERE file_path = ?", p);
+      await runWithRecovery(db, "DELETE FROM files WHERE path = ?", p);
     }
     for (const entry of changed) {
       const parsed = await parseFile(entry);
       const mtimeStr = new Date(entry.mtimeMs).toISOString();
 
       // Upsert file
-      await runAsync(db, `
+      await runWithRecovery(db, `
         INSERT OR REPLACE INTO files (path, title, body, author, editor, created, modified, file_mtime)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
       `, entry.path, parsed.title, parsed.body, parsed.author, parsed.editor,
          parsed.created, new Date().toISOString(), mtimeStr);
 
       // Re-insert tags (delete then insert)
-      await runAsync(db, "DELETE FROM tags WHERE file_path = ?", entry.path);
+      await runWithRecovery(db, "DELETE FROM tags WHERE file_path = ?", entry.path);
       for (const tag of parsed.tags) {
-        await runAsync(db, "INSERT INTO tags (file_path, tag) VALUES (?, ?)", entry.path, tag);
+        await runWithRecovery(db, "INSERT INTO tags (file_path, tag) VALUES (?, ?)", entry.path, tag);
       }
     }
-    await runAsync(db, "COMMIT");
+    await runWithRecovery(db, "COMMIT");
   } catch (e) {
-    await runAsync(db, "ROLLBACK");
+    // Attempt rollback — if it fails we heal the connection for next time
+    await healAbortedTx(db);
     throw e;
   }
   return true;
@@ -234,16 +299,21 @@ const Area = Type.String({ description: 'PARA category: "Areas", "Projects", or 
 export default function (pi: ExtensionAPI) {
   // Lazy singleton DB — created on first tool call that needs it
   let db: duckdb.Database | null = null;
+  let initPromise: Promise<void> | null = null;
 
-  function openDb(cwd: string): duckdb.Database {
+  async function openDb(cwd: string): Promise<duckdb.Database> {
     if (!db) {
       db = new duckdb.Database(resolve(cwd, DB_FILE));
-      // Run init synchronously before any async calls
-      initDb(db).catch((e) => {
+      initPromise = initDb(db).catch((e) => {
         console.error("[para-knowledge] DB init failed:", e);
+        // If init fails, reset the singleton so next call retries
+        db = null;
+        initPromise = null;
+        throw e;
       });
     }
-    return db;
+    if (initPromise) await initPromise;
+    return db!;
   }
 
   /* ─── Tool 1: search_para_docs ─────────────────────────────── */
@@ -258,6 +328,8 @@ export default function (pi: ExtensionAPI) {
     promptGuidelines: [
       "Use search_para_docs first when the user asks a knowledge question.",
       "Pass the user's question as query and infer relevant tags from context.",
+      "Cite every source from results using markdown footnotes (e.g. [^1]).",
+      "Use the document path and title as the footnote reference label.",
     ],
     parameters: Type.Object({
       query: Type.String({ description: "Search query or topic" }),
@@ -267,7 +339,7 @@ export default function (pi: ExtensionAPI) {
     async execute(_toolCallId, params, _signal, onUpdate, ctx) {
       onUpdate?.({ content: [{ type: "text" as const, text: "🗄️ notes.duckdb — checking index freshness…" }] });
 
-      const d = openDb(ctx.cwd);
+      const d = await openDb(ctx.cwd);
       const synced = await syncIndex(d, ctx.cwd);
 
       onUpdate?.({ content: [{ type: "text" as const, text: synced
@@ -303,7 +375,7 @@ export default function (pi: ExtensionAPI) {
       sql += " ORDER BY f.title";
 
       onUpdate?.({ content: [{ type: "text" as const, text: "🗄️ notes.duckdb — executing query…" }] });
-      const rows = await allAsync(d, sql, ...sqlParams);
+      const rows = await allWithRecovery(d, sql, ...sqlParams);
 
       const tagUsed = filterTags.length > 0 ? "tag-index" : "none";
       const bodyUsed = q ? "ILIKE-scan" : "none";
@@ -345,41 +417,63 @@ export default function (pi: ExtensionAPI) {
     promptGuidelines: [
       "Use fetch_reputable_web only after search_para_docs returned no results.",
       "Run /skill:brainstorm first to refine the query before searching.",
+      "Cite every result using markdown footnotes (e.g. [^1]) with the page title and URL.",
     ],
     parameters: Type.Object({
       query: Type.String({ description: "The search query" }),
     }),
 
     async execute(_toolCallId, params, _signal, _onUpdate, ctx) {
+      // Build a clean search query without duplicating site: filters
       const pyScript = `
 import sys, json, urllib.request, urllib.parse, re, html as h
 
 q = sys.argv[1]
-filters = "site:edu OR site:ac.uk OR site:ac.nz OR site:ac.jp OR site:ac.kr OR site:ac.in OR site:ac.cn OR site:gov OR site:go.id OR site:go.jp OR site:go.kr"
-url = "https://html.duckduckgo.com/html/?q=" + urllib.parse.quote(f"({filters}) {q}")
 
-req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"})
+# Use DuckDuckGo's Lite HTML endpoint (more stable than the full HTML page)
+url = "https://lite.duckduckgo.com/lite/?q=" + urllib.parse.quote(q)
+
+req = urllib.request.Request(url, headers={
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"
+})
 try:
     body = urllib.request.urlopen(req, timeout=20).read().decode("utf-8", errors="replace")
 
     results = []
-    for m in re.finditer(r'<a[^>]*class="result__a"[^>]*href="([^"]*)"[^>]*>(.*?)</a>', body, re.DOTALL):
-        results.append({"title": re.sub(r"<[^>]+>", "", m.group(2)).strip(), "url": h.unescape(m.group(1))})
+    # Parse the lite HTML: results are in <a> tags with class="result-link"
+    for m in re.finditer(r'<a[^>]*class="result-link"[^>]*href="([^"]+)"[^>]*>\\s*(.*?)\\s*</a>', body, re.DOTALL):
+        url = h.unescape(m.group(1)).strip()
+        title = re.sub(r"<[^>]+>", "", m.group(2)).strip()
+        if title and url:
+            results.append({"title": title, "url": url})
 
-    snippets = []
-    for sm in re.finditer(r'<a[^>]*class="result__snippet"[^>]*>(.*?)</a>', body, re.DOTALL):
-        snippets.append(re.sub(r"<[^>]+>", "", sm.group(1)).strip())
-    for i, s in enumerate(snippets):
-        if i < len(results): results[i]["snippet"] = s
+    # Also try the main HTML endpoint as fallback
+    if len(results) < 3:
+        url2 = "https://html.duckduckgo.com/html/?q=" + urllib.parse.quote(q)
+        req2 = urllib.request.Request(url2, headers={
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"
+        })
+        body2 = urllib.request.urlopen(req2, timeout=20).read().decode("utf-8", errors="replace")
+        seen = set(r["url"] for r in results)
+        for m in re.finditer(r'<a[^>]*class="result__a"[^>]*href="([^"]*)"[^>]*>(.*?)</a>', body2, re.DOTALL):
+            url = h.unescape(m.group(1)).strip()
+            title = re.sub(r"<[^>]+>", "", m.group(2)).strip()
+            if title and url and url not in seen:
+                seen.add(url)
+                results.append({"title": title, "url": url})
 
-    if not results:
-        for m in re.finditer(r'<a[^>]*rel="nofollow"[^>]*href="([^"]*)"[^>]*>(.*?)</a>', body, re.DOTALL):
-            u = h.unescape(m.group(1))
-            t = re.sub(r"<[^>]+>", "", m.group(2)).strip()
-            if u.startswith("http") and t: results.append({"title": t, "url": u})
+        # Snippets from main HTML
+        snippets = []
+        for sm in re.finditer(r'<a[^>]*class="result__snippet"[^>]*>(.*?)</a>', body2, re.DOTALL):
+            snippets.append(re.sub(r"<[^>]+>", "", sm.group(1)).strip())
+        for i, s in enumerate(snippets):
+            if i < len(results):
+                results[i]["snippet"] = s
 
-    pat = re.compile(r"\\.(edu|ac\\.[a-z]{2,}|gov\\.?|go\\.[a-z]{2,})", re.I)
+    # Filter by authoritative domains (edu, ac.*, gov)
+    pat = re.compile(r"\\.(edu|ac\\.[a-z]{2,}|gov\\.[a-z]{2,}|go\\.[a-z]{2,})", re.I)
     filtered = [r for r in results if pat.search(r["url"])]
+
     print(json.dumps(filtered[:10] if filtered else results[:5]))
 except Exception as e:
     print(json.dumps({"error": str(e), "query": q}))
@@ -464,13 +558,13 @@ except Exception as e:
 
       onUpdate?.({ content: [{ type: "text" as const, text: "🗄️ notes.duckdb — inserting new document into index…" }] });
       try {
-        const d = openDb(ctx.cwd);
-        await runAsync(d,
+        const d = await openDb(ctx.cwd);
+        await runWithRecovery(d,
           "INSERT OR REPLACE INTO files (path, title, body, author, editor, created, modified, file_mtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
           relPath, params.title, params.content, "pi", "lam", now, now, now);
-        await runAsync(d, "DELETE FROM tags WHERE file_path = ?", relPath);
+        await runWithRecovery(d, "DELETE FROM tags WHERE file_path = ?", relPath);
         for (const tag of params.tags) {
-          await runAsync(d, "INSERT INTO tags (file_path, tag) VALUES (?, ?)", relPath, tag);
+          await runWithRecovery(d, "INSERT INTO tags (file_path, tag) VALUES (?, ?)", relPath, tag);
         }
       } catch (e) {
         console.error("[para-knowledge] DB insert failed for new doc:", e);
@@ -518,14 +612,14 @@ except Exception as e:
 
       onUpdate?.({ content: [{ type: "text" as const, text: "🗄️ notes.duckdb — updating index row…" }] });
       try {
-        const d = openDb(ctx.cwd);
+        const d = await openDb(ctx.cwd);
         const newTags = params.tags ?? oldTags;
-        await runAsync(d,
+        await runWithRecovery(d,
           "UPDATE files SET title = ?, body = ?, modified = ?, file_mtime = ? WHERE path = ?",
           params.title ?? fm.title ?? "", params.content, now, now, params.path);
-        await runAsync(d, "DELETE FROM tags WHERE file_path = ?", params.path);
+        await runWithRecovery(d, "DELETE FROM tags WHERE file_path = ?", params.path);
         for (const tag of newTags) {
-          await runAsync(d, "INSERT INTO tags (file_path, tag) VALUES (?, ?)", params.path, tag);
+          await runWithRecovery(d, "INSERT INTO tags (file_path, tag) VALUES (?, ?)", params.path, tag);
         }
       } catch (e) {
         console.error("[para-knowledge] DB update failed:", e);
