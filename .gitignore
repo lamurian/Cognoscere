@@ -9,3 +9,6 @@
 !.obsidian/command-palette.json
 !.obsidian/hotkeys.json
 !.obsidian/*plugins.json
+
+# Blacklist node modules
+**/node_modules/**

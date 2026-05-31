@@ -1,6 +1,7 @@
 {
   "extensions": [
     ".pi/extensions/set-temperature.ts",
-    ".pi/extensions/git-commit.ts"
+    ".pi/extensions/git-commit.ts",
+    ".pi/extensions/para-knowledge"
   ]
 }
