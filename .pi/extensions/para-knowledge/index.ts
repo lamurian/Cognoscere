@@ -1,7 +1,7 @@
 /**
  * PARA Knowledge Extension — DuckDB-powered
  *
- * Maintains a persistent note.duckdb index of all markdown files in
+ * Maintains a persistent notes.duckdb index of all markdown files in
  * Areas/Projects/Resources.  Tag lookups are O(log n) via DuckDB's ART
  * index; body search uses ILIKE (with FTS as a future upgrade).
  *
@@ -265,14 +265,14 @@ export default function (pi: ExtensionAPI) {
     }),
 
     async execute(_toolCallId, params, _signal, onUpdate, ctx) {
-      onUpdate?.({ content: [{ type: "text" as const, text: "🗄️ note.duckdb — checking index freshness…" }] });
+      onUpdate?.({ content: [{ type: "text" as const, text: "🗄️ notes.duckdb — checking index freshness…" }] });
 
       const d = openDb(ctx.cwd);
       const synced = await syncIndex(d, ctx.cwd);
 
       onUpdate?.({ content: [{ type: "text" as const, text: synced
-        ? "🗄️ note.duckdb — index synced (files changed)"
-        : "🗄️ note.duckdb — index up to date" }] });
+        ? "🗄️ notes.duckdb — index synced (files changed)"
+        : "🗄️ notes.duckdb — index up to date" }] });
 
       const filterTags = params.tags ?? [];
       const q = params.query.toLowerCase();
@@ -284,7 +284,7 @@ export default function (pi: ExtensionAPI) {
       if (filterTags.length > 0) {
         sql += " JOIN tags t ON f.path = t.file_path";
         onUpdate?.({ content: [{ type: "text" as const,
-          text: `🗄️ note.duckdb — tag filter: ${filterTags.join(", ")} (ART index O(log n))` }] });
+          text: `🗄️ notes.duckdb — tag filter: ${filterTags.join(", ")} (ART index O(log n))` }] });
       }
 
       const conditions: string[] = [];
@@ -302,12 +302,12 @@ export default function (pi: ExtensionAPI) {
       if (conditions.length > 0) sql += " WHERE " + conditions.join(" AND ");
       sql += " ORDER BY f.title";
 
-      onUpdate?.({ content: [{ type: "text" as const, text: "🗄️ note.duckdb — executing query…" }] });
+      onUpdate?.({ content: [{ type: "text" as const, text: "🗄️ notes.duckdb — executing query…" }] });
       const rows = await allAsync(d, sql, ...sqlParams);
 
       const tagUsed = filterTags.length > 0 ? "tag-index" : "none";
       const bodyUsed = q ? "ILIKE-scan" : "none";
-      const trace = `🗄️ note.duckdb — tag:${tagUsed}  body:${bodyUsed}  results:${rows.length}`;
+      const trace = `🗄️ notes.duckdb — tag:${tagUsed}  body:${bodyUsed}  results:${rows.length}`;
 
       if (rows.length === 0) {
         return {
@@ -462,7 +462,7 @@ except Exception as e:
       await mkdir(dirPath, { recursive: true });
       await writeFile(filePath, fm + "\n" + params.content, "utf-8");
 
-      onUpdate?.({ content: [{ type: "text" as const, text: "🗄️ note.duckdb — inserting new document into index…" }] });
+      onUpdate?.({ content: [{ type: "text" as const, text: "🗄️ notes.duckdb — inserting new document into index…" }] });
       try {
         const d = openDb(ctx.cwd);
         await runAsync(d,
@@ -478,7 +478,7 @@ except Exception as e:
 
       return {
         content: [{ type: "text" as const, text:
-          `🗄️ note.duckdb — indexed\nCreated: ${filePath}\nTitle: ${params.title}\nTags: ${params.tags.join(", ")}` }],
+          `🗄️ notes.duckdb — indexed\nCreated: ${filePath}\nTitle: ${params.title}\nTags: ${params.tags.join(", ")}` }],
         details: { path: filePath, title: params.title, tags: params.tags },
       };
     },
@@ -516,7 +516,7 @@ except Exception as e:
 
       await writeFile(filePath, newFm + "\n" + params.content, "utf-8");
 
-      onUpdate?.({ content: [{ type: "text" as const, text: "🗄️ note.duckdb — updating index row…" }] });
+      onUpdate?.({ content: [{ type: "text" as const, text: "🗄️ notes.duckdb — updating index row…" }] });
       try {
         const d = openDb(ctx.cwd);
         const newTags = params.tags ?? oldTags;
@@ -533,7 +533,7 @@ except Exception as e:
 
       return {
         content: [{ type: "text" as const, text:
-          `🗄️ note.duckdb — updated\nUpdated: ${filePath} (frontmatter renewed, index synced).` }],
+          `🗄️ notes.duckdb — updated\nUpdated: ${filePath} (frontmatter renewed, index synced).` }],
         details: { path: filePath, title: params.title ?? fm.title ?? "" },
       };
     },
