@@ -41,6 +41,7 @@ Each PARA directory has its own `AGENTS.md` with specific guidance.
 The agent uses these extensions from `.pi/extensions/`:
 
 - `para-knowledge/index.ts` — provides `search_para_docs`, `create_para_doc`, `update_para_doc`, `fetch_reputable_web`.
+- `expand-bullets/index.ts` — provides `expand_bullet_points` to expand unclear bullet points or brief ideation in PARA documents into coherent, researched ideas using reputable web sources.
 - `git-commit.ts` — `/commit` slash command for staging and committing.
 - `set-temperature.ts` — sets model temperature to 0.1.
 

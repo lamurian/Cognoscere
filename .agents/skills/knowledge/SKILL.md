@@ -14,6 +14,7 @@ Use the `search_para_docs` tool to find markdown files in `Areas/`, `Projects/`,
 
 ### 2. If matching documents exist
 - `read` the most relevant document(s)
+- **Inspect for unclear bullet points or brief ideation** — If the document contains stub-like bullet lists, keyword-only sections (e.g. "Associated Codes" or "Keywords"), or other brief ideation that lacks explanation, use `expand_bullet_points` to search reputable web sources and expand each bullet into a coherent paragraph.
 - Answer the user using the content
 - **Cite every claim using markdown footnotes** pointing to the document(s) you read (see [Citation format](#citation-format) below)
 - Present any points for improvement
@@ -54,6 +55,7 @@ When drafting a response from either PARA documents or web results, use **markdo
 See [extension reference](../../../.pi/extensions/para-knowledge/index.ts) for tool details.
 
 - `search_para_docs` — search by tags and content in Areas/Projects/Resources
+- `expand_bullet_points` — expand unclear bullet points into coherent researched paragraphs using reputable web sources (provided by `expand-bullets/index.ts`)
 - `fetch_reputable_web` — web search filtered to reputable domains
 - `create_para_doc` — create new file with YAML frontmatter
 - `update_para_doc` — update file and renew frontmatter

@@ -1,9 +1,10 @@
 /**
  * PARA Knowledge Extension — DuckDB-powered
  *
- * Maintains a persistent notes.duckdb index of all markdown files in
- * Areas/Projects/Resources.  Tag lookups are O(log n) via DuckDB's ART
- * index; body search uses ILIKE (with FTS as a future upgrade).
+ * Uses ephemeral database connections — open, use, close.
+ * - Searches open in READ_ONLY mode (no write lock acquired)
+ * - Creates/updates open in READ_WRITE mode with queue+timeout for cross-process safety
+ * - Lock is held for milliseconds, not the entire session
  *
  * Tools:
  *   search_para_docs   — query the index by tags + content text
@@ -12,7 +13,7 @@
  *   update_para_doc    — update file + refresh index row
  */
 
-import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
 import { mkdir, readFile, readdir, writeFile, stat } from "node:fs/promises";
 import { join, resolve } from "node:path";
@@ -22,6 +23,12 @@ import duckdb from "duckdb";
 
 const PARA_DIRS = ["Areas", "Projects", "Resources"] as const;
 const DB_FILE   = "notes.duckdb";
+
+/** Maximum time (ms) to wait for a write lock before giving up. */
+const WRITE_QUEUE_TIMEOUT = 300_000; // 5 minutes
+
+/** Polling interval (ms) when queueing for a write lock. */
+const QUEUE_POLL_INTERVAL = 2_000;
 
 /** DuckDB error message indicating an aborted transaction needs rollback. */
 const TX_ABORTED_MSG = "Current transaction is aborted (please ROLLBACK)";
@@ -87,7 +94,6 @@ async function healAbortedTx(db: duckdb.Database): Promise<void> {
     await new Promise<void>((resolve, reject) => {
       (db.run as Function)("ROLLBACK", (err: Error | null) => {
         if (err) {
-          // "cannot rollback - no transaction is active" is harmless
           const msg = err.message ?? "";
           if (msg.includes("no transaction is active")) resolve();
           else reject(err);
@@ -154,6 +160,169 @@ async function allWithRecovery(
       });
     }
     throw e;
+  }
+}
+
+// ── Ephemeral database connection management ────────────────────
+
+/** Pool of DuckDB open flags. */
+const OPEN_FLAGS = {
+  read:  duckdb.OPEN_READONLY,
+  write: duckdb.OPEN_READWRITE | duckdb.OPEN_CREATE,
+} as const;
+
+/** Options for withDb(). */
+interface WithDbOptions {
+  /** Extension context — needed for user-confirm dialogs during queueing. */
+  ctx?: ExtensionContext;
+  /** Progress callback. */
+  onUpdate?: (update: { content: { type: string; text: string }[] }) => void;
+  /** If true, fail immediately on lock conflict instead of queueing. */
+  noQueue?: boolean;
+}
+
+/** Sleep helper. */
+const sleep = (ms: number) => new Promise<void>(r => setTimeout(r, ms));
+
+/**
+ * Check whether an error message indicates a DuckDB lock conflict.
+ */
+function isLockError(msg: string): boolean {
+  const lower = msg.toLowerCase();
+  return lower.includes("lock") || lower.includes("conflicting lock");
+}
+
+/**
+ * Open a DuckDB database and return the instance.
+ * Rejects on failure (including lock conflicts).
+ */
+function openDatabase(dbPath: string, flags: number): Promise<duckdb.Database> {
+  return new Promise<duckdb.Database>((resolve, reject) => {
+    // The callback only receives an error; the Database instance is the
+    // return value of the constructor.  We capture it eagerly so we can
+    // resolve with it.
+    const db = new duckdb.Database(dbPath, flags, (err: Error | null) => {
+      if (err) reject(err);
+      else resolve(db);
+    });
+  });
+}
+
+/**
+ * Close a DuckDB database, releasing the file lock.
+ */
+function closeDatabase(db: duckdb.Database): Promise<void> {
+  return new Promise<void>((resolve, reject) => {
+    (db.close as Function)((err: Error | null) => {
+      if (err) reject(err);
+      else resolve();
+    });
+  });
+}
+
+/**
+ * Open a DuckDB database, run `fn(db)`, then close it.
+ *
+ * - **Read mode** (`mode: 'read'`): Opens with `OPEN_READONLY`.
+ *   Fails fast if another process holds the lock.
+ * - **Write mode** (`mode: 'write'`): Opens with `OPEN_READWRITE | OPEN_CREATE`.
+ *   On lock conflict (another pi session writing), prompts the user to queue
+ *   and retries for up to `WRITE_QUEUE_TIMEOUT` (5 minutes).
+ *   Tables are auto-created on first open.
+ *
+ * @returns The value returned by `fn`.
+ */
+async function withDb<T>(
+  cwd: string,
+  mode: "read" | "write",
+  fn: (db: duckdb.Database) => Promise<T>,
+  options?: WithDbOptions,
+): Promise<T> {
+  const dbPath = resolve(cwd, DB_FILE);
+
+  // For reads the database must already exist
+  if (mode === "read") {
+    try {
+      await stat(dbPath);
+    } catch {
+      throw new Error("DB_NOT_FOUND");
+    }
+  }
+
+  const flags = OPEN_FLAGS[mode];
+  const startTime = Date.now();
+  let userAsked = false;
+
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    try {
+      const db = await openDatabase(dbPath, flags);
+      try {
+        // Ensure tables exist on write (idempotent — CREATE IF NOT EXISTS)
+        if (mode === "write") {
+          await initDb(db);
+        }
+        return await fn(db);
+      } finally {
+        // Release the file lock immediately after the operation
+        try {
+          await closeDatabase(db);
+        } catch {
+          /* best-effort close */
+        }
+      }
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : String(e);
+
+      // Re-throw non-lock errors immediately
+      if (msg === "DB_NOT_FOUND") throw e;
+      if (!isLockError(msg)) throw e;
+
+      // ── Lock conflict handling ──
+      if (mode === "read" || options?.noQueue) {
+        // Reads and no-queue operations fail fast
+        throw e;
+      }
+
+      const elapsed = Date.now() - startTime;
+      if (elapsed >= WRITE_QUEUE_TIMEOUT) {
+        throw new Error(
+          "⏱ Write lock queue timed out after 5 minutes.\n" +
+          "Another pi session is still holding the database lock.\n" +
+          "Please close the other session and retry.",
+        );
+      }
+
+      // Ask the user once whether they want to queue
+      if (!userAsked && options?.ctx?.ui?.confirm) {
+        const remaining = Math.ceil((WRITE_QUEUE_TIMEOUT - elapsed) / 1000);
+        const ok = await options.ctx.ui.confirm(
+          "Knowledge Database Locked",
+          `Another pi session is currently writing to the knowledge database.\n` +
+          `Queue and wait (up to ${remaining}s)?`,
+        );
+        if (!ok) {
+          throw new Error(
+            "Write cancelled by user.\n" +
+            "Another pi session holds the database lock.\n" +
+            "Please close the other session and retry.",
+          );
+        }
+        userAsked = true;
+        continue; // immediately retry after user confirms
+      }
+
+      // Show a progress update for silent retries (before user was asked)
+      if (!userAsked) {
+        const elapsedSec = Math.round(elapsed / 1000);
+        options?.onUpdate?.({
+          content: [{ type: "text" as const, text: `🔒 Waiting for database lock (${elapsedSec}s)...` }],
+        });
+      }
+
+      // Wait before retrying
+      await sleep(QUEUE_POLL_INTERVAL);
+    }
   }
 }
 
@@ -297,25 +466,6 @@ async function syncIndex(db: duckdb.Database, cwd: string): Promise<boolean> {
 const Area = Type.String({ description: 'PARA category: "Areas", "Projects", or "Resources"' });
 
 export default function (pi: ExtensionAPI) {
-  // Lazy singleton DB — created on first tool call that needs it
-  let db: duckdb.Database | null = null;
-  let initPromise: Promise<void> | null = null;
-
-  async function openDb(cwd: string): Promise<duckdb.Database> {
-    if (!db) {
-      db = new duckdb.Database(resolve(cwd, DB_FILE));
-      initPromise = initDb(db).catch((e) => {
-        console.error("[para-knowledge] DB init failed:", e);
-        // If init fails, reset the singleton so next call retries
-        db = null;
-        initPromise = null;
-        throw e;
-      });
-    }
-    if (initPromise) await initPromise;
-    return db!;
-  }
-
   /* ─── Tool 1: search_para_docs ─────────────────────────────── */
   pi.registerTool({
     name: "search_para_docs",
@@ -337,19 +487,29 @@ export default function (pi: ExtensionAPI) {
     }),
 
     async execute(_toolCallId, params, _signal, onUpdate, ctx) {
+      // ── Step 1: Best-effort index sync ──
+      // Use a write connection *without queueing*.  If another session holds
+      // the lock we skip sync and serve potentially stale data — the sync
+      // will happen on the next write operation.
       onUpdate?.({ content: [{ type: "text" as const, text: "🗄️ notes.duckdb — checking index freshness…" }] });
 
-      const d = await openDb(ctx.cwd);
-      const synced = await syncIndex(d, ctx.cwd);
+      let syncMessage = "🗄️ notes.duckdb — sync skipped (another session writing — results may be stale)";
+      try {
+        await withDb(ctx.cwd, "write", async (db) => {
+          const changed = await syncIndex(db, ctx.cwd);
+          syncMessage = changed
+            ? "🗄️ notes.duckdb — index synced (files changed)"
+            : "🗄️ notes.duckdb — index up to date";
+        }, { noQueue: true });
+      } catch {
+        // Lock conflict — skip sync, serve potentially stale results
+      }
+      onUpdate?.({ content: [{ type: "text" as const, text: syncMessage }] });
 
-      onUpdate?.({ content: [{ type: "text" as const, text: synced
-        ? "🗄️ notes.duckdb — index synced (files changed)"
-        : "🗄️ notes.duckdb — index up to date" }] });
-
+      // ── Step 2: Query (read-only) ──
       const filterTags = params.tags ?? [];
       const q = params.query.toLowerCase();
 
-      // Build query dynamically
       let sql = "SELECT DISTINCT f.path, f.title, f.body, f.author, f.editor, f.file_mtime FROM files f";
       const sqlParams: unknown[] = [];
 
@@ -375,7 +535,31 @@ export default function (pi: ExtensionAPI) {
       sql += " ORDER BY f.title";
 
       onUpdate?.({ content: [{ type: "text" as const, text: "🗄️ notes.duckdb — executing query…" }] });
-      const rows = await allWithRecovery(d, sql, ...sqlParams);
+
+      let rows: Record<string, unknown>[];
+      try {
+        rows = await withDb(ctx.cwd, "read", async (db) => {
+          return await allWithRecovery(db, sql, ...sqlParams);
+        });
+      } catch (e: unknown) {
+        const msg = e instanceof Error ? e.message : String(e);
+        if (msg === "DB_NOT_FOUND") {
+          return {
+            content: [{ type: "text" as const,
+              text: "📭 No documents indexed yet. Create a document first to populate the index." }],
+            details: { results: [], count: 0, trace: "no-db" },
+          };
+        }
+        if (isLockError(msg)) {
+          return {
+            content: [{ type: "text" as const,
+              text: "🔒 Knowledge database is locked by another pi session.\n" +
+                    "Please close the other session and retry." }],
+            details: { results: [], count: 0, trace: "locked" },
+          };
+        }
+        throw e;
+      }
 
       const tagUsed = filterTags.length > 0 ? "tag-index" : "none";
       const bodyUsed = q ? "ILIKE-scan" : "none";
@@ -426,57 +610,58 @@ export default function (pi: ExtensionAPI) {
     async execute(_toolCallId, params, _signal, _onUpdate, ctx) {
       // Build a clean search query without duplicating site: filters
       const pyScript = `
-import sys, json, urllib.request, urllib.parse, re, html as h
-
-q = sys.argv[1]
-
-# Use DuckDuckGo's Lite HTML endpoint (more stable than the full HTML page)
-url = "https://lite.duckduckgo.com/lite/?q=" + urllib.parse.quote(q)
-
-req = urllib.request.Request(url, headers={
-    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"
-})
+import sys, json, re
 try:
-    body = urllib.request.urlopen(req, timeout=20).read().decode("utf-8", errors="replace")
+    from ddgs import DDGS
+except ImportError:
+    print(json.dumps({"error": "Python 'ddgs' library not found. Install: pip install ddgs"}))
+    sys.exit(0)
 
+try:
+    q = sys.argv[1]
     results = []
-    # Parse the lite HTML: results are in <a> tags with class="result-link"
-    for m in re.finditer(r'<a[^>]*class="result-link"[^>]*href="([^"]+)"[^>]*>\\s*(.*?)\\s*</a>', body, re.DOTALL):
-        url = h.unescape(m.group(1)).strip()
-        title = re.sub(r"<[^>]+>", "", m.group(2)).strip()
-        if title and url:
-            results.append({"title": title, "url": url})
+    seen_urls = set()
 
-    # Also try the main HTML endpoint as fallback
-    if len(results) < 3:
-        url2 = "https://html.duckduckgo.com/html/?q=" + urllib.parse.quote(q)
-        req2 = urllib.request.Request(url2, headers={
-            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"
-        })
-        body2 = urllib.request.urlopen(req2, timeout=20).read().decode("utf-8", errors="replace")
-        seen = set(r["url"] for r in results)
-        for m in re.finditer(r'<a[^>]*class="result__a"[^>]*href="([^"]*)"[^>]*>(.*?)</a>', body2, re.DOTALL):
-            url = h.unescape(m.group(1)).strip()
-            title = re.sub(r"<[^>]+>", "", m.group(2)).strip()
-            if title and url and url not in seen:
-                seen.add(url)
-                results.append({"title": title, "url": url})
+    with DDGS() as ddgs:
+        # Strategy 1: search with site: filters targeting .edu and .ac.uk
+        for site_filter in ["site:edu", "site:ac.uk"]:
+            for r in ddgs.text(f"{site_filter} {q}", max_results=5):
+                url = r.get("href", "") or ""
+                if url and url not in seen_urls:
+                    seen_urls.add(url)
+                    results.append({
+                        "title": r.get("title", ""),
+                        "url": url,
+                        "snippet": r.get("body", ""),
+                    })
 
-        # Snippets from main HTML
-        snippets = []
-        for sm in re.finditer(r'<a[^>]*class="result__snippet"[^>]*>(.*?)</a>', body2, re.DOTALL):
-            snippets.append(re.sub(r"<[^>]+>", "", sm.group(1)).strip())
-        for i, s in enumerate(snippets):
-            if i < len(results):
-                results[i]["snippet"] = s
+        # Strategy 2: general search, post-filter for edu/ac/gov domains
+        pat = re.compile(r"\\.(edu|ac\\.[a-z]{2,}|gov\\.[a-z]{2,}|go\\.[a-z]{2,})", re.I)
+        for r in ddgs.text(q, max_results=25):
+            url = r.get("href", "") or ""
+            if url and url not in seen_urls and pat.search(url):
+                seen_urls.add(url)
+                results.append({
+                    "title": r.get("title", ""),
+                    "url": url,
+                    "snippet": r.get("body", ""),
+                })
 
-    # Filter by authoritative domains (edu, ac.*, gov)
-    pat = re.compile(r"\\.(edu|ac\\.[a-z]{2,}|gov\\.[a-z]{2,}|go\\.[a-z]{2,})", re.I)
-    filtered = [r for r in results if pat.search(r["url"])]
+        # Strategy 3: if still no results, return general top results
+        if not results:
+            for r in ddgs.text(q, max_results=5):
+                url = r.get("href", "") or ""
+                if url and url not in seen_urls:
+                    seen_urls.add(url)
+                    results.append({
+                        "title": r.get("title", ""),
+                        "url": url,
+                        "snippet": r.get("body", ""),
+                    })
 
-    print(json.dumps(filtered[:10] if filtered else results[:5]))
+    print(json.dumps(results[:10]))
 except Exception as e:
-    print(json.dumps({"error": str(e), "query": q}))
+    print(json.dumps({"error": str(e)}))
 `.trim();
 
       try {
@@ -485,29 +670,33 @@ except Exception as e:
 
         const data = JSON.parse(r.stdout);
 
-        if (data.error) {
+        if (data && data.error) {
           const fallbackUrl =
             `https://duckduckgo.com/?q=${encodeURIComponent(`(site:edu OR site:ac.* OR site:gov) ${params.query}`)}`;
           return {
-            content: [{ type: "text" as const, text: `Web search unavailable (${data.error}). Try manually:\n${fallbackUrl}` }],
+            content: [{ type: "text" as const,
+              text: `Web search unavailable: ${data.error}\n\nTry manually:\n${fallbackUrl}` }],
             details: { error: data.error, fallbackUrl },
           };
         }
 
-        if (!data.length) {
+        if (!data || !data.length) {
+          const fallbackUrl =
+            `https://duckduckgo.com/?q=${encodeURIComponent(`(site:edu OR site:ac.* OR site:gov) ${params.query}`)}`;
           return {
-            content: [{ type: "text" as const, text: "No results from reputable sources. Try refining the query." }],
-            details: { count: 0 },
+            content: [{ type: "text" as const,
+              text: `No results from reputable sources. Try manually:\n${fallbackUrl}` }],
+            details: { count: 0, fallbackUrl },
           };
         }
 
         const text = data
           .map((r: { title: string; url: string; snippet?: string }, i: number) =>
-            `${i + 1}. [${r.title}](${r.url})${r.snippet ? `\n   ${r.snippet}` : ""}`)
+            `${i + 1}. [${r.title}](${r.url})${r.snippet ? `\n   ${(r.snippet || "").slice(0, 200)}` : ""}`)
           .join("\n\n");
 
         return {
-          content: [{ type: "text" as const, text: `Results for "${params.query}" from reputable sites:\n\n${text}` }],
+          content: [{ type: "text" as const, text: `Results for "${params.query}" from reputable sources:\n\n${text}` }],
           details: { results: data, count: data.length },
         };
       } catch (e: unknown) {
@@ -545,6 +734,7 @@ except Exception as e:
       const relPath = `${area}/${slug}.md`;
       const now = new Date().toISOString();
 
+      // ── Write file to disk (always succeeds) ──
       const fm = formatFrontmatter({
         author: "pi",
         date: now,
@@ -556,24 +746,35 @@ except Exception as e:
       await mkdir(dirPath, { recursive: true });
       await writeFile(filePath, fm + "\n" + params.content, "utf-8");
 
-      onUpdate?.({ content: [{ type: "text" as const, text: "🗄️ notes.duckdb — inserting new document into index…" }] });
+      // ── Update index (write connection with queue + user confirm) ──
+      onUpdate?.({ content: [{ type: "text" as const, text: "🗄️ notes.duckdb — inserting into index…" }] });
+
+      let indexOk = false;
       try {
-        const d = await openDb(ctx.cwd);
-        await runWithRecovery(d,
-          "INSERT OR REPLACE INTO files (path, title, body, author, editor, created, modified, file_mtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-          relPath, params.title, params.content, "pi", "lam", now, now, now);
-        await runWithRecovery(d, "DELETE FROM tags WHERE file_path = ?", relPath);
-        for (const tag of params.tags) {
-          await runWithRecovery(d, "INSERT INTO tags (file_path, tag) VALUES (?, ?)", relPath, tag);
-        }
-      } catch (e) {
+        await withDb(ctx.cwd, "write", async (db) => {
+          await runWithRecovery(db,
+            "INSERT OR REPLACE INTO files (path, title, body, author, editor, created, modified, file_mtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+            relPath, params.title, params.content, "pi", "lam", now, now, now);
+          await runWithRecovery(db, "DELETE FROM tags WHERE file_path = ?", relPath);
+          for (const tag of params.tags) {
+            await runWithRecovery(db, "INSERT INTO tags (file_path, tag) VALUES (?, ?)", relPath, tag);
+          }
+        }, { ctx, onUpdate });
+        indexOk = true;
+      } catch (e: unknown) {
+        // File was written to disk even if index update failed.
+        // It will be picked up on the next successful sync.
         console.error("[para-knowledge] DB insert failed for new doc:", e);
       }
 
+      const indexNote = indexOk
+        ? "🗄️ notes.duckdb — indexed"
+        : "⚠️  File created but index update skipped (another session holds the lock). It will be indexed on next search.";
+
       return {
         content: [{ type: "text" as const, text:
-          `🗄️ notes.duckdb — indexed\nCreated: ${filePath}\nTitle: ${params.title}\nTags: ${params.tags.join(", ")}` }],
-        details: { path: filePath, title: params.title, tags: params.tags },
+          `${indexNote}\nCreated: ${filePath}\nTitle: ${params.title}\nTags: ${params.tags.join(", ")}` }],
+        details: { path: filePath, title: params.title, tags: params.tags, indexOk },
       };
     },
   });
@@ -594,12 +795,14 @@ except Exception as e:
     }),
 
     async execute(_toolCallId, params, _signal, onUpdate, ctx) {
+      // ── Read existing file ──
       const filePath = resolve(ctx.cwd, params.path);
       const existing = await readFile(filePath, "utf-8");
       const fm = parseFrontmatter(existing);
       const oldTags: string[] = fm.tags ?? [];
       const now = new Date().toISOString();
 
+      // ── Write updated file to disk (always succeeds) ──
       const newFm = formatFrontmatter({
         author: "pi",
         date: now,
@@ -610,25 +813,36 @@ except Exception as e:
 
       await writeFile(filePath, newFm + "\n" + params.content, "utf-8");
 
+      // ── Update index (write connection with queue + user confirm) ──
       onUpdate?.({ content: [{ type: "text" as const, text: "🗄️ notes.duckdb — updating index row…" }] });
+
+      let indexOk = false;
       try {
-        const d = await openDb(ctx.cwd);
-        const newTags = params.tags ?? oldTags;
-        await runWithRecovery(d,
-          "UPDATE files SET title = ?, body = ?, modified = ?, file_mtime = ? WHERE path = ?",
-          params.title ?? fm.title ?? "", params.content, now, now, params.path);
-        await runWithRecovery(d, "DELETE FROM tags WHERE file_path = ?", params.path);
-        for (const tag of newTags) {
-          await runWithRecovery(d, "INSERT INTO tags (file_path, tag) VALUES (?, ?)", params.path, tag);
-        }
-      } catch (e) {
+        await withDb(ctx.cwd, "write", async (db) => {
+          const newTags = params.tags ?? oldTags;
+          await runWithRecovery(db,
+            "UPDATE files SET title = ?, body = ?, modified = ?, file_mtime = ? WHERE path = ?",
+            params.title ?? fm.title ?? "", params.content, now, now, params.path);
+          await runWithRecovery(db, "DELETE FROM tags WHERE file_path = ?", params.path);
+          for (const tag of newTags) {
+            await runWithRecovery(db, "INSERT INTO tags (file_path, tag) VALUES (?, ?)", params.path, tag);
+          }
+        }, { ctx, onUpdate });
+        indexOk = true;
+      } catch (e: unknown) {
+        // File was written to disk even if index update failed.
+        // It will be picked up on the next successful sync.
         console.error("[para-knowledge] DB update failed:", e);
       }
 
+      const indexNote = indexOk
+        ? "🗄️ notes.duckdb — updated"
+        : "⚠️  File updated but index update skipped (another session holds the lock). It will be synced on next search.";
+
       return {
         content: [{ type: "text" as const, text:
-          `🗄️ notes.duckdb — updated\nUpdated: ${filePath} (frontmatter renewed, index synced).` }],
-        details: { path: filePath, title: params.title ?? fm.title ?? "" },
+          `${indexNote}\nUpdated: ${filePath} (frontmatter renewed).` }],
+        details: { path: filePath, title: params.title ?? fm.title ?? "", indexOk },
       };
     },
   });
