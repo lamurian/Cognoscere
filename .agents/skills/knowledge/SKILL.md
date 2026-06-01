@@ -26,6 +26,8 @@ Use the `search_para_docs` tool to find markdown files in `Areas/`, `Projects/`,
 - Use `fetch_reputable_web` to search `.edu`, `.ac.*`, `.gov`, `.go.*`, and university websites
 - Summarise findings to the user
 - **Cite every web result using markdown footnotes** (see [Citation format](#citation-format) below)
+- Before creating a new document, **always run `list_para_tags` first** to see all existing unique tags.
+  Choose tags from that array; only create new tags when none of the existing ones fit the topic.
 - Use `create_para_doc` to save a new document with frontmatter: `author: pi`, `date`, `editor: lam`, `title`, `tags`
 
 ## Citation format
@@ -55,6 +57,7 @@ When drafting a response from either PARA documents or web results, use **markdo
 See [extension reference](../../../.pi/extensions/para-knowledge/index.ts) for tool details.
 
 - `search_para_docs` — search by tags and content in Areas/Projects/Resources
+- `list_para_tags` — list all unique tags across all indexed documents (run before `create_para_doc` to reuse existing tags)
 - `expand_bullet_points` — expand unclear bullet points into coherent researched paragraphs using reputable web sources (provided by `expand-bullets/index.ts`)
 - `fetch_reputable_web` — web search filtered to reputable domains
 - `create_para_doc` — create new file with YAML frontmatter

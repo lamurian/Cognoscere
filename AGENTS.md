@@ -40,7 +40,7 @@ Each PARA directory has its own `AGENTS.md` with specific guidance.
 
 The agent uses these extensions from `.pi/extensions/`:
 
-- `para-knowledge/index.ts` — provides `search_para_docs`, `create_para_doc`, `update_para_doc`, `fetch_reputable_web`.
+- `para-knowledge/index.ts` — provides `search_para_docs`, `create_para_doc`, `update_para_doc`, `fetch_reputable_web`, `list_para_tags`.
 - `expand-bullets/index.ts` — provides `expand_bullet_points` to expand unclear bullet points or brief ideation in PARA documents into coherent, researched ideas using reputable web sources.
 - `git-commit.ts` — `/commit` slash command for staging and committing.
 - `set-temperature.ts` — sets model temperature to 0.1.
@@ -59,4 +59,6 @@ When a skill is referenced, read its SKILL.md and follow the steps.
 - Prefer existing notes over guessing.
 - Keep answers short and factual.
 - Use `create_para_doc` when capturing new knowledge.
+  **Before creating a new document, always run `list_para_tags` first** to fetch all existing unique tags.
+  Choose tags from that array; only create new tags when none of the existing ones fit the topic.
 - Use `update_para_doc` when improving existing notes (preserves author/editor).
