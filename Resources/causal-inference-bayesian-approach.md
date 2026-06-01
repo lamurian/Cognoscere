@@ -14,7 +14,7 @@ tags:
 
 ## Overview
 
-Bayesian causal inference brings the full posterior machinery to causal questions. Instead of point estimates of treatment effects, we get **posterior distributions** over causal effects. This handles uncertainty propagation, prior information, and complex causal structures naturally. Code in **R** and **Python**.
+Bayesian causal inference brings the full posterior machinery to causal questions. Instead of point estimates of treatment effects, we get posterior distributions over causal effects. This handles uncertainty propagation, prior information, and complex causal structures naturally. Code in R and Python.
 
 ## 1. Bayesian Treatment Effect Estimation
 
@@ -24,7 +24,7 @@ $$P(\text{ATE} | y, T, X) = P(E[Y(1)] - E[Y(0)] | y, T, X)$$
 
 Using Bayesian regression with treatment indicator:
 
-**R (brms):**
+R (brms):
 ```r
 library(brms)
 fit_causal <- brm(Y ~ T + X1 + X2, data = data,
@@ -36,7 +36,7 @@ quantile(post$b_T, c(0.025, 0.5, 0.975))  # ATE with 95% CrI
 mean(post$b_T > 0)  # probability treatment > control
 ```
 
-**Python (PyMC):**
+Python (PyMC):
 ```python
 import pymc as pm
 
@@ -57,11 +57,11 @@ print(np.quantile(ate, [0.025, 0.5, 0.975]))
 ## 2. Bayesian Causal Networks (BCNs)
 
 BCNs model the full joint distribution over all variables using DAG structure and local probability distributions. Advantages:
-- **Uncertainty** over graph structure (model averaging)
-- **Combining** observational data with prior knowledge
-- **Handling missing data** naturally via posterior imputation
+- Uncertainty over graph structure (model averaging)
+- Combining observational data with prior knowledge
+- Handling missing data naturally via posterior imputation
 
-**R (bnlearn + catnet for Bayesian networks):**
+R (bnlearn + catnet for Bayesian networks):
 ```r
 library(bnlearn)
 # Score-based structure learning
@@ -73,9 +73,9 @@ cpquery(fitted, event = (Y == "high"), evidence = (T == "treated"))
 
 ## 3. Bayesian Propensity Scores
 
-Instead of a point estimate for propensity scores, get a **posterior distribution**:
+Instead of a point estimate for propensity scores, get a posterior distribution:
 
-**R:**
+R:
 ```r
 library(brms)
 # Model propensity score
@@ -90,34 +90,34 @@ prop_scores <- posterior_epred(prop_model)
 
 BCF (Hahn, Murray & Carvalho, 2020) is a Bayesian non-parametric method for heterogeneous treatment effects:
 
-- Uses **regularised priors** to separate prognostic effects from treatment effects
-- Automatically handles **weak confounding**
-- Provides **posterior intervals** for CATE (Conditional ATE)
+- Uses regularised priors to separate prognostic effects from treatment effects
+- Automatically handles weak confounding
+- Provides posterior intervals for CATE (Conditional ATE)
 
 ## 5. Sensitivity Analysis
 
-A key practical advantage of Bayesian causal inference: you can quantify **sensitivity to unmeasured confounding** by placing priors on the confounding strength:
+A key practical advantage of Bayesian causal inference: you can quantify sensitivity to unmeasured confounding by placing priors on the confounding strength:
 
-**Approach:**
+Approach:
 1. Assume an unmeasured confounder $U$ with influence on $T$ and $Y$
 2. Place prior on its effect sizes (e.g., $\delta_T \sim N(0, 1)$, $\delta_Y \sim N(0, 1)$)
-3. Estimate ATE **conditional** on $U$ — see how posterior changes
+3. Estimate ATE conditional on $U$ — see how posterior changes
 
 ## 6. When Bayesian Causal Inference Excels
 
 | Scenario | Reason |
 |----------|--------|
-| **Small samples** | Weakly informative priors stabilise estimates |
-| **Complex causal graphs** | MCMC handles non-linear dependencies |
-| **Structural uncertainty** | Bayesian model averaging over graphs |
-| **Probabilistic queries** | $P(\text{causal effect} > 0 | \text{data})$ |
-| **Sequential treatments** | Natural for dynamic treatment regimes |
+| Small samples | Weakly informative priors stabilise estimates |
+| Complex causal graphs | MCMC handles non-linear dependencies |
+| Structural uncertainty | Bayesian model averaging over graphs |
+| Probabilistic queries | $P(\text{causal effect} > 0 | \text{data})$ |
+| Sequential treatments | Natural for dynamic treatment regimes |
 
 ## References
 
-- Hahn, P.R., Murray, J.S. & Carvalho, C.M. (2020). "Bayesian Regression Tree Models for Causal Inference." *Bayesian Analysis*, 15(3): 965-996.
-- Pearl, J. (2009). *Causality*. 2nd ed. Cambridge.
-- Imbens, G. & Rubin, D. (2015). *Causal Inference*. Cambridge.
+- Hahn, P.R., Murray, J.S. & Carvalho, C.M. (2020). "Bayesian Regression Tree Models for Causal Inference." Bayesian Analysis, 15(3): 965-996.
+- Pearl, J. (2009). Causality. 2nd ed. Cambridge.
+- Imbens, G. & Rubin, D. (2015). Causal Inference. Cambridge.
 
 ## Relevant notes
 

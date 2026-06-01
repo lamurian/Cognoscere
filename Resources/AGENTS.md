@@ -24,9 +24,9 @@ Examples: a statistical method (copula), a programming guide (docker commands), 
 
 ## What does not belong
 
-- Active project work. Move to **Projects**.
-- Ongoing personal responsibilities. Move to **Areas**.
-- Inactive or superseded content. Move to **Archives**.
+- Active project work. Move to Projects.
+- Ongoing personal responsibilities. Move to Areas.
+- Inactive or superseded content. Move to Archives.
 
 ## Agent usage
 

@@ -18,7 +18,7 @@ This note compares frequentist (OLS/GLM) and Bayesian regression approaches, hig
 
 ## 1. Same Model, Different Philosophy
 
-Both approaches use the same **linear model** $y = X\beta + \varepsilon$. They differ in:
+Both approaches use the same linear model $y = X\beta + \varepsilon$. They differ in:
 
 | Aspect | Frequentist | Bayesian |
 |--------|------------|----------|
@@ -30,7 +30,7 @@ Both approaches use the same **linear model** $y = X\beta + \varepsilon$. They d
 
 ## 2. When They Agree
 
-With **flat/improper priors** ($\beta_j \sim \text{Uniform}(-\infty, \infty)$), the Bayesian posterior mean **equals** the OLS estimate:
+With flat/improper priors ($\beta_j \sim \text{Uniform}(-\infty, \infty)$), the Bayesian posterior mean equals the OLS estimate:
 
 $$E[\beta|y,X] = (X^T X)^{-1} X^T y = \hat{\beta}_{OLS}$$
 
@@ -41,7 +41,7 @@ And the posterior credible interval equals the frequentist confidence interval.
 ### Small samples
 With $n < p$ (more predictors than observations), OLS breaks down (singular matrix). Bayesian regression with priors still works.
 
-**R — OLS fails, Bayesian works:**
+R — OLS fails, Bayesian works:
 ```r
 # Simulate data with n < p
 set.seed(42)
@@ -64,8 +64,8 @@ model_bayes <- brm(y ~ ., data = data,
 If you have strong external information (previous studies, expert knowledge), Bayesian regression incorporates it naturally. Frequentist methods would need to use the prior information informally (e.g., study design, pilot data).
 
 ### Prediction intervals
-- **Frequentist:** $\hat{y}_0 \pm t_{n-p, \alpha/2} \cdot \hat{\sigma} \sqrt{x_0^T (X^T X)^{-1} x_0 + 1}$
-- **Bayesian:** Sample from $p(\tilde{y}|y) = \int p(\tilde{y}|\beta,\sigma) p(\beta,\sigma|y) d\beta d\sigma$ — naturally propagates all uncertainty
+- Frequentist: $\hat{y}_0 \pm t_{n-p, \alpha/2} \cdot \hat{\sigma} \sqrt{x_0^T (X^T X)^{-1} x_0 + 1}$
+- Bayesian: Sample from $p(\tilde{y}|y) = \int p(\tilde{y}|\beta,\sigma) p(\beta,\sigma|y) d\beta d\sigma$ — naturally propagates all uncertainty
 
 ## 4. Practical Recommendations
 
@@ -80,7 +80,7 @@ If you have strong external information (previous studies, expert knowledge), Ba
 
 ## 5. Code Comparison on Same Dataset
 
-**R — side-by-side:**
+R — side-by-side:
 ```r
 library(broom)
 
@@ -96,7 +96,7 @@ fit_bayes <- brm(mpg ~ wt + hp, mtcars,
 fixef(fit_bayes)  # coefficients + CIs
 ```
 
-**Python — side-by-side:**
+Python — side-by-side:
 ```python
 import statsmodels.api as sm
 import pymc as pm
@@ -118,9 +118,9 @@ pm.summary(trace)
 
 ## References
 
-- Gelman, A. & Hill, J. (2007). *Data Analysis Using Regression and Multilevel/Hierarchical Models*. Cambridge.
-- James, G. et al. (2021). *An Introduction to Statistical Learning*. 2nd ed. Springer.
-- McElreath, R. (2020). *Statistical Rethinking*. 2nd ed. CRC Press.
+- Gelman, A. & Hill, J. (2007). Data Analysis Using Regression and Multilevel/Hierarchical Models. Cambridge.
+- James, G. et al. (2021). An Introduction to Statistical Learning. 2nd ed. Springer.
+- McElreath, R. (2020). Statistical Rethinking. 2nd ed. CRC Press.
 
 ## Relevant notes
 

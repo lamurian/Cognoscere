@@ -18,14 +18,14 @@ Bayesian approaches to experimental design and ANOVA provide direct probability 
 
 ## 1. The Bayesian Two-Sample t-Test (BEST)
 
-The **Bayesian Estimation Supersedes the t-Test** (BEST) approach (Kruschke, 2013) estimates the full posterior for both group means, standard deviations, and normality:
+The Bayesian Estimation Supersedes the t-Test (BEST) approach (Kruschke, 2013) estimates the full posterior for both group means, standard deviations, and normality:
 
 $$y_i \sim N(\mu_1, \sigma_1) \;\text{or}\; N(\mu_2, \sigma_2)$$
 $$\mu_j \sim N(\mu_{prior}, \sigma_{prior})$$
 $$\sigma_j \sim \text{Half-Cauchy}(\beta)$$
 $$\nu \sim \text{Gamma}(2, 0.1) \quad \text{(normality parameter)}$$
 
-**R (brms):**
+R (brms):
 ```r
 library(brms)
 data <- data.frame(value = c(control, treatment),
@@ -43,7 +43,7 @@ quantile(diff, c(0.025, 0.5, 0.975))
 mean(diff > 0)  # probability treatment > control
 ```
 
-**Python (PyMC):**
+Python (PyMC):
 ```python
 import pymc as pm
 
@@ -73,7 +73,7 @@ print((trace.posterior['diff'] > 0).mean().values)  # Pr(treatment > control)
 ### One-Way Bayesian ANOVA
 Instead of an F-test, fit a model with group-level intercepts and compare groups via posterior distributions:
 
-**R (brms):**
+R (brms):
 ```r
 fit_bayes_anova <- brm(y ~ group, data = mydata,
                        prior = set_prior("normal(0, 10)", class = "b"),
@@ -83,7 +83,7 @@ hypothesis(fit_bayes_anova, "groupB - groupA > 0")
 hypothesis(fit_bayes_anova, "groupC - groupA = 0")
 ```
 
-**Python (PyMC):**
+Python (PyMC):
 ```python
 with pm.Model() as bayes_anova:
     mu0 = pm.Normal('mu0', 0, 10)  # baseline
@@ -106,11 +106,11 @@ with pm.Model() as bayes_anova:
 ## 3. A/B Testing — Bayesian Approach
 
 Bayesian A/B testing avoids many problems of frequentist approaches:
-- No need to pre-specify sample size (can monitor with **Bayesian stopping rules**)
+- No need to pre-specify sample size (can monitor with Bayesian stopping rules)
 - Results are intuitive: "Probability B > A is X%"
 - Can incorporate prior information from previous experiments
 
-**R:**
+R:
 ```r
 # Beta-Binomial A/B test
 prior_a <- prior_b <- c(1, 1)  # Uniform prior
@@ -127,7 +127,7 @@ mean(sim_b > sim_a)  # probability B > A
 
 Bayesian power analysis simulates data under hypothetical true effects, fits models, and checks if the posterior would detect the effect:
 
-**R (brms with simulated data):**
+R (brms with simulated data):
 ```r
 # True effect = 0.5, n = 30 per group
 sim_and_fit <- function(n, true_effect) {
@@ -144,9 +144,9 @@ replicate(100, sim_and_fit(30, 0.5)) |> mean()  # estimated power
 
 ## References
 
-- Kruschke, J. (2013). "Bayesian Estimation Supersedes the t-Test." *Journal of Experimental Psychology: General*, 142(2): 573-603.
-- Kruschke, J. (2014). *Doing Bayesian Data Analysis*. 2nd ed. Academic Press.
-- Gelman, A. et al. (2013). *Bayesian Data Analysis*. 3rd ed. Chapters 21-22.
+- Kruschke, J. (2013). "Bayesian Estimation Supersedes the t-Test." Journal of Experimental Psychology: General, 142(2): 573-603.
+- Kruschke, J. (2014). Doing Bayesian Data Analysis. 2nd ed. Academic Press.
+- Gelman, A. et al. (2013). Bayesian Data Analysis. 3rd ed. Chapters 21-22.
 
 ## Relevant notes
 

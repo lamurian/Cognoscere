@@ -14,14 +14,14 @@ tags:
 
 ## Overview
 
-Bayesian inference treats probability as a **degree of belief** that gets updated with evidence. Parameters are random variables with probability distributions. We start with a **prior** before seeing data, then use **Bayes' theorem** to compute the **posterior** after seeing data. This note covers the core concepts.
+Bayesian inference treats probability as a degree of belief that gets updated with evidence. Parameters are random variables with probability distributions. We start with a prior before seeing data, then use Bayes' theorem to compute the posterior after seeing data. This note covers the core concepts.
 
 ## 1. The Bayesian Philosophy
 
-- **Probability** = degree of belief, subjective but constrained by axioms
-- **Parameters** ($\theta$) are random variables — we express uncertainty through distributions
-- **Data** ($x$) are fixed — we condition on what we observed
-- **Uncertainty** is expressed through the posterior distribution $p(\theta|x)$
+- Probability = degree of belief, subjective but constrained by axioms
+- Parameters ($\theta$) are random variables — we express uncertainty through distributions
+- Data ($x$) are fixed — we condition on what we observed
+- Uncertainty is expressed through the posterior distribution $p(\theta|x)$
 
 ## 2. Bayes' Theorem
 
@@ -29,10 +29,10 @@ $$p(\theta | x) = \frac{p(x | \theta) p(\theta)}{p(x)} = \frac{p(x | \theta) p(\
 
 | Term | Name | Meaning |
 |------|------|---------|
-| $p(\theta)$ | **Prior** | Belief about $\theta$ before seeing data |
-| $p(x|\theta)$ | **Likelihood** | Probability of data given $\theta$ |
-| $p(\theta|x)$ | **Posterior** | Updated belief about $\theta$ after data |
-| $p(x)$ | **Marginal Likelihood / Evidence** | Normalising constant (often intractable) |
+| $p(\theta)$ | Prior | Belief about $\theta$ before seeing data |
+| $p(x|\theta)$ | Likelihood | Probability of data given $\theta$ |
+| $p(\theta|x)$ | Posterior | Updated belief about $\theta$ after data |
+| $p(x)$ | Marginal Likelihood / Evidence | Normalising constant (often intractable) |
 
 ### The Posterior is Proportional
 
@@ -42,11 +42,11 @@ The denominator $p(x)$ is a constant (doesn't depend on $\theta$), so for optimi
 
 ## 3. Conjugate Priors
 
-A prior is **conjugate** for a likelihood if the posterior is in the same distribution family as the prior.
+A prior is conjugate for a likelihood if the posterior is in the same distribution family as the prior.
 
 ### Beta-Binomial (coin flipping)
 
-**R:**
+R:
 ```r
 # Prior: Beta(2, 2) — weakly informative, peaked at 0.5
 # Data: 8 heads out of 10 flips
@@ -61,7 +61,7 @@ curve(dbeta(x, alpha_prior, beta_prior), add = TRUE, lty = 2)
 legend("topleft", c("Posterior", "Prior"), lty = c(1, 2), col = c("steelblue", "black"))
 ```
 
-**Python:**
+Python:
 ```python
 import numpy as np
 from scipy import stats
@@ -84,33 +84,33 @@ $$\text{Prior: } \mu \sim N(\mu_0, \tau^2) \quad \text{Likelihood: } x_i \sim N(
 
 $$\text{Posterior: } \mu|x \sim N\left(\frac{\mu_0/\tau^2 + n\bar{x}/\sigma^2}{1/\tau^2 + n/\sigma^2},\; \frac{1}{1/\tau^2 + n/\sigma^2}\right)$$
 
-The posterior mean is a **weighted average** of the prior mean and the sample mean, weighted by their precisions ($1/\text{variance}$).
+The posterior mean is a weighted average of the prior mean and the sample mean, weighted by their precisions ($1/\text{variance}$).
 
 ## 4. Point Estimates from the Posterior
 
 | Estimator | Definition | Use case |
 |-----------|-----------|----------|
-| **Posterior Mean** | $E[\theta|x] = \int \theta p(\theta|x) d\theta$ | Default, minimises squared error loss |
-| **Posterior Median** | 50th percentile | Robust to skewed posteriors |
-| **Posterior Mode (MAP)** | $\arg\max_\theta p(\theta|x)$ | Like MLE with prior penalty, easy to compute |
+| Posterior Mean | $E[\theta|x] = \int \theta p(\theta|x) d\theta$ | Default, minimises squared error loss |
+| Posterior Median | 50th percentile | Robust to skewed posteriors |
+| Posterior Mode (MAP) | $\arg\max_\theta p(\theta|x)$ | Like MLE with prior penalty, easy to compute |
 
-**MAP estimation with a Normal prior on $\mu$** is equivalent to **ridge regression** for coefficients.
+MAP estimation with a Normal prior on $\mu$ is equivalent to ridge regression for coefficients.
 
 ## 5. Credible Intervals
 
-A $95\%$ **credible interval** $[a, b]$ satisfies:
+A $95\%$ credible interval $[a, b]$ satisfies:
 
 $$P(a \leq \theta \leq b \,|\, x) = 0.95$$
 
-> **Direct interpretation:** "There's a 95% probability that $\theta$ lies in this interval." This is the intuitive interpretation that confidence intervals **cannot** provide.
+> Direct interpretation: "There's a 95% probability that $\theta$ lies in this interval." This is the intuitive interpretation that confidence intervals cannot provide.
 
-**R — credible interval from posterior samples:**
+R — credible interval from posterior samples:
 ```r
 posterior_samples <- rbeta(10000, alpha_post, beta_post)
 quantile(posterior_samples, c(0.025, 0.975))
 ```
 
-**Python — credible interval:**
+Python — credible interval:
 ```python
 posterior_samples = np.random.beta(alpha_post, beta_post, 10000)
 np.quantile(posterior_samples, [0.025, 0.975])
@@ -122,12 +122,12 @@ Choosing priors is both the strength and the challenge of Bayesian analysis:
 
 | Prior Type | Description | Example |
 |-----------|-------------|---------|
-| **Flat/Uniform** | "Let the data speak" — often gives same result as MLE | $\mu \sim \text{Uniform}(-\infty, \infty)$ |
-| **Weakly Informative** | Adds mild regularisation, helps convergence | $\mu \sim N(0, 10)$, $\sigma \sim \text{Half-Cauchy}(0, 2)$ |
-| **Informative** | Strong prior based on previous studies | $\mu \sim N(0.5, 0.1)$ (very confident about location) |
-| **Conjugate** | Computational convenience | Beta for Binomial, Normal for Normal, etc. |
+| Flat/Uniform | "Let the data speak" — often gives same result as MLE | $\mu \sim \text{Uniform}(-\infty, \infty)$ |
+| Weakly Informative | Adds mild regularisation, helps convergence | $\mu \sim N(0, 10)$, $\sigma \sim \text{Half-Cauchy}(0, 2)$ |
+| Informative | Strong prior based on previous studies | $\mu \sim N(0.5, 0.1)$ (very confident about location) |
+| Conjugate | Computational convenience | Beta for Binomial, Normal for Normal, etc. |
 
-**Key principle:** The prior should be **defensible** — justify it with prior research, expert knowledge, or use weakly informative defaults.
+Key principle: The prior should be defensible — justify it with prior research, expert knowledge, or use weakly informative defaults.
 
 ## 7. Bayesian vs Frequentist at a Glance
 
@@ -142,15 +142,15 @@ Choosing priors is both the strength and the challenge of Bayesian analysis:
 
 ## Resources
 
-- **Statistical Rethinking** by Richard McElreath (book + YouTube lectures)
-- **Bayesian Data Analysis** by Gelman et al. (3rd ed., free PDF)
-- **Bayes Rules!** by Johnson, Ott & Dogucu (free online)
+- Statistical Rethinking by Richard McElreath (book + YouTube lectures)
+- Bayesian Data Analysis by Gelman et al. (3rd ed., free PDF)
+- Bayes Rules! by Johnson, Ott & Dogucu (free online)
 
 ## References
 
-- Gelman, A. et al. (2013). *Bayesian Data Analysis*. 3rd ed. CRC Press.
-- McElreath, R. (2020). *Statistical Rethinking*. 2nd ed. CRC Press.
-- Kruschke, J. (2014). *Doing Bayesian Data Analysis*. 2nd ed. Academic Press.
+- Gelman, A. et al. (2013). Bayesian Data Analysis. 3rd ed. CRC Press.
+- McElreath, R. (2020). Statistical Rethinking. 2nd ed. CRC Press.
+- Kruschke, J. (2014). Doing Bayesian Data Analysis. 2nd ed. Academic Press.
 
 ## Relevant notes
 

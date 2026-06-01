@@ -45,15 +45,15 @@ Aceh province enforces Sharia law, has only 1% non-Muslim population, and requir
 
 ## Mitigation Strategies
 
-1. **Multi-site model**: Rather than one closed village, develop multiple node-houses within existing desa. Each node is a household practising solarpunk principles but embedded in local RT/RW (neighbourhood units). Smaller, distributed, less threatening.
+1. Multi-site model: Rather than one closed village, develop multiple node-houses within existing desa. Each node is a household practising solarpunk principles but embedded in local RT/RW (neighbourhood units). Smaller, distributed, less threatening.
 
-2. **Legal inclusivity**: Structure as a koperasi (cooperative) or yayasan (foundation) that allows mixed Indonesian-foreign membership. Keputusan bersama (joint decisions) prevents enclave formation.
+2. Legal inclusivity: Structure as a koperasi (cooperative) or yayasan (foundation) that allows mixed Indonesian-foreign membership. Keputusan bersama (joint decisions) prevents enclave formation.
 
-3. **Revenue-sharing covenant**: Write into the founding agreement that X% of all enterprise revenue goes to the surrounding desa's development fund. Transparent accounting published annually.
+3. Revenue-sharing covenant: Write into the founding agreement that X% of all enterprise revenue goes to the surrounding desa's development fund. Transparent accounting published annually.
 
-4. **Avoid gated aesthetics**: No walls, no gates, no private roads. The village should be physically permeable, with public paths, shared facilities, and open access.
+4. Avoid gated aesthetics: No walls, no gates, no private roads. The village should be physically permeable, with public paths, shared facilities, and open access.
 
-5. **Food integration**: Grow staple crops (rice, cassava, tempeh ingredients) alongside high-value permaculture. Local people need to see food they recognise.
+5. Food integration: Grow staple crops (rice, cassava, tempeh ingredients) alongside high-value permaculture. Local people need to see food they recognise.
 
 Reference: [[indonesia-erasure-of-left-wing-politics-after-1965]], [[indonesian-politics-pluralist-vs-islamist-spectrum]]
 

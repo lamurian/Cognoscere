@@ -14,7 +14,7 @@ tags:
 
 ## Overview
 
-Regression modelling is the most widely used statistical tool. The frequentist approach estimates fixed coefficients that minimise error (OLS) or maximise likelihood (MLE), with uncertainty quantified via standard errors, confidence intervals, and hypothesis tests. Code examples in **R** and **Python**.
+Regression modelling is the most widely used statistical tool. The frequentist approach estimates fixed coefficients that minimise error (OLS) or maximise likelihood (MLE), with uncertainty quantified via standard errors, confidence intervals, and hypothesis tests. Code examples in R and Python.
 
 ## 1. Ordinary Least Squares (OLS) Regression
 
@@ -25,18 +25,18 @@ The OLS estimator minimises $\sum (y_i - \hat{y}_i)^2$:
 $$\hat{\beta}_{OLS} = (X^T X)^{-1} X^T y$$
 
 ### Key Properties
-- **Unbiased:** $E[\hat{\beta}] = \beta$
-- **BLUE:** Best Linear Unbiased Estimator (Gauss-Markov theorem)
-- **Sampling distribution:** $\hat{\beta} \sim N(\beta, \sigma^2 (X^T X)^{-1})$
+- Unbiased: $E[\hat{\beta}] = \beta$
+- BLUE: Best Linear Unbiased Estimator (Gauss-Markov theorem)
+- Sampling distribution: $\hat{\beta} \sim N(\beta, \sigma^2 (X^T X)^{-1})$
 
-**R:**
+R:
 ```r
 model <- lm(mpg ~ wt + hp, data = mtcars)
 summary(model)  # coefficients, SEs, t-values, p-values
 confint(model)  # 95% confidence intervals
 ```
 
-**Python:**
+Python:
 ```python
 import statsmodels.api as sm
 X = sm.add_constant(mtcars[['wt', 'hp']])
@@ -61,16 +61,16 @@ For binary outcomes ($y \in \{0, 1\}$):
 
 $$\log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1 x_1 + \ldots + \beta_p x_p$$
 
-Estimated via **MLE** (no closed form — uses iterative reweighted least squares).
+Estimated via MLE (no closed form — uses iterative reweighted least squares).
 
-**R:**
+R:
 ```r
 model_logit <- glm(am ~ wt + hp, data = mtcars, family = binomial)
 summary(model_logit)
 exp(coef(model_logit))  # odds ratios
 ```
 
-**Python:**
+Python:
 ```python
 import statsmodels.formula.api as smf
 model_logit = smf.logit('am ~ wt + hp', data=mtcars).fit()
@@ -82,23 +82,23 @@ print(np.exp(model_logit.params))  # odds ratios
 
 When $p \gg n$ or to prevent overfitting, add a penalty:
 
-- **Ridge ($L_2$):** $\hat{\beta}_{ridge} = \arg\min ||y - X\beta||^2 + \lambda||\beta||^2$
-- **Lasso ($L_1$):** $\hat{\beta}_{lasso} = \arg\min ||y - X\beta||^2 + \lambda||\beta||_1$
+- Ridge ($L_2$): $\hat{\beta}_{ridge} = \arg\min ||y - X\beta||^2 + \lambda||\beta||^2$
+- Lasso ($L_1$): $\hat{\beta}_{lasso} = \arg\min ||y - X\beta||^2 + \lambda||\beta||_1$
 
-**R:** `library(glmnet)` — `glmnet(X, y, alpha=0)` for ridge, `alpha=1` for lasso
-**Python:** `from sklearn.linear_model import Ridge, Lasso`
+R: `library(glmnet)` — `glmnet(X, y, alpha=0)` for ridge, `alpha=1` for lasso
+Python: `from sklearn.linear_model import Ridge, Lasso`
 
 ## 5. Hypothesis Testing in Regression
 
-- **Overall F-test:** Tests whether any predictor is significant
-- **Individual t-tests:** Tests $H_0: \beta_j = 0$ for each coefficient
-- **Partial F-test:** Compare nested models (with/without a set of predictors)
+- Overall F-test: Tests whether any predictor is significant
+- Individual t-tests: Tests $H_0: \beta_j = 0$ for each coefficient
+- Partial F-test: Compare nested models (with/without a set of predictors)
 
 ## References
 
-- James, G. et al. (2021). *An Introduction to Statistical Learning*. 2nd ed. Springer.
-- Fox, J. (2016). *Applied Regression Analysis and Generalized Linear Models*. 3rd ed. Sage.
-- Harrell, F. (2015). *Regression Modeling Strategies*. 2nd ed. Springer.
+- James, G. et al. (2021). An Introduction to Statistical Learning. 2nd ed. Springer.
+- Fox, J. (2016). Applied Regression Analysis and Generalized Linear Models. 3rd ed. Sage.
+- Harrell, F. (2015). Regression Modeling Strategies. 2nd ed. Springer.
 
 ## Relevant notes
 

@@ -20,11 +20,11 @@ Choosing between AIC/BIC and Bayes Factors/WAIC is a practical question every st
 
 | Aspect | Frequentist | Bayesian |
 |--------|------------|----------|
-| **AIC** | Minimises KL divergence (predictive) | Equivalent to LOO-CV asymptotically (Stone, 1977) |
-| **BIC** | Approximates Bayes factor for certain priors (but with $\log n$ penalty) | Not a coherent Bayesian criterion despite the name |
-| **Bayes factor** | Not defined (parameters aren't random) | Coherent betting ratio between models |
-| **LOO-CV** | Point estimate of out-of-sample error (needs bootstrap for uncertainty) | Full posterior distribution of elpd via PSIS |
-| **Model averaging** | Ad-hoc (AIC weights, bootstrap) | Natural (Bayesian model averaging via posterior model probabilities) |
+| AIC | Minimises KL divergence (predictive) | Equivalent to LOO-CV asymptotically (Stone, 1977) |
+| BIC | Approximates Bayes factor for certain priors (but with $\log n$ penalty) | Not a coherent Bayesian criterion despite the name |
+| Bayes factor | Not defined (parameters aren't random) | Coherent betting ratio between models |
+| LOO-CV | Point estimate of out-of-sample error (needs bootstrap for uncertainty) | Full posterior distribution of elpd via PSIS |
+| Model averaging | Ad-hoc (AIC weights, bootstrap) | Natural (Bayesian model averaging via posterior model probabilities) |
 
 ## 2. When They Agree
 
@@ -36,7 +36,7 @@ For large $n$ and well-specified models:
 ## 3. When They Diverge
 
 ### Small to moderate $n$
-Bayes factors and WAIC tend to be more **conservative** (favour simpler models) than AIC, because they use the full posterior rather than a point estimate.
+Bayes factors and WAIC tend to be more conservative (favour simpler models) than AIC, because they use the full posterior rather than a point estimate.
 
 ### Model misspecification
 - Frequentist criteria assume the true model is in the candidate set (or at least approximately)
@@ -70,7 +70,7 @@ What's your goal?
 
 ## 5. Code: Side-by-Side Comparison
 
-**R — comparing three regression models:**
+R — comparing three regression models:
 ```r
 m1 <- lm(mpg ~ wt, data = mtcars)
 m2 <- lm(mpg ~ wt + hp, data = mtcars)
@@ -94,18 +94,18 @@ waic(bfit1, bfit2, bfit3)
 
 | Criterion | Model comparison type | Uncertainty measure | Sensitivity |
 |-----------|----------------------|-------------------|-------------|
-| **AIC** | Point estimate | None (or bootstrap) | Low sensitivity to priors |
-| **BIC** | Point estimate | None | Low sensitivity |
-| **LRT** | Nested hypothesis test | p-value | Depends on $n$ |
-| **Bayes factor** | Full distribution | Evidence ratio | Sensitive to prior on parameters |
-| **WAIC** | Point + SE | Effective parameters | Moderate |
-| **LOO-CV** | Point + SE | $\hat{k}$ diagnostic | Robust (when $\hat{k} < 0.7$) |
+| AIC | Point estimate | None (or bootstrap) | Low sensitivity to priors |
+| BIC | Point estimate | None | Low sensitivity |
+| LRT | Nested hypothesis test | p-value | Depends on $n$ |
+| Bayes factor | Full distribution | Evidence ratio | Sensitive to prior on parameters |
+| WAIC | Point + SE | Effective parameters | Moderate |
+| LOO-CV | Point + SE | $\hat{k}$ diagnostic | Robust (when $\hat{k} < 0.7$) |
 
 ## References
 
-- Burnham, K.P. & Anderson, D.R. (2002). *Model Selection and Multimodel Inference*. 2nd ed. Springer.
-- Gelman, A. et al. (2014). "Understanding predictive information criteria." *Statistics and Computing*, 24(6): 997-1016.
-- Vehtari, A. et al. (2017). "Practical Bayesian model evaluation." *Statistics and Computing*, 27(5): 1413-1432.
+- Burnham, K.P. & Anderson, D.R. (2002). Model Selection and Multimodel Inference. 2nd ed. Springer.
+- Gelman, A. et al. (2014). "Understanding predictive information criteria." Statistics and Computing, 24(6): 997-1016.
+- Vehtari, A. et al. (2017). "Practical Bayesian model evaluation." Statistics and Computing, 27(5): 1413-1432.
 
 ## Relevant notes
 

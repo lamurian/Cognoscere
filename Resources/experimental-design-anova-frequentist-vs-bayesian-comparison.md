@@ -20,21 +20,21 @@ When designing experiments and comparing groups, both frequentist and Bayesian a
 
 ### t-Test: Classical vs BEST
 
-**Example:** Compare test scores of two teaching methods (n = 25 each):
+Example: Compare test scores of two teaching methods (n = 25 each):
 
-**Frequentist result:** $t_{48} = 2.10, p = 0.041, d = 0.56$
+Frequentist result: $t_{48} = 2.10, p = 0.041, d = 0.56$
 - "The difference is statistically significant at $\alpha = 0.05$"
 - 95% CI for difference: [0.02, 0.98]
 
-**Bayesian result (BEST):** Posterior mean difference = 0.48, 95% CrI = [0.01, 0.95]
+Bayesian result (BEST): Posterior mean difference = 0.48, 95% CrI = [0.01, 0.95]
 - $P(\mu_2 > \mu_1) = 0.977$
 - "There's a 97.7% probability that method B outperforms method A"
 
 ### Multiple Comparisons
 
-**Frequentist:** After a significant ANOVA F-test, you apply **Tukey's HSD** or **Bonferroni** correction to control FWER. The more tests, the smaller the adjusted p-values — reducing power.
+Frequentist: After a significant ANOVA F-test, you apply Tukey's HSD or Bonferroni correction to control FWER. The more tests, the smaller the adjusted p-values — reducing power.
 
-**Bayesian:** No correction needed for "multiple comparisons." The Bayesian answer to the crisis is: **just model the data** — hierarchical models with partial pooling naturally handle multiple groups (Gelman et al., 2012). The posterior for each group contrast already reflects all the evidence.
+Bayesian: No correction needed for "multiple comparisons." The Bayesian answer to the crisis is: just model the data — hierarchical models with partial pooling naturally handle multiple groups (Gelman et al., 2012). The posterior for each group contrast already reflects all the evidence.
 
 ## 2. Key Decision Points
 
@@ -46,7 +46,7 @@ When designing experiments and comparing groups, both frequentist and Bayesian a
 
 ### Choose Bayesian When:
 - You need to make decisions under uncertainty ("should we launch this feature?")
-- You want to **monitor results continuously** without penalising repeated testing
+- You want to monitor results continuously without penalising repeated testing
 - You have prior information (from previous experiments) to incorporate
 - You need interpretable statements: "Probability B > A is 95%"
 - Sample sizes are small or unbalanced
@@ -57,16 +57,16 @@ Traditional view: "Adjust p-values or you'll have too many false positives."
 
 Bayesian view (Gelman, 2009): "The problem isn't multiple comparisons — it's that researchers ask uninteresting questions. Use multilevel models instead."
 
-**Demonstration:** In a Bayesian hierarchical model, group estimates are **shrunk** toward the grand mean (partial pooling). This automatically reduces false positives for extreme groups while preserving power for large true effects.
+Demonstration: In a Bayesian hierarchical model, group estimates are shrunk toward the grand mean (partial pooling). This automatically reduces false positives for extreme groups while preserving power for large true effects.
 
 ## 4. Stopping Rules
 
-- **Frequentist:** Optional stopping (peeking at data) inflates Type I error dramatically. Pre-registered sample sizes are essential.
-- **Bayesian:** The likelihood principle means inference depends only on the data, not on why you stopped. You can monitor sequentially without penalty.
+- Frequentist: Optional stopping (peeking at data) inflates Type I error dramatically. Pre-registered sample sizes are essential.
+- Bayesian: The likelihood principle means inference depends only on the data, not on why you stopped. You can monitor sequentially without penalty.
 
 ## 5. Code: Side-by-Side
 
-**R — both approaches on the same data:**
+R — both approaches on the same data:
 ```r
 # Frequentist
 t.test(value ~ group, data = data)
@@ -88,10 +88,10 @@ fit <- brm(value ~ group, data = data,
 
 ## References
 
-- Gelman, A., Hill, J. & Yajima, M. (2012). "Why We (Usually) Don't Have to Worry about Multiple Comparisons." *Journal of Research on Educational Effectiveness*, 5(2): 189-211.
-- Kruschke, J. & Liddell, T. (2018). "The Bayesian New Statistics." *Psychonomic Bulletin & Review*, 25(1): 178-206.
-- Rouder, J. et al. (2016). "Replication Bayes Factors." *Journal of Mathematical Psychology*, 72: 5-12.
-- Benjamin, D.J. et al. (2018). "Redefine Statistical Significance." *Nature Human Behaviour*, 2(1): 6-10.
+- Gelman, A., Hill, J. & Yajima, M. (2012). "Why We (Usually) Don't Have to Worry about Multiple Comparisons." Journal of Research on Educational Effectiveness, 5(2): 189-211.
+- Kruschke, J. & Liddell, T. (2018). "The Bayesian New Statistics." Psychonomic Bulletin & Review, 25(1): 178-206.
+- Rouder, J. et al. (2016). "Replication Bayes Factors." Journal of Mathematical Psychology, 72: 5-12.
+- Benjamin, D.J. et al. (2018). "Redefine Statistical Significance." Nature Human Behaviour, 2(1): 6-10.
 
 ## Relevant notes
 

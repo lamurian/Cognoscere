@@ -14,19 +14,19 @@ tags:
 
 ## Overview
 
-This capstone project synthesises everything from the roadmap. You'll take a real dataset, analyse it using **both frequentist and Bayesian methods**, and compare the results. The goal is not just to apply techniques, but to understand **what each framework reveals** and **how they complement each other**. Code examples in both **R** and **Python**.
+This capstone project synthesises everything from the roadmap. You'll take a real dataset, analyse it using both frequentist and Bayesian methods, and compare the results. The goal is not just to apply techniques, but to understand what each framework reveals and how they complement each other. Code examples in both R and Python.
 
 ## 1. Dataset Suggestions
 
 | Dataset | Domain | Best for | Location |
 |---------|--------|----------|----------|
-| **mtcars** | Automotive | Simple regression comparison (built-in R/Python) | Built into R/statsmodels |
-| **Boston Housing** | Real estate | Multiple regression, model selection | sklearn.datasets |
-| **Wage data (ISLR)** | Labour economics | Logistic regression, model comparison | ISLR package / ISLP data |
-| **UC Berkeley Admissions** | Education | Simpson's paradox, causal inference | ggplot2::diamonds analogue |
-| **CO₂ data** | Climate | Time series forecasting | datasets::co2 or Mauna Loa data |
-| **Tip data** | Restaurant | GLM, ANOVA | seaborn/py dataset |
-| **Penguins** | Biology | ANOVA, logistic regression | palmerpenguins / seaborn |
+| mtcars | Automotive | Simple regression comparison (built-in R/Python) | Built into R/statsmodels |
+| Boston Housing | Real estate | Multiple regression, model selection | sklearn.datasets |
+| Wage data (ISLR) | Labour economics | Logistic regression, model comparison | ISLR package / ISLP data |
+| UC Berkeley Admissions | Education | Simpson's paradox, causal inference | ggplot2::diamonds analogue |
+| CO₂ data | Climate | Time series forecasting | datasets::co2 or Mauna Loa data |
+| Tip data | Restaurant | GLM, ANOVA | seaborn/py dataset |
+| Penguins | Biology | ANOVA, logistic regression | palmerpenguins / seaborn |
 
 ## 2. Suggested Analysis Workflow
 
@@ -109,15 +109,15 @@ pm.summary(trace)
 
 ## 3. Going Further
 
-- Add **hierarchical structure** (e.g., random intercept by island)
-- Perform **model comparison** (AIC vs WAIC)
-- Try **causal inference** (DAG for penguin species differences)
-- Add **time series** if data has temporal structure
+- Add hierarchical structure (e.g., random intercept by island)
+- Perform model comparison (AIC vs WAIC)
+- Try causal inference (DAG for penguin species differences)
+- Add time series if data has temporal structure
 
 ## References
 
 - Horst, A.M. et al. (2020). "palmerpenguins: Palmer Archipelago (Antarctica) Penguin Data." R package.
-- James, G. et al. (2021). *An Introduction to Statistical Learning*. 2nd ed. Springer.
+- James, G. et al. (2021). An Introduction to Statistical Learning. 2nd ed. Springer.
 
 ## Relevant notes
 

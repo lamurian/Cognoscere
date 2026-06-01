@@ -24,9 +24,9 @@ Examples: building a web widget, writing a paper, planning a conference talk.
 
 ## What does not belong
 
-- Ongoing responsibilities without an end date. Move to **Areas**.
-- Raw reference material. Move to **Resources**.
-- Completed or abandoned work. Move to **Archives**.
+- Ongoing responsibilities without an end date. Move to Areas.
+- Raw reference material. Move to Resources.
+- Completed or abandoned work. Move to Archives.
 
 ## Agent usage
 

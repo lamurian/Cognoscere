@@ -54,18 +54,18 @@ Foreigners cannot own freehold land (Hak Milik) in Indonesia under the 1960 Basi
 
 ## Recommended Strategy
 
-**Phase 1 (Year 0-1)**: Use leasehold or Hak Sewa for initial land. Keep capital exposure low. Build relationships simultaneously.
+Phase 1 (Year 0-1): Use leasehold or Hak Sewa for initial land. Keep capital exposure low. Build relationships simultaneously.
 
-**Phase 2 (Year 1-3)**: Form a Yayasan with mixed Indonesian-foreign board. The yayasan applies for HGB on the land. Indonesian board members provide legal standing and cultural bridge.
+Phase 2 (Year 1-3): Form a Yayasan with mixed Indonesian-foreign board. The yayasan applies for HGB on the land. Indonesian board members provide legal standing and cultural bridge.
 
-**Phase 3 (Year 3+)**: If land trust model is desired, transfer HGB to a koperasi (cooperative) where all residents — Indonesian and foreign — are members. This mirrors the community land trust (CLT) model used by ecovillages worldwide.[^7]
+Phase 3 (Year 3+): If land trust model is desired, transfer HGB to a koperasi (cooperative) where all residents — Indonesian and foreign — are members. This mirrors the community land trust (CLT) model used by ecovillages worldwide.[^7]
 
 ## Political Risk Factors
 
-- **Regional Autonomy (Otonomi Daerah)**: Since 1999, district heads (bupati) have significant discretion over permits. A supportive bupati can fast-track everything; a hostile one can block everything.
-- **Mining concessions**: Check if the land overlaps with a mining permit (IUP). Indonesia's mining cadastre is opaque, and overlapping claims are common.
-- **Forest area (Kawasan Hutan)**: ~63% of Indonesia is classified as forest zone under Ministry of Environment and Forestry. Building there requires complex permits. Avoid unless you have legal expertise.
-- **Land mafia (Mafia Tanah)**: Documented in many areas. Always use a reputable notary (PPAT) and conduct due diligence through BPN.
+- Regional Autonomy (Otonomi Daerah): Since 1999, district heads (bupati) have significant discretion over permits. A supportive bupati can fast-track everything; a hostile one can block everything.
+- Mining concessions: Check if the land overlaps with a mining permit (IUP). Indonesia's mining cadastre is opaque, and overlapping claims are common.
+- Forest area (Kawasan Hutan): ~63% of Indonesia is classified as forest zone under Ministry of Environment and Forestry. Building there requires complex permits. Avoid unless you have legal expertise.
+- Land mafia (Mafia Tanah): Documented in many areas. Always use a reputable notary (PPAT) and conduct due diligence through BPN.
 
 Reference: [[solarpunk-village-overview-blueprint]], [[solarpunk-village-implementation-roadmap]], [[solarpunk-village-economy-livelihood]]
 

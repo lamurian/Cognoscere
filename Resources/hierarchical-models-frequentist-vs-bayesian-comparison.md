@@ -20,10 +20,10 @@ Both frequentist mixed-effects models (lme4) and Bayesian hierarchical models (b
 
 | Aspect | Frequentist (Mixed-Effects) | Bayesian (Hierarchical) |
 |--------|---------------------------|------------------------|
-| **Random effects** | Random variables with estimated variance | Random variables with full posterior |
-| **Fixed effects** | Population parameters (fixed) | Can have their own priors |
-| **Inference** | point estimates + Wald CIs | Full posterior distributions |
-| **Partial pooling** | Implicit in REML estimation | Explicit via priors on variance components |
+| Random effects | Random variables with estimated variance | Random variables with full posterior |
+| Fixed effects | Population parameters (fixed) | Can have their own priors |
+| Inference | point estimates + Wald CIs | Full posterior distributions |
+| Partial pooling | Implicit in REML estimation | Explicit via priors on variance components |
 
 ## 2. When They Produce Different Results
 
@@ -40,7 +40,7 @@ Frequentist REML can estimate $\tau^2 = 0$ (boundary), causing issues for LRT an
 
 ## 3. Code Comparison
 
-**R — same model in lme4 and brms:**
+R — same model in lme4 and brms:
 ```r
 # Load data
 library(lme4); library(brms)
@@ -77,9 +77,9 @@ ranef(fit_bayes)$Subject[1:5, , 1]
 
 ## References
 
-- Chung, Y. et al. (2013). "A Nondegenerate Penalized Likelihood Estimator for Variance Parameters in Multilevel Models." *Psychometrika*, 78(4): 685-709.
-- Gelman, A. & Hill, J. (2007). *Data Analysis Using Regression and Multilevel/Hierarchical Models*. Cambridge.
-- Bates, D. et al. (2015). "Fitting Linear Mixed-Effects Models Using lme4." *Journal of Statistical Software*, 67(1): 1-48.
+- Chung, Y. et al. (2013). "A Nondegenerate Penalized Likelihood Estimator for Variance Parameters in Multilevel Models." Psychometrika, 78(4): 685-709.
+- Gelman, A. & Hill, J. (2007). Data Analysis Using Regression and Multilevel/Hierarchical Models. Cambridge.
+- Bates, D. et al. (2015). "Fitting Linear Mixed-Effects Models Using lme4." Journal of Statistical Software, 67(1): 1-48.
 
 ## Relevant notes
 

@@ -14,7 +14,7 @@ tags:
 
 ## Overview
 
-Bayesian regression places **prior distributions** on the regression coefficients and estimates the **posterior distribution** of coefficients given the data. This provides full uncertainty quantification, natural regularisation through priors, and straightforward prediction intervals. Code examples in **R** and **Python**.
+Bayesian regression places prior distributions on the regression coefficients and estimates the posterior distribution of coefficients given the data. This provides full uncertainty quantification, natural regularisation through priors, and straightforward prediction intervals. Code examples in R and Python.
 
 ## 1. Bayesian Linear Regression
 
@@ -25,7 +25,7 @@ $$\sigma \sim \text{Half-Cauchy}(0, 2) \quad \text{(prior on scale)}$$
 
 The posterior $p(\beta, \sigma | y, X)$ is proportional to the likelihood $\times$ prior, and is typically sampled via MCMC.
 
-**R (using brms):**
+R (using brms):
 ```r
 library(brms)
 model_bayes <- brm(mpg ~ wt + hp, data = mtcars,
@@ -36,7 +36,7 @@ summary(model_bayes)
 plot(model_bayes)  # trace plots, posterior densities
 ```
 
-**Python (using PyMC):**
+Python (using PyMC):
 ```python
 import pymc as pm
 import numpy as np
@@ -62,17 +62,17 @@ print(pm.summary(trace))
 
 ## 2. Interpreting Bayesian Coefficients
 
-- **Posterior mean** — point estimate (like OLS but shrunk towards prior)
-- **Posterior SD** — uncertainty (like SE but includes prior uncertainty)
-- **95% credible interval** — "95% probability the coefficient lies in this range"
-- **Posterior probability of direction** — $P(\beta > 0 | data)$
+- Posterior mean — point estimate (like OLS but shrunk towards prior)
+- Posterior SD — uncertainty (like SE but includes prior uncertainty)
+- 95% credible interval — "95% probability the coefficient lies in this range"
+- Posterior probability of direction — $P(\beta > 0 | data)$
 
 ### Shrinkage
-With a normal prior $\beta_j \sim N(0, \tau^2)$, Bayesian estimates are **shrunk** towards zero. This is the Bayesian analogue of ridge regression — in fact, the posterior mode under a normal prior equals the ridge estimate.
+With a normal prior $\beta_j \sim N(0, \tau^2)$, Bayesian estimates are shrunk towards zero. This is the Bayesian analogue of ridge regression — in fact, the posterior mode under a normal prior equals the ridge estimate.
 
 ## 3. Bayesian Logistic Regression
 
-**R (brms):**
+R (brms):
 ```r
 model_logit_bayes <- brm(am ~ wt + hp, data = mtcars,
                          family = bernoulli(),
@@ -80,7 +80,7 @@ model_logit_bayes <- brm(am ~ wt + hp, data = mtcars,
                          chains = 4, iter = 2000)
 ```
 
-**Python (PyMC):**
+Python (PyMC):
 ```python
 with pm.Model() as bayes_logit:
     beta0 = pm.Normal('beta0', 0, 5)
@@ -96,22 +96,22 @@ with pm.Model() as bayes_logit:
 
 After fitting, we can simulate new data from the posterior to check if the model reproduces observed patterns:
 
-**R:** `pp_check(model_bayes, ndraws = 100)`
-**Python:** `pm.sample_posterior_predictive(trace, model=bayes_lm)`
+R: `pp_check(model_bayes, ndraws = 100)`
+Python: `pm.sample_posterior_predictive(trace, model=bayes_lm)`
 
 ## 5. Advantages Over OLS
 
-- **Automatic regularisation** — priors prevent overfitting, especially with many predictors
-- **Full uncertainty** — prediction intervals naturally include parameter and sampling uncertainty
-- **Handles small data** — weakly informative priors stabilise estimates when $n$ is small
-- **Model comparison** — use WAIC or LOO for out-of-sample predictive performance
+- Automatic regularisation — priors prevent overfitting, especially with many predictors
+- Full uncertainty — prediction intervals naturally include parameter and sampling uncertainty
+- Handles small data — weakly informative priors stabilise estimates when $n$ is small
+- Model comparison — use WAIC or LOO for out-of-sample predictive performance
 
 ## References
 
-- McElreath, R. (2020). *Statistical Rethinking*. 2nd ed. CRC Press.
-- Gelman, A. et al. (2013). *Bayesian Data Analysis*. 3rd ed. CRC Press.
-- Bürkner, P.C. (2017). "brms: An R Package for Bayesian Multilevel Models." *Journal of Statistical Software*, 80(1): 1-28.
-- Salvatier, J. et al. (2016). "PyMC 3: Bayesian Stochastic Modelling in Python." *PeerJ Computer Science*, 2: e55.
+- McElreath, R. (2020). Statistical Rethinking. 2nd ed. CRC Press.
+- Gelman, A. et al. (2013). Bayesian Data Analysis. 3rd ed. CRC Press.
+- Bürkner, P.C. (2017). "brms: An R Package for Bayesian Multilevel Models." Journal of Statistical Software, 80(1): 1-28.
+- Salvatier, J. et al. (2016). "PyMC 3: Bayesian Stochastic Modelling in Python." PeerJ Computer Science, 2: e55.
 
 ## Relevant notes
 
