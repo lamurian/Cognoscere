@@ -158,11 +158,11 @@ export async function syncIndex(db: duckdb.Database, cwd: string): Promise<boole
       const parsed: ParsedFile = await parseFile(entry);
       const mtimeStr = new Date(entry.mtimeMs).toISOString();
 
-      // Upsert file row
+      // Upsert file row (include source_url)
       await runWithRecovery(
         db,
-        `INSERT OR REPLACE INTO files (path, title, body, author, editor, created, modified, file_mtime)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+        `INSERT OR REPLACE INTO files (path, title, body, author, editor, created, modified, file_mtime, source_url)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         entry.path,
         parsed.title,
         parsed.body,
@@ -171,6 +171,7 @@ export async function syncIndex(db: duckdb.Database, cwd: string): Promise<boole
         parsed.created,
         new Date().toISOString(),
         mtimeStr,
+        parsed.source_url,
       );
 
       // Re-insert tags (delete \u2192 insert)

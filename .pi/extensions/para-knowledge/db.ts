@@ -174,9 +174,17 @@ export async function initDb(db: duckdb.Database): Promise<void> {
       editor      VARCHAR NOT NULL DEFAULT '',
       created     TIMESTAMP,
       modified    TIMESTAMP,
-      file_mtime  TIMESTAMP
+      file_mtime  TIMESTAMP,
+      source_url  VARCHAR DEFAULT NULL
     )
   `);
+
+  // Idempotent migration: add source_url if upgrading an existing database
+  try {
+    await runWithRecovery(db, "ALTER TABLE files ADD COLUMN IF NOT EXISTS source_url VARCHAR DEFAULT NULL");
+  } catch {
+    // Some DuckDB versions may not support IF NOT EXISTS for ALTER; ignore
+  }
 
   // Tags (normalised)
   await runWithRecovery(db, `

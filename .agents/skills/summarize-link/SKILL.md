@@ -1,6 +1,6 @@
 ---
 name: summarize-link
-description: Fetches a URL shared by the user using Lightpanda (headless browser), returns clean Markdown, summarizes it, and saves the summary as a new PARA knowledge document with proper YAML frontmatter. Use when the user says "summarize this link", "save this article", or shares a URL they want processed.
+description: Fetches a URL shared by the user, checks if a summary already exists (by URL or content similarity), extracts content (HTML via Lightpanda, PDF via pdftotext), summarizes it, and saves as a new PARA knowledge document with source_url tracking. Use when the user says "summarize this link", "save this article", or shares a URL they want processed.
 ---
 
 # Summarize Link
@@ -9,24 +9,31 @@ When the user shares a link (URL) they want processed, follow this workflow.
 
 ## Prerequisites
 
-For best results, install **Lightpanda** — a fast, lightweight headless browser written in Zig that executes JavaScript (V8) and dumps pages as clean Markdown.
+- **Lightpanda** — for JavaScript-rendered HTML pages (SPAs, React/Vue).
+  Install: `brew install lightpanda-io/browser/lightpanda` (macOS) or see [lightpanda.io](https://github.com/lightpanda-io/browser).
+- **pdftotext** (poppler-utils) — for PDF extraction.
+  Install: `apt install poppler-utils` (Debian/Ubuntu) or `brew install poppler` (macOS).
 
-```bash
-# macOS
-brew install lightpanda-io/browser/lightpanda
-
-# Linux (x86_64)
-curl -L -o lightpanda https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux
-chmod a+x ./lightpanda
-sudo mv ./lightpanda /usr/local/bin/
-
-# Docker
-docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:nightly
-```
-
-Without Lightpanda, the `fetch_url` tool falls back to simple HTTP + HTML stripping, which **cannot handle JavaScript-rendered pages** (SPAs, React/Vue sites).
+Without Lightpanda, `fetch_url` falls back to simple HTTP + HTML stripping, which **cannot handle JavaScript-rendered pages**.
 
 ## Workflow
+
+### 0. Check for existing summary (dedup)
+
+**Before fetching**, call `find_existing_summary` to see if a document with the same URL already exists:
+
+```
+find_existing_summary(url: "<the URL>")
+```
+
+This tool:
+- Queries the DuckDB index for documents whose `source_url` field matches the given URL exactly
+- If no exact match is found and the tool has access to extracted content (from a previous attempt or from context), it also computes **Jaccard similarity** (word trigrams) against existing documents
+- If an existing summary is found (exact URL match or >90% content similarity), it returns the document title and path
+
+**If found:** Inform the user that the link is already summarised. Do **not** re-summarise. Read the existing document if the user wants details.
+
+**If not found:** Proceed to step 1.
 
 ### 1. Fetch the URL content
 
@@ -37,19 +44,20 @@ fetch_url(url: "<the URL the user shared>")
 ```
 
 The tool:
-- Uses **Lightpanda** by default — runs a real browser (V8 JS engine), renders the DOM, and outputs clean Markdown
-- Falls back to plain HTTP + HTML stripping if Lightpanda is not installed
+- **PDFs:** Detects `.pdf` URLs and extracts text using `pdftotext -layout` (great for academic papers)
+- **HTML:** Uses **Lightpanda** by default — runs a real browser (V8 JS engine), renders the DOM, and outputs clean Markdown
+- **Fallback:** Plain HTTP + HTML stripping if Lightpanda is not installed
 - Extracts the page title from the first H1 heading (or `<title>` tag in fallback mode)
 
 It returns:
 - Page title
-- Clean Markdown content
-- Engine used (Lightpanda or HTTP fallback)
+- Clean Markdown content (or extracted text for PDFs)
+- Engine used (Lightpanda, pdftotext, or HTTP fallback)
 - Character count
 
 ### 2. Read and understand the content
 
-Read the returned Markdown. If it is very long, focus on:
+Read the returned Markdown/text. If it is very long, focus on:
 - The main topic and purpose of the page
 - Key arguments, findings, or information
 - Structure (headings, sections, lists)
@@ -69,20 +77,22 @@ Write a concise summary in your own words. The summary should include:
 
 **Before creating a new document, always run `list_para_tags` first** to fetch all existing unique tags. Choose tags from that array; only create new tags when none of the existing ones fit the topic.
 
-Use `create_para_doc` to save the summary:
+Use `create_para_doc` to save the summary, passing the original URL as `source_url`:
 
 ```
 create_para_doc(
   title: "<document title>",
   content: "<markdown body with summary, key points, source link>",
   tags: ["<relevant-tag-1>", "<relevant-tag-2>"],
-  area: "Resources"
+  area: "Resources",
+  source_url: "<original URL>"
 )
 ```
 
 - `area` should typically be `"Resources"` for general reference material
 - Use `"Areas"` if it relates to an ongoing life responsibility
 - Use `"Projects"` only if it directly supports an active project
+- `source_url` is stored in the frontmatter and in the DuckDB index, enabling future dedup checks
 
 Recommended document structure inside `content`:
 
@@ -108,24 +118,27 @@ Why this content matters or how it might be useful.
 After creating the document, tell the user:
 - The document title and path
 - A brief note on what was saved
+- The source URL (so they know it's tracked for dedup)
 - Offer to refine or expand sections if needed
 
 ## Example
 
-User: "summarize this https://example.com/article-about-resilience"
+User: "summarize this https://arxiv.org/pdf/2604.25850"
 
 Agent actions:
-1. `fetch_url(url: "https://example.com/article-about-resilience")` → Lightpanda renders JS, returns clean Markdown
-2. Reads the article about resilience research
-3. Summarizes into a concise markdown document
-4. `list_para_tags` → checks existing tags, picks `["resilience", "wellbeing", "research"]`
-5. `create_para_doc(title: "Resilience Research Summary", content: "...", tags: [...], area: "Resources")`
-6. Confirms with user: "Saved as Resources/resilience-research-summary.md"
+1. `find_existing_summary(url: "https://arxiv.org/pdf/2604.25850")` → no existing summary found
+2. `fetch_url(url: "https://arxiv.org/pdf/2604.25850")` → detects PDF, extracts text via pdftotext
+3. Reads the paper content
+4. Summarizes into a concise markdown document
+5. `list_para_tags` → checks existing tags, picks `["ai", "research", "paper"]`
+6. `create_para_doc(title: "Paper Summary: ...", content: "...", tags: [...], area: "Resources", source_url: "https://arxiv.org/pdf/2604.25850")`
+7. Confirms with user: "Saved as Resources/paper-summary-....md (source tracked)"
 
 ## Provided tools
 
 This skill relies on:
 
-- `fetch_url` — custom tool from `link-summarizer` extension, uses Lightpanda (or HTTP fallback) to extract content
+- `find_existing_summary` — checks DuckDB for existing summary by URL + content similarity (from `para-knowledge` extension)
+- `fetch_url` — custom tool from `link-summarizer` extension, supports HTML (via Lightpanda/HTTP) and PDF (via pdftotext)
 - `list_para_tags` — lists all existing tags (from `para-knowledge` extension)
-- `create_para_doc` — creates a new PARA document (from `para-knowledge` extension)
+- `create_para_doc` — creates a new PARA document with optional `source_url` (from `para-knowledge` extension)

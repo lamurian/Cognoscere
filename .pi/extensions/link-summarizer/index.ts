@@ -1,7 +1,7 @@
 /**
  * Link Summarizer Extension
  *
- * Uses Lightpanda (headless browser in Zig) as the primary engine for URL
+ * Uses Lightpanda (headless browser in Zig) as the primary engine for HTML
  * content extraction. Lightpanda executes JavaScript (V8), renders the DOM,
  * and dumps as clean Markdown — giving consistent results across server-
  * rendered and JS-heavy SPAs.
@@ -9,12 +9,19 @@
  * Falls back to simple HTTP fetch + HTML stripping when Lightpanda is not
  * installed.
  *
+ * **PDF support:** Detects PDF URLs (by extension or Content-Type header)
+ * and extracts text using `pdftotext` (from poppler-utils). The extracted
+ * text is returned as plain Markdown.
+ *
  * Designed to be used by the `summarize-link` skill:
  *
  *   fetch → read markdown → summarize → create_para_doc
  */
 
-import { spawn } from "node:child_process";
+import { spawn, execSync } from "node:child_process";
+import { writeFile, unlink, mkdtemp, rm } from "node:fs/promises";
+import { join } from "node:path";
+import { tmpdir } from "node:os";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
 
@@ -27,6 +34,21 @@ const MAX_CONTENT_CHARS = 80_000;
 /** HTTP response body limit before we give up reading (8 MB). With Lightpanda
  * we don't hit this path often, but the fallback needs it. */
 const MAX_HTTP_BODY_BYTES = 8_000_000;
+
+/** Maximum PDF file size we'll download (100 MB). */
+const MAX_PDF_BYTES = 100_000_000;
+
+/** Regex to detect PDF URLs by file extension (e.g. document.pdf). */
+const PDF_EXT_RE = /\.pdf(?:[?#].*)?$/i;
+
+/**
+ * Regex to detect PDF URLs by path pattern.
+ * Catches arxiv.org/pdf/... and similar knowledge-base PDF servers.
+ */
+const PDF_PATH_RE = /\/pdf\/[\d.]+(?:v\d+)?(?:[?#].*)?$/i;
+
+/** Regex to detect PDF Content-Type from HTTP response headers. */
+const PDF_CT_RE = /^application\/pdf/i;
 
 // ── Lightpanda extraction ──────────────────────────────────────────────
 
@@ -109,6 +131,173 @@ async function tryLightpanda(
   });
 }
 
+// ── PDF extraction via pdftotext ───────────────────────────────────────
+
+/**
+ * Check whether a URL likely points to a PDF (by extension or known pattern).
+ */
+function isPdfUrl(url: string): boolean {
+  try {
+    const parsed = new URL(url);
+    // Check explicit .pdf extension OR path patterns like /pdf/ID
+    return PDF_EXT_RE.test(parsed.pathname) || PDF_PATH_RE.test(parsed.pathname);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Extract title from a PDF's text content by taking the first meaningful
+ * line (usually the paper title on arxiv and similar).
+ */
+function extractPdfTitle(text: string): string {
+  // Take first non-empty, non-trivial line as title
+  const lines = text.split("\n").map((l) => l.trim()).filter((l) => l.length > 10);
+  return lines[0] ?? "(PDF document)";
+}
+
+/**
+ * Download a PDF and extract text using `pdftotext`.
+ *
+ * Returns null if the URL doesn't point to a PDF, if the download fails,
+ * if pdftotext is unavailable, or if no text can be extracted.
+ */
+/**
+ * Check if a URL likely serves a PDF by making a lightweight HEAD request.
+ * Returns null on error (connection issues, etc.) — caller should fall through.
+ */
+async function checkPdfContentType(
+  url: string,
+  signal?: AbortSignal,
+): Promise<boolean> {
+  try {
+    const resp = await fetch(url, {
+      method: "HEAD",
+      signal,
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (compatible; PiSummarizer/1.0; +https://github.com/lam/pi-extensions)",
+      },
+      redirect: "follow",
+    });
+    const ct = resp.headers.get("content-type") ?? "";
+    return PDF_CT_RE.test(ct);
+  } catch {
+    // HEAD request failed — can't determine; caller should fall through
+    return false;
+  }
+}
+
+async function tryExtractPdf(
+  url: string,
+  signal?: AbortSignal,
+): Promise<{ title: string; text: string } | null> {
+  // ── Check URL shape first (fast bail) ──
+  const urlLooksLikePdf = isPdfUrl(url);
+  if (!urlLooksLikePdf) {
+    // Double-check via Content-Type header (catches arxiv-style /pdf/ID without .ext)
+    const isPdfByContentType = await checkPdfContentType(url, signal);
+    if (!isPdfByContentType) {
+      return null;
+    }
+  }
+
+  // ── Check pdftotext availability ──
+  try {
+    execSync("which pdftotext", { stdio: "ignore", timeout: 5_000 });
+  } catch {
+    return { title: "(PDF document)", text: "pdftotext not installed. Install poppler-utils to extract PDF content." };
+  }
+
+  // ── Download the PDF bytes ──
+  let response: Response;
+  try {
+    response = await fetch(url, {
+      signal,
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (compatible; PiSummarizer/1.0; +https://github.com/lam/pi-extensions)",
+      },
+      redirect: "follow",
+    });
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error(`[link-summarizer] PDF download failed: ${msg}`);
+    return null;
+  }
+
+  if (!response.ok) {
+    console.error(`[link-summarizer] PDF download HTTP ${response.status}`);
+    return null;
+  }
+
+  // Read body as ArrayBuffer with size limit
+  const reader = response.body?.getReader();
+  if (!reader) return null;
+
+  const chunks: Uint8Array[] = [];
+  let totalSize = 0;
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      chunks.push(value);
+      totalSize += value.length;
+      if (totalSize > MAX_PDF_BYTES) {
+        reader.cancel();
+        console.error(`[link-summarizer] PDF too large (>${MAX_PDF_BYTES} bytes)`);
+        return null;
+      }
+    }
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error(`[link-summarizer] PDF read error: ${msg}`);
+    return null;
+  }
+
+  // Combine chunks into a single Buffer
+  const pdfBuffer = Buffer.concat(chunks);
+
+  // ── Write to temp file and run pdftotext ──
+  let tmpDir: string | null = null;
+  let tmpPath: string | null = null;
+
+  try {
+    tmpDir = await mkdtemp(join(tmpdir(), "pi-pdf-"));
+    tmpPath = join(tmpDir, "document.pdf");
+    await writeFile(tmpPath, pdfBuffer);
+
+    // pdftotext -layout preserves column layout (important for academic papers)
+    const text = execSync(`pdftotext -layout "${tmpPath}" -`, {
+      encoding: "utf-8",
+      maxBuffer: MAX_CONTENT_CHARS * 2,
+      timeout: 30_000,
+      signal,
+    }).trim();
+
+    if (!text) {
+      return { title: "(PDF document)", text: "PDF appears to contain no extractable text (possibly scanned)." };
+    }
+
+    const title = extractPdfTitle(text);
+
+    return { title, text };
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error(`[link-summarizer] pdftotext failed: ${msg}`);
+    return { title: "(PDF document)", text: `PDF text extraction failed: ${msg}` };
+  } finally {
+    // Clean up temp files and directory
+    if (tmpPath) {
+      try { await unlink(tmpPath); } catch { /* best effort */ }
+    }
+    if (tmpDir) {
+      try { await rm(tmpDir, { recursive: true, force: true }); } catch { /* best effort */ }
+    }
+  }
+}
+
 // ── Plain-HTTP fallback ────────────────────────────────────────────────
 
 /**
@@ -180,6 +369,12 @@ async function fetchViaHttp(
     };
   }
 
+  // Check Content-Type — if it's a PDF, redirect to pdftotext path
+  const contentType = response.headers.get("content-type") ?? "";
+  if (PDF_CT_RE.test(contentType)) {
+    return { error: "PDF_CONTENT_TYPE" };
+  }
+
   // Read body with size limit
   const reader = response.body?.getReader();
   if (!reader) return { error: "No response body" };
@@ -234,11 +429,13 @@ export default function (pi: ExtensionAPI) {
       "Fetch a URL, render the page with a headless browser (Lightpanda), " +
       "and return the content as clean Markdown. Falls back to plain HTTP + " +
       "HTML stripping if Lightpanda is not installed. " +
+      "For PDF URLs (ending in .pdf), uses pdftotext to extract text. " +
       "Use this when the user shares a link they want summarized or saved.",
     promptSnippet: "Fetch a URL and get its content as Markdown",
     promptGuidelines: [
       "Use fetch_url when the user shares a link they want processed.",
       "After fetching, read the returned content, summarize it, and save as a PARA document via create_para_doc.",
+      "For PDF files (ending in .pdf), fetch_url automatically uses pdftotext to extract text.",
     ],
     parameters: Type.Object({
       url: Type.String({ description: "The URL to fetch and extract content from" }),
@@ -272,7 +469,51 @@ export default function (pi: ExtensionAPI) {
         };
       }
 
-      // ── 2. Lightpanda path (primary) ──────────────────────────────
+      // ── 2. PDF path (tried first for PDF URLs) ────────────────────
+      // Lightpanda can't render PDFs, so we detect and handle them specially.
+      if (isPdfUrl(url)) {
+        const pdfResult = await tryExtractPdf(url, signal);
+
+        if (pdfResult) {
+          const { title, text } = pdfResult;
+          const truncated = text.length > MAX_CONTENT_CHARS;
+          const body = truncated
+            ? text.slice(0, MAX_CONTENT_CHARS) +
+              `\n\n[... content truncated to ${MAX_CONTENT_CHARS.toLocaleString()} characters ...]`
+            : text;
+
+          // Wrap extracted text in a fenced code block or markdown quote
+          const contentBody = body.includes("pdftotext not installed")
+            ? body  // Show the error message directly
+            : body;
+
+          return {
+            content: [
+              {
+                type: "text",
+                text:
+                  `📄 **${title}**\n` +
+                  `🔗 ${url}\n` +
+                  `📕 PDF extracted via pdftotext · ${text.length.toLocaleString()} chars` +
+                  (truncated ? ` (truncated to ${MAX_CONTENT_CHARS.toLocaleString()})` : "") +
+                  `\n\n━━━ Content ━━━\n\n${contentBody}`,
+              },
+            ],
+            details: {
+              engine: "pdftotext",
+              title,
+              url,
+              extractedLength: text.length,
+              truncated,
+            },
+          };
+        }
+
+        // PDF extraction failed entirely — fall through to general methods
+        // (rare: some PDF-serving endpoints don't have .pdf in URL)
+      }
+
+      // ── 3. Lightpanda path (primary for HTML) ──────────────────────
       const lpResult = await tryLightpanda(url, signal);
 
       if (lpResult) {
@@ -305,10 +546,44 @@ export default function (pi: ExtensionAPI) {
         };
       }
 
-      // ── 3. Fallback: plain HTTP ────────────────────────────────────
+      // ── 4. Fallback: plain HTTP ────────────────────────────────────
       const httpResult = await fetchViaHttp(url, signal);
 
       if ("error" in httpResult) {
+        // 4a. PDF content detected by Content-Type — route to pdftotext
+        if (httpResult.error === "PDF_CONTENT_TYPE") {
+          const pdfResult = await tryExtractPdf(url, signal);
+          if (pdfResult) {
+            const { title, text } = pdfResult;
+            const truncated = text.length > MAX_CONTENT_CHARS;
+            const body = truncated
+              ? text.slice(0, MAX_CONTENT_CHARS) +
+                `\n\n[... content truncated to ${MAX_CONTENT_CHARS.toLocaleString()} characters ...]`
+              : text;
+
+            return {
+              content: [
+                {
+                  type: "text",
+                  text:
+                    `📄 **${title}**\n` +
+                    `🔗 ${url}\n` +
+                    `📕 PDF extracted via pdftotext · ${text.length.toLocaleString()} chars` +
+                    (truncated ? ` (truncated to ${MAX_CONTENT_CHARS.toLocaleString()})` : "") +
+                    `\n\n━━━ Content ━━━\n\n${body}`,
+                },
+              ],
+              details: {
+                engine: "pdftotext",
+                title,
+                url,
+                extractedLength: text.length,
+                truncated,
+              },
+            };
+          }
+        }
+
         return {
           content: [
             {

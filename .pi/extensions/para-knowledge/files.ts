@@ -56,6 +56,7 @@ export async function parseFile(entry: FileEntry): Promise<ParsedFile> {
     author: fm.author ?? "",
     editor: fm.editor ?? "",
     created: fm.created ?? null,
+    source_url: fm.source_url ?? null,
   };
 }
 

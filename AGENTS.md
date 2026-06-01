@@ -40,7 +40,8 @@ Each PARA directory has its own `AGENTS.md` with specific guidance.
 
 The agent uses these extensions from `.pi/extensions/`:
 
-- `para-knowledge/index.ts` — provides `search_para_docs`, `create_para_doc`, `update_para_doc`, `fetch_reputable_web`, `list_para_tags`.
+- `para-knowledge/index.ts` — provides `search_para_docs`, `create_para_doc`, `update_para_doc`, `fetch_reputable_web`, `list_para_tags`, `find_existing_summary`.
+- `link-summarizer/index.ts` — provides `fetch_url` which supports HTML (via Lightpanda/HTTP) and PDF (via pdftotext) content extraction.
 - `expand-bullets/index.ts` — provides `expand_bullet_points` to expand unclear bullet points or brief ideation in PARA documents into coherent, researched ideas using reputable web sources.
 - `git-commit.ts` — `/commit` slash command for staging and committing.
 - `set-temperature.ts` — sets model temperature to 0.1.
@@ -51,6 +52,7 @@ All knowledge lookups go through the DuckDB index (`notes.duckdb`). The index au
 
 - `knowledge/SKILL.md` — knowledge Q&A workflow.
 - `brainstorm/SKILL.md` — clarifying vague questions.
+- `summarize-link/SKILL.md` — fetch URL → dedup check → extract (HTML/PDF) → summarize → save note.
 
 When a skill is referenced, read its SKILL.md and follow the steps.
 
@@ -62,3 +64,4 @@ When a skill is referenced, read its SKILL.md and follow the steps.
   **Before creating a new document, always run `list_para_tags` first** to fetch all existing unique tags.
   Choose tags from that array; only create new tags when none of the existing ones fit the topic.
 - Use `update_para_doc` when improving existing notes (preserves author/editor).
+- **Link summarization dedup:** Before summarising a URL, call `find_existing_summary` to check if a note already covers that link. Pass `source_url` when creating new summaries so future checks can find them.

@@ -34,6 +34,9 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
       title: Type.Optional(
         Type.String({ description: "Replacement title (omit to keep existing)" }),
       ),
+      source_url: Type.Optional(
+        Type.String({ description: "Replacement source URL (omit to keep existing; empty string to clear)" }),
+      ),
     }),
 
     async execute(_toolCallId, params, _signal, onUpdate, ctx) {
@@ -46,15 +49,23 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
 
       const newTitle = params.title ?? fm.title ?? "";
       const newTags = params.tags ?? oldTags;
+      // source_url: explicit param wins (empty string → null to clear), then existing, then null
+      const newSourceUrl = params.source_url !== undefined
+        ? (params.source_url || null)
+        : (fm.source_url ?? null);
 
       // ── Write updated file to disk (always succeeds) ──
-      const newFm = formatFrontmatter({
+      const frontmatterFields: Record<string, unknown> = {
         author: "pi",
         date: now,
         editor: "lam",
         title: newTitle,
         tags: newTags,
-      });
+      };
+      if (newSourceUrl) {
+        frontmatterFields.source_url = newSourceUrl;
+      }
+      const newFm = formatFrontmatter(frontmatterFields);
 
       await writeFile(filePath, newFm + "\n" + params.content, "utf-8");
 
@@ -71,14 +82,15 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
           async (db) => {
             await initDb(db);
 
-            // Update file row
+            // Update file row (include source_url)
             await runWithRecovery(
               db,
-              "UPDATE files SET title = ?, body = ?, modified = ?, file_mtime = ? WHERE path = ?",
+              "UPDATE files SET title = ?, body = ?, modified = ?, file_mtime = ?, source_url = ? WHERE path = ?",
               newTitle,
               params.content,
               now,
               now,
+              newSourceUrl,
               params.path,
             );
 
@@ -138,14 +150,15 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
         ? "🗄️ notes.duckdb — updated"
         : "⚠️  File updated but index update skipped (another session holds the lock). It will be synced on next search.";
 
+      const sourceNote = newSourceUrl ? `\nSource: ${newSourceUrl}` : "";
       return {
         content: [
           {
             type: "text" as const,
-            text: `${indexNote}\nUpdated: ${filePath} (frontmatter renewed).`,
+            text: `${indexNote}\nUpdated: ${filePath} (frontmatter renewed).${sourceNote}`,
           },
         ],
-        details: { path: filePath, title: newTitle, indexOk },
+        details: { path: filePath, title: newTitle, source_url: newSourceUrl, indexOk },
       };
     },
   });

@@ -33,6 +33,7 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
       content: Type.String({ description: "Markdown body content" }),
       tags: Type.Array(Type.String(), { description: "Tags for frontmatter" }),
       area: Type.Optional(Area),
+      source_url: Type.Optional(Type.String({ description: "Original source URL (optional, used for dedup checks)" })),
     }),
 
     async execute(_toolCallId, params, _signal, onUpdate, ctx) {
@@ -44,13 +45,17 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
       const now = new Date().toISOString();
 
       // ── Write file to disk (always succeeds) ──
-      const fm = formatFrontmatter({
+      const frontmatterFields: Record<string, unknown> = {
         author: "pi",
         date: now,
         editor: "lam",
         title: params.title,
         tags: params.tags,
-      });
+      };
+      if (params.source_url && params.source_url.trim()) {
+        frontmatterFields.source_url = params.source_url.trim();
+      }
+      const fm = formatFrontmatter(frontmatterFields);
 
       await mkdir(dirPath, { recursive: true });
       await writeFile(filePath, fm + "\n" + params.content, "utf-8");
@@ -68,11 +73,11 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
           async (db) => {
             await initDb(db);
 
-            // Upsert file row
+            // Upsert file row (include source_url)
             await runWithRecovery(
               db,
-              `INSERT OR REPLACE INTO files (path, title, body, author, editor, created, modified, file_mtime)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+              `INSERT OR REPLACE INTO files (path, title, body, author, editor, created, modified, file_mtime, source_url)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
               relPath,
               params.title,
               params.content,
@@ -81,6 +86,7 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
               now,
               now,
               now,
+              (params.source_url || null),
             );
 
             // Re-insert tags
@@ -139,14 +145,15 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
         ? "🗄️ notes.duckdb — indexed"
         : "⚠️  File created but index update skipped (another session holds the lock). It will be indexed on next search.";
 
+      const sourceNote = params.source_url ? `\nSource: ${params.source_url}` : "";
       return {
         content: [
           {
             type: "text" as const,
-            text: `${indexNote}\nCreated: ${filePath}\nTitle: ${params.title}\nTags: ${params.tags.join(", ")}`,
+            text: `${indexNote}\nCreated: ${filePath}\nTitle: ${params.title}\nTags: ${params.tags.join(", ")}${sourceNote}`,
           },
         ],
-        details: { path: filePath, title: params.title, tags: params.tags, indexOk },
+        details: { path: filePath, title: params.title, tags: params.tags, source_url: params.source_url || null, indexOk },
       };
     },
   });

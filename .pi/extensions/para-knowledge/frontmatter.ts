@@ -21,6 +21,12 @@ export function parseFrontmatter(content: string): Frontmatter {
       const val = kv[2].trim();
       if (val && !val.startsWith("-")) result[kv[1]] = val;
     }
+    // Allow source_url: which has an underscore
+    const kvUnderscore = line.match(/^(source_url):\s*(.*)/);
+    if (kvUnderscore) {
+      const val = kvUnderscore[2].trim();
+      if (val) result[kvUnderscore[1]] = val;
+    }
     const li = line.match(/^\s*-\s+(.+)/);
     if (li) tags.push(li[1].trim());
   }
@@ -34,7 +40,12 @@ export function parseFrontmatter(content: string): Frontmatter {
  */
 export function formatFrontmatter(fm: Record<string, unknown>): string {
   let out = "---\n";
+  // Emit source_url early if present
+  if (typeof fm.source_url === "string" && fm.source_url) {
+    out += `source_url: ${fm.source_url}\n`;
+  }
   for (const [k, v] of Object.entries(fm)) {
+    if (k === "source_url") continue; // already emitted above
     if (k === "tags" && Array.isArray(v) && v.length) {
       out += "tags:\n";
       for (const t of v) out += `  - ${t}\n`;

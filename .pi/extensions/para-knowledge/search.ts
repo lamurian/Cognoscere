@@ -99,7 +99,7 @@ export async function searchByTagsOnly(
 
   const rows = await allWithRecovery(
     db,
-    `SELECT DISTINCT f.path, f.title, f.body, f.author, f.editor, f.file_mtime
+    `SELECT DISTINCT f.path, f.title, f.body, f.author, f.editor, f.file_mtime, f.source_url
      FROM files f
      JOIN tags t ON f.path = t.file_path
      WHERE (${placeholders.join(" OR ")})
@@ -114,6 +114,7 @@ export async function searchByTagsOnly(
     author: r.author ?? "",
     editor: r.editor ?? "",
     file_mtime: r.file_mtime ?? "",
+    source_url: r.source_url ?? null,
     score: 1.0,
     matchedByTag: true,
     tagMatches: tags.filter((t) =>
@@ -157,7 +158,7 @@ export async function searchDocuments(
     // Return all documents, unscored
     const rows = await allWithRecovery(
       db,
-      "SELECT path, title, body, author, editor, file_mtime FROM files ORDER BY title",
+      "SELECT path, title, body, author, editor, file_mtime, source_url FROM files ORDER BY title",
     );
     const results: SearchResult[] = (rows as any[]).map((r) => ({
       path: r.path,
@@ -166,6 +167,7 @@ export async function searchDocuments(
       author: r.author ?? "",
       editor: r.editor ?? "",
       file_mtime: r.file_mtime ?? "",
+      source_url: r.source_url ?? null,
       score: 0,
       matchedByTag: false,
       tagMatches: [],
@@ -310,7 +312,7 @@ export async function searchDocuments(
   const resultPlaceholders = sortedPaths.map(() => "?").join(",");
   const resultRows = await allWithRecovery(
     db,
-    `SELECT path, title, body, author, editor, file_mtime
+    `SELECT path, title, body, author, editor, file_mtime, source_url
      FROM files
      WHERE path IN (${resultPlaceholders})`,
     ...sortedPaths,
@@ -337,6 +339,7 @@ export async function searchDocuments(
       author: r?.author ?? "",
       editor: r?.editor ?? "",
       file_mtime: r?.file_mtime ?? "",
+      source_url: r?.source_url ?? null,
       score: candidateScores.get(fp) ?? 0,
       matchedByTag: matchedQt.length === 0 && tagMatches.length > 0,
       tagMatches,

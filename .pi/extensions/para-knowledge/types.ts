@@ -19,6 +19,8 @@ export interface Frontmatter {
   editor?: string;
   created?: string;
   modified?: string;
+  /** Original source URL the document summarises (optional). */
+  source_url?: string;
 }
 
 /** A markdown file discovered on the filesystem. */
@@ -39,6 +41,8 @@ export interface ParsedFile {
   author: string;
   editor: string;
   created: string | null;
+  /** Original source URL the document summarises (optional). */
+  source_url: string | null;
 }
 
 /** A search result returned by BM25 or tag-only search. */
@@ -49,6 +53,8 @@ export interface SearchResult {
   author: string;
   editor: string;
   file_mtime: string;
+  /** Original source URL the document summarises (optional). */
+  source_url: string | null;
   /** Combined BM25 + tag-boost score. */
   score: number;
   /** Whether the document was found only via tag match (no text overlap). */
