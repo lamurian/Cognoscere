@@ -62,6 +62,12 @@ All knowledge lookups go through the DuckDB index (`notes.duckdb`). The index au
 
 When a skill is referenced, read its SKILL.md and follow the steps.
 
+## Language style
+
+- Use casual business language. Short, simple sentences.
+- No emojis, no exclamation marks, no slang.
+- Be direct and factual.
+
 ## Guiding principles
 
 - Prefer existing notes over guessing.

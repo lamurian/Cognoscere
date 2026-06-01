@@ -6,13 +6,21 @@
  *            Lightpanda headless browser, extracts result links from the
  *            rendered Markdown.  The agent then follows promising links
  *            with fetch_url for full content.
- *   Tier 2 — Searches DuckDuckGo via Lightpanda with site: filters for
- *            academic/institutional domains (site:.edu, etc.).
- *   Tier 3 — Unfiltered DuckDuckGo search via Lightpanda.
  *
- * Lightpanda fallback: If Lightpanda is unavailable, tiers 2/3 fall back
- * to DuckDuckGo's non-JS HTML page (/html/).  Tier 1 requires Lightpanda
- * since source pages are JS-rendered search portals.
+ *   Tiers 2 & 3 — DuckDuckGo search via the non-JS HTML page (/html/)
+ *            using Node.js built-in fetch().  This avoids the unreliability
+ *            of Lightpanda on JS-heavy search result pages, which often
+ *            return only navigation chrome instead of actual results.
+ *            Lightpanda is used only as a fallback if HTTP fails.
+ *
+ *   Content fetching — The extension provides fetchUrlWithFallback() which
+ *            tries Lightpanda to convert a specific URL to Markdown, then
+ *            validates the content is meaningful. If Lightpanda returns
+ *            junk (navigation-only, very short), it falls back to HTTP
+ *            fetch + HTML-to-Markdown conversion.
+ *
+ *   Tier 1 still requires Lightpanda since source pages are JS-rendered
+ *   search portals that the non-JS fallback cannot handle.
  *
  * This extension replaces the old Python-based `fetch_reputable_web` tool
  * in para-knowledge.  No Python dependencies.
@@ -274,6 +282,146 @@ async function searchTier1(
 }
 
 // ══════════════════════════════════════════════════════════════════════
+//  Content validation & fetch-with-fallback
+// ══════════════════════════════════════════════════════════════════════
+
+/**
+ * Quick check: is the rendered Markdown content meaningful?
+ * Rejects pages that are mostly navigation, very short, or metadata-only.
+ */
+function isContentMeaningful(markdown: string): boolean {
+  if (!markdown || markdown.length < 150) return false;
+
+  // Strip Markdown link/image syntax, emphasis, headers, code
+  const textOnly = markdown
+    .replace(/!?\[[^\]]*\]\([^)]*\)/g, "$1")
+    .replace(/[#*`>|_~]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (textOnly.length < 80) return false;
+
+  // Must have at least 2 sentence-ending punctuation marks
+  const sentences = (textOnly.match(/[.?!]+/g) || []).length;
+  if (sentences < 2) return false;
+
+  // Check it's not just navigation chrome by counting "nav" keywords
+  const lower = textOnly.toLowerCase();
+  const navWords = ["all", "images", "videos", "maps", "shopping",
+    "sign in", "sign up", "log in", "register", "privacy", "terms",
+    "cookies", "settings", "help", "about", "contact"];
+  const navHits = navWords.filter((w) => lower.includes(w)).length;
+
+  // If >50% of early content is nav words and total is small, it's junk
+  if (navHits > 4 && textOnly.length < 400) return false;
+
+  return true;
+}
+
+/**
+ * Simple HTML-to-Markdown conversion for the HTTP fallback path.
+ * Handles common block elements, links, emphasis, and code blocks.
+ */
+function htmlToMarkdown(html: string): string {
+  let md = html;
+
+  // Remove scripts, styles, comments, nav, header, footer
+  md = md.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "");
+  md = md.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "");
+  md = md.replace(/<!--[\s\S]*?-->/g, "");
+  md = md.replace(/<(?:nav|header|footer|aside)[^>]*>[\s\S]*?<\/(?:nav|header|footer|aside)>/gi, "");
+
+  // Block-level conversions
+  md = md.replace(/<h1[^>]*>(.*?)<\/h1>/gi, "# $1\n\n");
+  md = md.replace(/<h2[^>]*>(.*?)<\/h2>/gi, "## $1\n\n");
+  md = md.replace(/<h3[^>]*>(.*?)<\/h3>/gi, "### $1\n\n");
+  md = md.replace(/<h4[^>]*>(.*?)<\/h4>/gi, "#### $1\n\n");
+  md = md.replace(/<h5[^>]*>(.*?)<\/h5>/gi, "##### $1\n\n");
+  md = md.replace(/<h6[^>]*>(.*?)<\/h6>/gi, "###### $1\n\n");
+  md = md.replace(/<li[^>]*>(.*?)<\/li>/gi, "- $1\n");
+  md = md.replace(/<p[^>]*>(.*?)<\/p>/gi, "$1\n\n");
+  md = md.replace(/<br\s*\/?>/gi, "\n");
+  md = md.replace(/<hr\s*\/?>/gi, "\n---\n");
+  md = md.replace(/<blockquote[^>]*>(.*?)<\/blockquote>/gis, "> $1\n\n");
+  md = md.replace(/<pre[^>]*>(.*?)<\/pre>/gis, "```\n$1\n```\n\n");
+  md = md.replace(/<code[^>]*>(.*?)<\/code>/gi, "`$1`");
+
+  // Inline conversions (order matters: links before bold to avoid nested issues)
+  md = md.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*?)<\/a>/gi, "[$2]($1)");
+  md = md.replace(/<strong[^>]*>(.*?)<\/strong>/gi, "**$1**");
+  md = md.replace(/<b[^>]*>(.*?)<\/b>/gi, "**$1**");
+  md = md.replace(/<em[^>]*>(.*?)<\/em>/gi, "*$1*");
+  md = md.replace(/<i[^>]*>(.*?)<\/i>/gi, "*$1*");
+
+  // Strip remaining unknown tags
+  md = md.replace(/<[^>]*>/g, "");
+
+  // Decode common HTML entities
+  const entities: Record<string, string> = {
+    "&amp;": "&", "&lt;": "<", "&gt;": ">",
+    "&quot;": '"', "&#39;": "'", "&#x27;": "'",
+    "&nbsp;": " ", "&mdash;": "---", "&ndash;": "--",
+  };
+  for (const [enc, dec] of Object.entries(entities)) {
+    md = md.replace(new RegExp(enc, "g"), dec);
+  }
+  md = md.replace(/&#?\w+;/g, " ");
+
+  // Clean up excessive blank lines
+  md = md.replace(/\n{4,}/g, "\n\n");
+
+  return md.trim();
+}
+
+/**
+ * Fetch a specific URL and convert to Markdown, with validation and fallback.
+ *
+ * 1. Tries Lightpanda (best Markdown conversion for JS-heavy pages)
+ * 2. Validates the content is meaningful (not just nav chrome)
+ * 3. If Lightpanda output is junk, falls back to HTTP fetch + htmlToMarkdown
+ *
+ * Returns the best Markdown we could produce, or null if both failed.
+ */
+async function fetchUrlWithFallback(
+  url: string,
+  signal?: AbortSignal,
+): Promise<string | null> {
+  // Step 1: Try Lightpanda
+  const lightpandaMd = await fetchLightpanda(url, signal);
+
+  if (lightpandaMd && isContentMeaningful(lightpandaMd)) {
+    return lightpandaMd;
+  }
+
+  // Step 2: Lightpanda output was empty or junk — fall back to HTTP + HTML
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+        Accept: "text/html,application/xhtml+xml",
+      },
+      signal,
+      redirect: "follow",
+    });
+
+    if (!response.ok) return lightpandaMd;
+
+    const html = await response.text();
+    const htmlMd = htmlToMarkdown(html);
+
+    if (htmlMd && isContentMeaningful(htmlMd)) {
+      return htmlMd;
+    }
+
+    // If HTML fallback also produced junk, return the original Lightpanda output
+    return lightpandaMd || htmlMd || null;
+  } catch {
+    return lightpandaMd;
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════════
 //  DuckDuckGo helpers (used by tiers 2 & 3)
 // ══════════════════════════════════════════════════════════════════════
 
@@ -322,7 +470,9 @@ function buildDdgSiteFilters(rawPatterns: string[]): string[] {
  * Search DuckDuckGo via the non-JS HTML page.
  * Returns parsed results (title, url, snippet).
  *
- * This is the fallback path; the primary path uses Lightpanda.
+ * This is the primary path for tiers 2 & 3.  The non-JS /html/ page
+ * reliably returns structured result blocks without requiring a
+ * headless browser, avoiding the JS rendering issues of Lightpanda.
  */
 async function searchDdgHttp(
   query: string,
@@ -416,8 +566,10 @@ async function searchDdgHttp(
 }
 
 /**
- * Search DuckDuckGo via Lightpanda (primary path).
- * More reliable — renders JavaScript and supports all features.
+ * Search DuckDuckGo via Lightpanda (fallback path).
+ * Used only if the HTTP /html/ path fails.
+ * Note: DuckDuckGo's JS-rendered page often returns only navigation
+ * chrome when converted to Markdown, so this is less reliable.
  */
 async function searchDdgLightpanda(
   query: string,
@@ -457,12 +609,12 @@ async function searchTier23(
   tier: number,
   signal: AbortSignal | undefined,
 ): Promise<SearchResult[]> {
-  // Primary: Lightpanda (JS rendering, handles all features)
-  let results = await searchDdgLightpanda(query, siteFilters, signal);
+  // Primary: HTTP non-JS HTML page (reliable result parsing)
+  let results = await searchDdgHttp(query, siteFilters, signal);
 
-  // Fallback: if Lightpanda not available (returns null), use HTTP non-JS
+  // Fallback: if HTTP returned nothing, try Lightpanda
   if (results.length === 0) {
-    results = await searchDdgHttp(query, siteFilters, signal);
+    results = await searchDdgLightpanda(query, siteFilters, signal);
   }
 
   const label = tier === 2 ? "Academic" : "General Web";
@@ -572,6 +724,8 @@ export default function (pi: ExtensionAPI): void {
       "  Returns result links extracted from the rendered Markdown. Follow promising links with fetch_url.",
       "Tier 2 — DuckDuckGo filtered to academic/institutional domains (site:.edu, .ac.uk, etc.).",
       "Tier 3 — Unfiltered DuckDuckGo general web search.",
+      "Tiers 2/3 use HTTP (non-JS DuckDuckGo page) for reliable result extraction.",
+      "  Lightpanda is only tried as a fallback if HTTP fails.",
       "Auto-escalates: tier 1 → tier 2 → tier 3 if < 3 results. Pass tier: N to force a specific layer.",
       "Sources in sources.json can have a 'key' field referencing a .env variable",
       "(loaded from the local .env file, not committed to git). Reserved for future",
@@ -585,6 +739,7 @@ export default function (pi: ExtensionAPI): void {
       "Auto-escalates from curated sources (tier 1) → academic (tier 2) → general web (tier 3).",
       "For tier 1 results, use fetch_url on promising links to read full content before synthesising.",
       "Pass tier: 1, 2, or 3 to force a specific tier and skip auto-escalation.",
+      "Tiers 2 and 3 use HTTP (non-JS DuckDuckGo) for search; Lightpanda is fallback only.",
       "Cite every result with markdown footnotes (e.g. [^1]) including page title and URL.",
     ],
     parameters: Type.Object({
