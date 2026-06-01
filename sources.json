@@ -1,0 +1,102 @@
+{
+  "title": "Three-tier web search source configuration",
+  "description": "Defines curated sources for tier-1 structured search and domain filters for tier-2 academic search. Tier 3 (general web) requires no configuration.",
+
+  "tiers": [
+    {
+      "tier": 1,
+      "label": "Curated authoritative sources",
+      "description": "Structured search from specific authoritative databases and repositories. Each source is searched independently via DuckDuckGo site: filters. The site field should be the root URL; the example field shows the search URL pattern for reference.",
+      "sources": [
+        {
+          "type": "textbook.medical",
+          "name": "StatsPearls (NCBI Bookshelf)",
+          "site": "https://www.ncbi.nlm.nih.gov/books/NBK430685/",
+          "example": "https://www.ncbi.nlm.nih.gov/books/NBK430685/?term=human%20anatomy%20and%20physiology"
+        },
+        {
+          "type": "research.medical",
+          "name": "PubMed",
+          "site": "https://pubmed.ncbi.nlm.nih.gov/",
+          "example": "https://pubmed.ncbi.nlm.nih.gov/?term=resilience"
+        },
+        {
+          "type": "research.medical",
+          "name": "PubMed Central (PMC)",
+          "site": "https://www.ncbi.nlm.nih.gov/pmc/",
+          "example": "https://www.ncbi.nlm.nih.gov/pmc/?term=psychological+resilience"
+        },
+        {
+          "type": "research.medical",
+          "name": "Cochrane Library",
+          "site": "https://www.cochranelibrary.com/",
+          "example": "https://www.cochranelibrary.com/search?q=resilience"
+        },
+        {
+          "type": "research.general",
+          "name": "Google Scholar",
+          "site": "https://scholar.google.com/",
+          "example": "https://scholar.google.com/scholar?q=psychological+resilience"
+        },
+        {
+          "type": "research.general",
+          "name": "Semantic Scholar",
+          "site": "https://www.semanticscholar.org/",
+          "example": "https://www.semanticscholar.org/search?q=resilience",
+          "key": "SEMANTIC_SCHOLAR_KEY"
+        },
+        {
+          "type": "research.cs",
+          "name": "arXiv",
+          "site": "https://arxiv.org/",
+          "example": "https://arxiv.org/search/?query=reinforcement+learning&searchtype=all"
+        },
+        {
+          "type": "reference.general",
+          "name": "Wikipedia",
+          "site": "https://en.wikipedia.org/",
+          "example": "https://en.wikipedia.org/wiki/Resilience_(disambiguation)"
+        },
+        {
+          "type": "research.medical",
+          "name": "ClinicalTrials.gov",
+          "site": "https://clinicaltrials.gov/",
+          "example": "https://clinicaltrials.gov/ct2/results?term=resilience"
+        },
+        {
+          "type": "research.psychology",
+          "name": "APA PsycNet",
+          "site": "https://psycnet.apa.org/",
+          "example": "https://psycnet.apa.org/search?term=resilience"
+        }
+      ]
+    },
+    {
+      "tier": 2,
+      "label": "Academic / institutional domains",
+      "description": "Broader search filtered to academic and institutional websites. Uses DuckDuckGo with site: filters for these domain patterns.",
+      "sources": [
+        {
+          "type": "academia.general",
+          "site": ["*edu", "*ac.*"]
+        },
+        {
+          "type": "government",
+          "site": ["*.gov", "*.go.*"]
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "label": "General web",
+      "description": "Unfiltered DuckDuckGo web search. No sources needed; this is the widest net. Used automatically when tiers 1 and 2 return insufficient results.",
+      "sources": []
+    }
+  ],
+
+  "notes": {
+    "key_field": "The optional 'key' field on a source references an environment variable name in .env (e.g. 'SEMANTIC_SCHOLAR_KEY'). The value is read from the local .env file and never committed. Reserved for future direct API integrations.",
+    "site_field": "For tier 1, the 'site' field is the root URL of the source (informational; the actual search URL is built from the 'example' field). For tier 2, it is a list of domain patterns (e.g. '*.edu', '*.ac.*').",
+    "example_field": "The 'example' field shows the URL pattern used to construct a search. The web_search extension replaces the query parameter value with the user's search term, then fetches this URL via Lightpanda headless browser. The rendered Markdown is parsed for result links."
+  }
+}

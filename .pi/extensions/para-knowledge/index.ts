@@ -14,7 +14,6 @@
  *   search.ts       — BM25 search engine (tokenize, bm25TermScore, searchDocuments)
  *   tools/          — Tool handlers
  *     searchDocs.ts — search_para_docs tool
- *     webSearch.ts  — fetch_reputable_web tool
  *     createDoc.ts  — create_para_doc tool
  *     updateDoc.ts  — update_para_doc tool
  *     listTags.ts   — list_para_tags tool
@@ -34,7 +33,6 @@
  *
  * Tools:
  *   search_para_docs   — BM25-powered search by text + tags
- *   fetch_reputable_web — web search via ddgs (filtered to .edu / .ac.* / .gov)
  *   create_para_doc    — create markdown file + index it
  *   update_para_doc    — update markdown file + re-index it
  *   list_para_tags     — list all unique tags across all indexed documents
@@ -42,7 +40,6 @@
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { registerSearchDocsTool } from "./tools/searchDocs.js";
-import { registerWebSearchTool } from "./tools/webSearch.js";
 import { registerCreateDocTool } from "./tools/createDoc.js";
 import { registerUpdateDocTool } from "./tools/updateDoc.js";
 import { registerListTagsTool } from "./tools/listTags.js";
@@ -54,7 +51,6 @@ import { registerFindExistingSummaryTool } from "./tools/findExistingSummary.js"
  */
 export default function (pi: ExtensionAPI): void {
   registerSearchDocsTool(pi);
-  registerWebSearchTool(pi);
   registerCreateDocTool(pi);
   registerUpdateDocTool(pi);
   registerListTagsTool(pi);

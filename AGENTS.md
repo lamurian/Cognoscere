@@ -21,7 +21,7 @@ The agent does not invent answers. It searches, reads, and synthesises.
 
 1. Run `/skill:knowledge` to find relevant notes in Areas, Projects, Resources.
 2. Read the best-matching document(s).
-3. If none found, run `/skill:brainstorm` to clarify, then `fetch_reputable_web`.
+3. If none found, run `/skill:brainstorm` to clarify, then `web_search` (3-tier: curated sources → academic → general).
 4. Answer concisely. Cite sources.
 5. Offer to improve or save a new note.
 
@@ -40,7 +40,8 @@ Each PARA directory has its own `AGENTS.md` with specific guidance.
 
 The agent uses these extensions from `.pi/extensions/`:
 
-- `para-knowledge/index.ts` — provides `search_para_docs`, `create_para_doc`, `update_para_doc`, `fetch_reputable_web`, `list_para_tags`, `find_existing_summary`.
+- `para-knowledge/index.ts` — provides `search_para_docs`, `create_para_doc`, `update_para_doc`, `list_para_tags`, `find_existing_summary`.
+- `web-search/index.ts` — provides `web_search` (3-tier: curated Lightpanda sources → DuckDuckGo academic filters → general web). Pure TypeScript.
 - `link-summarizer/index.ts` — provides `fetch_url` which supports HTML (via Lightpanda/HTTP) and PDF (via pdftotext) content extraction.
 - `expand-bullets/index.ts` — provides `expand_bullet_points` to expand unclear bullet points or brief ideation in PARA documents into coherent, researched ideas using reputable web sources.
 - `yaml-enforcer/index.ts` — provides `validate_frontmatter`, `check_frontmatter`, and `standardize_frontmatter` tools for validating, repairing, and standardising YAML frontmatter in PARA documents. Auto-repairs frontmatter after every `create_para_doc` / `update_para_doc`.

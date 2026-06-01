@@ -16,3 +16,7 @@
 # DuckDB knowledge index (auto-created and populated from .md files)
 notes.duckdb
 notes.duckdb.wal
+
+# Sensitive environment variables
+*.env*
+!.env.example

@@ -23,7 +23,7 @@ Use the `search_para_docs` tool to find markdown files in `Areas/`, `Projects/`,
 ### 3. If no documents match
 - Inform the user that no document covers this topic yet
 - Invoke `/skill:brainstorm` to clarify and refine the question
-- Use `fetch_reputable_web` to search `.edu`, `.ac.*`, `.gov`, `.go.*`, and university websites
+- Use `web_search` (3-tier: curated sources → academic filters → general web) to find authoritative information
 - Summarise findings to the user
 - **Cite every web result using markdown footnotes** (see [Citation format](#citation-format) below)
 - Before creating a new document, **always run `list_para_tags` first** to see all existing unique tags.
@@ -60,6 +60,7 @@ See [extension reference](../../../.pi/extensions/para-knowledge/index.ts) for t
 - `search_para_docs` — search by tags and content in Areas/Projects/Resources
 - `list_para_tags` — list all unique tags across all indexed documents (run before `create_para_doc` to reuse existing tags)
 - `expand_bullet_points` — expand unclear bullet points into coherent researched paragraphs using reputable web sources (provided by `expand-bullets/index.ts`)
-- `fetch_reputable_web` — web search filtered to reputable domains
+- `web_search` — 3-tier web search (curated sources via Lightpanda → DuckDuckGo academic filters → general web).
+  See [web-search extension](../../../.pi/extensions/web-search/index.ts).
 - `create_para_doc` — create new file with YAML frontmatter
 - `update_para_doc` — update file and renew frontmatter
