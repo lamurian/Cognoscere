@@ -1,16 +1,14 @@
 ---
+title: WYSIWYG client-side editor for academic publishing
 author: Lam
 date: 2025-05-18T20:37:37+02:00
-title: WYSIWYG client-side editor for academic publishing
-source:
-- https://chatgpt.com/c/682a1dc8-5468-8006-a16a-281c0a3f1e5d
 tags:
-- LLM
-- markdown
-- publishing
-- academic
+  - LLM
+  - markdown
+  - publishing
+  - academic
+source: https://chatgpt.com/c/682a1dc8-5468-8006-a16a-281c0a3f1e5d
 ---
-
 ## 🧱 Core Architecture Overview
 
 | Component                  | Technology Choices                                                                             |

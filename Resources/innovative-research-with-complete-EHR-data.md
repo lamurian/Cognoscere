@@ -1,16 +1,14 @@
 ---
+title: Innovative research with complete EHR data
 author: Lam
 date: 2024-11-18T15:19:26+01:00
-title: Innovative research with complete EHR data
-source:
-- https://arxiv.org/pdf/2301.09767
 tags:
-- ISPOR
-- conference
-- RWD
-- EHR
+  - ISPOR
+  - conference
+  - RWD
+  - EHR
+source: https://arxiv.org/pdf/2301.09767
 ---
-
 - Main challenge: Structure and normalize all data
   - Semi-structured data
     - Diagnosis

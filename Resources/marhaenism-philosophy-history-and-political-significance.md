@@ -1,8 +1,8 @@
 ---
+title: 'Marhaenism: Philosophy, History, and Political Significance'
 author: pi
-date: 2026-06-01T03:45:19.228Z
 editor: lam
-title: Marhaenism: Philosophy, History, and Political Significance
+date: 2026-06-01T03:45:19.228Z
 tags:
   - indonesia
   - southeast-asia
@@ -13,7 +13,6 @@ tags:
   - sustainability
   - development
 ---
-
 ## Overview
 
 Marhaenism (*Marhaenisme*) is a socialist political ideology originated and developed by Sukarno, the founding president of Indonesia. It is best described as **"Marxism adapted to Indonesian conditions"** — an indigenised variant of Marxist thought that replaces the Western proletariat with the *Marhaen* (the small farmer or artisan who owns their own modest means of production but remains impoverished).[^1]

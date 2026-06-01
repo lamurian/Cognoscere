@@ -1,15 +1,14 @@
 ---
+title: 'Solarpunk Village: Real-World Case Studies'
 author: pi
-date: 2026-06-01T02:59:15.641Z
 editor: lam
-title: Solarpunk Village: Real-World Case Studies
+date: 2026-06-01T02:59:15.641Z
 tags:
   - solarpunk
   - sustainability
   - research
   - community
 ---
-
 # Solarpunk Village: Real-World Case Studies
 
 These established ecovillages are the closest real-world approximations to a solarpunk village. Each demonstrates different approaches to size, governance, infrastructure, and livelihood.

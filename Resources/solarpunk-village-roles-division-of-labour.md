@@ -1,15 +1,14 @@
 ---
+title: 'Solarpunk Village: Roles & Division of Labour'
 author: pi
-date: 2026-06-01T02:57:48.332Z
 editor: lam
-title: Solarpunk Village: Roles & Division of Labour
+date: 2026-06-01T02:57:48.332Z
 tags:
   - solarpunk
   - community
   - sustainability
   - education
 ---
-
 # Solarpunk Village: Roles & Division of Labour
 
 A solarpunk village of 50–150 people needs coverage across four domains: physical infrastructure, food & ecology, social & governance, and economy. Below is the role map, synthesised from ecovillage case studies.[^1][^2][^3]

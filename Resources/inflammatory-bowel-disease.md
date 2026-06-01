@@ -1,14 +1,12 @@
 ---
+title: Inflammatory bowel disease
 author: Lam
 date: 2024-12-02T12:48:04+01:00
-title: Inflammatory bowel disease
-source:
-- https://www.ncbi.nlm.nih.gov/books/NBK470312/
 tags:
-- medicine
-- gastrointestinal
+  - medicine
+  - gastrointestinal
+source: https://www.ncbi.nlm.nih.gov/books/NBK470312/
 ---
-
 - Inflammatory bowel disease (IBD) is a chronic inflammatory disease
 - IBD affects the gastrointestinal tract
 - IBD is divided into:

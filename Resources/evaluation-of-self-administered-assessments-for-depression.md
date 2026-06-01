@@ -1,16 +1,14 @@
 ---
+title: Evaluation of self-administered assessments for depression
 author: Lam
 date: 2024-11-25T16:47:08+01:00
-title: Evaluation of self-administered assessments for depression
-source:
-- https://chatgpt.com/share/67449bae-d570-8006-9428-f81f1df8bd7f
 tags:
-- konsulin
-- psychometric
-- self-assessment
-- depression
+  - konsulin
+  - psychometric
+  - self-assessment
+  - depression
+source: https://chatgpt.com/share/67449bae-d570-8006-9428-f81f1df8bd7f
 ---
-
 # 1. MINI (Mini-International Neuropsychiatric Interview)
 
 - Description: The MINI is a short, structured diagnostic interview designed to diagnose DSM and ICD disorders. It is typically clinician-administered but can sometimes be adapted for self-administration.
@@ -101,4 +99,4 @@ Conclusion: Good for multidimensional assessments but less diagnostic precision 
 
 # Relevant notes
 
-- [recommendations-for-self-administered-psychometric-instruments](Resources/recommendations-for-self-administered-psychometric-instruments.md) 
+- [recommendations-for-self-administered-psychometric-instruments](Resources/recommendations-for-self-administered-psychometric-instruments.md)

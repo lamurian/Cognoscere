@@ -1,17 +1,16 @@
 ---
-source_url: https://irep.ntu.ac.uk/id/eprint/8063/1/221275_PubSub2839_Sarkar.pdf
-author: pi
-date: 2026-06-01T02:23:05.467Z
-editor: lam
 title: Psychological resilience — review of definitions, concepts and theory (Fletcher & Sarkar)
+author: pi
+editor: lam
+date: 2026-06-01T02:23:05.467Z
 tags:
   - resilience
   - well-being
   - literature-review
   - paper
   - analysis
+source: https://irep.ntu.ac.uk/id/eprint/8063/1/221275_PubSub2839_Sarkar.pdf
 ---
-
 ## Source
 - **Title:** Psychological Resilience: A Review and Critique of Definitions, Concepts and Theory
 - **Authors:** David Fletcher (Loughborough University) & Mustafa Sarkar (Middlesex University)

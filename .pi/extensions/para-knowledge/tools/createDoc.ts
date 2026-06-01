@@ -1,6 +1,11 @@
 /**
  * create_para_doc tool — creates a new markdown file with YAML frontmatter
  * and inserts it into the DuckDB index (including BM25 term index).
+ *
+ * Frontmatter fields (standardised):
+ *   title, description, author, editor, date, tags, source
+ *
+ * Values are automatically YAML-quoted by formatFrontmatter.
  */
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
@@ -33,7 +38,12 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
       content: Type.String({ description: "Markdown body content" }),
       tags: Type.Array(Type.String(), { description: "Tags for frontmatter" }),
       area: Type.Optional(Area),
-      source_url: Type.Optional(Type.String({ description: "Original source URL (optional, used for dedup checks)" })),
+      description: Type.Optional(
+        Type.String({ description: "Short summary ≤ 200 characters, enriches BM25 search" }),
+      ),
+      source: Type.Optional(
+        Type.String({ description: "Original source URL (optional, exact verbatim URL)" }),
+      ),
     }),
 
     async execute(_toolCallId, params, _signal, onUpdate, ctx) {
@@ -44,19 +54,24 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
       const relPath = `${area}/${slug}.md`;
       const now = new Date().toISOString();
 
-      // ── Write file to disk (always succeeds) ──
+      // ── Build standardised frontmatter ──
       const frontmatterFields: Record<string, unknown> = {
-        author: "pi",
-        date: now,
-        editor: "lam",
         title: params.title,
+        author: "pi",
+        editor: "lam",
+        date: now,
         tags: params.tags,
       };
-      if (params.source_url && params.source_url.trim()) {
-        frontmatterFields.source_url = params.source_url.trim();
+      if (params.description && params.description.trim()) {
+        frontmatterFields.description = params.description.trim();
       }
+      if (params.source && params.source.trim()) {
+        frontmatterFields.source = params.source.trim();
+      }
+
       const fm = formatFrontmatter(frontmatterFields);
 
+      // ── Write file to disk (always succeeds) ──
       await mkdir(dirPath, { recursive: true });
       await writeFile(filePath, fm + "\n" + params.content, "utf-8");
 
@@ -73,7 +88,7 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
           async (db) => {
             await initDb(db);
 
-            // Upsert file row (include source_url)
+            // Upsert file row (include source_url and description)
             await runWithRecovery(
               db,
               `INSERT OR REPLACE INTO files (path, title, body, author, editor, created, modified, file_mtime, source_url)
@@ -86,7 +101,7 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
               now,
               now,
               now,
-              (params.source_url || null),
+              (params.source || null),
             );
 
             // Re-insert tags
@@ -95,13 +110,13 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
               await runWithRecovery(db, "INSERT INTO tags (file_path, tag) VALUES (?, ?)", relPath, tag);
             }
 
-            // Build BM25 term index
-            await runWithRecovery(db, "DELETE FROM term_index WHERE file_path = ?", relPath);
+            // Build BM25 term index (description boosts search relevance)
             const boostedTitle = Array.from(
               { length: BM25_DEFAULTS.TITLE_BOOST },
               () => params.title,
             ).join(" ");
-            const terms = tokenize(`${boostedTitle} ${params.content}`);
+            const descriptionBoost = params.description ?? "";
+            const terms = tokenize(`${boostedTitle} ${descriptionBoost} ${params.content}`);
             const tfMap = new Map<string, number>();
             for (const term of terms) {
               tfMap.set(term, (tfMap.get(term) ?? 0) + 1);
@@ -145,15 +160,23 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
         ? "🗄️ notes.duckdb — indexed"
         : "⚠️  File created but index update skipped (another session holds the lock). It will be indexed on next search.";
 
-      const sourceNote = params.source_url ? `\nSource: ${params.source_url}` : "";
+      const sourceNote = params.source ? `\nSource: ${params.source}` : "";
+      const descNote = params.description ? `\nDescription: ${params.description}` : "";
       return {
         content: [
           {
             type: "text" as const,
-            text: `${indexNote}\nCreated: ${filePath}\nTitle: ${params.title}\nTags: ${params.tags.join(", ")}${sourceNote}`,
+            text: `${indexNote}\nCreated: ${filePath}\nTitle: ${params.title}\nTags: ${params.tags.join(", ")}${descNote}${sourceNote}`,
           },
         ],
-        details: { path: filePath, title: params.title, tags: params.tags, source_url: params.source_url || null, indexOk },
+        details: {
+          path: filePath,
+          title: params.title,
+          description: params.description ?? null,
+          tags: params.tags,
+          source: params.source ?? null,
+          indexOk,
+        },
       };
     },
   });

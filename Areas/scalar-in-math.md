@@ -1,14 +1,12 @@
 ---
+title: Scalar in math
 author: Lam
 date: 2024-11-14T17:48:50+01:00
-title: Scalar in math
-source:
-- https://web.stanford.edu/class/nbio228-01/handouts/Ch4_Linear_Algebra.pdf
 tags:
-- mathematics
-- algebra
+  - mathematics
+  - algebra
+source: https://web.stanford.edu/class/nbio228-01/handouts/Ch4_Linear_Algebra.pdf
 ---
-
 Scalar is a number. Any constant or its abstract representation is a scalar in math. A scalar is a unit of measure of anything, i.e. a *magnitude*. In essence, scalar is a building block with a computational property. The computational property makes it possible to perform mathematics operation on a scalar. For example, let there be a scalar of $1$, then we can perform addition, subtraction, multiplication, or division, to name a few among others.
 
 # Mathematics operation
@@ -26,4 +24,4 @@ The mathematics operation in a scalar is straightforward, as we only have to per
 - [complex-numbers](Areas/complex-numbers.md) 
 - [vector-in-math](Areas/vector-in-math.md) 
 - [matrix-in-math](Areas/matrix-in-math.md) 
-- [array-in-math](Areas/array-in-math.md) 
+- [array-in-math](Areas/array-in-math.md)

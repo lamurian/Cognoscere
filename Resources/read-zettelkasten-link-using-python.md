@@ -1,13 +1,11 @@
 ---
+title: Read Zettelkasten link using Python
 author: Lam
 date: 2024-10-30T08:13:11+01:00
-title: Read Zettelkasten link using Python
-source:
-  - https://chatgpt.com/share/6721dbbb-b510-8006-8432-cb6b532d4540
 tags:
   - note-taking
+source: https://chatgpt.com/share/6721dbbb-b510-8006-8432-cb6b532d4540
 ---
-
 # Introduction
 
 To automate the process of extracting links between notes and generating `network.json`, we can create a Python script that scans all markdown files in a specified directory, identifies links, and outputs a JSON file that represents the note network. Here’s how you can set it up:

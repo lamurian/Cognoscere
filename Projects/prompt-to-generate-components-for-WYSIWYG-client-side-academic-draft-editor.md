@@ -1,16 +1,14 @@
 ---
+title: Prompt to generate components for WYSIWYG client side academic draft editor
 author: Lam
 date: 2025-05-25T14:23:46+02:00
-title: Prompt to generate components for WYSIWYG client side academic draft editor
-source:
-- https://chatgpt.com/share/68330bfc-3d58-8006-86d9-cb24321a8370
 tags:
-- LLM
-- academic
-- publishing
-- markdown
+  - LLM
+  - academic
+  - publishing
+  - markdown
+source: https://chatgpt.com/share/68330bfc-3d58-8006-86d9-cb24321a8370
 ---
-
 # Phase 1: ORCID Authentication (MVP)
 
 ````

@@ -1,8 +1,8 @@
 ---
+title: 'Indonesia 1965: The Destruction of Marhaenism and External Interventions'
 author: pi
-date: 2026-06-01T03:46:18.197Z
 editor: lam
-title: Indonesia 1965: The Destruction of Marhaenism and External Interventions
+date: 2026-06-01T03:46:18.197Z
 tags:
   - indonesia
   - southeast-asia
@@ -11,7 +11,6 @@ tags:
   - community
   - resilience
 ---
-
 ## Overview
 
 The destruction of Marhaenism — and the regime that embodied it — was not solely an internal Indonesian affair. The **1965–1966 massacres** and the transition to Suharto's New Order took place within the wider context of the **Cold War**, with the **United States** (and to a lesser extent Britain and Australia) actively supporting the Army's campaign against the PKI and Sukarno.[^1]

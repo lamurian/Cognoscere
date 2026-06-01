@@ -1,14 +1,12 @@
 ---
+title: Elements to represent Konsulin brand identity
 author: Lam
 date: 2024-11-30T22:02:35+01:00
-title: Elements to represent Konsulin brand identity
-source:
-- https://chatgpt.com/share/674b7d96-f3f8-8006-85c2-9dffa8c3be50
 tags:
-- konsulin
-- brand-identity
+  - konsulin
+  - brand-identity
+source: https://chatgpt.com/share/674b7d96-f3f8-8006-85c2-9dffa8c3be50
 ---
-
 # Brand Story  
 
 - Purpose: The story behind Konsulin is a powerful way to connect emotionally with your audience. It gives meaning and purpose to the brand beyond just services or products, helping users understand the "why" behind your mission.
@@ -85,4 +83,4 @@ tags:
 
 # Relevant notes
 
-- [prompt-to-formulate-Konsulin-brand-identity](Projects/prompt-to-formulate-Konsulin-brand-identity.md) 
+- [prompt-to-formulate-Konsulin-brand-identity](Projects/prompt-to-formulate-Konsulin-brand-identity.md)

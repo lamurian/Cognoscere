@@ -1,15 +1,14 @@
 ---
+title: 'Solarpunk Village: Population & Scaling'
 author: pi
-date: 2026-06-01T02:57:31.815Z
 editor: lam
-title: Solarpunk Village: Population & Scaling
+date: 2026-06-01T02:57:31.815Z
 tags:
   - solarpunk
   - community
   - research
   - sustainability
 ---
-
 # Solarpunk Village: Population & Scaling
 
 Optimal population sizes for a solarpunk village, based on academic research on human group sizes and ecovillage data.

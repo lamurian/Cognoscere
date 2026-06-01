@@ -1,15 +1,13 @@
 ---
+title: European health data space
 author: Lam
 date: 2024-11-18T11:25:51+01:00
-title: European health data space
-source:
-- https://health.ec.europa.eu/ehealth-digital-health-and-care/european-health-data-space_en
 tags:
-- ISPOR
-- conference
-- RWD
+  - ISPOR
+  - conference
+  - RWD
+source: https://health.ec.europa.eu/ehealth-digital-health-and-care/european-health-data-space_en
 ---
-
 # European health data space legislation^[https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52022PC0197]
 
 - About 200 pages of legislation

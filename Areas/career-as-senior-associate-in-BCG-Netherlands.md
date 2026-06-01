@@ -1,14 +1,12 @@
 ---
+title: Career as senior associate in BCG Netherlands
 author: Lam
 date: 2024-11-27T00:48:33+01:00
-title: Career as senior associate in BCG Netherlands
-source:
-- https://careers.bcg.com/global/en/job/26701/Senior-Associate-Netherlands
 tags:
-- career
-- consulting
+  - career
+  - consulting
+source: https://careers.bcg.com/global/en/job/26701/Senior-Associate-Netherlands
 ---
-
 # Key responsibilities
 
 As a Senior Associate at BCG, you'll play a pivotal role in collaborative teams, identifying, developing, and implementing solutions for client challenges. You’ll embark on a journey of exploration and innovation, pushing the boundaries to drive impactful change.  
@@ -136,4 +134,4 @@ Your portfolio should include **5 projects** addressing BCG’s core competencie
 # Relevant notes
 
 - [course-to-take-to-pursue-a-career-as-a-product-manager](Areas/course-to-take-to-pursue-a-career-as-a-product-manager.md) 
-- [GPT-prompt-to-aid-in-looking-for-a-job](Resources/GPT-prompt-to-aid-in-looking-for-a-job.md) 
+- [GPT-prompt-to-aid-in-looking-for-a-job](Resources/GPT-prompt-to-aid-in-looking-for-a-job.md)

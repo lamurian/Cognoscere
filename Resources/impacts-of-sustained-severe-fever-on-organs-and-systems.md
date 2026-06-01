@@ -1,19 +1,17 @@
 ---
+title: Impacts of sustained severe fever on organs and systems
 author: Lam
 date: 2024-12-02T16:01:09+01:00
-title: Impacts of sustained severe fever on organs and systems
-source:
-- https://www.ncbi.nlm.nih.gov/books/NBK562334/
 tags:
-- medicine
-- complication
-- nervous-system
-- gastrointestinal
-- cardiovascular
-- urinary-system
-- hematology-system
+  - medicine
+  - complication
+  - nervous-system
+  - gastrointestinal
+  - cardiovascular
+  - urinary-system
+  - hematology-system
+source: https://www.ncbi.nlm.nih.gov/books/NBK562334/
 ---
-
 A sustained and severely elevated fever can cause lethal impacts to:
 
 # Brain

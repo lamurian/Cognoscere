@@ -1,14 +1,13 @@
 ---
+title: 'Solarpunk Village: Governance & Decision-Making'
 author: pi
-date: 2026-06-01T02:58:05.668Z
 editor: lam
-title: Solarpunk Village: Governance & Decision-Making
+date: 2026-06-01T02:58:05.668Z
 tags:
   - solarpunk
   - community
   - sustainability
 ---
-
 # Solarpunk Village: Governance & Decision-Making
 
 Governance is the backbone of a solarpunk village. Without robust, trusted decision-making processes, communities fracture. This document synthesises governance practices from established ecovillages.[^1][^2][^3]

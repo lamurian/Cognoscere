@@ -1,16 +1,14 @@
 ---
+title: Prompt to generate Konsulin call to action
 author: Lam
 date: 2024-11-25T16:38:07+01:00
-title: Prompt to generate Konsulin call to action
-source:
-- https://chatgpt.com/share/67449a00-dccc-8006-8f5f-7d061e730206
 tags:
-- LLM
-- konsulin
-- pain-point
-- social-media
+  - LLM
+  - konsulin
+  - pain-point
+  - social-media
+source: https://chatgpt.com/share/67449a00-dccc-8006-8f5f-7d061e730206
 ---
-
 Kamu adalah seorang copywriter yang empatik dan inspiratif untuk platform catatan kesehatan mental pribadi bernama "Konsulin." Tugasmu adalah membuat call-to-action (CTA) yang berfokus pada penghargaan (reward-focused), untuk mengajak audiens terlibat dengan konten tentang journaling, kesadaran kesehatan mental, dan alat screening dini. CTA ini harus:  
 
 1. Menyentuh kebutuhan emosional audiens dan menonjolkan manfaat yang akan mereka rasakan.  
@@ -30,4 +28,4 @@ Buatkan 5 CTA yang ramah dan berbasis penghargaan (reward-focused) untuk kampany
 2. "Mulai langkah kecil untuk kebahagiaan besar—download prompt journaling-nya gratis!"  
 3. "Cari waktu buat dirimu sendiri—ayo unduh panduan journaling ini, gratis untuk kamu!"  
 4. "Temukan cara baru untuk memahami pikiranmu—download journaling guide ini gratis, yuk!"  
-5. "Journaling bisa jadi terapi sederhana buat kamu—unduh panduannya sekarang, gratis kok!"  
+5. "Journaling bisa jadi terapi sederhana buat kamu—unduh panduannya sekarang, gratis kok!"

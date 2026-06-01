@@ -1,14 +1,12 @@
 ---
+title: Career as digital strategy associate in BCG Netherlands
 author: Lam
 date: 2024-11-27T01:38:58+01:00
-title: Career as digital strategy associate in BCG Netherlands
-source:
-- https://careers.bcg.com/global/en/job/26139/Digital-Strategy-Associate-Technology-and-Digital-Advantage
 tags:
-- career
-- consulting
+  - career
+  - consulting
+source: https://careers.bcg.com/global/en/job/26139/Digital-Strategy-Associate-Technology-and-Digital-Advantage
 ---
-
 # Key responsibilities
 
 You will apply your consulting skills to strategic digital, technology, and digital transformation questions. You'll use your expertise and generalist consulting skillset to help CEOs and their teams solve their most pressing challenges, and think about how digital and technology will change the shape of their business. You will be given end-to-end responsibility for the larger and more complex 'modules' within a BCG project and begin to develop specialized knowledge to help you solve our clients' problems.
@@ -98,4 +96,4 @@ At the end of this 6-month learning plan, your LinkedIn profile will reflect bot
 # Relevant notes
 
 - [course-to-take-to-pursue-a-career-as-a-product-manager](Areas/course-to-take-to-pursue-a-career-as-a-product-manager.md) 
-- [GPT-prompt-to-aid-in-looking-for-a-job](Resources/GPT-prompt-to-aid-in-looking-for-a-job.md) 
+- [GPT-prompt-to-aid-in-looking-for-a-job](Resources/GPT-prompt-to-aid-in-looking-for-a-job.md)

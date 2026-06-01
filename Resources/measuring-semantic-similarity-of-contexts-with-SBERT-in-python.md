@@ -1,16 +1,14 @@
 ---
+title: Measuring semantic similarity of contexts with SBERT in python
 author: Lam
 date: 2024-11-29T20:32:09+01:00
-title: Measuring semantic similarity of contexts with SBERT in python
-source:
-- https://chatgpt.com/share/674a172a-5f88-8006-b361-88055a2b8ca3
 tags:
-- LLM
-- NLP
-- embedding
-- python
+  - LLM
+  - NLP
+  - embedding
+  - python
+source: https://chatgpt.com/share/674a172a-5f88-8006-b361-88055a2b8ca3
 ---
-
 Here's a practical step-by-step guide to compute similarity between the example phrases using contextual embeddings with Sentence-BERT (SBERT), a model from Hugging Face Transformers:
 
 ---
@@ -108,4 +106,4 @@ tensor([[1.0000, 0.3825, 0.7643],
 
 - [measuring-phrase-and-word-similarity](Resources/measuring-phrase-and-word-similarity.md) 
 - [measuring-semantic-similarity-of-contexts](Resources/measuring-semantic-similarity-of-contexts.md) 
-- [measuring-semantic-similarity-of-contexts-with-SBERT-in-R](Resources/measuring-semantic-similarity-of-contexts-with-SBERT-in-R.md) 
+- [measuring-semantic-similarity-of-contexts-with-SBERT-in-R](Resources/measuring-semantic-similarity-of-contexts-with-SBERT-in-R.md)

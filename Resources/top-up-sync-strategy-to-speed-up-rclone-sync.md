@@ -1,14 +1,12 @@
 ---
+title: Top-up sync strategy to speed up rclone sync
 author: Lam
 date: 2024-12-12T01:58:56+01:00
-title: Top-up sync strategy to speed up rclone sync
-source:
-- https://forum.rclone.org/t/strageties-for-speeding-up-rclone-sync-times/20588/10
 tags:
-- tech
-- backup
+  - tech
+  - backup
+source: https://forum.rclone.org/t/strageties-for-speeding-up-rclone-sync-times/20588/10
 ---
-
 - When there are too many files to check, `rclone` will spend a lot of tim
 - Even though the files being sent is very small, `rclone` will keep on checking all *other* files
 - The solution would be to limit the sync and check

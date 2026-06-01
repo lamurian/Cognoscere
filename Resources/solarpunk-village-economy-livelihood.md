@@ -1,8 +1,8 @@
 ---
+title: 'Solarpunk Village: Economy & Livelihood'
 author: pi
-date: 2026-06-01T02:58:58.523Z
 editor: lam
-title: Solarpunk Village: Economy & Livelihood
+date: 2026-06-01T02:58:58.523Z
 tags:
   - solarpunk
   - economy
@@ -10,7 +10,6 @@ tags:
   - community
   - sustainability
 ---
-
 # Solarpunk Village: Economy & Livelihood
 
 A solarpunk village sits within a **post-growth, regenerative economy**. Work is organised around livelihood, not profit maximisation. Surplus is reinvested in community and ecological restoration.[^1][^2]

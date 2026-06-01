@@ -1,9 +1,8 @@
 ---
-source_url: https://arxiv.org/pdf/2604.25850
+title: 'Agentic Harness Engineering: Observability-Driven Automatic Evolution of Coding-Agent Harnesses'
 author: pi
-date: 2026-06-01T01:42:08.383Z
 editor: lam
-title: Agentic Harness Engineering: Observability-Driven Automatic Evolution of Coding-Agent Harnesses
+date: 2026-06-01T01:42:08.383Z
 tags:
   - LLM
   - agent
@@ -11,8 +10,8 @@ tags:
   - research
   - paper
   - harness-engineering
+source: https://arxiv.org/pdf/2604.25850
 ---
-
 ## Source
 - **Title:** Agentic Harness Engineering: Observability-Driven Automatic Evolution of Coding-Agent Harnesses
 - **Authors:** Jiahang Lin, Shichun Liu, Chengjun Pan, Lizhi Lin, Shihan Dou, Zhiheng Xi, Xuanjing Huang, Hang Yan, Zhenhua Han, Tao Gui, Yu-Gang Jiang

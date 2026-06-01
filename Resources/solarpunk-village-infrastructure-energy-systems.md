@@ -1,14 +1,13 @@
 ---
+title: 'Solarpunk Village: Infrastructure & Energy Systems'
 author: pi
-date: 2026-06-01T02:58:24.556Z
 editor: lam
-title: Solarpunk Village: Infrastructure & Energy Systems
+date: 2026-06-01T02:58:24.556Z
 tags:
   - solarpunk
   - sustainability
   - environment
 ---
-
 # Solarpunk Village: Infrastructure & Energy Systems
 
 Physical infrastructure for a solarpunk village is designed for **regenerative integration** with the local ecosystem, not extraction or domination of it. Buildings, energy, water, and transport all embody solarpunk aesthetics and values.[^1][^2][^3]

@@ -1,16 +1,14 @@
 ---
+title: Development roadmap WYSIWYG editor for an academic publishing suite
 author: Lam
 date: 2025-05-20T12:22:21+02:00
-title: Development roadmap WYSIWYG editor for an academic publishing suite
-source:
-- https://chatgpt.com/c/682a1dc8-5468-8006-a16a-281c0a3f1e5d
 tags:
-- LLM
-- academic
-- publishing
-- markdown
+  - LLM
+  - academic
+  - publishing
+  - markdown
+source: https://chatgpt.com/c/682a1dc8-5468-8006-a16a-281c0a3f1e5d
 ---
-
 [Related note](Projects/WYSIWYG-client-side-editor-for-academic-publishing.md).
 
 ### Phase 1: ORCID Authentication (MVP)

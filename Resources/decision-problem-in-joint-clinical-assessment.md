@@ -1,15 +1,13 @@
 ---
+title: Decision problem in joint clinical assessment
 author: Lam
 date: 2024-11-19T17:11:02+01:00
-title: Decision problem in joint clinical assessment
-source:
-- https://chatgpt.com/share/673cc25f-9b44-8006-98dc-347125104fe5 
 tags:
-- ISPOR
-- conference
-- RCT
+  - ISPOR
+  - conference
+  - RCT
+source: https://chatgpt.com/share/673cc25f-9b44-8006-98dc-347125104fe5
 ---
-
 - Cross-over in RCT creates complexity and introduces bias $\to$ Requires external control studies
 - EU HTA CG guidance on external control studies has limited guidance on the methods of incorporating ITC or RWD
 - Before incorporating RWD, it is important to quantify the bias
@@ -88,4 +86,4 @@ By systematically addressing these aspects, health economists and researchers ca
 
 # Relevant notes
 
-- [joint-clinical-assessment](Resources/joint-clinical-assessment.md) 
+- [joint-clinical-assessment](Resources/joint-clinical-assessment.md)

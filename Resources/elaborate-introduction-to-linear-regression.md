@@ -1,16 +1,13 @@
 ---
+title: Elaborate introduction to linear regression
 author: Lam
 date: 2024-11-27T13:01:57+01:00
-title: Elaborate introduction to linear regression
-source:
-- https://qingys.quarto.pub/introduction-to-linear-regression
-- https://chatgpt.com/share/67470960-1578-8006-88b8-40e837805880
 tags:
-- statistics
-- mathematics
-- model
+  - statistics
+  - mathematics
+  - model
+source: https://qingys.quarto.pub/introduction-to-linear-regression
 ---
-
 # Basic Concept of Linear Regression
 
 Linear regression is a fundamental statistical technique used to model the relationship between a dependent variable $y_i$ and an independent variable $x_i$. The relationship is expressed as:
@@ -91,4 +88,4 @@ This text provides a roadmap from classical regression modeling to modern statis
 
 # Relevant notes
 
-- [introduction-to-linear-regression](Resources/introduction-to-linear-regression.md) 
+- [introduction-to-linear-regression](Resources/introduction-to-linear-regression.md)

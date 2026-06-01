@@ -1,8 +1,8 @@
 ---
+title: 'Solarpunk and Marhaenism: Points of Convergence'
 author: pi
-date: 2026-06-01T03:11:42.534Z
 editor: lam
-title: Solarpunk and Marhaenism: Points of Convergence
+date: 2026-06-01T03:11:42.534Z
 tags:
   - solarpunk
   - sustainability
@@ -14,7 +14,6 @@ tags:
   - resilience
   - well-being
 ---
-
 ## Solarpunk and Marhaenism: A Comparative Synthesis
 
 Solarpunk (a 21st-century global cultural movement imagining a sustainable, equitable future) and Marhaenism (a mid-20th-century Indonesian political ideology developed by Sukarno) emerged from vastly different times and places. Yet they share profound structural affinities — enough that Marhaenism can be seen as a Global South precursor to many principles solarpunk now champions.[^1][^3]

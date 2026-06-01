@@ -1,16 +1,14 @@
 ---
+title: Instruction to generate prompts for developing WYSIWYG client side academic draft editor
 author: Lam
 date: 2025-05-25T14:09:39+02:00
-title: Instruction to generate prompts for developing WYSIWYG client side academic draft editor
-source:
-- https://chatgpt.com/share/6833089a-89cc-8006-b2fc-320375f4c49a
 tags:
-- LLM
-- academic
-- publishing
-- markdown
+  - LLM
+  - academic
+  - publishing
+  - markdown
+source: https://chatgpt.com/share/6833089a-89cc-8006-b2fc-320375f4c49a
 ---
-
 ## ✅ Phase 1 Instruction: ORCID Authentication (MVP)
 
 ### **Context**

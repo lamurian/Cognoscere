@@ -1,15 +1,14 @@
 ---
+title: 'Solarpunk Village: Implementation Roadmap'
 author: pi
-date: 2026-06-01T02:59:36.461Z
 editor: lam
-title: Solarpunk Village: Implementation Roadmap
+date: 2026-06-01T02:59:36.461Z
 tags:
   - solarpunk
   - community
   - sustainability
   - education
 ---
-
 # Solarpunk Village: Implementation Roadmap
 
 A phased, decade-long pathway from idea to mature solarpunk village, synthesised from ecovillage founding stories and academic analysis.[^1][^2][^3]

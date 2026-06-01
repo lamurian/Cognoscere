@@ -1,15 +1,13 @@
 ---
+title: Co-occurrences probability dependent events
 author: Lam
 date: 2024-10-21T02:24:26+02:00
-title: Co-occurrences probability dependent events
-source:
-  - https://chatgpt.com/share/67159f01-b710-8006-bc1f-ce8093ec9297
 tags:
   - statistics
   - probability
   - mathematics
+source: https://chatgpt.com/share/67159f01-b710-8006-bc1f-ce8093ec9297
 ---
-
 If events $A$ and $B$ are conditionally interrelated, meaning that the occurrence of one event affects the probability of the other, we need to use conditional probability to calculate the probability that both events $A$ and $B$ occur for the same object $O$.
 
 In this case, the probability of both $A$ and $B$ occurring is given by the formula for joint probability of dependent events:

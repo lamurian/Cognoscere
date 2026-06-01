@@ -1,8 +1,8 @@
 ---
+title: 'Solarpunk: A Vision for a Sustainable Future'
 author: pi
-date: 2026-06-01T02:46:25.685Z
 editor: lam
-title: Solarpunk: A Vision for a Sustainable Future
+date: 2026-06-01T02:46:25.685Z
 tags:
   - sustainability
   - climate
@@ -11,7 +11,6 @@ tags:
   - literature
   - solarpunk
 ---
-
 ## What is Solarpunk?
 
 Solarpunk is a cultural movement — spanning art, literature, architecture, activism, and education — that imagines a hopeful, sustainable future for humanity. Coined around 2008, it emerged as a response to the ubiquity of dystopian climate narratives (like *Mad Max*, *The Road*, *Snowpiercer*) that leave people feeling hopeless and paralyzed.[^1]

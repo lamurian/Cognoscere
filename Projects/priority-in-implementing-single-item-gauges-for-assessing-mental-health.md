@@ -1,16 +1,14 @@
 ---
+title: Priority in implementing single-item gauges for assessing mental health
 author: Lam
 date: 2024-11-25T17:00:35+01:00
-title: Priority in implementing single-item gauges for assessing mental health
-source:
-- https://chatgpt.com/share/67449bae-d570-8006-9428-f81f1df8bd7f
 tags:
-- konsulin
-- psychometric
-- self-assessment
-- well-being
+  - konsulin
+  - psychometric
+  - self-assessment
+  - well-being
+source: https://chatgpt.com/share/67449bae-d570-8006-9428-f81f1df8bd7f
 ---
-
 To recommend the most suitable **one-item instrument** for measuring well-being, I will consider factors like **simplicity**, **focus**, **reliability**, and **utility** in everyday settings. Here's the ordered list of instruments based on my recommendation:
 
 # **1. Cantril's Ladder (Self-Rated Well-Being)**
@@ -63,4 +61,4 @@ To recommend the most suitable **one-item instrument** for measuring well-being,
 - [recommendations-for-self-administered-psychometric-instruments](Resources/recommendations-for-self-administered-psychometric-instruments.md) 
 - [evaluation-of-self-administered-assessments-for-depression](Resources/evaluation-of-self-administered-assessments-for-depression.md) 
 - [periodic-self-administered-measures-of-well-being](Resources/periodic-self-administered-measures-of-well-being.md) 
-- [comparison-of-single-item-gauges-for-assessing-mental-health](Resources/comparison-of-single-item-gauges-for-assessing-mental-health.md) 
+- [comparison-of-single-item-gauges-for-assessing-mental-health](Resources/comparison-of-single-item-gauges-for-assessing-mental-health.md)

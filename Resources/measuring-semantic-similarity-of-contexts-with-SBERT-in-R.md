@@ -1,16 +1,14 @@
 ---
+title: Measuring semantic similarity of contexts with SBERT in R
 author: Lam
 date: 2024-11-29T20:32:32+01:00
-title: Measuring semantic similarity of contexts with SBERT in R
-source:
-- https://chatgpt.com/share/674a172a-5f88-8006-b361-88055a2b8ca3
 tags:
-- LLM
-- NLP
-- embedding
-- R
+  - LLM
+  - NLP
+  - embedding
+  - R
+source: https://chatgpt.com/share/674a172a-5f88-8006-b361-88055a2b8ca3
 ---
-
 Note: For some reason, this code does not run and returns the following error:
 
 ```
@@ -89,4 +87,4 @@ coping strategy           0.764                  0.429           1.000
 
 - [measuring-phrase-and-word-similarity](Resources/measuring-phrase-and-word-similarity.md) 
 - [measuring-semantic-similarity-of-contexts](Resources/measuring-semantic-similarity-of-contexts.md) 
-- [measuring-semantic-similarity-of-contexts-with-SBERT-in-python](Resources/measuring-semantic-similarity-of-contexts-with-SBERT-in-python.md) 
+- [measuring-semantic-similarity-of-contexts-with-SBERT-in-python](Resources/measuring-semantic-similarity-of-contexts-with-SBERT-in-python.md)

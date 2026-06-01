@@ -1,8 +1,8 @@
 ---
+title: 'Left–Right Political Spectrum: Global Origins and the Indonesian Context'
 author: pi
-date: 2026-06-01T07:23:37.071Z
 editor: lam
-title: Left–Right Political Spectrum: Global Origins and the Indonesian Context
+date: 2026-06-01T07:23:37.071Z
 tags:
   - indonesia
   - southeast-asia
@@ -12,7 +12,6 @@ tags:
   - economy
   - development
 ---
-
 ## Overview
 
 This is an **index note** that connects a set of atomic notes about the left–right political spectrum, its global variation, and its complex application to Indonesia. Each note below covers a distinct subtopic and is linked in a Zettelkasten network.

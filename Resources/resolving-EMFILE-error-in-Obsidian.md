@@ -1,14 +1,12 @@
 ---
+title: Resolving EMFILE error in Obsidian
 author: Lam
 date: 2024-11-25T17:18:53+01:00
-title: Resolving EMFILE error in Obsidian
-source:
-- https://forum.obsidian.md/t/obsidian-and-latte-dock-emfile-error/15306/9
 tags:
-- note-taking
-- tech
+  - note-taking
+  - tech
+source: https://forum.obsidian.md/t/obsidian-and-latte-dock-emfile-error/15306/9
 ---
-
 Issue the following command as a superuser:
 
 ```bash

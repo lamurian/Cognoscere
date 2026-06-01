@@ -1,15 +1,13 @@
 ---
+title: Purkinje cells
 author: Lam
 date: 2024-12-02T16:09:45+01:00
-title: Purkinje cells
-source:
-- https://www.ncbi.nlm.nih.gov/books/NBK545154/
 tags:
-- medicine
-- nervous-system
-- histology
+  - medicine
+  - nervous-system
+  - histology
+source: https://www.ncbi.nlm.nih.gov/books/NBK545154/
 ---
-
 - Unique type of neuron only found in he cerebellar cortex
 - Intricately branched with massive connections
 - Integrate large amounts of information

@@ -1,15 +1,14 @@
 ---
+title: 'Solarpunk Village: Food Systems & Ecology'
 author: pi
-date: 2026-06-01T02:58:41.863Z
 editor: lam
-title: Solarpunk Village: Food Systems & Ecology
+date: 2026-06-01T02:58:41.863Z
 tags:
   - solarpunk
   - sustainability
   - environment
   - resilience
 ---
-
 # Solarpunk Village: Food Systems & Ecology
 
 Food production and ecosystem restoration are deeply interwoven in a solarpunk village. The land is not divided into "agriculture" vs "nature" — instead, food systems are designed to regenerate soil, build biodiversity, and mimic natural ecosystems.[^1][^2][^3]

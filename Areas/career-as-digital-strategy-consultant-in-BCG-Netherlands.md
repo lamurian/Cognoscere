@@ -1,14 +1,12 @@
 ---
+title: Career as digital strategy consultant in BCG Netherlands
 author: Lam
 date: 2024-11-27T01:53:01+01:00
-title: Career as digital strategy consultant in BCG Netherlands
-source:
-- https://careers.bcg.com/global/en/job/26140/Digital-Strategy-Consultant-Technology-and-Digital-Advantage
 tags:
-- career
-- consulting
+  - career
+  - consulting
+source: https://careers.bcg.com/global/en/job/26140/Digital-Strategy-Consultant-Technology-and-Digital-Advantage
 ---
-
 # Key responsibilities
 
 You'll work on a variety of digital topics, applying generalist consulting skills to strategic digital & technology questions. Working closely with clients to understand their issues, you'll create strategies for change, win buy-in for your recommendations, and collaborate with fellow BCGers to transform client potential into performance. You'll help your clients answer questions such as:
@@ -105,4 +103,4 @@ This portfolio will be instrumental in demonstrating your capability to tackle r
 # Relevant notes
 
 - [course-to-take-to-pursue-a-career-as-a-product-manager](Areas/course-to-take-to-pursue-a-career-as-a-product-manager.md) 
-- [GPT-prompt-to-aid-in-looking-for-a-job](Resources/GPT-prompt-to-aid-in-looking-for-a-job.md) 
+- [GPT-prompt-to-aid-in-looking-for-a-job](Resources/GPT-prompt-to-aid-in-looking-for-a-job.md)

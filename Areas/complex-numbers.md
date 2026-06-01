@@ -1,15 +1,11 @@
 ---
+title: Complex numbers
 author: Lam
 date: 2024-11-14T18:20:47+01:00
-title: Complex numbers
-source:
-- https://www.math.uri.edu/~merino/spring06/mth562/ShortHistoryComplexNumbers2006.pdf
-- https://www.math.toronto.edu/mathnet/answers/imaghard.html
-- https://betterexplained.com/articles/intuitive-arithmetic-with-complex-numbers/
 tags:
-- mathematics
+  - mathematics
+source: https://www.math.uri.edu/~merino/spring06/mth562/ShortHistoryComplexNumbers2006.pdf
 ---
-
 # Rationale on complex numbers
 
 Complex numbers arose from the need to solve cubic equations, which has been explored by Orlando Merino.^[https://www.math.uri.edu/~merino/spring06/mth562/ShortHistoryComplexNumbers2006.pdf] I choose a simpler approach, that is based on its usability. What is the use of a complex number? Summarizing the [note on real numbers](Areas/real-numbers.md), I noticed four uses of numbers:
@@ -66,4 +62,4 @@ $$
 
 # Relevant notes
 
-[real-numbers](Areas/real-numbers.md) 
+[real-numbers](Areas/real-numbers.md)

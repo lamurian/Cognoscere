@@ -2,6 +2,11 @@
  * update_para_doc tool — updates an existing markdown file's body content,
  * renews its YAML frontmatter, and refreshes the DuckDB index (including
  * BM25 term index) inside a single transaction.
+ *
+ * Frontmatter fields (standardised):
+ *   title, description, author, editor, date, tags, source
+ *
+ * Values are automatically YAML-quoted by formatFrontmatter.
  */
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
@@ -34,7 +39,10 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
       title: Type.Optional(
         Type.String({ description: "Replacement title (omit to keep existing)" }),
       ),
-      source_url: Type.Optional(
+      description: Type.Optional(
+        Type.String({ description: "Short summary ≤ 200 characters (omit to keep existing; empty string to clear)" }),
+      ),
+      source: Type.Optional(
         Type.String({ description: "Replacement source URL (omit to keep existing; empty string to clear)" }),
       ),
     }),
@@ -49,22 +57,30 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
 
       const newTitle = params.title ?? fm.title ?? "";
       const newTags = params.tags ?? oldTags;
-      // source_url: explicit param wins (empty string → null to clear), then existing, then null
-      const newSourceUrl = params.source_url !== undefined
-        ? (params.source_url || null)
+      // description: explicit param wins (empty string → null to clear), then existing, then null
+      const newDescription = params.description !== undefined
+        ? (params.description || null)
+        : (fm.description ?? null);
+      // source: explicit param wins (empty string → null to clear), then existing, then null
+      const newSource = params.source !== undefined
+        ? (params.source || null)
         : (fm.source_url ?? null);
 
-      // ── Write updated file to disk (always succeeds) ──
+      // ── Write updated file to disk ──
       const frontmatterFields: Record<string, unknown> = {
-        author: "pi",
-        date: now,
-        editor: "lam",
         title: newTitle,
+        author: "pi",
+        editor: "lam",
+        date: now,
         tags: newTags,
       };
-      if (newSourceUrl) {
-        frontmatterFields.source_url = newSourceUrl;
+      if (newDescription) {
+        frontmatterFields.description = newDescription;
       }
+      if (newSource) {
+        frontmatterFields.source = newSource;
+      }
+
       const newFm = formatFrontmatter(frontmatterFields);
 
       await writeFile(filePath, newFm + "\n" + params.content, "utf-8");
@@ -82,7 +98,7 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
           async (db) => {
             await initDb(db);
 
-            // Update file row (include source_url)
+            // Update file row (include source and description)
             await runWithRecovery(
               db,
               "UPDATE files SET title = ?, body = ?, modified = ?, file_mtime = ?, source_url = ? WHERE path = ?",
@@ -90,7 +106,7 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
               params.content,
               now,
               now,
-              newSourceUrl,
+              newSource,
               params.path,
             );
 
@@ -100,13 +116,14 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
               await runWithRecovery(db, "INSERT INTO tags (file_path, tag) VALUES (?, ?)", params.path, tag);
             }
 
-            // Rebuild BM25 term index
+            // Rebuild BM25 term index (description boosts search relevance)
             await runWithRecovery(db, "DELETE FROM term_index WHERE file_path = ?", params.path);
             const boostedTitle = Array.from(
               { length: BM25_DEFAULTS.TITLE_BOOST },
               () => newTitle,
             ).join(" ");
-            const terms = tokenize(`${boostedTitle} ${params.content}`);
+            const descriptionBoost = newDescription ?? "";
+            const terms = tokenize(`${boostedTitle} ${descriptionBoost} ${params.content}`);
             const tfMap = new Map<string, number>();
             for (const term of terms) {
               tfMap.set(term, (tfMap.get(term) ?? 0) + 1);
@@ -150,7 +167,7 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
         ? "🗄️ notes.duckdb — updated"
         : "⚠️  File updated but index update skipped (another session holds the lock). It will be synced on next search.";
 
-      const sourceNote = newSourceUrl ? `\nSource: ${newSourceUrl}` : "";
+      const sourceNote = newSource ? `\nSource: ${newSource}` : "";
       return {
         content: [
           {
@@ -158,7 +175,7 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
             text: `${indexNote}\nUpdated: ${filePath} (frontmatter renewed).${sourceNote}`,
           },
         ],
-        details: { path: filePath, title: newTitle, source_url: newSourceUrl, indexOk },
+        details: { path: filePath, title: newTitle, description: newDescription, source: newSource, indexOk },
       };
     },
   });

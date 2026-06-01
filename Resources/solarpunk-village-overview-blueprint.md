@@ -1,15 +1,14 @@
 ---
+title: 'Solarpunk Village: Overview & Blueprint'
 author: pi
-date: 2026-06-01T02:57:16.035Z
 editor: lam
-title: Solarpunk Village: Overview & Blueprint
+date: 2026-06-01T02:57:16.035Z
 tags:
   - solarpunk
   - sustainability
   - environment
   - community
 ---
-
 # Solarpunk Village: Overview & Blueprint
 
 This document series provides a research-backed blueprint for establishing a small, community-based solarpunk village — synthesising findings from academic ecovillage studies, the Global Ecovillage Network (GEN), anthropology, and real-world case studies.

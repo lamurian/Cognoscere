@@ -1,14 +1,12 @@
 ---
+title: The epidemiology of inflammatory bowel disease
 author: Lam
 date: 2024-12-02T13:11:26+01:00
-title: The epidemiology of inflammatory bowel disease
-source:
-- https://www.ncbi.nlm.nih.gov/books/NBK470312/
 tags:
-- medicine
-- gastrointestinal
+  - medicine
+  - gastrointestinal
+source: https://www.ncbi.nlm.nih.gov/books/NBK470312/
 ---
-
 - The incidence of [IBD](Resources/inflammatory-bowel-disease.md) in North America:
   - 2.2-19.2 cases per 100,000 person-years for [UC](Resources/ulcerative-colitis.md) 
   - 3.1-20.2 cases per 100,000 person-years for [CD](Resources/Crohn-disease.md) 

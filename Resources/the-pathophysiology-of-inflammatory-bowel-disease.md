@@ -1,15 +1,13 @@
 ---
+title: The pathophysiology of inflammatory bowel disease
 author: Lam
 date: 2024-12-02T13:18:30+01:00
-title: The pathophysiology of inflammatory bowel disease
-source:
-- https://www.ncbi.nlm.nih.gov/books/NBK470312/
 tags:
-- medicine
-- gastrointestinal
-- pathophysiology
+  - medicine
+  - gastrointestinal
+  - pathophysiology
+source: https://www.ncbi.nlm.nih.gov/books/NBK470312/
 ---
-
 - Intestinal immune system is the key to the pathogenesis of [IBD](Resources/inflammatory-bowel-disease.md) 
 - The intestinal epithelium is a mucosal layer that prevents antigen or bacteria to enter the bloodstream
 - The intestinal epithelium has a sealed intercellular junctions
@@ -21,4 +19,4 @@ tags:
 # Relevant notes
 
 - [the-pathophysiology-of-ulcerative-colitis-in-IBD-cases](Resources/the-pathophysiology-of-ulcerative-colitis-in-IBD-cases.md) 
-- [the-pathophysiology-of-Crohn-disease-in-IBD-cases](Resources/the-pathophysiology-of-Crohn-disease-in-IBD-cases.md) 
+- [the-pathophysiology-of-Crohn-disease-in-IBD-cases](Resources/the-pathophysiology-of-Crohn-disease-in-IBD-cases.md)

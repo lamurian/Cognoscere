@@ -1,14 +1,12 @@
 ---
+title: AI strategy and design in healthcare sector
 author: Lam
 date: 2024-11-24T01:19:30+01:00
-title: AI strategy and design in healthcare sector
-source:
-- https://careers.ey.com/ey/job/Akron-AI-Strategy-&-Design-Healthcare-Sector-Manager-Consulting-Location-OPEN-OH-44305/1100168101/
 tags:
-- career
-- health-tech
+  - career
+  - health-tech
+source: https://careers.ey.com/ey/job/Akron-AI-Strategy-&-Design-Healthcare-Sector-Manager-Consulting-Location-OPEN-OH-44305/1100168101/
 ---
-
 # Key responsibilities
 
 You will work with a wide variety of clients to deliver the latest data science and big data technologies including GenerativeAI / LLM capabilities. Your teams will design and build scalable solutions for healthcare clients that unify, enrich, and derive insights from varied data sources across a broad technology landscape. You will help our clients navigate the complex world of modern data science, analytics, and software engineering.  We’ll look to you to provide guidance and perform technical development tasks to ensure data science solutions are properly engineered and maintained to support the ongoing business needs of our clients. 
@@ -111,4 +109,4 @@ This approach will solidify your expertise and position you as a thought leader,
 # Relevant notes
 
 - [course-to-take-to-pursue-a-career-as-a-product-manager](Areas/course-to-take-to-pursue-a-career-as-a-product-manager.md) 
-- [GPT-prompt-to-aid-in-looking-for-a-job](Resources/GPT-prompt-to-aid-in-looking-for-a-job.md) 
+- [GPT-prompt-to-aid-in-looking-for-a-job](Resources/GPT-prompt-to-aid-in-looking-for-a-job.md)

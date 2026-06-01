@@ -1,15 +1,13 @@
 ---
+title: Calculation example of copula for dependent events
 author: Lam
 date: 2024-10-21T02:29:25+02:00
-source:
-  - https://chatgpt.com/share/67159f01-b710-8006-bc1f-ce8093ec9297
-title: Calculation example of copula for dependent events
 tags:
   - statistics
   - probability
   - mathematics
+source: https://chatgpt.com/share/67159f01-b710-8006-bc1f-ce8093ec9297
 ---
-
 To calculate the joint distribution of events $A$ and $B$ using a **Gaussian copula**, we need to follow a systematic approach that integrates their marginal distributions with the dependency structure defined by the Gaussian copula. Let’s break this down step by step:
 
 ### Step 1: Defining the Marginal Distributions

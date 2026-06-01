@@ -1,17 +1,15 @@
 ---
+title: Prompt for GPT-based HE-model conceptualization
 author: Lam
 date: 2024-11-19T16:54:49+01:00
-title: Prompt for GPT-based HE-model conceptualization
-source:
-- https://chatgpt.com/share/673cb4fe-bfe8-8006-8ea0-004b13b58ef6
 tags:
-- ISPOR
-- conference
-- workshop
-- LLM
-- HE-model
+  - ISPOR
+  - conference
+  - workshop
+  - LLM
+  - HE-model
+source: https://chatgpt.com/share/673cb4fe-bfe8-8006-8ea0-004b13b58ef6
 ---
-
 # Introduction
 
 This prompt is designed as a chain of thought to conceptualize a simple health economic model. Each paragraph of the following section represents each chat that you can send to ChatGPT or other LLM.
@@ -54,4 +52,4 @@ After the first instruction, LLM will return "Please enter the remainder of the 
 
 - [navigating-LLM-for-HEOR](Resources/navigating-LLM-for-HEOR.md) 
 - [HTA-perspective-of-LLM-in-HEOR](Resources/HTA-perspective-of-LLM-in-HEOR.md) 
-- [conceptualizing-model-using-LLM](Resources/conceptualizing-model-using-LLM.md) 
+- [conceptualizing-model-using-LLM](Resources/conceptualizing-model-using-LLM.md)

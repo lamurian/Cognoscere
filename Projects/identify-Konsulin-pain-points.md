@@ -1,14 +1,12 @@
 ---
+title: Identify Konsulin pain points
 author: Lam
 date: 2024-11-25T16:19:10+01:00
-title: Identify Konsulin pain points
-source:
-- https://chatgpt.com/share/67449547-3be8-8006-9fe3-e12588cf9f9b
 tags:
-- konsulin
-- pain-point
+  - konsulin
+  - pain-point
+source: https://chatgpt.com/share/67449547-3be8-8006-9fe3-e12588cf9f9b
 ---
-
 # Prompt
 
 Identifikasi tiga pain points utama populasi pekerja berusia 20-45 tahun dengan status sosioekonomi menengah ke atas yang bisa bisnis saya selesaikan. Bisnis saya bergerak di industri health-tech, dengan produk utama personal health record. Bisnis saya bertujuan untuk menghubungkan masyarakat, peneliti, dan klinisi kesehatan mental.

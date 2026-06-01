@@ -1,14 +1,12 @@
 ---
+title: Phenotype in medicine and data science
 author: Lam
 date: 2024-11-18T15:06:27+01:00
-title: Phenotype in medicine and data science
-source:
-- https://onlinelibrary.wiley.com/doi/full/10.1002/pds.70042
 tags:
-- cohort
-- RWD
+  - cohort
+  - RWD
+source: https://onlinelibrary.wiley.com/doi/full/10.1002/pds.70042
 ---
-
 - Definition:
   - In medicine: The set of observable and measurable characteristics of an individual, and can be caused or modified by disease
   - In data science: A specification of an observable, *viz.* a changing state of an organism, e.g. from healthy to sick

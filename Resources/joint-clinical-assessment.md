@@ -1,15 +1,13 @@
 ---
+title: Joint clinical assessment
 author: Lam
 date: 2024-11-19T17:06:51+01:00
-title: Joint clinical assessment
-source:
-- https://chatgpt.com/share/673cc179-edf4-8006-92f0-65a9942e868a
 tags:
-- ISPOR
-- conference
-- RCT
+  - ISPOR
+  - conference
+  - RCT
+source: https://chatgpt.com/share/673cc179-edf4-8006-92f0-65a9942e868a
 ---
-
 - Three independent domains of certainty:
   - Internal validity: Systematic error
   - Statistical precision: Random sample variation
@@ -114,4 +112,4 @@ RCTs provide the foundational evidence for JCAs by ensuring high internal validi
 
 # Relevant notes
 
-- [decision-problem-in-joint-clinical-assessment](Resources/decision-problem-in-joint-clinical-assessment.md) 
+- [decision-problem-in-joint-clinical-assessment](Resources/decision-problem-in-joint-clinical-assessment.md)

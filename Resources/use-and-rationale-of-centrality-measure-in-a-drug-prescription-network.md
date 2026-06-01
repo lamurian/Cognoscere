@@ -1,15 +1,13 @@
 ---
+title: Use and rational of centrality measure in a drug-prescription network
 author: Lam
 date: 2024-12-05T03:05:03+01:00
-title: Use and rational of centrality measure in a drug-prescription network
-source:
-- https://chatgpt.com/share/6750daaa-6b9c-8006-aeee-5ccbdecaddde 
 tags:
-- graph-theory
-- mathematics
-- network
+  - graph-theory
+  - mathematics
+  - network
+source: https://chatgpt.com/share/6750daaa-6b9c-8006-aeee-5ccbdecaddde
 ---
-
 When analyzing a **drug prescription network**, each centrality measure provides different insights into the roles that medications play in the broader system of prescriptions. The rationale for using each centrality measure stems from what specific aspects of the network or drug relationships you are trying to understand. Here’s the rationale for using each centrality measure:
 
 ---
@@ -69,4 +67,4 @@ Each centrality measure provides a unique perspective on how drugs interact with
 
 # Relevant notes
 
-- [definition-of-graph-in-math](Resources/definition-of-graph-in-math.md) 
+- [definition-of-graph-in-math](Resources/definition-of-graph-in-math.md)

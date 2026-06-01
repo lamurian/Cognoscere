@@ -1,16 +1,12 @@
 ---
+title: Vector in maths
 author: Lam
 date: 2024-11-14T18:51:53+01:00
-title: Vector in maths
-source:
-- https://web.stanford.edu/class/nbio228-01/handouts/Ch4_Linear_Algebra.pdf
-- https://www.mathsisfun.com/algebra/vectors-dot-product.html
-- https://www.mathsisfun.com/algebra/vectors-cross-product.html
 tags:
-- mathematics
-- algebra
+  - mathematics
+  - algebra
+source: https://web.stanford.edu/class/nbio228-01/handouts/Ch4_Linear_Algebra.pdf
 ---
-
 # Introduction
 
 Vector is a point in a space ordinated by a list of scalars. Imagine that you have a two-dimensional space of $X$ and $Y$. In this space, there exist a point within $\langle x, y \rangle$ ordinate. The $\langle x, y \rangle$ ordinate is a vector in a two-dimensional space. Having an ordinate granted a vector with a *direction* in addition to a magnitude. The direction is relatively measured based on the starting point, which conveniently set to 0. For example, a vector of $\langle 3, 4 \rangle$ has a magnitude of 5 pointing to the upper-right quadrant. As another example, a vector of $\langle -3, -4 \rangle$ has a magnitude of 5 pointing to the lower-left quadrant. Suppose that we have a general vector of $\vec{v} = \langle a, b, ..., n \rangle$, then we can calculate the magnitude as $\|\vec{v}\| = \sqrt{a^2 + b^2 + ... + n^2}$.
@@ -57,5 +53,4 @@ The cross product maximizes the results when both vectors are pointing at differ
 
 - [scalar-in-math](Areas/scalar-in-math.md) 
 - [matrix-in-math](Areas/matrix-in-math.md) 
-- [array-in-math](Areas/array-in-math.md) 
-
+- [array-in-math](Areas/array-in-math.md)

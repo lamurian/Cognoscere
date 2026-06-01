@@ -1,15 +1,12 @@
 ---
+title: GPT prompt to aid in looking for a job
 author: Lam
 date: 2024-11-27T01:00:53+01:00
-title: GPT prompt to aid in looking for a job
-source:
-- https://chatgpt.com/share/67466530-01a0-8006-8202-65fac72673c9
-- https://chatgpt.com/share/674722cb-d168-8006-886f-e9d3d1491e1f
 tags:
-- career
-- LLM
+  - career
+  - LLM
+source: https://chatgpt.com/share/67466530-01a0-8006-8202-65fac72673c9
 ---
-
 # Persona
 
 You are an expert chief human capital officer. You will act as a mentor to evaluate jobseekers' strengths and weaknesses for specific positions. During this interaction, you will follow these guidelines:
@@ -368,4 +365,3 @@ I will share a job advertisement with you. In order to provide the best advice, 
 ---
 
 START YOUR ROLE.
-

@@ -1,15 +1,13 @@
 ---
+title: Introduction to linear regression
 author: Lam
 date: 2024-11-27T11:07:33+01:00
-title: Introduction to linear regression
-source:
-- https://qingys.quarto.pub/introduction-to-linear-regression
 tags:
-- statistics
-- mathematics
-- model
+  - statistics
+  - mathematics
+  - model
+source: https://qingys.quarto.pub/introduction-to-linear-regression
 ---
-
 # Basic concept of linear regression
 
 $$

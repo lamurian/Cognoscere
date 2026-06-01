@@ -1,14 +1,12 @@
 ---
+title: Visualize Zettelkasten network in Hugo
 author: Lam
 date: 2024-10-30T08:09:30+01:00
-title: Visualize Zettelkasten network in Hugo
-source:
-- https://chatgpt.com/share/6721dbbb-b510-8006-8432-cb6b532d4540
 tags:
-- hugo
-- note-taking
+  - hugo
+  - note-taking
+source: https://chatgpt.com/share/6721dbbb-b510-8006-8432-cb6b532d4540
 ---
-
 # Introduction
 
 To visualize a Zettelkasten note network in Hugo, we’ll follow a structured approach to convert your markdown notes into a network graph. This process will involve [linking your notes](Resources/read-zettelkasten-link-using-python.md) within Hugo and integrating a JavaScript-based network visualization. Here’s a step-by-step guide on how to achieve this:

@@ -1,15 +1,13 @@
 ---
+title: Machine learning model approach of linear regression
 author: Lam
 date: 2024-12-04T11:42:22+01:00
-title: Machine learning model approach of linear regression
-source:
-- https://qingys.quarto.pub/introduction-to-linear-regression/#machine-learning
 tags:
-- statistics
-- mathematics
-- model
+  - statistics
+  - mathematics
+  - model
+source: https://qingys.quarto.pub/introduction-to-linear-regression/#machine-learning
 ---
-
 - In real-world cases, linear models usually contain the exposure and covariates
 - This complex relationship is not adequately captured by the [classical approach](Resources/introduction-to-linear-regression.md) 
 - Regression with residual:

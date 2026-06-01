@@ -15,6 +15,8 @@ export const DB_FILE = "notes.duckdb";
 export interface Frontmatter {
   tags: string[];
   title?: string;
+  /** Brief summary ≤ 200 characters, enriches BM25 search. */
+  description?: string;
   author?: string;
   editor?: string;
   created?: string;
@@ -41,6 +43,8 @@ export interface ParsedFile {
   author: string;
   editor: string;
   created: string | null;
+  /** Brief summary ≤ 200 characters, enriches BM25 search. */
+  description: string | null;
   /** Original source URL the document summarises (optional). */
   source_url: string | null;
 }
@@ -53,6 +57,8 @@ export interface SearchResult {
   author: string;
   editor: string;
   file_mtime: string;
+  /** Brief summary ≤ 200 characters, enriches BM25 search. */
+  description: string | null;
   /** Original source URL the document summarises (optional). */
   source_url: string | null;
   /** Combined BM25 + tag-boost score. */

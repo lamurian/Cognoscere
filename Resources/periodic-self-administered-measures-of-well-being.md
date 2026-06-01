@@ -1,16 +1,14 @@
 ---
+title: Periodic self-administered measures of well-being
 author: Lam
 date: 2024-11-25T16:51:27+01:00
-title: Periodic self-administered measures of well-being
-source:
-- https://chatgpt.com/share/67449bae-d570-8006-9428-f81f1df8bd7f
 tags:
-- konsulin
-- psychometric
-- self-assessment
-- well-being
+  - konsulin
+  - psychometric
+  - self-assessment
+  - well-being
+source: https://chatgpt.com/share/67449bae-d570-8006-9428-f81f1df8bd7f
 ---
-
 # Comparison table
 
 Here’s a comparison table of several **valid and simple well-being measures** that are **short (less than or equal to 10 questions)** and suitable for the **general population** to track their well-being. These tools focus on various aspects of mental health and life satisfaction, from general well-being to emotional states.
@@ -43,4 +41,4 @@ Here’s a comparison table of several **valid and simple well-being measures** 
 # Relevant notes
 
 - [recommendations-for-self-administered-psychometric-instruments](Resources/recommendations-for-self-administered-psychometric-instruments.md) 
-- [evaluation-of-self-administered-assessments-for-depression](Resources/evaluation-of-self-administered-assessments-for-depression.md) 
+- [evaluation-of-self-administered-assessments-for-depression](Resources/evaluation-of-self-administered-assessments-for-depression.md)

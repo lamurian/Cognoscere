@@ -1,15 +1,13 @@
 ---
+title: Comparison of single-item gauges for assessing mental health
 author: Lam
 date: 2024-11-25T16:57:19+01:00
-title: Comparison of single-item gauges for assessing mental health
-source:
-- https://chatgpt.com/share/67449bae-d570-8006-9428-f81f1df8bd7f
 tags:
-- konsulin
-- psychometric
-- self-assessment
+  - konsulin
+  - psychometric
+  - self-assessment
+source: https://chatgpt.com/share/67449bae-d570-8006-9428-f81f1df8bd7f
 ---
-
 The **core differences** between the **Single Item Well-Being (SWB)**, **Subjective Happiness Scale (SHS)**, and **Cantril's Ladder** lie primarily in **the focus of the measurement**, **scope of well-being** captured, and **specificity** of the items. Here's a breakdown:
 
 # **1. Single Item Well-Being (SWB)**
@@ -57,4 +55,4 @@ The **core differences** between the **Single Item Well-Being (SWB)**, **Subject
 
 - [recommendations-for-self-administered-psychometric-instruments](Resources/recommendations-for-self-administered-psychometric-instruments.md) 
 - [evaluation-of-self-administered-assessments-for-depression](Resources/evaluation-of-self-administered-assessments-for-depression.md) 
-- [periodic-self-administered-measures-of-well-being](Resources/periodic-self-administered-measures-of-well-being.md) 
+- [periodic-self-administered-measures-of-well-being](Resources/periodic-self-administered-measures-of-well-being.md)

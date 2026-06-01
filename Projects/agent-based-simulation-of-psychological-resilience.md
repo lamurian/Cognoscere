@@ -1,14 +1,12 @@
 ---
+title: Agent-based simulation of psychological resilience
 author: Lam
 date: 2025-09-08T06:55:43+02:00
-title: Agent-based simulation of psychological resilience
-url:
-- https://chatgpt.com/share/68be6205-6de8-8006-9511-b6950c041416
 tags:
-- simulation
-- ABM
+  - simulation
+  - ABM
+source: https://chatgpt.com/share/68be6205-6de8-8006-9511-b6950c041416
 ---
-
 # Model Specification
 
 ```mermaid

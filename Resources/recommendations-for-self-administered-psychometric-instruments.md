@@ -1,15 +1,13 @@
 ---
+title: Recommendations for self-administered psychometric instruments
 author: Lam
 date: 2024-11-25T16:44:54+01:00
-title: Recommendations for self-administered psychometric instruments
-source:
-- https://chatgpt.com/share/67449bae-d570-8006-9428-f81f1df8bd7f
 tags:
-- konsulin
-- psychometric
-- self-assessment
+  - konsulin
+  - psychometric
+  - self-assessment
+source: https://chatgpt.com/share/67449bae-d570-8006-9428-f81f1df8bd7f
 ---
-
 # Background
 
 Using validated psychometric instruments for self-administered assessment can be a valuable tool for self-awareness, monitoring mental health, and guiding personal growth. However, there are important considerations to ensure the approach is effective and not counterproductive. Here's my recommendation:
@@ -63,4 +61,3 @@ Using validated psychometric instruments for self-administered assessment can be
 - If you notice increasing anxiety about test results or obsessively checking scores, reconsider the frequency or seek guidance.
 
 Regular, thoughtful use of validated psychometric tools can be empowering, but balance and context are crucial. If you're unsure about the process or the implications of your findings, consulting a professional ensures that you're interpreting and applying the results effectively.
-

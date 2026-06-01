@@ -1,12 +1,115 @@
 /**
  * YAML frontmatter parsing and formatting for PARA markdown files.
+ *
+ * Standardised frontmatter fields (in order):
+ *   title, description, author, editor, date, tags, source
+ *
+ * Values with YAML-special characters (colons, hashes, brackets, etc.)
+ * are automatically quoted to produce valid YAML.
  */
 
 import type { Frontmatter } from "./types.js";
 
+// ── Constants ───────────────────────────────────────────────────────
+
+/** Ordered field keys for deterministic frontmatter output. */
+const FIELD_ORDER = [
+  "title",
+  "description",
+  "author",
+  "editor",
+  "date",
+  "tags",
+  "source",
+] as const;
+
+// ── YAML quoting helpers ────────────────────────────────────────────
+
+/**
+ * Check whether a YAML plain scalar value needs quoting.
+ *
+ * Returns `true` when the value:
+ * - Is empty
+ * - Starts with a YAML special character
+ * - Contains `: ` or ` #` (ambiguous with mapping or comment)
+ * - Looks like a YAML boolean / null / number that should be kept string
+ */
+function needsYamlQuoting(value: string): boolean {
+  if (value.length === 0) return true;
+
+  // Leading special characters that make a plain scalar ambiguous
+  if (/^[\[\]\{\}\,\&\*\!\|\>\'\"\%\@\`\#\:\?\-\s]/.test(value)) return true;
+
+  // Contains colon-space or space-hash (ambiguous with mapping/comment)
+  if (/\: /.test(value) || / \#/.test(value)) return true;
+
+  // YAML booleans / nulls / numbers that should remain strings
+  if (/^(true|false|yes|no|on|off|null|undefined|~)$/i.test(value)) return true;
+  if (/^\d+(\.\d+)?$/.test(value)) return true;
+
+  return false;
+}
+
+/**
+ * Quote a value for safe YAML output.
+ *
+ * Strategy:
+ * - If the value contains single quotes, wrap in double quotes (escape internal `"`).
+ * - Otherwise, wrap in single quotes.
+ * - If quoting is not needed, return the value as-is.
+ */
+export function yamlQuote(value: string): string {
+  if (!needsYamlQuoting(value)) return value;
+
+  // Value contains single quote — use double quotes, escape internal double quotes
+  if (value.includes("'")) {
+    const escaped = value.replace(/"/g, '\\"');
+    return `"${escaped}"`;
+  }
+
+  // Use single quotes
+  return `'${value}'`;
+}
+
+// ── Quote aware strip ───────────────────────────────────────────────
+
+/**
+ * Strip surrounding quotes from a YAML value if present.
+ * Handles single-quoted, double-quoted, and unquoted values.
+ * For double-quoted strings, basic escape sequences are resolved.
+ */
+function unquoteYamlValue(raw: string): string {
+  const trimmed = raw.trim();
+
+  // Single-quoted: 'value'  —  no escape processing except '' → '
+  if (trimmed.startsWith("'") && trimmed.endsWith("'")) {
+    return trimmed.slice(1, -1).replace(/''/g, "'");
+  }
+
+  // Double-quoted: "value"  —  resolve basic escape sequences
+  if (trimmed.startsWith('"') && trimmed.endsWith('"')) {
+    const inner = trimmed.slice(1, -1);
+    return inner
+      .replace(/\\"/g, '"')
+      .replace(/\\n/g, '\n')
+      .replace(/\\t/g, '\t')
+      .replace(/\\\\/g, '\\');
+  }
+
+  return trimmed;
+}
+
+// ── Parsing ─────────────────────────────────────────────────────────
+
 /**
  * Parse YAML frontmatter from a markdown file's raw content.
  * Returns default values (empty tags) when no frontmatter is found.
+ *
+ * Handles:
+ * - Single / double quoted values
+ * - `source`, `source_url`, `url` fields (all normalised to `source_url`)
+ * - `description` field
+ * - Tag lists under `tags:`
  */
 export function parseFrontmatter(content: string): Frontmatter {
   const match = content.match(/^---\n([\s\S]*?)\n---/);
@@ -14,49 +117,99 @@ export function parseFrontmatter(content: string): Frontmatter {
 
   const result: Record<string, unknown> = {};
   const tags: string[] = [];
-  /** Tracks which YAML key we are currently inside (for context-aware parsing). */
   let currentKey = "";
 
   for (const line of match[1].split("\n")) {
-    const kv = line.match(/^(\w+):\s*(.*)/);
+    // Match key: value  (accepts alphanumeric + underscore + hyphen keys)
+    const kv = line.match(/^([\w_-]+):\s*(.*)/);
     if (kv) {
       currentKey = kv[1];
-      const val = kv[2].trim();
-      if (val && !val.startsWith("-")) result[kv[1]] = val;
+      const rawVal = kv[2].trim();
+      if (rawVal && !rawVal.startsWith("-")) {
+        // Unquote the value, then store under the canonical key
+        const val = unquoteYamlValue(rawVal);
+
+        // Normalise source aliases to source_url
+        if (currentKey === "source" || currentKey === "url") {
+          result.source_url = val;
+        } else {
+          result[currentKey] = val;
+        }
+      }
     }
-    // Allow source_url: which has an underscore
-    const kvUnderscore = line.match(/^(source_url):\s*(.*)/);
-    if (kvUnderscore) {
-      currentKey = kvUnderscore[1];
-      const val = kvUnderscore[2].trim();
-      if (val) result[kvUnderscore[1]] = val;
-    }
-    // Only treat list items as tags when we're inside the "tags:" key
+
+    // Tag list items
     const li = line.match(/^\s*-\s+(.+)/);
-    if (li && currentKey === "tags") tags.push(li[1].trim());
+    if (li && currentKey === "tags") {
+      tags.push(unquoteYamlValue(li[1].trim()));
+    }
   }
+
   result.tags = tags;
-  return result as unknown as Frontmatter;
+
+  const fm = result as unknown as Frontmatter;
+  if (typeof result.description === "string") {
+    fm.description = result.description as string;
+  }
+
+  return fm;
 }
+
+// ── Formatting ──────────────────────────────────────────────────────
 
 /**
  * Format a key-value map back into YAML frontmatter string.
- * Handles `tags` arrays specially (renders as a YAML list).
+ *
+ * - Emits fields in the standardised order: title, description, author, editor, date, tags, source
+ * - Tags are rendered as a block list
+ * - String values are automatically quoted when needed
+ * - Handles both `source` (new canonical) and `source_url` (legacy alias)
+ * - Legacy fields are emitted after the standard fields
  */
 export function formatFrontmatter(fm: Record<string, unknown>): string {
   let out = "---\n";
-  // Emit source_url early if present
-  if (typeof fm.source_url === "string" && fm.source_url) {
-    out += `source_url: ${fm.source_url}\n`;
+
+  // Determine the canonical source value (source takes priority over source_url)
+  let sourceVal: string | undefined;
+  if (typeof fm.source === "string" && fm.source) {
+    sourceVal = fm.source;
+  } else if (typeof fm.source_url === "string" && fm.source_url) {
+    sourceVal = fm.source_url;
   }
-  for (const [k, v] of Object.entries(fm)) {
-    if (k === "source_url") continue; // already emitted above
-    if (k === "tags" && Array.isArray(v) && v.length) {
-      out += "tags:\n";
-      for (const t of v) out += `  - ${t}\n`;
-    } else if (typeof v === "string") {
-      out += `${k}: ${v}\n`;
+
+  // Emit ordered fields
+  for (const key of FIELD_ORDER) {
+    if (key === "tags") {
+      const v = fm.tags;
+      if (Array.isArray(v) && v.length > 0) {
+        out += "tags:\n";
+        for (const t of v) {
+          out += `  - ${yamlQuote(String(t))}\n`;
+        }
+      }
+    } else if (key === "source") {
+      if (sourceVal) {
+        out += `source: ${yamlQuote(sourceVal)}\n`;
+      }
+    } else {
+      const v = fm[key];
+      if (typeof v === "string" && v) {
+        out += `${key}: ${yamlQuote(v)}\n`;
+      }
     }
   }
+
+  // Emit any remaining legacy fields not already covered
+  for (const [k, v] of Object.entries(fm)) {
+    if ((FIELD_ORDER as readonly string[]).includes(k)) continue;
+    if (k === "tags") continue;
+    if (k === "source") continue;
+    if (typeof v === "string" && v) {
+      // source_url and url are handled via sourceVal, skip if we already emitted source
+      if ((k === "source_url" || k === "url") && sourceVal) continue;
+      out += `${k}: ${yamlQuote(v)}\n`;
+    }
+  }
+
   return out + "---\n";
 }
