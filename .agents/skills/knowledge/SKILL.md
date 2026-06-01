@@ -29,6 +29,7 @@ Use the `search_para_docs` tool to find markdown files in `Areas/`, `Projects/`,
 - Before creating a new document, **always run `list_para_tags` first** to see all existing unique tags.
   Choose tags from that array; only create new tags when none of the existing ones fit the topic.
 - Use `create_para_doc` to save a new document with frontmatter: `author: pi`, `date`, `editor: lam`, `title`, `tags`
+- **Then, run `/skill:auto-link`** to find semantically related notes and append `[[wikilinks]]` to the new note (see [Auto-link skill](../../.agents/skills/auto-link/SKILL.md))
 
 ## Citation format
 

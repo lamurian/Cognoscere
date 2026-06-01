@@ -113,9 +113,13 @@ Recommended document structure inside `content`:
 Why this content matters or how it might be useful.
 ```
 
-### 5. Confirm with the user
+### 5. Auto-link to related notes
 
-After creating the document, tell the user:
+After creating the document, **run `/skill:auto-link`** to find semantically related notes and append `[[wikilinks]]` to the new summary (see [Auto-link skill](../../.agents/skills/auto-link/SKILL.md)).
+
+### 6. Confirm with the user
+
+After creating the document and linking it, tell the user:
 - The document title and path
 - A brief note on what was saved
 - The source URL (so they know it's tracked for dedup)
@@ -132,7 +136,8 @@ Agent actions:
 4. Summarizes into a concise markdown document
 5. `list_para_tags` → checks existing tags, picks `["ai", "research", "paper"]`
 6. `create_para_doc(title: "Paper Summary: ...", content: "...", tags: [...], area: "Resources", source_url: "https://arxiv.org/pdf/2604.25850")`
-7. Confirms with user: "Saved as Resources/paper-summary-....md (source tracked)"
+7. `/skill:auto-link` → finds semantically related notes, appends `[[wikilinks]]` to the new summary
+8. Confirms with user: "Saved as Resources/paper-summary-....md, linked to 4 related notes (source tracked)"
 
 ## Provided tools
 

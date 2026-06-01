@@ -53,6 +53,7 @@ All knowledge lookups go through the DuckDB index (`notes.duckdb`). The index au
 - `knowledge/SKILL.md` — knowledge Q&A workflow.
 - `brainstorm/SKILL.md` — clarifying vague questions.
 - `summarize-link/SKILL.md` — fetch URL → dedup check → extract (HTML/PDF) → summarize → save note.
+- `auto-link/SKILL.md` — after creating a note, find semantically related notes via LLM-powered evaluation and append `[[wikilinks]]`.
 
 When a skill is referenced, read its SKILL.md and follow the steps.
 
@@ -63,5 +64,6 @@ When a skill is referenced, read its SKILL.md and follow the steps.
 - Use `create_para_doc` when capturing new knowledge.
   **Before creating a new document, always run `list_para_tags` first** to fetch all existing unique tags.
   Choose tags from that array; only create new tags when none of the existing ones fit the topic.
+- **After creating any new document, run `/skill:auto-link`** to find semantically related notes and append `[[wikilinks]]`. This enriches the Zettelkasten network with meaningful connections.
 - Use `update_para_doc` when improving existing notes (preserves author/editor).
 - **Link summarization dedup:** Before summarising a URL, call `find_existing_summary` to check if a note already covers that link. Pass `source_url` when creating new summaries so future checks can find them.
