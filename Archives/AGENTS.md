@@ -4,8 +4,6 @@ description: Archives hold inactive items from Projects, Areas, and Resources. T
 date: 2026-05-31
 tags:
   - agent
-  - archives
-  - para
 ---
 
 # Archives

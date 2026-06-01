@@ -4,8 +4,6 @@ description: Resources hold reference materials and knowledge that support proje
 date: 2026-05-31
 tags:
   - agent
-  - resources
-  - para
 ---
 
 # Resources

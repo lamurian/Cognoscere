@@ -4,8 +4,6 @@ description: Areas are ongoing life responsibilities. This guide explains what b
 date: 2026-05-31
 tags:
   - agent
-  - areas
-  - para
 ---
 
 # Areas

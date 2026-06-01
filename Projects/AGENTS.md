@@ -4,8 +4,6 @@ description: Projects are active tasks with specific goals and deadlines. This g
 date: 2026-05-31
 tags:
   - agent
-  - projects
-  - para
 ---
 
 # Projects

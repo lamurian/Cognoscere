@@ -4,9 +4,6 @@ description: Defines how an AI agent answers questions, uses skills, leverages P
 date: 2026-06-01
 tags:
   - agent
-  - guidelines
-  - pi
-  - para
 ---
 
 # AGENTS.md
@@ -29,10 +26,10 @@ The agent does not invent answers. It searches, reads, and synthesises.
 
 PARA (Projects, Areas, Resources, Archives) organises knowledge.
 
-- **Projects** — active tasks with a goal and deadline.
-- **Areas** — ongoing life responsibilities (health, career, finance, etc.).
-- **Resources** — reference materials on any topic of interest.
-- **Archives** — inactive items from the above three.
+- Projects — active tasks with a goal and deadline.
+- Areas — ongoing life responsibilities (health, career, finance, etc.).
+- Resources — reference materials on any topic of interest.
+- Archives — inactive items from the above three.
 
 Each PARA directory has its own `AGENTS.md` with specific guidance.
 
@@ -64,8 +61,9 @@ When a skill is referenced, read its SKILL.md and follow the steps.
 
 ## Language style
 
-- Use casual business language. Short, simple sentences.
+- Use casual business English. Short, simple sentences.
 - No emojis, no exclamation marks, no slang.
+- No text formatting (bold, italics, etc.). Only headings use markdown. Use plain text, quote, and code block only.
 - Be direct and factual.
 
 ## Guiding principles
@@ -73,9 +71,9 @@ When a skill is referenced, read its SKILL.md and follow the steps.
 - Prefer existing notes over guessing.
 - Keep answers short and factual.
 - Use `create_para_doc` when capturing new knowledge.
-  **Before creating a new document, always run `list_para_tags` first** to fetch all existing unique tags.
+  Before creating a new document, always run `list_para_tags` first to fetch all existing unique tags.
   Choose tags from that array; only create new tags when none of the existing ones fit the topic.
-- **Standardised frontmatter:** When creating documents, use these standard fields:
+- Standardised frontmatter: When creating documents, use these standard fields:
   - `title` — Document title
   - `description` — Short summary ≤ 200 characters (improves BM25 search, optional but recommended)
   - `author` — Author (defaults to `pi`)
@@ -83,10 +81,10 @@ When a skill is referenced, read its SKILL.md and follow the steps.
   - `date` — ISO 8601 date with time at GMT+0
   - `tags` — Keywords describing the document
   - `source` — Exact verbatim URL for the note (optional)
-  - Values with colons, hashes, or special characters are **automatically quoted** for valid YAML.
-- **Atomic notes:** Each note serves one key idea. Split complex or multi-faceted knowledge into multiple linked atomic notes, then connect them with `[[wikilinks]]`. This keeps the knowledge base modular and reusable.
-- **After creating any new document, run `/skill:auto-link`** to find semantically related notes and append `[[wikilinks]]`. This enriches the Zettelkasten network with meaningful connections.
+  - Values with colons, hashes, or special characters are automatically quoted for valid YAML.
+- Atomic notes: Each note serves one key idea. Split complex or multi-faceted knowledge into multiple linked atomic notes, then connect them with `[[wikilinks]]`. This keeps the knowledge base modular and reusable.
+- After creating any new document, run `/skill:auto-link` to find semantically related notes and append `[[wikilinks]]`. This enriches the Zettelkasten network with meaningful connections.
 - Use `update_para_doc` when improving existing notes (preserves author/editor).
-- **Link summarization dedup:** Before summarising a URL, call `find_existing_summary` to check if a note already covers that link. Pass `source_url` when creating new summaries so future checks can find them.
-- **Repairing old files:** Run `validate_frontmatter(repair: true)` to scan and fix invalid YAML frontmatter in existing documents. Run `standardize_frontmatter(dryRun: false)` to batch-rename legacy fields (`source_url` → `source`, `url` → `source`, `created` → `date`).
-- **Always use `.ts` for extensions:** Every pi extension entry point and supporting module must use the `.ts` file extension. This ensures jiti loads the file correctly, enables type-checking via `tsc`, and keeps the codebase consistent. Single-file extensions go in `.pi/extensions/<name>.ts`; multi-file extensions live in `.pi/extensions/<name>/index.ts`. See [STANDARDS.md](STANDARDS.md) for the full coding standards and pre-commit enforcement rules.
+- Link summarization dedup: Before summarising a URL, call `find_existing_summary` to check if a note already covers that link. Pass `source_url` when creating new summaries so future checks can find them.
+- Repairing old files: Run `validate_frontmatter(repair: true)` to scan and fix invalid YAML frontmatter in existing documents. Run `standardize_frontmatter(dryRun: false)` to batch-rename legacy fields (`source_url` → `source`, `url` → `source`, `created` → `date`).
+- Always use `.ts` for extensions: Every pi extension entry point and supporting module must use the `.ts` file extension. This ensures jiti loads the file correctly, enables type-checking via `tsc`, and keeps the codebase consistent. Single-file extensions go in `.pi/extensions/<name>.ts`; multi-file extensions live in `.pi/extensions/<name>/index.ts`. See STANDARDS.md for the full coding standards and pre-commit enforcement rules.
