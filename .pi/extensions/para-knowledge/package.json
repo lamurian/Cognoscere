@@ -1,7 +1,0 @@
-{
-  "name": "para-knowledge",
-  "private": true,
-  "dependencies": {
-    "duckdb": "^1.4.0"
-  }
-}

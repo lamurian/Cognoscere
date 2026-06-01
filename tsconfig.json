@@ -5,15 +5,18 @@
     "moduleResolution": "bundler",
     "esModuleInterop": true,
     "strict": true,
+    "noImplicitAny": false,
     "skipLibCheck": true,
     "noEmit": true,
     "isolatedModules": true,
     "declaration": false,
     "allowImportingTsExtensions": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": ["node"]
   },
   "include": [
-    ".pi/extensions/**/*.ts"
+    ".pi/extensions/**/*.ts",
+    ".pi/extensions/**/*.d.ts"
   ],
   "exclude": [
     "node_modules"

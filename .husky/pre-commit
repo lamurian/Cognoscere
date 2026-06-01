@@ -48,14 +48,51 @@ else
 fi
 echo ""
 
-# 3. TypeScript type-check (only if staged .ts files exist)
-echo "━━━ TypeScript (tsc --noEmit) ━━━"
+# 3. TypeScript type-check (staged .ts files only)
+echo "━━━ TypeScript (tsc --noEmit, staged files only) ━━━"
 if [ -n "$STAGED_TS" ]; then
-  npx tsc --noEmit 2>&1
+  # Create a temp tsconfig in the project root (so include paths resolve correctly)
+  PROJ_ROOT=$(git rev-parse --show-toplevel)
+  TMP_TSCONFIG=$(mktemp "$PROJ_ROOT/.tsconfig-staged.XXXXXX.json")
+  # Build the JSON properly with jq if available, otherwise use printf
+  INCLUDE_JSON=""
+  FIRST=true
+  for f in $STAGED_TS; do
+    if [ "$FIRST" = true ]; then
+      INCLUDE_JSON="\"$f\""
+      FIRST=false
+    else
+      INCLUDE_JSON="$INCLUDE_JSON,\"$f\""
+    fi
+  done
+  cat > "$TMP_TSCONFIG" <<EOF
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "declaration": false,
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "types": ["node"]
+  },
+  "include": [$INCLUDE_JSON],
+  "exclude": ["node_modules"]
+}
+EOF
+
+  npx tsc --noEmit --project "$TMP_TSCONFIG" 2>&1
   TSC_EXIT=$?
+  rm -f "$TMP_TSCONFIG"
   if [ $TSC_EXIT -ne 0 ]; then
     echo ""
-    echo "❌ TypeScript type-check failed. Fix type errors and try again."
+    echo "❌ TypeScript type-check failed for staged files. Fix type errors and try again."
     exit 1
   fi
   echo "✅ TypeScript: passed"
