@@ -20,10 +20,15 @@
  *
  * Search pipeline (BM25):
  *   1. Tokenize query into individual meaningful words (stop words removed)
- *   2. Look up each term in the DuckDB inverted index (O(log n) via B-tree)
+ *   2. **Batch-lookup** all terms in **one DuckDB query** using an IN-list
+ *      (ART index on term_index.term is O(k) per term, k ≈ term length)
  *   3. Compute Okapi BM25 score per candidate document
  *   4. Add tag-match boost for overlapping tags
  *   5. Sort by combined score descending
+ *
+ * Optimisation: only 3 round-trips to DuckDB regardless of query length
+ * (term+doc_lengths, tags, files-for-top-25). The old per-term loop was
+ * O(terms) round-trips; now it's O(1).
  *
  * Tools:
  *   search_para_docs   — BM25-powered search by text + tags

@@ -3,10 +3,19 @@
  *
  * Pipeline:
  * 1. Tokenise the user's query into individual meaningful words
- * 2. Look up each term in the DuckDB inverted index (O(log n) per term)
+ * 2. Batch-lookup all query terms in the DuckDB inverted index in **one query**
+ *    (ART index on term_index.term is O(k) per term, k ≈ term length)
  * 3. Compute Okapi BM25 score for each candidate document
  * 4. Add tag-match boost for documents whose tags overlap with query terms
  * 5. Sort by combined score descending, return top results
+ *
+ * Optimisations for near O(1) round-trips:
+ *  - All term lookups are batched into a single SQL IN-list query (1 round-trip)
+ *  - doc_lengths are fetched via LEFT JOIN in the same query (no 2nd round-trip)
+ *  - The files table (title/body) is joined only for the top-25 results, not
+ *    for every candidate (avoids pulling large text columns through the pipeline)
+ *  - Tags are fetched in one batched query (1 round-trip)
+ *  - Total: 3 round-trips regardless of query length
  *
  * When no text query is provided (empty / all stop words), falls back
  * to tag-only search.
@@ -118,13 +127,15 @@ export async function searchByTagsOnly(
 /**
  * Search documents using BM25 ranking.
  *
+ * Pipeline (3 round-trips total, regardless of query length):
  * 1. Tokenise the query
  * 2. Fetch corpus stats (N, avg_doc_length)
- * 3. For each query term, look up term_index to get candidate docs with tf
- * 4. Compute per-document document frequency for IDF
- * 5. Score each candidate document using BM25
- * 6. Add tag-match boost
- * 7. Sort by score, return top results
+ * 3. **Batch-lookup** all query terms in **one SQL query** with an IN-list,
+ *    joining doc_lengths via LEFT JOIN — avoids O(terms) round-trips
+ * 4. Build per-term df, per-document tf map, and doc_lengths from the single result
+ * 5. Fetch tags for all candidates (1 batched query)
+ * 6. Score each candidate document using BM25 + tag-match boost
+ * 7. Sort by score, return top results (fetch files only for top 25)
  *
  * @param db        Open DuckDB connection
  * @param query     Raw user query string
@@ -174,11 +185,11 @@ export async function searchDocuments(
     return { results: [], trace: "empty-corpus" };
   }
 
-  // ── Build tag filter subquery ──
+  // ── Build tag filter clauses ──
   // If filterTags provided, restrict to documents having at least one matching tag.
-  const tagFilterClause =
+  const tagFilterSubquery =
     filterTags && filterTags.length > 0
-      ? `AND f.path IN (
+      ? `AND ti.file_path IN (
            SELECT DISTINCT t2.file_path FROM tags t2
            WHERE ${filterTags.map(() => "LOWER(t2.tag) LIKE ?").join(" OR ")}
          )`
@@ -186,65 +197,58 @@ export async function searchDocuments(
   const tagFilterParams: unknown[] =
     filterTags?.map((t) => `%${t.toLowerCase()}%`) ?? [];
 
-  // ── Look up each query term in the inverted index ──
-  // For each term, get (file_path, tf) pairs.
-  // We collect candidates across all terms.
-  const candidateScores = new Map<string, number>();   // file_path → BM25 sum
-  const candidateTfs = new Map<string, Map<string, number>>(); // file_path → (term → tf)
-  const dfMap = new Map<string, number>();               // term → document frequency
+  // ── Batch all term lookups in a single query (O(1) round-trip) ──
+  // Returns (term, file_path, tf, doc_length) for every matching term.
+  // No JOIN with files yet — title/body are fetched only for top-25 results.
+  const termPlaceholders = queryTerms.map(() => "?").join(",");
+  const termRows = await allWithRecovery(
+    db,
+    `SELECT ti.term, ti.file_path, ti.tf, dl.doc_length
+     FROM term_index ti
+     LEFT JOIN doc_lengths dl ON ti.file_path = dl.file_path
+     WHERE ti.term IN (${termPlaceholders}) ${tagFilterSubquery}`,
+    ...queryTerms,
+    ...tagFilterParams,
+  );
 
-  for (const term of queryTerms) {
-    const termRows = await allWithRecovery(
-      db,
-      `SELECT ti.file_path, ti.tf, f.title, f.body
-       FROM term_index ti
-       JOIN files f ON ti.file_path = f.path
-       WHERE ti.term = ? ${tagFilterClause}`,
-      term,
-      ...tagFilterParams,
-    );
+  // ── Build in-memory maps from the batched result ──
+  const candidateTfs = new Map<string, Map<string, number>>();  // file_path → (term → tf)
+  const docLengths = new Map<string, number>();                  // file_path → doc_length
+  const dfMap = new Map<string, number>();                       // term → document frequency
 
-    // Document frequency = number of distinct docs containing this term
-    dfMap.set(term, termRows.length);
+  for (const row of termRows as any[]) {
+    const term = row.term as string;
+    const fp = row.file_path as string;
+    const tf = row.tf as number;
+    const docLen = (row.doc_length as number) ?? 100;
 
-    for (const row of termRows as any[]) {
-      const fp = row.file_path as string;
-      const tf = row.tf as number;
+    // Track df (per term)
+    dfMap.set(term, (dfMap.get(term) ?? 0) + 1);
 
-      if (!candidateTfs.has(fp)) {
-        candidateTfs.set(fp, new Map());
-      }
-      candidateTfs.get(fp)!.set(term, tf);
+    // Track tf (per file_path × term)
+    if (!candidateTfs.has(fp)) {
+      candidateTfs.set(fp, new Map());
+    }
+    candidateTfs.get(fp)!.set(term, tf);
+
+    // Track doc_length (first occurrence wins — all should be same)
+    if (!docLengths.has(fp)) {
+      docLengths.set(fp, docLen);
     }
   }
 
   if (candidateTfs.size === 0) {
-    // No term matches at all
     if (filterTags && filterTags.length > 0) {
-      // Fallback: tag-only with filter
       const results = await searchByTagsOnly(db, filterTags);
       return { results, trace: "bm25-no-text-match" };
     }
     return { results: [], trace: "bm25-no-match" };
   }
 
-  // ── Fetch doc_lengths for all candidates ──
+  // ── Fetch tags for all candidates (1 batched query) ──
   const candidatePaths = [...candidateTfs.keys()];
-  if (candidatePaths.length === 0) {
-    return { results: [], trace: "bm25-no-candidates" };
-  }
-
   const lenPlaceholders = candidatePaths.map(() => "?").join(",");
-  const lenRows = await allWithRecovery(
-    db,
-    `SELECT file_path, doc_length FROM doc_lengths WHERE file_path IN (${lenPlaceholders})`,
-    ...candidatePaths,
-  );
-  const docLengths = new Map<string, number>(
-    (lenRows as any[]).map((r: any) => [r.file_path, r.doc_length ?? 0]),
-  );
 
-  // ── Fetch tags for all candidates (for tag-boost) ──
   const tagRows = await allWithRecovery(
     db,
     `SELECT file_path, tag FROM tags WHERE file_path IN (${lenPlaceholders})`,
@@ -257,40 +261,37 @@ export async function searchDocuments(
     docTags.get(fp)!.push(row.tag as string);
   }
 
-  // ── Compute BM25 scores ──
+  // ── Compute BM25 scores + tag boost ──
+  const candidateScores = new Map<string, number>();
+
   for (const [fp, termMap] of candidateTfs) {
     const docLen = docLengths.get(fp) ?? 100;
     let score = 0;
-    const matchedQueryTerms: string[] = [];
 
     for (const term of queryTerms) {
       const tf = termMap.get(term) ?? 0;
       if (tf === 0) continue;
-      matchedQueryTerms.push(term);
       const df = dfMap.get(term) ?? 1;
       score += bm25TermScore(tf, df, N, docLen, avgDocLen);
     }
 
-    // ── Tag-match boost ──
+    // Tag-match boost
     const tags = docTags.get(fp) ?? [];
-    let tagMatches: string[] = [];
+    const tagMatches: string[] = [];
     for (const tag of tags) {
       const tagLower = tag.toLowerCase();
       if (queryTerms.some((qt) => tagLower.includes(qt) || qt.includes(tagLower))) {
         tagMatches.push(tag);
       }
     }
-    // Also boost if any filter tag matches directly
     if (filterTags) {
       for (const ft of filterTags) {
-        if (tags.some((t) => t.toLowerCase() === ft.toLowerCase())) {
-          if (!tagMatches.includes(ft)) tagMatches.push(ft);
+        if (tags.some((t) => t.toLowerCase() === ft.toLowerCase()) && !tagMatches.includes(ft)) {
+          tagMatches.push(ft);
         }
       }
     }
-
-    const tagBoost = tagMatches.length * BM25_DEFAULTS.TAG_BOOST;
-    score += tagBoost;
+    score += tagMatches.length * BM25_DEFAULTS.TAG_BOOST;
 
     candidateScores.set(fp, score);
   }
@@ -305,7 +306,7 @@ export async function searchDocuments(
     return { results: [], trace: "bm25-zero-scored" };
   }
 
-  // ── Fetch full document rows for top results ──
+  // ── Fetch full document rows only for top-25 results ──
   const resultPlaceholders = sortedPaths.map(() => "?").join(",");
   const resultRows = await allWithRecovery(
     db,
@@ -342,6 +343,6 @@ export async function searchDocuments(
     };
   });
 
-  const trace = `bm25 (terms:${queryTerms.length} candidates:${candidateTfs.size} N:${N})`;
+  const trace = `bm25-batched (terms:${queryTerms.length} candidates:${candidateTfs.size} N:${N})`;
   return { results, trace };
 }

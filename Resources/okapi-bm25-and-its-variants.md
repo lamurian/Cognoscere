@@ -1,0 +1,164 @@
+---
+author: pi
+date: 2026-06-01T00:08:36.143Z
+editor: lam
+title: Okapi BM25 and its Variants
+tags:
+  - BM25
+  - information retrieval
+  - search
+  - ranking
+  - probabilistic model
+  - Okapi
+  - BM25F
+  - BM25+
+  - BM25L
+---
+
+## Overview
+
+Okapi BM25 (Best Match 25) is a family of probabilistic ranking functions developed by Stephen Robertson, Karen Spärck Jones, and colleagues at City University, London, in the context of the Okapi information retrieval system. It was first presented at the TREC conference in 1994 and has since become one of the most widely used document scoring functions in information retrieval.[^1]
+
+BM25 is rooted in the **Probabilistic Relevance Framework** (PRF), which estimates the probability that a document is relevant to a query based on term occurrences. Unlike simpler TF-IDF models, BM25 introduces **term-frequency saturation** and **document-length normalisation**, making it substantially more effective on real-world collections.[^2]
+
+---
+
+## The BM25 Scoring Formula
+
+Given a query Q containing terms q₁, q₂, ..., qₙ and a document D, the BM25 score is:
+
+```
+BM25(D, Q) = Σ  IDF(qᵢ) · ( tf(qᵢ, D) · (k₁ + 1) ) / ( tf(qᵢ, D) + k₁ · (1 - b + b · |D| / avgdl) )
+```
+
+Where:
+
+| Symbol | Meaning |
+|---|---|
+| `tf(qᵢ, D)` | Term frequency of qᵢ in document D |
+| `|D|` | Length of document D (in tokens) |
+| `avgdl` | Average document length across the corpus |
+| `N` | Total number of documents in the corpus |
+| `df(qᵢ)` | Number of documents containing term qᵢ (document frequency) |
+
+### Inverse Document Frequency (IDF)
+
+```
+IDF(qᵢ) = ln( (N - df(qᵢ) + 0.5) / (df(qᵢ) + 0.5) + 1 )
+```
+
+This is the Robertson-Spärck Jones IDF variant, which avoids negative values (unlike the raw log(N/df) formula) and provides a smooth saturation for very common terms.[^3]
+
+### Key Parameters
+
+- **k₁** (default ≈ 1.2–2.0) — Controls **term-frequency saturation**. At k₁ = 0, only term presence matters (binary). As k₁ → ∞, raw TF dominates. Typical optimal values lie between 1.2 and 2.0.[^4]
+- **b** (default ≈ 0.75) — Controls **document-length normalisation**. At b = 0, no length normalisation is applied (long documents are not penalised). At b = 1, full length normalisation is applied. Typical optimal values lie between 0.5 and 0.8.[^4]
+
+### Term-Frequency Saturation
+
+A key insight of BM25 is that term frequency should have **diminishing returns**: the 10th occurrence of a term is less informative than the 1st. The saturation function `tf / (tf + k₁)` ensures that TF contributions plateau, preventing a single query term from dominating the score.[^5]
+
+---
+
+## Variants
+
+### BM25F (Fielded BM25)
+
+BM25F extends BM25 to handle **structured documents** with multiple fields (e.g., title, body, anchor text, headings). Instead of a single term frequency per document, BM25F computes a **weighted combination** of field-level term frequencies:[^6]
+
+```
+tf̃(qᵢ, D) = Σ (w_f · tf_f(qᵢ, D))
+```
+
+Where `w_f` is the weight of field `f` (e.g., title might get weight 5, body weight 1), and `tf_f` is the term frequency within that field. The combined `tf̃` is then plugged into the standard BM25 formula. This allows the model to **boost terms appearing in important fields** like titles or headings.[^6]
+
+BM25F was developed by Robertson, Zaragoza, and Taylor (2004) and is implemented in search engines like MG4J, Terrier, and Elasticsearch.[^7]
+
+### BM25L (BM25 with Lower-bounding)
+
+BM25L addresses a deficiency of standard BM25: it **over-penalises very long documents**. The length normalisation component `(1 - b + b · |D| / avgdl)` can grow unboundedly for long documents, driving scores to near zero even if many query terms appear.[^8]
+
+BM25L introduces a **lower bound** on the TF normalisation by "shifting" the formula:
+
+```
+score = Σ IDF(qᵢ) · ( tf · (k₁ + 1) ) / ( tf + k₁ · (1 - b + b · |D| / avgdl) ) + δ
+```
+
+Where `δ` is a small positive constant (typically `δ = 0.5`) that ensures very long documents with many matching terms retain a non-trivial score. This was shown to improve retrieval on **long documents** such as legal cases and scientific articles.[^9]
+
+### BM25+ (BM25 with Positive Lower Bound)
+
+BM25+, proposed by Lv and Zhai (2011), takes a similar approach to BM25L but applies the **lower bound directly to the TF normalisation component** rather than the final score:[^10]
+
+```
+TF_norm = tf / ( tf + k₁ · (1 - b + b · |D| / avgdl) )
+BM25+ = Σ IDF(qᵢ) · ( TF_norm + δ )
+```
+
+This guarantees a minimum contribution from each matching term, preventing the "long document penalty" from overwhelming the score. Experiments on TREC collections showed BM25+ consistently outperforms standard BM25, especially on datasets with high variance in document length.[^10]
+
+### Other Notable Variants
+
+| Variant | Key Idea |
+|---|---|
+| **BM25B** | Uses a Bernoulli model for TF instead of the 2-Poisson, simplifying computation |
+| **BM25-adpt** | Automatically tunes k₁ per term based on collection statistics, removing the need for manual k₁ tuning[^11] |
+| **BM25-T** | Adds a third parameter k₃ for query term frequency (useful when queries contain repeated terms, as in relevance feedback) |
+| **Reciprocal Rank Fusion (RRF)** | While not a scoring variant, RRF combines BM25 scores from multiple fields/indices using reciprocal ranking |
+
+---
+
+## Comparison with TF-IDF
+
+| Aspect | TF-IDF | BM25 |
+|---|---|---|
+| TF saturation | Linear (no saturation) | Sub-linear (diminishing returns via k₁) |
+| Length normalisation | Often none or heuristic (e.g., cosine normalisation) | Principled via b parameter |
+| IDF | log(N / df) | Robertson-Spärck Jones variant (smoother, no negative values) |
+| Theoretical basis | Heuristic / vector-space | Probabilistic relevance framework |
+| Default parameters | None | k₁ = 1.2, b = 0.75 |
+
+BM25 consistently outperforms TF-IDF on standard IR benchmarks (TREC, CLEF, etc.) across diverse collections.[^2]
+
+---
+
+## Implementation Considerations
+
+### Parameter Tuning
+
+Optimal k₁ and b values vary by collection:
+- **Web collections** (short, heterogeneous): k₁ ≈ 1.2, b ≈ 0.75 (standard)
+- **Scientific articles** (long, uniform): k₁ ≈ 0.9, b ≈ 0.4
+- **Legal documents** (very long): k₁ ≈ 1.5–2.0, b ≈ 0.3–0.5
+
+These can be optimised via grid search on a held-out validation set, or from click-through data without manual annotations.[^12]
+
+### Batch Inverted-Index Lookups
+
+For efficiency, modern BM25 implementations (like the one in this PARA system) batch all query-term lookups into a single SQL `IN (...)` query against the inverted index, keeping the number of database round-trips constant regardless of query length.
+
+### Libraries and Tools
+
+- **Lucene / Elasticsearch** — BM25 is the default similarity model since Lucene 6.0[^13]
+- **Terrier** — Full BM25F support with field weights
+- **Lemur / Indri** — BM25 with pseudo-relevance feedback
+- **Whoosh** (Python) — Pure-Python BM25 implementation
+- **rank-bm25** (Python) — Lightweight BM25 implementations including BM25L and BM25+
+
+---
+
+## References
+
+[^1]: Robertson, S. E., Walker, S., Jones, K. S., Hancock-Beaulieu, M., & Gatford, M. (1994). Okapi at TREC-3. *NIST Special Publication 500-226*, 109–126. — The original BM25 TREC paper introducing the formula.
+[^2]: Robertson, S. & Zaragoza, H. (2009). The Probabilistic Relevance Framework: BM25 and Beyond. *Foundations and Trends in Information Retrieval*, 3(4), 333–389. — Comprehensive survey of BM25's theoretical foundations. [staff.city.ac.uk](https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf)
+[^3]: Spärck Jones, K., Walker, S., & Robertson, S. E. (2000). A probabilistic model of information retrieval: Development and comparative experiments. *Information Processing & Management*, 36(6), 779–840. — Detailed derivation of the IDF variant used in BM25.
+[^4]: Trotman, A., Puurula, A., & Burgess, B. (2014). Improvements to BM25 and Language Models Examined. *ADCS '14*, 58–65. — Empirical analysis of k₁ and b parameter effects.
+[^5]: Manning, C. D., Raghavan, P., & Schütze, H. (2008). *Introduction to Information Retrieval*. Cambridge University Press. — Standard textbook explanation of BM25 term saturation. [nlp.stanford.edu/IR-book](https://nlp.stanford.edu/IR-book/html/htmledition/okapi-bm25-a-non-binary-model-1.html)
+[^6]: Robertson, S., Zaragoza, H., & Taylor, M. (2004). Simple BM25 extension to multiple weighted fields. *CIKM '04*, 42–49. — The original BM25F paper.
+[^7]: San Jose State University. BM25F Algorithm for OPIC-based Crawlers. [cs.sjsu.edu](https://www.cs.sjsu.edu/faculty/pollett/masters/Semesters/Fall10/ravi/CS297_Report_Ravi.pdf) — Explanation of BM25F with practical examples.
+[^8]: University of Illinois at Urbana-Champaign (2011). When documents are very long, BM25 fails! — [experts.illinois.edu](https://experts.illinois.edu/en/publications/when-documents-are-very-long-bm25-fails/) — Identifies BM25's over-penalisation of long documents.
+[^9]: Lv, Y. & Zhai, C. (2011). Lower-Bounding Term Frequency Normalization. *CIKM '11*, 1103–1112. — [timan.cs.illinois.edu](https://timan.cs.illinois.edu/czhai/pub/cikm11-bm25.pdf) — Proposes BM25L and BM25+.
+[^10]: Lv, Y. & Zhai, C. (2011). When Documents Are Very Long, BM25 Fails! *SIGIR '11*, 1103–1104. — Introduces BM25+ with positive lower bound.
+[^11]: Lv, Y. & Zhai, C. (2009). Adaptive Term Frequency Normalization for BM25. *CIKM '11* — BM25-adpt variant for automatic k₁ tuning.
+[^12]: Schuth, A., et al. (2014). Optimizing Base Rankers Using Clicks: A Case Study using BM25. — [cs.ox.ac.uk](http://www.cs.ox.ac.uk/people/shimon.whiteson/pubs/schuthecir14.pdf) — Click-based parameter optimisation.
+[^13]: Elasticsearch / Lucene BM25 documentation — BM25 is the default similarity since Lucene 6.0 (Elasticsearch 5.0).
