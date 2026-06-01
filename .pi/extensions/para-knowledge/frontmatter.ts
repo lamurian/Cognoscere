@@ -14,21 +14,26 @@ export function parseFrontmatter(content: string): Frontmatter {
 
   const result: Record<string, unknown> = {};
   const tags: string[] = [];
+  /** Tracks which YAML key we are currently inside (for context-aware parsing). */
+  let currentKey = "";
 
   for (const line of match[1].split("\n")) {
     const kv = line.match(/^(\w+):\s*(.*)/);
     if (kv) {
+      currentKey = kv[1];
       const val = kv[2].trim();
       if (val && !val.startsWith("-")) result[kv[1]] = val;
     }
     // Allow source_url: which has an underscore
     const kvUnderscore = line.match(/^(source_url):\s*(.*)/);
     if (kvUnderscore) {
+      currentKey = kvUnderscore[1];
       const val = kvUnderscore[2].trim();
       if (val) result[kvUnderscore[1]] = val;
     }
+    // Only treat list items as tags when we're inside the "tags:" key
     const li = line.match(/^\s*-\s+(.+)/);
-    if (li) tags.push(li[1].trim());
+    if (li && currentKey === "tags") tags.push(li[1].trim());
   }
   result.tags = tags;
   return result as unknown as Frontmatter;
