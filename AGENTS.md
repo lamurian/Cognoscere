@@ -47,6 +47,8 @@ The agent uses these extensions from `.pi/extensions/`:
 - `yaml-enforcer/index.ts` — provides `validate_frontmatter`, `check_frontmatter`, and `standardize_frontmatter` tools for validating, repairing, and standardising YAML frontmatter in PARA documents. Auto-repairs frontmatter after every `create_para_doc` / `update_para_doc`.
 - `git-commit.ts` — `/commit` slash command for staging and committing.
 - `set-temperature.ts` — sets model temperature to 0.1.
+- `batch-create/index.ts` — provides `batch_create_para_docs` for creating multiple PARA documents in one tool call, indexing them all in notes.duckdb, and running batch semantic auto-linking across them.
+- `roadmap-scratchpad/index.ts` — provides `init_scratchpad`, `update_scratchpad`, and `delete_scratchpad` for managing temporary roadmap workflow state as searchable PARA documents in Areas/.
 
 All knowledge lookups go through the DuckDB index (`notes.duckdb`). The index auto-syncs with the filesystem on every search.
 
@@ -56,6 +58,7 @@ All knowledge lookups go through the DuckDB index (`notes.duckdb`). The index au
 - `brainstorm/SKILL.md` — clarifying vague questions.
 - `summarize-link/SKILL.md` — fetch URL → dedup check → extract (HTML/PDF) → summarize → save note.
 - `auto-link/SKILL.md` — after creating a note, find semantically related notes via LLM-powered evaluation and append `[[wikilinks]]`.
+- `roadmap/SKILL.md` — orchestrates complete learning pathway/roadmap creation from fundamentals to practical, with atomic PARA docs and a master roadmap document.
 
 When a skill is referenced, read its SKILL.md and follow the steps.
 
@@ -80,3 +83,4 @@ When a skill is referenced, read its SKILL.md and follow the steps.
 - Use `update_para_doc` when improving existing notes (preserves author/editor).
 - **Link summarization dedup:** Before summarising a URL, call `find_existing_summary` to check if a note already covers that link. Pass `source_url` when creating new summaries so future checks can find them.
 - **Repairing old files:** Run `validate_frontmatter(repair: true)` to scan and fix invalid YAML frontmatter in existing documents. Run `standardize_frontmatter(dryRun: false)` to batch-rename legacy fields (`source_url` → `source`, `url` → `source`, `created` → `date`).
+- **Always use `.ts` for extensions:** Every pi extension entry point and supporting module must use the `.ts` file extension. This ensures jiti loads the file correctly, enables type-checking via `tsc`, and keeps the codebase consistent. Single-file extensions go in `.pi/extensions/<name>.ts`; multi-file extensions live in `.pi/extensions/<name>/index.ts`. See [STANDARDS.md](STANDARDS.md) for the full coding standards and pre-commit enforcement rules.

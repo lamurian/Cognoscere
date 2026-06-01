@@ -1,0 +1,83 @@
+#!/usr/bin/env sh
+
+# .husky/pre-commit
+#
+# Pre-commit hook that enforces pi extension coding standards:
+#   - Prettier formatting (staged .ts files only)
+#   - ESLint lint + complexity ≤ 15 (staged .ts files only)
+#   - TypeScript type-check (tsc --noEmit)
+#   - Line count ≤ 300 per file (staged .ts files only)
+#
+# On violation, the commit is aborted. The agent must resolve all issues
+# before attempting the commit again. Running `git commit --no-verify`
+# is strictly forbidden by standard.
+
+echo "🔍 Running pi extension pre-commit checks..."
+echo ""
+
+# Gather staged .ts files under .pi/extensions/
+STAGED_TS=$(git diff --cached --name-only --diff-filter=ACM \
+  | grep '\.pi/extensions/.*\.ts$' \
+  || true)
+
+# 1. Prettier — auto-format staged .ts files
+echo "━━━ Prettier ━━━"
+if [ -n "$STAGED_TS" ]; then
+  echo "$STAGED_TS" | xargs npx prettier --write 2>&1
+  echo "$STAGED_TS" | xargs git add
+  echo "✅ Prettier: formatted"
+else
+  echo "⏭️  No .ts files in .pi/extensions/ to format"
+fi
+echo ""
+
+# 2. ESLint — lint and check complexity (staged .ts files only)
+echo "━━━ ESLint (complexity ≤ 15) ━━━"
+if [ -n "$STAGED_TS" ]; then
+  echo "$STAGED_TS" | xargs npx eslint --max-warnings=0 2>&1
+  ESLINT_EXIT=$?
+  if [ $ESLINT_EXIT -ne 0 ]; then
+    echo ""
+    echo "❌ ESLint failed. Fix violations and try again."
+    echo "   (Never use --no-verify)"
+    exit 1
+  fi
+  echo "✅ ESLint: passed"
+else
+  echo "⏭️  No .ts files to lint"
+fi
+echo ""
+
+# 3. TypeScript type-check (only if staged .ts files exist)
+echo "━━━ TypeScript (tsc --noEmit) ━━━"
+if [ -n "$STAGED_TS" ]; then
+  npx tsc --noEmit 2>&1
+  TSC_EXIT=$?
+  if [ $TSC_EXIT -ne 0 ]; then
+    echo ""
+    echo "❌ TypeScript type-check failed. Fix type errors and try again."
+    exit 1
+  fi
+  echo "✅ TypeScript: passed"
+else
+  echo "⏭️  No .ts files to type-check"
+fi
+echo ""
+
+# 4. Line count check (staged .ts files only)
+echo "━━━ Line count (max 300 per file) ━━━"
+if [ -n "$STAGED_TS" ]; then
+  npx tsx scripts/check-lines.mjs --staged 2>&1
+  LINES_EXIT=$?
+  if [ $LINES_EXIT -ne 0 ]; then
+    echo ""
+    echo "❌ Line count check failed. Refactor oversized files into smaller modules."
+    exit 1
+  fi
+  echo "✅ Line count: passed"
+else
+  echo "⏭️  No .ts files to check"
+fi
+echo ""
+
+echo "🎉 All pre-commit checks passed!"
