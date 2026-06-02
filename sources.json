@@ -9,12 +9,6 @@
       "description": "Structured search from specific authoritative databases and repositories. Each source is searched independently via DuckDuckGo site: filters. The site field should be the root URL; the example field shows the search URL pattern for reference.",
       "sources": [
         {
-          "type": "textbook.medical",
-          "name": "StatsPearls (NCBI Bookshelf)",
-          "site": "https://www.ncbi.nlm.nih.gov/books/NBK430685/",
-          "example": "https://www.ncbi.nlm.nih.gov/books/NBK430685/?term=human%20anatomy%20and%20physiology"
-        },
-        {
           "type": "research.medical",
           "name": "PubMed",
           "site": "https://pubmed.ncbi.nlm.nih.gov/",
@@ -25,25 +19,6 @@
           "name": "PubMed Central (PMC)",
           "site": "https://www.ncbi.nlm.nih.gov/pmc/",
           "example": "https://www.ncbi.nlm.nih.gov/pmc/?term=psychological+resilience"
-        },
-        {
-          "type": "research.medical",
-          "name": "Cochrane Library",
-          "site": "https://www.cochranelibrary.com/",
-          "example": "https://www.cochranelibrary.com/search?q=resilience"
-        },
-        {
-          "type": "research.general",
-          "name": "Google Scholar",
-          "site": "https://scholar.google.com/",
-          "example": "https://scholar.google.com/scholar?q=psychological+resilience"
-        },
-        {
-          "type": "research.general",
-          "name": "Semantic Scholar",
-          "site": "https://www.semanticscholar.org/",
-          "example": "https://www.semanticscholar.org/search?q=resilience",
-          "key": "SEMANTIC_SCHOLAR_KEY"
         },
         {
           "type": "research.cs",
@@ -59,6 +34,12 @@
         },
         {
           "type": "research.medical",
+          "name": "Cochrane Library",
+          "site": "https://www.cochranelibrary.com/",
+          "example": "https://www.cochranelibrary.com/search?q=resilience"
+        },
+        {
+          "type": "research.medical",
           "name": "ClinicalTrials.gov",
           "site": "https://clinicaltrials.gov/",
           "example": "https://clinicaltrials.gov/ct2/results?term=resilience"
@@ -68,6 +49,25 @@
           "name": "APA PsycNet",
           "site": "https://psycnet.apa.org/",
           "example": "https://psycnet.apa.org/search?term=resilience"
+        },
+        {
+          "type": "research.general",
+          "name": "Google Scholar",
+          "site": "https://scholar.google.com/",
+          "example": "https://scholar.google.com/scholar?q=psychological+resilience"
+        },
+        {
+          "type": "research.general",
+          "name": "Semantic Scholar",
+          "site": "https://www.semanticscholar.org/",
+          "example": "https://www.semanticscholar.org/search?q=resilience",
+          "key": "SEMANTIC_SCHOLAR_KEY"
+        },
+        {
+          "type": "textbook.medical",
+          "name": "StatsPearls (NCBI Bookshelf)",
+          "site": "https://www.ncbi.nlm.nih.gov/books/NBK430685/",
+          "example": "https://www.ncbi.nlm.nih.gov/books/NBK430685/?term=human%20anatomy%20and%20physiology"
         }
       ]
     },
@@ -97,6 +97,7 @@
   "notes": {
     "key_field": "The optional 'key' field on a source references an environment variable name in .env (e.g. 'SEMANTIC_SCHOLAR_KEY'). The value is read from the local .env file and never committed. Reserved for future direct API integrations.",
     "site_field": "For tier 1, the 'site' field is the root URL of the source (informational; the actual search URL is built from the 'example' field). For tier 2, it is a list of domain patterns (e.g. '*.edu', '*.ac.*').",
-    "example_field": "The 'example' field shows the URL pattern used to construct a search. The web_search extension replaces the query parameter value with the user's search term, then fetches this URL via Lightpanda headless browser. The rendered Markdown is parsed for result links."
+    "example_field": "The 'example' field shows the URL pattern used to construct a search. The web_search extension replaces the query parameter value with the user's search term, then fetches this URL via Lightpanda headless browser. The rendered Markdown is parsed for result links. Navigation chrome and image URLs are automatically filtered out.",
+    "lite_endpoint": "Tiers 2 and 3 now use the DuckDuckGo Lite endpoint (POST https://lite.duckduckgo.com/lite/) instead of the /html/ endpoint, because /html/ now presents a captcha challenge for automated requests. The Lite endpoint returns clean HTML with class='result-link' anchors and class='result-snippet' cells."
   }
 }

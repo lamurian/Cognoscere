@@ -7,11 +7,13 @@
  *            rendered Markdown.  The agent then follows promising links
  *            with fetch_url for full content.
  *
- *   Tiers 2 & 3 — DuckDuckGo search via the non-JS HTML page (/html/)
- *            using Node.js built-in fetch().  This avoids the unreliability
- *            of Lightpanda on JS-heavy search result pages, which often
- *            return only navigation chrome instead of actual results.
- *            Lightpanda is used only as a fallback if HTTP fails.
+ *   Tiers 2 & 3 — DuckDuckGo search via the Lite endpoint
+ *            (POST https://lite.duckduckgo.com/lite/) using Node.js
+ *            built-in fetch(). The /html/ endpoint was abandoned because
+ *            it now presents a captcha challenge for automated requests.
+ *            The Lite endpoint returns clean HTML table rows with
+ *            class='result-link' and class='result-snippet'.
+ *            Lightpanda is used only as a fallback if Lite returns nothing.
  *
  *   Content fetching — The extension provides fetchUrlWithFallback() which
  *            tries Lightpanda to convert a specific URL to Markdown, then
@@ -188,8 +190,54 @@ function fetchLightpanda(
 // ══════════════════════════════════════════════════════════════════════
 
 /**
+ * Quick check: does the URL look like a navigation/UI element rather than
+ * an actual content result?  Returns true if the link is meaningful content.
+ */
+function isContentLink(url: string, title: string): boolean {
+  // Skip image/icon/media URLs
+  if (/[\.\/](png|svg|jpg|jpeg|gif|ico|webp|bmp|avif)([?#]|$)/i.test(url)) return false;
+
+  // Skip auth/account pages
+  if (/\/(login|signin|signout|logout|register|signup|auth|forgot|reset|myncbi|myaccount|account\/settings)/i.test(url)) return false;
+  if (/\/(dashboard|settings|preferences|profile)(\/|$)/i.test(url)) return false;
+
+  // Skip social media/share links
+  if (/^https?:\/\/(www\.)?(twitter\.com|x\.com|facebook\.com|linkedin\.com|youtube\.com|instagram\.com|github\.com|t\.co|fb\.com|lnkd\.in)/i.test(url)) return false;
+
+  // Skip footer/help/nav pages
+  if (/\/(help|about|contact|privacy|terms|cookies|accessibility|careers|disclaimer|web\-policies|foia|vulnerability\-disclosure|browsers|guide)/i.test(url)) return false;
+
+  // Skip very short titles (single word UI labels like "Log in", "Help", "Close")
+  const stripped = title.replace(/[\[\]!?.]+/g, "").trim();
+  if (stripped.length < 4) return false;
+
+  // Skip titles that are clearly UI labels
+  const uiLabels = [
+    "log in", "log out", "sign in", "sign out", "sign up", "register",
+    "dashboard", "settings", "account", "profile", "help", "about",
+    "contact", "privacy", "terms", "access keys", "main content",
+    "main navigation", "show account info", "close", "menu",
+    "open menu", "search", "advanced", "create alert",
+    "table of contents", "supplemental content", "search details",
+    "recent activity", "follow n", "connect with",
+    "all regions", "safe search", "any time", "custom date range",
+    "homepage", "themes", "share feedback",
+  ];
+  const lower = stripped.toLowerCase();
+  if (uiLabels.some((l) => lower === l || lower.startsWith(l + ":"))) return false;
+
+  // Skip government banner text (official website indicators)
+  if (lower.includes("us flag") || lower.includes("dot gov") || lower.includes("https")) return false;
+  if (lower.includes("official website") || lower.includes("government website")) return false;
+  if (lower.includes("here's how you know") || lower.includes("site is secure")) return false;
+
+  return true;
+}
+
+/**
  * Extract result links from Markdown.
  * Returns deduplicated { title, url } pairs (up to MAX_RESULTS).
+ * Filters out navigation chrome, image files, auth links, and other non-content UI.
  */
 function extractLinks(
   markdown: string,
@@ -207,6 +255,7 @@ function extractLinks(
     url = url.split(/\s/)[0];
     if (!url.startsWith("http")) continue;
     if (existingUrls.has(url)) continue;
+    if (!isContentLink(url, title)) continue;
     existingUrls.add(url);
     links.push({ title, url });
     if (links.length >= MAX_RESULTS) break;
@@ -422,7 +471,10 @@ async function fetchUrlWithFallback(
 }
 
 // ══════════════════════════════════════════════════════════════════════
-//  DuckDuckGo helpers (used by tiers 2 & 3)
+//  DuckDuckGo Lite endpoint (used by tiers 2 & 3)
+//  Note: DuckDuckGo's /html/ endpoint now presents a captcha challenge
+//  for automated requests.  The Lite endpoint (https://lite.duckduckgo.com/lite/)
+//  still returns clean HTML results via POST and is more reliable.
 // ══════════════════════════════════════════════════════════════════════
 
 /**
@@ -467,14 +519,20 @@ function buildDdgSiteFilters(rawPatterns: string[]): string[] {
 }
 
 /**
- * Search DuckDuckGo via the non-JS HTML page.
+ * Search DuckDuckGo via the Lite endpoint (POST-based HTML).
  * Returns parsed results (title, url, snippet).
  *
- * This is the primary path for tiers 2 & 3.  The non-JS /html/ page
- * reliably returns structured result blocks without requiring a
- * headless browser, avoiding the JS rendering issues of Lightpanda.
+ * The Lite endpoint at https://lite.duckduckgo.com/lite/ accepts POST
+ * requests with a `q` parameter and returns clean HTML table rows with
+ * result links, snippets, and display URLs.  It does not present captcha
+ * challenges like the /html/ endpoint does.
+ *
+ * Result HTML structure:
+ *   <a class='result-link' href="...">Title</a>
+ *   <td class='result-snippet'>Snippet text...</td>
+ *   <span class='link-text'>display.url</span>
  */
-async function searchDdgHttp(
+async function searchDdgLite(
   query: string,
   siteFilters: string[],
   signal?: AbortSignal,
@@ -486,17 +544,19 @@ async function searchDdgHttp(
     searchQuery = siteParts.join(" ") + " " + query;
   }
 
-  const url =
-    "https://duckduckgo.com/html/?q=" + encodeURIComponent(searchQuery);
+  const url = "https://lite.duckduckgo.com/lite/";
 
   let response: Response;
   try {
     response = await fetch(url, {
+      method: "POST",
       headers: {
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+        "Content-Type": "application/x-www-form-urlencoded",
         Accept: "text/html,application/xhtml+xml",
       },
+      body: new URLSearchParams({ q: searchQuery }).toString(),
       signal,
       redirect: "follow",
     });
@@ -507,96 +567,72 @@ async function searchDdgHttp(
 
   const html = await response.text();
 
-  // Parse result blocks from the non-JS HTML page
+  // Parse result rows from the Lite HTML page
   const results: SearchResult[] = [];
   const seen = new Set<string>();
-  const blocks = html.split(
-    'class="result results_links results_links_deep web-result ',
-  );
 
-  for (let i = 1; i < blocks.length && results.length < MAX_RESULTS; i++) {
-    const block = blocks[i];
+  // Extract result link blocks:
+  //   <a rel="nofollow" href="URL" class='result-link'>TITLE</a>
+  //   <a class='result-link' href="URL">TITLE</a>
+  // href= can appear before or after class=, so use a two-step approach:
+  //   Step 1: find the full <a...> tag with class='result-link'
+  //   Step 2: extract href and title from that tag
+  const linkTagRe = /<a[^>]+class=['"]result-link['"][^>]*>([\s\S]*?)<\/a>/gi;
+  let linkMatch: RegExpExecArray | null;
 
-    // Extract title
-    const titleM = block.match(
-      /<a[^>]+class="result__a"[^>]*>([\s\S]*?)<\/a>/,
-    );
-    if (!titleM) continue;
-    const title = titleM[1].replace(/<[^>]*>/g, "").trim();
-    if (!title) continue;
+  while ((linkMatch = linkTagRe.exec(html)) !== null && results.length < MAX_RESULTS) {
+    const fullTag = linkMatch[0];
 
-    // Extract redirect URL and decode to real URL
-    const hrefM = block.match(
-      /<a[^>]+class="result__a"[^>]*href="([^"]+)"/,
-    );
+    // Extract href from the full tag
+    const hrefM = fullTag.match(/href="([^"]+)"/i);
     if (!hrefM) continue;
-    let rawUrl = hrefM[1];
-    if (rawUrl.startsWith("//")) rawUrl = "https:" + rawUrl;
+    const url = hrefM[1].trim();
 
-    let realUrl = rawUrl;
-    try {
-      const parsed = new URL(rawUrl);
-      const uddg = parsed.searchParams.get("uddg");
-      if (uddg) realUrl = decodeURIComponent(uddg);
-    } catch {
-      /* use raw URL */
-    }
+    // Extract title from the captured inner content
+    const title = linkMatch[1].replace(/<[^>]*>/g, "").trim();
+    if (!url || !title || seen.has(url)) continue;
+    if (!isContentLink(url, title)) continue;
+    seen.add(url);
 
-    if (seen.has(realUrl)) continue;
-    seen.add(realUrl);
-
-    // Extract snippet
-    const snippetM = block.match(
-      /<a[^>]+class="result__snippet"[^>]*>([\s\S]*?)<\/a>/,
-    );
-    const snippet = snippetM
-      ? snippetM[1].replace(/<[^>]*>/g, "").replace(/&#?\w+;/g, " ").trim()
-      : "";
+    // Find the snippet for this result (snippet rows follow the link row)
+    const snippet = extractSnippetAfterLink(html, linkMatch.index, url);
 
     results.push({
       title,
-      url: realUrl,
+      url,
       snippet,
       source_label: "Web",
       tier: 0, // filled in by caller
     });
   }
 
-  return results;
+  return results.slice(0, MAX_RESULTS);
 }
 
 /**
- * Search DuckDuckGo via Lightpanda (fallback path).
- * Used only if the HTTP /html/ path fails.
- * Note: DuckDuckGo's JS-rendered page often returns only navigation
- * chrome when converted to Markdown, so this is less reliable.
+ * Extract the snippet following a result link in the Lite HTML.
+ * Snippet is in <td class='result-snippet'>...</td> that appears
+ * in a <tr> element after the link row.
  */
-async function searchDdgLightpanda(
-  query: string,
-  siteFilters: string[],
-  signal: AbortSignal | undefined,
-): Promise<SearchResult[]> {
-  let searchQuery = query;
-  if (siteFilters.length > 0) {
-    const siteParts = siteFilters.map((f) => `site:${f}`);
-    searchQuery = siteParts.join(" ") + " " + query;
-  }
+function extractSnippetAfterLink(
+  html: string,
+  linkIndex: number,
+  url: string,
+): string {
+  // Look for the next <td class='result-snippet'> after this link
+  const after = html.slice(linkIndex);
+  const snippetMatch = after.match(
+    /<td[^>]+class=['"]result-snippet['"][^>]*>([\s\S]*?)<\/td>/i,
+  );
+  if (!snippetMatch) return "";
 
-  const url =
-    "https://duckduckgo.com/?q=" + encodeURIComponent(searchQuery);
-  const markdown = await fetchLightpanda(url, signal);
-  if (!markdown) return [];
+  let snippet = snippetMatch[1]
+    .replace(/<[^>]*>/g, "")
+    .replace(/&#?\w+;/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 
-  const seen = new Set<string>();
-  const links = extractLinks(markdown, seen);
-
-  return links.map((l) => ({
-    title: l.title,
-    url: l.url,
-    snippet: "",
-    source_label: "Web",
-    tier: 0,
-  }));
+  return snippet.length > 300 ? snippet.slice(0, 300) + "..." : snippet;
 }
 
 // ══════════════════════════════════════════════════════════════════════
@@ -609,12 +645,26 @@ async function searchTier23(
   tier: number,
   signal: AbortSignal | undefined,
 ): Promise<SearchResult[]> {
-  // Primary: HTTP non-JS HTML page (reliable result parsing)
-  let results = await searchDdgHttp(query, siteFilters, signal);
+  // Primary: DuckDuckGo Lite endpoint (POST-based, no captcha)
+  let results = await searchDdgLite(query, siteFilters, signal);
 
-  // Fallback: if HTTP returned nothing, try Lightpanda
+  // Fallback: if Lite returned nothing, try the JS version via Lightpanda
+  // (unlikely to work for DDG since results are xhr-loaded, but try anyway)
   if (results.length === 0) {
-    results = await searchDdgLightpanda(query, siteFilters, signal);
+    const url =
+      "https://duckduckgo.com/?q=" + encodeURIComponent(query);
+    const markdown = await fetchLightpanda(url, signal);
+    if (markdown) {
+      const seen = new Set<string>();
+      const links = extractLinks(markdown, seen);
+      results = links.map((l) => ({
+        title: l.title,
+        url: l.url,
+        snippet: "",
+        source_label: "Web",
+        tier: 0,
+      }));
+    }
   }
 
   const label = tier === 2 ? "Academic" : "General Web";
@@ -724,8 +774,9 @@ export default function (pi: ExtensionAPI): void {
       "  Returns result links extracted from the rendered Markdown. Follow promising links with fetch_url.",
       "Tier 2 — DuckDuckGo filtered to academic/institutional domains (site:.edu, .ac.uk, etc.).",
       "Tier 3 — Unfiltered DuckDuckGo general web search.",
-      "Tiers 2/3 use HTTP (non-JS DuckDuckGo page) for reliable result extraction.",
-      "  Lightpanda is only tried as a fallback if HTTP fails.",
+      "Tiers 2/3 use HTTP POST to the DuckDuckGo Lite endpoint (lite.duckduckgo.com/lite/)",
+      "  for reliable result extraction without captcha challenges.",
+      "  Lightpanda is only tried as a fallback if Lite returns nothing.",
       "Auto-escalates: tier 1 → tier 2 → tier 3 if < 3 results. Pass tier: N to force a specific layer.",
       "Sources in sources.json can have a 'key' field referencing a .env variable",
       "(loaded from the local .env file, not committed to git). Reserved for future",
@@ -739,7 +790,7 @@ export default function (pi: ExtensionAPI): void {
       "Auto-escalates from curated sources (tier 1) → academic (tier 2) → general web (tier 3).",
       "For tier 1 results, use fetch_url on promising links to read full content before synthesising.",
       "Pass tier: 1, 2, or 3 to force a specific tier and skip auto-escalation.",
-      "Tiers 2 and 3 use HTTP (non-JS DuckDuckGo) for search; Lightpanda is fallback only.",
+      "Tiers 2 and 3 use the DuckDuckGo Lite endpoint (POST) for search; Lightpanda is fallback only.",
       "Cite every result with markdown footnotes (e.g. [^1]) including page title and URL.",
     ],
     parameters: Type.Object({
