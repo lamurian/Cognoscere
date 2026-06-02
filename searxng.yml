@@ -53,7 +53,7 @@ valkey:
 outgoing:
   request_timeout: 10.0
   max_request_timeout: 15.0
-  useragent_suffix: ""
+  useragent_suffix: " Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
   pool_connections: 100
   pool_maxsize: 20
   enable_http2: true

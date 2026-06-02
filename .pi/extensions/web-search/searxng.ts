@@ -28,10 +28,10 @@ export async function searchSearxng(
   const baseUrl = `http://127.0.0.1:${SEARXNG_PORT}/search`;
   const params: Record<string, string> = { q: query, format: "json", language: "en", pageno: "1" };
 
-  if (tier === 1) params.engines = "openalex,pubmed,semanticscholar,arxiv";
+  if (tier === 1) params.engines = "openalex,pubmed,semantic scholar,arxiv";
   else if (tier === 2) {
     params.q = `${query} site:edu OR site:ac.* OR site:gov OR site:go.* OR site:mil`;
-    params.engines = "duckduckgo,archlinux";
+    params.engines = "duckduckgo,arch linux wiki";
   } else params.engines = "duckduckgo";
 
   let response: Response;
