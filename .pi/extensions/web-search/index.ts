@@ -133,12 +133,22 @@ async function search(
   const { results: searxngResults, maxTier } = await phase1SearXNG(query, forcedTier, category, signal);
   const usedTier = forcedTier ?? 3;
 
-  if (searxngResults.length > 3) {
+  // When a specific tier is requested, return SearXNG results as-is.
+  // No fallback to Tavily/Bing — the agent explicitly chose this tier.
+  if (forcedTier !== undefined) {
     const catNote = category ? ` (category: ${category})` : "";
-    const label = forcedTier
-      ? `Phase 1 — SearXNG Tier ${forcedTier}${catNote} (${searxngResults.length} results)`
-      : `Phase 1 — SearXNG Tiers 1→2→3${catNote} (${searxngResults.length} results)`;
+    const label = `Phase 1 — SearXNG Tier ${forcedTier}${catNote} (${searxngResults.length} results)`;
     return { results: searxngResults, tier: usedTier, tierLabel: label };
+  }
+
+  // When running all tiers, fall through to Tavily/Bing if SearXNG
+  // returned too few results.
+  if (searxngResults.length > 3) {
+    return {
+      results: searxngResults,
+      tier: usedTier,
+      tierLabel: `Phase 1 — SearXNG Tiers 1→2→3 (${searxngResults.length} results)`,
+    };
   }
 
   // ── Phase 2: Tavily fallback when SearXNG insufficient ──
