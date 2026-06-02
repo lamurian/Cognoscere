@@ -7,13 +7,12 @@
  *            rendered Markdown.  The agent then follows promising links
  *            with fetch_url for full content.
  *
- *   Tiers 2 & 3 — DuckDuckGo search via the Lite endpoint
- *            (POST https://lite.duckduckgo.com/lite/) using Node.js
- *            built-in fetch(). The /html/ endpoint was abandoned because
- *            it now presents a captcha challenge for automated requests.
- *            The Lite endpoint returns clean HTML table rows with
- *            class='result-link' and class='result-snippet'.
- *            Lightpanda is used only as a fallback if Lite returns nothing.
+ *   Tiers 2 & 3 — Bing RSS feed (https://www.bing.com/search?format=rss)
+ *            using Node.js built-in fetch(). DuckDuckGo's /html/ and Lite
+ *            endpoints both now present captcha challenges for automated
+ *            requests. Bing's RSS feed returns clean XML <item> elements
+ *            with <title>, <link>, and <description>.
+ *            Lightpanda is used only as a fallback if Bing returns nothing.
  *
  *   Content fetching — The extension provides fetchUrlWithFallback() which
  *            tries Lightpanda to convert a specific URL to Markdown, then
@@ -471,10 +470,11 @@ async function fetchUrlWithFallback(
 }
 
 // ══════════════════════════════════════════════════════════════════════
-//  DuckDuckGo Lite endpoint (used by tiers 2 & 3)
-//  Note: DuckDuckGo's /html/ endpoint now presents a captcha challenge
-//  for automated requests.  The Lite endpoint (https://lite.duckduckgo.com/lite/)
-//  still returns clean HTML results via POST and is more reliable.
+//  Bing RSS feed (used by tiers 2 & 3)
+//  Note: DuckDuckGo's /html/ and Lite endpoints both now present
+//  captcha challenges for automated requests.  Bing's RSS feed
+//  (https://www.bing.com/search?q=...&format=rss) returns clean XML
+//  results with no JS or captcha requirements.
 // ══════════════════════════════════════════════════════════════════════
 
 /**
@@ -519,20 +519,15 @@ function buildDdgSiteFilters(rawPatterns: string[]): string[] {
 }
 
 /**
- * Search DuckDuckGo via the Lite endpoint (POST-based HTML).
+ * Search Bing via its RSS feed (format=rss).
  * Returns parsed results (title, url, snippet).
  *
- * The Lite endpoint at https://lite.duckduckgo.com/lite/ accepts POST
- * requests with a `q` parameter and returns clean HTML table rows with
- * result links, snippets, and display URLs.  It does not present captcha
- * challenges like the /html/ endpoint does.
- *
- * Result HTML structure:
- *   <a class='result-link' href="...">Title</a>
- *   <td class='result-snippet'>Snippet text...</td>
- *   <span class='link-text'>display.url</span>
+ * Bing's RSS feed returns clean XML with <item> elements containing
+ * <title>, <link>, and <description>.  It does not present captcha
+ * challenges or require JavaScript execution.  The site: filter syntax
+ * is the same as DuckDuckGo's.
  */
-async function searchDdgLite(
+async function searchBingRss(
   query: string,
   siteFilters: string[],
   signal?: AbortSignal,
@@ -544,19 +539,17 @@ async function searchDdgLite(
     searchQuery = siteParts.join(" ") + " " + query;
   }
 
-  const url = "https://lite.duckduckgo.com/lite/";
+  const url = "https://www.bing.com/search?q=" +
+    encodeURIComponent(searchQuery) + "&format=rss";
 
   let response: Response;
   try {
     response = await fetch(url, {
-      method: "POST",
       headers: {
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-        "Content-Type": "application/x-www-form-urlencoded",
-        Accept: "text/html,application/xhtml+xml",
+        Accept: "application/rss+xml, application/xml, text/xml",
       },
-      body: new URLSearchParams({ q: searchQuery }).toString(),
       signal,
       redirect: "follow",
     });
@@ -565,74 +558,46 @@ async function searchDdgLite(
   }
   if (!response.ok) return [];
 
-  const html = await response.text();
+  const xml = await response.text();
 
-  // Parse result rows from the Lite HTML page
+  // Parse RSS items using regex (avoids XML parsing dependency)
   const results: SearchResult[] = [];
   const seen = new Set<string>();
 
-  // Extract result link blocks:
-  //   <a rel="nofollow" href="URL" class='result-link'>TITLE</a>
-  //   <a class='result-link' href="URL">TITLE</a>
-  // href= can appear before or after class=, so use a two-step approach:
-  //   Step 1: find the full <a...> tag with class='result-link'
-  //   Step 2: extract href and title from that tag
-  const linkTagRe = /<a[^>]+class=['"]result-link['"][^>]*>([\s\S]*?)<\/a>/gi;
-  let linkMatch: RegExpExecArray | null;
+  // Extract <item>...</item> blocks
+  const itemRe = /<item>([\s\S]*?)<\/item>/gi;
+  let itemMatch: RegExpExecArray | null;
 
-  while ((linkMatch = linkTagRe.exec(html)) !== null && results.length < MAX_RESULTS) {
-    const fullTag = linkMatch[0];
+  while ((itemMatch = itemRe.exec(xml)) !== null && results.length < MAX_RESULTS) {
+    const block = itemMatch[1];
 
-    // Extract href from the full tag
-    const hrefM = fullTag.match(/href="([^"]+)"/i);
-    if (!hrefM) continue;
-    const url = hrefM[1].trim();
+    const titleM = block.match(/<title>([^<]*)<\/title>/i);
+    if (!titleM) continue;
+    const title = titleM[1].trim();
+    if (!title) continue;
 
-    // Extract title from the captured inner content
-    const title = linkMatch[1].replace(/<[^>]*>/g, "").trim();
-    if (!url || !title || seen.has(url)) continue;
+    const linkM = block.match(/<link>([^<]+)<\/link>/i);
+    if (!linkM) continue;
+    const url = linkM[1].trim();
+    if (seen.has(url)) continue;
     if (!isContentLink(url, title)) continue;
     seen.add(url);
 
-    // Find the snippet for this result (snippet rows follow the link row)
-    const snippet = extractSnippetAfterLink(html, linkMatch.index, url);
+    const descM = block.match(/<description>([\s\S]*?)<\/description>/i);
+    const snippet = descM
+      ? descM[1].replace(/<[^>]*>/g, "").replace(/&#?\w+;/g, " ").replace(/\s+/g, " ").trim()
+      : "";
 
     results.push({
       title,
       url,
-      snippet,
+      snippet: snippet.length > 300 ? snippet.slice(0, 300) + "..." : snippet,
       source_label: "Web",
       tier: 0, // filled in by caller
     });
   }
 
   return results.slice(0, MAX_RESULTS);
-}
-
-/**
- * Extract the snippet following a result link in the Lite HTML.
- * Snippet is in <td class='result-snippet'>...</td> that appears
- * in a <tr> element after the link row.
- */
-function extractSnippetAfterLink(
-  html: string,
-  linkIndex: number,
-  url: string,
-): string {
-  // Look for the next <td class='result-snippet'> after this link
-  const after = html.slice(linkIndex);
-  const snippetMatch = after.match(
-    /<td[^>]+class=['"]result-snippet['"][^>]*>([\s\S]*?)<\/td>/i,
-  );
-  if (!snippetMatch) return "";
-
-  let snippet = snippetMatch[1]
-    .replace(/<[^>]*>/g, "")
-    .replace(/&#?\w+;/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-
-  return snippet.length > 300 ? snippet.slice(0, 300) + "..." : snippet;
 }
 
 // ══════════════════════════════════════════════════════════════════════
@@ -645,14 +610,13 @@ async function searchTier23(
   tier: number,
   signal: AbortSignal | undefined,
 ): Promise<SearchResult[]> {
-  // Primary: DuckDuckGo Lite endpoint (POST-based, no captcha)
-  let results = await searchDdgLite(query, siteFilters, signal);
+  // Primary: Bing RSS feed (no captcha, clean XML results)
+  let results = await searchBingRss(query, siteFilters, signal);
 
-  // Fallback: if Lite returned nothing, try the JS version via Lightpanda
-  // (unlikely to work for DDG since results are xhr-loaded, but try anyway)
+  // Fallback: if Bing returned nothing, try via Lightpanda
   if (results.length === 0) {
     const url =
-      "https://duckduckgo.com/?q=" + encodeURIComponent(query);
+      "https://www.bing.com/search?q=" + encodeURIComponent(query);
     const markdown = await fetchLightpanda(url, signal);
     if (markdown) {
       const seen = new Set<string>();
@@ -774,9 +738,9 @@ export default function (pi: ExtensionAPI): void {
       "  Returns result links extracted from the rendered Markdown. Follow promising links with fetch_url.",
       "Tier 2 — DuckDuckGo filtered to academic/institutional domains (site:.edu, .ac.uk, etc.).",
       "Tier 3 — Unfiltered DuckDuckGo general web search.",
-      "Tiers 2/3 use HTTP POST to the DuckDuckGo Lite endpoint (lite.duckduckgo.com/lite/)",
-      "  for reliable result extraction without captcha challenges.",
-      "  Lightpanda is only tried as a fallback if Lite returns nothing.",
+      "Tiers 2/3 use Bing RSS feed (www.bing.com/search?format=rss) for reliable",
+      "  result extraction without captcha challenges.",
+      "  Lightpanda is only tried as a fallback if Bing returns nothing.",
       "Auto-escalates: tier 1 → tier 2 → tier 3 if < 3 results. Pass tier: N to force a specific layer.",
       "Sources in sources.json can have a 'key' field referencing a .env variable",
       "(loaded from the local .env file, not committed to git). Reserved for future",
@@ -790,7 +754,7 @@ export default function (pi: ExtensionAPI): void {
       "Auto-escalates from curated sources (tier 1) → academic (tier 2) → general web (tier 3).",
       "For tier 1 results, use fetch_url on promising links to read full content before synthesising.",
       "Pass tier: 1, 2, or 3 to force a specific tier and skip auto-escalation.",
-      "Tiers 2 and 3 use the DuckDuckGo Lite endpoint (POST) for search; Lightpanda is fallback only.",
+      "Tiers 2 and 3 use the Bing RSS feed for search; Lightpanda is fallback only.",
       "Cite every result with markdown footnotes (e.g. [^1]) including page title and URL.",
     ],
     parameters: Type.Object({

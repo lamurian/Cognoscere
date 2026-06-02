@@ -98,6 +98,6 @@
     "key_field": "The optional 'key' field on a source references an environment variable name in .env (e.g. 'SEMANTIC_SCHOLAR_KEY'). The value is read from the local .env file and never committed. Reserved for future direct API integrations.",
     "site_field": "For tier 1, the 'site' field is the root URL of the source (informational; the actual search URL is built from the 'example' field). For tier 2, it is a list of domain patterns (e.g. '*.edu', '*.ac.*').",
     "example_field": "The 'example' field shows the URL pattern used to construct a search. The web_search extension replaces the query parameter value with the user's search term, then fetches this URL via Lightpanda headless browser. The rendered Markdown is parsed for result links. Navigation chrome and image URLs are automatically filtered out.",
-    "lite_endpoint": "Tiers 2 and 3 now use the DuckDuckGo Lite endpoint (POST https://lite.duckduckgo.com/lite/) instead of the /html/ endpoint, because /html/ now presents a captcha challenge for automated requests. The Lite endpoint returns clean HTML with class='result-link' anchors and class='result-snippet' cells."
+    "bing_rss": "Tiers 2 and 3 now use the Bing RSS feed (https://www.bing.com/search?q=...&format=rss) instead of DuckDuckGo, because both the /html/ and Lite endpoints now present captcha challenges for automated requests. The Bing RSS feed returns clean XML with <item> elements containing <title>, <link>, and <description>."
   }
 }
