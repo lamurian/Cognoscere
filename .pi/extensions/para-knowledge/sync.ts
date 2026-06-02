@@ -18,12 +18,12 @@ interface StoredFile {
   path: string;
   file_mtime: string;
 }
-interface MissingTagFile {
-  path: string;
-}
 
 /**
  * Tokenize a document (title boosted + body) and insert into the inverted index.
+ *
+ * Uses a single batch INSERT for all terms instead of per-term INSERTs.
+ * This prevents WAL bloat from thousands of tiny auto-committed transactions.
  */
 async function buildTermIndexForFile(
   db: duckdb.Database,
@@ -48,13 +48,20 @@ async function buildTermIndexForFile(
   const tfMap = new Map<string, number>();
   for (const term of terms) tfMap.set(term, (tfMap.get(term) ?? 0) + 1);
 
-  for (const [term, tf] of tfMap) {
+  // Single batch INSERT for all terms — avoids WAL bloat from per-term transactions
+  const batchSize = 500;
+  const termEntries = [...tfMap.entries()];
+  for (let i = 0; i < termEntries.length; i += batchSize) {
+    const chunk = termEntries.slice(i, i + batchSize);
+    const placeholders = chunk.map(() => "(?, ?, ?)").join(", ");
+    const params: unknown[] = [];
+    for (const [term, tf] of chunk) {
+      params.push(term, filePath, tf);
+    }
     await runWithRecovery(
       db,
-      "INSERT INTO term_index (term, file_path, tf) VALUES (?, ?, ?)",
-      term,
-      filePath,
-      tf,
+      `INSERT INTO term_index (term, file_path, tf) VALUES ${placeholders}`,
+      ...params,
     );
   }
 
@@ -95,27 +102,17 @@ async function findChangedFiles(
   const stored = await queryRows<StoredFile>(db, "SELECT path, file_mtime FROM files");
   const storedMap = new Map(stored.map((r) => [r.path, new Date(r.file_mtime ?? 0).getTime()]));
 
-  const missingTags = new Set<string>();
-  try {
-    const missing = await queryRows<MissingTagFile>(
-      db,
-      "SELECT f.path FROM files f LEFT JOIN tags t ON f.path = t.file_path WHERE t.tag IS NULL",
-    );
-    for (const r of missing) missingTags.add(r.path);
-  } catch {
-    /* best-effort */
-  }
+  // Missing-tags check is intentionally skipped: the transaction-wrapped
+  // processChangedFiles ensures atomic file+tag insertion, so missing tags
+  // should never occur. Also, queries on the tags table with a WHERE clause
+  // trigger a DuckDB 1.4.4 native crash (SIGSEGV) when the DB file is corrupt.
 
   const fsMap = new Map(files.map((f) => [f.path, f.mtimeMs]));
   const changed: FileEntry[] = [];
 
   for (const f of files) {
     const storedMtime = storedMap.get(f.path);
-    if (
-      storedMtime === undefined ||
-      Math.abs(storedMtime - f.mtimeMs) > 1 ||
-      missingTags.has(f.path)
-    ) {
+    if (storedMtime === undefined || Math.abs(storedMtime - f.mtimeMs) > 1) {
       changed.push(f);
     }
   }
@@ -146,6 +143,9 @@ async function processChangedFiles(
 
   for (const entry of entries) {
     try {
+      // Wrap per-file operations in an explicit transaction to reduce fsync overhead
+      await runWithRecovery(db, "BEGIN TRANSACTION");
+
       const parsed: ParsedFile = await parseFile(entry);
       const mtimeStr = new Date(entry.mtimeMs).toISOString();
 
@@ -175,8 +175,16 @@ async function processChangedFiles(
       }
 
       await buildTermIndexForFile(db, entry.path, parsed.title, parsed.body);
+
+      await runWithRecovery(db, "COMMIT");
       success++;
     } catch (e) {
+      // Rollback per-file on failure; other files still get processed
+      try {
+        await runWithRecovery(db, "ROLLBACK");
+      } catch {
+        /* best-effort rollback */
+      }
       console.error(`[sync] Failed to index ${entry.path}:`, e);
       errors++;
     }

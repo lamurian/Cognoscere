@@ -93,7 +93,13 @@ export async function initDb(db: duckdb.Database): Promise<void> {
   );
   await run(db, "CREATE INDEX IF NOT EXISTS idx_tags_tag  ON tags(tag)");
   await run(db, "CREATE INDEX IF NOT EXISTS idx_tags_path ON tags(file_path)");
-  await run(db, "CREATE UNIQUE INDEX IF NOT EXISTS idx_tags_unique ON tags(file_path, tag)");
+  // Unique index — may fail if existing data has duplicates from a previous corruption.
+  // Non-critical for search functionality, so swallow the error.
+  try {
+    await run(db, "CREATE UNIQUE INDEX IF NOT EXISTS idx_tags_unique ON tags(file_path, tag)");
+  } catch {
+    /* Non-fatal: index won't be created but DB still functions */
+  }
 
   await run(
     db,
@@ -154,13 +160,17 @@ export async function indexDocument(
   const terms = tokenize(`${boostedTitle} ${body}`);
   const tfMap = new Map<string, number>();
   for (const t of terms) tfMap.set(t, (tfMap.get(t) ?? 0) + 1);
-  for (const [term, tf] of tfMap) {
+  // Batch INSERT all terms — avoids WAL bloat from per-term transactions
+  const termEntries = [...tfMap.entries()];
+  for (let i = 0; i < termEntries.length; i += 500) {
+    const chunk = termEntries.slice(i, i + 500);
+    const placeholders = chunk.map(() => "(?, ?, ?)").join(", ");
+    const batchParams: unknown[] = [];
+    for (const [term, tf] of chunk) batchParams.push(term, relPath, tf);
     await run(
       db,
-      "INSERT INTO term_index (term, file_path, tf) VALUES (?, ?, ?)",
-      term,
-      relPath,
-      tf,
+      `INSERT INTO term_index (term, file_path, tf) VALUES ${placeholders}`,
+      ...batchParams,
     );
   }
 

@@ -138,13 +138,17 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
             for (const term of terms) {
               tfMap.set(term, (tfMap.get(term) ?? 0) + 1);
             }
-            for (const [term, tf] of tfMap) {
+            // Batch INSERT all terms — avoids WAL bloat from per-term transactions
+            const termEntries = [...tfMap.entries()];
+            for (let i = 0; i < termEntries.length; i += 500) {
+              const chunk = termEntries.slice(i, i + 500);
+              const placeholders = chunk.map(() => "(?, ?, ?)").join(", ");
+              const batchParams: unknown[] = [];
+              for (const [term, tf] of chunk) batchParams.push(term, params.path, tf);
               await runWithRecovery(
                 db,
-                "INSERT INTO term_index (term, file_path, tf) VALUES (?, ?, ?)",
-                term,
-                params.path,
-                tf,
+                `INSERT INTO term_index (term, file_path, tf) VALUES ${placeholders}`,
+                ...batchParams,
               );
             }
 

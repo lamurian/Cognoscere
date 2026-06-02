@@ -9,7 +9,9 @@
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
-import { withDb, isLockError } from "../db.js";
+import { stat } from "node:fs/promises";
+import { resolve } from "node:path";
+import { withDb, isLockError, initDb } from "../db.js";
 import { searchDocuments, searchByTagsOnly } from "../search.js";
 import { syncIndex } from "../sync.js";
 
@@ -38,30 +40,36 @@ export function registerSearchDocsTool(pi: ExtensionAPI): void {
     }),
 
     async execute(_toolCallId, params, _signal, onUpdate, ctx) {
-      // ── Step 1: Best-effort index sync ──
+      // ── Step 1: Lightweight sync (write, but safe now with batch INSERTs + transactions) ──
       onUpdate?.({
         content: [{ type: "text" as const, text: "🗄️ notes.duckdb — checking index freshness…" }],
         details: {},
       });
 
-      let syncMessage = "🗄️ notes.duckdb — sync skipped (results may be stale)";
+      // Only sync if DB already exists (avoids WAL creation for missing DB)
+      const dbPath = resolve(ctx.cwd, "notes.duckdb");
       try {
+        await stat(dbPath);
+        // DB exists — try sync (best-effort, no-queue to avoid blocking)
         await withDb(
           ctx.cwd,
           "write",
           async (db) => {
-            const changed = await syncIndex(db, ctx.cwd);
-            syncMessage = changed
-              ? "🗄️ notes.duckdb — index synced (files changed)"
-              : "🗄️ notes.duckdb — index up to date";
+            await syncIndex(db, ctx.cwd);
           },
           { noQueue: true },
-        );
-      } catch (e: unknown) {
-        const errMsg = e instanceof Error ? e.message : String(e);
-        syncMessage = `🗄️ notes.duckdb — sync failed: ${errMsg.slice(0, 120)}`;
+        ).catch(() => {
+          /* best-effort sync */
+        });
+      } catch {
+        // DB doesn't exist or stat failed — create it with a sync
+        await withDb(ctx.cwd, "write", async (db) => {
+          await initDb(db);
+          await syncIndex(db, ctx.cwd);
+        }, { noQueue: true }).catch(() => {
+          /* best-effort create */
+        });
       }
-      onUpdate?.({ content: [{ type: "text" as const, text: syncMessage }], details: {} });
 
       // ── Step 2: BM25 search (read-only) ──
       const query = params.query ?? "";

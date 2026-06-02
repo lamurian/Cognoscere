@@ -70,7 +70,13 @@ export async function initDb(db: duckdb.Database): Promise<void> {
   await run(`CREATE TABLE IF NOT EXISTS tags (file_path VARCHAR NOT NULL, tag VARCHAR NOT NULL)`);
   await run("CREATE INDEX IF NOT EXISTS idx_tags_tag  ON tags(tag)");
   await run("CREATE INDEX IF NOT EXISTS idx_tags_path ON tags(file_path)");
-  await run("CREATE UNIQUE INDEX IF NOT EXISTS idx_tags_unique ON tags(file_path, tag)");
+  // Unique index — may fail if existing data has duplicates from a previous corruption.
+  // Non-critical for search functionality, so swallow the error.
+  try {
+    await run("CREATE UNIQUE INDEX IF NOT EXISTS idx_tags_unique ON tags(file_path, tag)");
+  } catch {
+    /* Non-fatal: index won't be created but DB still functions */
+  }
 
   await run(`CREATE TABLE IF NOT EXISTS term_index (
     term VARCHAR NOT NULL, file_path VARCHAR NOT NULL, tf INTEGER NOT NULL DEFAULT 0
