@@ -1,0 +1,146 @@
+# SearXNG settings for Cognoscere Search Stack
+# Minimal config: only the 7 engines we use. No default engines loaded.
+
+use_default_settings: false
+
+general:
+  instance_name: "Cognoscere Search"
+  debug: false
+  enable_metrics: false
+  privacypolicy_url: false
+  donation_url: false
+  contact_url: false
+
+search:
+  safe_search: 0
+  autocomplete: ""
+  autocomplete_min: 4
+  favicon_resolver: ""
+  default_lang: "en"
+  ban_time_on_fail: 5
+  max_ban_time_on_fail: 120
+  formats:
+    - json
+
+server:
+  secret_key: "${SEARXNG_SECRET}"
+  bind_address: "0.0.0.0"
+  port: 8080
+  base_url: false
+  limiter: false
+  public_instance: false
+  image_proxy: false
+  http_protocol_version: "1.0"
+  method: "POST"
+  default_http_headers:
+    X-Content-Type-Options: nosniff
+    X-Download-Options: noopen
+    X-Robots-Tag: noindex, nofollow
+    Referrer-Policy: no-referrer
+
+ui:
+  static_use_hash: true
+  default_theme: simple
+  default_locale: ""
+  theme_args:
+    simple_style: auto
+  search_on_category_select: true
+  hotkeys: default
+
+valkey:
+  url: false
+
+outgoing:
+  request_timeout: 10.0
+  max_request_timeout: 15.0
+  useragent_suffix: ""
+  pool_connections: 100
+  pool_maxsize: 20
+  enable_http2: true
+
+categories_as_tabs:
+  general:
+  science:
+  it:
+
+doi_resolvers:
+  oadoi.org: "https://oadoi.org/"
+  doi.org: "https://doi.org/"
+
+default_doi_resolver: oadoi.org
+
+plugins:
+  searx.plugins.calculator.SXNGPlugin:
+    active: false
+  searx.plugins.hash_plugin.SXNGPlugin:
+    active: false
+  searx.plugins.self_info.SXNGPlugin:
+    active: false
+  searx.plugins.unit_converter.SXNGPlugin:
+    active: false
+  searx.plugins.hostnames.SXNGPlugin:
+    active: false
+  searx.plugins.tracker_url_remover.SXNGPlugin:
+    active: false
+
+engines:
+  # ── Tier 1: Academic ──
+  - name: openalex
+    engine: openalex
+    shortcut: oa
+    timeout: 5.0
+    disabled: false
+    categories:
+      - science
+
+  - name: pubmed
+    engine: pubmed
+    shortcut: pub
+    disabled: false
+    categories:
+      - science
+
+  - name: semantic scholar
+    engine: semantic_scholar
+    shortcut: se
+    disabled: false
+    categories:
+      - science
+
+  - name: arxiv
+    engine: arxiv
+    shortcut: arx
+    disabled: false
+    categories:
+      - science
+
+  # ── Tier 2/3: General web ──
+  - name: duckduckgo
+    engine: duckduckgo
+    shortcut: ddg
+    disabled: false
+    categories:
+      - general
+
+  # ── Tier 2: Technical wikis ──
+  - name: arch linux wiki
+    engine: archlinux
+    shortcut: al
+    disabled: false
+    categories:
+      - it
+
+  # ── Tier 2: GitHub code search ──
+  # To use an authenticated GitHub token, change ghc_auth.type to
+  # "personal_access_token" and set ghc_auth.token to your token.
+  - name: github code
+    engine: github_code
+    shortcut: ghc
+    disabled: false
+    inactive: false
+    timeout: 10.0
+    categories:
+      - it
+    ghc_auth:
+      type: "none"
+      token: ""

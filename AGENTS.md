@@ -38,7 +38,7 @@ Each PARA directory has its own `AGENTS.md` with specific guidance.
 The agent uses these extensions from `.pi/extensions/`:
 
 - `para-knowledge/index.ts` — provides `search_para_docs`, `create_para_doc`, `update_para_doc`, `list_para_tags`, `find_existing_summary`.
-- `web-search/index.ts` — provides `web_search` (3-tier: curated Lightpanda sources → DuckDuckGo academic filters → general web). Pure TypeScript.
+- `web-search/index.ts` — provides `web_search` (3-tier: SearXNG academic → filtered web → general). SearXNG runs in Docker (search-stack/). Fallback chain: SearXNG → Tavily API → native HTTP.
 - `link-summarizer/index.ts` — provides `fetch_url` which supports HTML (via Lightpanda/HTTP) and PDF (via pdftotext) content extraction.
 - `expand-bullets/index.ts` — provides `expand_bullet_points` to expand unclear bullet points or brief ideation in PARA documents into coherent, researched ideas using reputable web sources.
 - `yaml-enforcer/index.ts` — provides `validate_frontmatter`, `check_frontmatter`, and `standardize_frontmatter` tools for validating, repairing, and standardising YAML frontmatter in PARA documents. Auto-repairs frontmatter after every `create_para_doc` / `update_para_doc`.

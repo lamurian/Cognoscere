@@ -522,7 +522,7 @@ This skill relies on:
 ### Existing tools (from prior extensions)
 - `search_para_docs` — BM25 search across PARA documents
 - `list_para_tags` — list all existing tags before creating documents
-- `web_search` — 3-tier web search (curated → academic → general)
+- `web_search` — 3-tier web search (SearXNG academic → filtered web → general)
 - `fetch_url` — fetch and extract content from web sources
 - `create_para_doc` — create new PARA documents (used for master roadmap)
 - `update_para_doc` — update existing documents

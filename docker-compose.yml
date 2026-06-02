@@ -1,0 +1,48 @@
+# Cognoscere Search Stack
+# Start:   docker compose up -d
+# Stop:    docker compose down
+# Logs:    docker compose logs -f
+# Env:     Set variables in .env (see .env.example)
+
+name: cognoscere-search
+
+services:
+  searxng:
+    container_name: searxng
+    image: docker.io/searxng/searxng:${SEARXNG_VERSION:-latest}
+    restart: unless-stopped
+    ports:
+      - "${SEARXNG_HOST:-127.0.0.1}:${SEARXNG_PORT:-8888}:8080"
+    environment:
+      - SEARXNG_SECRET=${SEARXNG_SECRET_KEY?Set SEARXNG_SECRET_KEY in project root .env}
+    volumes:
+      - ./searxng.yml:/etc/searxng/settings.yml
+      - searxng-data:/var/cache/searxng
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+      - DAC_OVERRIDE
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
+
+  obscura:
+    container_name: obscura
+    image: docker.io/h4ckf0r0day/obscura:${OBSCURA_VERSION:-latest}
+    restart: unless-stopped
+    ports:
+      - "${OBSCURA_HOST:-127.0.0.1}:${OBSCURA_PORT:-9222}:9222"
+    # Default CMD: /obscura serve --port 9222 --host 0.0.0.0
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
+
+volumes:
+  searxng-data:

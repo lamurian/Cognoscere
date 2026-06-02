@@ -1,6 +1,6 @@
 ---
 name: summarize-link
-description: Fetches a URL shared by the user, checks if a summary already exists (by URL or content similarity), extracts content (HTML via Lightpanda, PDF via pdftotext), summarizes it, and saves as a new PARA knowledge document with source_url tracking. Use when the user says "summarize this link", "save this article", or shares a URL they want processed.
+description: Fetches a URL shared by the user, checks if a summary already exists (by URL or content similarity), extracts content (HTML via Obscura headless browser, PDF via pdftotext), summarizes it, and saves as a new PARA knowledge document with source_url tracking. Use when the user says "summarize this link", "save this article", or shares a URL they want processed.
 ---
 
 # Summarize Link
@@ -9,12 +9,15 @@ When the user shares a link (URL) they want processed, follow this workflow.
 
 ## Prerequisites
 
-- **Lightpanda** — for JavaScript-rendered HTML pages (SPAs, React/Vue).
-  Install: `brew install lightpanda-io/browser/lightpanda` (macOS) or see [lightpanda.io](https://github.com/lightpanda-io/browser).
+- **Obscura headless browser** — for JavaScript-rendered HTML pages (SPAs, React/Vue).
+  Runs in Docker:
+  ```
+  docker compose -f search-stack/docker-compose.yml up -d
+  ```
 - **pdftotext** (poppler-utils) — for PDF extraction.
   Install: `apt install poppler-utils` (Debian/Ubuntu) or `brew install poppler` (macOS).
 
-Without Lightpanda, `fetch_url` falls back to simple HTTP + HTML stripping, which **cannot handle JavaScript-rendered pages**.
+Without Obscura, `fetch_url` falls back to simple HTTP + text stripping, which **cannot handle JavaScript-rendered pages**.
 
 ## Workflow
 
@@ -45,14 +48,14 @@ fetch_url(url: "<the URL the user shared>")
 
 The tool:
 - **PDFs:** Detects `.pdf` URLs and extracts text using `pdftotext -layout` (great for academic papers)
-- **HTML:** Uses **Lightpanda** by default — runs a real browser (V8 JS engine), renders the DOM, and outputs clean Markdown
-- **Fallback:** Plain HTTP + HTML stripping if Lightpanda is not installed
+- **HTML:** Connects to **Obscura headless browser** via CDP WebSocket, navigates to the URL, renders the DOM, and calls `LP.getMarkdown` for clean Markdown output
+- **Fallback:** Plain HTTP + text stripping if Obscura is not running
 - Extracts the page title from the first H1 heading (or `<title>` tag in fallback mode)
 
 It returns:
 - Page title
 - Clean Markdown content (or extracted text for PDFs)
-- Engine used (Lightpanda, pdftotext, or HTTP fallback)
+- Engine used (Obscura CDP, pdftotext, or HTTP fallback)
 - Character count
 
 ### 2. Read and understand the content
@@ -144,6 +147,6 @@ Agent actions:
 This skill relies on:
 
 - `find_existing_summary` — checks DuckDB for existing summary by URL + content similarity (from `para-knowledge` extension)
-- `fetch_url` — custom tool from `link-summarizer` extension, supports HTML (via Lightpanda/HTTP) and PDF (via pdftotext)
+- `fetch_url` — custom tool from `link-summarizer` extension, supports HTML (via Obscura CDP/HTTP) and PDF (via pdftotext)
 - `list_para_tags` — lists all existing tags (from `para-knowledge` extension)
 - `create_para_doc` — creates a new PARA document with optional `source_url` (from `para-knowledge` extension)

@@ -1,75 +1,36 @@
 /**
- * web-search — Three-tier web search extension (pure TypeScript)
+ * web-search — Three-tier web search (SearXNG + Tavily fallback)
  *
  * Architecture:
- *   Tier 1 — Fetches curated source search URLs (from sources.json) via
- *            Lightpanda headless browser, extracts result links from the
- *            rendered Markdown.  The agent then follows promising links
- *            with fetch_url for full content.
+ *   Primary:  SearXNG running in Docker (searxng service, port 8888)
+ *   Fallback: Tavily API (api.tavily.com), requires TAVILY_KEY in .env
+ *   Last:     Native HTTP / Bing RSS (no deps, less accurate)
  *
- *   Tiers 2 & 3 — Bing RSS feed (https://www.bing.com/search?format=rss)
- *            using Node.js built-in fetch(). DuckDuckGo's /html/ and Lite
- *            endpoints both now present captcha challenges for automated
- *            requests. Bing's RSS feed returns clean XML <item> elements
- *            with <title>, <link>, and <description>.
- *            Lightpanda is used only as a fallback if Bing returns nothing.
+ * Content fetching (fetch_url) is handled by the separate link-summarizer
+ * extension which connects to Obscura CDP (obscura service, port 9222).
  *
- *   Content fetching — The extension provides fetchUrlWithFallback() which
- *            tries Lightpanda to convert a specific URL to Markdown, then
- *            validates the content is meaningful. If Lightpanda returns
- *            junk (navigation-only, very short), it falls back to HTTP
- *            fetch + HTML-to-Markdown conversion.
+ * Docker Compose setup: search-stack/docker-compose.yml
  *
- *   Tier 1 still requires Lightpanda since source pages are JS-rendered
- *   search portals that the non-JS fallback cannot handle.
+ *   docker compose -f search-stack/docker-compose.yml up -d
  *
- * This extension replaces the old Python-based `fetch_reputable_web` tool
- * in para-knowledge.  No Python dependencies.
+ * Tier mapping (via SearXNG &engines= parameter):
+ *   Tier 1 — Academic: openalex, pubmed, semanticscholar, arxiv
+ *   Tier 2 — Filtered: duckduckgo (site: filters), archlinux, github code
+ *   Tier 3 — General:  duckduckgo
  *
- * sources.json format:
- *   {
- *     "tiers": [
- *       { "tier": 1, "sources": [
- *           { "type": "textbook.medical", "name": "PubMed",
- *             "site": "https://pubmed.ncbi.nlm.nih.gov/",
- *             "example": "https://pubmed.ncbi.nlm.nih.gov/?term=resilience" }
- *       ]},
- *       { "tier": 2, "sources": [
- *           { "type": "academia", "site": ["*.edu", "*.ac.*"] }
- *       ]}
- *     ]
- *   }
+ * Fallback chain:
+ *   SearXNG → Tavily → native HTTP
  */
 
-import { spawn } from "node:child_process";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
-import { readFileSync, existsSync } from "node:fs";
-import { resolve } from "node:path";
 
-// ── Constants ────────────────────────────────────────────────────────
+// ── Constants ──────────────────────────────────────────────────────
 
-const MAX_CONTENT_CHARS = 80_000;
 const MAX_RESULTS = 10;
+const SEARXNG_PORT = parseInt(process.env.SEARXNG_PORT || "8888", 10);
 
-// ── Types ────────────────────────────────────────────────────────────
-
-interface SourceItem {
-  type: string;
-  name?: string;
-  site?: string | string[];
-  example?: string;
-  key?: string;
-}
-
-interface TierConfig {
-  tier: number;
-  sources: SourceItem[];
-}
-
-interface SourcesConfig {
-  tiers: TierConfig[];
-}
+// ── Types ──────────────────────────────────────────────────────────
 
 interface SearchResult {
   title: string;
@@ -79,682 +40,383 @@ interface SearchResult {
   tier: number;
 }
 
-// ══════════════════════════════════════════════════════════════════════
-//  File loaders
-// ══════════════════════════════════════════════════════════════════════
-
-function loadSources(cwd: string): SourcesConfig | null {
-  for (const p of [
-    resolve(cwd, "sources.json"),
-    resolve(cwd, ".pi", "sources.json"),
-  ]) {
-    try {
-      if (existsSync(p)) return JSON.parse(readFileSync(p, "utf-8"));
-    } catch {
-      /* try next */
-    }
-  }
-  return null;
-}
-
-// ══════════════════════════════════════════════════════════════════════
-//  .env loader
-// ══════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════
+//  SearXNG — primary search via Docker container
+// ══════════════════════════════════════════════════════════════════
 
 /**
- * Read .env file (local machine, not committed) into a key-value map.
- * Sources in sources.json may have a "key" field referencing an env var
- * name (e.g. "SEMANTIC_SCHOLAR_KEY").  The value is loaded here for
- * future direct API integrations.
+ * Query SearXNG JSON API via POST.
+ * Docker service must be running (searxng on port 8888).
+ *
+ * Tier mapping:
+ *   1 — academic engines (openalex, pubmed, semanticscholar, arxiv)
+ *   2 — duckduckgo with site: filters + archlinux + github code
+ *   3 — duckduckgo general
  */
-function loadEnv(cwd: string): Record<string, string> {
-  const envPath = resolve(cwd, ".env");
-  const vars: Record<string, string> = {};
-  if (!existsSync(envPath)) return vars;
-
-  try {
-    for (const line of readFileSync(envPath, "utf-8").split("\n")) {
-      const trimmed = line.trim();
-      if (!trimmed || trimmed.startsWith("#")) continue;
-      const eq = trimmed.indexOf("=");
-      if (eq === -1) continue;
-
-      const key = trimmed.slice(0, eq).trim();
-      let val = trimmed.slice(eq + 1).trim();
-
-      // Strip surrounding quotes
-      if (
-        (val.startsWith('"') && val.endsWith('"')) ||
-        (val.startsWith("'") && val.endsWith("'"))
-      ) {
-        val = val.slice(1, -1);
-      }
-      vars[key] = val;
-    }
-  } catch {
-    /* .env is optional — fail silently */
-  }
-  return vars;
-}
-
-// ══════════════════════════════════════════════════════════════════════
-//  Lightpanda — spawn headless browser, get Markdown
-// ══════════════════════════════════════════════════════════════════════
-
-/** Fetch a URL via Lightpanda and return rendered Markdown. */
-function fetchLightpanda(
-  url: string,
-  signal?: AbortSignal,
-): Promise<string | null> {
-  return new Promise((resolve_) => {
-    const child = spawn(
-      "lightpanda",
-      [
-        "fetch",
-        "--obey-robots",
-        "--dump",
-        "markdown",
-        "--log-level",
-        "error",
-        url,
-      ],
-      { stdio: ["ignore", "pipe", "pipe"], signal, timeout: 30_000 },
-    );
-
-    const chunks: Buffer[] = [];
-    child.stdout.on("data", (chunk: Buffer) => {
-      chunks.push(chunk);
-      const total = chunks.reduce((s, c) => s + c.length, 0);
-      if (total > MAX_CONTENT_CHARS * 2) child.kill("SIGTERM");
-    });
-
-    child.on("close", (code) => {
-      if (code !== 0 && code !== null) {
-        resolve_(null);
-        return;
-      }
-      const md = Buffer.concat(chunks).toString("utf-8").trim();
-      resolve_(md || null);
-    });
-
-    child.on("error", (err: NodeJS.ErrnoException) => {
-      if (err.code === "ENOENT") resolve_(null);
-      else resolve_(null);
-    });
-  });
-}
-
-// ══════════════════════════════════════════════════════════════════════
-//  Link extraction from Markdown
-// ══════════════════════════════════════════════════════════════════════
-
-/**
- * Quick check: does the URL look like a navigation/UI element rather than
- * an actual content result?  Returns true if the link is meaningful content.
- */
-function isContentLink(url: string, title: string): boolean {
-  // Skip image/icon/media URLs
-  if (/[\.\/](png|svg|jpg|jpeg|gif|ico|webp|bmp|avif)([?#]|$)/i.test(url)) return false;
-
-  // Skip auth/account pages
-  if (/\/(login|signin|signout|logout|register|signup|auth|forgot|reset|myncbi|myaccount|account\/settings)/i.test(url)) return false;
-  if (/\/(dashboard|settings|preferences|profile)(\/|$)/i.test(url)) return false;
-
-  // Skip social media/share links
-  if (/^https?:\/\/(www\.)?(twitter\.com|x\.com|facebook\.com|linkedin\.com|youtube\.com|instagram\.com|github\.com|t\.co|fb\.com|lnkd\.in)/i.test(url)) return false;
-
-  // Skip footer/help/nav pages
-  if (/\/(help|about|contact|privacy|terms|cookies|accessibility|careers|disclaimer|web\-policies|foia|vulnerability\-disclosure|browsers|guide)/i.test(url)) return false;
-
-  // Skip very short titles (single word UI labels like "Log in", "Help", "Close")
-  const stripped = title.replace(/[\[\]!?.]+/g, "").trim();
-  if (stripped.length < 4) return false;
-
-  // Skip titles that are clearly UI labels
-  const uiLabels = [
-    "log in", "log out", "sign in", "sign out", "sign up", "register",
-    "dashboard", "settings", "account", "profile", "help", "about",
-    "contact", "privacy", "terms", "access keys", "main content",
-    "main navigation", "show account info", "close", "menu",
-    "open menu", "search", "advanced", "create alert",
-    "table of contents", "supplemental content", "search details",
-    "recent activity", "follow n", "connect with",
-    "all regions", "safe search", "any time", "custom date range",
-    "homepage", "themes", "share feedback",
-  ];
-  const lower = stripped.toLowerCase();
-  if (uiLabels.some((l) => lower === l || lower.startsWith(l + ":"))) return false;
-
-  // Skip government banner text (official website indicators)
-  if (lower.includes("us flag") || lower.includes("dot gov") || lower.includes("https")) return false;
-  if (lower.includes("official website") || lower.includes("government website")) return false;
-  if (lower.includes("here's how you know") || lower.includes("site is secure")) return false;
-
-  return true;
-}
-
-/**
- * Extract result links from Markdown.
- * Returns deduplicated { title, url } pairs (up to MAX_RESULTS).
- * Filters out navigation chrome, image files, auth links, and other non-content UI.
- */
-function extractLinks(
-  markdown: string,
-  existingUrls: Set<string>,
-): Array<{ title: string; url: string }> {
-  const links: Array<{ title: string; url: string }> = [];
-
-  // Match [title](url)
-  const re = /\[([^\]]+)\]\(([^)]+)\)/g;
-  let match: RegExpExecArray | null;
-  while ((match = re.exec(markdown)) !== null) {
-    const title = match[1].trim();
-    let url = match[2].trim();
-    // Strip trailing junk after first space
-    url = url.split(/\s/)[0];
-    if (!url.startsWith("http")) continue;
-    if (existingUrls.has(url)) continue;
-    if (!isContentLink(url, title)) continue;
-    existingUrls.add(url);
-    links.push({ title, url });
-    if (links.length >= MAX_RESULTS) break;
-  }
-
-  return links;
-}
-
-// ══════════════════════════════════════════════════════════════════════
-//  Tier 1 — Curated sources via Lightpanda
-// ══════════════════════════════════════════════════════════════════════
-
-/**
- * Build the actual search URL from the example URL pattern.
- * Replaces the query-parameter value with the user's search term.
- */
-function buildSearchUrl(example: string, query: string): string | null {
-  try {
-    const url = new URL(example);
-    // Common search-parameter names
-    const params = ["term", "q", "query", "search", "keywords", "text"];
-    let found = false;
-    for (const p of params) {
-      if (url.searchParams.has(p)) {
-        url.searchParams.set(p, query);
-        found = true;
-        break;
-      }
-    }
-    if (!found) url.searchParams.set("q", query);
-    return url.toString();
-  } catch {
-    return null;
-  }
-}
-
-/** Tier 1: Fetch each curated source's search page via Lightpanda. */
-async function searchTier1(
+async function searchSearxng(
   query: string,
-  config: SourcesConfig,
-  signal: AbortSignal | undefined,
+  tier: number,
+  signal?: AbortSignal,
 ): Promise<SearchResult[]> {
-  const tier1 = config.tiers?.find((t) => t.tier === 1);
-  if (!tier1?.sources?.length) return [];
+  const baseUrl = `http://127.0.0.1:${SEARXNG_PORT}/search`;
 
-  const results: SearchResult[] = [];
-  const seen = new Set<string>();
-
-  for (const src of tier1.sources) {
-    if (!src.example) continue;
-    const searchUrl = buildSearchUrl(src.example, query);
-    if (!searchUrl) continue;
-
-    const markdown = await fetchLightpanda(searchUrl, signal);
-    if (!markdown) continue;
-
-    const links = extractLinks(markdown, seen);
-    for (const link of links) {
-      results.push({
-        title: link.title,
-        url: link.url,
-        snippet: "",
-        source_label: src.name ?? src.type,
-        tier: 1,
-      });
-    }
-
-    // Early exit if we have enough results across all sources
-    if (results.length >= MAX_RESULTS) break;
-  }
-
-  return results.slice(0, MAX_RESULTS);
-}
-
-// ══════════════════════════════════════════════════════════════════════
-//  Content validation & fetch-with-fallback
-// ══════════════════════════════════════════════════════════════════════
-
-/**
- * Quick check: is the rendered Markdown content meaningful?
- * Rejects pages that are mostly navigation, very short, or metadata-only.
- */
-function isContentMeaningful(markdown: string): boolean {
-  if (!markdown || markdown.length < 150) return false;
-
-  // Strip Markdown link/image syntax, emphasis, headers, code
-  const textOnly = markdown
-    .replace(/!?\[[^\]]*\]\([^)]*\)/g, "$1")
-    .replace(/[#*`>|_~]+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-
-  if (textOnly.length < 80) return false;
-
-  // Must have at least 2 sentence-ending punctuation marks
-  const sentences = (textOnly.match(/[.?!]+/g) || []).length;
-  if (sentences < 2) return false;
-
-  // Check it's not just navigation chrome by counting "nav" keywords
-  const lower = textOnly.toLowerCase();
-  const navWords = ["all", "images", "videos", "maps", "shopping",
-    "sign in", "sign up", "log in", "register", "privacy", "terms",
-    "cookies", "settings", "help", "about", "contact"];
-  const navHits = navWords.filter((w) => lower.includes(w)).length;
-
-  // If >50% of early content is nav words and total is small, it's junk
-  if (navHits > 4 && textOnly.length < 400) return false;
-
-  return true;
-}
-
-/**
- * Simple HTML-to-Markdown conversion for the HTTP fallback path.
- * Handles common block elements, links, emphasis, and code blocks.
- */
-function htmlToMarkdown(html: string): string {
-  let md = html;
-
-  // Remove scripts, styles, comments, nav, header, footer
-  md = md.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "");
-  md = md.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "");
-  md = md.replace(/<!--[\s\S]*?-->/g, "");
-  md = md.replace(/<(?:nav|header|footer|aside)[^>]*>[\s\S]*?<\/(?:nav|header|footer|aside)>/gi, "");
-
-  // Block-level conversions
-  md = md.replace(/<h1[^>]*>(.*?)<\/h1>/gi, "# $1\n\n");
-  md = md.replace(/<h2[^>]*>(.*?)<\/h2>/gi, "## $1\n\n");
-  md = md.replace(/<h3[^>]*>(.*?)<\/h3>/gi, "### $1\n\n");
-  md = md.replace(/<h4[^>]*>(.*?)<\/h4>/gi, "#### $1\n\n");
-  md = md.replace(/<h5[^>]*>(.*?)<\/h5>/gi, "##### $1\n\n");
-  md = md.replace(/<h6[^>]*>(.*?)<\/h6>/gi, "###### $1\n\n");
-  md = md.replace(/<li[^>]*>(.*?)<\/li>/gi, "- $1\n");
-  md = md.replace(/<p[^>]*>(.*?)<\/p>/gi, "$1\n\n");
-  md = md.replace(/<br\s*\/?>/gi, "\n");
-  md = md.replace(/<hr\s*\/?>/gi, "\n---\n");
-  md = md.replace(/<blockquote[^>]*>(.*?)<\/blockquote>/gis, "> $1\n\n");
-  md = md.replace(/<pre[^>]*>(.*?)<\/pre>/gis, "```\n$1\n```\n\n");
-  md = md.replace(/<code[^>]*>(.*?)<\/code>/gi, "`$1`");
-
-  // Inline conversions (order matters: links before bold to avoid nested issues)
-  md = md.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*?)<\/a>/gi, "[$2]($1)");
-  md = md.replace(/<strong[^>]*>(.*?)<\/strong>/gi, "**$1**");
-  md = md.replace(/<b[^>]*>(.*?)<\/b>/gi, "**$1**");
-  md = md.replace(/<em[^>]*>(.*?)<\/em>/gi, "*$1*");
-  md = md.replace(/<i[^>]*>(.*?)<\/i>/gi, "*$1*");
-
-  // Strip remaining unknown tags
-  md = md.replace(/<[^>]*>/g, "");
-
-  // Decode common HTML entities
-  const entities: Record<string, string> = {
-    "&amp;": "&", "&lt;": "<", "&gt;": ">",
-    "&quot;": '"', "&#39;": "'", "&#x27;": "'",
-    "&nbsp;": " ", "&mdash;": "---", "&ndash;": "--",
+  const params: Record<string, string> = {
+    q: query,
+    format: "json",
+    language: "en",
+    pageno: "1",
   };
-  for (const [enc, dec] of Object.entries(entities)) {
-    md = md.replace(new RegExp(enc, "g"), dec);
+
+  if (tier === 1) {
+    params.engines = "openalex,pubmed,semanticscholar,arxiv";
+  } else if (tier === 2) {
+    params.q = `${query} site:edu OR site:ac.* OR site:gov OR site:go.* OR site:mil`;
+    params.engines = "duckduckgo,archlinux";
+  } else {
+    params.engines = "duckduckgo";
   }
-  md = md.replace(/&#?\w+;/g, " ");
-
-  // Clean up excessive blank lines
-  md = md.replace(/\n{4,}/g, "\n\n");
-
-  return md.trim();
-}
-
-/**
- * Fetch a specific URL and convert to Markdown, with validation and fallback.
- *
- * 1. Tries Lightpanda (best Markdown conversion for JS-heavy pages)
- * 2. Validates the content is meaningful (not just nav chrome)
- * 3. If Lightpanda output is junk, falls back to HTTP fetch + htmlToMarkdown
- *
- * Returns the best Markdown we could produce, or null if both failed.
- */
-async function fetchUrlWithFallback(
-  url: string,
-  signal?: AbortSignal,
-): Promise<string | null> {
-  // Step 1: Try Lightpanda
-  const lightpandaMd = await fetchLightpanda(url, signal);
-
-  if (lightpandaMd && isContentMeaningful(lightpandaMd)) {
-    return lightpandaMd;
-  }
-
-  // Step 2: Lightpanda output was empty or junk — fall back to HTTP + HTML
-  try {
-    const response = await fetch(url, {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-        Accept: "text/html,application/xhtml+xml",
-      },
-      signal,
-      redirect: "follow",
-    });
-
-    if (!response.ok) return lightpandaMd;
-
-    const html = await response.text();
-    const htmlMd = htmlToMarkdown(html);
-
-    if (htmlMd && isContentMeaningful(htmlMd)) {
-      return htmlMd;
-    }
-
-    // If HTML fallback also produced junk, return the original Lightpanda output
-    return lightpandaMd || htmlMd || null;
-  } catch {
-    return lightpandaMd;
-  }
-}
-
-// ══════════════════════════════════════════════════════════════════════
-//  Bing RSS feed (used by tiers 2 & 3)
-//  Note: DuckDuckGo's /html/ and Lite endpoints both now present
-//  captcha challenges for automated requests.  Bing's RSS feed
-//  (https://www.bing.com/search?q=...&format=rss) returns clean XML
-//  results with no JS or captcha requirements.
-// ══════════════════════════════════════════════════════════════════════
-
-/**
- * Convert sources.json site patterns to DuckDuckGo-compatible site: filters.
- *
- * Mapping rules:
- *   *.edu → .edu
- *   *.ac.* → .ac.uk,.ac.in,.ac.nz,...  (practical common ones)
- *   *.gov → .gov
- *   *.go.* → .go.id,.go.jp,...
- *   https://domain.ext → domain.ext
- */
-function buildDdgSiteFilters(rawPatterns: string[]): string[] {
-  const filters: string[] = [];
-
-  for (const p of rawPatterns) {
-    let f = p.trim().toLowerCase();
-
-    // Strip leading *. or *.
-    if (f.startsWith("*.")) f = f.slice(1);
-    else if (f.startsWith("*")) f = "." + f.slice(1);
-
-    // If it's a URL, extract domain
-    if (f.startsWith("http")) {
-      try {
-        f = new URL(f).hostname;
-      } catch {
-        continue;
-      }
-    }
-
-    // Special handling for patterns like "ac.*" — expand to common TLDs
-    if (f === ".ac.*" || f === "ac.*") {
-      filters.push(".ac.uk", ".ac.in", ".ac.nz", ".ac.jp", ".ac.kr", ".ac.cn", ".ac.th", ".ac.id", ".ac.il", ".ac.za");
-      continue;
-    }
-
-    filters.push(f);
-  }
-
-  return filters;
-}
-
-/**
- * Search Bing via its RSS feed (format=rss).
- * Returns parsed results (title, url, snippet).
- *
- * Bing's RSS feed returns clean XML with <item> elements containing
- * <title>, <link>, and <description>.  It does not present captcha
- * challenges or require JavaScript execution.  The site: filter syntax
- * is the same as DuckDuckGo's.
- */
-async function searchBingRss(
-  query: string,
-  siteFilters: string[],
-  signal?: AbortSignal,
-): Promise<SearchResult[]> {
-  // Build the search query with site: filters
-  let searchQuery = query;
-  if (siteFilters.length > 0) {
-    const siteParts = siteFilters.map((f) => `site:${f}`);
-    searchQuery = siteParts.join(" ") + " " + query;
-  }
-
-  const url = "https://www.bing.com/search?q=" +
-    encodeURIComponent(searchQuery) + "&format=rss";
 
   let response: Response;
   try {
-    response = await fetch(url, {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-        Accept: "application/rss+xml, application/xml, text/xml",
-      },
+    response = await fetch(baseUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(params),
       signal,
-      redirect: "follow",
     });
   } catch {
     return [];
   }
   if (!response.ok) return [];
 
-  const xml = await response.text();
-
-  // Parse RSS items using regex (avoids XML parsing dependency)
-  const results: SearchResult[] = [];
-  const seen = new Set<string>();
-
-  // Extract <item>...</item> blocks
-  const itemRe = /<item>([\s\S]*?)<\/item>/gi;
-  let itemMatch: RegExpExecArray | null;
-
-  while ((itemMatch = itemRe.exec(xml)) !== null && results.length < MAX_RESULTS) {
-    const block = itemMatch[1];
-
-    const titleM = block.match(/<title>([^<]*)<\/title>/i);
-    if (!titleM) continue;
-    const title = titleM[1].trim();
-    if (!title) continue;
-
-    const linkM = block.match(/<link>([^<]+)<\/link>/i);
-    if (!linkM) continue;
-    const url = linkM[1].trim();
-    if (seen.has(url)) continue;
-    if (!isContentLink(url, title)) continue;
-    seen.add(url);
-
-    const descM = block.match(/<description>([\s\S]*?)<\/description>/i);
-    const snippet = descM
-      ? descM[1].replace(/<[^>]*>/g, "").replace(/&#?\w+;/g, " ").replace(/\s+/g, " ").trim()
-      : "";
-
-    results.push({
-      title,
-      url,
-      snippet: snippet.length > 300 ? snippet.slice(0, 300) + "..." : snippet,
-      source_label: "Web",
-      tier: 0, // filled in by caller
-    });
+  let data: { results?: Array<Record<string, unknown>> };
+  try {
+    data = (await response.json()) as typeof data;
+  } catch {
+    return [];
   }
 
-  return results.slice(0, MAX_RESULTS);
+  return (data.results ?? [])
+    .slice(0, MAX_RESULTS)
+    .map((r) => ({
+      title: (r.title as string) ?? "",
+      url: (r.url as string) ?? "",
+      snippet: ((r.content as string) ?? "")
+        .replace(/<[^>]*>/g, "")
+        .slice(0, 300),
+      source_label: (r.engine as string) ?? "SearXNG",
+      tier,
+    }));
 }
 
-// ══════════════════════════════════════════════════════════════════════
-//  Tiers 2 & 3 — DuckDuckGo search
-// ══════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════
+//  Tavily — fallback search API
+// ══════════════════════════════════════════════════════════════════
 
-async function searchTier23(
+const ACADEMIC_DOMAINS = [
+  "pubmed.ncbi.nlm.nih.gov",
+  "arxiv.org",
+  "semanticscholar.org",
+  "openalex.org",
+  "doi.org",
+  "ncbi.nlm.nih.gov",
+  "science.org",
+  "nature.com",
+  "springer.com",
+  "ieee.org",
+  "acm.org",
+];
+
+/**
+ * Query Tavily API. Requires TAVILY_KEY environment variable.
+ * Returns results with full-page content (no separate fetch_url needed).
+ */
+async function searchTavily(
   query: string,
-  siteFilters: string[],
   tier: number,
-  signal: AbortSignal | undefined,
+  signal?: AbortSignal,
 ): Promise<SearchResult[]> {
-  // Primary: Bing RSS feed (no captcha, clean XML results)
-  let results = await searchBingRss(query, siteFilters, signal);
+  const apiKey = process.env.TAVILY_KEY;
+  if (!apiKey) return [];
 
-  // Fallback: if Bing returned nothing, try via Lightpanda
-  if (results.length === 0) {
-    const url =
-      "https://www.bing.com/search?q=" + encodeURIComponent(query);
-    const markdown = await fetchLightpanda(url, signal);
-    if (markdown) {
-      const seen = new Set<string>();
-      const links = extractLinks(markdown, seen);
-      results = links.map((l) => ({
-        title: l.title,
-        url: l.url,
-        snippet: "",
-        source_label: "Web",
-        tier: 0,
-      }));
-    }
+  const body: Record<string, unknown> = {
+    api_key: apiKey,
+    query,
+    max_results: MAX_RESULTS,
+    include_answer: false,
+  };
+
+  if (tier === 1) {
+    body.search_depth = "advanced";
+    body.include_domains = ACADEMIC_DOMAINS;
+  } else if (tier === 2) {
+    body.search_depth = "basic";
+    body.include_domains = [".edu", ".gov", ".ac.uk"];
+  } else {
+    body.search_depth = "advanced";
   }
 
-  const label = tier === 2 ? "Academic" : "General Web";
-  results.forEach((r) => {
-    r.tier = tier;
-    r.source_label = label;
-  });
+  try {
+    const response = await fetch("https://api.tavily.com/search", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+      signal,
+    });
+    if (!response.ok) return [];
 
-  return results;
+    const data = (await response.json()) as {
+      results?: Array<Record<string, unknown>>;
+    };
+    return (data.results ?? []).slice(0, MAX_RESULTS).map((r) => ({
+      title: (r.title as string) ?? "",
+      url: (r.url as string) ?? "",
+      snippet: ((r.content as string) ?? "").slice(0, 300),
+      source_label: "Tavily",
+      tier,
+    }));
+  } catch {
+    return [];
+  }
 }
 
-async function searchTier2(
+// ══════════════════════════════════════════════════════════════════
+//  Native HTTP — last-resort fallback (Bing RSS)
+// ══════════════════════════════════════════════════════════════════
+
+/**
+ * Minimal Bing RSS feed fetch.
+ * Only used when both SearXNG and Tavily are unavailable.
+ */
+async function searchNativeHttp(
   query: string,
-  config: SourcesConfig | null,
-  signal: AbortSignal | undefined,
+  tier: number,
+  signal?: AbortSignal,
 ): Promise<SearchResult[]> {
-  let rawPatterns = ["*.edu", "*.ac.*"];
-  if (config) {
-    const t2 = config.tiers?.find((t) => t.tier === 2);
-    if (t2?.sources?.length) {
-      rawPatterns = [];
-      for (const src of t2.sources) {
-        if (Array.isArray(src.site)) rawPatterns.push(...src.site);
-        else if (src.site) rawPatterns.push(src.site);
+  let searchQuery = query;
+  if (tier === 2) {
+    searchQuery = `(${query}) (site:edu OR site:ac.uk OR site:gov)`;
+  }
+
+  const url =
+    "https://www.bing.com/search?q=" +
+    encodeURIComponent(searchQuery) +
+    "&format=rss";
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        Accept: "application/rss+xml, application/xml",
+      },
+      signal,
+    });
+    if (!response.ok) return [];
+
+    const xml = await response.text();
+    const results: SearchResult[] = [];
+    const seen = new Set<string>();
+    const itemRe = /<item>([\s\S]*?)<\/item>/gi;
+    let match: RegExpExecArray | null;
+
+    while (
+      (match = itemRe.exec(xml)) !== null &&
+      results.length < MAX_RESULTS
+    ) {
+      const block = match[1];
+      const titleM = block.match(/<title>([^<]*)<\/title>/i);
+      const linkM = block.match(/<link>([^<]+)<\/link>/i);
+      if (!titleM || !linkM) continue;
+      const title = titleM[1].trim();
+      const link = linkM[1].trim();
+      if (!title || !link || seen.has(link)) continue;
+      seen.add(link);
+
+      const descM = block.match(/<description>([\s\S]*?)<\/description>/i);
+      const snippet = descM
+        ? descM[1]
+            .replace(/<[^>]*>/g, "")
+            .replace(/&#?\w+;/g, " ")
+            .replace(/\s+/g, " ")
+            .trim()
+        : "";
+
+      results.push({
+        title,
+        url: link,
+        snippet: snippet.length > 300 ? snippet.slice(0, 300) + "..." : snippet,
+        source_label: "Web",
+        tier,
+      });
+    }
+    return results;
+  } catch {
+    return [];
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════
+//  Orchestrator
+// ══════════════════════════════════════════════════════════════════
+
+interface SearchOutput {
+  results: SearchResult[];
+  tier: number;
+  tierLabel: string;
+}
+
+/**
+ * Run search through the fallback chain.
+ *
+ * Forced tier (1/2/3):
+ *   Only that tier's engines are queried via SearXNG.
+ *   If SearXNG fails, falls through Tavily → native for the same tier.
+ *
+ * Auto-escalate (no tier):
+ *   Tier 1 (SearXNG) → if < 3 results, Tavily tier 1
+ *   → Tier 2 (SearXNG) → if < 3, Tavily tier 2
+ *   → Tier 3 (SearXNG) → if < 3, Tavily tier 3
+ *   → if still < 3, native HTTP
+ */
+async function search(
+  query: string,
+  forcedTier?: number,
+  signal?: AbortSignal,
+): Promise<SearchOutput> {
+  // ── Forced tier: only that tier ──
+  if (forcedTier !== undefined && forcedTier >= 1 && forcedTier <= 3) {
+    const tier = forcedTier;
+    const label = ["Academic (SearXNG)", "Filtered (SearXNG)", "General (SearXNG)"][
+      tier - 1
+    ];
+    const fallbackLabel = ["Academic (Tavily)", "Filtered (Tavily)", "General (Tavily)"][
+      tier - 1
+    ];
+
+    let results = await searchSearxng(query, tier, signal);
+    if (results.length < 3) {
+      const tavilyResults = await searchTavily(query, tier, signal);
+      if (tavilyResults.length > 0) {
+        return {
+          results: tavilyResults,
+          tier,
+          tierLabel: `Tier ${tier} — ${fallbackLabel}`,
+        };
       }
     }
+    if (results.length < 3) {
+      results = await searchNativeHttp(query, tier, signal);
+    }
+    return { results, tier, tierLabel: `Tier ${tier} — ${label}` };
   }
-  const siteFilters = buildDdgSiteFilters(rawPatterns);
-  return searchTier23(query, siteFilters, 2, signal);
+
+  // ── Auto-escalate: Tier 1 → Tavily → Tier 2 → Tavily → Tier 3 ──
+  let results: SearchResult[];
+
+  // Tier 1
+  results = await searchSearxng(query, 1, signal);
+  if (results.length >= 3) {
+    return { results, tier: 1, tierLabel: "Tier 1 — Academic (SearXNG)" };
+  }
+  results = await searchTavily(query, 1, signal);
+  if (results.length >= 3) {
+    return { results, tier: 1, tierLabel: "Tier 1 — Academic (Tavily)" };
+  }
+
+  // Tier 2
+  results = await searchSearxng(query, 2, signal);
+  if (results.length >= 3) {
+    return { results, tier: 2, tierLabel: "Tier 2 — Filtered (SearXNG)" };
+  }
+  results = await searchTavily(query, 2, signal);
+  if (results.length >= 3) {
+    return { results, tier: 2, tierLabel: "Tier 2 — Filtered (Tavily)" };
+  }
+
+  // Tier 3
+  results = await searchSearxng(query, 3, signal);
+  if (results.length >= 3) {
+    return { results, tier: 3, tierLabel: "Tier 3 — General (SearXNG)" };
+  }
+  results = await searchTavily(query, 3, signal);
+  if (results.length >= 3) {
+    return { results, tier: 3, tierLabel: "Tier 3 — General (Tavily)" };
+  }
+
+  // Last resort
+  results = await searchNativeHttp(query, 3, signal);
+
+  return {
+    results,
+    tier: 3,
+    tierLabel: results.length > 0
+      ? "Tier 3 — General (native HTTP fallback)"
+      : "Tier 3 — General (all sources exhausted)",
+  };
 }
 
-async function searchTier3(
-  query: string,
-  signal: AbortSignal | undefined,
-): Promise<SearchResult[]> {
-  return searchTier23(query, [], 3, signal);
-}
+// ══════════════════════════════════════════════════════════════════
+//  Formatting
+// ══════════════════════════════════════════════════════════════════
 
-// ══════════════════════════════════════════════════════════════════════
-//  Result formatting
-// ══════════════════════════════════════════════════════════════════════
-
-function formatForLLM(
+function formatResults(
   results: SearchResult[],
   query: string,
   tierLabel: string,
-  tier: number,
 ): string {
   if (!results.length) {
-    return `**No results** from ${tierLabel} for "${query}".`;
+    return `**No results** from any source for "${query}".`;
   }
 
   const lines = results.map((r, i) => {
     let line = `${i + 1}. [${r.title}](${r.url})`;
-    if (r.source_label && r.source_label !== "Web")
-      line += ` — *${r.source_label}*`;
+    if (r.source_label !== "Web") line += ` — *${r.source_label}*`;
     if (r.snippet) line += `\n   ${r.snippet.slice(0, 250)}`;
     return line;
   });
 
-  const help =
-    tier === 1
-      ? "\n\n**→ Tier 1 links extracted from curated source search pages. Follow promising ones with `fetch_url` to get full content.**"
-      : "";
-
   return (
     `**Search results** for "${query}" (${tierLabel}, ${results.length} results)` +
-    help +
     "\n\n" +
     lines.join("\n\n")
   );
 }
 
-// ══════════════════════════════════════════════════════════════════════
-//  Extension entry point
-// ══════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════
+//  Extension Entry Point
+// ══════════════════════════════════════════════════════════════════
 
 export default function (pi: ExtensionAPI): void {
-  const cwd = process.cwd();
-  const sourcesConfig = loadSources(cwd);
-  const envVars = loadEnv(cwd);
-
-  const sourceCount =
-    sourcesConfig?.tiers?.reduce(
-      (n, t) => n + (t.sources?.length ?? 0),
-      0,
-    ) ?? 0;
-  if (sourcesConfig) {
-    console.log(
-      `[web-search] ✓ sources.json (${sourcesConfig.tiers.length} tier(s), ${sourceCount} source(s))`,
-    );
-  } else {
-    console.log("[web-search] No sources.json — will use defaults");
-  }
-
-  const envKeysAvailable = Object.keys(envVars);
-  if (envKeysAvailable.length > 0) {
-    console.log(`[web-search] ✓ .env loaded (${envKeysAvailable.length} key(s): ${envKeysAvailable.join(", ")})`);
-  }
+  console.log(
+    "[web-search] ✓ SearXNG search + Tavily fallback" +
+      (process.env.TAVILY_KEY ? " (Tavily key found)" : " (no Tavily key — native HTTP last resort)"),
+  );
 
   pi.registerTool({
     name: "web_search",
-    label: "Web Search (3-Tier)",
+    label: "Web Search (3-Tier: SearXNG + Tavily)",
     description: [
       "Three-tier web search for authoritative information.",
-      "Tier 1 — Fetches curated source search pages (defined in sources.json) via Lightpanda headless browser.",
-      "  Returns result links extracted from the rendered Markdown. Follow promising links with fetch_url.",
-      "Tier 2 — DuckDuckGo filtered to academic/institutional domains (site:.edu, .ac.uk, etc.).",
-      "Tier 3 — Unfiltered DuckDuckGo general web search.",
-      "Tiers 2/3 use Bing RSS feed (www.bing.com/search?format=rss) for reliable",
-      "  result extraction without captcha challenges.",
-      "  Lightpanda is only tried as a fallback if Bing returns nothing.",
-      "Auto-escalates: tier 1 → tier 2 → tier 3 if < 3 results. Pass tier: N to force a specific layer.",
-      "Sources in sources.json can have a 'key' field referencing a .env variable",
-      "(loaded from the local .env file, not committed to git). Reserved for future",
-      "direct API integrations.",
-      "Pure TypeScript — no Python required.",
+      "",
+      "Tier 1 — Academic: SearXNG with OpenAlex, PubMed, Semantic Scholar, arXiv.",
+      "Tier 2 — Filtered: DuckDuckGo (site:.edu/.gov/.mil filters), Arch Linux Wiki.",
+      "Tier 3 — General: DuckDuckGo.",
+      "",
+      "Fallback chain: SearXNG (Docker) → Tavily API → native HTTP.",
+      "",
+      "Requires Docker Compose from search-stack/:",
+      "  docker compose -f search-stack/docker-compose.yml up -d",
+      "",
+      "Set TAVILY_KEY in .env for Tavily fallback (free at https://tavily.com).",
     ].join(" "),
     promptSnippet:
-      "Search the web (3-tier: curated sources → academic → general)",
+      "Search the web (3-tier: SearXNG academic → filtered → general)",
     promptGuidelines: [
-      "Use web_search when you need authoritative information not found in local PARA documents.",
-      "Auto-escalates from curated sources (tier 1) → academic (tier 2) → general web (tier 3).",
-      "For tier 1 results, use fetch_url on promising links to read full content before synthesising.",
-      "Pass tier: 1, 2, or 3 to force a specific tier and skip auto-escalation.",
-      "Tiers 2 and 3 use the Bing RSS feed for search; Lightpanda is fallback only.",
+      "Use web_search when you need authoritative information not found locally.",
+      "Auto-escalates: academic (tier 1) → filtered (tier 2) → general (tier 3).",
+      "Pass tier: 1, 2, or 3 to force a specific tier.",
+      "For full content from any result, use fetch_url.",
       "Cite every result with markdown footnotes (e.g. [^1]) including page title and URL.",
     ],
     parameters: Type.Object({
@@ -764,65 +426,27 @@ export default function (pi: ExtensionAPI): void {
       tier: Type.Optional(
         Type.Number({
           description:
-            "Force a specific tier: 1 (curated sources), 2 (academic filters), 3 (general web). Omit to auto-escalate.",
+            "Force a specific tier: 1 (academic), 2 (filtered), 3 (general). Omit to auto-escalate.",
         }),
       ),
     }),
 
     async execute(_toolCallId, params, signal, _onUpdate, _ctx) {
       const { query, tier } = params;
-      let results: SearchResult[] = [];
-      let tierLabel: string;
-      let usedTier: number;
-
-      if (tier === 1) {
-        results = await searchTier1(
-          query,
-          sourcesConfig ?? { tiers: [] },
-          signal,
-        );
-        tierLabel = "Tier 1 (curated sources via Lightpanda)";
-        usedTier = 1;
-      } else if (tier === 2) {
-        results = await searchTier2(query, sourcesConfig, signal);
-        tierLabel = "Tier 2 (academic filters)";
-        usedTier = 2;
-      } else if (tier === 3) {
-        results = await searchTier3(query, signal);
-        tierLabel = "Tier 3 (general web)";
-        usedTier = 3;
-      } else {
-        // Auto-escalate
-        results = await searchTier1(
-          query,
-          sourcesConfig ?? { tiers: [] },
-          signal,
-        );
-        tierLabel = "Tier 1 (curated sources via Lightpanda)";
-        usedTier = 1;
-
-        if (results.length < 3) {
-          results = await searchTier2(query, sourcesConfig, signal);
-          tierLabel = "Tier 2 (academic filters)";
-          usedTier = 2;
-
-          if (results.length < 3) {
-            results = await searchTier3(query, signal);
-            tierLabel = "Tier 3 (general web)";
-            usedTier = 3;
-          }
-        }
-      }
+      const { results, tier: usedTier, tierLabel } = await search(
+        query,
+        tier,
+        signal,
+      );
 
       return {
         content: [
           {
             type: "text" as const,
-            text: formatForLLM(results, query, tierLabel, usedTier),
+            text: formatResults(results, query, tierLabel),
           },
         ],
         details: {
-          envKeysAvailable,
           query,
           tier: usedTier,
           tierLabel,
