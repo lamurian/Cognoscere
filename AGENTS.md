@@ -38,6 +38,7 @@ Available skills:
 - @.agents/skills/summarize-link/SKILL.md — fetch, dedup, extract, summarize, save
 - @.agents/skills/auto-link/SKILL.md — semantic linking after note creation
 - @.agents/skills/roadmap/SKILL.md — structured learning pathways
+- @.agents/skills/research/SKILL.md — iterative academic research with WHY/HOW decomposition, hypothesis testing, and atomic notes + executive summary
 
 Extensions from @.pi/extensions/ provide the tools used above:
 - @.pi/extensions/AGENTS.md — extension governance, file structure, naming, quality gates
