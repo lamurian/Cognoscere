@@ -22,6 +22,12 @@ The choice of outcome measure (the 'effect') in a cost-effectiveness analysis fu
 
 **Resilience-specific scales.** The Connor-Davidson Resilience Scale (CD-RISC) and Brief Resilience Scale (BRS) are commonly used. However, because these instruments are trait-oriented and lack a clear link to monetisable outcomes, they are rarely used in formal CEAs—most economic evaluations of resilience interventions convert resilience gains into clinical or productivity proxies rather than using resilience scores as the primary effect measure.[^1]
 
+[^1]: Hollaar MHL, Kemmere B, Kocken PL, Denktaş S. Resilience-based interventions in the public sector workplace: a systematic review. *BMC Public Health*. 2025;25:350. https://doi.org/10.1186/s12889-024-21177-2
+
+[^2]: Le LK-D, Esturas AC, Mihalopoulos C, et al. Cost-effectiveness evidence of mental health prevention and promotion interventions: A systematic review of economic evaluations. *PLoS Med*. 2021;18(5):e1003606. https://doi.org/10.1371/journal.pmed.1003606
+
+[^5]: Lensberg BR, Drummond MF, Danchenko N, Despiégel N, François C. Challenges in measuring and valuing productivity costs, and their relevance in mood disorders. *Clinicoecon Outcomes Res*. 2013;5:565-573. https://doi.org/10.2147/CEOR.S44866
+
 ## Relevant notes
 
 - [[cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary]]

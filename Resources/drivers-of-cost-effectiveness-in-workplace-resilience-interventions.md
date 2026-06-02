@@ -24,6 +24,10 @@ Several factors determine whether a resilience intervention delivers strong cost
 
 **Follow-up duration.** Many trial-based economic evaluations use short time horizons (≤1 year), which may miss the long-term benefits of resilience building. Modelled evaluations with 5–10 year horizons tend to show more favourable cost-effectiveness because they capture downstream reductions in mental health episodes and chronic disease. The choice of time horizon is thus a critical driver of whether an intervention appears cost-effective.[^2]
 
+[^1]: Hollaar MHL, Kemmere B, Kocken PL, Denktaş S. Resilience-based interventions in the public sector workplace: a systematic review. *BMC Public Health*. 2025;25:350. https://doi.org/10.1186/s12889-024-21177-2
+
+[^2]: Le LK-D, Esturas AC, Mihalopoulos C, et al. Cost-effectiveness evidence of mental health prevention and promotion interventions: A systematic review of economic evaluations. *PLoS Med*. 2021;18(5):e1003606. https://doi.org/10.1371/journal.pmed.1003606
+
 ## Relevant notes
 
 - [[cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary]]

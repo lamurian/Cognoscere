@@ -22,6 +22,12 @@ Assigning monetary values to wellbeing and resilience outcomes is conceptually a
 
 **WHO reference thresholds.** The World Health Organization recommends 1–3 times GDP per capita per DALY averted as a cost-effectiveness threshold. For workplace interventions, adaptations translate this into employer-specific thresholds: an intervention is cost-effective if its cost per wellbeing-adjusted life year or per unit of resilience improvement falls below a proportion of average salary. However, no consensus exists on the appropriate threshold for employer-based decisions.[^2][^4]
 
+[^2]: Le LK-D, Esturas AC, Mihalopoulos C, et al. Cost-effectiveness evidence of mental health prevention and promotion interventions: A systematic review of economic evaluations. *PLoS Med*. 2021;18(5):e1003606. https://doi.org/10.1371/journal.pmed.1003606
+
+[^4]: Nimdet K, Chaiyakunapruk N, Vichansavakul K, Ngorsuraches S. A Systematic Review of Studies Eliciting Willingness-to-Pay per Quality-Adjusted Life Year: Does It Justify CE Threshold? *PLoS One*. 2015;10(4):e0122760. https://doi.org/10.1371/journal.pone.0122760
+
+[^5]: Lensberg BR, Drummond MF, Danchenko N, Despiégel N, François C. Challenges in measuring and valuing productivity costs, and their relevance in mood disorders. *Clinicoecon Outcomes Res*. 2013;5:565-573. https://doi.org/10.2147/CEOR.S44866
+
 ## Relevant notes
 
 - [[cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary]]

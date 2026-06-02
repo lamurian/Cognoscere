@@ -22,6 +22,10 @@ Hollaar et al. (2025) conducted a systematic review of 24 studies covering 26 re
 
 **Le et al. (2021)** confirmed that workplace mental health promotion interventions—including resilience-focused programmes—are consistently cost-effective or cost-saving, with return on investment ratios of $1.50 to $7 per $1 invested for workplace interventions targeting employees.[^2]
 
+[^1]: Hollaar MHL, Kemmere B, Kocken PL, Denktaş S. Resilience-based interventions in the public sector workplace: a systematic review. *BMC Public Health*. 2025;25:350. https://doi.org/10.1186/s12889-024-21177-2
+
+[^2]: Le LK-D, Esturas AC, Mihalopoulos C, et al. Cost-effectiveness evidence of mental health prevention and promotion interventions: A systematic review of economic evaluations. *PLoS Med*. 2021;18(5):e1003606. https://doi.org/10.1371/journal.pmed.1003606
+
 ## Relevant notes
 
 - [[cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary]]

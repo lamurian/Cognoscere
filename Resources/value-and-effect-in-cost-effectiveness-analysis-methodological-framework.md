@@ -23,6 +23,12 @@ Economic evaluation in healthcare and workplace interventions rests on four prim
 
 **Perspective matters.** CEA/CUA typically adopt a societal or healthcare sector perspective, while Value-Based Healthcare (VBHC) adopts a patient perspective. For workplace interventions, the employer perspective (focusing on productivity, absenteeism, turnover) is common alongside societal perspectives that include healthcare savings and broader wellbeing gains.[^3]
 
+[^2]: Le LK-D, Esturas AC, Mihalopoulos C, et al. Cost-effectiveness evidence of mental health prevention and promotion interventions: A systematic review of economic evaluations. *PLoS Med*. 2021;18(5):e1003606. https://doi.org/10.1371/journal.pmed.1003606
+
+[^3]: Neumann PJ, Cohen JT. Value-Based Health Care Meets Cost-Effectiveness Analysis. *Ann Intern Med*. 2018;169(5):329-330. https://pubmed.ncbi.nlm.nih.gov/30083766/
+
+[^4]: Nimdet K, Chaiyakunapruk N, Vichansavakul K, Ngorsuraches S. A Systematic Review of Studies Eliciting Willingness-to-Pay per Quality-Adjusted Life Year: Does It Justify CE Threshold? *PLoS One*. 2015;10(4):e0122760. https://doi.org/10.1371/journal.pone.0122760
+
 ## Relevant notes
 
 - [[cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary]]
