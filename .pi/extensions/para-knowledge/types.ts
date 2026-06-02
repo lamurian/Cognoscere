@@ -19,6 +19,9 @@ export interface Frontmatter {
   description?: string;
   author?: string;
   editor?: string;
+  /** Standard YAML frontmatter date field (ISO 8601). */
+  date?: string;
+  /** Legacy alias for date, kept for backward compatibility. */
   created?: string;
   modified?: string;
   /** Original source URL the document summarises (optional). */

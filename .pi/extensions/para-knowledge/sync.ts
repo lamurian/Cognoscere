@@ -120,12 +120,26 @@ export async function syncIndex(db: duckdb.Database, cwd: string): Promise<boole
     stored.map((r: any) => [r.path, new Date(r.file_mtime ?? 0).getTime()]),
   );
 
+  // ── Completeness check: files missing tags are force-reindexed ──
+  // Even if mtimes match, files without tags or term index entries
+  // are treated as changed so the index is repaired automatically.
+  const missingTags = new Set<string>();
+  try {
+    const missing = await allWithRecovery(
+      db,
+      "SELECT f.path FROM files f LEFT JOIN tags t ON f.path = t.file_path WHERE t.tag IS NULL",
+    );
+    for (const r of missing as any[]) missingTags.add(r.path as string);
+  } catch {
+    // best-effort: if query fails, proceed without completeness check
+  }
+
   const fsMap = new Map(files.map((f) => [f.path, f.mtimeMs]));
   const changed: FileEntry[] = [];
 
   for (const f of files) {
     const storedMtime = storedMap.get(f.path);
-    if (storedMtime === undefined || Math.abs(storedMtime - f.mtimeMs) > 1) {
+    if (storedMtime === undefined || Math.abs(storedMtime - f.mtimeMs) > 1 || missingTags.has(f.path)) {
       changed.push(f);
     }
   }

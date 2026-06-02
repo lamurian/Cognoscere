@@ -195,6 +195,7 @@ export async function initDb(db: duckdb.Database): Promise<void> {
   `);
   await runWithRecovery(db, "CREATE INDEX IF NOT EXISTS idx_tags_tag  ON tags(tag)");
   await runWithRecovery(db, "CREATE INDEX IF NOT EXISTS idx_tags_path ON tags(file_path)");
+  await runWithRecovery(db, "CREATE UNIQUE INDEX IF NOT EXISTS idx_tags_unique ON tags(file_path, tag)");
 
   // BM25 inverted index
   await runWithRecovery(db, `

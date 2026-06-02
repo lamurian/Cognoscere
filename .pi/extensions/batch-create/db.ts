@@ -13,17 +13,55 @@ export function openDb(cwd: string): duckdb.Database {
   return new duckdb.Database(resolve(cwd, DB_FILE));
 }
 
-/** Execute a SQL statement that returns no rows. */
+/** Error message indicating an aborted DuckDB transaction. */
+const TX_ABORTED_MSG = "Current transaction is aborted (please ROLLBACK)";
+
+/**
+ * Attempt to heal a broken DuckDB connection by rolling back any
+ * aborted transaction.  Swallows "no transaction is active" errors.
+ */
+async function healAbortedTx(db: duckdb.Database): Promise<void> {
+  try {
+    await new Promise<void>((resolve, reject) => {
+      db.run("ROLLBACK", (err: Error | null) => {
+        if (err) {
+          const msg = err.message ?? "";
+          if (msg.includes("no transaction is active")) resolve();
+          else reject(err);
+        } else resolve();
+      });
+    });
+  } catch {
+    // ignore unexpected rollback errors
+  }
+}
+
+/**
+ * Run a SQL statement with aborted-transaction recovery.
+ * On TX_ABORTED_MSG, rolls back and retries once.
+ */
 export function run(db: duckdb.Database, sql: string, ...params: unknown[]): Promise<void> {
   return new Promise((resolve_, reject) => {
     db.run(sql, ...params, (err: Error | null) => {
-      if (err) reject(err);
-      else resolve_();
+      if (err) {
+        const msg = err.message ?? "";
+        if (msg.includes(TX_ABORTED_MSG)) {
+          // Heal the connection and retry once
+          db.run("ROLLBACK", () => {
+            db.run(sql, ...params, (err2: Error | null) => {
+              if (err2) reject(err2);
+              else resolve_();
+            });
+          });
+        } else {
+          reject(err);
+        }
+      } else resolve_();
     });
   });
 }
 
-/** Execute a query and return all result rows. */
+/** Execute a query and return all result rows (with aborted-tx recovery). */
 export function all<T = Record<string, unknown>>(
   db: duckdb.Database,
   sql: string,
@@ -34,8 +72,19 @@ export function all<T = Record<string, unknown>>(
       err: duckdb.DuckDbError | null,
       rows: duckdb.TableData,
     ) => {
-      if (err) reject(err);
-      else resolve_(rows as unknown as T[]);
+      if (err) {
+        const msg = err.message ?? "";
+        if (msg.includes(TX_ABORTED_MSG)) {
+          db.run("ROLLBACK", () => {
+            db.all(sql, ...params, (err2: duckdb.DuckDbError | null, rows2: duckdb.TableData) => {
+              if (err2) reject(err2);
+              else resolve_(rows2 as unknown as T[]);
+            });
+          });
+        } else {
+          reject(err);
+        }
+      } else resolve_(rows as unknown as T[]);
     };
     db.all(sql, ...params, callback);
   });
@@ -64,6 +113,7 @@ export async function initDb(db: duckdb.Database): Promise<void> {
   );
   await run(db, "CREATE INDEX IF NOT EXISTS idx_tags_tag  ON tags(tag)");
   await run(db, "CREATE INDEX IF NOT EXISTS idx_tags_path ON tags(file_path)");
+  await run(db, "CREATE UNIQUE INDEX IF NOT EXISTS idx_tags_unique ON tags(file_path, tag)");
 
   await run(
     db,
