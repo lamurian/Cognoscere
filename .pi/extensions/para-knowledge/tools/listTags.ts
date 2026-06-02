@@ -36,7 +36,9 @@ export function registerListTagsTool(pi: ExtensionAPI): void {
       try {
         const tags = await withDb(ctx.cwd, "read", async (db) => {
           const rows = await allWithRecovery(db, "SELECT DISTINCT tag FROM tags ORDER BY tag");
-          return (rows as Record<string, unknown>[]).map((r: Record<string, unknown>) => r.tag as string);
+          return (rows as Record<string, unknown>[]).map(
+            (r: Record<string, unknown>) => r.tag as string,
+          );
         });
 
         if (tags.length === 0) {

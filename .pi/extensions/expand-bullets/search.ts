@@ -15,10 +15,7 @@ export interface WebResult {
  * Search the web for a given query using DuckDuckGo HTML endpoints.
  * Returns up to 5 results from reputable domains.
  */
-export async function searchWeb(
-  pi: ExtensionAPI,
-  query: string,
-): Promise<WebResult[]> {
+export async function searchWeb(pi: ExtensionAPI, query: string): Promise<WebResult[]> {
   const pyScript = `
 import sys, json, urllib.request, urllib.parse, re, html as h
 

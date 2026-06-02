@@ -42,11 +42,17 @@ export async function searchSearxng(
       body: new URLSearchParams(params),
       signal,
     });
-  } catch { return []; }
+  } catch {
+    return [];
+  }
   if (!response.ok) return [];
 
   let data: { results?: Array<Record<string, unknown>> };
-  try { data = (await response.json()) as typeof data; } catch { return []; }
+  try {
+    data = (await response.json()) as typeof data;
+  } catch {
+    return [];
+  }
 
   return (data.results ?? []).slice(0, 10).map((r) => ({
     title: (r.title as string) ?? "",

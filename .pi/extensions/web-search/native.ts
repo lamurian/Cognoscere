@@ -52,7 +52,11 @@ export async function searchNativeHttp(
 
       const descM = block.match(/<description>([\s\S]*?)<\/description>/i);
       const snippet = descM
-        ? descM[1].replace(/<[^>]*>/g, "").replace(/&#?\w+;/g, " ").replace(/\s+/g, " ").trim()
+        ? descM[1]
+            .replace(/<[^>]*>/g, "")
+            .replace(/&#?\w+;/g, " ")
+            .replace(/\s+/g, " ")
+            .trim()
         : "";
 
       results.push({
@@ -64,5 +68,7 @@ export async function searchNativeHttp(
       });
     }
     return results;
-  } catch { return []; }
+  } catch {
+    return [];
+  }
 }

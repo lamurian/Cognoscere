@@ -11,19 +11,47 @@ import { tokenize } from "../bm25.js";
 import { BM25_DEFAULTS } from "../types.js";
 import { textSimilarity } from "../similarity.js";
 
-interface FileRow { path: string; title: string; body: string; source_url: string | null; }
-interface StatRow { key: string; value: number; }
-interface TermRow { term: string; file_path: string; tf: number; doc_length: number; }
+interface FileRow {
+  path: string;
+  title: string;
+  body: string;
+  source_url: string | null;
+}
+interface StatRow {
+  key: string;
+  value: number;
+}
+interface TermRow {
+  term: string;
+  file_path: string;
+  tf: number;
+  doc_length: number;
+}
 
-type MatchResult = 
-  | { found: true; matchType: "exact_url" | "content_similarity"; path: string; title: string; similarity: number }
+type MatchResult =
+  | {
+      found: true;
+      matchType: "exact_url" | "content_similarity";
+      path: string;
+      title: string;
+      similarity: number;
+    }
   | { found: false; matchType: "none"; topSimilarity?: number };
 
-async function findExactUrlMatch(db: duckdb.Database, url: string): Promise<{ path: string; title: string } | null> {
+async function findExactUrlMatch(
+  db: duckdb.Database,
+  url: string,
+): Promise<{ path: string; title: string } | null> {
   try {
-    const rows = await queryRows<FileRow>(db, "SELECT path, title, body, source_url FROM files WHERE source_url = ?", url);
+    const rows = await queryRows<FileRow>(
+      db,
+      "SELECT path, title, body, source_url FROM files WHERE source_url = ?",
+      url,
+    );
     return rows.length > 0 ? { path: rows[0].path, title: rows[0].title } : null;
-  } catch { return null; }
+  } catch {
+    return null;
+  }
 }
 
 /* eslint-disable-next-line complexity */
@@ -31,15 +59,22 @@ async function rankByContent(db: duckdb.Database, content: string): Promise<stri
   const queryTerms = tokenize(content);
   if (queryTerms.length === 0) return [];
 
-  const stats = new Map((await queryRows<StatRow>(db, "SELECT key, value FROM corpus_stats")).map((r) => [r.key, r.value]));
+  const stats = new Map(
+    (await queryRows<StatRow>(db, "SELECT key, value FROM corpus_stats")).map((r) => [
+      r.key,
+      r.value,
+    ]),
+  );
   const N = stats.get("total_docs") ?? 0;
   if (N === 0) return [];
 
   const placeholders = queryTerms.map(() => "?").join(",");
-  const termRows = await queryRows<TermRow>(db,
+  const termRows = await queryRows<TermRow>(
+    db,
     `SELECT ti.term, ti.file_path, ti.tf, dl.doc_length
      FROM term_index ti LEFT JOIN doc_lengths dl ON ti.file_path = dl.file_path
-     WHERE ti.term IN (${placeholders})`, ...queryTerms,
+     WHERE ti.term IN (${placeholders})`,
+    ...queryTerms,
   );
 
   const dfMap = new Map<string, number>();
@@ -66,12 +101,18 @@ async function rankByContent(db: duckdb.Database, content: string): Promise<stri
       if (tf === 0) continue;
       const df = dfMap.get(term) ?? 1;
       const idf = Math.log((N - df + 0.5) / (df + 0.5) + 1);
-      score += idf * ((tf * (BM25_DEFAULTS.K1 + 1)) / (tf + BM25_DEFAULTS.K1 * (1 - BM25_DEFAULTS.B + BM25_DEFAULTS.B * (docLen / avgLen))));
+      score +=
+        idf *
+        ((tf * (BM25_DEFAULTS.K1 + 1)) /
+          (tf + BM25_DEFAULTS.K1 * (1 - BM25_DEFAULTS.B + BM25_DEFAULTS.B * (docLen / avgLen))));
     }
     scored.push([fp, score]);
   }
 
-  return scored.sort((a, b) => b[1] - a[1]).slice(0, 10).map(([fp]) => fp);
+  return scored
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10)
+    .map(([fp]) => fp);
 }
 
 async function matchByContent(db: duckdb.Database, content: string): Promise<MatchResult> {
@@ -79,18 +120,33 @@ async function matchByContent(db: duckdb.Database, content: string): Promise<Mat
   if (topCandidates.length === 0) return { found: false, matchType: "none" };
 
   const docPlaceholders = topCandidates.map(() => "?").join(",");
-  const docRows = await queryRows<FileRow>(db,
-    `SELECT path, title, body, source_url FROM files WHERE path IN (${docPlaceholders})`, ...topCandidates,
+  const docRows = await queryRows<FileRow>(
+    db,
+    `SELECT path, title, body, source_url FROM files WHERE path IN (${docPlaceholders})`,
+    ...topCandidates,
   );
 
-  let bestSim = 0, bestPath = "", bestTitle = "";
+  let bestSim = 0,
+    bestPath = "",
+    bestTitle = "";
   for (const row of docRows) {
     if (!row.body || row.body.length < 50) continue;
     const sim = textSimilarity(content, row.body);
-    if (sim > bestSim) { bestSim = sim; bestPath = row.path; bestTitle = row.title; }
+    if (sim > bestSim) {
+      bestSim = sim;
+      bestPath = row.path;
+      bestTitle = row.title;
+    }
   }
 
-  if (bestSim > 0.9) return { found: true, matchType: "content_similarity", path: bestPath, title: bestTitle, similarity: bestSim };
+  if (bestSim > 0.9)
+    return {
+      found: true,
+      matchType: "content_similarity",
+      path: bestPath,
+      title: bestTitle,
+      similarity: bestSim,
+    };
   return { found: false, matchType: "none", topSimilarity: bestSim };
 }
 
@@ -102,37 +158,78 @@ export function registerFindExistingSummaryTool(pi: ExtensionAPI): void {
     promptSnippet: "Check if a URL already has a saved summary before re-summarising",
     parameters: Type.Object({
       url: Type.String({ description: "The URL to check for existing summaries" }),
-      content: Type.Optional(Type.String({ description: "Optional extracted text content for content-based similarity matching." })),
+      content: Type.Optional(
+        Type.String({
+          description: "Optional extracted text content for content-based similarity matching.",
+        }),
+      ),
     }),
 
     async execute(_toolCallId, params, _signal, onUpdate, ctx) {
       const { url, content } = params;
-      onUpdate?.({ content: [{ type: "text" as const, text: `Checking for existing summary of ${url}...` }], details: {} });
+      onUpdate?.({
+        content: [{ type: "text" as const, text: `Checking for existing summary of ${url}...` }],
+        details: {},
+      });
 
       try {
         const result: MatchResult = await withDb(ctx.cwd, "read", async (db) => {
           const exact = await findExactUrlMatch(db, url);
-          if (exact) return { found: true, matchType: "exact_url", path: exact.path, title: exact.title, similarity: 1.0 } as const;
-          if (!content || content.trim().length < 50) return { found: false, matchType: "none" } as const;
+          if (exact)
+            return {
+              found: true,
+              matchType: "exact_url",
+              path: exact.path,
+              title: exact.title,
+              similarity: 1.0,
+            } as const;
+          if (!content || content.trim().length < 50)
+            return { found: false, matchType: "none" } as const;
           return await matchByContent(db, content);
         });
 
         if (result.found) {
           const pct = (result.similarity * 100).toFixed(1);
-          const detail = result.matchType === "exact_url" ? "Exact source_url match" : `Content similarity ${pct}%`;
+          const detail =
+            result.matchType === "exact_url"
+              ? "Exact source_url match"
+              : `Content similarity ${pct}%`;
           return {
-            content: [{ type: "text" as const, text: `Found existing summary — ${detail}\n\n**Title:** ${result.title}\n**Path:** ${result.path}\n**URL:** ${url}\n\nNo need to re-summarise.` }],
-            details: { found: true, matchType: result.matchType, path: result.path, title: result.title, similarity: result.similarity },
+            content: [
+              {
+                type: "text" as const,
+                text: `Found existing summary — ${detail}\n\n**Title:** ${result.title}\n**Path:** ${result.path}\n**URL:** ${url}\n\nNo need to re-summarise.`,
+              },
+            ],
+            details: {
+              found: true,
+              matchType: result.matchType,
+              path: result.path,
+              title: result.title,
+              similarity: result.similarity,
+            },
           };
         }
 
         return {
-          content: [{ type: "text" as const, text: `No existing summary found for ${url}. Proceed with fetch_url.` }],
-          details: { found: false, notFoundReason: (content?.trim().length ?? 0) >= 50 ? "no-match" : "no-content" },
+          content: [
+            {
+              type: "text" as const,
+              text: `No existing summary found for ${url}. Proceed with fetch_url.`,
+            },
+          ],
+          details: {
+            found: false,
+            notFoundReason: (content?.trim().length ?? 0) >= 50 ? "no-match" : "no-content",
+          },
         };
       } catch (e: unknown) {
         const msg = e instanceof Error ? e.message : String(e);
-        if (msg === "DB_NOT_FOUND") return { content: [{ type: "text" as const, text: "No knowledge base found yet." }], details: { found: false, notFoundReason: "no-db" } };
+        if (msg === "DB_NOT_FOUND")
+          return {
+            content: [{ type: "text" as const, text: "No knowledge base found yet." }],
+            details: { found: false, notFoundReason: "no-db" },
+          };
         throw e;
       }
     },

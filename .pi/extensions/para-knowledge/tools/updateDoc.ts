@@ -52,7 +52,7 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
       ),
     }),
 
-/* eslint-disable-next-line complexity */
+    /* eslint-disable-next-line complexity */
     async execute(_toolCallId, params, _signal, onUpdate, ctx) {
       // ── Read existing file ──
       const filePath = resolve(ctx.cwd, params.path);

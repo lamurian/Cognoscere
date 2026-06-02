@@ -165,7 +165,11 @@ function emitTags(out: string, tags: unknown): string {
   return out;
 }
 
-function emitStandardFields(out: string, fm: Record<string, unknown>, sourceVal: string | undefined): string {
+function emitStandardFields(
+  out: string,
+  fm: Record<string, unknown>,
+  sourceVal: string | undefined,
+): string {
   for (const key of FIELD_ORDER) {
     if (key === "tags") {
       out = emitTags(out, fm.tags);
@@ -183,7 +187,11 @@ function emitStandardFields(out: string, fm: Record<string, unknown>, sourceVal:
   return out;
 }
 
-function emitLegacyFields(out: string, fm: Record<string, unknown>, sourceVal: string | undefined): string {
+function emitLegacyFields(
+  out: string,
+  fm: Record<string, unknown>,
+  sourceVal: string | undefined,
+): string {
   for (const [k, v] of Object.entries(fm)) {
     if ((FIELD_ORDER as readonly string[]).includes(k as string)) continue;
     if (k === "tags" || k === "source") continue;

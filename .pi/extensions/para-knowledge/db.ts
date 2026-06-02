@@ -61,7 +61,11 @@ export async function initDb(db: duckdb.Database): Promise<void> {
     modified TIMESTAMP, file_mtime TIMESTAMP, source_url VARCHAR DEFAULT NULL
   )`);
 
-  try { await run("ALTER TABLE files ADD COLUMN IF NOT EXISTS source_url VARCHAR DEFAULT NULL"); } catch { /* ok */ }
+  try {
+    await run("ALTER TABLE files ADD COLUMN IF NOT EXISTS source_url VARCHAR DEFAULT NULL");
+  } catch {
+    /* ok */
+  }
 
   await run(`CREATE TABLE IF NOT EXISTS tags (file_path VARCHAR NOT NULL, tag VARCHAR NOT NULL)`);
   await run("CREATE INDEX IF NOT EXISTS idx_tags_tag  ON tags(tag)");
@@ -74,8 +78,12 @@ export async function initDb(db: duckdb.Database): Promise<void> {
   await run("CREATE INDEX IF NOT EXISTS idx_term_index_term ON term_index(term)");
   await run("CREATE INDEX IF NOT EXISTS idx_term_index_path ON term_index(file_path)");
 
-  await run(`CREATE TABLE IF NOT EXISTS doc_lengths (file_path VARCHAR PRIMARY KEY, doc_length INTEGER NOT NULL DEFAULT 0)`);
-  await run(`CREATE TABLE IF NOT EXISTS corpus_stats (key VARCHAR PRIMARY KEY, value REAL NOT NULL)`);
+  await run(
+    `CREATE TABLE IF NOT EXISTS doc_lengths (file_path VARCHAR PRIMARY KEY, doc_length INTEGER NOT NULL DEFAULT 0)`,
+  );
+  await run(
+    `CREATE TABLE IF NOT EXISTS corpus_stats (key VARCHAR PRIMARY KEY, value REAL NOT NULL)`,
+  );
   await run(`INSERT OR IGNORE INTO corpus_stats (key, value) VALUES ('total_docs', 0)`);
   await run(`INSERT OR IGNORE INTO corpus_stats (key, value) VALUES ('avg_doc_length', 1.0)`);
 }
@@ -90,7 +98,11 @@ export async function withDb<T>(
   const dbPath = resolve(cwd, DB_FILE);
 
   if (mode === "read") {
-    try { await stat(dbPath); } catch { throw new Error("DB_NOT_FOUND"); }
+    try {
+      await stat(dbPath);
+    } catch {
+      throw new Error("DB_NOT_FOUND");
+    }
   }
 
   const flags = OPEN_FLAGS[mode];
@@ -104,7 +116,11 @@ export async function withDb<T>(
         if (mode === "write") await initDb(db);
         return await fn(db);
       } finally {
-        try { await closeDatabase(db); } catch { /* best-effort close */ }
+        try {
+          await closeDatabase(db);
+        } catch {
+          /* best-effort close */
+        }
       }
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : String(e);
@@ -142,7 +158,9 @@ export async function withDb<T>(
       if (!userAsked) {
         const elapsedSec = Math.round(elapsed / 1000);
         options?.onUpdate?.({
-          content: [{ type: "text" as const, text: `🔒 Waiting for database lock (${elapsedSec}s)...` }],
+          content: [
+            { type: "text" as const, text: `🔒 Waiting for database lock (${elapsedSec}s)...` },
+          ],
           details: {},
         });
       }

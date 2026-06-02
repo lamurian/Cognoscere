@@ -34,10 +34,16 @@ async function tryTierEngine(
   signal: AbortSignal | undefined,
 ): Promise<SearchOutput> {
   let results = await searchSearxng(query, tier, signal);
-  if (results.length >= 3) return { results, tier, tierLabel: `Tier ${tier} — ${LABELS[tier - 1]}` };
+  if (results.length >= 3)
+    return { results, tier, tierLabel: `Tier ${tier} — ${LABELS[tier - 1]}` };
 
   const tavilyResults = await searchTavily(query, tier, signal);
-  if (tavilyResults.length > 0) return { results: tavilyResults, tier, tierLabel: `Tier ${tier} — ${FALLBACK_LABELS[tier - 1]}` };
+  if (tavilyResults.length > 0)
+    return {
+      results: tavilyResults,
+      tier,
+      tierLabel: `Tier ${tier} — ${FALLBACK_LABELS[tier - 1]}`,
+    };
 
   if (results.length < 3) results = await searchNativeHttp(query, tier, signal);
   return { results, tier, tierLabel: `Tier ${tier} — ${LABELS[tier - 1]}` };
@@ -62,9 +68,10 @@ async function search(
   return {
     results,
     tier: 3,
-    tierLabel: results.length > 0
-      ? "Tier 3 — General (native HTTP fallback)"
-      : "Tier 3 — General (all sources exhausted)",
+    tierLabel:
+      results.length > 0
+        ? "Tier 3 — General (native HTTP fallback)"
+        : "Tier 3 — General (all sources exhausted)",
   };
 }
 
@@ -89,9 +96,12 @@ export default function (pi: ExtensionAPI): void {
     promptSnippet: "Search the web (3-tier: SearXNG academic -> filtered -> general)",
     parameters: Type.Object({
       query: Type.String({ description: "The search query" }),
-      tier: Type.Optional(Type.Number({
-        description: "Force a specific tier: 1 (academic), 2 (filtered), 3 (general). Omit to auto-escalate.",
-      })),
+      tier: Type.Optional(
+        Type.Number({
+          description:
+            "Force a specific tier: 1 (academic), 2 (filtered), 3 (general). Omit to auto-escalate.",
+        }),
+      ),
     }),
 
     async execute(_toolCallId, params, signal, _onUpdate, _ctx) {
@@ -100,8 +110,17 @@ export default function (pi: ExtensionAPI): void {
       return {
         content: [{ type: "text" as const, text: formatResults(results, query, tierLabel) }],
         details: {
-          query, tier: usedTier, tierLabel, count: results.length,
-          results: results.map((r) => ({ title: r.title, url: r.url, snippet: r.snippet, source_label: r.source_label, tier: r.tier })),
+          query,
+          tier: usedTier,
+          tierLabel,
+          count: results.length,
+          results: results.map((r) => ({
+            title: r.title,
+            url: r.url,
+            snippet: r.snippet,
+            source_label: r.source_label,
+            tier: r.tier,
+          })),
         },
       };
     },

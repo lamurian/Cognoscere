@@ -14,7 +14,9 @@ const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
  * All callers get proper return types without explicit casts.
  */
 export async function queryRows<T = Record<string, unknown>>(
-  db: duckdb.Database, sql: string, ...params: unknown[]
+  db: duckdb.Database,
+  sql: string,
+  ...params: unknown[]
 ): Promise<T[]> {
   const rows = await allWithRecovery(db, sql, ...params);
   return rows as unknown as T[];
@@ -91,7 +93,8 @@ export async function allWithRecovery(
   try {
     return await new Promise<Record<string, unknown>[]>((resolve, reject) => {
       (db.all as unknown as (...args: unknown[]) => void)(
-        sql, ...params,
+        sql,
+        ...params,
         (err: Error | null, rows: Record<string, unknown>[]) => {
           if (err) reject(err);
           else resolve(rows);
@@ -104,7 +107,8 @@ export async function allWithRecovery(
       await healAbortedTx(db);
       return await new Promise<Record<string, unknown>[]>((resolve, reject) => {
         (db.all as unknown as (...args: unknown[]) => void)(
-          sql, ...params,
+          sql,
+          ...params,
           (err: Error | null, rows: Record<string, unknown>[]) => {
             if (err) reject(err);
             else resolve(rows);

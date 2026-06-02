@@ -19,8 +19,20 @@ interface FrontmatterAnalysis {
   keyOrder: string[];
 }
 
-const STANDARD_FIELDS = ["title", "description", "author", "editor", "date", "tags", "source"] as const;
-const FIELD_ALIASES: Record<string, string> = { source_url: "source", url: "source", created: "date" };
+const STANDARD_FIELDS = [
+  "title",
+  "description",
+  "author",
+  "editor",
+  "date",
+  "tags",
+  "source",
+] as const;
+const FIELD_ALIASES: Record<string, string> = {
+  source_url: "source",
+  url: "source",
+  created: "date",
+};
 
 const YAML_NEEDS_QUOTE = /^[[\]{},&*!|>'"%@`#:?-]/;
 const YAML_BOOL_LIKE = /^(true|false|yes|no|on|off|null|undefined|~)$/i;
@@ -43,21 +55,38 @@ function yamlQuote(value: string): string {
 
 function isQuoted(value: string): boolean {
   const trimmed = value.trim();
-  return (trimmed.startsWith("'") && trimmed.endsWith("'")) ||
-         (trimmed.startsWith('"') && trimmed.endsWith('"'));
+  return (
+    (trimmed.startsWith("'") && trimmed.endsWith("'")) ||
+    (trimmed.startsWith('"') && trimmed.endsWith('"'))
+  );
 }
 
 function normalizeDate(dateStr: string): string | null {
-  try { const d = new Date(dateStr); if (!isNaN(d.getTime())) return d.toISOString(); } catch { /* ignore */ }
+  try {
+    const d = new Date(dateStr);
+    if (!isNaN(d.getTime())) return d.toISOString();
+  } catch {
+    /* ignore */
+  }
   return null;
 }
 
 export function analyzeFrontmatter(content: string): FrontmatterAnalysis {
-  const result: FrontmatterAnalysis = { hasFrontmatter: false, rawBlock: "", bodyStart: 0, fields: {}, issues: [], keyOrder: [] };
+  const result: FrontmatterAnalysis = {
+    hasFrontmatter: false,
+    rawBlock: "",
+    bodyStart: 0,
+    fields: {},
+    issues: [],
+    keyOrder: [],
+  };
 
   const match = content.match(/^---\n([\s\S]*?)\n---/);
   if (!match) {
-    result.issues.push({ type: "invalid-yaml", message: "No YAML frontmatter block found (missing --- delimiters)" });
+    result.issues.push({
+      type: "invalid-yaml",
+      message: "No YAML frontmatter block found (missing --- delimiters)",
+    });
     return result;
   }
 
@@ -122,13 +151,19 @@ function buildRepairChanges(issues: FrontmatterIssue[]): string[] {
   const changes: string[] = [];
   for (const issue of issues) {
     if (issue.type === "needs-quoting") changes.push(`Quoted value for '${issue.field}'`);
-    else if (issue.type === "nonstandard-field") changes.push(`Renamed '${issue.field}' -> standardised name`);
-    else if (issue.type === "missing-field" && issue.field !== "description") changes.push(`Added missing field '${issue.field}'`);
+    else if (issue.type === "nonstandard-field")
+      changes.push(`Renamed '${issue.field}' -> standardised name`);
+    else if (issue.type === "missing-field" && issue.field !== "description")
+      changes.push(`Added missing field '${issue.field}'`);
   }
   return changes;
 }
 
-function emitStandardField(key: string, fields: Record<string, unknown>, sourceVal: string | undefined): string {
+function emitStandardField(
+  key: string,
+  fields: Record<string, unknown>,
+  sourceVal: string | undefined,
+): string {
   if (key === "tags") {
     const v = fields.tags;
     if (Array.isArray(v) && v.length > 0) {
@@ -154,9 +189,12 @@ function emitStandardField(key: string, fields: Record<string, unknown>, sourceV
 
 function buildStandardFrontmatter(fields: Record<string, unknown>): string {
   let out = "---\n";
-  const sourceVal = typeof fields.source === "string" && fields.source ? fields.source
-    : typeof fields.source_url === "string" && fields.source_url ? fields.source_url
-    : undefined;
+  const sourceVal =
+    typeof fields.source === "string" && fields.source
+      ? fields.source
+      : typeof fields.source_url === "string" && fields.source_url
+        ? fields.source_url
+        : undefined;
 
   for (const key of STANDARD_FIELDS) {
     out += emitStandardField(key, fields, sourceVal);
@@ -184,11 +222,21 @@ function processLine(line: string, currentKey: string, result: FrontmatterAnalys
     if (rawVal && !rawVal.startsWith("-")) {
       const val = rawVal.replace(/^['"]|['"]$/g, "");
       if (needsYamlQuoting(val) && !isQuoted(rawVal)) {
-        result.issues.push({ type: "needs-quoting", field: key, message: `Value for '${key}' contains YAML-special characters and needs quoting`, suggestion: `${key}: ${yamlQuote(val)}` });
+        result.issues.push({
+          type: "needs-quoting",
+          field: key,
+          message: `Value for '${key}' contains YAML-special characters and needs quoting`,
+          suggestion: `${key}: ${yamlQuote(val)}`,
+        });
       }
       const canonical = FIELD_ALIASES[key];
       if (canonical) {
-        result.issues.push({ type: "nonstandard-field", field: key, message: `'${key}' should be renamed to '${canonical}' (standardised field)`, suggestion: `Replace '${key}: ...' with '${canonical}: ...'` });
+        result.issues.push({
+          type: "nonstandard-field",
+          field: key,
+          message: `'${key}' should be renamed to '${canonical}' (standardised field)`,
+          suggestion: `Replace '${key}: ...' with '${canonical}: ...'`,
+        });
       }
       if (!result.fields[key]) result.fields[key] = rawVal;
     }
@@ -207,10 +255,20 @@ function checkMissingFields(result: FrontmatterAnalysis): void {
   for (const field of STANDARD_FIELDS) {
     if (field === "tags" || field === "source") continue;
     if (!presentKeys.has(field)) {
-      result.issues.push({ type: "missing-field", field, message: `Standard field '${field}' is missing`, suggestion: `Add '${field}: ...' to the frontmatter` });
+      result.issues.push({
+        type: "missing-field",
+        field,
+        message: `Standard field '${field}' is missing`,
+        suggestion: `Add '${field}: ...' to the frontmatter`,
+      });
     }
   }
   if (!presentKeys.has("description")) {
-    result.issues.push({ type: "missing-field", field: "description", message: "Recommended field 'description' is missing", suggestion: "Add 'description: Short summary...'" });
+    result.issues.push({
+      type: "missing-field",
+      field: "description",
+      message: "Recommended field 'description' is missing",
+      suggestion: "Add 'description: Short summary...'",
+    });
   }
 }

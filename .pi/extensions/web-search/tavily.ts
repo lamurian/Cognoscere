@@ -4,9 +4,17 @@
  */
 
 const ACADEMIC_DOMAINS = [
-  "pubmed.ncbi.nlm.nih.gov", "arxiv.org", "semanticscholar.org",
-  "openalex.org", "doi.org", "ncbi.nlm.nih.gov",
-  "science.org", "nature.com", "springer.com", "ieee.org", "acm.org",
+  "pubmed.ncbi.nlm.nih.gov",
+  "arxiv.org",
+  "semanticscholar.org",
+  "openalex.org",
+  "doi.org",
+  "ncbi.nlm.nih.gov",
+  "science.org",
+  "nature.com",
+  "springer.com",
+  "ieee.org",
+  "acm.org",
 ];
 
 export interface SearchResult {
@@ -29,12 +37,21 @@ export async function searchTavily(
   if (!apiKey) return [];
 
   const body: Record<string, unknown> = {
-    api_key: apiKey, query, max_results: 10, include_answer: false,
+    api_key: apiKey,
+    query,
+    max_results: 10,
+    include_answer: false,
   };
 
-  if (tier === 1) { body.search_depth = "advanced"; body.include_domains = ACADEMIC_DOMAINS; }
-  else if (tier === 2) { body.search_depth = "basic"; body.include_domains = [".edu", ".gov", ".ac.uk"]; }
-  else { body.search_depth = "advanced"; }
+  if (tier === 1) {
+    body.search_depth = "advanced";
+    body.include_domains = ACADEMIC_DOMAINS;
+  } else if (tier === 2) {
+    body.search_depth = "basic";
+    body.include_domains = [".edu", ".gov", ".ac.uk"];
+  } else {
+    body.search_depth = "advanced";
+  }
 
   try {
     const response = await fetch("https://api.tavily.com/search", {
@@ -52,5 +69,7 @@ export async function searchTavily(
       source_label: "Tavily",
       tier,
     }));
-  } catch { return []; }
+  } catch {
+    return [];
+  }
 }

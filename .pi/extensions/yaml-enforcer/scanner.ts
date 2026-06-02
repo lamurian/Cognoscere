@@ -17,7 +17,9 @@ export async function findParaMdFiles(baseDir: string): Promise<string[]> {
       for (const name of entries) {
         if (name.endsWith(".md")) files.push(join(abs, name));
       }
-    } catch { /* directory doesn't exist yet */ }
+    } catch {
+      /* directory doesn't exist yet */
+    }
   }
   return files.sort();
 }

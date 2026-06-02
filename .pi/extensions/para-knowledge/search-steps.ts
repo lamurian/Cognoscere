@@ -10,36 +10,72 @@ import { bm25TermScore } from "./bm25.js";
 
 /** Typed DuckDB query helper. Isolates `any` casting in one place. */
 type Row = Record<string, unknown>;
-async function queryRows<T = Row>(db: duckdb.Database, sql: string, ...params: unknown[]): Promise<T[]> {
+async function queryRows<T = Row>(
+  db: duckdb.Database,
+  sql: string,
+  ...params: unknown[]
+): Promise<T[]> {
   const rows = await allWithRecovery(db, sql, ...params);
   return rows as unknown as T[];
 }
 
-interface FileRow { path: string; title: string; body: string; author: string; editor: string; file_mtime: string; source_url: string | null; }
-interface StatRow { key: string; value: number; }
-interface TermRow { term: string; file_path: string; tf: number; doc_length: number; }
-interface TagRow { file_path: string; tag: string; }
+interface FileRow {
+  path: string;
+  title: string;
+  body: string;
+  author: string;
+  editor: string;
+  file_mtime: string;
+  source_url: string | null;
+}
+interface StatRow {
+  key: string;
+  value: number;
+}
+interface TermRow {
+  term: string;
+  file_path: string;
+  tf: number;
+  doc_length: number;
+}
+interface TagRow {
+  file_path: string;
+  tag: string;
+}
 
 export async function handleEmptyQuery(
-  db: duckdb.Database, filterTags?: string[],
+  db: duckdb.Database,
+  filterTags?: string[],
 ): Promise<{ results: SearchResult[]; trace: string }> {
   if (filterTags?.length) {
     const results = await searchByTagsOnly(db, filterTags);
     return { results, trace: "tag-only" };
   }
-  const rows = await queryRows<FileRow>(db, "SELECT path, title, body, author, editor, file_mtime, source_url FROM files ORDER BY title");
+  const rows = await queryRows<FileRow>(
+    db,
+    "SELECT path, title, body, author, editor, file_mtime, source_url FROM files ORDER BY title",
+  );
   return {
     results: rows.map((r) => ({
-      path: r.path, title: r.title ?? "", body: r.body ?? "",
-      author: r.author ?? "", editor: r.editor ?? "", file_mtime: r.file_mtime ?? "",
-      source_url: r.source_url ?? null, description: null,
-      score: 0, matchedByTag: false, tagMatches: [],
+      path: r.path,
+      title: r.title ?? "",
+      body: r.body ?? "",
+      author: r.author ?? "",
+      editor: r.editor ?? "",
+      file_mtime: r.file_mtime ?? "",
+      source_url: r.source_url ?? null,
+      description: null,
+      score: 0,
+      matchedByTag: false,
+      tagMatches: [],
     })),
     trace: "no-query-terms",
   };
 }
 
-export async function fetchCorpusStats(db: duckdb.Database): Promise<{ N: number; avgDocLen: number }> {
+export async function fetchCorpusStats(
+  db: duckdb.Database,
+): Promise<{ N: number; avgDocLen: number }> {
   const rows = await queryRows<StatRow>(db, "SELECT key, value FROM corpus_stats");
   const stats = new Map(rows.map((r) => [r.key, r.value]));
   return { N: stats.get("total_docs") ?? 0, avgDocLen: stats.get("avg_doc_length") ?? 1.0 };
@@ -61,14 +97,19 @@ export interface BatchedLookup {
 }
 
 export async function batchLookupTerms(
-  db: duckdb.Database, queryTerms: string[], clause: string, tagParams: unknown[],
+  db: duckdb.Database,
+  queryTerms: string[],
+  clause: string,
+  tagParams: unknown[],
 ): Promise<BatchedLookup> {
   const placeholders = queryTerms.map(() => "?").join(",");
-  const rows = await queryRows<TermRow>(db,
+  const rows = await queryRows<TermRow>(
+    db,
     `SELECT ti.term, ti.file_path, ti.tf, dl.doc_length
      FROM term_index ti LEFT JOIN doc_lengths dl ON ti.file_path = dl.file_path
      WHERE ti.term IN (${placeholders}) ${clause}`,
-    ...queryTerms, ...tagParams,
+    ...queryTerms,
+    ...tagParams,
   );
 
   const candidateTfs = new Map<string, Map<string, number>>();
@@ -84,10 +125,17 @@ export async function batchLookupTerms(
   return { candidateTfs, docLengths, dfMap };
 }
 
-export async function fetchCandidateTags(db: duckdb.Database, paths: string[]): Promise<Map<string, string[]>> {
+export async function fetchCandidateTags(
+  db: duckdb.Database,
+  paths: string[],
+): Promise<Map<string, string[]>> {
   if (paths.length === 0) return new Map();
   const placeholders = paths.map(() => "?").join(",");
-  const rows = await queryRows<TagRow>(db, `SELECT file_path, tag FROM tags WHERE file_path IN (${placeholders})`, ...paths);
+  const rows = await queryRows<TagRow>(
+    db,
+    `SELECT file_path, tag FROM tags WHERE file_path IN (${placeholders})`,
+    ...paths,
+  );
   const docTags = new Map<string, string[]>();
   for (const row of rows) {
     if (!docTags.has(row.file_path)) docTags.set(row.file_path, []);
@@ -96,34 +144,51 @@ export async function fetchCandidateTags(db: duckdb.Database, paths: string[]): 
   return docTags;
 }
 
-function computeTagBoost(tags: string[], queryTerms: string[], filterTags: string[] | undefined): number {
+function computeTagBoost(
+  tags: string[],
+  queryTerms: string[],
+  filterTags: string[] | undefined,
+): number {
   let boost = 0;
   for (const tag of tags) {
-    if (queryTerms.some((qt) => tag.toLowerCase().includes(qt) || qt.includes(tag.toLowerCase()))) boost++;
+    if (queryTerms.some((qt) => tag.toLowerCase().includes(qt) || qt.includes(tag.toLowerCase())))
+      boost++;
   }
-  if (filterTags) for (const ft of filterTags) {
-    if (tags.some((t) => t.toLowerCase() === ft.toLowerCase())) boost++;
-  }
+  if (filterTags)
+    for (const ft of filterTags) {
+      if (tags.some((t) => t.toLowerCase() === ft.toLowerCase())) boost++;
+    }
   return boost;
 }
 
 export function computeBm25Scores(
-  queryTerms: string[], candidateTfs: Map<string, Map<string, number>>,
-  docLengths: Map<string, number>, dfMap: Map<string, number>,
-  docTags: Map<string, string[]>, filterTags: string[] | undefined, N: number, avgDocLen: number,
+  queryTerms: string[],
+  candidateTfs: Map<string, Map<string, number>>,
+  docLengths: Map<string, number>,
+  dfMap: Map<string, number>,
+  docTags: Map<string, string[]>,
+  filterTags: string[] | undefined,
+  N: number,
+  avgDocLen: number,
 ): Map<string, number> {
   const scores = new Map<string, number>();
   for (const [fp, termMap] of candidateTfs) {
-    const score = computeDocScore(fp, termMap, queryTerms, dfMap, docLengths, N, avgDocLen)
-      + computeTagBoost(docTags.get(fp) ?? [], queryTerms, filterTags) * BM25_DEFAULTS.TAG_BOOST;
+    const score =
+      computeDocScore(fp, termMap, queryTerms, dfMap, docLengths, N, avgDocLen) +
+      computeTagBoost(docTags.get(fp) ?? [], queryTerms, filterTags) * BM25_DEFAULTS.TAG_BOOST;
     scores.set(fp, score);
   }
   return scores;
 }
 
 function computeDocScore(
-  fp: string, termMap: Map<string, number>, queryTerms: string[],
-  dfMap: Map<string, number>, docLengths: Map<string, number>, N: number, avgDocLen: number,
+  fp: string,
+  termMap: Map<string, number>,
+  queryTerms: string[],
+  dfMap: Map<string, number>,
+  docLengths: Map<string, number>,
+  N: number,
+  avgDocLen: number,
 ): number {
   const docLen = docLengths.get(fp) ?? 100;
   let score = 0;
@@ -136,19 +201,32 @@ function computeDocScore(
 }
 
 export function sortTopResults(scores: Map<string, number>, maxResults: number): string[] {
-  return [...scores.entries()].sort((a, b) => b[1] - a[1]).slice(0, maxResults).map(([fp]) => fp);
+  return [...scores.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, maxResults)
+    .map(([fp]) => fp);
 }
 
-export async function fetchResultDocuments(db: duckdb.Database, paths: string[]): Promise<Map<string, FileRow>> {
+export async function fetchResultDocuments(
+  db: duckdb.Database,
+  paths: string[],
+): Promise<Map<string, FileRow>> {
   if (paths.length === 0) return new Map();
   const placeholders = paths.map(() => "?").join(",");
-  const rows = await queryRows<FileRow>(db,
-    `SELECT path, title, body, author, editor, file_mtime, source_url FROM files WHERE path IN (${placeholders})`, ...paths,
+  const rows = await queryRows<FileRow>(
+    db,
+    `SELECT path, title, body, author, editor, file_mtime, source_url FROM files WHERE path IN (${placeholders})`,
+    ...paths,
   );
   return new Map(rows.map((r) => [r.path, r]));
 }
 
-function matchTags(fp: string, queryTerms: string[], candidateTfs: Map<string, Map<string, number>>, docTags: Map<string, string[]>): string[] {
+function matchTags(
+  fp: string,
+  queryTerms: string[],
+  candidateTfs: Map<string, Map<string, number>>,
+  docTags: Map<string, string[]>,
+): string[] {
   const tags = docTags.get(fp) ?? [];
   return tags.filter((tag) => {
     const lower = tag.toLowerCase();
@@ -158,47 +236,64 @@ function matchTags(fp: string, queryTerms: string[], candidateTfs: Map<string, M
 
 /* eslint-disable complexity */
 function buildSingleResult(
-  fp: string, rowMap: Map<string, FileRow>,
-  candidateScores: Map<string, number>, tagMatches: string[],
+  fp: string,
+  rowMap: Map<string, FileRow>,
+  candidateScores: Map<string, number>,
+  tagMatches: string[],
 ): SearchResult {
   const r = rowMap.get(fp);
   return {
-    path: r?.path ?? fp, title: r?.title ?? "",
-    body: r?.body ?? "", author: r?.author ?? "",
-    editor: r?.editor ?? "", file_mtime: r?.file_mtime ?? "",
-    source_url: r?.source_url ?? null, description: null,
+    path: r?.path ?? fp,
+    title: r?.title ?? "",
+    body: r?.body ?? "",
+    author: r?.author ?? "",
+    editor: r?.editor ?? "",
+    file_mtime: r?.file_mtime ?? "",
+    source_url: r?.source_url ?? null,
+    description: null,
     score: candidateScores.get(fp) ?? 0,
     matchedByTag: tagMatches.length > 0,
     tagMatches,
   };
 }
-
 export function buildSearchResults(
-  sortedPaths: string[], rowMap: Map<string, FileRow>,
+  sortedPaths: string[],
+  rowMap: Map<string, FileRow>,
   candidateTfs: Map<string, Map<string, number>>,
-  docTags: Map<string, string[]>, candidateScores: Map<string, number>, queryTerms: string[],
+  docTags: Map<string, string[]>,
+  candidateScores: Map<string, number>,
+  queryTerms: string[],
 ): SearchResult[] {
   return sortedPaths.map((fp) => {
     const tagMatches = matchTags(fp, queryTerms, candidateTfs, docTags);
     return buildSingleResult(fp, rowMap, candidateScores, tagMatches);
   });
 }
-
-export async function searchByTagsOnly(db: duckdb.Database, tags: string[]): Promise<SearchResult[]> {
+export async function searchByTagsOnly(
+  db: duckdb.Database,
+  tags: string[],
+): Promise<SearchResult[]> {
   if (tags.length === 0) return [];
   const likeClauses = tags.map(() => "LOWER(t.tag) LIKE ?");
   const params = tags.map((t) => `%${t.toLowerCase()}%`);
-  const rows = await queryRows<FileRow & { path: string }>(db,
+  const rows = await queryRows<FileRow & { path: string }>(
+    db,
     `SELECT DISTINCT f.path, f.title, f.body, f.author, f.editor, f.file_mtime, f.source_url
      FROM files f JOIN tags t ON f.path = t.file_path
      WHERE (${likeClauses.join(" OR ")}) ORDER BY f.title`,
     ...params,
   );
   return rows.map((r) => ({
-    path: r.path, title: r.title ?? "", body: r.body ?? "",
-    author: r.author ?? "", editor: r.editor ?? "",
-    file_mtime: r.file_mtime ?? "", source_url: r.source_url ?? null, description: null,
-    score: 1.0, matchedByTag: true,
+    path: r.path,
+    title: r.title ?? "",
+    body: r.body ?? "",
+    author: r.author ?? "",
+    editor: r.editor ?? "",
+    file_mtime: r.file_mtime ?? "",
+    source_url: r.source_url ?? null,
+    description: null,
+    score: 1.0,
+    matchedByTag: true,
     tagMatches: tags.filter((t) => r.path.toLowerCase().includes(t.toLowerCase())),
   }));
 }

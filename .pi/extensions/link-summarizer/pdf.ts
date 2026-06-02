@@ -19,23 +19,31 @@ export function isPdfUrl(url: string): boolean {
   try {
     const parsed = new URL(url);
     return PDF_EXT_RE.test(parsed.pathname) || PDF_PATH_RE.test(parsed.pathname);
-  } catch { return false; }
+  } catch {
+    return false;
+  }
 }
 
 export function extractPdfTitle(text: string): string {
-  const lines = text.split("\n").map((l) => l.trim()).filter((l) => l.length > 10);
+  const lines = text
+    .split("\n")
+    .map((l) => l.trim())
+    .filter((l) => l.length > 10);
   return lines[0] ?? "(PDF document)";
 }
 
 export async function checkPdfContentType(url: string, signal?: AbortSignal): Promise<boolean> {
   try {
     const resp = await fetch(url, {
-      method: "HEAD", signal,
+      method: "HEAD",
+      signal,
       headers: { "User-Agent": "Mozilla/5.0 (compatible; PiSummarizer/1.0)" },
       redirect: "follow",
     });
     return PDF_CT_RE.test(resp.headers.get("content-type") ?? "");
-  } catch { return false; }
+  } catch {
+    return false;
+  }
 }
 
 /* eslint-disable-next-line complexity */
@@ -43,11 +51,13 @@ export async function tryExtractPdf(
   url: string,
   signal?: AbortSignal,
 ): Promise<{ title: string; text: string } | null> {
-  const urlLooksLikePdf = isPdfUrl(url) || await checkPdfContentType(url, signal);
+  const urlLooksLikePdf = isPdfUrl(url) || (await checkPdfContentType(url, signal));
 
   if (!urlLooksLikePdf) return null;
 
-  try { execSync("which pdftotext", { stdio: "ignore", timeout: 5_000 }); } catch {
+  try {
+    execSync("which pdftotext", { stdio: "ignore", timeout: 5_000 });
+  } catch {
     return { title: "(PDF document)", text: "pdftotext not installed." };
   }
 
@@ -58,7 +68,9 @@ export async function tryExtractPdf(
       headers: { "User-Agent": "Mozilla/5.0 (compatible; PiSummarizer/1.0)" },
       redirect: "follow",
     });
-  } catch { return null; }
+  } catch {
+    return null;
+  }
   if (!response.ok) return null;
 
   const reader = response.body?.getReader();
@@ -72,9 +84,14 @@ export async function tryExtractPdf(
       if (done) break;
       chunks.push(value);
       totalSize += value.length;
-      if (totalSize > MAX_PDF_BYTES) { reader.cancel(); return null; }
+      if (totalSize > MAX_PDF_BYTES) {
+        reader.cancel();
+        return null;
+      }
     }
-  } catch { return null; }
+  } catch {
+    return null;
+  }
 
   const pdfBuffer = Buffer.concat(chunks);
   let tmpDir: string | null = null;
@@ -86,13 +103,28 @@ export async function tryExtractPdf(
     await writeFile(tmpPath, pdfBuffer);
 
     const text = execSync(`pdftotext -layout "${tmpPath}" -`, {
-      encoding: "utf-8", maxBuffer: MAX_CONTENT_CHARS * 2, timeout: 30_000,
+      encoding: "utf-8",
+      maxBuffer: MAX_CONTENT_CHARS * 2,
+      timeout: 30_000,
     }).trim();
 
-    if (!text) return { title: "(PDF document)", text: "PDF appears to contain no extractable text." };
+    if (!text)
+      return { title: "(PDF document)", text: "PDF appears to contain no extractable text." };
     return { title: extractPdfTitle(text), text };
-  } catch { return null; } finally {
-    if (tmpPath) try { await unlink(tmpPath); } catch { /* best effort */ }
-    if (tmpDir) try { await rm(tmpDir, { recursive: true, force: true }); } catch { /* best effort */ }
+  } catch {
+    return null;
+  } finally {
+    if (tmpPath)
+      try {
+        await unlink(tmpPath);
+      } catch {
+        /* best effort */
+      }
+    if (tmpDir)
+      try {
+        await rm(tmpDir, { recursive: true, force: true });
+      } catch {
+        /* best effort */
+      }
   }
 }

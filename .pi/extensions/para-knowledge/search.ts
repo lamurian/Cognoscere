@@ -41,7 +41,12 @@ export async function searchDocuments(
   if (N === 0) return { results: [], trace: "empty-corpus" };
 
   const { clause, params: tagParams } = buildTagFilterParams(filterTags);
-  const { candidateTfs, docLengths, dfMap } = await batchLookupTerms(db, queryTerms, clause, tagParams);
+  const { candidateTfs, docLengths, dfMap } = await batchLookupTerms(
+    db,
+    queryTerms,
+    clause,
+    tagParams,
+  );
 
   if (candidateTfs.size === 0) {
     if (filterTags?.length) {
@@ -52,14 +57,33 @@ export async function searchDocuments(
   }
 
   const docTags = await fetchCandidateTags(db, [...candidateTfs.keys()]);
-  const candidateScores = computeBm25Scores(queryTerms, candidateTfs, docLengths, dfMap, docTags, filterTags, N, avgDocLen);
+  const candidateScores = computeBm25Scores(
+    queryTerms,
+    candidateTfs,
+    docLengths,
+    dfMap,
+    docTags,
+    filterTags,
+    N,
+    avgDocLen,
+  );
   const sortedPaths = sortTopResults(candidateScores, BM25_DEFAULTS.MAX_RESULTS);
   if (sortedPaths.length === 0) return { results: [], trace: "bm25-zero-scored" };
 
   const rowMap = await fetchResultDocuments(db, sortedPaths);
-  const results = buildSearchResults(sortedPaths, rowMap, candidateTfs, docTags, candidateScores, queryTerms);
+  const results = buildSearchResults(
+    sortedPaths,
+    rowMap,
+    candidateTfs,
+    docTags,
+    candidateScores,
+    queryTerms,
+  );
 
-  return { results, trace: `bm25-batched (terms:${queryTerms.length} candidates:${candidateTfs.size} N:${N})` };
+  return {
+    results,
+    trace: `bm25-batched (terms:${queryTerms.length} candidates:${candidateTfs.size} N:${N})`,
+  };
 }
 
 // Re-export for backward compat (used by tools/searchDocs.ts)

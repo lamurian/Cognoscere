@@ -11,14 +11,24 @@ export function extractReadableText(html: string): { title: string; text: string
   const title = titleMatch ? titleMatch[1].trim() : "";
 
   let cleaned = html.replace(
-    /<(script|style|svg|nav|header|footer|noscript|iframe)[^>]*>[\s\S]*?<\/\1>/gi, "",
+    /<(script|style|svg|nav|header|footer|noscript|iframe)[^>]*>[\s\S]*?<\/\1>/gi,
+    "",
   );
   cleaned = cleaned.replace(/<[^>]*>/g, " ");
   cleaned = cleaned
-    .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"').replace(/&#x27;/g, "'").replace(/&#x2F;/g, "/")
-    .replace(/&#\d+;/g, " ").replace(/&[a-z]+;/g, " ");
-  cleaned = cleaned.replace(/[\r\n]+/g, "\n").replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n").trim();
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#x27;/g, "'")
+    .replace(/&#x2F;/g, "/")
+    .replace(/&#\d+;/g, " ")
+    .replace(/&[a-z]+;/g, " ");
+  cleaned = cleaned
+    .replace(/[\r\n]+/g, "\n")
+    .replace(/[ \t]+/g, " ")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
 
   return { title, text: cleaned };
 }
@@ -57,7 +67,10 @@ export async function fetchViaHttp(
       if (done) break;
       chunks.push(value);
       totalSize += value.length;
-      if (totalSize > MAX_HTTP_BODY_BYTES) { reader.cancel(); break; }
+      if (totalSize > MAX_HTTP_BODY_BYTES) {
+        reader.cancel();
+        break;
+      }
     }
   } catch (err: unknown) {
     return { error: `Error reading body: ${err instanceof Error ? err.message : String(err)}` };
@@ -66,7 +79,8 @@ export async function fetchViaHttp(
   const html = new TextDecoder().decode(
     chunks.reduce((acc, c) => {
       const merged = new Uint8Array(acc.length + c.length);
-      merged.set(acc); merged.set(c, acc.length);
+      merged.set(acc);
+      merged.set(c, acc.length);
       return merged;
     }, new Uint8Array(0)),
   );
