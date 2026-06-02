@@ -15,7 +15,7 @@ import { join, resolve } from "node:path";
 import { withDb, runWithRecovery, initDb } from "../db.js";
 import { formatFrontmatter } from "../frontmatter.js";
 import { slugify } from "../files.js";
-import { tokenize } from "../search.js";
+import { tokenize } from "../bm25.js";
 import { BM25_DEFAULTS } from "../types.js";
 
 const Area = Type.String({
@@ -78,6 +78,7 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
       // ── Update index (write connection with queue + user confirm) ──
       onUpdate?.({
         content: [{ type: "text" as const, text: "🗄️ notes.duckdb — inserting into index…" }],
+        details: {},
       });
 
       let indexOk = false;
@@ -101,13 +102,18 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
               now,
               now,
               now,
-              (params.source || null),
+              params.source || null,
             );
 
             // Re-insert tags
             await runWithRecovery(db, "DELETE FROM tags WHERE file_path = ?", relPath);
             for (const tag of params.tags) {
-              await runWithRecovery(db, "INSERT INTO tags (file_path, tag) VALUES (?, ?)", relPath, tag);
+              await runWithRecovery(
+                db,
+                "INSERT INTO tags (file_path, tag) VALUES (?, ?)",
+                relPath,
+                tag,
+              );
             }
 
             // Build BM25 term index (description boosts search relevance)

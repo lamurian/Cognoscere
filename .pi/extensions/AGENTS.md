@@ -28,9 +28,11 @@ All extensions share one root @package.json. Do not create separate package.json
 Two layouts are allowed.
 
 Single-file extension (under 300 lines):
+
 - @.pi/extensions/my-tool.ts
 
 Multi-file extension (over 300 lines or multiple concerns):
+
 - @.pi/extensions/my-ext/index.ts — entry point
 - @.pi/extensions/my-ext/helper.ts — helpers
 - @.pi/extensions/my-ext/types.ts — shared types
@@ -61,21 +63,21 @@ When a function gets too complex, break it into smaller functions. Extract condi
 
 ## Naming conventions
 
-| Element | Convention | Example |
-|---|---|---|
-| Extension dir | kebab-case | para-knowledge |
-| File names | kebab-case | git-commit.ts |
-| Entry point | index.ts | para-knowledge/index.ts |
-| Functions | camelCase | registerTool() |
-| Classes | PascalCase | SearchEngine |
-| Constants | UPPER_SNAKE_CASE | MAX_DIFF_SIZE |
-| Type exports | PascalCase with Type suffix | ToolInputType |
+| Element       | Convention                  | Example                 |
+| ------------- | --------------------------- | ----------------------- |
+| Extension dir | kebab-case                  | para-knowledge          |
+| File names    | kebab-case                  | git-commit.ts           |
+| Entry point   | index.ts                    | para-knowledge/index.ts |
+| Functions     | camelCase                   | registerTool()          |
+| Classes       | PascalCase                  | SearchEngine            |
+| Constants     | UPPER_SNAKE_CASE            | MAX_DIFF_SIZE           |
+| Type exports  | PascalCase with Type suffix | ToolInputType           |
 
 ## Import order
 
 Three groups separated by blank lines.
 
-1. External packages — pi SDK, npm deps, node:* modules
+1. External packages — pi SDK, npm deps, node:\* modules
 2. Internal modules — same extension, relative imports
 3. Type-only imports — grouped separately when mixed
 

@@ -12,6 +12,14 @@ module.exports = tseslint.config(
     rules: {
       // Cyclomatic complexity: maximum 15
       complexity: ["error", 15],
+      // Allow underscore-prefixed unused vars (callback params not yet wired)
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+        },
+      ],
       // Enforce consistent file extensions in imports
       "no-restricted-imports": [
         "error",

@@ -2,7 +2,7 @@
  * DuckDB interaction helpers for roadmap scratchpad lifecycle.
  */
 
-import { slugify } from "./utils.js";
+import { slugify } from "../_common/slug.js";
 import { openDb, initDb, indexScratchpad, deleteFromIndex, recomputeStats } from "./db.js";
 
 /** Create or re-register a scratchpad in the DuckDB index. */

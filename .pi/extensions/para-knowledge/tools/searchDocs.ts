@@ -24,7 +24,8 @@ export function registerSearchDocsTool(pi: ExtensionAPI): void {
       "Search the DuckDB-indexed PARA documents (Areas/Projects/Resources) by tags and content. " +
       "Uses BM25 (Okapi BM25) ranking for text search with O(log n) inverted-index lookups. " +
       "Tags use OR logic for filtering. The index is auto-synced on each call.",
-    promptSnippet: "Search for relevant knowledge documents in Areas, Projects, Resources directories",
+    promptSnippet:
+      "Search for relevant knowledge documents in Areas, Projects, Resources directories",
     promptGuidelines: [
       "Use search_para_docs first when the user asks a knowledge question.",
       "Pass the user's question as query and infer relevant tags from context.",
@@ -33,31 +34,34 @@ export function registerSearchDocsTool(pi: ExtensionAPI): void {
     ],
     parameters: Type.Object({
       query: Type.String({ description: "Search query or topic" }),
-      tags: Type.Optional(
-        Type.Array(Type.String(), { description: "Filter by tag (OR logic)" }),
-      ),
+      tags: Type.Optional(Type.Array(Type.String(), { description: "Filter by tag (OR logic)" })),
     }),
 
     async execute(_toolCallId, params, _signal, onUpdate, ctx) {
       // ── Step 1: Best-effort index sync ──
       onUpdate?.({
         content: [{ type: "text" as const, text: "🗄️ notes.duckdb — checking index freshness…" }],
+        details: {},
       });
 
-      let syncMessage =
-        "🗄️ notes.duckdb — sync skipped (results may be stale)";
+      let syncMessage = "🗄️ notes.duckdb — sync skipped (results may be stale)";
       try {
-        await withDb(ctx.cwd, "write", async (db) => {
-          const changed = await syncIndex(db, ctx.cwd);
-          syncMessage = changed
-            ? "🗄️ notes.duckdb — index synced (files changed)"
-            : "🗄️ notes.duckdb — index up to date";
-        }, { noQueue: true });
+        await withDb(
+          ctx.cwd,
+          "write",
+          async (db) => {
+            const changed = await syncIndex(db, ctx.cwd);
+            syncMessage = changed
+              ? "🗄️ notes.duckdb — index synced (files changed)"
+              : "🗄️ notes.duckdb — index up to date";
+          },
+          { noQueue: true },
+        );
       } catch (e: unknown) {
         const errMsg = e instanceof Error ? e.message : String(e);
         syncMessage = `🗄️ notes.duckdb — sync failed: ${errMsg.slice(0, 120)}`;
       }
-      onUpdate?.({ content: [{ type: "text" as const, text: syncMessage }] });
+      onUpdate?.({ content: [{ type: "text" as const, text: syncMessage }], details: {} });
 
       // ── Step 2: BM25 search (read-only) ──
       const query = params.query ?? "";
@@ -67,11 +71,13 @@ export function registerSearchDocsTool(pi: ExtensionAPI): void {
         content: [
           {
             type: "text" as const,
-            text: filterTags.length > 0
-              ? `🗄️ notes.duckdb — BM25 search with tag filter [${filterTags.join(", ")}]`
-              : "🗄️ notes.duckdb — BM25 search...",
+            text:
+              filterTags.length > 0
+                ? `🗄️ notes.duckdb — BM25 search with tag filter [${filterTags.join(", ")}]`
+                : "🗄️ notes.duckdb — BM25 search...",
           },
         ],
+        details: {},
       });
 
       try {
@@ -108,9 +114,8 @@ export function registerSearchDocsTool(pi: ExtensionAPI): void {
                 : r.score > 2
                   ? "medium"
                   : "low";
-            const tagHint = r.tagMatches.length > 0
-              ? ` 🏷️${r.tagMatches.slice(0, 3).join(", ")}`
-              : "";
+            const tagHint =
+              r.tagMatches.length > 0 ? ` 🏷️${r.tagMatches.slice(0, 3).join(", ")}` : "";
             return `- [${r.title}](${r.path})  (score: ${r.score.toFixed(2)}, relevance: ${rel}${tagHint})`;
           })
           .join("\n");

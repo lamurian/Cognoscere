@@ -6,6 +6,10 @@
     "duckdb": "^1.4.0"
   },
   "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:changed": "vitest run --changed",
     "lint": "eslint .pi/extensions/",
     "lint:fix": "eslint .pi/extensions/ --fix",
     "format": "prettier --write .pi/extensions/",
@@ -13,18 +17,20 @@
     "typecheck": "tsc --noEmit",
     "check:lines": "node scripts/check-lines.mjs",
     "prepare": "husky",
-    "precommit": "npm run format && npm run lint:fix && npm run typecheck && npm run check:lines"
+    "precommit": "npm run format && npm run lint:fix && npm run typecheck && npm run check:lines && npm run test"
   },
   "devDependencies": {
     "@earendil-works/pi-coding-agent": "^0.78.0",
     "@eslint/js": "^10.0.1",
     "@types/node": "^25.9.1",
+    "@vitest/coverage-v8": "^4.1.8",
     "eslint": "^10.4.1",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
     "prettier": "^3.8.3",
     "typebox": "^1.1.39",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.60.0"
+    "typescript-eslint": "^8.60.0",
+    "vitest": "^4.1.8"
   }
 }

@@ -13,15 +13,7 @@ import type { Frontmatter } from "./types.js";
 // ── Constants ───────────────────────────────────────────────────────
 
 /** Ordered field keys for deterministic frontmatter output. */
-const FIELD_ORDER = [
-  "title",
-  "description",
-  "author",
-  "editor",
-  "date",
-  "tags",
-  "source",
-] as const;
+const FIELD_ORDER = ["title", "description", "author", "editor", "date", "tags", "source"] as const;
 
 // ── YAML quoting helpers ────────────────────────────────────────────
 
@@ -38,10 +30,10 @@ function needsYamlQuoting(value: string): boolean {
   if (value.length === 0) return true;
 
   // Leading special characters that make a plain scalar ambiguous
-  if (/^[\[\]\{\}\,\&\*\!\|\>\'\"\%\@\`\#\:\?\-\s]/.test(value)) return true;
+  if (/^[[\]{},&*!|>'"%@`#:?-]/.test(value)) return true;
 
   // Contains colon-space or space-hash (ambiguous with mapping/comment)
-  if (/\: /.test(value) || / \#/.test(value)) return true;
+  if (/: /.test(value) || / #/.test(value)) return true;
 
   // YAML booleans / nulls / numbers that should remain strings
   if (/^(true|false|yes|no|on|off|null|undefined|~)$/i.test(value)) return true;
@@ -91,9 +83,9 @@ function unquoteYamlValue(raw: string): string {
     const inner = trimmed.slice(1, -1);
     return inner
       .replace(/\\"/g, '"')
-      .replace(/\\n/g, '\n')
-      .replace(/\\t/g, '\t')
-      .replace(/\\\\/g, '\\');
+      .replace(/\\n/g, "\n")
+      .replace(/\\t/g, "\t")
+      .replace(/\\\\/g, "\\");
   }
 
   return trimmed;
@@ -155,7 +147,53 @@ export function parseFrontmatter(content: string): Frontmatter {
   return fm;
 }
 
-// ── Formatting ──────────────────────────────────────────────────────
+// ── Formatting (broken into small helpers for complexity ≤ 15) ──────
+
+function determineSourceValue(fm: Record<string, unknown>): string | undefined {
+  if (typeof fm.source === "string" && fm.source) return fm.source;
+  if (typeof fm.source_url === "string" && fm.source_url) return fm.source_url;
+  return undefined;
+}
+
+function emitTags(out: string, tags: unknown): string {
+  if (Array.isArray(tags) && tags.length > 0) {
+    out += "tags:\n";
+    for (const t of tags) {
+      out += `  - ${yamlQuote(String(t))}\n`;
+    }
+  }
+  return out;
+}
+
+function emitStandardFields(out: string, fm: Record<string, unknown>, sourceVal: string | undefined): string {
+  for (const key of FIELD_ORDER) {
+    if (key === "tags") {
+      out = emitTags(out, fm.tags);
+    } else if (key === "source") {
+      if (sourceVal) {
+        out += `source: ${yamlQuote(sourceVal)}\n`;
+      }
+    } else {
+      const v = fm[key];
+      if (typeof v === "string" && v) {
+        out += `${key}: ${yamlQuote(v)}\n`;
+      }
+    }
+  }
+  return out;
+}
+
+function emitLegacyFields(out: string, fm: Record<string, unknown>, sourceVal: string | undefined): string {
+  for (const [k, v] of Object.entries(fm)) {
+    if ((FIELD_ORDER as readonly string[]).includes(k as string)) continue;
+    if (k === "tags" || k === "source") continue;
+    if (typeof v === "string" && v) {
+      if ((k === "source_url" || k === "url") && sourceVal) continue;
+      out += `${k}: ${yamlQuote(v)}\n`;
+    }
+  }
+  return out;
+}
 
 /**
  * Format a key-value map back into YAML frontmatter string.
@@ -168,48 +206,8 @@ export function parseFrontmatter(content: string): Frontmatter {
  */
 export function formatFrontmatter(fm: Record<string, unknown>): string {
   let out = "---\n";
-
-  // Determine the canonical source value (source takes priority over source_url)
-  let sourceVal: string | undefined;
-  if (typeof fm.source === "string" && fm.source) {
-    sourceVal = fm.source;
-  } else if (typeof fm.source_url === "string" && fm.source_url) {
-    sourceVal = fm.source_url;
-  }
-
-  // Emit ordered fields
-  for (const key of FIELD_ORDER) {
-    if (key === "tags") {
-      const v = fm.tags;
-      if (Array.isArray(v) && v.length > 0) {
-        out += "tags:\n";
-        for (const t of v) {
-          out += `  - ${yamlQuote(String(t))}\n`;
-        }
-      }
-    } else if (key === "source") {
-      if (sourceVal) {
-        out += `source: ${yamlQuote(sourceVal)}\n`;
-      }
-    } else {
-      const v = fm[key];
-      if (typeof v === "string" && v) {
-        out += `${key}: ${yamlQuote(v)}\n`;
-      }
-    }
-  }
-
-  // Emit any remaining legacy fields not already covered
-  for (const [k, v] of Object.entries(fm)) {
-    if ((FIELD_ORDER as readonly string[]).includes(k)) continue;
-    if (k === "tags") continue;
-    if (k === "source") continue;
-    if (typeof v === "string" && v) {
-      // source_url and url are handled via sourceVal, skip if we already emitted source
-      if ((k === "source_url" || k === "url") && sourceVal) continue;
-      out += `${k}: ${yamlQuote(v)}\n`;
-    }
-  }
-
+  const sourceVal = determineSourceValue(fm);
+  out = emitStandardFields(out, fm, sourceVal);
+  out = emitLegacyFields(out, fm, sourceVal);
   return out + "---\n";
 }

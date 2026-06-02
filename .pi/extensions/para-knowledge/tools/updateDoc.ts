@@ -15,7 +15,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { withDb, runWithRecovery, initDb } from "../db.js";
 import { parseFrontmatter, formatFrontmatter } from "../frontmatter.js";
-import { tokenize } from "../search.js";
+import { tokenize } from "../bm25.js";
 import { BM25_DEFAULTS } from "../types.js";
 
 /**
@@ -40,13 +40,19 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
         Type.String({ description: "Replacement title (omit to keep existing)" }),
       ),
       description: Type.Optional(
-        Type.String({ description: "Short summary ≤ 200 characters (omit to keep existing; empty string to clear)" }),
+        Type.String({
+          description:
+            "Short summary ≤ 200 characters (omit to keep existing; empty string to clear)",
+        }),
       ),
       source: Type.Optional(
-        Type.String({ description: "Replacement source URL (omit to keep existing; empty string to clear)" }),
+        Type.String({
+          description: "Replacement source URL (omit to keep existing; empty string to clear)",
+        }),
       ),
     }),
 
+/* eslint-disable-next-line complexity */
     async execute(_toolCallId, params, _signal, onUpdate, ctx) {
       // ── Read existing file ──
       const filePath = resolve(ctx.cwd, params.path);
@@ -58,13 +64,11 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
       const newTitle = params.title ?? fm.title ?? "";
       const newTags = params.tags ?? oldTags;
       // description: explicit param wins (empty string → null to clear), then existing, then null
-      const newDescription = params.description !== undefined
-        ? (params.description || null)
-        : (fm.description ?? null);
+      const newDescription =
+        params.description !== undefined ? params.description || null : (fm.description ?? null);
       // source: explicit param wins (empty string → null to clear), then existing, then null
-      const newSource = params.source !== undefined
-        ? (params.source || null)
-        : (fm.source_url ?? null);
+      const newSource =
+        params.source !== undefined ? params.source || null : (fm.source_url ?? null);
 
       // ── Write updated file to disk ──
       const frontmatterFields: Record<string, unknown> = {
@@ -88,6 +92,7 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
       // ── Update index (write connection with queue + user confirm) ──
       onUpdate?.({
         content: [{ type: "text" as const, text: "🗄️ notes.duckdb — updating index row…" }],
+        details: {},
       });
 
       let indexOk = false;
@@ -113,7 +118,12 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
             // Re-insert tags
             await runWithRecovery(db, "DELETE FROM tags WHERE file_path = ?", params.path);
             for (const tag of newTags) {
-              await runWithRecovery(db, "INSERT INTO tags (file_path, tag) VALUES (?, ?)", params.path, tag);
+              await runWithRecovery(
+                db,
+                "INSERT INTO tags (file_path, tag) VALUES (?, ?)",
+                params.path,
+                tag,
+              );
             }
 
             // Rebuild BM25 term index (description boosts search relevance)
@@ -175,7 +185,13 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
             text: `${indexNote}\nUpdated: ${filePath} (frontmatter renewed).${sourceNote}`,
           },
         ],
-        details: { path: filePath, title: newTitle, description: newDescription, source: newSource, indexOk },
+        details: {
+          path: filePath,
+          title: newTitle,
+          description: newDescription,
+          source: newSource,
+          indexOk,
+        },
       };
     },
   });

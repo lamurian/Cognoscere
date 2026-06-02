@@ -4,7 +4,7 @@
 
 import { resolve } from "node:path";
 import duckdb from "duckdb";
-import { tokenize } from "./utils.js";
+import { tokenize } from "../_common/tokenize.js";
 
 const DB_FILE = "notes.duckdb";
 

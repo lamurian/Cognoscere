@@ -75,7 +75,8 @@ export interface SearchResult {
 /** Options for withDb(). */
 export interface WithDbOptions {
   ctx?: ExtensionContext;
-  onUpdate?: (update: { content: { type: string; text: string }[] }) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onUpdate?: (update: any) => void;
   noQueue?: boolean;
 }
 

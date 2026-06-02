@@ -117,4 +117,22 @@ else
 fi
 echo ""
 
+# 5. Vitest — run test suite
+# Skipped if no .ts files changed (e.g. markdown-only commits)
+echo "━━━ Vitest (unit + integration) ━━━"
+if [ -n "$STAGED_TS" ]; then
+  npx vitest run --config vitest.config.ts --reporter=verbose 2>&1
+  TEST_EXIT=$?
+  if [ $TEST_EXIT -ne 0 ]; then
+    echo ""
+    echo "❌ Tests failed. Fix test failures and try again."
+    echo "   (Never use --no-verify)"
+    exit 1
+  fi
+  echo "✅ Vitest: passed"
+else
+  echo "⏭️  No .ts files changed — skipping tests"
+fi
+echo ""
+
 echo "🎉 All pre-commit checks passed!"

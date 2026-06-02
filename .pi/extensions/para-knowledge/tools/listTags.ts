@@ -4,7 +4,7 @@
  * tags when creating a new document, rather than inventing new ones.
  *
  * Query: SELECT DISTINCT tag FROM tags ORDER BY tag
- * 
+ *
  * Returns an array of tag strings. If the database doesn't exist yet,
  * returns an empty array (no tags indexed).
  */
@@ -30,15 +30,13 @@ export function registerListTagsTool(pi: ExtensionAPI): void {
     async execute(_toolCallId, _params, _signal, onUpdate, ctx) {
       onUpdate?.({
         content: [{ type: "text" as const, text: "🏷️ notes.duckdb — querying unique tags…" }],
+        details: {},
       });
 
       try {
         const tags = await withDb(ctx.cwd, "read", async (db) => {
-          const rows = await allWithRecovery(
-            db,
-            "SELECT DISTINCT tag FROM tags ORDER BY tag",
-          );
-          return (rows as any[]).map((r: any) => r.tag as string);
+          const rows = await allWithRecovery(db, "SELECT DISTINCT tag FROM tags ORDER BY tag");
+          return (rows as Record<string, unknown>[]).map((r: Record<string, unknown>) => r.tag as string);
         });
 
         if (tags.length === 0) {

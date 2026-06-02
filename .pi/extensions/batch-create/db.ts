@@ -17,26 +17,6 @@ export function openDb(cwd: string): duckdb.Database {
 const TX_ABORTED_MSG = "Current transaction is aborted (please ROLLBACK)";
 
 /**
- * Attempt to heal a broken DuckDB connection by rolling back any
- * aborted transaction.  Swallows "no transaction is active" errors.
- */
-async function healAbortedTx(db: duckdb.Database): Promise<void> {
-  try {
-    await new Promise<void>((resolve, reject) => {
-      db.run("ROLLBACK", (err: Error | null) => {
-        if (err) {
-          const msg = err.message ?? "";
-          if (msg.includes("no transaction is active")) resolve();
-          else reject(err);
-        } else resolve();
-      });
-    });
-  } catch {
-    // ignore unexpected rollback errors
-  }
-}
-
-/**
  * Run a SQL statement with aborted-transaction recovery.
  * On TX_ABORTED_MSG, rolls back and retries once.
  */
