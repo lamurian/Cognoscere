@@ -18,5 +18,5 @@ Use this skill when a question is too vague, ambiguous, or when no existing docu
 
 3. **Refine the question** — Based on the user's answers, produce a clear, focused question statement.
 
-4. **Hand off** — Output the refined question so it can be used by `web_search` (3-tier: curated → academic → general) for web search and `create_para_doc` to save a new document.
+4. **Hand off** — Output the refined question so it can be used by `web_search` (3-tier: SearXNG category-based search) for web search and `create_para_doc` to save a new document.
 

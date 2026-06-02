@@ -23,6 +23,12 @@ All extensions share one root @package.json. Do not create separate package.json
 - Remove unused deps to keep @package.json clean.
 - The root @package.json already includes `duckdb`, `typebox`, `eslint`, `prettier`, `typescript`, `husky`, and the pi SDK `@earendil-works/pi-coding-agent`. Use these before adding new ones.
 
+## Sub-extension documentation
+
+Each extension directory may contain its own `AGENTS.md` documenting extension-specific parameters, configuration, and usage notes. These files are cited here for agent reference.
+
+- @.pi/extensions/web-search/AGENTS.md — SearXNG Search API parameter reference and tier/category usage
+
 ## File structure
 
 Two layouts are allowed.

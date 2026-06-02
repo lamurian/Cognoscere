@@ -1,7 +1,10 @@
 # SearXNG settings for Cognoscere Search Stack
-# Minimal config: only the 7 engines we use. No default engines loaded.
+# use_default_settings: true — loads all built-in engines.
+# Custom engines below merge in (override by name, add by new name).
+# Category names match standard SearXNG categories so the web-search
+# extension queries work correctly.
 
-use_default_settings: false
+use_default_settings: true
 
 general:
   instance_name: "Cognoscere Search"
@@ -31,7 +34,6 @@ server:
   public_instance: false
   image_proxy: false
   http_protocol_version: "1.0"
-  method: "POST"
   default_http_headers:
     X-Content-Type-Options: nosniff
     X-Download-Options: noopen
@@ -58,10 +60,17 @@ outgoing:
   pool_maxsize: 20
   enable_http2: true
 
+# Standard SearXNG categories used by the web-search extension tiers.
+# Tab order reflects typical usage; categories unspecified in this list
+# still exist and can be queried via the API (e.g. images, videos, news).
 categories_as_tabs:
   general:
-  science:
+  web:
+  scientific_publications:
   it:
+  news:
+  images:
+  videos:
 
 doi_resolvers:
   oadoi.org: "https://oadoi.org/"
@@ -84,43 +93,48 @@ plugins:
     active: false
 
 engines:
-  # ── Tier 1: Academic ──
+  # ── Tier 1: Academic (custom engines) ──
+  # Assigned to 'scientific_publications' — the standard SearXNG academic
+  # category. Tier 1 of web_search queries this category.
   - name: openalex
     engine: openalex
     shortcut: oa
     timeout: 5.0
     disabled: false
     categories:
-      - science
+      - scientific_publications
 
   - name: pubmed
     engine: pubmed
     shortcut: pub
     disabled: false
     categories:
-      - science
+      - scientific_publications
 
   - name: semantic scholar
     engine: semantic_scholar
     shortcut: se
     disabled: false
     categories:
-      - science
+      - scientific_publications
 
   - name: arxiv
     engine: arxiv
     shortcut: arx
     disabled: false
     categories:
-      - science
+      - scientific_publications
 
-  # ── Tier 2/3: General web ──
+  # ── Tier 2 (web) / Tier 3 (general): Web search ──
+  # duckduckgo feeds both 'general' and 'web' categories so all three
+  # tiers can use it alongside default engines.
   - name: duckduckgo
     engine: duckduckgo
     shortcut: ddg
     disabled: false
     categories:
       - general
+      - web
 
   # ── Tier 2: Technical wikis ──
   - name: arch linux wiki
@@ -131,8 +145,6 @@ engines:
       - it
 
   # ── Tier 2: GitHub code search ──
-  # To use an authenticated GitHub token, change ghc_auth.type to
-  # "personal_access_token" and set ghc_auth.token to your token.
   - name: github code
     engine: github_code
     shortcut: ghc

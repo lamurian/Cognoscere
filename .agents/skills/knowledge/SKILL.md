@@ -23,7 +23,11 @@ Use the `search_para_docs` tool to find markdown files in `Areas/`, `Projects/`,
 ### 3. If no documents match
 - Inform the user that no document covers this topic yet
 - Invoke `/skill:brainstorm` to clarify and refine the question
-- Use `web_search` (3-tier: SearXNG academic → filtered web → general) to find authoritative information
+- Use `web_search` (3-tier: SearXNG category-based search) to find authoritative information
+   - Tier 1: `scientific_publications` category (academic papers, research)
+   - Tier 2: `web` category with `site:.edu OR site:.gov`; override via `category` param
+   - Tier 3: `general` category (unrestricted)
+   - Optional `category`: `"it"` for tech/software, `"news"` for news queries
 - Summarise findings to the user
 - **Cite every web result using markdown footnotes** (see [Citation format](#citation-format) below)
 - Before creating a new document, **always run `list_para_tags` first** to see all existing unique tags.
@@ -60,8 +64,13 @@ See [extension reference](../../../.pi/extensions/para-knowledge/index.ts) for t
 - `search_para_docs` — search by tags and content in Areas/Projects/Resources
 - `list_para_tags` — list all unique tags across all indexed documents (run before `create_para_doc` to reuse existing tags)
 - `expand_bullet_points` — expand unclear bullet points into coherent researched paragraphs using reputable web sources (provided by `expand-bullets/index.ts`)
-- `web_search` — 3-tier web search (SearXNG academic → filtered web → general).
-  See [web-search extension](../../../.pi/extensions/web-search/index.ts).
+- `web_search` — SearXNG category-based search (3-tier) with optional category override.
+  See [web-search extension](../../../.pi/extensions/web-search/index.ts) and
+  [API parameters](../../../.pi/extensions/web-search/AGENTS.md).
+  - Tier 1: `scientific_publications` category (academic)
+  - Tier 2: `web` category with `site:.edu OR site:.gov`; override via `category` param
+  - Tier 3: `general` category (unrestricted)
+  - Optional `category` parameter: `"it"` for tech/software, `"news"` for news
   Runs via Docker (search-stack/docker-compose.yml). Fallback: Tavily → native HTTP.
 - `create_para_doc` — create new file with YAML frontmatter
 - `update_para_doc` — update file and renew frontmatter

@@ -40,8 +40,9 @@ Available skills:
 - @.agents/skills/roadmap/SKILL.md — structured learning pathways
 
 Extensions from @.pi/extensions/ provide the tools used above:
+- @.pi/extensions/AGENTS.md — extension governance, file structure, naming, quality gates
 - @.pi/extensions/para-knowledge/index.ts — search, create, update, tags, dedup
-- @.pi/extensions/web-search/index.ts — 3-tier web search
+- @.pi/extensions/web-search/index.ts — SearXNG category-based search (see @.pi/extensions/web-search/AGENTS.md for API parameters)
 - @.pi/extensions/link-summarizer/index.ts — URL fetching (HTML, PDF)
 - @.pi/extensions/expand-bullets/index.ts — expand vague bullet points
 - @.pi/extensions/yaml-enforcer/index.ts — validate and repair frontmatter
