@@ -92,6 +92,18 @@ export async function initDb(db: duckdb.Database): Promise<void> {
   );
   await run(`INSERT OR IGNORE INTO corpus_stats (key, value) VALUES ('total_docs', 0)`);
   await run(`INSERT OR IGNORE INTO corpus_stats (key, value) VALUES ('avg_doc_length', 1.0)`);
+
+  // ── Citations table (for BibTeX-based citation system) ──
+  await run(`CREATE TABLE IF NOT EXISTS citations (
+    citekey VARCHAR PRIMARY KEY,
+    bibtex TEXT NOT NULL,
+    doi VARCHAR,
+    source_url VARCHAR,
+    created TIMESTAMP,
+    updated TIMESTAMP
+  )`);
+  await run("CREATE INDEX IF NOT EXISTS idx_citations_doi ON citations(doi)");
+  await run("CREATE INDEX IF NOT EXISTS idx_citations_url ON citations(source_url)");
 }
 
 /* eslint-disable-next-line complexity */

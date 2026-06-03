@@ -3,6 +3,10 @@ name: research
 description: Iterative academic research on a topic using SearXNG tier 1 (scientific_publications), WHY/HOW decomposition, hypothesis-driven evidence gathering, and synthesis into linked atomic notes with executive summary and known gaps.
 ---
 
+> **Note:** This skill delegates document creation and citation formatting to the knowledge skill.
+> - When creating atomic notes or executive summaries, follow the knowledge skill's `Document Creation Standards` (@.agents/skills/knowledge/SKILL.md section `Document Creation Standards`).
+> - When citing sources, follow the knowledge skill's `Citation format` (@.agents/skills/knowledge/SKILL.md section `Citation format`).
+
 # Research Skill
 
 Triggered by "research about {topic}" or "/skill:research {question}".
@@ -121,30 +125,38 @@ Across all questions in the tree, integrate the evidence into a coherent picture
 - Identify **cross-cutting themes** — patterns that appear across multiple questions
 - Identify **contradictions** — questions where evidence conflicts
 
+**Citation during synthesis:** For each source you decide to cite, follow the knowledge skill's citation workflow (@.agents/skills/knowledge/SKILL.md section `Citation format`):
+   1. Call `resolve_citation(source, [title, authors, year])`
+   2. Use the returned `@citekey` inline — e.g. `Dopamine depletion impairs effort-cost computation [@salamone2007].`
+
 ### 6. Create atomic notes
 
 Create one atomic note per **key idea** discovered during research.
 
-Rules:
-- Each note holds exactly one key idea
-- Max 4 paragraphs or two heading sections
-- Use [[wikilink]] to cross-reference other notes in the set
-- Always run `list_para_tags` first. Pick existing tags. Only create new tags when none fit.
+Follow the knowledge skill's `Document Creation Standards` (@.agents/skills/knowledge/SKILL.md section `Document Creation Standards`) for:
+- Atomic principle (one idea per note, max 100 lines)
+- Language (casual business English)
+- Citation style (`[@citekey]` via `resolve_citation`)
+- Cross-referencing (`[[wikilink]]`)
+- Classification (Resources vs Areas vs Projects)
+
+Additional research-specific rules:
 - Use `batch_create_para_docs` to create all atomic notes in one call. This enables auto-linking.
 - Default area: `Resources` (general reference). Use `Areas` if it relates to an ongoing life responsibility.
-
-Naming convention: `research-{short-topic}-{idea-slug}.md`
+- Naming convention: `research-{short-topic}-{idea-slug}.md`
+- Always run `list_para_tags` first. Pick existing tags. Only create new tags when none fit.
 
 ### 7. Create executive summary
 
 Create one executive summary note that links to all atomic notes. This note lives in the same area as the atomic notes.
+Follow the knowledge skill's `Document Creation Standards` (@.agents/skills/knowledge/SKILL.md section `Document Creation Standards`) for formatting.
 
 Content structure:
 
 ```markdown
 ## Executive Summary
 
-[A concise 2–3 paragraph overview of the research findings, synthesising across all questions in the tree]
+[A concise 2–3 paragraph overview of the research findings, synthesising across all questions in the tree, with sources cited as @citekey]
 
 ## Key Findings
 
@@ -218,3 +230,4 @@ If any no and rounds ≥ 5 → best-effort with "gaps and limitations".
 - `batch_create_para_docs(documents)` — create all atomic notes + executive summary with auto-linking
 - `/skill:brainstorm` — clarify vague topics before research
 - `/skill:auto-link` — link new notes to existing knowledge
+- `resolve_citation(source, [title], [authors], [year])` — parse a source via citation.js, generate a BibTeX citekey, dedup against knowledge base, and append to @ref.bib (provided by para-knowledge extension)

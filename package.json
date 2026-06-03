@@ -3,6 +3,10 @@
   "private": true,
   "description": "PARA knowledge base and pi extensions for Cognoscere",
   "dependencies": {
+    "@citation-js/core": "^0.7.21",
+    "@citation-js/plugin-bibtex": "^0.7.21",
+    "@citation-js/plugin-doi": "^0.7.21",
+    "@citation-js/plugin-url": "^0.7.21",
     "duckdb": "^1.4.0"
   },
   "scripts": {

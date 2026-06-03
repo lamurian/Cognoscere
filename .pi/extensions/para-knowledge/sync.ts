@@ -9,6 +9,8 @@
  */
 
 import type duckdb from "duckdb";
+import { readFile } from "node:fs/promises";
+import { resolve } from "node:path";
 import { type FileEntry, type ParsedFile, BM25_DEFAULTS } from "./types.js";
 import { runWithRecovery, queryRows } from "./db.js";
 import { scanAllParaDirs, parseFile } from "./files.js";
@@ -192,15 +194,98 @@ async function processChangedFiles(
   return { success, errors };
 }
 
+/**
+ * Parse a single BibTeX entry into its citekey and raw text.
+ * Simple regex-based parser — not a full BibTeX parser.
+ */
+function parseBibtexEntry(text: string): { citekey: string; raw: string } | null {
+  const match = text.match(/@\w+\{([^,]+),\s*([\s\S]*?)\n?\}/);
+  if (!match) return null;
+  return { citekey: match[1].trim(), raw: match[0] };
+}
+
+/**
+ * Sync @ref.bib into the DuckDB citations table.
+ *
+ * Reads all entries from ref.bib and inserts any that are missing from the
+ * citations table. This ensures manual edits to ref.bib are picked up.
+ */
+export async function syncCitations(db: duckdb.Database, cwd: string): Promise<number> {
+  const refBibPath = resolve(cwd, "ref.bib");
+  let content: string;
+  try {
+    content = await readFile(refBibPath, "utf-8");
+  } catch {
+    // ref.bib doesn't exist yet — nothing to sync
+    return 0;
+  }
+
+  // Split into individual BibTeX entries
+  // Entries start with @word{ and end at the next @ or end of file
+  const entries: { citekey: string; raw: string }[] = [];
+  const entryRegex = /@\w+\{[^}]+\}/g;
+  let m: RegExpExecArray | null;
+  while ((m = entryRegex.exec(content)) !== null) {
+    const parsed = parseBibtexEntry(m[0]);
+    if (parsed) entries.push(parsed);
+  }
+
+  if (entries.length === 0) return 0;
+
+  const now = new Date().toISOString();
+  let inserted = 0;
+
+  for (const entry of entries) {
+    // Check if citekey already exists
+    const existing = await queryRows<{ citekey: string }>(
+      db,
+      "SELECT citekey FROM citations WHERE citekey = ?",
+      entry.citekey,
+    );
+    if (existing.length > 0) continue;
+
+    // Try to extract DOI from the BibTeX body
+    const doiMatch = entry.raw.match(/doi\s*=\s*\{([^}]+)\}/i);
+    const doi = doiMatch ? doiMatch[1] : null;
+
+    // Try to extract URL
+    const urlMatch = entry.raw.match(/url\s*=\s*\{([^}]+)\}/i);
+    const url = urlMatch ? urlMatch[1] : null;
+
+    await runWithRecovery(
+      db,
+      "INSERT OR IGNORE INTO citations (citekey, bibtex, doi, source_url, created, updated) VALUES (?, ?, ?, ?, ?, ?)",
+      entry.citekey,
+      entry.raw,
+      doi,
+      url,
+      now,
+      now,
+    );
+    inserted++;
+  }
+
+  if (inserted > 0) {
+    console.error(`[sync] Synced ${inserted} new citation(s) from ref.bib`);
+  }
+
+  return inserted;
+}
+
 export async function syncIndex(db: duckdb.Database, cwd: string): Promise<boolean> {
   const files = await scanAllParaDirs(cwd);
   const { changed, toDelete } = await findChangedFiles(db, files);
 
-  if (changed.length === 0 && toDelete.length === 0) return false;
+  if (changed.length === 0 && toDelete.length === 0) {
+    // Still sync citations even if no files changed
+    await syncCitations(db, cwd);
+    return false;
+  }
 
   await deleteRemoved(db, toDelete);
   const { success, errors } = await processChangedFiles(db, changed);
   await recomputeCorpusStats(db);
+  await syncCitations(db, cwd);
 
   console.error(`[sync] Done: ${success} indexed, ${errors} errors, ${toDelete.length} deleted`);
   return success > 0 || toDelete.length > 0;

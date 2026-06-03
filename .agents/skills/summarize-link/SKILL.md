@@ -78,6 +78,13 @@ Write a concise summary in your own words. The summary should include:
 
 ### 4. Create a new PARA document
 
+Follow the knowledge skill's `Document Creation Standards` (@.agents/skills/knowledge/SKILL.md section `Document Creation Standards`) for:
+- Atomic principle
+- Language (casual business English)
+- Citation style (if citing external sources, use `resolve_citation` and `[@citekey]`)
+- Cross-referencing (`[[wikilink]]`)
+- Classification (Resources vs Areas vs Projects)
+
 **Before creating a new document, always run `list_para_tags` first** to fetch all existing unique tags. Choose tags from that array; only create new tags when none of the existing ones fit the topic.
 
 Use `create_para_doc` to save the summary, passing the original URL as `source_url`:
@@ -88,14 +95,14 @@ create_para_doc(
   content: "<markdown body with summary, key points, source link>",
   tags: ["<relevant-tag-1>", "<relevant-tag-2>"],
   area: "Resources",
-  source_url: "<original URL>"
+  source: "<original URL>"
 )
 ```
 
 - `area` should typically be `"Resources"` for general reference material
 - Use `"Areas"` if it relates to an ongoing life responsibility
 - Use `"Projects"` only if it directly supports an active project
-- `source_url` is stored in the frontmatter and in the DuckDB index, enabling future dedup checks
+- `source` (the URL) is stored in the frontmatter and in the DuckDB index, enabling future dedup checks
 
 Recommended document structure inside `content`:
 

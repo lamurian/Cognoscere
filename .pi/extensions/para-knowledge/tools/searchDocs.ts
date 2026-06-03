@@ -31,8 +31,9 @@ export function registerSearchDocsTool(pi: ExtensionAPI): void {
     promptGuidelines: [
       "Use search_para_docs first when the user asks a knowledge question.",
       "Pass the user's question as query and infer relevant tags from context.",
-      "Cite every source from results using markdown footnotes (e.g. [^1]).",
-      "Use the document path and title as the footnote reference label.",
+      "Cite sources using BibTeX citation keys from @ref.bib. Use [@citekey] or @citekey inline.",
+      "For existing PARA docs, reference by path — no BibTeX entry needed.",
+      "See knowledge skill for citation format.",
     ],
     parameters: Type.Object({
       query: Type.String({ description: "Search query or topic" }),

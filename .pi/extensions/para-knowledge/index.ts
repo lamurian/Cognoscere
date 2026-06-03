@@ -44,6 +44,7 @@ import { registerCreateDocTool } from "./tools/createDoc.js";
 import { registerUpdateDocTool } from "./tools/updateDoc.js";
 import { registerListTagsTool } from "./tools/listTags.js";
 import { registerFindExistingSummaryTool } from "./tools/findExistingSummary.js";
+import { registerResolveCitationTool } from "./tools/resolveCitation.js";
 
 /**
  * Extension entry point.
@@ -55,4 +56,5 @@ export default function (pi: ExtensionAPI): void {
   registerUpdateDocTool(pi);
   registerListTagsTool(pi);
   registerFindExistingSummaryTool(pi);
+  registerResolveCitationTool(pi);
 }

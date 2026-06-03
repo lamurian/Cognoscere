@@ -298,16 +298,23 @@ This is where `batch_create_para_docs` replaces the old per-document loop.
 | Comparisons, frameworks, paradigms | `"Resources"` | `"roadmap"`, topic tag, `"reference"` |
 | Capstone / portfolio project ideas | `"Projects"` | `"roadmap"`, topic tag, `"capstone"` |
 
-### Atomic note principles
+### Document creation standards
 
-- **One idea per note** — Each note covers exactly one step/skill/concept.
-- **Self-contained** — Each note should be understandable on its own.
-- **Cross-reference** — Within each note, use `[[wikilinks]]` to refer to prerequisite notes and sibling notes at the same layer. The batch auto-link will handle links to other new notes.
-- **Standard frontmatter** — Use `title`, `description` (≤200 chars), `author: pi`, `editor: lam`, `date`, `tags`, and optionally `source`.
+Follow the knowledge skill's `Document Creation Standards` (@.agents/skills/knowledge/SKILL.md section `Document Creation Standards`) for:
+- Atomic principle (one idea per note, max 100 lines)
+- Language (casual business English)
+- Citation style (if citing external sources, use `resolve_citation` and `[@citekey]`)
+- Cross-referencing (`[[wikilink]]`)
+- Classification (Resources vs Areas vs Projects)
+- Frontmatter (the tool auto-generates it; provide title, tags, area, description, source)
+
+Roadmap-specific additions to the standard:
+- Use `[[wikilinks]]` to reference prerequisite notes and sibling notes at the same layer
+- The batch auto-link in `batch_create_para_docs` handles cross-linking between new notes automatically
 
 ### Naming convention
 
-Use descriptive kebab-case filenames:
+Use descriptive kebab-case filenames (the slug is auto-generated from the title):
 - `Resources/fundamentals-of-probability-for-statistics.md`
 - `Resources/bayesian-inference-core-concepts.md`
 - `Projects/practical-linear-regression-frequentist-and-bayesian.md`
@@ -372,6 +379,8 @@ update_scratchpad(
 ## Step 7 — Create the master roadmap document
 
 After all atomic notes are created, create the **master roadmap document** in `Projects/`.
+
+Follow the knowledge skill's `Document Creation Standards` (@.agents/skills/knowledge/SKILL.md section `Document Creation Standards`) for language and citation style.
 
 ### Naming
 
