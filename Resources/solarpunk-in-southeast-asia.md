@@ -32,10 +32,10 @@ Cultural production:
 Decolonial angle:
 SE Asian solarpunk functions as a decolonial alternative to Western science fiction. Rather than inventing community from scratch, it looks at what already exists - wisdom traditions, communal systems, ecological knowledge - and asks: 'What if we kept those, and built forward from there?' This challenges the dominance of Western futuristic imaginaries.
 
-[^1]: MekarBooks - Solarpunk genre page
-[^2]: Seapunk Studios - Notion site
-[^3]: ASEF Culture360 - SE Asian Solarpunk Art Project call (2025)
-[^4]: Phnom Penh Post (2025) - 'Southeast Asian Solarpunk project opens calls for artists'
+[@MekarBooksSolarpunk]: MekarBooks - Solarpunk genre page
+[@SeapunkStudios]: Seapunk Studios - Notion site
+[@ASEF2025Solarpunk]: ASEF Culture360 - SE Asian Solarpunk Art Project call (2025)
+[@PhnomPenhPost2025Solarpunk]: Phnom Penh Post (2025) - 'Southeast Asian Solarpunk project opens calls for artists'
 
 ## Relevant notes
 

@@ -12,7 +12,6 @@ tags:
   - kampung
   - subak
 ---
-
 ## Location Criteria
 
 1. Water access — perennial rivers or high rainfall for micro-hydro
@@ -25,14 +24,14 @@ tags:
 ## Top Candidate Regions
 
 ### 1. West Sumatra (Minangkabau Highlands)
-- Why: Strongest adat system in Indonesia. Nagari (village republics) are autonomous, matrilineal, with established consensus governance.[^4]
+- Why: Strongest adat system in Indonesia. Nagari (village republics) are autonomous, matrilineal, with established consensus governance.[@Dharmaraj2024Digital]
 - Culture: Gotong royong is central. Minangkabau have a diaspora tradition (merantau) so outsiders integrating is culturally understood.
 - Climate: Cool highlands (600-1500m), volcanic soil, abundant rainfall — ideal for permaculture.
 - Land: Relatively affordable outside Padang. Nagari land is communally owned (tanah ulayat).
 - Challenge: Land cannot be bought by outsiders under ulayat system — must lease or partner with nagari.
 
 ### 2. Bali (interior, not coast)
-- Why: Subak irrigation system is a UNESCO-recognised model of democratic ecological governance operating for 1,000+ years.[^3]
+- Why: Subak irrigation system is a UNESCO-recognised model of democratic ecological governance operating for 1,000+ years.[@GlobalEcovillageNetwork]
 - Culture: Hindu-Balinese have strong village banjar (neighbourhood councils) and mutual cooperation (ngayah).
 - Land: More expensive than other regions, especially in south. Interior (Buleleng, Karangasem, Bangli) is cheaper.
 - Challenge: High tourist presence means land speculation and some local resentment of foreign-owned projects. Foreigners cannot own freehold land (Hak Milik) — must use Hak Guna Bangunan (building rights) or leasehold.
@@ -61,8 +60,8 @@ Recommendation: Partner with an existing nagari or desa by offering skills, infr
 
 Reference: [[solarpunk-in-indonesia]], [[solarpunk-in-southeast-asia]]
 
-[^3]: Solarpunk in Indonesia — existing note on subak and gotong royong.
-[^4]: Nagari (settlement) - Wikipedia. Minangkabau autonomous village republics.
+[@GlobalEcovillageNetwork]: Solarpunk in Indonesia — existing note on subak and gotong royong.
+[@Dharmaraj2024Digital]: Nagari (settlement) - Wikipedia. Minangkabau autonomous village republics.
 
 ## Relevant notes
 

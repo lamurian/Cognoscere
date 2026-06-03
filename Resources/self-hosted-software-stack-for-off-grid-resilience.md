@@ -16,30 +16,30 @@ When living off-grid, every self-hosted service must work without internet conne
 ## Core Services
 
 **Vaultwarden**
-Password manager (Rust implementation of Bitwarden). Syncs across all devices. Keeps credentials for banking, government services, and online accounts offline and encrypted. Works entirely on LAN. Cost: free (Docker, 128MB RAM). [^1]
+Password manager (Rust implementation of Bitwarden). Syncs across all devices. Keeps credentials for banking, government services, and online accounts offline and encrypted. Works entirely on LAN. Cost: free (Docker, 128MB RAM). [@Vaultwarden]
 
 **SearXNG**
-Privacy-respecting metasearch engine. Queries Google, DuckDuckGo, Bing, and others without sending your IP or tracking cookies. Runs on LAN only. Cost: free (Docker, 256MB RAM). [^2]
+Privacy-respecting metasearch engine. Queries Google, DuckDuckGo, Bing, and others without sending your IP or tracking cookies. Runs on LAN only. Cost: free (Docker, 256MB RAM). [@SearXNG]
 
 **Home Assistant**
-Central smart home controller. Integrates over 2,000 devices: lights, switches, sensors, cameras, climate. Automates garden watering, emergency alerts (smoke, flood, intrusion). Uses MQTT for ESP32/ESP8266 sensor communication. Voice via Wyoming protocol (local, no cloud). Cost: free (Docker or HAOS, 512MB-1GB RAM). [^3]
+Central smart home controller. Integrates over 2,000 devices: lights, switches, sensors, cameras, climate. Automates garden watering, emergency alerts (smoke, flood, intrusion). Uses MQTT for ESP32/ESP8266 sensor communication. Voice via Wyoming protocol (local, no cloud). Cost: free (Docker or HAOS, 512MB-1GB RAM). [@HomeAssistant]
 
 **ESPHome**
-Firmware tool for ESP32/ESP8266 microcontrollers. Write YAML once, flash over WiFi. Sensors (temperature, humidity, soil moisture, light), relays (garden valves, lights), and displays report to Home Assistant via native API. No cloud vendor lock-in. Cost: free. Device cost: $3-8 per ESP32. [^4]
+Firmware tool for ESP32/ESP8266 microcontrollers. Write YAML once, flash over WiFi. Sensors (temperature, humidity, soil moisture, light), relays (garden valves, lights), and displays report to Home Assistant via native API. No cloud vendor lock-in. Cost: free. Device cost: $3-8 per ESP32. [@ESPHome]
 
 **Mosquitto MQTT Broker**
 Lightweight message broker connecting all IoT devices. Every sensor publishes data to topics; Home Assistant subscribes. Very low bandwidth, works on LoRa/Zigbee bridges to MQTT. Cost: free (Docker, 32MB RAM).
 
 **Tailscale**
-Mesh VPN connecting all devices securely. Zero-config: install on server, phone, laptop. Access homelab from anywhere without port forwarding. Free for up to 3 users / 100 devices. Cost: free (Docker, 64MB RAM). [^5]
+Mesh VPN connecting all devices securely. Zero-config: install on server, phone, laptop. Access homelab from anywhere without port forwarding. Free for up to 3 users / 100 devices. Cost: free (Docker, 64MB RAM). [@Tailscale]
 
 ## Communication and File Sync
 
 **Syncthing**
-Decentralized file synchronization between devices. Works entirely on LAN; no cloud server needed. Syncs documents, photos, offline maps (Organic Maps). Every device keeps a full copy; data never hosted on a third party. Cost: free (Docker, 128MB RAM). [^6]
+Decentralized file synchronization between devices. Works entirely on LAN; no cloud server needed. Syncs documents, photos, offline maps (Organic Maps). Every device keeps a full copy; data never hosted on a third party. Cost: free (Docker, 128MB RAM). [@Syncthing]
 
 **Gitea**
-Lightweight self-hosted Git service. Version-control all configuration files (Docker Compose, Ansible, Home Assistant YAML, ESPHome configs). If the server dies, clone the repo to a new machine and restore within an hour. Cost: free (Docker, 256MB RAM). [^7]
+Lightweight self-hosted Git service. Version-control all configuration files (Docker Compose, Ansible, Home Assistant YAML, ESPHome configs). If the server dies, clone the repo to a new machine and restore within an hour. Cost: free (Docker, 256MB RAM). [@Gitea]
 
 ## Monitoring and Alerts
 
@@ -69,13 +69,13 @@ Ping monitors for all services. Sends push notifications to phone (Gotify) when 
 
 Every service above runs on a single $80 mini PC at under 20W. Together they replace a dozen cloud subscriptions (Google Workspace, Dropbox, LastPass, DuckDuckGo, Telegram) and the associated data extraction. In an off-grid context, these tools provide functional internet independence: you can search, communicate, control your home, and manage your data without ever touching a cloud server.
 
-[^1]: Vaultwarden — github.com/dani-garcia/vaultwarden
-[^2]: SearXNG — docs.searxng.org
-[^3]: Home Assistant — home-assistant.io
-[^4]: ESPHome — esphome.io
-[^5]: Tailscale — tailscale.com
-[^6]: Syncthing — syncthing.net
-[^7]: Gitea — gitea.io
+[@Vaultwarden]: Vaultwarden — github.com/dani-garcia/vaultwarden
+[@SearXNG]: SearXNG — docs.searxng.org
+[@HomeAssistant]: Home Assistant — home-assistant.io
+[@ESPHome]: ESPHome — esphome.io
+[@Tailscale]: Tailscale — tailscale.com
+[@Syncthing]: Syncthing — syncthing.net
+[@Gitea]: Gitea — gitea.io
 
 ## Relevant notes
 

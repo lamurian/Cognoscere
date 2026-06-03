@@ -22,7 +22,7 @@ SSDs are essential for the boot drive because they use little power and have no 
 
 The data drive spins down when not in use (via hdparm or systemd). Your homelab's backup job runs once daily to the HDD. Most of the time, the HDD is parked and drawing under 1W.
 
-You do not need a RAID for a budget homelab [^1]. The main server SSD fails rarely; you can reinstall from Ansible/playbook automation and restore data from the HDD backup. For important data (Vaultwarden vault, Home Assistant config), automate daily encrypted backups to a remote location (friend's server, $5 VPS, or Raspberry Pi at a family member's house).
+You do not need a RAID for a budget homelab. The main server SSD fails rarely; you can reinstall from Ansible/playbook automation and restore data from the HDD backup. For important data (Vaultwarden vault, Home Assistant config), automate daily encrypted backups to a remote location (friend's server, $5 VPS, or Raspberry Pi at a family member's house).
 
 ## Price
 
@@ -49,7 +49,6 @@ This three-tier approach protects against hardware failure, theft, and ransomwar
 
 SSDs last 5-10 years in a homelab. Enterprise HDDs (refurbished) from server pulls can last 5+ years. Using one external drive for backup instead of a RAID array reduces component count and e-waste. When the HDD fails, replace it with another used drive. The system is designed for repairability, not for hardware RAID lock-in.
 
-[^1]: RAID is not a backup — a common sysadmin axiom. RAID protects against drive failure, not accidental deletion, corruption, or theft. Offline backup is cheaper and more effective for a budget homelab.
 
 ## Relevant notes
 

@@ -58,12 +58,6 @@ From the experience of solarpunk and eco-village initiatives integrating with In
 - Year 2-3: Start infrastructure, hire locally for all construction
 - Year 3-5: Stable integration -- local people participate as members, not employees
 
-## References
-
-[^1]: Solarpunk in Indonesia -- existing note on gotong royong, subak, kampung culture
-[^2]: Solarpunk Village Indonesia: Assimilation Paths with Locals -- existing note
-[^3]: Solarpunk Village Indonesia: Local Beliefs & Stigma Towards Outsiders -- existing note
-[^4]: Agriculture Institute (2025) -- Evolution of Rural Development Policies in Indonesia
 
 ## Related Notes
 

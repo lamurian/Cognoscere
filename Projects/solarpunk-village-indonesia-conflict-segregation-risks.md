@@ -12,14 +12,13 @@ tags:
   - segregation
   - community
 ---
-
 ## Structural Segregation Risks
 
 ### 1. Economic Enclave Formation
 A solarpunk village with higher capital, better infrastructure, and global connections risks becoming an eco-enclave — a bubble of privilege surrounded by local poverty. Indonesian villages already experience this with villa developments and tourist resorts. The gap in living standards breeds resentment, not inspiration.
 
 ### 2. Land Dispossession
-Buying land (even legally) can displace local farmers who work under informal tenure. Indonesia's land reform history is bloody — millions lost access during the Green Revolution and New Order.[^6] Any large land purchase by outsiders must include a clear plan for local access and benefit-sharing.
+Buying land (even legally) can displace local farmers who work under informal tenure. Indonesia's land reform history is bloody — millions lost access during the Green Revolution and New Order.[@NationalSecurityArchive1965] Any large land purchase by outsiders must include a clear plan for local access and benefit-sharing.
 
 ### 3. Cultural Segregation by Default
 Without deliberate design:
@@ -57,7 +56,7 @@ Aceh province enforces Sharia law, has only 1% non-Muslim population, and requir
 
 Reference: [[indonesia-erasure-of-left-wing-politics-after-1965]], [[indonesian-politics-pluralist-vs-islamist-spectrum]]
 
-[^6]: Indonesia 1965: The Destruction of Marhaenism and External Interventions — existing note.
+[@NationalSecurityArchive1965]: Indonesia 1965: The Destruction of Marhaenism and External Interventions — existing note.
 
 ## Relevant notes
 

@@ -30,9 +30,9 @@ The European Green Deal, Renovation Wave, and Circular Economy Action Plan all a
 Why Europe leads:
 Strong municipal governance, existing public transit infrastructure, high environmental awareness, and policy frameworks that incentivise renewable energy and green building make European cities natural solarpunk testbeds.
 
-[^1]: Solarpunk Cities (2024) - city projects directory
-[^2]: The European Conservative (2024) 'A Look at Solarpunk'
-[^3]: ABC News (2024) - interview with Jay Springett (UK-based)
+[@SolarpunkCities2024]: Solarpunk Cities (2024) - city projects directory
+[@EuropeanConservative2023Solarpunk]: The European Conservative (2024) 'A Look at Solarpunk'
+[@ABCNews2024Solarpunk]: ABC News (2024) - interview with Jay Springett (UK-based)
 
 ## Relevant notes
 

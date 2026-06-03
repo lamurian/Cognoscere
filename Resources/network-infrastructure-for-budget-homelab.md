@@ -21,9 +21,9 @@ Total power: approximately 8-15W continuous.
 
 ## Component Rationale
 
-A router with **OpenWrt** gives you firewall control, ad blocking (AdBlock package), WireGuard VPN server, and traffic shaping. It runs on commodity hardware so you can replace it cheaply. The GL.iNet Beryl AX (MT3000) is a low-power ($60, 4W) travel router that is surprisingly capable as a primary router for a small homelab [^1]. For more throughput, a used PC with two NICs running OpenWrt or pfSense can handle gigabit routing at 10-15W.
+A router with **OpenWrt** gives you firewall control, ad blocking (AdBlock package), WireGuard VPN server, and traffic shaping. It runs on commodity hardware so you can replace it cheaply. The GL.iNet Beryl AX (MT3000) is a low-power ($60, 4W) travel router that is surprisingly capable as a primary router for a small homelab [@GLiNetMT3000]. For more throughput, a used PC with two NICs running OpenWrt or pfSense can handle gigabit routing at 10-15W.
 
-A **managed switch** allows VLANs to separate IoT devices (smart plugs, ESP32 sensors) from the trusted server VLAN. This is critical for security. IoT devices are notorious for poor security; VLAN isolation prevents them from reaching your password manager or file server [^2].
+A **managed switch** allows VLANs to separate IoT devices (smart plugs, ESP32 sensors) from the trusted server VLAN. This is critical for security. IoT devices are notorious for poor security; VLAN isolation prevents them from reaching your password manager or file server [@OWASPIoT].
 
 The **access point** provides WiFi coverage. Dedicated APs (vs. all-in-one router/WiFi) are more reliable and allow you to position the AP where coverage is best. UniFi APs can be found used for $30-50 and draw 4-5W.
 
@@ -45,8 +45,8 @@ The **access point** provides WiFi coverage. Dedicated APs (vs. all-in-one route
 
 Network segmentation via VLANs reduces attack surface, extending the life of the homelab and protecting data. Low-power networking gear can run on the same solar battery bank as the server. By using OpenWrt on commodity hardware, you can re-purpose an old PC as a router, keeping e-waste out of landfills.
 
-[^1]: GL.iNet MT3000 specifications: MediaTek MT7981A dual-core, 512MB RAM, WiFi 6, USB 3.0, OpenWrt pre-installed.
-[^2]: OWASP IoT Security Guidance recommends network segmentation as a primary defense for IoT deployments.
+[@GLiNetMT3000]: GL.iNet MT3000 specifications: MediaTek MT7981A dual-core, 512MB RAM, WiFi 6, USB 3.0, OpenWrt pre-installed.
+[@OWASPIoT]: OWASP IoT Security Guidance recommends network segmentation as a primary defense for IoT deployments.
 
 ## Relevant notes
 

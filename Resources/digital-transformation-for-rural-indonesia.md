@@ -65,12 +65,6 @@ The government targets connecting 10,000+ villages to the internet by 2025. Succ
 - Device subsidies or community device-sharing programs
 - Digital literacy training as part of every village program
 
-## References
-
-[^1]: Eddie Ridwan, Perkumpulan Desa Digital Terbuka -- OpenSID, cited in Devpolicy ANU (2024)
-[^2]: Devpolicy ANU (2024) -- Siskeudes challenges and the One Data Indonesia project
-[^3]: The ASEAN Magazine (2020) -- Smart Village digital platforms: dapurkita.com, SiADek, SiGADIS
-[^4]: OpenGov Asia (Dec 2024) -- Digital Villages: Bridging Indonesia's Urban-Rural Divide
 
 ## Related Notes
 

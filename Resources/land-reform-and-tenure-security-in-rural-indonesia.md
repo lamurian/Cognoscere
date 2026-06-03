@@ -46,12 +46,6 @@ Ongoing initiatives include participatory mapping where communities document the
 - Farm fragmentation creates ever-decreasing plot sizes, potentially trapping near-landless families
 - Adat (customary) land rights are not always recognized in formal land office (BPN) registrations
 
-## References
-
-[^1]: Agriculture Institute (2025) -- Evolution of Rural Development Policies in Indonesia
-[^2]: Rights and Resources Initiative (2023) -- Two Big Wins for Indonesia's Agrarian Reform Movement
-[^3]: World Bank (2023) -- From the Ground Up: How Secure Land Rights Are Improving Livelihoods in Indonesia
-[^4]: Mongabay (2025) -- Indonesia signs agrarian reform commitment amid rising land equity woes
 
 ## Related Notes
 

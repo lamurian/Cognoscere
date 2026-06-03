@@ -30,7 +30,7 @@ At idle (running Proxmox or Debian + 3-5 Docker containers), a ThinkCentre M720q
 
 Monthly energy at idle: 12W x 24h x 30 days = 8.64 kWh. At average load (18W): 12.96 kWh.
 
-At Indonesia's residential electricity rate of $0.081/kWh [^1], that is $0.70-1.05 per month on grid power. On solar, it represents the primary load.
+At Indonesia's residential electricity rate of $0.081/kWh [@GlobalPetrolPrices], that is $0.70-1.05 per month on grid power. On solar, it represents the primary load.
 
 ## Price
 
@@ -38,14 +38,14 @@ On eBay, a used ThinkCentre M720q with 8GB RAM and no storage sells for $50-80. 
 
 ## Why Second-Hand
 
-Buying used keeps these machines out of landfill. Each ThinkCentre reused saves roughly 180 kg of CO2 equivalent compared to manufacturing a new one [^2]. Mini PCs are typically decommissioned in bulk by corporations after 3-4 years, many with very low usage hours.
+Buying used keeps these machines out of landfill. Each ThinkCentre reused saves roughly 180 kg of CO2 equivalent compared to manufacturing a new one [@EwasteMonitor]. Mini PCs are typically decommissioned in bulk by corporations after 3-4 years, many with very low usage hours.
 
 ## How It Fits the Sustainable Ecosystem
 
 A single mini PC running Proxmox (hypervisor) hosts all services in lightweight LXC containers or Docker. At 10-15W, it can run 24/7 on a small solar panel (about 1 square meter). No dedicated server room, no AC cooling needed. It forms the brain of a digital homestead.
 
-[^1]: Indonesia residential electricity rate, GlobalPetrolPrices.com, September 2025: $0.081/kWh.
-[^2]: Based on lifecycle analysis of desktop PC manufacturing, estimated 160-200 kg CO2 per unit (Frazer-Nash Consultancy, 2020).
+[@GlobalPetrolPrices]: Indonesia residential electricity rate, GlobalPetrolPrices.com, September 2025: $0.081/kWh.
+[@EwasteMonitor]: Based on lifecycle analysis of desktop PC manufacturing, estimated 160-200 kg CO2 per unit (Frazer-Nash Consultancy, 2020).
 
 ## Relevant notes
 

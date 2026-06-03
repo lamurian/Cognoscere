@@ -20,7 +20,7 @@ The **left–right political spectrum** is a framework for classifying political
 During the French Revolution, the National Assembly divided seating by faction:
 
 - **Left side** — Radical revolutionaries who sought to abolish the monarchy, reduce Church power, and push for egalitarian reform.
-- **Right side** — Conservatives who wanted to preserve the monarchy, the aristocracy, and the Church's institutional role.[^1]
+- **Right side** — Conservatives who wanted to preserve the monarchy, the aristocracy, and the Church's institutional role.[@MITSpectrum2012]
 
 This seating arrangement became a permanent metaphor: *la gauche* (the left) and *la droite* (the right), spreading worldwide over the following centuries.
 
@@ -28,7 +28,7 @@ This seating arrangement became a permanent metaphor: *la gauche* (the left) and
 
 ## Core Philosophical Distinction
 
-Modern political science identifies **attitudes toward equality** as the single most consistent dividing line between left and right across cultures and eras.[^2]
+Modern political science identifies **attitudes toward equality** as the single most consistent dividing line between left and right across cultures and eras.[@LSEEuropp2023]
 
 | Dimension | Left Wing | Right Wing |
 |-----------|-----------|------------|
@@ -38,7 +38,7 @@ Modern political science identifies **attitudes toward equality** as the single 
 | **Society** | Emphasises collective welfare, solidarity, minority rights | Emphasises individual responsibility, authority, national/cultural identity |
 | **Key historical thinkers** | Jean-Jacques Rousseau, Karl Marx, John Maynard Keynes | Edmund Burke, Friedrich Hayek, Milton Friedman |
 
-> *"The left favours greater equality, while the right sees society as inevitably hierarchical."* — Jost, Glaser, Kruglanski & Sulloway (2003)[^3]
+> *"The left favours greater equality, while the right sees society as inevitably hierarchical."* — Jost, Glaser, Kruglanski & Sulloway (2003)[@Jost2003Conservatism]
 
 ---
 
@@ -50,11 +50,6 @@ Modern political science identifies **attitudes toward equality** as the single 
 
 ---
 
-## Sources
-
-[^1]: *Understanding the French Political Spectrum: La Gauche and La Droite* — MIT Journal of Student Fellows, 2012 ([jsf.mit.edu](https://jsf.mit.edu/past-years/january-scholars-2012/understanding-french-political-spectrum-la-gauche-and-la-droite/))
-[^2]: *Why views on inequality define the left–right divide* — LSE EUROPP Blog, 2023 ([blogs.lse.ac.uk](https://blogs.lse.ac.uk/europpblog/2023/04/14/why-views-on-inequality-define-the-left-right-divide/))
-[^3]: Jost, Glaser, Kruglanski & Sulloway — *Political Conservatism as Motivated Social Cognition* — UC Berkeley / Stanford, 2003 ([gspp.berkeley.edu](https://gspp.berkeley.edu/archived/files/research/pdf/jost.glaser.political-conservatism-as-motivated-social-cog.pdf))
 
 ## Related notes
 

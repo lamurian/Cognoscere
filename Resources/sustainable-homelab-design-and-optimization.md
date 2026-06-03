@@ -27,7 +27,7 @@ The mini PC and network gear generate under 30W total. In Indonesia's tropical c
 
 - Place equipment in a shaded, elevated area with natural airflow.
 - Avoid enclosed cabinets. Use open shelving, a wire rack, or a ventilated plastic crate.
-- Keep ambient temperature under 35C. If the room exceeds that, a small USB fan (1W) moving air over equipment drops temperatures by 5-10C [^1].
+- Keep ambient temperature under 35C. If the room exceeds that, a small USB fan (1W) moving air over equipment drops temperatures by 5-10C [@RaspberryPiFan].
 - Monitor CPU temperature with `lm-sensors`. Throttling begins at 95C; typical idle temp in a 30C room is 40-50C for a ThinkCentre.
 
 ## Hardware Lifecycle
@@ -39,7 +39,7 @@ The mini PC and network gear generate under 30W total. In Indonesia's tropical c
 
 ## E-Waste and Circular Economy
 
-An estimated 57 million tons of e-waste was generated globally in 2021, with only 17% recycled [^2]. Each second-hand ThinkCentre reused keeps approximately 1.2 kg of circuit boards, metals, and plastics out of landfill. Over 5 years of operation, your homelab prevents the manufacture of at least 2-3 new devices that would have been needed if using cloud services with proprietary hardware.
+An estimated 57 million tons of e-waste was generated globally in 2021, with only 17% recycled [@EwasteMonitor]. Each second-hand ThinkCentre reused keeps approximately 1.2 kg of circuit boards, metals, and plastics out of landfill. Over 5 years of operation, your homelab prevents the manufacture of at least 2-3 new devices that would have been needed if using cloud services with proprietary hardware.
 
 ## Software Efficiency
 
@@ -74,8 +74,8 @@ Integrate with the solar charge controller's state of charge. Automate load shed
 
 A sustainable homelab is not about buying the newest, most efficient hardware. It is about using existing hardware well, running it efficiently, keeping it alive for 5+ years, and retiring it responsibly. The total cost of ownership over 5 years (hardware + solar) for this setup is approximately $710 and produces near-zero e-waste when components are reused or recycled properly.
 
-[^1]: Raspberry Pi-compatible USB fans draw 0.5-1W and deliver 10-20 CFM.
-[^2]: Global E-waste Monitor 2024 (UNU/ITU), 62 million tonnes projected for 2024.
+[@RaspberryPiFan]: Raspberry Pi-compatible USB fans draw 0.5-1W and deliver 10-20 CFM.
+[@EwasteMonitor]: Global E-waste Monitor 2024 (UNU/ITU), 62 million tonnes projected for 2024.
 
 ## Relevant notes
 

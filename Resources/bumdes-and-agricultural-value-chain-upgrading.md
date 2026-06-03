@@ -55,11 +55,6 @@ Historical lessons from the KUD (Koperasi Unit Desa) system of the 1970s-90s, wh
 
 **Successful BUMDes today share:** genuine community ownership, professional management (not political appointees), transparent accounting, digital integration, and linkages to real markets.
 
-## References
-
-[^1]: Devpolicy ANU (2024) -- Village governance and development in Indonesia: progress and challenges
-[^2]: Agriculture Institute (2025) -- Evolution of Rural Development Policies in Indonesia
-[^3]: The ASEAN Magazine (2020) -- Smart Village case study: dapurkita.com
 
 ## Related Notes
 

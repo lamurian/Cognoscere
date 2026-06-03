@@ -11,10 +11,9 @@ tags:
   - planning
   - gotong-royong
 ---
-
 ## Core Founding Team (5-15 people)
 
-Dunbar's number research shows optimal stable village size at 50-150 people, with smaller seed phases.[^1] For Indonesia, the path is:
+Dunbar's number research shows optimal stable village size at 50-150 people, with smaller seed phases.[@DunbarSosis2018Optimising] For Indonesia, the path is:
 
 Phase 1 — Core (Year 0-1): 5-15 founders
 - 1 Indonesian community liaison / adat negotiator (must speak local language)
@@ -28,7 +27,7 @@ Phase 1 — Core (Year 0-1): 5-15 founders
 - Remaining: generalists with capital contribution
 
 Phase 2 — Seed Village (Year 1-3): 20-40 people
-Add: market gardeners (3-6), animal husbandry (1-2), food processor (1-2), electrician/plumber (1-2), educator (1-2), healthcare (1), cottage industry leads (2-4), finance administrator (1), forest gardener (1), ecosystem restoration lead (1). Total ~25+ distinct roles for 50-population village.[^2]
+Add: market gardeners (3-6), animal husbandry (1-2), food processor (1-2), electrician/plumber (1-2), educator (1-2), healthcare (1), cottage industry leads (2-4), finance administrator (1), forest gardener (1), ecosystem restoration lead (1). Total ~25+ distinct roles for 50-population village.[@Kasper2008Redefining]
 
 Phase 3 — Stable Village (Year 3-8): 50-150 people
 Full-featured division of labour across four domains:
@@ -38,7 +37,7 @@ Full-featured division of labour across four domains:
 - Economy & livelihood: 10-15% of adults
 - Rotating community duties: every adult contributes 4-8 hrs/week
 
-Key Indonesian adaptation: Leverage gotong royong (mutual assistance) as the labour framework instead of Western volunteerism. This is an existing cultural norm, not a new ask.[^3]
+Key Indonesian adaptation: Leverage gotong royong (mutual assistance) as the labour framework instead of Western volunteerism. This is an existing cultural norm, not a new ask.[@GlobalPetrolPrices]
 
 ## Land Requirements
 - Seed village (20-40 people): 50-150 acres, 85-95% green space
@@ -46,9 +45,9 @@ Key Indonesian adaptation: Leverage gotong royong (mutual assistance) as the lab
 
 References: [[solarpunk-village-population-scaling]], [[solarpunk-village-roles-labor]], [[solarpunk-in-indonesia]]
 
-[^1]: Dunbar, R. et al. (2018). Optimising human community sizes. Human Biology, 39, 106-112.
-[^2]: Kasper, D.V.S. (2008). Redefining Community in the Ecovillage. Human Ecology Review, 15(1), 12-24.
-[^3]: Gotong Royong - Wikipedia. Indonesian mutual cooperation principle.
+[@DunbarSosis2018Optimising]: Dunbar, R. et al. (2018). Optimising human community sizes. Human Biology, 39, 106-112.
+[@Kasper2008Redefining]: Kasper, D.V.S. (2008). Redefining Community in the Ecovillage. Human Ecology Review, 15(1), 12-24.
+[@GlobalPetrolPrices]: Gotong Royong - Wikipedia. Indonesian mutual cooperation principle.
 
 ## Relevant notes
 

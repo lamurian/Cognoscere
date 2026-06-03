@@ -43,11 +43,6 @@ So far, the Village Fund has been spent mostly on infrastructure. This improved 
 
 The KPK (Corruption Eradication Commission) reports 851 Village Fund corruption cases involving 973 individuals, half of whom are village heads -- the largest corruption scandal in state finance management. The Siskeudes (Village Financial System) digital platform was introduced to improve transparency, but faces adoption barriers due to limited electricity, internet, and digital skills in many villages.
 
-## References
-
-[^1]: Garry Rosario da Gama, Devpolicy ANU (Nov 2024) -- Village governance and development in Indonesia: progress and challenges
-[^2]: World Bank (June 2019) -- Boosting Rural Government Capacity, Infrastructure, and Citizen Engagement to Accelerate Poverty Reduction
-[^3]: A. Halim Iskandar, The ASEAN Magazine (Sep 2020) -- A Smart Village Approach in Indonesia
 
 ## Related Notes
 

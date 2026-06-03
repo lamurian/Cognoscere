@@ -56,12 +56,6 @@ Successful land redistribution cases show that around 400 out of 1,050 land cert
 
 Closing the gender gap in agricultural productivity in Indonesia could increase agricultural output by an estimated 10-20%. Women are more likely to spend income on household welfare, child education, and nutrition -- directly improving quality-of-life metrics beyond raw GDP.
 
-## References
-
-[^1]: Agriculture Institute (2025) -- Evolution of Rural Development Policies in Indonesia
-[^2]: Tandfonline (2024) -- Women in dairy farming, East Java
-[^3]: Land Coalition -- Feeding Families with Indonesia's Agrarian Reform
-[^4]: ScienceDirect (2024) -- Rural women's contributions to cattle farming, decision-making constraints
 
 ## Related Notes
 

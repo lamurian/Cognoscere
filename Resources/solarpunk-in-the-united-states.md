@@ -32,9 +32,9 @@ Key US locations of solarpunk activity:
 - Earthship communities in New Mexico and Colorado
 - Permaculture networks nationwide
 
-[^1]: ABC News (2024) - interview with Matthew Wizinsky
-[^2]: The Mercury News (2024) 'What is solarpunk? Inside an audaciously hopeful environmental movement that's thriving in the Bay Area'
-[^3]: Wikipedia - Solarpunk (citing Wakanda as example)
+[@ABCNews2024Solarpunk]: ABC News (2024) - interview with Matthew Wizinsky
+[@MercuryNews2024Solarpunk]: The Mercury News (2024) 'What is solarpunk? Inside an audaciously hopeful environmental movement that's thriving in the Bay Area'
+[@GlobalPetrolPrices]: Wikipedia - Solarpunk (citing Wakanda as example)
 
 ## Relevant notes
 

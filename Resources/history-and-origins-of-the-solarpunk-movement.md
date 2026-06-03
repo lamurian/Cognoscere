@@ -21,10 +21,10 @@ In 2024, solarpunk entered The Encyclopedia of Science Fiction, with James Mache
 
 Key sources: Wikipedia (2024), MDPI Philosophies journal (Gillam 2023), ABC Australia (2024), Nesta UK (2024).
 
-[^1]: Wikipedia - Solarpunk
-[^2]: Gillam, W.J. (2023) 'A Solarpunk Manifesto: Turning Imaginary into Reality', Philosophies 8(4), 73.
-[^3]: ABC News (2024) 'Solarpunk started out as a speculative fiction genre.'
-[^4]: Nesta UK (2024) 'Signals, solarpunk & sci-fi: how our imaginations can save the future.'
+[@GlobalPetrolPrices]: Wikipedia - Solarpunk
+[@Gillam2023Solarpunk]: Gillam, W.J. (2023) 'A Solarpunk Manifesto: Turning Imaginary into Reality', Philosophies 8(4), 73.
+[@ABCNews2024Solarpunk]: ABC News (2024) 'Solarpunk started out as a speculative fiction genre.'
+[@Nesta2024Signals]: Nesta UK (2024) 'Signals, solarpunk & sci-fi: how our imaginations can save the future.'
 
 ## Relevant notes
 

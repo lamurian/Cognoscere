@@ -24,7 +24,7 @@ Political scientists argue that the most meaningful axis in contemporary Indones
 |------------|---------|----------------|---------------|
 | **Pluralist-Nationalist** (Indonesia's functional "left") | PDI-P, NasDem, Demokrat, PKB | Pancasila-based, secular-pluralist, moderate Islamic, welfare-oriented | Tolerant of diversity, anti-identity politics, pro-Pancasila |
 | **Islamist-Conservative** (Indonesia's functional "right") | PKS, PAN, PPP, parts of Gerindra | Pro-sharia values, Islam in public life, conservative social morality | Religiously observant, support Islamic law, anti-pluralist in some measures |
-| **Pragmatic / Catch-all** | Golkar, Gerindra | Personality-driven, adaptable between blocs, elite-oriented | Varies by election cycle and candidate[^1] |
+| **Pragmatic / Catch-all** | Golkar, Gerindra | Personality-driven, adaptable between blocs, elite-oriented | Varies by election cycle and candidate[@Muhtadi2021IslamicPopulism] |
 
 The "left" side in this spectrum is not socialist but **pluralist**: it defends Pancasila's guarantee of religious pluralism and rejects sectarian politics. The "right" side is not free-market but **Islamist**: it seeks a greater role for sharia and Islamic identity in public life.
 
@@ -32,7 +32,7 @@ The "left" side in this spectrum is not socialist but **pluralist**: it defends 
 
 ## Survey Data: Islamic Populism in Indonesia
 
-A 2020 national survey by the ISEAS–Yusof Ishak Institute measured Islamic populist attitudes using three indicators: support for preferential treatment of Muslims, fewer rights for Chinese-Indonesians, and rule by sharia law.[^1]
+A 2020 national survey by the ISEAS–Yusof Ishak Institute measured Islamic populist attitudes using three indicators: support for preferential treatment of Muslims, fewer rights for Chinese-Indonesians, and rule by sharia law.[@Muhtadi2021IslamicPopulism]
 
 | Category | Percentage | Characteristics |
 |----------|-----------|----------------|
@@ -43,7 +43,7 @@ A 2020 national survey by the ISEAS–Yusof Ishak Institute measured Islamic pop
 ### How it maps to presidential choice (2019)
 
 - **Prabowo Subianto's supporters** scored significantly higher on the Islamic populism scale, even though Prabowo himself comes from a secular/pluralist background. He allied with Islamist groups to defeat Jokowi.
-- **Joko Widodo's supporters** scored significantly lower, though Jokowi was forced to pick Ma'ruf Amin (a conservative cleric) as his running mate to blunt Islamist attacks.[^1]
+- **Joko Widodo's supporters** scored significantly lower, though Jokowi was forced to pick Ma'ruf Amin (a conservative cleric) as his running mate to blunt Islamist attacks.[@Muhtadi2021IslamicPopulism]
 
 ### How it maps to parties (2020 data)
 
@@ -59,7 +59,7 @@ Golkar    ●
 Gerindra  ● ← highest Islamic populism
 ```
 
-Notably, **Golkar** — traditionally considered a secular, "right-wing" party under Suharto — had a voter base that scored *higher* on Islamic populism than PKS (an explicitly Islamist party). This reflects Golkar's historical absorption of former Masyumi (Islamic party) supporters after the 1960s.[^1]
+Notably, **Golkar** — traditionally considered a secular, "right-wing" party under Suharto — had a voter base that scored *higher* on Islamic populism than PKS (an explicitly Islamist party). This reflects Golkar's historical absorption of former Masyumi (Islamic party) supporters after the 1960s.[@Muhtadi2021IslamicPopulism]
 
 ---
 
@@ -69,7 +69,7 @@ Unlike in Europe or the US, the classic economic dimension (state intervention v
 
 - **Economically nationalist** — protectionist, pro-subsidy, nationalist on natural resources
 - **Clientelist** — distributing patronage rather than pursuing coherent economic ideologies
-- **Populist** — promising welfare and subsidies without strong ideological commitment[^1][^2]
+- **Populist** — promising welfare and subsidies without strong ideological commitment[@Muhtadi2021IslamicPopulism; @Brookings2022Inequality]
 
 Indonesia's economic policy has been remarkably consistent across administrations regardless of which coalition is in power — around 5% annual GDP growth, infrastructure spending, resource nationalism, and social assistance programmes (see [[indonesia-economy-overview-2005-2025]]).
 
@@ -100,10 +100,6 @@ Most Indonesian parties cluster in the **centre-left economically** (statist/pop
 
 ---
 
-## Sources
-
-[^1]: Muhtadi & Muslim — *Islamic Populism and Voting Trends in Indonesia* — ISEAS Perspective No. 159, 2021 ([iseas.edu.sg](https://www.iseas.edu.sg/wp-content/uploads/2021/11/ISEAS_Perspective_2021_159.pdf))
-[^2]: *Politicizing inequality in Indonesian elections* — Brookings Institution, 2022 ([brookings.edu](https://www.brookings.edu/articles/politicizing-inequality-in-indonesian-elections/))
 
 ## Related notes
 

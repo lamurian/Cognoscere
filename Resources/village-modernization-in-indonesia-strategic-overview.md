@@ -44,12 +44,6 @@ The combination that produces the best outcomes is: secure land tenure + coopera
 - Digital divide: Thousands of villages still lack reliable electricity and internet.
 - Land inequality: Agrarian conflicts continue to displace smallholder farmers.
 
-## References
-
-[^1]: Devpolicy ANU (2024) -- Village governance and development in Indonesia: progress and challenges
-[^2]: World Bank (2019) -- Boosting Rural Government Capacity to Accelerate Poverty Reduction
-[^3]: The ASEAN Magazine (2020) -- A Smart Village Approach in Indonesia
-[^4]: Agriculture Institute (2025) -- Evolution of Rural Development Policies in Indonesia
 
 ## Related Notes
 

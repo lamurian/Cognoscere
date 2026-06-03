@@ -2,7 +2,7 @@
 title: 'Solarpunk Village: Food Systems & Ecology'
 author: pi
 editor: lam
-date: 2026-06-01T02:58:41.863Z
+date: 2026-06-03T11:16:08.541Z
 tags:
   - solarpunk
   - sustainability
@@ -11,11 +11,11 @@ tags:
 ---
 # Solarpunk Village: Food Systems & Ecology
 
-Food production and ecosystem restoration are deeply interwoven in a solarpunk village. The land is not divided into "agriculture" vs "nature" — instead, food systems are designed to regenerate soil, build biodiversity, and mimic natural ecosystems.[^1][^2][^3]
+Food production and ecosystem restoration are deeply interwoven in a solarpunk village. The land is not divided into "agriculture" vs "nature" — instead, food systems are designed to regenerate soil, build biodiversity, and mimic natural ecosystems [@Kasper2008Redefining; @Lockyer2018Community; @UKERCLammas].
 
 ## Permaculture as the Guiding Framework
 
-All 8 ecovillages in Kasper's study explicitly use permaculture design for their food systems — except one, which was just getting started with it.[^1] Permaculture principles ensure that food production:
+All 8 ecovillages in Kasper's study explicitly use permaculture design for their food systems — except one, which was just getting started with it [@Kasper2008Redefining]. Permaculture principles ensure that food production:
 
 - Builds soil organic matter (no-till, cover crops, composting)
 - Captures water on-site (swales, keyline design, ponds)
@@ -34,11 +34,11 @@ Using permaculture zone planning:
 | **Zone 2** | Village perimeter | Orchards, food forest | Nut/berry trees, perennial vegetables, poultry |
 | **Zone 3** | Fields | Main crops, pasture | Grains, legumes, rotational grazing |
 | **Zone 4** | Managed wild | Forage, timber, fuelwood | Harvested selectively, mostly for wildlife |
-| **Zone 5** | Wilderness | Full conservation | No harvest, ecosystem restoration[^2] |
+| **Zone 5** | Wilderness | Full conservation | No harvest, ecosystem restoration [@Lockyer2018Community] |
 
 ## Food Self-Sufficiency Trajectory
 
-Data from Kasper's 2008 study of 8 ecovillages:[^1]
+Data from Kasper's 2008 study of 8 ecovillages [@Kasper2008Redefining]:
 
 | Level | % Communities at This Level | Description |
 |-------|---------------------------|-------------|
@@ -52,7 +52,7 @@ The median solarpunk village should expect ~1–20% food self-sufficiency in the
 
 ## Agricultural Leases
 
-Dancing Rabbit uses a **garden leasehold system**:[^2]
+Dancing Rabbit uses a **garden leasehold system** [@Lockyer2018Community]:
 - **Residential garden leaseholds** — for household/kitchen-cooperative food
 - **Commercial agricultural leaseholds** — for food sold to members and neighbours
 - **50 acres** designated for food production (with much yet to be developed)
@@ -63,34 +63,28 @@ Animal agriculture is handled differently based on community ethics:
 - **Vegan/vegetarian ecovillages** focus entirely on plant-based food
 - **Omnivore ecovillages** use rotational grazing to mimic bison on prairie ecosystems
 - **Permaculture animal systems** integrate poultry, goats, sheep, or pigs into orchard/garden rotations
-- Dancing Rabbit uses rotational grazing and recognises that "prairie ecosystems are particularly appropriate contexts for animal protein"[^2]
+- Dancing Rabbit uses rotational grazing and recognises that "prairie ecosystems are particularly appropriate contexts for animal protein" [@Lockyer2018Community]
 
 ## Ecosystem Restoration
 
 Solarpunk villages actively restore degraded land as a core mission:
 
-- **Prairie restoration**: Dancing Rabbit manages 160 acres through the Conservation Reserve Program, with prescribed burns and native grass plantings[^2]
-- **Reforestation**: Dancing Rabbit has planted 15,000+ trees, gaining ~1 acre of forest per year[^2]
+- **Prairie restoration**: Dancing Rabbit manages 160 acres through the Conservation Reserve Program, with prescribed burns and native grass plantings [@Lockyer2018Community]
+- **Reforestation**: Dancing Rabbit has planted 15,000+ trees, gaining ~1 acre of forest per year [@Lockyer2018Community]
 - **Wildlife corridors**: connecting fragmented habitats through conservation design
 - **Soil regeneration**: building organic matter through composting, no-till, and biochar
 
-> "We expect to establish native species, stabilize soil, encourage diversity and control invasive non-native species." — Dancing Rabbit Land Use Plan[^2]
+> "We expect to establish native species, stabilize soil, encourage diversity and control invasive non-native species." — Dancing Rabbit Land Use Plan [@Lockyer2018Community]
 
 ## Community Food Practices
 
-- **Community meals** are a core social ritual: frequency ranges from daily (Ecovillage A) to 1×/week (Ecovillage H)[^1]
+- **Community meals** are a core social ritual: frequency ranges from daily (Ecovillage A) to 1×/week (Ecovillage H) [@Kasper2008Redefining]
 - **Shared kitchens** reduce per-capita energy and equipment needs
 - **Food processing cooperatives** — canning, fermentation, dehydrating extend the growing season
-- **Dietary pluralism** — many ecovillages accommodate omnivore, vegetarian, and vegan members with separate or flexible kitchen arrangements[^1]
+- **Dietary pluralism** — many ecovillages accommodate omnivore, vegetarian, and vegan members with separate or flexible kitchen arrangements [@Kasper2008Redefining]
 
 ## Relevant notes
 
 - [[solarpunk-a-vision-for-a-sustainable-future]] — solarpunk's emphasis on regenerative agriculture, permaculture, and food sovereignty is detailed here
 - [[solarpunk-village-roles-division-of-labour]] — the food & ecology roles table in this document specifies who does the work described here
 - [[solarpunk-village-overview-blueprint]] — top-level overview of the entire solarpunk village document series
-
-## Sources
-
-[^1]: Kasper, D.V.S. (2008). "Redefining Community in the Ecovillage." *Human Ecology Review*, 15(1), 12–24. Food self-sufficiency data, permaculture adoption, diet preferences, meal frequency across 8 communities. [Montclair State University](https://msuweb.montclair.edu/~franker/EVI/EVIJournalArticles/kasper2008.pdf)
-[^2]: Lockyer, J. (2018). "Community, Commons, and Ecological Restoration at Dancing Rabbit Ecovillage." *Rootstalk* (Grinnell College). CRP management, reforestation (15,000 trees), rotational grazing, garden leaseholds, prairie restoration with prescribed burns. [Grinnell College](https://rootstalk.grinnell.edu/issues/volume-v-issue-1/community-commons-ecological-restoration/)
-[^3]: UKERC Public Engagement Observatory. "Lammas Eco-Village." Permaculture on low-impact smallholdings, One Planet Development policy. [UKERC](https://ukerc-observatory.ac.uk/case_study/lammas-eco-village/)

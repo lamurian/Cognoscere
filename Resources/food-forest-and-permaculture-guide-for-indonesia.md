@@ -15,7 +15,6 @@ tags:
   - pekarangan
   - wanatani
 ---
-
 ## Overview
 
 Building a food forest or permaculture system in Indonesia does not mean importing a Western model. The country already has living traditions of agroforestry, communal land management, and ecological farming. The most resilient approach reinforces these existing systems and builds forward from them.
@@ -24,27 +23,27 @@ Building a food forest or permaculture system in Indonesia does not mean importi
 
 ### Gotong Royong (Mutual Cooperation)
 
-The Javanese/Indonesian principle of collective cooperation is the social infrastructure for permaculture. Gotong royong manifests in neighbourhood associations (RT/RW), village work parties, and shared resource management. A food forest managed under gotong royong means shared planting days, rotating harvest duties, and collective maintenance of swales, composting, and nursery beds.[^1][^6]
+The Javanese/Indonesian principle of collective cooperation is the social infrastructure for permaculture. Gotong royong manifests in neighbourhood associations (RT/RW), village work parties, and shared resource management. A food forest managed under gotong royong means shared planting days, rotating harvest duties, and collective maintenance of swales, composting, and nursery beds.[@GlobalEcovillageNetwork; @GlobalEcovillageNetwork]
 
 ### Subak (Bali's Water Temple System)
 
-Bali's ancient subak system manages shared water across hundreds of farmers through democratic councils, spiritual ritual, and sophisticated hydrological engineering. Operating for over 1,000 years, subak offers a ready-made governance model for managing shared permaculture infrastructure — irrigation, seed banks, processing facilities.[^1]
+Bali's ancient subak system manages shared water across hundreds of farmers through democratic councils, spiritual ritual, and sophisticated hydrological engineering. Operating for over 1,000 years, subak offers a ready-made governance model for managing shared permaculture infrastructure — irrigation, seed banks, processing facilities.[@GlobalEcovillageNetwork]
 
 ### Pekarangan (Traditional Home Gardens)
 
-The pekarangan is the Javanese and Sundanese traditional home garden — a layered system of fruit trees, vegetables, medicinal plants, and livestock managed by families on house-compound land. These are already small-scale food forests: canopy layer (coconut, mango, petai), understory (coffee, cacao, banana), shrub layer (cassava, taro, chili), ground cover (kangkung, sweet potato), and climbers (sirih, passionfruit). Modern permaculture design should study and improve existing pekarangan rather than replace them.[^1]
+The pekarangan is the Javanese and Sundanese traditional home garden — a layered system of fruit trees, vegetables, medicinal plants, and livestock managed by families on house-compound land. These are already small-scale food forests: canopy layer (coconut, mango, petai), understory (coffee, cacao, banana), shrub layer (cassava, taro, chili), ground cover (kangkung, sweet potato), and climbers (sirih, passionfruit). Modern permaculture design should study and improve existing pekarangan rather than replace them.[@GlobalEcovillageNetwork]
 
 ### Wanatani (Traditional Agroforestry)
 
-Wanatani or wanafarma refers to Indonesia's traditional agroforestry systems, especially common in Sumatra (repong damar in Krui, talun in West Java) and Kalimantan. These complex systems integrate timber, fruit, resin, medicinal plants, and food crops in multi-story forest gardens that mimic natural forest succession. The damar resin agroforests of Lampung are a world-recognized example of sustainable indigenous land management.[^5]
+Wanatani or wanafarma refers to Indonesia's traditional agroforestry systems, especially common in Sumatra (repong damar in Krui, talun in West Java) and Kalimantan. These complex systems integrate timber, fruit, resin, medicinal plants, and food crops in multi-story forest gardens that mimic natural forest succession. The damar resin agroforests of Lampung are a world-recognized example of sustainable indigenous land management.[@WillieSmitsPermaculture]
 
 ### Adat (Customary Law and Ecological Governance)
 
-Indonesia's diverse adat systems contain rules about forest stewardship, water rights, land use, and seasonal harvest. Many adat communities (Masyarakat Adat) have sophisticated ecological calendars based on flora/fauna indicators, lunar cycles, and monsoon patterns. Permaculture design should consult adat councils (Kerapatan Adat Nagari in West Sumatra, Desa Pekraman in Bali) before altering land or water systems.[^1][^6]
+Indonesia's diverse adat systems contain rules about forest stewardship, water rights, land use, and seasonal harvest. Many adat communities (Masyarakat Adat) have sophisticated ecological calendars based on flora/fauna indicators, lunar cycles, and monsoon patterns. Permaculture design should consult adat councils (Kerapatan Adat Nagari in West Sumatra, Desa Pekraman in Bali) before altering land or water systems.[@GlobalEcovillageNetwork; @GlobalEcovillageNetwork]
 
 ### Local Beliefs and Rituals
 
-Traditional ceremonies like selamatan bumi (earth thanksgiving), seren taun (Sundanese harvest festival), and various wetonan (birthday-based planting calendars) embed ecological stewardship in cultural life. Participating in these rituals signals respect and builds the social trust needed for community-managed food forests.[^6]
+Traditional ceremonies like selamatan bumi (earth thanksgiving), seren taun (Sundanese harvest festival), and various wetonan (birthday-based planting calendars) embed ecological stewardship in cultural life. Participating in these rituals signals respect and builds the social trust needed for community-managed food forests.[@GlobalEcovillageNetwork]
 
 ## Practical Steps to Build a Food Forest in Indonesia
 
@@ -149,15 +148,15 @@ A food forest managed individually fails in the long term. Follow the gotong roy
 
 ### Books and Manuals
 
-- **IDEP Permaculture Reference Book** — Published by IDEP Foundation (Bali, 2006). The most comprehensive Indonesian permaculture manual, available in Bahasa Indonesia. Covers integrated farming, soil management, water systems, and appropriate technology for the Indonesian context.[^2]
-- **Facilitator's Handbook for Permaculture** — Developed specifically for Indonesian rural communities by foodforestdesignnetwork.com.[^3]
+- **IDEP Permaculture Reference Book** — Published by IDEP Foundation (Bali, 2006). The most comprehensive Indonesian permaculture manual, available in Bahasa Indonesia. Covers integrated farming, soil management, water systems, and appropriate technology for the Indonesian context.[@IDEPFoundation]
+- **Facilitator's Handbook for Permaculture** — Developed specifically for Indonesian rural communities by foodforestdesignnetwork.com.[@FoodForestDesignNetwork]
 - **Buku Panduan Permakultur for Rural Indonesia** — Training manual used by Indonesian NGOs for village-level permaculture.
 
 ### Organisations and Places
 
-- **IDEP Foundation** (Ubud, Bali) — Pioneering permaculture training and disaster response. Runs courses in Bahasa Indonesia. PO Box 160, Ubud 80571, Bali.[^2]
-- **Mawun Valley Farm** (South Lombok) — Working permaculture farm with food forest, animal integration, and closed-loop systems. Offers stays and skill-sharing in a Sasak cultural context.[^4]
-- **Willie Smits / Masarang Foundation** (Sulawesi) — Large-scale village-based agroforestry and reforestation. Proven model for integrating permaculture with local cooperatives.[^5]
+- **IDEP Foundation** (Ubud, Bali) — Pioneering permaculture training and disaster response. Runs courses in Bahasa Indonesia. PO Box 160, Ubud 80571, Bali.[@IDEPFoundation]
+- **Mawun Valley Farm** (South Lombok) — Working permaculture farm with food forest, animal integration, and closed-loop systems. Offers stays and skill-sharing in a Sasak cultural context.[@MawunValleyFarm]
+- **Willie Smits / Masarang Foundation** (Sulawesi) — Large-scale village-based agroforestry and reforestation. Proven model for integrating permaculture with local cooperatives.[@WillieSmitsPermaculture]
 - **Bumi Langit Institute** (Yogyakarta) — Permaculture learning centre focused on tropical organic farming.
 - **Jiwa Garden** (Bali) — Permaculture garden and learning centre with food forest, composting, and workshops.
 - **Permatil** (Timor Leste / East Nusa Tenggara) — Permaculture foundation working in dryland tropical conditions.
@@ -184,14 +183,6 @@ A food forest managed individually fails in the long term. Follow the gotong roy
 - Share technology (biogas, solar drying, water pumps) with the community immediately, not after the system is built.
 - Participate in selamatan and pengajian even if you are not Muslim/Balinese Hindu. Cultural participation builds trust faster than any technical demonstration.
 
-## Sources
-
-[^1]: Solarpunk Village Indonesia: Assimilation Paths with Locals — existing note on gotong royong, subak, cultural integration.
-[^2]: IDEP Permaculture Reference Book — IDEP Foundation, Bali. Scribd document 97238038.
-[^3]: Facilitator's Handbook For Permaculture — foodforestdesignnetwork.com.
-[^4]: Mawun Valley Farm, Lombok — Mawunvalley.com permaculture guide.
-[^5]: Willie Smits, Village Based Permaculture Approaches in Indonesia — Permaculture Voices, permies.com.
-[^6]: Solarpunk in Indonesia — existing note on cultural foundations.
 
 ## Related Notes
 

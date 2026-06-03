@@ -2,7 +2,7 @@
 title: 'Solarpunk and Marhaenism: Points of Convergence'
 author: pi
 editor: lam
-date: 2026-06-01T03:11:42.534Z
+date: 2026-06-03T11:17:31.320Z
 tags:
   - solarpunk
   - sustainability
@@ -16,7 +16,7 @@ tags:
 ---
 ## Solarpunk and Marhaenism: A Comparative Synthesis
 
-Solarpunk (a 21st-century global cultural movement imagining a sustainable, equitable future) and Marhaenism (a mid-20th-century Indonesian political ideology developed by Sukarno) emerged from vastly different times and places. Yet they share profound structural affinities — enough that Marhaenism can be seen as a Global South precursor to many principles solarpunk now champions.[^1][^3]
+Solarpunk (a 21st-century global cultural movement imagining a sustainable, equitable future) and Marhaenism (a mid-20th-century Indonesian political ideology developed by Sukarno) emerged from vastly different times and places. Yet they share profound structural affinities — enough that Marhaenism can be seen as a Global South precursor to many principles solarpunk now champions [@Kasper2008Redefining; @IndonesianJPolSci].
 
 ---
 
@@ -24,29 +24,29 @@ Solarpunk (a 21st-century global cultural movement imagining a sustainable, equi
 
 | Dimension | Solarpunk | Marhaenism |
 |-----------|-----------|------------|
-| **Anti-capitalism** | Rejects consumerism, extractivism, growth-obsessed economics; embraces degrowth and doughnut economics | Rejects liberalism, individualism, and the capitalist model; aims for production for use, not profit[^1] |
-| **Self-sufficiency first** | Local resilience, community microgrids, urban farming, permaculture | Each household/farmer produces for own needs first, sells surplus second[^1] |
-| **Decentralisation** | DIY ethics, grassroots community action, community-owned infrastructure | Small-scale ownership of means of production by individuals/households (land, tools, machines)[^1] |
-| **Anti-imperialism / decolonial justice** | Explicitly anti-racist, decolonial; foregrounds Indigenous land stewardship and climate justice[^2] | Born from the Indonesian struggle against Dutch colonialism; anti-imperialist at its core[^3] |
-| **Infrastructure as resistance** | Rooftop solar as a challenge to utility monopolies; "infrastructure as a form of resistance"[^4] | Building alternative economic structures outside colonial/capitalist systems |
+| **Anti-capitalism** | Rejects consumerism, extractivism, growth-obsessed economics; embraces degrowth and doughnut economics | Rejects liberalism, individualism, and the capitalist model; aims for production for use, not profit [@Kasper2008Redefining] |
+| **Self-sufficiency first** | Local resilience, community microgrids, urban farming, permaculture | Each household/farmer produces for own needs first, sells surplus second [@Kasper2008Redefining] |
+| **Decentralisation** | DIY ethics, grassroots community action, community-owned infrastructure | Small-scale ownership of means of production by individuals/households (land, tools, machines) [@Kasper2008Redefining] |
+| **Anti-imperialism / decolonial justice** | Explicitly anti-racist, decolonial; foregrounds Indigenous land stewardship and climate justice [@SolarpunkColumbia2022] | Born from the Indonesian struggle against Dutch colonialism; anti-imperialist at its core [@IndonesianJPolSci] |
+| **Infrastructure as resistance** | Rooftop solar as a challenge to utility monopolies; "infrastructure as a form of resistance" [@ArizonaSolarpunkManifesto] | Building alternative economic structures outside colonial/capitalist systems |
 
 ---
 
 ## 2. The Yeoman Farmer Connection
 
-The Solarpunk Manifesto (from Arizona State University's Project Hieroglyph) explicitly draws inspiration from **Jefferson's yeoman farmer** and **Gandhi's *swadeshi*** (self-sufficiency movement).[^4] This aligns closely with Sukarno's **Marhaen** — the small farmer or artisan who owns their own modest means of production and lives self-sufficiently.
+The Solarpunk Manifesto (from Arizona State University's Project Hieroglyph) explicitly draws inspiration from **Jefferson's yeoman farmer** and **Gandhi's *swadeshi*** (self-sufficiency movement) [@ArizonaSolarpunkManifesto]. This aligns closely with Sukarno's **Marhaen** — the small farmer or artisan who owns their own modest means of production and lives self-sufficiently.
 
-Sukarno deliberately chose the term **Marhaen** (rather than "proletariat") because most Indonesian farmers *did* own their tools and land — just not enough to escape poverty. The Marhaen is a **petty producer with dignity and autonomy** — the same figure romanticised in Jefferson's agrarian ideal and Gandhi's village economics.[^1]
+Sukarno deliberately chose the term **Marhaen** (rather than "proletariat") because most Indonesian farmers *did* own their tools and land — just not enough to escape poverty. The Marhaen is a **petty producer with dignity and autonomy** — the same figure romanticised in Jefferson's agrarian ideal and Gandhi's village economics [@Kasper2008Redefining].
 
-> The solarpunk vision of "a future with a human face and dirt behind its ears"[^4] could easily describe the Marhaenist ideal.
+> The solarpunk vision of "a future with a human face and dirt behind its ears" [@ArizonaSolarpunkManifesto] could easily describe the Marhaenist ideal.
 
 ---
 
 ## 3. Economic Parallels
 
-The **Solarpunk Village: Economy & Livelihood** model[^5] operationalises principles that echo Marhaenist economics:
+The **Solarpunk Village: Economy & Livelihood** model [@Lockyer2018Community] operationalises principles that echo Marhaenist economics:
 
-| Principle | Solarpunk Village[^5] | Marhaenism[^1] |
+| Principle | Solarpunk Village [@Lockyer2018Community] | Marhaenism [@Kasper2008Redefining] |
 |-----------|----------------------|----------------|
 | **Livelihood over profit** | Work organised around livelihood, not profit maximisation; surplus reinvested in community | Capital is to meet necessities and produce a modest surplus — not to be hoarded or multiplied |
 | **Circular local flows** | Materials, food, energy, and money cycle locally before reaching external markets | Goods not needed by the household are not produced; waste is minimised by design |
@@ -63,8 +63,8 @@ The **Solarpunk Village: Economy & Livelihood** model[^5] operationalises princi
 | **Scope** | Global cultural/aesthetic movement spanning art, literature, architecture, activism, education | Indonesian nationalist political ideology and party platform |
 | **Primary domain** | Imagining desirable futures through narrative and design | Class analysis, state ideology, national liberation struggle |
 | **Temporality** | Forward-looking — "What if we solved it?" | Liberation-oriented — overthrow colonialism, establish a socialist republic |
-| **Theory of class** | Intersectional justice (race, gender, class, ability, species)[^2] | Focused on the Marhaen (peasant/smallholder) vs. imperialist/capitalist forces |
-| **Relation to Marxism** | Loosely anti-capitalist; draws on degrowth, eco-socialism, mutual aid | Explicitly "Marxism adapted to Indonesian conditions"[^1] |
+| **Theory of class** | Intersectional justice (race, gender, class, ability, species) [@SolarpunkColumbia2022] | Focused on the Marhaen (peasant/smallholder) vs. imperialist/capitalist forces |
+| **Relation to Marxism** | Loosely anti-capitalist; draws on degrowth, eco-socialism, mutual aid | Explicitly "Marxism adapted to Indonesian conditions" [@Kasper2008Redefining] |
 | **Aesthetic richness** | Highly developed visual culture (green rooftops, wind turbines, art nouveau, living walls) | Largely a political-economic doctrine without a distinct visual identity |
 
 ---
@@ -78,14 +78,6 @@ Solarpunk offers Marhaenism a **21st-century vocabulary and aesthetic** — a wa
 In essence: **Marhaenism articulated the political economy of self-determination for the common person. Solarpunk adds the ecological imagination, the technological optimism, and the cultural beauty needed to bring that vision into the 21st century.**
 
 ---
-
-## Sources
-
-[^1]: [Marhaenism — Wikipedia](https://en.wikipedia.org/wiki/Marhaenism)
-[^2]: [Solarpunk: A Vision for a Sustainable Future](Resources/solarpunk-a-vision-for-a-sustainable-future.md)
-[^3]: [Reactualization of Marhaenism Principles to Promote Marginal Community — Indonesian Journal of Political Science](https://ejournal.upi.edu/index.php/jpis/article/view/29497)
-[^4]: [Solarpunk: Notes toward a manifesto — Project Hieroglyph, Arizona State University](https://hieroglyph.asu.edu/2014/09/Solarpunk-notes-toward-a-manifesto/)
-[^5]: [Solarpunk Village: Economy & Livelihood](Resources/solarpunk-village-economy-livelihood.md)
 
 ## Relevant notes
 

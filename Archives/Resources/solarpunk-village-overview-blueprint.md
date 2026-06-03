@@ -2,7 +2,7 @@
 title: 'Solarpunk Village: Overview & Blueprint'
 author: pi
 editor: lam
-date: 2026-06-01T02:57:16.035Z
+date: 2026-06-03T11:14:34.455Z
 tags:
   - solarpunk
   - sustainability
@@ -34,20 +34,12 @@ This overview links to five focused reference documents:
 
 ## Core Principles
 
-- **Human scale** — Settlements of 50–500 people, rooted in Dunbar's number research[^1][^2]
-- **Full-featured** — Food production, manufacturing, leisure, social life, and commerce on-site or in tight networks[^3]
-- **Three-legged stool** — Ecological, social, and economic sustainability are inseparable[^3]
-- **Prefigurative politics** — Build the future now, at small scale, as proof of concept[^4]
-- **Land as commons** — Collective ownership (land trust) removes speculative pressure from land[^5]
+- **Human scale** — Settlements of 50–500 people, rooted in Dunbar's number research [@DunbarSosis2018Optimising; @Dunbar1993Coevolution]
+- **Full-featured** — Food production, manufacturing, leisure, social life, and commerce on-site or in tight networks [@Kasper2008Redefining]
+- **Three-legged stool** — Ecological, social, and economic sustainability are inseparable [@Kasper2008Redefining]
+- **Prefigurative politics** — Build the future now, at small scale, as proof of concept [@SolarpunkVisionUW]
+- **Land as commons** — Collective ownership (land trust) removes speculative pressure from land [@Lockyer2018Community]
 
 ## Relevant notes
 
 - [[solarpunk-a-vision-for-a-sustainable-future]] — the original solarpunk vision document; this blueprint series is its practical companion
-
-## Sources
-
-[^1]: Dunbar, R. et al. (2018). "Optimising human community sizes." *Human Biology* — community sizes of 50, 150, and 500 are disproportionately common in historical agricultural societies. [NASA/ADS](https://ui.adsabs.harvard.edu/abs/2018EHumB..39..106D/abstract)
-[^2]: Dunbar, R. (1993). "Co-evolution of neocortex size, group size and language in humans." *Behavioral and Brain Sciences*. [University of Vermont](https://pdodds.w3.uvm.edu/files/papers/others/1993/dunbar1993a.pdf)
-[^3]: Kasper, D.V.S. (2008). "Redefining Community in the Ecovillage." *Human Ecology Review*, 15(1), 12–24. [Montclair State University](https://msuweb.montclair.edu/~franker/EVI/EVIJournalArticles/kasper2008.pdf)
-[^4]: "Solarpunk: A Vision for a Sustainable Future." University of Washington, School of Marine and Environmental Affairs. [UW](https://smea.uw.edu/currents/solarpunk-a-vision-for-a-sustainable-future/)
-[^5]: Lockyer, J. (2018). "Community, Commons, and Ecological Restoration at Dancing Rabbit Ecovillage." *Rootstalk* (Grinnell College). [Grinnell College](https://rootstalk.grinnell.edu/issues/volume-v-issue-1/community-commons-ecological-restoration/)

@@ -30,9 +30,9 @@ Indonesian solarpunk is in an early but growing phase. The Seapunk collective in
 Practical implications:
 Rather than sweeping technological modernisation, Indonesian solarpunk suggests reinforcing and scaling existing communal and ecological systems while integrating appropriate technology. This contrasts with top-down development models and offers a locally-grounded path to sustainability.
 
-[^1]: MekarBooks - Solarpunk genre page
-[^2]: Seapunk Studios - SE Asian solarpunk collective
-[^3]: ABC News (2024) - on solarpunk principles
+[@MekarBooksSolarpunk]: MekarBooks - Solarpunk genre page
+[@SeapunkStudios]: Seapunk Studios - SE Asian solarpunk collective
+[@ABCNews2024Solarpunk]: ABC News (2024) - on solarpunk principles
 
 ## Relevant notes
 

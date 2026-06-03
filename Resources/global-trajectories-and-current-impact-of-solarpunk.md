@@ -32,10 +32,10 @@ Key global projects:
 - Singapore's Gardens by the Bay and green building integration
 - Canberra's 100% renewable electricity grid
 
-[^1]: Solarpunk Cities (2024) - city-projects directory
-[^2]: ABC News (2024) - interview with Jay Springett and Matthew Wizinsky
-[^3]: Nesta UK (2024) 'Signals, solarpunk & sci-fi'
-[^4]: Gillam (2023) 'A Solarpunk Manifesto'
+[@SolarpunkCities2024]: Solarpunk Cities (2024) - city-projects directory
+[@ABCNews2024Solarpunk]: ABC News (2024) - interview with Jay Springett and Matthew Wizinsky
+[@Nesta2024Signals]: Nesta UK (2024) 'Signals, solarpunk & sci-fi'
+[@Gillam2023Solarpunk]: Gillam (2023) 'A Solarpunk Manifesto'
 
 ## Relevant notes
 

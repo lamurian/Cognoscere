@@ -12,10 +12,9 @@ tags:
   - gotong-royong
   - kampung
 ---
-
 ## Principle: Embed, Don't Replace
 
-Indonesian solarpunk should not import a Western ecovillage model. It should reinforce existing communal and ecological knowledge — gotong royong, subak, kampung culture, adat — and build forward from there.[^3]
+Indonesian solarpunk should not import a Western ecovillage model. It should reinforce existing communal and ecological knowledge — gotong royong, subak, kampung culture, adat — and build forward from there.[@GlobalEcovillageNetwork]
 
 ## Assimilation Path A: The Joint Venture Village
 
@@ -66,7 +65,7 @@ Indonesia has thousands of pesantren (Islamic boarding schools). Some are progre
 
 Reference: [[solarpunk-in-indonesia]], [[solarpunk-village-real-world-case-studies]], [[solarpunk-village-implementation-roadmap]]
 
-[^3]: Solarpunk in Indonesia — existing note on gotong royong, subak, and kampung culture as solarpunk foundations.
+[@GlobalEcovillageNetwork]: Solarpunk in Indonesia — existing note on gotong royong, subak, and kampung culture as solarpunk foundations.
 
 ## Relevant notes
 

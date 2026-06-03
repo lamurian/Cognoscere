@@ -12,11 +12,10 @@ tags:
   - community
   - stigma
 ---
-
 ## Core Cultural Framework
 
 ### Adat (Customary Law)
-Adat governs every aspect of village life in Indonesia — social relations, land use, marriage, dispute resolution, and religious practice.[^5] It varies by region (there are 19+ adat law areas). Outsiders who ignore adat are seen as disrespectful at best, dangerous at worst.
+Adat governs every aspect of village life in Indonesia — social relations, land use, marriage, dispute resolution, and religious practice.[@GlobalPetrolPrices] It varies by region (there are 19+ adat law areas). Outsiders who ignore adat are seen as disrespectful at best, dangerous at worst.
 
 ### Common Beliefs About Outsiders
 
@@ -47,7 +46,7 @@ Intentional communities face specific suspicion:
 
 Reference: [[solarpunk-and-marhaenism-points-of-convergence]], [[indonesian-politics-pluralist-vs-islamist-spectrum]]
 
-[^5]: Adat - Wikipedia. Customary law in Southeast Asia.
+[@GlobalPetrolPrices]: Adat - Wikipedia. Customary law in Southeast Asia.
 
 ## Relevant notes
 

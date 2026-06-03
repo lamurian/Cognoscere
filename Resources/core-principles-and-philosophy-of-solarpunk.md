@@ -27,9 +27,9 @@ Four pillars of justice: (a) social justice - eliminating marginalisation of gen
 
 Solarpunk practices prefigurative politics: enacting its principles in real life through ecovillages, community gardens, maker spaces, permaculture, and open-source technology.
 
-[^1]: Gillam, W.J. (2023) 'A Solarpunk Manifesto: Turning Imaginary into Reality', Philosophies 8(4), 73.
-[^2]: Wikipedia - Solarpunk
-[^3]: The Solarpunk Community (2019/2021) 'A Solarpunk Manifesto.'
+[@Gillam2023Solarpunk]: Gillam, W.J. (2023) 'A Solarpunk Manifesto: Turning Imaginary into Reality', Philosophies 8(4), 73.
+[@EuropeanConservative2023Solarpunk]: Wikipedia - Solarpunk
+[@SolarpunkManifestoCommunity]: The Solarpunk Community (2019/2021) 'A Solarpunk Manifesto.'
 
 ## Relevant notes
 

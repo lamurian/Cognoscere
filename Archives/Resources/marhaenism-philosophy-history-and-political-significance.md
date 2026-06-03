@@ -15,21 +15,21 @@ tags:
 ---
 ## Overview
 
-Marhaenism (*Marhaenisme*) is a socialist political ideology originated and developed by Sukarno, the founding president of Indonesia. It is best described as **"Marxism adapted to Indonesian conditions"** — an indigenised variant of Marxist thought that replaces the Western proletariat with the *Marhaen* (the small farmer or artisan who owns their own modest means of production but remains impoverished).[^1]
+Marhaenism (*Marhaenisme*) is a socialist political ideology originated and developed by Sukarno, the founding president of Indonesia. It is best described as **"Marxism adapted to Indonesian conditions"** — an indigenised variant of Marxist thought that replaces the Western proletariat with the *Marhaen* (the small farmer or artisan who owns their own modest means of production but remains impoverished).[@GlobalPetrolPrices]
 
-The ideology was the guiding philosophy of the **Indonesian National Party (PNI)** and later provided the ideological foundation for Sukarno's **Guided Democracy** system (1959–1965). It was a major influence on left-wing nationalism in neighbouring Malaya (Malaysia) through figures like Ahmad Boestamam of *Parti Kebangsaan Melayu Malaya* and *Parti Rakyat*.[^1]
+The ideology was the guiding philosophy of the **Indonesian National Party (PNI)** and later provided the ideological foundation for Sukarno's **Guided Democracy** system (1959–1965). It was a major influence on left-wing nationalism in neighbouring Malaya (Malaysia) through figures like Ahmad Boestamam of *Parti Kebangsaan Melayu Malaya* and *Parti Rakyat*.[@GlobalPetrolPrices]
 
 ---
 
 ## Etymology and the Marhaen Concept
 
-Sukarno claimed the name came from a peasant named **Marhaen** he met while cycling near Bandung in the 1920s. According to the story, Sukarno asked the farmer his name, and when the man said "Marhaen," Sukarno used it as a symbolic name for the Indonesian common person.[^1]
+Sukarno claimed the name came from a peasant named **Marhaen** he met while cycling near Bandung in the 1920s. According to the story, Sukarno asked the farmer his name, and when the man said "Marhaen," Sukarno used it as a symbolic name for the Indonesian common person.[@GlobalPetrolPrices]
 
-However, the term "Marhaen" had already been used by *Sarekat Islam* to describe ordinary people long before Sukarno went to Bandung.[^1] Sukarno adopted and popularised it in his 1930 defence speech *Indonesia Accuses* (*Indonesia Menggugat*) to replace the term "proletariat," which he considered largely irrelevant to Indonesia.
+However, the term "Marhaen" had already been used by *Sarekat Islam* to describe ordinary people long before Sukarno went to Bandung.[@GlobalPetrolPrices] Sukarno adopted and popularised it in his 1930 defence speech *Indonesia Accuses* (*Indonesia Menggugat*) to replace the term "proletariat," which he considered largely irrelevant to Indonesia.
 
-**Why "Marhaen" instead of "proletariat"?** Sukarno pointed out that many Indonesian farmers owned their labour power and used it primarily for themselves — they owned their land, tools, or sewing machines — unlike the classical European proletariat who owned nothing but their ability to work. Yet these farmers were still desperately poor because their means of production were so small they could only sustain life, not raise social or economic status.[^1]
+**Why "Marhaen" instead of "proletariat"?** Sukarno pointed out that many Indonesian farmers owned their labour power and used it primarily for themselves — they owned their land, tools, or sewing machines — unlike the classical European proletariat who owned nothing but their ability to work. Yet these farmers were still desperately poor because their means of production were so small they could only sustain life, not raise social or economic status.[@GlobalPetrolPrices]
 
-> The Marhaen is a petty producer with dignity and autonomy — not a landless wage-labourer. This distinction is the philosophical core of Marhaenism.[^2]
+> The Marhaen is a petty producer with dignity and autonomy — not a landless wage-labourer. This distinction is the philosophical core of Marhaenism.[@GlobalPetrolPrices]
 
 ---
 
@@ -37,11 +37,11 @@ However, the term "Marhaen" had already been used by *Sarekat Islam* to describe
 
 ### 1. Anti-Capitalism and Anti-Liberalism
 
-Marhaenism rejects liberalism, individualism, and the capitalist model as contrary to ideas of equality and democracy. Capital in Marhaenism is not to be hoarded or multiplied but processed to meet the necessities of life and produce a modest surplus. Sukarno condemned Western-style liberal democracy as a vehicle for capitalist exploitation.[^1]
+Marhaenism rejects liberalism, individualism, and the capitalist model as contrary to ideas of equality and democracy. Capital in Marhaenism is not to be hoarded or multiplied but processed to meet the necessities of life and produce a modest surplus. Sukarno condemned Western-style liberal democracy as a vehicle for capitalist exploitation.[@GlobalPetrolPrices]
 
 ### 2. Anti-Imperialism
 
-Born from Indonesia's struggle against Dutch colonialism, anti-imperialism is central to Marhaenism. Sukarno combined Marxist class analysis with national liberation: the Marhaen had participated for centuries in class oppression, first under feudalism then under Dutch colonialism. The national liberation struggle was therefore a revolution to overthrow colonial order and establish a socialist republic.[^1]
+Born from Indonesia's struggle against Dutch colonialism, anti-imperialism is central to Marhaenism. Sukarno combined Marxist class analysis with national liberation: the Marhaen had participated for centuries in class oppression, first under feudalism then under Dutch colonialism. The national liberation struggle was therefore a revolution to overthrow colonial order and establish a socialist republic.[@GlobalPetrolPrices]
 
 ### 3. Collectivist Economics
 
@@ -49,19 +49,19 @@ The economic model is production for use, not profit:
 - Each household produces for its own needs first, selling surplus second
 - Self-sufficiency must be met before serving the market
 - Goods not needed are not produced — preventing waste and overconsumption
-- Capital functions only to produce a modest surplus, not to suppress others' economic growth[^1]
+- Capital functions only to produce a modest surplus, not to suppress others' economic growth[@GlobalPetrolPrices]
 
 ### 4. Social Nationalism and Social Democracy
 
-Marhaenism combines **social nationalism** (left-wing nationalism) with **social democracy** and the "cultural divinity" from Sukarno's beliefs. It condemns individualism and emphasises national unity and collective welfare.[^1]
+Marhaenism combines **social nationalism** (left-wing nationalism) with **social democracy** and the "cultural divinity" from Sukarno's beliefs. It condemns individualism and emphasises national unity and collective welfare.[@GlobalPetrolPrices]
 
 ### 5. The Nasakom Synthesis
 
-Sukarno's later formulation of **Nasakom** — *Nasionalisme* (Nationalism), *Agama* (Religion), and *Komunisme* (Communism) — sought to unite the three main ideological currents in Indonesia under a single revolutionary umbrella. This became the ideological architecture of Guided Democracy.[^1]
+Sukarno's later formulation of **Nasakom** — *Nasionalisme* (Nationalism), *Agama* (Religion), and *Komunisme* (Communism) — sought to unite the three main ideological currents in Indonesia under a single revolutionary umbrella. This became the ideological architecture of Guided Democracy.[@GlobalPetrolPrices]
 
 ### 6. Pancasila as a Third Way
 
-In a 1960 speech before the UN General Assembly, Sukarno stated that **Pancasila** (Indonesia's state philosophy) was essentially a sublimation of the US Declaration of Independence and the Communist Manifesto — a third alternative to both the Western and Eastern blocs during the Cold War.[^1]
+In a 1960 speech before the UN General Assembly, Sukarno stated that **Pancasila** (Indonesia's state philosophy) was essentially a sublimation of the US Declaration of Independence and the Communist Manifesto — a third alternative to both the Western and Eastern blocs during the Cold War.[@GlobalPetrolPrices]
 
 ---
 
@@ -76,7 +76,7 @@ Marhaenism was articulated through Sukarno's broader ideological framework:
 | **Marhaenism** | The class analysis / economic doctrine for the common person |
 | **Guided Democracy** | The political system: strong executive, functional group representation, rejection of liberal parliamentarism |
 
-Sukarno described them as concentric circles: Pancasila at the widest (state ideology), Nasakom as the political alliance, Marhaenism as the class/economic doctrine, and Guided Democracy as the mode of governance.[^1]
+Sukarno described them as concentric circles: Pancasila at the widest (state ideology), Nasakom as the political alliance, Marhaenism as the class/economic doctrine, and Guided Democracy as the mode of governance.[@GlobalPetrolPrices]
 
 ---
 
@@ -92,7 +92,7 @@ After independence, Indonesia experimented with parliamentary democracy (1950–
 
 ### Phase 3: Guided Democracy (1957–1965)
 
-Sukarno replaced parliamentary democracy with **Guided Democracy** in 1959 by decree, reinstating the 1945 Constitution which provided for a strong central executive.[^3] Marhaenism now became state ideology. Key policies:
+Sukarno replaced parliamentary democracy with **Guided Democracy** in 1959 by decree, reinstating the 1945 Constitution which provided for a strong central executive.[@CornellGuidedDemocracy] Marhaenism now became state ideology. Key policies:
 - Nationalisation of Dutch enterprises (1957–1959)
 - Nasakom alliance institutionalised
 - *Konfrontasi* with Malaysia (1963–1966)
@@ -101,7 +101,7 @@ Sukarno replaced parliamentary democracy with **Guided Democracy** in 1959 by de
 
 ### Phase 4: Destruction (1965–1966)
 
-The **30 September Movement** (G30S) — an attempted purge of the Army high command by junior officers with PKI links — led to a counter-coup by General Suharto. The Army then launched a campaign of annihilation against the PKI, killing an estimated 500,000 people and imprisoning a million more.[^4] Sukarno was gradually stripped of power and replaced by Suharto in March 1967.
+The **30 September Movement** (G30S) — an attempted purge of the Army high command by junior officers with PKI links — led to a counter-coup by General Suharto. The Army then launched a campaign of annihilation against the PKI, killing an estimated 500,000 people and imprisoning a million more.[@NationalSecurityArchive1965] Sukarno was gradually stripped of power and replaced by Suharto in March 1967.
 
 ### Phase 5: Suppression under the New Order (1966–1998)
 
@@ -112,7 +112,7 @@ The New Order regime under Suharto purged Marhaenism along with the PKI. A depol
 After Suharto's fall in 1998, Marhaenism has seen a modest revival:
 - Megawati Sukarnoputri (Sukarno's daughter) served as president 2001–2004
 - The PDI-P continues to invoke Marhaenist rhetoric
-- Scholars and activists have explored Marhaenism as a Global South alternative development philosophy, including its convergence with solarpunk thinking[^2]
+- Scholars and activists have explored Marhaenism as a Global South alternative development philosophy, including its convergence with solarpunk thinking[@GlobalPetrolPrices]
 
 ---
 
@@ -138,12 +138,6 @@ After Suharto's fall in 1998, Marhaenism has seen a modest revival:
 
 ---
 
-## Sources
-
-[^1]: [Marhaenism — Wikipedia](https://en.wikipedia.org/wiki/Marhaenism)
-[^2]: [[solarpunk-and-marhaenism-points-of-convergence]]
-[^3]: [The Transition to Guided Democracy: Indonesian Politics, 1957–1959 — Cornell University](https://ecommons.cornell.edu/items/2fe251c1-a559-48b4-bd55-5dfa1e54de17)
-[^4]: [U.S. Embassy Tracked Indonesia Mass Murder 1965 — National Security Archive, GWU](https://nsarchive.gwu.edu/briefing-book/indonesia/2017-10-17/indonesia-mass-murder-1965-us-embassy-files)
 
 ## Related notes
 

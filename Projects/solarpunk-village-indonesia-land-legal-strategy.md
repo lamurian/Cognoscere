@@ -12,7 +12,6 @@ tags:
   - adat
   - planning
 ---
-
 ## The Land Problem
 
 Foreigners cannot own freehold land (Hak Milik) in Indonesia under the 1960 Basic Agrarian Law (UUPA). This is non-negotiable and rooted in post-colonial land sovereignty principles.
@@ -58,7 +57,7 @@ Phase 1 (Year 0-1): Use leasehold or Hak Sewa for initial land. Keep capital exp
 
 Phase 2 (Year 1-3): Form a Yayasan with mixed Indonesian-foreign board. The yayasan applies for HGB on the land. Indonesian board members provide legal standing and cultural bridge.
 
-Phase 3 (Year 3+): If land trust model is desired, transfer HGB to a koperasi (cooperative) where all residents — Indonesian and foreign — are members. This mirrors the community land trust (CLT) model used by ecovillages worldwide.[^7]
+Phase 3 (Year 3+): If land trust model is desired, transfer HGB to a koperasi (cooperative) where all residents — Indonesian and foreign — are members. This mirrors the community land trust (CLT) model used by ecovillages worldwide.[@Lockyer2018Community]
 
 ## Political Risk Factors
 
@@ -69,7 +68,7 @@ Phase 3 (Year 3+): If land trust model is desired, transfer HGB to a koperasi (c
 
 Reference: [[solarpunk-village-overview-blueprint]], [[solarpunk-village-implementation-roadmap]], [[solarpunk-village-economy-livelihood]]
 
-[^7]: Lockyer, J. (2018). Community, Commons, and Ecological Restoration at Dancing Rabbit Ecovillage. Rootstalk, 5(1). Land trust as anti-speculative mechanism.
+[@Lockyer2018Community]: Lockyer, J. (2018). Community, Commons, and Ecological Restoration at Dancing Rabbit Ecovillage. Rootstalk, 5(1). Land trust as anti-speculative mechanism.
 
 ## Relevant notes
 

@@ -30,9 +30,9 @@ Real-world architectural examples:
 
 Criticism: Scholar Adam Flynn warns of 'greenwashing' - luxury condominiums with green roofs that price out communities and cause greater environmental harm being marketed as solarpunk. Authentic solarpunk addresses root causes of environmental issues rather than surface aesthetics.
 
-[^1]: Wikipedia - Solarpunk
-[^2]: ABC News (2024) 'Solarpunk started out as a speculative fiction genre.'
-[^3]: Gillam (2023) 'A Solarpunk Manifesto.'
+[@MercuryNews2024Solarpunk]: Wikipedia - Solarpunk
+[@ABCNews2024Solarpunk]: ABC News (2024) 'Solarpunk started out as a speculative fiction genre.'
+[@Gillam2023Solarpunk]: Gillam (2023) 'A Solarpunk Manifesto.'
 
 ## Relevant notes
 

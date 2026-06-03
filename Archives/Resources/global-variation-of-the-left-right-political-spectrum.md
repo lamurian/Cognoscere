@@ -24,7 +24,7 @@ While the **left–right labels** have spread to virtually every country, their 
 
 ## Factor 2: Religious vs. Secular Axes
 
-In many Muslim-majority countries (Indonesia, Turkey, Pakistan, Malaysia), the most politically salient cleavage is **secular-pluralist vs. religious-conservative** rather than economic left vs. right. The "right" can signify religious conservatism, Islamic law, and cultural purity rather than free-market economics.[^1]
+In many Muslim-majority countries (Indonesia, Turkey, Pakistan, Malaysia), the most politically salient cleavage is **secular-pluralist vs. religious-conservative** rather than economic left vs. right. The "right" can signify religious conservatism, Islamic law, and cultural purity rather than free-market economics [@Muhtadi2021IslamicPopulism].
 
 ## Factor 3: Post-Authoritarian Trauma
 
@@ -36,7 +36,7 @@ Recent decades have added new dimensions that cross-cut the traditional axis:
 
 - **Right-wing populism** emphasises cultural/national/religious identity over class (e.g., Hindu nationalism in India, Islamist populism in Turkey and Indonesia, nativism in Europe and the US).
 - **Left-wing populism** emphasises class and anti-establishment sentiment while being more inclusive on identity.
-- Both types share an anti-elite, anti-pluralist rhetoric, making the populist/non-populist axis partially independent from left-right.[^1]
+- Both types share an anti-elite, anti-pluralist rhetoric, making the populist/non-populist axis partially independent from left-right [@Muhtadi2021IslamicPopulism].
 
 ---
 
@@ -50,12 +50,6 @@ Recent decades have added new dimensions that cross-cut the traditional axis:
 | Populist surge | Adds a cross-cutting people-vs-elite dimension |
 
 The left–right spectrum remains a useful **heuristic** everywhere, but its concrete content must always be interpreted through local history.
-
----
-
-## Sources
-
-[^1]: Muhtadi & Muslim — *Islamic Populism and Voting Trends in Indonesia* — ISEAS Perspective No. 159, 2021 ([iseas.edu.sg](https://www.iseas.edu.sg/wp-content/uploads/2021/11/ISEAS_Perspective_2021_159.pdf))
 
 ## Related notes
 

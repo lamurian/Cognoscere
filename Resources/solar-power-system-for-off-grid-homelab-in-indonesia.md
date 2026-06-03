@@ -15,7 +15,7 @@ This note sizes a complete solar PV system to run a budget homelab (server + net
 
 ## Solar Insolation in Indonesia
 
-Using NASA POWER API data for Jakarta (6.21S, 106.85E), the average daily solar insolation across 2020-2024 is **4.64 kWh/m²/day** [^1]. Monthly minimum is 4.22 kWh/m²/day (June), maximum is 5.29 kWh/m²/day (September). Indonesia's equatorial location means seasonal variation is low, making solar reliable year-round.
+Using NASA POWER API data for Jakarta (6.21S, 106.85E), the average daily solar insolation across 2020-2024 is **4.64 kWh/m²/day** [@NASAPOWER]. Monthly minimum is 4.22 kWh/m²/day (June), maximum is 5.29 kWh/m²/day (September). Indonesia's equatorial location means seasonal variation is low, making solar reliable year-round.
 
 ## Power Budget
 
@@ -75,11 +75,11 @@ A 12V **100Ah LiFePO4** battery provides 1,280 Wh usable energy (100Ah x 12V x 8
 
 ## How It Builds a Sustainable Ecosystem
 
-The homelab's 30W average load is modest enough that a single 300W panel (1.6 m²) and a 100Ah LiFePO4 battery can sustain it indefinitely in Indonesia's climate. By generating your own electricity, you bypass PLN's fossil-heavy grid (85% fossil in 2022) [^2] and reduce your carbon footprint by approximately 250 kg CO2 per year [^3].
+The homelab's 30W average load is modest enough that a single 300W panel (1.6 m²) and a 100Ah LiFePO4 battery can sustain it indefinitely in Indonesia's climate. By generating your own electricity, you bypass PLN's fossil-heavy grid (85% fossil in 2022) [@GlobalPetrolPrices] and reduce your carbon footprint by approximately 250 kg CO2 per year [@EwasteMonitor].
 
-[^1]: NASA POWER API, Jakarta (6.21S, 106.85E), ALLSKY_SFC_SW_DWN, 2020-2024 average: 4.64 kWh/m²/day.
-[^2]: GlobalPetrolPrices.com, Indonesia electricity mix data 2022.
-[^3]: Based on Indonesia grid emission factor of approx. 0.85 kg CO2/kWh x 300 kWh/year.
+[@NASAPOWER]: NASA POWER API, Jakarta (6.21S, 106.85E), ALLSKY_SFC_SW_DWN, 2020-2024 average: 4.64 kWh/m²/day.
+[@GlobalPetrolPrices]: GlobalPetrolPrices.com, Indonesia electricity mix data 2022.
+[@EwasteMonitor]: Based on Indonesia grid emission factor of approx. 0.85 kg CO2/kWh x 300 kWh/year.
 
 ## Relevant notes
 

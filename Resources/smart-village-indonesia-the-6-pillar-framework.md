@@ -48,10 +48,6 @@ Efficient and quality rural transportation for cheaper, faster, environmentally 
 - Cost efficiency: Smart approaches reduce expenses while increasing service quality
 - Continuous improvement: Services evolve based on citizen feedback and changing conditions
 
-## References
-
-[^1]: A. Halim Iskandar, The ASEAN Magazine (Sep 2020) -- A Smart Village Approach in Indonesia: Opportunities for Rural Advancement
-[^2]: ITU -- Smart Villages initiative for SDG localization
 
 ## Related Notes
 
