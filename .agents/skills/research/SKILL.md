@@ -17,44 +17,58 @@ Examples:
 - "research about dopamine and motivation" → "How does dopamine signaling in the mesolimbic pathway modulate motivation and reward-seeking behavior?"
 - "research about sleep and memory consolidation" → "What are the neural mechanisms by which sleep facilitates memory consolidation?"
 
-### 2. Decompose into WHY/HOW sub-questions
+### 2. Decompose into WHY/HOW/WHAT question tree
 
-Break the core question into 3–5 sub-questions. Each sub-question must start with **WHY** or **HOW**.
+Start by generating exactly **one WHY** question and **one HOW** question. For each of those two top-level questions, subsequently generate **three WHAT** questions that substantively support the coherence and importance of the WHY/HOW question.
+
+This produces 8 questions total: 2 top-level (1 WHY, 1 HOW) + 6 supporting WHAT questions (3 per top-level).
 
 Guidelines:
-- Each sub-question should target a distinct mechanism, pathway, or claim
-- Together they should cover the full scope of the core question
-- Label them SQ1, SQ2, SQ3, ...
+- The WHY question should probe causal mechanisms, reasons, or justifications
+- The HOW question should probe processes, mechanisms, or implementation pathways
+- The WHAT questions should unpack specific evidence, conditions, comparisons, or sub-components that make the WHY/HOW answerable
+- Together the tree should cover the full scope of the core question
+- Label them Q1 (WHY), Q1.1/1.2/1.3 (WHAT supporting Q1), Q2 (HOW), Q2.1/2.2/2.3 (WHAT supporting Q2)
 
 Example for "How does dopamine modulate motivation?":
-- SQ1 (HOW): How does dopamine release in the nucleus accumbens encode reward prediction error?
-- SQ2 (WHY): Why does dopamine depletion reduce effort expenditure in motivated behavior?
-- SQ3 (HOW): How do tonic vs phasic dopamine firing patterns differentially affect motivation?
-- SQ4 (WHY): Why do some dopamine antagonists fail to reduce motivation despite blocking receptors?
+```
+Q1 (WHY): Why does dopamine depletion reduce effort expenditure in motivated behavior?
+  Q1.1 (WHAT): What brain regions show altered activity when dopamine is depleted during effort-based decision making?
+  Q1.2 (WHAT): What experimental paradigms best isolate the effect of dopamine on motivation versus motor function?
+  Q1.3 (WHAT): What downstream signalling pathways mediate the effort-reducing effects of dopamine depletion?
 
-### 3. For each sub-question: hypothesize, search, collect evidence
+Q2 (HOW): How do tonic vs phasic dopamine firing patterns differentially affect motivation?
+  Q2.1 (WHAT): What distinct motivational processes are modulated by tonic versus phasic dopamine release?
+  Q2.2 (WHAT): What receptor subtypes (D1 vs D2) are preferentially engaged by each firing mode?
+  Q2.3 (WHAT): What behavioural tasks reliably dissociate the contributions of each firing pattern?
+```
 
-Process each sub-question one at a time.
+### 3. For each question in the tree: hypothesize, search, collect evidence
+
+Process the question tree top-down. Start with Q1 (WHY) and its supporting Q1.1–Q1.3, then Q2 (HOW) and Q2.1–Q2.3. The WHAT questions exist to surface specific evidence that answers the WHY/HOW — treat them as probes, not independent topics.
 
 #### 3a. Hypothesize
 
-Propose a preliminary answer. State it as a falsifiable hypothesis.
+Propose a preliminary answer for each question. State it as a falsifiable hypothesis.
 
 Format:
 ```
-SQ1: How does dopamine in the nucleus accumbens encode reward prediction error?
-Hypothesis: Dopamine neurons signal the difference between expected and actual reward, with positive prediction error causing phasic bursts and negative prediction error causing dips.
+Q1 (WHY): Why does dopamine depletion reduce effort expenditure in motivated behavior?
+Hypothesis: Dopamine depletion impairs the encoding of reward value relative to effort cost, specifically in the anterior cingulate cortex and ventral striatum.
+
+Q1.1 (WHAT): What brain regions show altered activity when dopamine is depleted?
+Hypothesis: Reduced BOLD signal in ventral striatum and anterior cingulate during effort-cost computation, with compensatory activity in prefrontal regions.
 ```
 
 #### 3b. Search tier 1
 
-Run `web_search` with **tier=1** (SearXNG `scientific_publications` category) using the sub-question as query.
+Run `web_search` with **tier=1** (SearXNG `scientific_publications` category) using each question as query, prioritising the top-level (WHY/HOW) questions. Use the WHAT questions as secondary search terms if top-level results are thin.
 
 ```
-web_search(query: "<sub-question text>", tier: 1)
+web_search(query: "<question text>", tier: 1)
 ```
 
-If results are thin, run a second search with alternative phrasing or key terms extracted from the sub-question.
+If results are thin, run a second search with alternative phrasing or key terms extracted from the question.
 
 #### 3c. Fetch and extract evidence
 
@@ -76,10 +90,10 @@ Refine the hypothesis based on the evidence. Note whether evidence:
 
 #### 3e. Check for conflicting evidence
 
-For each sub-question, also search for conflicting or alternative positions.
+For each top-level (WHY/HOW) question, also search for conflicting or alternative positions.
 
 ```
-web_search(query: "<sub-question> conflicting evidence OR alternative theory", tier: 1)
+web_search(query: "<question> conflicting evidence OR alternative theory", tier: 1)
 ```
 
 If found, note the disagreement. If not found, state "no conflicting evidence found in this search round."
@@ -90,22 +104,22 @@ A research cycle is complete when **all** five criteria are met:
 
 | # | Criterion | Check |
 |---|---|---|
-| 1 | **Decomposition done** | Core question broken into 3–5 WHY/HOW sub-questions |
-| 2 | **Each sub-question has ≥1 academic source** | Every SQ has at least one SearXNG tier 1 result that directly addresses it |
-| 3 | **Evidence covers both sides** | For each SQ, explicitly checked for confirming AND conflicting evidence. If only one side exists, note that as a gap |
-| 4 | **Self-confidence score assigned per SQ** | Score each sub-question: **high** (multiple consistent peer-reviewed sources), **moderate** (one source or indirect), **low** (speculative / no direct sources) |
+| 1 | **Decomposition done** | Core question broken into 1 WHY + 1 HOW, each with 3 supporting WHAT questions |
+| 2 | **Each top-level question has ≥1 academic source** | Q1 (WHY) and Q2 (HOW) each have at least one SearXNG tier 1 result that directly addresses them |
+| 3 | **Evidence covers both sides** | For Q1 and Q2, explicitly checked for confirming AND conflicting evidence. If only one side exists, note that as a gap |
+| 4 | **Self-confidence score assigned per top-level question** | Score Q1 and Q2: **high** (multiple consistent peer-reviewed sources), **moderate** (one source or indirect), **low** (speculative / no direct sources) |
 | 5 | **≤ 5 search rounds** | Hard cap. If criteria 1–4 not met after 5 rounds, produce best-effort synthesis with a "gaps and limitations" section |
 
 If criteria are not met and rounds < 5, go back to step 3 with refined queries.
 
 ### 5. Synthesize findings
 
-Across all sub-questions, integrate the evidence into a coherent picture.
+Across all questions in the tree, integrate the evidence into a coherent picture.
 
 - Identify which claims are **well-supported** (high confidence, multiple sources)
 - Identify which claims are **tentative** (moderate/low confidence, single source)
-- Identify **cross-cutting themes** — patterns that appear across multiple sub-questions
-- Identify **contradictions** — sub-questions where evidence conflicts
+- Identify **cross-cutting themes** — patterns that appear across multiple questions
+- Identify **contradictions** — questions where evidence conflicts
 
 ### 6. Create atomic notes
 
@@ -130,7 +144,7 @@ Content structure:
 ```markdown
 ## Executive Summary
 
-[A concise 2–3 paragraph overview of the research findings, synthesising across all sub-questions]
+[A concise 2–3 paragraph overview of the research findings, synthesising across all questions in the tree]
 
 ## Key Findings
 
@@ -140,10 +154,10 @@ Content structure:
 
 ## Confidence Assessment
 
-| Sub-question | Confidence | Rationale |
+| Question | Confidence | Rationale |
 |---|---|---|
-| SQ1: ... | High/Moderate/Low | Brief reasoning |
-| SQ2: ... | High/Moderate/Low | Brief reasoning |
+| Q1 (WHY): ... | High/Moderate/Low | Brief reasoning |
+| Q2 (HOW): ... | High/Moderate/Low | Brief reasoning |
 
 ## Known Gaps
 
@@ -151,7 +165,7 @@ Open issues from the literature and things this research did not resolve:
 
 - [Gap 1 — specific limitation from a cited paper]
 - [Gap 2 — conflicting evidence that could not be resolved]
-- [Gap 3 — sub-question where no direct source was found]
+- [Gap 3 — question where no direct source was found]
 - [Gap 4 — question that arose during research but was not answered]
 ```
 
@@ -177,10 +191,10 @@ Report:
 Keep this in mind during every search round:
 
 ```
-1. Decomposition done?
-2. Each SQ has ≥1 academic source?
-3. Both confirming AND conflicting evidence checked per SQ?
-4. Self-confidence score assigned per SQ?
+1. Decomposition done? (1 WHY + 1 HOW, each with 3 WHAT questions)
+2. Each top-level question has ≥1 academic source?
+3. Both confirming AND conflicting evidence checked per top-level question?
+4. Self-confidence score assigned per top-level question?
 5. Rounds ≤ 5?
 ```
 
