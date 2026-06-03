@@ -1,6 +1,6 @@
 ---
 name: summarize-link
-description: Fetches a URL shared by the user, checks if a summary already exists (by URL or content similarity), extracts content (HTML via Obscura headless browser, PDF via pdftotext), summarizes it, and saves as a new PARA knowledge document with source_url tracking. Use when the user says "summarize this link", "save this article", or shares a URL they want processed.
+description: Fetches a URL shared by the user, checks if a summary already exists (by URL or content similarity), extracts content (HTML via Obscura headless browser, PDF via pdftotext), summarizes it, and delegates document creation to the create-doc skill.
 ---
 
 # Summarize Link
@@ -17,7 +17,7 @@ When the user shares a link (URL) they want processed, follow this workflow.
 - **pdftotext** (poppler-utils) — for PDF extraction.
   Install: `apt install poppler-utils` (Debian/Ubuntu) or `brew install poppler` (macOS).
 
-Without Obscura, `fetch_url` falls back to simple HTTP + text stripping, which **cannot handle JavaScript-rendered pages**.
+Without Obscura, `fetch_url` falls back to simple HTTP + text stripping, which cannot handle JavaScript-rendered pages.
 
 ## Workflow
 
@@ -31,36 +31,31 @@ find_existing_summary(url: "<the URL>")
 
 This tool:
 - Queries the DuckDB index for documents whose `source_url` field matches the given URL exactly
-- If no exact match is found and the tool has access to extracted content (from a previous attempt or from context), it also computes **Jaccard similarity** (word trigrams) against existing documents
-- If an existing summary is found (exact URL match or >90% content similarity), it returns the document title and path
+- If no exact match is found, computes **Jaccard similarity** (word trigrams) against existing documents
+- If an existing summary is found (exact URL match or >90% content similarity), returns the document title and path
 
-**If found:** Inform the user that the link is already summarised. Do **not** re-summarise. Read the existing document if the user wants details.
+**If found:** Inform the user that the link is already summarised. Do not re-summarise. Read the existing document if the user wants details.
 
 **If not found:** Proceed to step 1.
 
 ### 1. Fetch the URL content
 
-Use the `fetch_url` tool (provided by the `link-summarizer` extension) to fetch and extract content from the link.
+Use the `fetch_url` tool to fetch and extract content from the link.
 
 ```
 fetch_url(url: "<the URL the user shared>")
 ```
 
 The tool:
-- **PDFs:** Detects `.pdf` URLs and extracts text using `pdftotext -layout` (great for academic papers)
-- **HTML:** Connects to **Obscura headless browser** via CDP WebSocket, navigates to the URL, renders the DOM, and calls `LP.getMarkdown` for clean Markdown output
+- **PDFs:** Detects `.pdf` URLs and extracts text using `pdftotext -layout`
+- **HTML:** Connects to **Obscura headless browser** via CDP WebSocket, renders the DOM, calls `LP.getMarkdown`
 - **Fallback:** Plain HTTP + text stripping if Obscura is not running
-- Extracts the page title from the first H1 heading (or `<title>` tag in fallback mode)
 
-It returns:
-- Page title
-- Clean Markdown content (or extracted text for PDFs)
-- Engine used (Obscura CDP, pdftotext, or HTTP fallback)
-- Character count
+Returns: page title, clean Markdown content (or extracted text for PDFs), engine used, character count.
 
 ### 2. Read and understand the content
 
-Read the returned Markdown/text. If it is very long, focus on:
+Read the returned Markdown/text. Focus on:
 - The main topic and purpose of the page
 - Key arguments, findings, or information
 - Structure (headings, sections, lists)
@@ -68,7 +63,7 @@ Read the returned Markdown/text. If it is very long, focus on:
 
 ### 3. Summarize
 
-Write a concise summary in your own words. The summary should include:
+Write a concise summary in your own words:
 
 - **Title** — A clear, descriptive title for the document
 - **Source** — The original URL and page title
@@ -76,35 +71,17 @@ Write a concise summary in your own words. The summary should include:
 - **Key points** — Bullet list of the most important takeaways
 - **Relevance** — Why this might be useful or interesting
 
-### 4. Create a new PARA document
+### 4. Create a new PARA document via create-doc skill
 
-Follow the knowledge skill's `Document Creation Standards` (@.agents/skills/knowledge/SKILL.md section `Document Creation Standards`) for:
-- Atomic principle
-- Language (casual business English)
-- Citation style (if citing external sources, use `resolve_citation` and `[@citekey]`)
-- Cross-referencing (`[[wikilink]]`)
-- Classification (Resources vs Areas vs Projects)
+Run `/skill:create-doc` to create the document. Pass:
 
-**Before creating a new document, always run `list_para_tags` first** to fetch all existing unique tags. Choose tags from that array; only create new tags when none of the existing ones fit the topic.
+- `title` — the descriptive title from step 3
+- `content` — the summary, key points, and relevance from step 3, with the source URL included
+- `tags` — let create-doc run `list_para_tags` to pick existing tags
+- `area` — typically `"Resources"` for reference material. Use `"Areas"` if it relates to an ongoing life responsibility. Use `"Projects"` only if it directly supports an active project.
+- `source` — the original URL (stored in frontmatter for dedup)
 
-Use `create_para_doc` to save the summary, passing the original URL as `source_url`:
-
-```
-create_para_doc(
-  title: "<document title>",
-  content: "<markdown body with summary, key points, source link>",
-  tags: ["<relevant-tag-1>", "<relevant-tag-2>"],
-  area: "Resources",
-  source: "<original URL>"
-)
-```
-
-- `area` should typically be `"Resources"` for general reference material
-- Use `"Areas"` if it relates to an ongoing life responsibility
-- Use `"Projects"` only if it directly supports an active project
-- `source` (the URL) is stored in the frontmatter and in the DuckDB index, enabling future dedup checks
-
-Recommended document structure inside `content`:
+Recommended content structure for the body:
 
 ```markdown
 ## Source
@@ -125,35 +102,17 @@ Why this content matters or how it might be useful.
 
 ### 5. Auto-link to related notes
 
-After creating the document, **run `/skill:auto-link`** to find semantically related notes and append `[[wikilinks]]` to the new summary (see [Auto-link skill](../../.agents/skills/auto-link/SKILL.md)).
+After the document is created, run `/skill:auto-link` to find semantically related notes and append `[[wikilinks]]`.
 
 ### 6. Confirm with the user
 
-After creating the document and linking it, tell the user:
+Tell the user:
 - The document title and path
 - A brief note on what was saved
-- The source URL (so they know it's tracked for dedup)
+- The source URL
 - Offer to refine or expand sections if needed
 
-## Example
+## Tools used
 
-User: "summarize this https://arxiv.org/pdf/2604.25850"
-
-Agent actions:
-1. `find_existing_summary(url: "https://arxiv.org/pdf/2604.25850")` → no existing summary found
-2. `fetch_url(url: "https://arxiv.org/pdf/2604.25850")` → detects PDF, extracts text via pdftotext
-3. Reads the paper content
-4. Summarizes into a concise markdown document
-5. `list_para_tags` → checks existing tags, picks `["ai", "research", "paper"]`
-6. `create_para_doc(title: "Paper Summary: ...", content: "...", tags: [...], area: "Resources", source_url: "https://arxiv.org/pdf/2604.25850")`
-7. `/skill:auto-link` → finds semantically related notes, appends `[[wikilinks]]` to the new summary
-8. Confirms with user: "Saved as Resources/paper-summary-....md, linked to 4 related notes (source tracked)"
-
-## Provided tools
-
-This skill relies on:
-
-- `find_existing_summary` — checks DuckDB for existing summary by URL + content similarity (from `para-knowledge` extension)
-- `fetch_url` — custom tool from `link-summarizer` extension, supports HTML (via Obscura CDP/HTTP) and PDF (via pdftotext)
-- `list_para_tags` — lists all existing tags (from `para-knowledge` extension)
-- `create_para_doc` — creates a new PARA document with optional `source_url` (from `para-knowledge` extension)
+- `find_existing_summary` — checks DuckDB for existing summary by URL + content similarity
+- `fetch_url` — fetches URL content (HTML via Obscura CDP/HTTP, PDF via pdftotext)

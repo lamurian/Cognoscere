@@ -1,11 +1,7 @@
 ---
 name: research
-description: Iterative academic research on a topic using SearXNG tier 1 (scientific_publications), WHY/HOW decomposition, hypothesis-driven evidence gathering, and synthesis into linked atomic notes with executive summary and known gaps.
+description: Iterative academic research on a topic using WHY/HOW decomposition, hypothesis-driven evidence gathering via web-search skill (tier 1 academic), and synthesis into linked atomic notes via create-doc skill.
 ---
-
-> **Note:** This skill delegates document creation and citation formatting to the knowledge skill.
-> - When creating atomic notes or executive summaries, follow the knowledge skill's `Document Creation Standards` (@.agents/skills/knowledge/SKILL.md section `Document Creation Standards`).
-> - When citing sources, follow the knowledge skill's `Citation format` (@.agents/skills/knowledge/SKILL.md section `Citation format`).
 
 # Research Skill
 
@@ -15,7 +11,7 @@ Triggered by "research about {topic}" or "/skill:research {question}".
 
 ### 1. Core question formulation
 
-Parse the user's topic into a clear, focused research question. If the topic is vague, use `/skill:brainstorm` first to clarify.
+Parse the user's topic into a clear, focused research question. If the topic is vague, run `/skill:brainstorm` first to clarify.
 
 Examples:
 - "research about dopamine and motivation" → "How does dopamine signaling in the mesolimbic pathway modulate motivation and reward-seeking behavior?"
@@ -44,7 +40,7 @@ Q1 (WHY): Why does dopamine depletion reduce effort expenditure in motivated beh
 Q2 (HOW): How do tonic vs phasic dopamine firing patterns differentially affect motivation?
   Q2.1 (WHAT): What distinct motivational processes are modulated by tonic versus phasic dopamine release?
   Q2.2 (WHAT): What receptor subtypes (D1 vs D2) are preferentially engaged by each firing mode?
-  Q2.3 (WHAT): What behavioural tasks reliably dissociate the contributions of each firing pattern?
+  Q2.3 (WHAT): What behavioural tasks reliably dissociate the contributions of each firing mode?
 ```
 
 ### 3. For each question in the tree: hypothesize, search, collect evidence
@@ -53,7 +49,7 @@ Process the question tree top-down. Start with Q1 (WHY) and its supporting Q1.1�
 
 #### 3a. Hypothesize
 
-Propose a preliminary answer for each question. State it as a falsifiable hypothesis.
+Propose a preliminary answer for each top-level question. State it as a falsifiable hypothesis.
 
 Format:
 ```
@@ -64,13 +60,15 @@ Q1.1 (WHAT): What brain regions show altered activity when dopamine is depleted?
 Hypothesis: Reduced BOLD signal in ventral striatum and anterior cingulate during effort-cost computation, with compensatory activity in prefrontal regions.
 ```
 
-#### 3b. Search tier 1
+#### 3b. Search via web-search skill
 
-Run `web_search` with **tier=1** (SearXNG `scientific_publications` category) using each question as query, prioritising the top-level (WHY/HOW) questions. Use the WHAT questions as secondary search terms if top-level results are thin.
+Run `/skill:web-search` with **tier=1** using each question as query, prioritising the top-level (WHY/HOW) questions. Use the WHAT questions as secondary search terms if top-level results are thin.
 
 ```
-web_search(query: "<question text>", tier: 1)
+/skill:web-search "<question text>"
 ```
+
+This defaults to tier 1 (academic). If you need broader sources for conflicting evidence, pass `tier=2`.
 
 If results are thin, run a second search with alternative phrasing or key terms extracted from the question.
 
@@ -97,7 +95,7 @@ Refine the hypothesis based on the evidence. Note whether evidence:
 For each top-level (WHY/HOW) question, also search for conflicting or alternative positions.
 
 ```
-web_search(query: "<question> conflicting evidence OR alternative theory", tier: 1)
+/skill:web-search "<question> conflicting evidence OR alternative theory"
 ```
 
 If found, note the disagreement. If not found, state "no conflicting evidence found in this search round."
@@ -109,7 +107,7 @@ A research cycle is complete when **all** five criteria are met:
 | # | Criterion | Check |
 |---|---|---|
 | 1 | **Decomposition done** | Core question broken into 1 WHY + 1 HOW, each with 3 supporting WHAT questions |
-| 2 | **Each top-level question has ≥1 academic source** | Q1 (WHY) and Q2 (HOW) each have at least one SearXNG tier 1 result that directly addresses them |
+| 2 | **Each top-level question has ≥1 academic source** | Q1 (WHY) and Q2 (HOW) each have at least one tier 1 result that directly addresses them |
 | 3 | **Evidence covers both sides** | For Q1 and Q2, explicitly checked for confirming AND conflicting evidence. If only one side exists, note that as a gap |
 | 4 | **Self-confidence score assigned per top-level question** | Score Q1 and Q2: **high** (multiple consistent peer-reviewed sources), **moderate** (one source or indirect), **low** (speculative / no direct sources) |
 | 5 | **≤ 5 search rounds** | Hard cap. If criteria 1–4 not met after 5 rounds, produce best-effort synthesis with a "gaps and limitations" section |
@@ -125,33 +123,21 @@ Across all questions in the tree, integrate the evidence into a coherent picture
 - Identify **cross-cutting themes** — patterns that appear across multiple questions
 - Identify **contradictions** — questions where evidence conflicts
 
-**Citation during synthesis:** For each source you decide to cite, follow the knowledge skill's citation workflow (@.agents/skills/knowledge/SKILL.md section `Citation format`):
-   1. Call `resolve_citation(source, [title, authors, year])`
-   2. Use the returned `@citekey` inline — e.g. `Dopamine depletion impairs effort-cost computation [@salamone2007].`
-
-### 6. Create atomic notes
+### 6. Create atomic notes via create-doc skill
 
 Create one atomic note per **key idea** discovered during research.
 
-Follow the knowledge skill's `Document Creation Standards` (@.agents/skills/knowledge/SKILL.md section `Document Creation Standards`) for:
-- Atomic principle (one idea per note, max 100 lines)
-- Language (casual business English)
-- Citation style (`[@citekey]` via `resolve_citation`)
-- Cross-referencing (`[[wikilink]]`)
-- Classification (Resources vs Areas vs Projects)
+Run `/skill:create-doc` for each atomic note. The create-doc skill handles tag selection, classification, citation, and formatting.
 
-Additional research-specific rules:
-- Use `batch_create_para_docs` to create all atomic notes in one call. This enables auto-linking.
-- Default area: `Resources` (general reference). Use `Areas` if it relates to an ongoing life responsibility.
+Research-specific rules to pass to create-doc:
+- Use `batch_create_para_docs` for all atomic notes in one call (enables auto-linking)
+- Default area: `Resources`. Use `Areas` if it relates to an ongoing life responsibility.
 - Naming convention: `research-{short-topic}-{idea-slug}.md`
-- Always run `list_para_tags` first. Pick existing tags. Only create new tags when none fit.
+- Body structure: lean — just the key idea in 2–4 paragraphs with inline citations
 
 ### 7. Create executive summary
 
-Create one executive summary note that links to all atomic notes. This note lives in the same area as the atomic notes.
-Follow the knowledge skill's `Document Creation Standards` (@.agents/skills/knowledge/SKILL.md section `Document Creation Standards`) for formatting.
-
-Content structure:
+Create one executive summary note that links to all atomic notes. Use `/skill:create-doc` with the following structure:
 
 ```markdown
 ## Executive Summary
@@ -181,9 +167,7 @@ Open issues from the literature and things this research did not resolve:
 - [Gap 4 — question that arose during research but was not answered]
 ```
 
-Include the executive summary in the same `batch_create_para_docs` call as the atomic notes so it gets auto-linked to them.
-
-Naming convention: `research-{short-topic}-executive-summary.md`
+Include the executive summary in the same `batch_create_para_docs` call as the atomic notes. Naming convention: `research-{short-topic}-executive-summary.md`.
 
 ### 8. Auto-link to existing notes
 
@@ -199,8 +183,6 @@ Report:
 - Offer to refine any note or explore deeper on specific gaps
 
 ## Completion criteria reference card
-
-Keep this in mind during every search round:
 
 ```
 1. Decomposition done? (1 WHY + 1 HOW, each with 3 WHAT questions)
@@ -221,13 +203,3 @@ If any no and rounds ≥ 5 → best-effort with "gaps and limitations".
 | **High** | ≥2 peer-reviewed sources from reputable journals, consistent findings, direct relevance to sub-question |
 | **Moderate** | 1 peer-reviewed source or indirect evidence (e.g., review mentions the mechanism but isn't the primary study), or preprints |
 | **Low** | No direct academic source found; answer is inferred, speculative, or based on non-academic sources |
-
-## Tools used
-
-- `web_search(tier: 1)` — SearXNG `scientific_publications` category for academic search
-- `fetch_url(url)` — fetch academic papers (PDF via pdftotext, HTML via Obscura)
-- `list_para_tags` — list existing tags before creating notes
-- `batch_create_para_docs(documents)` — create all atomic notes + executive summary with auto-linking
-- `/skill:brainstorm` — clarify vague topics before research
-- `/skill:auto-link` — link new notes to existing knowledge
-- `resolve_citation(source, [title], [authors], [year])` — parse a source via citation.js, generate a BibTeX citekey, dedup against knowledge base, and append to @ref.bib (provided by para-knowledge extension)
