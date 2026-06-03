@@ -44,17 +44,57 @@ function closeDatabase(db: duckdb.Database): Promise<void> {
   });
 }
 
-export async function initDb(db: duckdb.Database): Promise<void> {
-  const run = async (sql: string) => {
-    await new Promise<void>((resolve, reject) => {
-      (db.run as unknown as (...args: unknown[]) => void)(sql, (err: Error | null) => {
-        if (err) reject(err);
-        else resolve();
-      });
-    });
-  };
+/**
+ * ════════════════════════════════════════════════════════════
+ * Corruption prevention: DuckDB configuration
+ * ════════════════════════════════════════════════════════════
+ *
+ * These PRAGMAs reduce the risk of database corruption from
+ * crashes or concurrent writes:
+ *
+ * 1. wal_autocheckpoint (4 MiB vs default 16 MiB)
+ *    — Forces periodic WAL flushes. Less data at risk if the
+ *      process crashes mid-write.
+ *
+ * 2. checkpoint_threshold (4 MiB vs default 16 MiB)
+ *    — Triggers checkpoint earlier, keeping the WAL small.
+ *
+ * 3. enable_checkpoint_on_shutdown
+ *    — Ensures a final checkpoint when the connection closes
+ *      gracefully (default is already true in DuckDB).
+ *
+ * 4. After every write operation, closeDatabase() calls
+ *    CHECKPOINT explicitly before closing.
+ * ════════════════════════════════════════════════════════════
+ */
 
-  await run(`CREATE TABLE IF NOT EXISTS files (
+const WAL_CHECKPOINT_THRESHOLD = "4 MiB";
+
+/** Run a SQL statement and return a Promise. */
+function runSql(db: duckdb.Database, sql: string): Promise<void> {
+  return new Promise<void>((resolve, reject) => {
+    (db.run as unknown as (...args: unknown[]) => void)(sql, (err: Error | null) => {
+      if (err) reject(err);
+      else resolve();
+    });
+  });
+}
+
+/**
+ * Configure DuckDB for crash safety.
+ */
+async function configureCrashSafety(db: duckdb.Database): Promise<void> {
+  await runSql(db, `PRAGMA wal_autocheckpoint = '${WAL_CHECKPOINT_THRESHOLD}'`);
+  await runSql(db, `PRAGMA checkpoint_threshold = '${WAL_CHECKPOINT_THRESHOLD}'`);
+}
+
+export async function initDb(db: duckdb.Database): Promise<void> {
+  // ── Step 1: Crash-safety configuration (must run before any writes) ──
+  await configureCrashSafety(db);
+
+  // ── Step 2: Schema creation ──
+
+  await runSql(db, `CREATE TABLE IF NOT EXISTS files (
     path VARCHAR PRIMARY KEY, title VARCHAR NOT NULL DEFAULT '',
     body TEXT NOT NULL DEFAULT '', author VARCHAR NOT NULL DEFAULT '',
     editor VARCHAR NOT NULL DEFAULT '', created TIMESTAMP,
@@ -62,39 +102,41 @@ export async function initDb(db: duckdb.Database): Promise<void> {
   )`);
 
   try {
-    await run("ALTER TABLE files ADD COLUMN IF NOT EXISTS source_url VARCHAR DEFAULT NULL");
+    await runSql(db, "ALTER TABLE files ADD COLUMN IF NOT EXISTS source_url VARCHAR DEFAULT NULL");
   } catch {
     /* ok */
   }
 
-  await run(`CREATE TABLE IF NOT EXISTS tags (file_path VARCHAR NOT NULL, tag VARCHAR NOT NULL)`);
-  await run("CREATE INDEX IF NOT EXISTS idx_tags_tag  ON tags(tag)");
-  await run("CREATE INDEX IF NOT EXISTS idx_tags_path ON tags(file_path)");
+  await runSql(db, `CREATE TABLE IF NOT EXISTS tags (file_path VARCHAR NOT NULL, tag VARCHAR NOT NULL)`);
+  await runSql(db, "CREATE INDEX IF NOT EXISTS idx_tags_tag  ON tags(tag)");
+  await runSql(db, "CREATE INDEX IF NOT EXISTS idx_tags_path ON tags(file_path)");
   // Unique index — may fail if existing data has duplicates from a previous corruption.
   // Non-critical for search functionality, so swallow the error.
   try {
-    await run("CREATE UNIQUE INDEX IF NOT EXISTS idx_tags_unique ON tags(file_path, tag)");
+    await runSql(db, "CREATE UNIQUE INDEX IF NOT EXISTS idx_tags_unique ON tags(file_path, tag)");
   } catch {
     /* Non-fatal: index won't be created but DB still functions */
   }
 
-  await run(`CREATE TABLE IF NOT EXISTS term_index (
+  await runSql(db, `CREATE TABLE IF NOT EXISTS term_index (
     term VARCHAR NOT NULL, file_path VARCHAR NOT NULL, tf INTEGER NOT NULL DEFAULT 0
   )`);
-  await run("CREATE INDEX IF NOT EXISTS idx_term_index_term ON term_index(term)");
-  await run("CREATE INDEX IF NOT EXISTS idx_term_index_path ON term_index(file_path)");
+  await runSql(db, "CREATE INDEX IF NOT EXISTS idx_term_index_term ON term_index(term)");
+  await runSql(db, "CREATE INDEX IF NOT EXISTS idx_term_index_path ON term_index(file_path)");
 
-  await run(
+  await runSql(
+    db,
     `CREATE TABLE IF NOT EXISTS doc_lengths (file_path VARCHAR PRIMARY KEY, doc_length INTEGER NOT NULL DEFAULT 0)`,
   );
-  await run(
+  await runSql(
+    db,
     `CREATE TABLE IF NOT EXISTS corpus_stats (key VARCHAR PRIMARY KEY, value REAL NOT NULL)`,
   );
-  await run(`INSERT OR IGNORE INTO corpus_stats (key, value) VALUES ('total_docs', 0)`);
-  await run(`INSERT OR IGNORE INTO corpus_stats (key, value) VALUES ('avg_doc_length', 1.0)`);
+  await runSql(db, `INSERT OR IGNORE INTO corpus_stats (key, value) VALUES ('total_docs', 0)`);
+  await runSql(db, `INSERT OR IGNORE INTO corpus_stats (key, value) VALUES ('avg_doc_length', 1.0)`);
 
   // ── Citations table (for BibTeX-based citation system) ──
-  await run(`CREATE TABLE IF NOT EXISTS citations (
+  await runSql(db, `CREATE TABLE IF NOT EXISTS citations (
     citekey VARCHAR PRIMARY KEY,
     bibtex TEXT NOT NULL,
     doi VARCHAR,
@@ -102,8 +144,11 @@ export async function initDb(db: duckdb.Database): Promise<void> {
     created TIMESTAMP,
     updated TIMESTAMP
   )`);
-  await run("CREATE INDEX IF NOT EXISTS idx_citations_doi ON citations(doi)");
-  await run("CREATE INDEX IF NOT EXISTS idx_citations_url ON citations(source_url)");
+  await runSql(db, "CREATE INDEX IF NOT EXISTS idx_citations_doi ON citations(doi)");
+  await runSql(db, "CREATE INDEX IF NOT EXISTS idx_citations_url ON citations(source_url)");
+
+  // ── Step 3: Initial checkpoint ──
+  await runSql(db, "CHECKPOINT");
 }
 
 /* eslint-disable-next-line complexity */
@@ -132,7 +177,16 @@ export async function withDb<T>(
       const db = await openDatabase(dbPath, flags);
       try {
         if (mode === "write") await initDb(db);
-        return await fn(db);
+        const result = await fn(db);
+        // ── Corruption prevention: force checkpoint after every write ──
+        // This flushes the WAL to the main database file before closing,
+        // reducing the risk of data loss if the process crashes.
+        if (mode === "write") {
+          await runSql(db, "CHECKPOINT").catch(() => {
+            /* best-effort checkpoint — DB may still be consistent without it */
+          });
+        }
+        return result;
       } finally {
         try {
           await closeDatabase(db);

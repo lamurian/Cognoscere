@@ -8,9 +8,44 @@ import { tokenize } from "./yaml.js";
 
 const DB_FILE = "notes.duckdb";
 
-/** Open (or create) the DuckDB database. */
+/**
+ * WAL auto-checkpoint threshold (4 MiB vs default 16 MiB).
+ * Smaller threshold = more frequent flushes, less data at risk.
+ */
+const WAL_CHECKPOINT_THRESHOLD = "4 MiB";
+
+/** Run a SQL statement and return a Promise (with tx recovery). */
+function runSql(db: duckdb.Database, sql: string): Promise<void> {
+  return new Promise((resolve_, reject) => {
+    db.run(sql, (err: Error | null) => {
+      if (err) reject(err);
+      else resolve_();
+    });
+  });
+}
+
+/** Open (or create) the DuckDB database with crash-safety configuration. */
 export function openDb(cwd: string): duckdb.Database {
-  return new duckdb.Database(resolve(cwd, DB_FILE));
+  const db = new duckdb.Database(resolve(cwd, DB_FILE));
+  // Configure crash-safety PRAGMAs immediately after opening
+  runSql(db, `PRAGMA wal_autocheckpoint = '${WAL_CHECKPOINT_THRESHOLD}'`).catch(() => {});
+  runSql(db, `PRAGMA checkpoint_threshold = '${WAL_CHECKPOINT_THRESHOLD}'`).catch(() => {});
+  return db;
+}
+
+/**
+ * Close the database safely — runs CHECKPOINT first to flush the WAL,
+ * reducing corruption risk from crashes.
+ */
+export function closeDb(db: duckdb.Database): Promise<void> {
+  return new Promise((resolve_, reject) => {
+    runSql(db, "CHECKPOINT").catch(() => {}).then(() => {
+      db.close((err: Error | null) => {
+        if (err) reject(err);
+        else resolve_();
+      });
+    });
+  });
 }
 
 /** Error message indicating an aborted DuckDB transaction. */
@@ -72,6 +107,10 @@ export function all<T = Record<string, unknown>>(
 
 /** Ensure all required tables and indexes exist. */
 export async function initDb(db: duckdb.Database): Promise<void> {
+  // Crash-safety configuration
+  await runSql(db, `PRAGMA wal_autocheckpoint = '${WAL_CHECKPOINT_THRESHOLD}'`);
+  await runSql(db, `PRAGMA checkpoint_threshold = '${WAL_CHECKPOINT_THRESHOLD}'`);
+
   await run(
     db,
     `CREATE TABLE IF NOT EXISTS files (

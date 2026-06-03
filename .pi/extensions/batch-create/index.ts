@@ -11,7 +11,7 @@ import { Type } from "typebox";
 import { mkdir, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { slugify, formatFrontmatter } from "./yaml.js";
-import { openDb, initDb, indexDocument, recomputeStats } from "./db.js";
+import { openDb, closeDb, initDb, indexDocument, recomputeStats } from "./db.js";
 import { findRelated, appendLinks } from "./search.js";
 
 // ── Types ─────────────────────────────────────────────────────────────
@@ -93,7 +93,7 @@ async function indexDocumentsInDb(
 
     await recomputeStats(db);
   } finally {
-    db.close();
+    await closeDb(db);
   }
 }
 
@@ -121,7 +121,7 @@ async function autoLinkBatch(
 
     return linkedCount;
   } finally {
-    db.close();
+    await closeDb(db);
   }
 }
 

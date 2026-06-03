@@ -47,29 +47,28 @@ export function registerSearchDocsTool(pi: ExtensionAPI): void {
         details: {},
       });
 
-      // Only sync if DB already exists (avoids WAL creation for missing DB)
+      // ── Sync: create or refresh the index ──
+      // Uses the write queue (no noQueue) to prevent concurrent writes
+      // from different pi sessions corrupting the database.
+      // Reports lock contention to the user rather than swallowing it.
       const dbPath = resolve(ctx.cwd, "notes.duckdb");
+      let dbExists = false;
       try {
         await stat(dbPath);
-        // DB exists — try sync (best-effort, no-queue to avoid blocking)
-        await withDb(
-          ctx.cwd,
-          "write",
-          async (db) => {
-            await syncIndex(db, ctx.cwd);
-          },
-          { noQueue: true },
-        ).catch(() => {
-          /* best-effort sync */
-        });
+        dbExists = true;
       } catch {
-        // DB doesn't exist or stat failed — create it with a sync
+        dbExists = false;
+      }
+
+      if (dbExists) {
+        await withDb(ctx.cwd, "write", async (db) => {
+          await syncIndex(db, ctx.cwd);
+        }, { ctx, onUpdate });
+      } else {
         await withDb(ctx.cwd, "write", async (db) => {
           await initDb(db);
           await syncIndex(db, ctx.cwd);
-        }, { noQueue: true }).catch(() => {
-          /* best-effort create */
-        });
+        }, { ctx, onUpdate });
       }
 
       // ── Step 2: BM25 search (read-only) ──
