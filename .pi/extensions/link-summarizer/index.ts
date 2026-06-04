@@ -13,6 +13,7 @@ import { Type } from "typebox";
 import { tryObscura } from "./cdp.js";
 import { tryExtractPdf, isPdfUrl } from "./pdf.js";
 import { fetchViaHttp } from "./http.js";
+import { addFailedUrl, extractBatch, getPendingUrls, hasPending } from "./tavily-extract.js";
 
 const MAX_CONTENT_CHARS = 80_000;
 
@@ -113,14 +114,15 @@ async function handleHtml(url: string, signal?: AbortSignal) {
         };
       }
     }
+    addFailedUrl(url);
     return {
       content: [
         {
           type: "text" as const,
-          text: `Obscura not available and HTTP fallback failed.\n\n🔗 ${url}\n⚠️ ${httpResult.error}`,
+          text: `Obscura not available and HTTP fallback failed.\n\n🔗 ${url}\n⚠️ ${httpResult.error}\n\nURL queued for Tavily batch extraction. Call \`batch_extract_failed\` to process all queued URLs.`,
         },
       ],
-      details: { url, error: httpResult.error },
+      details: { url, error: httpResult.error, queuedForTavily: true },
       isError: true,
     };
   }
@@ -146,6 +148,96 @@ async function handleHtml(url: string, signal?: AbortSignal) {
 }
 
 export default function (pi: ExtensionAPI) {
+  pi.registerTool({
+    name: "batch_extract_failed",
+    label: "Batch Extract Failed URLs",
+    description:
+      "Process all URLs that failed Obscura and HTTP extraction via Tavily extract API. " +
+      "Accumulated from previous fetch_url calls. Tavily handles JavaScript rendering, " +
+      "making it suitable for SPAs and JS-heavy pages.",
+    promptSnippet:
+      "Batch-extract URLs that failed Obscura+HTTP extraction. Uses Tavily extract API.",
+    parameters: Type.Object({
+      format: Type.Optional(
+        Type.Enum({ markdown: "markdown", text: "text" }, { description: "Output format (default: markdown)" }),
+      ),
+      extractDepth: Type.Optional(
+        Type.Enum(
+          { basic: "basic", advanced: "advanced" },
+          { description: "Extraction depth (default: advanced)" },
+        ),
+      ),
+    }),
+
+    async execute(_toolCallId, params, _signal, _onUpdate, _ctx) {
+      const { format, extractDepth } = params;
+
+      if (!hasPending()) {
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: "No URLs are pending batch extraction. All previous fetch_url calls succeeded or no URLs were fetched yet.",
+            },
+          ],
+          details: { total: 0 },
+        };
+      }
+
+      let results;
+      try {
+        results = await extractBatch({
+          format: format as "markdown" | "text" | undefined,
+          extractDepth: extractDepth as "basic" | "advanced" | undefined,
+        });
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : String(err);
+        return {
+          content: [{ type: "text" as const, text: `Tavily batch extraction failed: ${msg}` }],
+          details: { error: msg },
+          isError: true,
+        };
+      }
+
+      const succeeded = results.filter((r) => r.success);
+      const failed = results.filter((r) => !r.success);
+
+      const lines: string[] = [];
+      lines.push(`**Tavily batch extract** — ${results.length} URL${results.length === 1 ? "" : "s"}`);
+      if (succeeded.length) {
+        lines.push(`**Succeeded:** ${succeeded.length}`);
+        for (const r of succeeded) {
+          const title = r.title ?? "(no title)";
+          const { body, truncated } = truncate(r.markdown);
+          lines.push("");
+          lines.push(formatContent(title, r.url, body, "Tavily extract", r.markdown.length, truncated));
+        }
+      }
+      if (failed.length) {
+        lines.push(`**Failed:** ${failed.length}`);
+        for (const r of failed) {
+          lines.push(`\n🔗 ${r.url}\n⚠️ ${r.error ?? "Unknown error"}`);
+        }
+      }
+
+      return {
+        content: [{ type: "text" as const, text: lines.join("\n") }],
+        details: {
+          total: results.length,
+          succeeded: succeeded.length,
+          failed: failed.length,
+          results: results.map((r) => ({
+            url: r.url,
+            title: r.title,
+            success: r.success,
+            error: r.error,
+            extractedLength: r.success ? r.markdown.length : undefined,
+          })),
+        },
+      };
+    },
+  });
+
   pi.registerTool({
     name: "fetch_url",
     label: "Fetch URL",
