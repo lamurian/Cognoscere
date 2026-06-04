@@ -1,11 +1,14 @@
 /**
  * BM25 semantic search and [[wikilink]] appending for batch-created documents.
+ *
+ * DB operations delegate to para-knowledge/lock.ts (allWithRecovery)
+ * for aborted-transaction recovery. tokenize comes from _common.
  */
 
 import { readFile, writeFile } from "node:fs/promises";
 import duckdb from "duckdb";
-import { tokenize } from "./yaml.js";
-import { all } from "./db.js";
+import { tokenize } from "../_common/tokenize.js";
+import { allWithRecovery } from "../para-knowledge/lock.js";
 
 /**
  * Find related documents via BM25 term overlap.
@@ -22,22 +25,22 @@ export async function findRelated(
   if (queryTerms.length === 0) return [];
 
   // Fetch all doc_lengths
-  const allLengths = await all<{ file_path: string; doc_length: number }>(
+  const allLengths = (await allWithRecovery(
     db,
     "SELECT file_path, doc_length FROM doc_lengths",
-  );
+  )) as unknown as { file_path: string; doc_length: number }[];
   const lengthMap = new Map(allLengths.map((r) => [r.file_path, r.doc_length]));
   const totalDocs = allLengths.length;
   const avgDocLen = allLengths.reduce((s, r) => s + r.doc_length, 0) / Math.max(totalDocs, 1);
 
   // Get term_index rows for all query terms
   const placeholders = queryTerms.map(() => "?").join(",");
-  const indexRows = await all<{ term: string; file_path: string; tf: number }>(
+  const indexRows = (await allWithRecovery(
     db,
     `SELECT term, file_path, tf FROM term_index WHERE term IN (${placeholders}) AND file_path != ?`,
     ...queryTerms,
     relPath,
-  );
+  )) as unknown as { term: string; file_path: string; tf: number }[];
 
   // Compute document frequency per term
   const dfMap = new Map<string, number>();

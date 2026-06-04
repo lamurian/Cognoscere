@@ -4,6 +4,9 @@
  *
  * Tools provided:
  *   batch_create_para_docs  — create N documents, index them, auto-link
+ *
+ * DB connection management delegates to para-knowledge/db.ts (withDb)
+ * for concurrent-write safety (retry queue, lock detection, TX recovery).
  */
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
@@ -11,7 +14,9 @@ import { Type } from "typebox";
 import { mkdir, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { slugify, formatFrontmatter } from "./yaml.js";
-import { openDb, closeDb, initDb, indexDocument, recomputeStats } from "./db.js";
+import { withDb, initDb } from "../para-knowledge/db.js";
+import { runWithRecovery, allWithRecovery } from "../para-knowledge/lock.js";
+import { tokenize } from "../_common/tokenize.js";
 import { findRelated, appendLinks } from "./search.js";
 
 // ── Types ─────────────────────────────────────────────────────────────
@@ -66,46 +71,109 @@ async function createFilesOnDisk(docs: BatchDoc[], cwd: string): Promise<Created
 }
 
 // ── Step 2: Index all documents in DuckDB ─────────────────────────────
+// Uses para-knowledge's withDb (retry queue + lock recovery).
 
 async function indexDocumentsInDb(
   docs: BatchDoc[],
   created: CreatedFile[],
   cwd: string,
 ): Promise<void> {
-  const db = openDb(cwd);
-  try {
+  await withDb(cwd, "write", async (db) => {
     await initDb(db);
+    const now = new Date().toISOString();
 
     for (let i = 0; i < docs.length; i++) {
       const doc = docs[i];
       const relPath = created[i].relPath;
-      await indexDocument(
+
+      // ── Insert/replace file row ──
+      await runWithRecovery(
         db,
+        `INSERT OR REPLACE INTO files (path, title, body, author, editor, created, modified, file_mtime, source_url)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         relPath,
         doc.title,
         doc.content,
-        doc.tags,
         "pi",
         "lam",
+        now,
+        now,
+        now,
         doc.source ?? null,
+      );
+
+      // ── Re-index tags ──
+      await runWithRecovery(db, "DELETE FROM tags WHERE file_path = ?", relPath);
+      for (const tag of doc.tags) {
+        await runWithRecovery(
+          db,
+          "INSERT INTO tags (file_path, tag) VALUES (?, ?)",
+          relPath,
+          tag,
+        );
+      }
+
+      // ── Re-build BM25 term index ──
+      await runWithRecovery(db, "DELETE FROM term_index WHERE file_path = ?", relPath);
+      const boostedTitle = Array.from({ length: 3 }, () => doc.title).join(" ");
+      const terms = tokenize(`${boostedTitle} ${doc.content}`);
+      const tfMap = new Map<string, number>();
+      for (const t of terms) tfMap.set(t, (tfMap.get(t) ?? 0) + 1);
+      const termEntries = [...tfMap.entries()];
+      for (let j = 0; j < termEntries.length; j += 500) {
+        const chunk = termEntries.slice(j, j + 500);
+        const placeholders = chunk.map(() => "(?, ?, ?)").join(", ");
+        const batchParams: unknown[] = [];
+        for (const [term, tf] of chunk) batchParams.push(term, relPath, tf);
+        await runWithRecovery(
+          db,
+          `INSERT INTO term_index (term, file_path, tf) VALUES ${placeholders}`,
+          ...batchParams,
+        );
+      }
+
+      // ── Doc length ──
+      await runWithRecovery(
+        db,
+        "INSERT OR REPLACE INTO doc_lengths (file_path, doc_length) VALUES (?, ?)",
+        relPath,
+        terms.length,
       );
     }
 
-    await recomputeStats(db);
-  } finally {
-    await closeDb(db);
-  }
+    // ── Recompute corpus stats ──
+    const rows = (await allWithRecovery(
+      db,
+      "SELECT COUNT(*) AS total_docs, COALESCE(AVG(doc_length), 1.0) AS avg_doc_length FROM doc_lengths",
+    )) as unknown as { total_docs: number | bigint; avg_doc_length: number }[];
+    if (rows.length > 0) {
+      const totalDocs: number =
+        typeof rows[0].total_docs === "bigint"
+          ? Number(rows[0].total_docs)
+          : (rows[0].total_docs as number);
+      await runWithRecovery(
+        db,
+        "UPDATE corpus_stats SET value = ? WHERE key = 'total_docs'",
+        totalDocs,
+      );
+      await runWithRecovery(
+        db,
+        "UPDATE corpus_stats SET value = ? WHERE key = 'avg_doc_length'",
+        rows[0].avg_doc_length,
+      );
+    }
+  });
 }
 
 // ── Step 3: Auto-link across the batch ────────────────────────────────
+// Uses para-knowledge's withDb (retry queue + lock recovery).
 
 async function autoLinkBatch(
   docs: BatchDoc[],
   created: CreatedFile[],
   cwd: string,
 ): Promise<number> {
-  const db = openDb(cwd);
-  try {
+  return withDb(cwd, "read", async (db) => {
     await initDb(db);
     let linkedCount = 0;
 
@@ -120,9 +188,7 @@ async function autoLinkBatch(
     }
 
     return linkedCount;
-  } finally {
-    await closeDb(db);
-  }
+  });
 }
 
 // ── Tool registration ─────────────────────────────────────────────────
@@ -192,7 +258,7 @@ export default function (pi: ExtensionAPI): void {
         details: {},
       });
 
-      // Step 2: Index in DuckDB
+      // Step 2: Index in DuckDB (withDb handles lock retry + recovery)
       try {
         await indexDocumentsInDb(docs, created, cwd);
       } catch (e: unknown) {
