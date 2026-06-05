@@ -3,7 +3,7 @@ title: Resources vs Stress — social support buffers perceived stress
 description: Psychological and social resources, particularly family support, negatively predict perceived stress levels.
 author: pi
 editor: lam
-date: 2026-06-05T07:55:06.005Z
+date: 2026-06-05T09:16:34.964Z
 tags:
   - resources
   - stress
@@ -12,12 +12,20 @@ tags:
   - correlation
 ---
 
-Psychological and social resources consistently show a negative association with perceived stress, functioning as buffers in the stress process.
+Psychological and social resources show a consistent negative association with perceived stress. They function as buffers in the stress process.
 
-Acoba (2024) demonstrated that family support negatively predicted perceived stress (a = -0.18, p < .001) and significant other support similarly did so (a = -0.12, p = .01), while friend support did not significantly predict stress. The mediation model showed that perceived stress mediated the relationship between family/significant other support and mental health outcomes (positive affect, anxiety, depression).
+Acoba [@acoba2024] found that family support negatively predicted perceived stress (a = -0.18, p < .001) and significant other support did the same (a = -0.12, p = .01). Friend support did not significantly predict stress. Perceived stress mediated the link between family or significant other support and mental health outcomes including positive affect, anxiety, and depression.
 
-Özer et al. (2021) found that family support explained 11% of stress variance in a Turkish sample. These findings support the Conservation of Resources (COR) theory [@hobfoll1989]: social resources protect against resource loss spirals triggered by stress. Individuals with stronger resource pools appraise demands as less threatening and recover faster from resource depletion.
+Ozer et al. [@ozer2021] found that family support explained 11% of stress variance in a Turkish sample. These findings support the Conservation of Resources (COR) theory [@hobfoll1989]. Social resources protect against resource loss spirals triggered by stress. People with stronger resource pools appraise demands as less threatening and recover faster from resource depletion.
 
-The effect size is typically small-to-moderate (r ≈ -0.12 to -0.18), suggesting that social resources are one of multiple interacting factors in the stress process.
+The effect size is small-to-moderate (r approx -0.12 to -0.18). Social resources are one of several interacting factors in the stress process.
 
-Related: [[PSS-10 vs Psychological Resources — negative association with social support]], [[Affect vs Resources — positive affect associated with stronger perceived social support]], [[Social Interaction vs Resilience — social support positively correlates with resilience]], [[Resource Management and Protective Factor Allocation]]
+## Sources
+
+- [[PSS-10 vs Psychological Resources — negative association with social support]]
+- [[Affect vs Resources — positive affect associated with stronger perceived social support]]
+- [[Social Interaction vs Resilience — social support positively correlates with resilience]]
+- [[Resource Management and Protective Factor Allocation]]
+- [@acoba2024] — mediation model
+- [@hobfoll1989] — COR theory
+- [@ozer2021] — social support and stress
