@@ -18,6 +18,6 @@ Boluarte-Carbajal et al. (2021) found: Perceived Self-efficacy vs Positive Affec
 
 Acoba (2024) found PSS-10 total vs Positive Affect r = -0.176 (p < .01) in a Filipino sample (n = 426). The weaker total-score correlation masks the differentiated pattern: higher positive affect is tied to the self-efficacy facet, while higher negative affect is strongly tied to the helplessness facet. This supports the dual-process model where stress appraisal splits into approach (challenge/self-efficacy) and avoidance (hindrance/helplessness) pathways.
 
-Related: [[PSS-10 vs Resilience — negative correlation]], [[PSS-10 internal structure — self-efficacy and helplessness as challenge and hindrance dimensions]], [[Resilience vs Affect — strong positive link with positive affect, moderate negative with negative affect]], [[Affect vs Resources — positive affect associated with stronger perceived social support]], [[Integrated Affect and Resilience Dynamics]]
+Related: [[PSS-10 vs Stress — small-to-moderate correlation with objective life events]], [[PSS-10 vs Resilience — negative correlation]], [[PSS-10 internal structure — self-efficacy and helplessness as challenge and hindrance dimensions]], [[Resilience vs Affect — strong positive link with positive affect, moderate negative with negative affect]], [[Affect vs Resources — positive affect associated with stronger perceived social support]], [[Integrated Affect and Resilience Dynamics]]
 
 Key references: PANAS [@watson1988]

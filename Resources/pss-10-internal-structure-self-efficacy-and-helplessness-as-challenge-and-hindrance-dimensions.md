@@ -18,6 +18,6 @@ Boluarte-Carbajal, Navarro-Flores, and Villarreal-Zegarra (2021) reported a Spea
 
 Perceived self-efficacy represents the challenge dimension: the belief that one can handle demands. Perceived helplessness represents the hindrance dimension: the sense that demands exceed resources. Together they form a complete picture of the stress experience, with helplessness more strongly linked to negative outcomes and self-efficacy more strongly linked to positive outcomes.
 
-Related: [[PSS-10 vs Resilience — negative correlation]], [[PSS-10 vs Affect — differentiated links with positive and negative affect]], [[Coping vs Challenge — adaptive coping linked to resilience and lower stress]], [[Coping vs Hindrance — maladaptive coping linked to lower resilience and higher stress]], [[Challenge-Hindrance Stress Appraisal and Coping Pipeline]], [[Challenge Stressors Build Resilience While Hindrance Stressors Erode It]]
+Related: [[PSS-10 vs Stress — small-to-moderate correlation with objective life events]], [[PSS-10 vs Resilience — negative correlation]], [[PSS-10 vs Affect — differentiated links with positive and negative affect]], [[Coping vs Challenge — adaptive coping linked to resilience and lower stress]], [[Coping vs Hindrance — maladaptive coping linked to lower resilience and higher stress]], [[Challenge-Hindrance Stress Appraisal and Coping Pipeline]], [[Challenge Stressors Build Resilience While Hindrance Stressors Erode It]]
 
 Key reference: PSS-10 factor structure [@liu2020]; challenge-hindrance model [@cavanaugh2000]
