@@ -14,7 +14,7 @@ import { stat } from "node:fs/promises";
 import { resolve } from "node:path";
 import duckdb from "duckdb";
 import { DB_FILE, type WithDbOptions } from "./types.js";
-import { isLockError } from "./lock.js";
+import { isLockError, queryRows } from "./lock.js";
 
 const WRITE_QUEUE_TIMEOUT = 300_000;
 const QUEUE_POLL_INTERVAL = 2_000;
@@ -88,6 +88,31 @@ async function configureCrashSafety(db: duckdb.Database): Promise<void> {
   await runSql(db, `PRAGMA checkpoint_threshold = '${WAL_CHECKPOINT_THRESHOLD}'`);
 }
 
+/**
+ * Check whether a table has a PRIMARY KEY on the given columns.
+ * Used by schema migration — if a PK already exists, we skip
+ * redundant UNIQUE INDEX creation that would conflict with it.
+ */
+async function tableHasPrimaryKey(
+  db: duckdb.Database,
+  table: string,
+  columns: string[],
+): Promise<boolean> {
+  try {
+    const rows = await queryRows<{ pk: number; name: string }>(
+      db,
+      `SELECT name, pk FROM pragma_table_info('${table}') WHERE pk = 1`,
+    );
+    const pkCols = rows.map((r) => r.name);
+    return (
+      pkCols.length === columns.length &&
+      columns.every((c) => pkCols.includes(c))
+    );
+  } catch {
+    return false;
+  }
+}
+
 export async function initDb(db: duckdb.Database): Promise<void> {
   // ── Step 1: Crash-safety configuration (must run before any writes) ──
   await configureCrashSafety(db);
@@ -107,27 +132,57 @@ export async function initDb(db: duckdb.Database): Promise<void> {
     /* ok */
   }
 
-  await runSql(db, `CREATE TABLE IF NOT EXISTS tags (file_path VARCHAR NOT NULL, tag VARCHAR NOT NULL)`);
+  await runSql(db, `CREATE TABLE IF NOT EXISTS tags (
+    file_path VARCHAR NOT NULL,
+    tag VARCHAR NOT NULL,
+    PRIMARY KEY (file_path, tag)
+  )`);
   await runSql(db, "CREATE INDEX IF NOT EXISTS idx_tags_tag  ON tags(tag)");
   await runSql(db, "CREATE INDEX IF NOT EXISTS idx_tags_path ON tags(file_path)");
-  // Unique index — may fail if existing data has duplicates from a previous corruption.
-  // Non-critical for search functionality, so swallow the error.
-  try {
-    await runSql(db, "CREATE UNIQUE INDEX IF NOT EXISTS idx_tags_unique ON tags(file_path, tag)");
-  } catch {
-    /* Non-fatal: index won't be created but DB still functions */
+  if (!(await tableHasPrimaryKey(db, "tags", ["file_path", "tag"]))) {
+    // Migration for databases created before PRIMARY KEY was added.
+    // Old databases have no PK on tags. Since DuckDB doesn't support
+    // ALTER TABLE ADD PRIMARY KEY, we use a UNIQUE INDEX instead.
+    try {
+      await runSql(db, "CREATE UNIQUE INDEX IF NOT EXISTS idx_tags_unique ON tags(file_path, tag)");
+    } catch {
+      /* Non-fatal — tags use DELETE+INSERT, not upserts */
+    }
   }
 
   await runSql(db, `CREATE TABLE IF NOT EXISTS term_index (
-    term VARCHAR NOT NULL, file_path VARCHAR NOT NULL, tf INTEGER NOT NULL DEFAULT 0
+    term VARCHAR NOT NULL,
+    file_path VARCHAR NOT NULL,
+    tf INTEGER NOT NULL DEFAULT 0,
+    PRIMARY KEY (term, file_path)
   )`);
   await runSql(db, "CREATE INDEX IF NOT EXISTS idx_term_index_term ON term_index(term)");
   await runSql(db, "CREATE INDEX IF NOT EXISTS idx_term_index_path ON term_index(file_path)");
+  if (!(await tableHasPrimaryKey(db, "term_index", ["term", "file_path"]))) {
+    // Migration for databases created before PRIMARY KEY was added.
+    try {
+      await runSql(db, "CREATE UNIQUE INDEX IF NOT EXISTS idx_term_index_unique ON term_index(term, file_path)");
+    } catch {
+      /* Non-fatal; term_index uses DELETE+INSERT, not upserts */
+    }
+  }
 
   await runSql(
     db,
-    `CREATE TABLE IF NOT EXISTS doc_lengths (file_path VARCHAR PRIMARY KEY, doc_length INTEGER NOT NULL DEFAULT 0)`,
+    `CREATE TABLE IF NOT EXISTS doc_lengths (
+      file_path VARCHAR PRIMARY KEY,
+      doc_length INTEGER NOT NULL DEFAULT 0
+    )`,
   );
+  if (!(await tableHasPrimaryKey(db, "doc_lengths", ["file_path"]))) {
+    // Migration for databases created before PRIMARY KEY was added.
+    // Old databases have no PK, so INSERT OR REPLACE would fail.
+    try {
+      await runSql(db, "CREATE UNIQUE INDEX IF NOT EXISTS idx_doc_lengths_unique ON doc_lengths(file_path)");
+    } catch {
+      /* Non-fatal; INSERT OR REPLACE won't work without a constraint */
+    }
+  }
   await runSql(
     db,
     `CREATE TABLE IF NOT EXISTS corpus_stats (key VARCHAR PRIMARY KEY, value REAL NOT NULL)`,
