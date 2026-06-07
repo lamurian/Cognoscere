@@ -83,6 +83,17 @@ export default function (pi: ExtensionAPI) {
       const text = event.content?.[0]?.text ?? "";
       const matches = text.match(/- \[.*?\]\(.*?\)/g);
       turn.searchResultCount = matches ? matches.length : 0;
+
+      // Option C: extract PARA file paths from search results
+      // and treat them as "read" for this turn
+      const linkRe = /\[([^\]]+)\]\(([^)]+)\)/g;
+      let linkMatch: RegExpExecArray | null;
+      while ((linkMatch = linkRe.exec(text)) !== null) {
+        const path = linkMatch[2];
+        if (isParaPath(path)) {
+          turn.readParaFiles.add(path);
+        }
+      }
     } catch {
       turn.searchResultCount = 0;
     }
@@ -127,15 +138,7 @@ export default function (pi: ExtensionAPI) {
 
     if (isToolCallEventType("write", event) && isParaPath(event.input.path)) {
       if (!turn.searchStarted) {
-        if (!(await confirmOrBlock(ctx, "Write to PARA dir without search?"))) {
-          return {
-            block: true,
-            reason:
-              "[skill-gate] Write blocked. Run search_para_docs first to " +
-              "check for existing documents. See .agents/skills/knowledge/SKILL.md " +
-              "for the standard workflow.",
-          };
-        }
+        await warnGate(ctx, "Writing to PARA dir without search first.");
       }
     }
 
@@ -143,14 +146,7 @@ export default function (pi: ExtensionAPI) {
 
     if (isToolCallEventType("edit", event) && isParaPath(event.input.path)) {
       if (!turn.readParaFiles.has(event.input.path)) {
-        if (!(await confirmOrBlock(ctx, "Edit PARA file without reading?"))) {
-          return {
-            block: true,
-            reason:
-              `[skill-gate] Edit blocked. Read "${event.input.path}" first ` +
-              "to review current content before making changes.",
-          };
-        }
+        await warnGate(ctx, `Editing "${event.input.path}" without reading it first.`);
       }
     }
 
@@ -158,14 +154,7 @@ export default function (pi: ExtensionAPI) {
 
     if (isToolCallEventType("update_para_doc", event)) {
       if (!turn.readParaFiles.has(event.input.path)) {
-        if (!(await confirmOrBlock(ctx, "Update PARA doc without reading?"))) {
-          return {
-            block: true,
-            reason:
-              `[skill-gate] Update blocked. Read "${event.input.path}" first ` +
-              "to review current content before updating.",
-          };
-        }
+        await warnGate(ctx, `Updating "${event.input.path}" without reading it first.`);
       }
     }
   });
@@ -185,7 +174,8 @@ async function gateCreate(
 ): Promise<"allow" | "block"> {
   // 1) Was search run this turn?
   if (!turn.searchStarted) {
-    if (await confirmOrBlock(ctx, "Create without search?")) {
+    const ok = await confirmGate(ctx, "Create without search?");
+    if (ok) {
       session.overrideCount++;
       return "allow";
     }
@@ -197,42 +187,47 @@ async function gateCreate(
     return "allow";
   }
 
-  // 3) Search found existing docs — warn about duplication
+  // 3) Search found existing docs — soft warning, don't block
   if (turn.searchResultCount > 0) {
-    if (await confirmOrBlock(ctx, `Search found ${turn.searchResultCount} existing doc(s). Create anyway?`)) {
-      session.overrideCount++;
-      return "allow";
-    }
-    return "block";
+    await warnGate(ctx, `Search found ${turn.searchResultCount} existing doc(s). Creating anyway.`);
+    return "allow";
   }
 
-  // 4) Search returned 0 results — may need brainstorming
+  // 4) Search returned 0 results — soft warning, don't block
   if (turn.searchResultCount === 0) {
-    if (await confirmOrBlock(ctx, "No existing docs found. Create anyway?")) {
-      session.overrideCount++;
-      return "allow";
-    }
-    return "block";
+    await warnGate(ctx, "No existing docs found. Creating new document.");
+    return "allow";
   }
 
   return "allow";
 }
 
-// ─── Confirm helper ──────────────────────────────────────────────────────────
+// ─── Gate helpers ────────────────────────────────────────────────────────────
 
-async function confirmOrBlock(
+async function confirmGate(
   ctx: any,
   label: string,
 ): Promise<boolean /* true = allow, false = block */> {
-  // Headless modes: fail-open (allow)
   if (!ctx.hasUI) return true;
-
-  // Frequency cap: auto-allow after N overrides this session
   if (session.overrideCount >= OVERRIDE_LIMIT) return true;
 
   try {
     return await ctx.ui.confirm("Skill gate", label);
   } catch {
     return true;
+  }
+}
+
+async function warnGate(
+  ctx: any,
+  message: string,
+): Promise<void> {
+  if (!ctx.hasUI) return;
+  if (session.overrideCount >= OVERRIDE_LIMIT) return;
+
+  try {
+    ctx.ui.notify(message, "warning");
+  } catch {
+    // notify is fire-and-forget, ignore errors
   }
 }
