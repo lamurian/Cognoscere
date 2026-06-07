@@ -13,7 +13,6 @@ interface TurnState {
 
 interface SessionState {
   bypassed: boolean;           // user suspended gates via /bypass-gate
-  overrideCount: number;       // times user confirmed through a gate this session
   healthy: boolean;            // false = gate crashed, fail-closed
 }
 
@@ -31,12 +30,9 @@ function freshTurn(): TurnState {
 function freshSession(): SessionState {
   return {
     bypassed: false,
-    overrideCount: 0,
     healthy: true,
   };
 }
-
-const OVERRIDE_LIMIT = 3;
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -120,18 +116,7 @@ export default function (pi: ExtensionAPI) {
       isToolCallEventType("create_para_doc", event) ||
       isToolCallEventType("batch_create_para_docs", event)
     ) {
-      const action = await gateCreate(ctx);
-      if (action === "block") {
-        return {
-          block: true,
-          reason:
-            "[skill-gate] Creation blocked. Requirements:\n" +
-            "1. Run search_para_docs to check for existing documents.\n" +
-            "2. If search returns 0 results and intent is vague, " +
-            "read .agents/skills/brainstorm/SKILL.md to clarify.\n" +
-            "3. Read .agents/skills/create-doc/SKILL.md before creating.",
-        };
-      }
+      await gateCreate(ctx);
     }
 
     // -- write into PARA dir --
@@ -171,59 +156,38 @@ export default function (pi: ExtensionAPI) {
 
 async function gateCreate(
   ctx: any,
-): Promise<"allow" | "block"> {
+): Promise<void> {
   // 1) Was search run this turn?
   if (!turn.searchStarted) {
-    const ok = await confirmGate(ctx, "Create without search?");
-    if (ok) {
-      session.overrideCount++;
-      return "allow";
-    }
-    return "block";
+    await warnGate(ctx, "Creating document without search first.");
+    return;
   }
 
   // 2) Search is still running (parallel execution) — let it through
   if (turn.searchResultCount === -1) {
-    return "allow";
+    return;
   }
 
   // 3) Search found existing docs — soft warning, don't block
   if (turn.searchResultCount > 0) {
     await warnGate(ctx, `Search found ${turn.searchResultCount} existing doc(s). Creating anyway.`);
-    return "allow";
+    return;
   }
 
   // 4) Search returned 0 results — soft warning, don't block
   if (turn.searchResultCount === 0) {
     await warnGate(ctx, "No existing docs found. Creating new document.");
-    return "allow";
-  }
-
-  return "allow";
-}
-
-// ─── Gate helpers ────────────────────────────────────────────────────────────
-
-async function confirmGate(
-  ctx: any,
-  label: string,
-): Promise<boolean /* true = allow, false = block */> {
-  if (!ctx.hasUI) return true;
-  if (session.overrideCount >= OVERRIDE_LIMIT) return true;
-
-  try {
-    return await ctx.ui.confirm("Skill gate", label);
-  } catch {
-    return true;
+    return;
   }
 }
+
+// ─── Gate helper ─────────────────────────────────────────────────────────────
 
 async function warnGate(
   ctx: any,
   message: string,
 ): Promise<void> {
   if (!ctx.hasUI) return;
-  if (session.overrideCount >= OVERRIDE_LIMIT) return;
 
   try {
     ctx.ui.notify(message, "warning");
