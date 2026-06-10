@@ -168,11 +168,13 @@ async function processChangedFiles(
 
       await runWithRecovery(db, "DELETE FROM tags WHERE file_path = ?", entry.path);
       for (const tag of parsed.tags) {
+        const cleanTag = sanitiseTag(tag);
+        if (cleanTag === null) continue; // skip corrupt tags silently
         await runWithRecovery(
           db,
           "INSERT INTO tags (file_path, tag) VALUES (?, ?)",
           entry.path,
-          tag,
+          cleanTag,
         );
       }
 
@@ -192,6 +194,25 @@ async function processChangedFiles(
     }
   }
   return { success, errors };
+}
+
+/**
+ * Sanitise a tag string: strip non-printable characters, trim whitespace,
+ * and reject empty results. Prevents binary/control-character data from
+ * being written to DuckDB VARCHAR columns, which can corrupt ART indexes.
+ *
+ * DuckDB's ART (Adaptive Radix Tree) index uses internal byte-level
+ * comparisons. Embedded null bytes (\\x00) or other control characters
+ * can cause the C++ tree traversal to read past buffer boundaries,
+ * resulting in a SIGSEGV or corrupt index nodes (invalid node type).
+ */
+export function sanitiseTag(raw: string): string | null {
+  // Strip control characters (0x00-0x1F except 0x09 tab, 0x0A newline)
+  // and delete characters (0x7F). Also strip non-ASCII high bytes that
+  // could be misinterpreted by DuckDB's UTF-8 validation.
+  const cleaned = raw.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "").trim();
+  if (cleaned.length === 0) return null;
+  return cleaned;
 }
 
 /**

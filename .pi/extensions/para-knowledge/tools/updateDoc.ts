@@ -15,6 +15,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { withDb, runWithRecovery, initDb } from "../db.js";
 import { parseFrontmatter, formatFrontmatter } from "../frontmatter.js";
+import { sanitiseTag } from "../sync.js";
 import { tokenize } from "../bm25.js";
 import { BM25_DEFAULTS } from "../types.js";
 
@@ -115,14 +116,16 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
               params.path,
             );
 
-            // Re-insert tags
+            // Re-insert tags (sanitised)
             await runWithRecovery(db, "DELETE FROM tags WHERE file_path = ?", params.path);
             for (const tag of newTags) {
+              const cleanTag = sanitiseTag(tag);
+              if (cleanTag === null) continue;
               await runWithRecovery(
                 db,
                 "INSERT INTO tags (file_path, tag) VALUES (?, ?)",
                 params.path,
-                tag,
+                cleanTag,
               );
             }
 
