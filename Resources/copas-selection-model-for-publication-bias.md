@@ -16,6 +16,8 @@ source: 'null'
 
 The Copas selection model addresses publication bias by explicitly modeling the selection process that determines which studies are published. It uses two equations: an outcome equation (standard random-effects meta-analysis) and a selection equation linking publication probability to each study's standard error (smaller, less precise studies have lower publication probability). By varying the assumed association between standard error and publication probability, the model generates a sensitivity analysis showing how the summary estimate changes under different selection scenarios [@copas1997; @copas2001].
 
+For detailed explanations of the model's mechanics, see: [[copas-selection-model-publication-probability-as-a-latent-variable]], [[meta-copas-step-by-step-algorithm]], and [[interpreting-summary-from-meta-copas]].
+
 ## When to Use and When Not
 
 Use the Copas model as a sensitivity analysis when you suspect publication bias and have a moderate to large number of studies (15–20 or more). It is especially valuable when you want to quantify how robust the meta-analytic estimate is to plausible degrees of selective publication. Do not use it with fewer than ten studies, as the model parameters become unstable and may fail to converge. Avoid it when the selection mechanism is unlikely to depend on standard error (e.g., when studies are suppressed for reasons unrelated to precision).
