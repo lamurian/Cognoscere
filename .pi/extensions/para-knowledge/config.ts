@@ -6,7 +6,7 @@
  */
 
 import type duckdb from "duckdb";
-import { rm, mkdir } from "node:fs/promises";
+import { rm, mkdir, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 const WAL_CHECKPOINT_THRESHOLD = "4 MiB";
@@ -122,4 +122,19 @@ export async function cleanTempDir(dbPath: string): Promise<void> {
 export async function setTempDir(db: duckdb.Database, dbPath: string): Promise<void> {
   const dir = resolveTempDir(dbPath);
   await runSql(db, `PRAGMA temp_directory = '${dir}'`);
+}
+
+/** Strip YAML frontmatter from markdown content, returning only the body. */
+export function stripFrontmatter(content: string): string {
+  return content.replace(/^---\n[\s\S]*?\n---\n?/, "").trim();
+}
+
+/**
+ * Read a markdown file from disk and return just the body (no frontmatter).
+ * Phase 2b: files.body is no longer stored in DuckDB; read from disk on demand.
+ */
+export async function readDocumentBody(projectDir: string, filePath: string): Promise<string> {
+  const fullPath = resolve(projectDir, filePath);
+  const content = await readFile(fullPath, "utf-8");
+  return stripFrontmatter(content);
 }

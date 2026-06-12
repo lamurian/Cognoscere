@@ -105,12 +105,11 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
           async (db) => {
             await initDb(db);
 
-            // Update file row (include source and description)
+            // Update file row (Phase 2b: no body column)
             await runWithRecovery(
               db,
-              "UPDATE files SET title = ?, body = ?, modified = ?, file_mtime = ?, source_url = ? WHERE path = ?",
+              "UPDATE files SET title = ?, modified = ?, file_mtime = ?, source_url = ? WHERE path = ?",
               newTitle,
-              params.content,
               now,
               now,
               newSource,

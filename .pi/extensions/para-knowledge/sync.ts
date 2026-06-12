@@ -108,9 +108,9 @@ async function processChangedFiles(
 
       await runWithRecovery(
         db,
-        `INSERT OR REPLACE INTO files (path, title, body, author, editor, created, modified, file_mtime, source_url)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        entry.path, parsed.title, parsed.body, parsed.author, parsed.editor,
+        `INSERT OR REPLACE INTO files (path, title, author, editor, created, modified, file_mtime, source_url)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+        entry.path, parsed.title, parsed.author, parsed.editor,
         parsed.created, new Date().toISOString(), mtimeStr, parsed.source_url,
       );
 

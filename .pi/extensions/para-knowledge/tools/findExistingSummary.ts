@@ -10,11 +10,11 @@ import { withDb, queryRows } from "../db.js";
 import { tokenize } from "../bm25.js";
 import { BM25_DEFAULTS } from "../types.js";
 import { textSimilarity } from "../similarity.js";
+import { readDocumentBody } from "../config.js";
 
 interface FileRow {
   path: string;
   title: string;
-  body: string;
   source_url: string | null;
 }
 interface StatRow {
@@ -45,7 +45,7 @@ async function findExactUrlMatch(
   try {
     const rows = await queryRows<FileRow>(
       db,
-      "SELECT path, title, body, source_url FROM files WHERE source_url = ?",
+      "SELECT path, title, source_url FROM files WHERE source_url = ?",
       url,
     );
     return rows.length > 0 ? { path: rows[0].path, title: rows[0].title } : null;
@@ -117,14 +117,14 @@ async function rankByContent(db: duckdb.Database, content: string): Promise<stri
     .map(([fp]) => fp);
 }
 
-async function matchByContent(db: duckdb.Database, content: string): Promise<MatchResult> {
+async function matchByContent(db: duckdb.Database, content: string, cwd: string): Promise<MatchResult> {
   const topCandidates = await rankByContent(db, content);
   if (topCandidates.length === 0) return { found: false, matchType: "none" };
 
   const docPlaceholders = topCandidates.map(() => "?").join(",");
   const docRows = await queryRows<FileRow>(
     db,
-    `SELECT path, title, body, source_url FROM files WHERE path IN (${docPlaceholders})`,
+    `SELECT path, title, source_url FROM files WHERE path IN (${docPlaceholders})`,
     ...topCandidates,
   );
 
@@ -132,8 +132,10 @@ async function matchByContent(db: duckdb.Database, content: string): Promise<Mat
     bestPath = "",
     bestTitle = "";
   for (const row of docRows) {
-    if (!row.body || row.body.length < 50) continue;
-    const sim = textSimilarity(content, row.body);
+    let docBody = "";
+    try { docBody = await readDocumentBody(cwd, row.path); } catch { continue; }
+    if (docBody.length < 50) continue;
+    const sim = textSimilarity(content, docBody);
     if (sim > bestSim) {
       bestSim = sim;
       bestPath = row.path;
@@ -175,6 +177,7 @@ export function registerFindExistingSummaryTool(pi: ExtensionAPI): void {
       });
 
       try {
+        const cwd = ctx.cwd;
         const result: MatchResult = await withDb(ctx.cwd, "read", async (db) => {
           const exact = await findExactUrlMatch(db, url);
           if (exact)
@@ -187,7 +190,7 @@ export function registerFindExistingSummaryTool(pi: ExtensionAPI): void {
             } as const;
           if (!content || content.trim().length < 50)
             return { found: false, matchType: "none" } as const;
-          return await matchByContent(db, content);
+          return await matchByContent(db, content, cwd);
         });
 
         if (result.found) {

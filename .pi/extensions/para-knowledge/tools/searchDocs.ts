@@ -195,7 +195,7 @@ export function registerSearchDocsTool(pi: ExtensionAPI): void {
             const results = await searchByTagsOnly(db, filterTags);
             return { results, trace: "tag-only" };
           }
-          return await searchDocuments(db, query, filterTags);
+          return await searchDocuments(db, query, filterTags, ctx.cwd);
         });
 
         const responseTrace = `🗄️ notes.duckdb — ${trace}  results:${results.length}`;

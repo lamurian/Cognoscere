@@ -15,13 +15,7 @@ import { resolve } from "node:path";
 import duckdb from "duckdb";
 import { DB_FILE, type WithDbOptions } from "./types.js";
 import { isLockError, queryRows } from "./lock.js";
-import {
-  configureCrashSafety,
-  cleanTempDir,
-  setTempDir,
-  runSql,
-} from "./config.js";
-
+import { configureCrashSafety, cleanTempDir, setTempDir, runSql } from "./config.js";
 const WRITE_QUEUE_TIMEOUT = 300_000;
 const QUEUE_POLL_INTERVAL = 2_000;
 
@@ -64,8 +58,7 @@ function closeDatabase(db: duckdb.Database): Promise<void> {
  * - temp_directory — writable path for DuckDB spill files.
  * ════════════════════════════════════════════════════════════
  */
-/**
- * Check whether a table has a PRIMARY KEY on the given columns.
+/** Check whether a table has a PRIMARY KEY on the given columns.
  * Used by schema migration — if a PK already exists, we skip
  * redundant UNIQUE INDEX creation that would conflict with it.
  */
@@ -97,7 +90,7 @@ export async function initDb(db: duckdb.Database): Promise<void> {
 
   await runSql(db, `CREATE TABLE IF NOT EXISTS files (
     path VARCHAR PRIMARY KEY, title VARCHAR NOT NULL DEFAULT '',
-    body TEXT NOT NULL DEFAULT '', author VARCHAR NOT NULL DEFAULT '',
+    author VARCHAR NOT NULL DEFAULT '',
     editor VARCHAR NOT NULL DEFAULT '', created TIMESTAMP,
     modified TIMESTAMP, file_mtime TIMESTAMP, source_url VARCHAR DEFAULT NULL
   )`);
@@ -108,6 +101,12 @@ export async function initDb(db: duckdb.Database): Promise<void> {
     /* ok */
   }
 
+  // Phase 2b: drop body column if it exists (legacy schema)
+  try {
+    await runSql(db, "ALTER TABLE files DROP COLUMN IF EXISTS body");
+  } catch {
+    /* column may not exist or not be supported */
+  }
   await runSql(db, `CREATE TABLE IF NOT EXISTS tags (
     file_path VARCHAR NOT NULL,
     tag VARCHAR NOT NULL,

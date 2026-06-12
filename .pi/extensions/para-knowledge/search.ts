@@ -13,6 +13,7 @@
 import type duckdb from "duckdb";
 import { type SearchResult, BM25_DEFAULTS } from "./types.js";
 import { tokenize } from "./bm25.js";
+import { readDocumentBody } from "./config.js";
 import {
   handleEmptyQuery,
   fetchCorpusStats,
@@ -28,14 +29,16 @@ import {
 
 /**
  * Search documents using BM25 ranking.
+ * @param cwd - Project root directory, used to read document body from disk (Phase 2b).
  */
 export async function searchDocuments(
   db: duckdb.Database,
   query: string,
   filterTags?: string[],
+  cwd?: string,
 ): Promise<{ results: SearchResult[]; trace: string }> {
   const queryTerms = tokenize(query);
-  if (queryTerms.length === 0) return handleEmptyQuery(db, filterTags);
+  if (queryTerms.length === 0) return handleEmptyQuery(db, filterTags, cwd);
 
   const { N, avgDocLen } = await fetchCorpusStats(db);
   if (N === 0) return { results: [], trace: "empty-corpus" };
@@ -50,7 +53,7 @@ export async function searchDocuments(
 
   if (candidateTfs.size === 0) {
     if (filterTags?.length) {
-      const r = await searchByTagsOnly(db, filterTags);
+      const r = await searchByTagsOnly(db, filterTags, cwd);
       return { results: r, trace: "bm25-no-text-match" };
     }
     return { results: [], trace: "bm25-no-match" };
@@ -70,7 +73,7 @@ export async function searchDocuments(
   const sortedPaths = sortTopResults(candidateScores, BM25_DEFAULTS.MAX_RESULTS);
   if (sortedPaths.length === 0) return { results: [], trace: "bm25-zero-scored" };
 
-  const rowMap = await fetchResultDocuments(db, sortedPaths);
+  const rowMap = await fetchResultDocuments(db, sortedPaths, cwd);
   const results = buildSearchResults(
     sortedPaths,
     rowMap,

@@ -48,7 +48,7 @@ export async function initDb(db: duckdb.Database): Promise<void> {
     db,
     `CREATE TABLE IF NOT EXISTS files (
     path VARCHAR PRIMARY KEY, title VARCHAR NOT NULL DEFAULT '',
-    body TEXT NOT NULL DEFAULT '', author VARCHAR NOT NULL DEFAULT '',
+    author VARCHAR NOT NULL DEFAULT '',
     editor VARCHAR NOT NULL DEFAULT '', created TIMESTAMP,
     modified TIMESTAMP, file_mtime TIMESTAMP, source_url VARCHAR DEFAULT NULL
   )`,
@@ -136,11 +136,10 @@ export async function indexScratchpad(
 
   await run(
     db,
-    `INSERT OR REPLACE INTO files (path, title, body, author, editor, created, modified, file_mtime, source_url)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT OR REPLACE INTO files (path, title, author, editor, created, modified, file_mtime, source_url)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
     relPath,
     title,
-    body,
     "pi",
     "lam",
     now,

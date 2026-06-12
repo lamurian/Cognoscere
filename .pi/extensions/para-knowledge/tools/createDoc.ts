@@ -91,14 +91,13 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
           async (db) => {
             await initDb(db);
 
-            // Upsert file row (include source_url and description)
+            // Upsert file row (Phase 2b: no body column — body read from disk)
             await runWithRecovery(
               db,
-              `INSERT OR REPLACE INTO files (path, title, body, author, editor, created, modified, file_mtime, source_url)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+              `INSERT OR REPLACE INTO files (path, title, author, editor, created, modified, file_mtime, source_url)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
               relPath,
               params.title,
-              params.content,
               "pi",
               "lam",
               now,
