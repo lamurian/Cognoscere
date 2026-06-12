@@ -34,11 +34,15 @@ Examine whether the bias-corrected estimate changes meaningfully across the rang
 
 The Copas model pairs two equations. The outcome equation is the standard random-effects model:
 
-\[\hat{\theta}_j \sim N(\theta, \tau^2 + s_j^2)\]
+$$
+\hat{\theta}_j \sim N(\theta, \tau^2 + s_j^2)
+$$
 
 The selection equation models the probability that study \(j\) is observed:
 
-\[P(\text{observed} \mid \hat{\theta}_j, s_j) = \Phi(\gamma_0 + \gamma_1 / s_j)\]
+$$
+P(\text{observed} \mid \hat{\theta}_j, s_j) = \Phi(\gamma_0 + \gamma_1 / s_j)
+$$
 
 where \(\Phi\) is the standard normal CDF, and \(\gamma_1\) controls how strongly publication probability depends on precision [@copas2001]. When \(\gamma_1 > 0\), smaller studies (larger \(s_j\)) have lower publication probability. The joint likelihood integrates over the unobserved studies, and estimation proceeds via maximum likelihood. Because \(\gamma_0, \gamma_1\) are not identifiable from the observed data alone, the model is used as a sensitivity analysis: \(\gamma_0, \gamma_1\) are varied over a plausible grid, and the adjusted \(\hat{\theta}_{adj}\) is examined for sensitivity.
 

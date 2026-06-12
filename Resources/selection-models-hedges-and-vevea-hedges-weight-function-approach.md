@@ -32,7 +32,9 @@ Compare the adjusted effect estimate from the selection model to the naive meta-
 
 Let \(\hat{\theta}_j\) be the effect estimate with variance \(s_j^2\), and let \(p_j\) be its two-tailed p-value. The selection model specifies the likelihood of observing study \(j\) conditional on its effect as proportional to a weight function \(\omega(p_j)\):
 
-\[L(\theta, \tau^2, \omega) = \prod_{j=1}^k \frac{f(\hat{\theta}_j \mid \theta, \tau^2 + s_j^2) \, \omega(p_j)}{\int f(t \mid \theta, \tau^2 + s_j^2) \, \omega(p(t)) \, dt}\]
+$$
+L(\theta, \tau^2, \omega) = \prod_{j=1}^k \frac{f(\hat{\theta}_j \mid \theta, \tau^2 + s_j^2) \, \omega(p_j)}{\int f(t \mid \theta, \tau^2 + s_j^2) \, \omega(p(t)) \, dt}
+$$
 
 where \(f\) is the normal density [@hedges1984]. The denominator ensures the likelihood integrates to one over the observable range. The weight function \(\omega(p)\) is typically specified as a step-function over \(m\) p-value intervals (e.g., \([0, 0.01], [0.01, 0.05], [0.05, 0.10], [0.10, 1]\)), with \(\omega_1 = 1\) fixed for identification and \(\omega_2, \ldots, \omega_m\) estimated. A likelihood ratio test compares the selection model (\(\omega_j \neq 1\)) to the no-selection model (\(\omega_j = 1\) for all \(j\)). Vevea and Hedges [@vevea2005] extended this to a sensitivity analysis where plausible weight-function shapes are pre-specified rather than estimated, avoiding the instability of estimating many parameters from limited data.
 

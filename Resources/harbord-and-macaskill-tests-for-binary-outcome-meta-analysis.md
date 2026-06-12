@@ -32,11 +32,15 @@ A significant Harbord or Macaskill test indicates asymmetry in the funnel plot c
 
 For binary outcomes, each study \(j\) provides a \(2 \times 2\) table of counts: \(a_j, b_j\) (treatment), \(c_j, d_j\) (control), with total \(n_j = a_j + b_j + c_j + d_j\). Let \(T_j = a_j + c_j\) be the total events and \(N_j = a_j + b_j\) the treated subjects. Harbord's test replaces the log odds ratio \(\log(OR_j)\) and its variance with the efficient score \(S_j = a_j - N_j T_j / n_j\) and its variance \(V_j = N_j (1 - N_j/n_j) T_j (n_j - T_j) / [n_j (n_j - 1)]\). The regression is
 
-\[S_j / V_j = \beta_0 + \beta_1 / \sqrt{V_j} + \varepsilon_j\]
+$$
+S_j / V_j = \beta_0 + \beta_1 / \sqrt{V_j} + \varepsilon_j
+$$
 
 where the intercept \(\beta_0\) tests asymmetry [@harbord2006]. Macaskill's test uses total sample size \(-\), fitting
 
-\[\log(OR_j) = \beta_0 + \beta_1 n_j + \varepsilon_j\]
+$$
+\log(OR_j) = \beta_0 + \beta_1 n_j + \varepsilon_j
+$$
 
 with weights proportional to study size [@macaskill2001]. Peters' test [@peters2008] uses \(1/n_j\) as the predictor instead of \(n_j\).
 

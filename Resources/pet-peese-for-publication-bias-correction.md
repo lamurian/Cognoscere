@@ -32,7 +32,9 @@ The PET or PEESE intercept is the estimated effect when sampling error is zero â
 
 PET-PEESE arises from the meta-regression framework. Let \(\hat{\theta}_j\) be the effect estimate with standard error \(s_j\). PET fits the weighted regression
 
-\[\hat{\theta}_j = \beta_0 + \beta_1 s_j + \varepsilon_j\]
+$$
+\hat{\theta}_j = \beta_0 + \beta_1 s_j + \varepsilon_j
+$$
 
 with inverse-variance weights \(w_j = 1/s_j^2\). The intercept \(\beta_0\) is the precision-effect estimate â€” the predicted effect when \(s_j = 0\) (a hypothetical study of infinite precision). If publication bias operates through selection on significance, small studies with large \(s_j\) need larger effects to reach significance, inducing a positive correlation between \(\hat{\theta}_j\) and \(s_j\). Extrapolating to \(s_j = 0\) removes this bias under the assumption that \(E[\hat{\theta}_j | s_j] = \theta + \beta_1 s_j\). PEESE replaces \(s_j\) with \(s_j^2\) because when selection is on statistical significance, the expected bias is proportional to the variance rather than the SE [@stanley2014].
 

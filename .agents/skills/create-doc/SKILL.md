@@ -68,6 +68,18 @@ Each note holds exactly one key idea.
 - Use plain text, quotes, and code blocks
 - Be direct and factual
 
+### 5.5. Use standard markdown math syntax
+
+For multi-line (display) mathematical equations, use standard Markdown `$$` delimiters with the equation on its own line:
+
+```markdown
+$$
+\hat{\theta}_i = \theta + \sqrt{\tau^2 + \sigma_i^2}\; \varepsilon_i, \quad \varepsilon_i \sim N(0,1)
+$$
+```
+
+Do not use LaTeX-style `\[ ... \]` or `[ ... ]` delimiters for display math. For inline math (within a sentence), use `\( ... \)`.
+
 ### 6. Use inline citations
 
 Pandoc-style citation keys referencing `@ref.bib`:

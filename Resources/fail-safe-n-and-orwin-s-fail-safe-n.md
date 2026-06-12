@@ -32,11 +32,15 @@ A large fail-safe N was historically interpreted as the meta-analytic result bei
 
 Rosenthal's fail-safe N is derived from Stouffer's method for combining p-values. Let \(z_j = \Phi^{-1}(p_j)\) be the one-tailed z-score for study \(j\), where \(p_j\) is the one-tailed p-value. The combined Stouffer Z is \(Z_{\text{total}} = \sum z_j / \sqrt{k}\). The fail-safe N is the number of additional null studies (\(z = 0\)) needed to make \(Z_{\text{total}} < Z_\alpha\) (non-significant):
 
-\[N_{fs} = \frac{(\sum z_j)^2}{Z_\alpha^2} - k\]
+$$
+N_{fs} = \frac{(\sum z_j)^2}{Z_\alpha^2} - k
+$$
 
 where \(Z_\alpha = 1.645\) for \(\alpha = 0.05\) (one-tailed) [@rosenthal1979]. Orwin's generalization replaces the significance criterion with an effect-size criterion:
 
-\[N_{fs} = \frac{k (\bar{\theta} - \theta_c)}{\theta_c - \theta_0}\]
+$$
+N_{fs} = \frac{k (\bar{\theta} - \theta_c)}{\theta_c - \theta_0}
+$$
 
 where \(\bar{\theta}\) is the meta-analytic effect, \(\theta_c\) is the criterion effect (e.g., a trivial effect), and \(\theta_0\) is the assumed effect of missing studies (typically 0) [@orwin1983].
 

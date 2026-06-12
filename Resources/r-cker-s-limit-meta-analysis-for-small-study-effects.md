@@ -32,11 +32,15 @@ The limit estimate is the predicted effect for a study of infinite size (SE = 0)
 
 Rücker's limit meta-analysis is based on the extended random-effects model with a small-study-effects term:
 
-\[\hat{\theta}_j \sim N(\theta + \alpha \, s_j^2 / (s_j^2 + \hat{\tau}^2), s_j^2 + \tau^2)\]
+$$
+\hat{\theta}_j \sim N(\theta + \alpha \, s_j^2 / (s_j^2 + \hat{\tau}^2), s_j^2 + \tau^2)
+$$
 
 where \(\alpha\) captures the small-study effect — the bias that varies with study precision [@rucker2011]. The model uses a multiplicative shrinkage factor \(\psi_j = \hat{\tau}^2 / (s_j^2 + \hat{\tau}^2)\), which downweights the contribution of each study's bias term in proportion to its heterogeneity share. The limit estimate is obtained by setting the predictor to zero, corresponding to a hypothetical study of infinite size:
 
-\[\hat{\theta}_{\text{lim}} = \hat{\theta}_{REML} - \hat{\alpha} \cdot \psi^*\]
+$$
+\hat{\theta}_{\text{lim}} = \hat{\theta}_{REML} - \hat{\alpha} \cdot \psi^*
+$$
 
 where \(\psi^*\) is the shrinkage factor at \(s_j^2 = 0\). Unlike PET-PEESE, which uses a simple meta-regression, Rücker's model jointly estimates the bias and heterogeneity within a single maximum-likelihood framework and can be extended to a quadratic relationship (\(s_j^4\)) if the linear fit is inadequate.
 

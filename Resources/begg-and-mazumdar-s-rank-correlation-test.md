@@ -32,7 +32,9 @@ A significant positive Kendall's tau suggests that smaller studies tend to repor
 
 Let \(\hat{\theta}_j\) be the effect estimate with variance \(s_j^2\). The test first computes the fixed-effects weighted mean \(\bar{\theta}_w = \sum w_j \hat{\theta}_j / \sum w_j\) where \(w_j = 1/s_j^2\). Each study is assigned a standardized residual \(r_j = (\hat{\theta}_j - \bar{\theta}_w) / s_j\). Kendall's rank correlation coefficient \(\tau\) is then computed between \(r_j\) and \(s_j^2\) (or \(s_j\)):
 
-\[\tau = \frac{2}{n(n-1)} \sum_{i < j} \text{sgn}(r_i - r_j) \cdot \text{sgn}(s_i^2 - s_j^2)\]
+$$
+\tau = \frac{2}{n(n-1)} \sum_{i < j} \text{sgn}(r_i - r_j) \cdot \text{sgn}(s_i^2 - s_j^2)
+$$
 
 Under the null hypothesis of no association between effect size and sampling variance, \(\tau\) is approximately normal with mean zero and variance \(2(2n+5) / [9n(n-1)]\) [@begg1994]. A positive \(\tau\) indicates that smaller studies (larger variance) tend to produce larger effects.
 

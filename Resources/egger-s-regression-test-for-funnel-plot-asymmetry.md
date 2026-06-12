@@ -32,7 +32,9 @@ A significant Egger intercept (p < 0.10) suggests funnel plot asymmetry consiste
 
 Let \(\hat{\theta}_j\) be the effect estimate and \(s_j\) its standard error. Egger's test fits the weighted linear regression
 
-\[z_j = \beta_0 + \beta_1 w_j + \varepsilon_j, \qquad \varepsilon_j \sim N(0, \sigma^2 w_j^{-1})\]
+$$
+z_j = \beta_0 + \beta_1 w_j + \varepsilon_j, \qquad \varepsilon_j \sim N(0, \sigma^2 w_j^{-1})
+$$
 
 where \(z_j = \hat{\theta}_j / s_j\) is the standard normal deviate and \(w_j = 1/s_j\) is precision [@egger1997]. Under the null hypothesis of no small-study effects, the regression line passes through the origin (\(\beta_0 = 0\)), meaning that when precision is zero (a study of infinite variance), the standardized effect is zero. A non-zero intercept signals that the relationship between effect size and precision is asymmetric. The regression is weighted by \(w_j\) (or \(w_j^2\), depending on implementation) to account for heteroscedasticity.
 

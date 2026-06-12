@@ -31,23 +31,23 @@ The Copas model pairs two equations linked by correlated errors. For each study 
 
 **Outcome equation** (standard random effects):
 
-\[
+$$
 \hat{\theta}_i = \theta + \sqrt{\tau^2 + \sigma_i^2}\; \varepsilon_i, \quad \varepsilon_i \sim N(0,1)
-\]
+$$
 
 **Selection equation** (latent variable for publication):
 
-\[
+$$
 Z_i = \gamma_0 + \frac{\gamma_1}{s_i} + \delta_i, \quad \delta_i \sim N(0,1)
-\]
+$$
 
 Study i is **observed** (published) if \(Z_i > 0\).
 
 **Correlation between equations:**
 
-\[
+$$
 \text{corr}(\varepsilon_i, \delta_i) = \rho
-\]
+$$
 
 The correlation \(\rho\) captures publication bias. If \(\rho = 0\), publication is independent of the study's result. If \(\rho > 0\), studies with larger effects are more likely to be published, inflating the meta-analytic estimate.
 
@@ -55,9 +55,9 @@ The correlation \(\rho\) captures publication bias. If \(\rho = 0\), publication
 
 Integrating over \(\delta_i\) gives the marginal probability that study i is published based on its precision alone:
 
-\[
+$$
 P(\text{published} \mid s_i) = \Phi\left(\gamma_0 + \frac{\gamma_1}{s_i}\right)
-\]
+$$
 
 where \(\Phi\) is the standard normal CDF. The parameter \(\gamma_1\) controls how strongly precision affects publication. When \(\gamma_1 > 0\), studies with larger standard errors (imprecise studies) have lower publication probability.
 
@@ -65,12 +65,12 @@ where \(\Phi\) is the standard normal CDF. The parameter \(\gamma_1\) controls h
 
 Given the observed effect size \(\hat{\theta}_i\), the publication probability is updated using the bivariate normal correlation:
 
-\[
+$$
 P(\text{published} \mid \hat{\theta}_i, s_i) = \Phi\left(
 \frac{\gamma_0 + \gamma_1/s_i + \frac{\rho\sigma_i(\hat{\theta}_i - \theta)}{\sigma_i^2 + \tau^2}}
 {\sqrt{1 - \frac{\rho^2\sigma_i^2}{\sigma_i^2 + \tau^2}}}
 \right)
-\]
+$$
 
 This is the **core equation** that enables bias correction. When \(\rho > 0\), a study with an unexpectedly large effect (\(\hat{\theta}_i > \theta\)) has a higher estimated publication probability than its precision alone would predict. The model uses this to downweight studies that are "too convenient" — those that are unlikely to have been observed under the assumed selection mechanism.
 
@@ -78,9 +78,9 @@ This is the **core equation** that enables bias correction. When \(\rho > 0\), a
 
 Define the effective correlation between the observed outcome and the selection error:
 
-\[
+$$
 \tilde{\rho}_i = \frac{\rho\sigma_i}{\sqrt{\sigma_i^2 + \tau^2}}
-\]
+$$
 
 When heterogeneity \(\tau^2\) is large, \(\tilde{\rho}_i\) is small, meaning most of the scatter in the funnel plot is genuine variation rather than selection bias. The conditional probability then reverts toward the marginal \(\Phi(\gamma_0 + \gamma_1/s_i)\) regardless of \(\rho\).
 
@@ -88,15 +88,15 @@ When heterogeneity \(\tau^2\) is large, \(\tilde{\rho}_i\) is small, meaning mos
 
 The likelihood for observed study i is:
 
-\[
+$$
 \mathcal{L}_i(\theta, \tau^2, \rho \mid \gamma_0, \gamma_1) = f(\hat{\theta}_i \mid \theta, \tau^2, \sigma_i^2) \times P(\text{published} \mid \hat{\theta}_i, s_i)
-\]
+$$
 
 where \(f\) is the normal density. The likelihood for unobserved (missing) studies integrates over all possible effect sizes:
 
-\[
+$$
 \mathcal{L}_{\text{missing}} = \int \bigl[1 - P(\text{published} \mid \hat{\theta}, s)\bigr] \, f(\hat{\theta} \mid \theta, \tau^2, \sigma^2) \; d\hat{\theta}
-\]
+$$
 
 The total likelihood combines both contributions and is maximised for \(\theta, \tau^2, \rho\) at each fixed (\(\gamma_0, \gamma_1\)) pair.
 

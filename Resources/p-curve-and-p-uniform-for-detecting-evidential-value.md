@@ -34,7 +34,9 @@ Let \(p_j\) be the two-tailed p-value from study \(j\), and consider only the su
 
 P-uniform* [@vanasseldonk2016] provides a bias-corrected effect estimate by assuming that the p-values of significant studies follow a truncated distribution. The likelihood for the effect size \(\theta\) is
 
-\[L(\theta \mid \text{data}) = \prod_{j: p_j < 0.05} \frac{f(\hat{\theta}_j \mid \theta, s_j^2)}{F(1.96 - \theta/s_j) - F(-1.96 - \theta/s_j)}\]
+$$
+L(\theta \mid \text{data}) = \prod_{j: p_j < 0.05} \frac{f(\hat{\theta}_j \mid \theta, s_j^2)}{F(1.96 - \theta/s_j) - F(-1.96 - \theta/s_j)}
+$$
 
 where \(F\) is the standard normal CDF. The denominator conditions on significance, making this a truncated-normal likelihood. P-uniform* estimates \(\theta\) by maximizing this conditional likelihood.
 
