@@ -71,9 +71,11 @@ async function rankByContent(db: duckdb.Database, content: string): Promise<stri
   const placeholders = queryTerms.map(() => "?").join(",");
   const termRows = await queryRows<TermRow>(
     db,
-    `SELECT ti.term, ti.file_path, ti.tf, dl.doc_length
-     FROM term_index ti LEFT JOIN doc_lengths dl ON ti.file_path = dl.file_path
-     WHERE ti.term IN (${placeholders})`,
+    `SELECT t.term, ti.file_path, ti.tf, dl.doc_length
+     FROM term_index ti
+     JOIN term_dict t ON ti.term_id = t.term_id
+     LEFT JOIN doc_lengths dl ON ti.file_path = dl.file_path
+     WHERE t.term IN (${placeholders})`,
     ...queryTerms,
   );
 

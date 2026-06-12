@@ -20,3 +20,4 @@ notes.duckdb.wal
 # Sensitive environment variables
 *.env*
 !.env.example
+.duckdb_tmp

@@ -33,11 +33,14 @@ export async function findRelated(
   const totalDocs = allLengths.length;
   const avgDocLen = allLengths.reduce((s, r) => s + r.doc_length, 0) / Math.max(totalDocs, 1);
 
-  // Get term_index rows for all query terms
+  // Get term_index rows for all query terms (Phase 2a: join through term_dict)
   const placeholders = queryTerms.map(() => "?").join(",");
   const indexRows = (await allWithRecovery(
     db,
-    `SELECT term, file_path, tf FROM term_index WHERE term IN (${placeholders}) AND file_path != ?`,
+    `SELECT t.term, ti.file_path, ti.tf
+     FROM term_index ti
+     JOIN term_dict t ON ti.term_id = t.term_id
+     WHERE t.term IN (${placeholders}) AND ti.file_path != ?`,
     ...queryTerms,
     relPath,
   )) as unknown as { term: string; file_path: string; tf: number }[];

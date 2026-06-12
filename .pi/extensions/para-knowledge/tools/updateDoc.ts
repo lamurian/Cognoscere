@@ -17,6 +17,7 @@ import { withDb, runWithRecovery, initDb } from "../db.js";
 import { parseFrontmatter, formatFrontmatter } from "../frontmatter.js";
 import { sanitiseTag } from "../sync.js";
 import { tokenize } from "../bm25.js";
+import { insertTermIndexEntries } from "../config.js";
 import { BM25_DEFAULTS } from "../types.js";
 
 /**
@@ -129,8 +130,7 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
               );
             }
 
-            // Rebuild BM25 term index (description boosts search relevance)
-            await runWithRecovery(db, "DELETE FROM term_index WHERE file_path = ?", params.path);
+            // Rebuild BM25 term index (Phase 2a: via term_dict-normalized entries)
             const boostedTitle = Array.from(
               { length: BM25_DEFAULTS.TITLE_BOOST },
               () => newTitle,
@@ -141,19 +141,8 @@ export function registerUpdateDocTool(pi: ExtensionAPI): void {
             for (const term of terms) {
               tfMap.set(term, (tfMap.get(term) ?? 0) + 1);
             }
-            // Batch INSERT all terms — avoids WAL bloat from per-term transactions
-            const termEntries = [...tfMap.entries()];
-            for (let i = 0; i < termEntries.length; i += 500) {
-              const chunk = termEntries.slice(i, i + 500);
-              const placeholders = chunk.map(() => "(?, ?, ?)").join(", ");
-              const batchParams: unknown[] = [];
-              for (const [term, tf] of chunk) batchParams.push(term, params.path, tf);
-              await runWithRecovery(
-                db,
-                `INSERT INTO term_index (term, file_path, tf) VALUES ${placeholders}`,
-                ...batchParams,
-              );
-            }
+            // Phase 2a: insert via term_dict-normalized entries
+            await insertTermIndexEntries(db, params.path, tfMap);
 
             // Doc length
             await runWithRecovery(

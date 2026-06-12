@@ -17,6 +17,7 @@ import { slugify, formatFrontmatter } from "./yaml.js";
 import { withDb, initDb } from "../para-knowledge/db.js";
 import { runWithRecovery, allWithRecovery } from "../para-knowledge/lock.js";
 import { tokenize } from "../_common/tokenize.js";
+import { insertTermIndexEntries } from "../para-knowledge/config.js";
 import { findRelated, appendLinks } from "./search.js";
 
 // ── Types ─────────────────────────────────────────────────────────────
@@ -113,24 +114,12 @@ async function indexDocumentsInDb(
         );
       }
 
-      // ── Re-build BM25 term index ──
-      await runWithRecovery(db, "DELETE FROM term_index WHERE file_path = ?", relPath);
+      // ── Re-build BM25 term index (Phase 2a: via term_dict) ──
       const boostedTitle = Array.from({ length: 3 }, () => doc.title).join(" ");
       const terms = tokenize(`${boostedTitle} ${doc.content}`);
       const tfMap = new Map<string, number>();
       for (const t of terms) tfMap.set(t, (tfMap.get(t) ?? 0) + 1);
-      const termEntries = [...tfMap.entries()];
-      for (let j = 0; j < termEntries.length; j += 500) {
-        const chunk = termEntries.slice(j, j + 500);
-        const placeholders = chunk.map(() => "(?, ?, ?)").join(", ");
-        const batchParams: unknown[] = [];
-        for (const [term, tf] of chunk) batchParams.push(term, relPath, tf);
-        await runWithRecovery(
-          db,
-          `INSERT INTO term_index (term, file_path, tf) VALUES ${placeholders}`,
-          ...batchParams,
-        );
-      }
+      await insertTermIndexEntries(db, relPath, tfMap);
 
       // ── Doc length ──
       await runWithRecovery(

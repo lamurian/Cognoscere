@@ -5,6 +5,7 @@
 import { resolve } from "node:path";
 import duckdb from "duckdb";
 import { tokenize } from "../_common/tokenize.js";
+import { getOrCreateTermId } from "../para-knowledge/config.js";
 
 const DB_FILE = "notes.duckdb";
 
@@ -68,11 +69,20 @@ export async function initDb(db: duckdb.Database): Promise<void> {
   await run(
     db,
     `CREATE TABLE IF NOT EXISTS term_index (
-    term VARCHAR NOT NULL, file_path VARCHAR NOT NULL, tf INTEGER NOT NULL DEFAULT 0
+    term_id INTEGER NOT NULL, file_path VARCHAR NOT NULL, tf INTEGER NOT NULL DEFAULT 0
   )`,
   );
-  await run(db, "CREATE INDEX IF NOT EXISTS idx_term_index_term ON term_index(term)");
+  await run(db, "CREATE INDEX IF NOT EXISTS idx_term_index_tid ON term_index(term_id)");
   await run(db, "CREATE INDEX IF NOT EXISTS idx_term_index_path ON term_index(file_path)");
+
+  // Phase 2a: term_dict for normalised term→ID mapping
+  await run(
+    db,
+    `CREATE TABLE IF NOT EXISTS term_dict (
+      term_id INTEGER PRIMARY KEY, term VARCHAR UNIQUE NOT NULL
+    )`,
+  );
+  await run(db, "CREATE SEQUENCE IF NOT EXISTS term_dict_seq START 1");
 
   await run(
     db,
@@ -150,10 +160,11 @@ export async function indexScratchpad(
   const tfMap = new Map<string, number>();
   for (const t of terms) tfMap.set(t, (tfMap.get(t) ?? 0) + 1);
   for (const [term, tf] of tfMap) {
+    const termId = await getOrCreateTermId(db, term);
     await run(
       db,
-      "INSERT INTO term_index (term, file_path, tf) VALUES (?, ?, ?)",
-      term,
+      "INSERT INTO term_index (term_id, file_path, tf) VALUES (?, ?, ?)",
+      termId,
       relPath,
       tf,
     );

@@ -15,6 +15,12 @@ import { resolve } from "node:path";
 import duckdb from "duckdb";
 import { DB_FILE, type WithDbOptions } from "./types.js";
 import { isLockError, queryRows } from "./lock.js";
+import {
+  configureCrashSafety,
+  cleanTempDir,
+  setTempDir,
+  runSql,
+} from "./config.js";
 
 const WRITE_QUEUE_TIMEOUT = 300_000;
 const QUEUE_POLL_INTERVAL = 2_000;
@@ -49,45 +55,15 @@ function closeDatabase(db: duckdb.Database): Promise<void> {
  * Corruption prevention: DuckDB configuration
  * ════════════════════════════════════════════════════════════
  *
- * These PRAGMAs reduce the risk of database corruption from
- * crashes or concurrent writes:
+ * Configuration PRAGMAs are in config.ts. This module handles
+ * connection lifecycle: open, init, use, checkpoint, close.
  *
- * 1. wal_autocheckpoint (4 MiB vs default 16 MiB)
- *    — Forces periodic WAL flushes. Less data at risk if the
- *      process crashes mid-write.
- *
- * 2. checkpoint_threshold (4 MiB vs default 16 MiB)
- *    — Triggers checkpoint earlier, keeping the WAL small.
- *
- * 3. enable_checkpoint_on_shutdown
- *    — Ensures a final checkpoint when the connection closes
- *      gracefully (default is already true in DuckDB).
- *
- * 4. After every write operation, closeDatabase() calls
- *    CHECKPOINT explicitly before closing.
+ * Phase 1a additions (in config.ts):
+ * - memory_limit (50 MB) — caps DuckDB memory to prevent OOM.
+ * - threads (2) — limits parallelism to reduce memory pressure.
+ * - temp_directory — writable path for DuckDB spill files.
  * ════════════════════════════════════════════════════════════
  */
-
-const WAL_CHECKPOINT_THRESHOLD = "4 MiB";
-
-/** Run a SQL statement and return a Promise. */
-function runSql(db: duckdb.Database, sql: string): Promise<void> {
-  return new Promise<void>((resolve, reject) => {
-    (db.run as unknown as (...args: unknown[]) => void)(sql, (err: Error | null) => {
-      if (err) reject(err);
-      else resolve();
-    });
-  });
-}
-
-/**
- * Configure DuckDB for crash safety.
- */
-async function configureCrashSafety(db: duckdb.Database): Promise<void> {
-  await runSql(db, `PRAGMA wal_autocheckpoint = '${WAL_CHECKPOINT_THRESHOLD}'`);
-  await runSql(db, `PRAGMA checkpoint_threshold = '${WAL_CHECKPOINT_THRESHOLD}'`);
-}
-
 /**
  * Check whether a table has a PRIMARY KEY on the given columns.
  * Used by schema migration — if a PK already exists, we skip
@@ -150,22 +126,33 @@ export async function initDb(db: duckdb.Database): Promise<void> {
     }
   }
 
+  // ── Phase 2a: term_dict (normalised term → ID mapping) ──
+  await runSql(db, `CREATE TABLE IF NOT EXISTS term_dict (
+    term_id INTEGER PRIMARY KEY,
+    term VARCHAR UNIQUE NOT NULL
+  )`);
+  await runSql(db, "CREATE SEQUENCE IF NOT EXISTS term_dict_seq START 1");
+
+  // ── term_index: normalised to use term_id (Phase 2a) ──
+  // Migration: if term_index has legacy VARCHAR 'term' column, drop and recreate
+  // This is safe because term_index is rebuilt from scratch on every sync.
+  const termIndexCols = await queryRows<{ column_name: string }>(
+    db,
+    "SELECT column_name FROM information_schema.columns WHERE table_name='term_index' AND column_name='term'",
+  );
+  if (termIndexCols.length > 0) {
+    // Legacy schema — drop and recreate
+    await runSql(db, "DROP TABLE IF EXISTS term_index");
+  }
+
   await runSql(db, `CREATE TABLE IF NOT EXISTS term_index (
-    term VARCHAR NOT NULL,
+    term_id INTEGER NOT NULL,
     file_path VARCHAR NOT NULL,
     tf INTEGER NOT NULL DEFAULT 0,
-    PRIMARY KEY (term, file_path)
+    PRIMARY KEY (term_id, file_path)
   )`);
-  await runSql(db, "CREATE INDEX IF NOT EXISTS idx_term_index_term ON term_index(term)");
+  await runSql(db, "CREATE INDEX IF NOT EXISTS idx_term_index_tid ON term_index(term_id)");
   await runSql(db, "CREATE INDEX IF NOT EXISTS idx_term_index_path ON term_index(file_path)");
-  if (!(await tableHasPrimaryKey(db, "term_index", ["term", "file_path"]))) {
-    // Migration for databases created before PRIMARY KEY was added.
-    try {
-      await runSql(db, "CREATE UNIQUE INDEX IF NOT EXISTS idx_term_index_unique ON term_index(term, file_path)");
-    } catch {
-      /* Non-fatal; term_index uses DELETE+INSERT, not upserts */
-    }
-  }
 
   await runSql(
     db,
@@ -202,8 +189,17 @@ export async function initDb(db: duckdb.Database): Promise<void> {
   await runSql(db, "CREATE INDEX IF NOT EXISTS idx_citations_doi ON citations(doi)");
   await runSql(db, "CREATE INDEX IF NOT EXISTS idx_citations_url ON citations(source_url)");
 
-  // ── Step 3: Initial checkpoint ──
+  // ── Step 3: Initial checkpoints ──
   await runSql(db, "CHECKPOINT");
+
+  // ── Step 4: Compact database if bloated — VACUUM reclaims space ──
+  // Run after schema init so the DB starts compact. Periodic VACUUM
+  // happens in sync.ts after index rebuilds.
+  try {
+    await runSql(db, "VACUUM");
+  } catch {
+    /* best-effort — VACUUM may fail on read-only filesystems */
+  }
 }
 
 /* eslint-disable-next-line complexity */
@@ -231,7 +227,13 @@ export async function withDb<T>(
     try {
       const db = await openDatabase(dbPath, flags);
       try {
-        if (mode === "write") await initDb(db);
+        if (mode === "write") {
+          // Clean up orphaned spill files before any write operation
+          await cleanTempDir(dbPath);
+          await initDb(db);
+          // Set temp_directory after init so spill files go to the writable dir
+          await setTempDir(db, dbPath);
+        }
         const result = await fn(db);
         // ── Corruption prevention: force checkpoint after every write ──
         // This flushes the WAL to the main database file before closing,

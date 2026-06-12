@@ -2,18 +2,118 @@
  * search_para_docs tool — BM25-powered search across PARA documents.
  *
  * On each call:
- * 1. Best-effort index sync (no-queue, skip if another session holds lock)
+ * 1. Lazy index sync via git commit hash (skip write conn if PARA files unchanged)
  * 2. Tokenise query and run BM25 search with optional tag filter
  * 3. Return ranked results with scores
+ *
+ * Phase 1c: Uses .last_sync_commit + git status to avoid unnecessary write connections.
  */
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
-import { stat } from "node:fs/promises";
+import { stat, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { execSync } from "node:child_process";
 import { withDb, isLockError, initDb } from "../db.js";
 import { searchDocuments, searchByTagsOnly } from "../search.js";
 import { syncIndex } from "../sync.js";
+
+const LAST_SYNC_FILE = ".last_sync_commit";
+const PARA_DIRS = ["Areas", "Projects", "Resources"];
+
+/**
+ * Check whether PARA directories have uncommitted changes.
+ * Returns true if all three PARA dirs are clean.
+ */
+function paraDirsClean(cwd: string): boolean {
+  try {
+    const result = execSync(
+      `git status --porcelain ${PARA_DIRS.join(" ")}`,
+      { cwd, encoding: "utf-8" },
+    );
+    return result.trim().length === 0;
+  } catch {
+    // Not a git repo or git not available — fall through to always-sync
+    return false;
+  }
+}
+
+/**
+ * Get the current git HEAD commit hash.
+ */
+function getGitHead(cwd: string): string | null {
+  try {
+    return execSync("git rev-parse HEAD", { cwd, encoding: "utf-8" }).trim();
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Read the last-synced commit hash from disk.
+ */
+async function readLastSyncCommit(cwd: string): Promise<string | null> {
+  try {
+    const content = await readFile(resolve(cwd, LAST_SYNC_FILE), "utf-8");
+    return content.trim();
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Write the current commit hash as last-synced.
+ */
+async function writeLastSyncCommit(cwd: string): Promise<void> {
+  const hash = getGitHead(cwd);
+  if (hash) {
+    await writeFile(resolve(cwd, LAST_SYNC_FILE), hash + "\n", "utf-8");
+  }
+}
+
+/**
+ * Decide whether an index sync is needed.
+ * Uses git to determine if PARA files have changed since last sync.
+ */
+async function checkSyncNeeded(cwd: string): Promise<boolean> {
+  const currentHash = getGitHead(cwd);
+  if (!currentHash) return true; // Not a git repo — always sync
+
+  const lastSyncHash = await readLastSyncCommit(cwd);
+
+  if (lastSyncHash === null) {
+    // No previous sync recorded — sync needed
+    return true;
+  }
+
+  if (currentHash !== lastSyncHash) {
+    // HEAD changed — check if PARA files were modified
+    try {
+      const changedFiles = execSync(
+        `git diff --name-only ${lastSyncHash}..${currentHash} -- ${PARA_DIRS.join(" ")}`,
+        { cwd, encoding: "utf-8" },
+      ).trim();
+      if (changedFiles.length > 0) {
+        return true; // PARA files changed in recent commits
+      }
+    } catch {
+      // Invalid ref — fall through to dirty check
+      if (!paraDirsClean(cwd)) {
+        return true;
+      }
+    }
+    // Hash changed but PARA files untouched — update .last_sync_commit
+    await writeLastSyncCommit(cwd);
+    return false;
+  }
+
+  // Same commit — check for dirty (uncommitted) PARA files
+  if (!paraDirsClean(cwd)) {
+    return true;
+  }
+
+  return false; // Nothing changed — skip sync
+}
 
 /**
  * Register the search_para_docs tool.
@@ -41,34 +141,34 @@ export function registerSearchDocsTool(pi: ExtensionAPI): void {
     }),
 
     async execute(_toolCallId, params, _signal, onUpdate, ctx) {
-      // ── Step 1: Lightweight sync (write, but safe now with batch INSERTs + transactions) ──
+      // ── Step 1: Lazy sync — skip write conn if no PARA files changed ──
       onUpdate?.({
         content: [{ type: "text" as const, text: "🗄️ notes.duckdb — checking index freshness…" }],
         details: {},
       });
 
-      // ── Sync: create or refresh the index ──
-      // Uses the write queue (no noQueue) to prevent concurrent writes
-      // from different pi sessions corrupting the database.
-      // Reports lock contention to the user rather than swallowing it.
       const dbPath = resolve(ctx.cwd, "notes.duckdb");
       let dbExists = false;
-      try {
-        await stat(dbPath);
-        dbExists = true;
-      } catch {
-        dbExists = false;
-      }
+      try { await stat(dbPath); dbExists = true; } catch { dbExists = false; }
 
-      if (dbExists) {
-        await withDb(ctx.cwd, "write", async (db) => {
-          await syncIndex(db, ctx.cwd);
-        }, { ctx, onUpdate });
-      } else {
+      if (!dbExists) {
+        // Database doesn't exist yet — must create and sync
         await withDb(ctx.cwd, "write", async (db) => {
           await initDb(db);
           await syncIndex(db, ctx.cwd);
         }, { ctx, onUpdate });
+      } else if (await checkSyncNeeded(ctx.cwd)) {
+        // Database exists and PARA files changed — sync
+        await withDb(ctx.cwd, "write", async (db) => {
+          await syncIndex(db, ctx.cwd);
+        }, { ctx, onUpdate });
+      } else {
+        // Skipping write connection — PARA files unchanged since last sync.
+        // Go directly to read-only search below.
+        onUpdate?.({
+          content: [{ type: "text" as const, text: "🗄️ notes.duckdb — index fresh, skipping sync" }],
+          details: {},
+        });
       }
 
       // ── Step 2: BM25 search (read-only) ──
