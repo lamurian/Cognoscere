@@ -14,7 +14,7 @@
 **/node_modules/**
 
 # DuckDB knowledge index (auto-created and populated from .md files)
-notes.duckdb
+notes.db
 notes.duckdb.wal
 
 # Sensitive environment variables
