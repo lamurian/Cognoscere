@@ -57,6 +57,10 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
       const now = new Date().toISOString();
 
       // ── Build standardised frontmatter ──
+      // Phase 2c: auto-generate description from content if not provided
+      const autoDesc = params.description?.trim() ||
+        params.content.replace(/\n+/g, " ").slice(0, 150).trim() || null;
+
       const frontmatterFields: Record<string, unknown> = {
         title: params.title,
         author: "pi",
@@ -64,8 +68,8 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
         date: now,
         tags: params.tags,
       };
-      if (params.description && params.description.trim()) {
-        frontmatterFields.description = params.description.trim();
+      if (autoDesc) {
+        frontmatterFields.description = autoDesc;
       }
       if (params.source && params.source.trim()) {
         frontmatterFields.source = params.source.trim();
@@ -124,7 +128,7 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
               { length: BM25_DEFAULTS.TITLE_BOOST },
               () => params.title,
             ).join(" ");
-            const descriptionBoost = params.description ?? "";
+            const descriptionBoost = autoDesc ?? "";
             const terms = tokenize(`${boostedTitle} ${descriptionBoost} ${params.content}`);
             const tfMap = new Map<string, number>();
             for (const term of terms) {
@@ -163,7 +167,7 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
         : "⚠️  File created but index update skipped (another session holds the lock). It will be indexed on next search.";
 
       const sourceNote = params.source ? `\nSource: ${params.source}` : "";
-      const descNote = params.description ? `\nDescription: ${params.description}` : "";
+      const descNote = autoDesc ? `\nDescription: ${autoDesc}` : "";
       return {
         content: [
           {
@@ -174,7 +178,7 @@ export function registerCreateDocTool(pi: ExtensionAPI): void {
         details: {
           path: filePath,
           title: params.title,
-          description: params.description ?? null,
+          description: autoDesc,
           tags: params.tags,
           source: params.source ?? null,
           indexOk,
