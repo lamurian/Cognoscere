@@ -1,119 +1,22 @@
 /**
- * search_para_docs tool — BM25-powered search across PARA documents.
+ * search_para_docs tool — FTS5 BM25-powered search across PARA documents.
  *
- * On each call:
- * 1. Lazy index sync via git commit hash (skip write conn if PARA files unchanged)
- * 2. Tokenise query and run BM25 search with optional tag filter
- * 3. Return ranked results with scores
- *
- * Phase 1c: Uses .last_sync_commit + git status to avoid unnecessary write connections.
+ * Opens notes.db (initializing if needed) and runs FTS5 BM25 search
+ * with optional tag filtering. Replaces the DuckDB-based implementation.
  */
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
-import { stat, readFile, writeFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import { resolve } from "node:path";
-import { execSync } from "node:child_process";
-import { withDb, isLockError, initDb } from "../db.js";
-import { searchDocuments, searchByTagsOnly } from "../search.js";
-import { syncIndex } from "../sync.js";
+import {
+  createDb,
+  initDb,
+  searchDocs,
+  type SearchOptions,
+} from "../db-sqlite.js";
 
-const LAST_SYNC_FILE = ".last_sync_commit";
-const PARA_DIRS = ["Areas", "Projects", "Resources"];
-
-/**
- * Check whether PARA directories have uncommitted changes.
- * Returns true if all three PARA dirs are clean.
- */
-function paraDirsClean(cwd: string): boolean {
-  try {
-    const result = execSync(
-      `git status --porcelain ${PARA_DIRS.join(" ")}`,
-      { cwd, encoding: "utf-8" },
-    );
-    return result.trim().length === 0;
-  } catch {
-    // Not a git repo or git not available — fall through to always-sync
-    return false;
-  }
-}
-
-/**
- * Get the current git HEAD commit hash.
- */
-function getGitHead(cwd: string): string | null {
-  try {
-    return execSync("git rev-parse HEAD", { cwd, encoding: "utf-8" }).trim();
-  } catch {
-    return null;
-  }
-}
-
-/**
- * Read the last-synced commit hash from disk.
- */
-async function readLastSyncCommit(cwd: string): Promise<string | null> {
-  try {
-    const content = await readFile(resolve(cwd, LAST_SYNC_FILE), "utf-8");
-    return content.trim();
-  } catch {
-    return null;
-  }
-}
-
-/**
- * Write the current commit hash as last-synced.
- */
-async function writeLastSyncCommit(cwd: string): Promise<void> {
-  const hash = getGitHead(cwd);
-  if (hash) {
-    await writeFile(resolve(cwd, LAST_SYNC_FILE), hash + "\n", "utf-8");
-  }
-}
-
-/**
- * Decide whether an index sync is needed.
- * Uses git to determine if PARA files have changed since last sync.
- */
-async function checkSyncNeeded(cwd: string): Promise<boolean> {
-  const currentHash = getGitHead(cwd);
-  if (!currentHash) return true; // Not a git repo — always sync
-
-  const lastSyncHash = await readLastSyncCommit(cwd);
-
-  if (lastSyncHash === null) {
-    // No previous sync recorded — sync needed
-    return true;
-  }
-
-  if (currentHash !== lastSyncHash) {
-    // HEAD changed — check if PARA files were modified
-    try {
-      const changedFiles = execSync(
-        `git diff --name-only ${lastSyncHash}..${currentHash} -- ${PARA_DIRS.join(" ")}`,
-        { cwd, encoding: "utf-8" },
-      ).trim();
-      if (changedFiles.length > 0) {
-        return true; // PARA files changed in recent commits
-      }
-    } catch {
-      // Invalid ref — fall through to dirty check
-      if (!paraDirsClean(cwd)) {
-        return true;
-      }
-    }
-    // Hash changed but PARA files untouched — update .last_sync_commit
-    await writeLastSyncCommit(cwd);
-    return false;
-  }
-
-  // Same commit — check for dirty (uncommitted) PARA files
-  if (!paraDirsClean(cwd)) {
-    return true;
-  }
-
-  return false; // Nothing changed — skip sync
-}
+const DB_FILE = "notes.db";
 
 /**
  * Register the search_para_docs tool.
@@ -123,9 +26,8 @@ export function registerSearchDocsTool(pi: ExtensionAPI): void {
     name: "search_para_docs",
     label: "Search PARA Docs",
     description:
-      "Search the DuckDB-indexed PARA documents (Areas/Projects/Resources) by tags and content. " +
-      "Uses BM25 (Okapi BM25) ranking for text search with O(log n) inverted-index lookups. " +
-      "Tags use OR logic for filtering. The index is auto-synced on each call.",
+      "Search the SQLite-indexed PARA documents (Areas/Projects/Resources) by tags and content. " +
+      "Uses FTS5 BM25 ranking for text search with tag filtering.",
     promptSnippet:
       "Search for relevant knowledge documents in Areas, Projects, Resources directories",
     promptGuidelines: [
@@ -133,7 +35,6 @@ export function registerSearchDocsTool(pi: ExtensionAPI): void {
       "Pass the user's question as query and infer relevant tags from context.",
       "Cite sources using BibTeX citation keys from @ref.bib. Use [@citekey] or @citekey inline.",
       "For existing PARA docs, reference by path — no BibTeX entry needed.",
-      "See knowledge skill for citation format.",
     ],
     parameters: Type.Object({
       query: Type.String({ description: "Search query or topic" }),
@@ -141,127 +42,72 @@ export function registerSearchDocsTool(pi: ExtensionAPI): void {
     }),
 
     async execute(_toolCallId, params, _signal, onUpdate, ctx) {
-      // ── Step 1: Lazy sync — skip write conn if no PARA files changed ──
+      const dbPath = resolve(ctx.cwd, DB_FILE);
+
+      if (!existsSync(dbPath)) {
+        return {
+          content: [{
+            type: "text" as const,
+            text: "📭 No documents indexed yet. Create a document first to populate the knowledge base.",
+          }],
+          details: { results: [], count: 0 },
+        };
+      }
+
       onUpdate?.({
-        content: [{ type: "text" as const, text: "🗄️ notes.duckdb — checking index freshness…" }],
+        content: [{ type: "text" as const, text: "🗄️ notes.db — searching…" }],
         details: {},
       });
 
-      const dbPath = resolve(ctx.cwd, "notes.duckdb");
-      let dbExists = false;
-      try { await stat(dbPath); dbExists = true; } catch { dbExists = false; }
-
-      if (!dbExists) {
-        // Database doesn't exist yet — must create and sync
-        await withDb(ctx.cwd, "write", async (db) => {
-          await initDb(db);
-          await syncIndex(db, ctx.cwd);
-        }, { ctx, onUpdate });
-      } else if (await checkSyncNeeded(ctx.cwd)) {
-        // Database exists and PARA files changed — sync
-        await withDb(ctx.cwd, "write", async (db) => {
-          await syncIndex(db, ctx.cwd);
-        }, { ctx, onUpdate });
-      } else {
-        // Skipping write connection — PARA files unchanged since last sync.
-        // Go directly to read-only search below.
-        onUpdate?.({
-          content: [{ type: "text" as const, text: "🗄️ notes.duckdb — index fresh, skipping sync" }],
-          details: {},
-        });
-      }
-
-      // ── Step 2: BM25 search (read-only) ──
       const query = params.query ?? "";
       const filterTags = params.tags ?? [];
 
-      onUpdate?.({
-        content: [
-          {
-            type: "text" as const,
-            text:
-              filterTags.length > 0
-                ? `🗄️ notes.duckdb — BM25 search with tag filter [${filterTags.join(", ")}]`
-                : "🗄️ notes.duckdb — BM25 search...",
-          },
-        ],
-        details: {},
-      });
-
       try {
-        const { results, trace } = await withDb(ctx.cwd, "read", async (db) => {
-          if (!query && filterTags.length > 0) {
-            // Only tags, no text query
-            const results = await searchByTagsOnly(db, filterTags);
-            return { results, trace: "tag-only" };
-          }
-          return await searchDocuments(db, query, filterTags, ctx.cwd);
-        });
+        const db = createDb(dbPath);
+        initDb(db);
+        try {
+          const options: SearchOptions = {};
+          if (filterTags.length > 0) options.tags = filterTags;
+          const results = searchDocs(db, query, options);
 
-        const responseTrace = `🗄️ notes.duckdb — ${trace}  results:${results.length}`;
-
-        if (results.length === 0) {
-          return {
-            content: [
-              {
+          if (results.length === 0) {
+            return {
+              content: [{
                 type: "text" as const,
-                text: `${responseTrace}\nNo documents found for "${query}"${filterTags.length ? ` with tags [${filterTags.join(", ")}]` : ""}.`,
-              },
-            ],
-            details: { results: [], count: 0, trace },
-          };
-        }
+                text: `📭 No documents found for "${query}"${filterTags.length ? ` with tags [${filterTags.join(", ")}]` : ""}.`,
+              }],
+              details: { results: [], count: 0 },
+            };
+          }
 
-        // Build result listing with BM25 scores
-        const list = results
-          .map((r) => {
-            const rel = r.matchedByTag
-              ? "tag-only"
-              : r.score > 5
-                ? "high"
-                : r.score > 2
-                  ? "medium"
-                  : "low";
-            const tagHint =
-              r.tagMatches.length > 0 ? ` 🏷️${r.tagMatches.slice(0, 3).join(", ")}` : "";
-            return `- [${r.title}](${r.path})  (score: ${r.score.toFixed(2)}, relevance: ${rel}${tagHint})`;
-          })
-          .join("\n");
+          const list = results
+            .map((r) => {
+              const rel = r.matchedByTag ? "tag-only"
+                : r.score < -0.001 ? "good" : "weak";
+              const tagHint = r.tagMatches.length > 0
+                ? ` 🏷️${r.tagMatches.slice(0, 3).join(", ")}`
+                : "";
+              return `- [${r.title}](${r.path})  (score: ${r.score.toFixed(2)}, relevance: ${rel}${tagHint})`;
+            })
+            .join("\n");
 
-        return {
-          content: [
-            {
+          return {
+            content: [{
               type: "text" as const,
-              text: `${responseTrace}\n\nFound ${results.length} document(s):\n\n${list}`,
-            },
-          ],
-          details: { results, count: results.length, trace },
-        };
+              text: `🗄️ notes.db — ${results.length} result(s):\n\n${list}`,
+            }],
+            details: { results, count: results.length },
+          };
+        } finally {
+          db.close();
+        }
       } catch (e: unknown) {
         const msg = e instanceof Error ? e.message : String(e);
-        if (msg === "DB_NOT_FOUND") {
-          return {
-            content: [
-              {
-                type: "text" as const,
-                text: "📭 No documents indexed yet. Create a document first to populate the index.",
-              },
-            ],
-            details: { results: [], count: 0, trace: "no-db" },
-          };
-        }
-        if (isLockError(msg)) {
-          return {
-            content: [
-              {
-                type: "text" as const,
-                text: "🔒 Knowledge database is locked by another pi session.\nPlease close the other session and retry.",
-              },
-            ],
-            details: { results: [], count: 0, trace: "locked" },
-          };
-        }
-        throw e;
+        console.error("[search_para_docs] Error:", msg);
+        return {
+          content: [{ type: "text" as const, text: `❌ Search error: ${msg.slice(0, 200)}` }],
+          details: { results: [], count: 0, error: msg },
+        };
       }
     },
   });

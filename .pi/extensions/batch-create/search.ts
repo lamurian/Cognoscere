@@ -1,76 +1,79 @@
 /**
- * BM25 semantic search and [[wikilink]] appending for batch-created documents.
+ * FTS5-based semantic search and [[wikilink]] appending for batch-created documents.
  *
- * DB operations delegate to para-knowledge/lock.ts (allWithRecovery)
- * for aborted-transaction recovery. tokenize comes from _common.
+ * Replaces the DuckDB BM25 implementation with FTS5 via db-sqlite.ts.
+ * `findRelated` uses `searchDocs` which leverages FTS5's built-in BM25 ranking.
+ * `appendLinks` is unchanged — it only reads and writes markdown files.
  */
 
 import { readFile, writeFile } from "node:fs/promises";
-import duckdb from "duckdb";
-import { tokenize } from "../_common/tokenize.js";
-import { allWithRecovery } from "../para-knowledge/lock.js";
+import type { SqliteDb } from "../para-knowledge/db-sqlite.js";
+import { searchDocs } from "../para-knowledge/db-sqlite.js";
 
 /**
- * Find related documents via BM25 term overlap.
- * Returns up to `maxResults` paths sorted by relevance.
+ * Find related documents via FTS5 BM25 search.
+ * Returns up to `maxResults` paths sorted by relevance, excluding the
+ * source document itself.
+ *
+ * Uses OR between tag terms so that any document sharing at least one
+ * content tag is considered related. FTS5 BM25 ranks matches higher
+ * when multiple tags overlap. The title is included for additional
+ * topically-relevant suggestions.
  */
 export async function findRelated(
-  db: duckdb.Database,
+  db: SqliteDb,
   relPath: string,
   title: string,
   tags: string[],
   maxResults: number,
 ): Promise<string[]> {
-  const queryTerms = tokenize(title + " " + tags.join(" "));
-  if (queryTerms.length === 0) return [];
+  // Clean hyphens from tags (FTS5 tokenizes hyphenated words as separate terms)
+  const cleanedTags = tags.map((t) => t.replace(/-/g, " "));
+  // Build an OR query: any matching tag or title word is sufficient
+  const queryParts: string[] = [...cleanedTags];
+  if (title.trim()) queryParts.push(title.trim());
 
-  // Fetch all doc_lengths
-  const allLengths = (await allWithRecovery(
-    db,
-    "SELECT file_path, doc_length FROM doc_lengths",
-  )) as unknown as { file_path: string; doc_length: number }[];
-  const lengthMap = new Map(allLengths.map((r) => [r.file_path, r.doc_length]));
-  const totalDocs = allLengths.length;
-  const avgDocLen = allLengths.reduce((s, r) => s + r.doc_length, 0) / Math.max(totalDocs, 1);
+  const rawQuery = queryParts.join(" OR ").trim();
+  if (!rawQuery) return [];
 
-  // Get term_index rows for all query terms (Phase 2a: join through term_dict)
-  const placeholders = queryTerms.map(() => "?").join(",");
-  const indexRows = (await allWithRecovery(
-    db,
-    `SELECT t.term, ti.file_path, ti.tf
-     FROM term_index ti
-     JOIN term_dict t ON ti.term_id = t.term_id
-     WHERE t.term IN (${placeholders}) AND ti.file_path != ?`,
-    ...queryTerms,
-    relPath,
-  )) as unknown as { term: string; file_path: string; tf: number }[];
+  // We bypass the AND-based buildFts5Query and construct the FTS5 query directly
+  const terms = rawQuery
+    .toLowerCase()
+    .split(/\s+(?:OR\s+)?/)
+    .flatMap((t) => t.split(/\s+/))
+    .filter((t) => t.length > 1);
+  if (terms.length === 0) return [];
 
-  // Compute document frequency per term
-  const dfMap = new Map<string, number>();
-  const seenForTerm = new Map<string, Set<string>>();
-  for (const row of indexRows) {
-    if (!seenForTerm.has(row.term)) seenForTerm.set(row.term, new Set());
-    seenForTerm.get(row.term)!.add(row.file_path);
-  }
-  for (const [term, paths] of seenForTerm) dfMap.set(term, paths.size);
+  // Build an OR query: any matching term qualifies
+  const ftsQuery = terms.map((t) => `"${t}"`).join(" OR ");
 
-  // Score each candidate document
-  const scores = new Map<string, number>();
-  for (const row of indexRows) {
-    const docLen = lengthMap.get(row.file_path) ?? avgDocLen;
-    const df = dfMap.get(row.term) ?? 1;
-    const k1 = 1.2,
-      b = 0.75;
-    const idf = Math.log(1 + (totalDocs - df + 0.5) / (df + 0.5));
-    const tfNorm =
-      (row.tf * (k1 + 1)) / (row.tf + k1 * (1 - b + b * (docLen / Math.max(avgDocLen, 1))));
-    scores.set(row.file_path, (scores.get(row.file_path) ?? 0) + idf * tfNorm);
-  }
+  const results = searchDocsFts(db, ftsQuery, maxResults + 1);
 
-  return [...scores.entries()]
-    .sort((a, b) => b[1] - a[1])
+  return results
+    .filter((r) => r.path !== relPath)
     .slice(0, maxResults)
-    .map(([path]) => path);
+    .map((r) => r.path);
+}
+
+/**
+ * Direct FTS5 search with a raw query string (bypasses buildFts5Query's AND logic).
+ * Used by findRelated for OR-based term matching.
+ */
+function searchDocsFts(
+  db: SqliteDb,
+  ftsQuery: string,
+  maxResults: number,
+): Array<{ path: string; score: number }> {
+  try {
+    const rows = db.prepare(
+      `SELECT d.path, d.rank FROM docs_fts d WHERE d.docs_fts MATCH ? ORDER BY d.rank LIMIT ?`,
+    ).all<{ path: string; rank: number }>(ftsQuery, maxResults);
+
+    return rows.map((r) => ({ path: r.path, score: r.rank }));
+  } catch {
+    // If the query fails (e.g., invalid FTS5 syntax), return empty
+    return [];
+  }
 }
 
 /**

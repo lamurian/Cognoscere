@@ -1,9 +1,7 @@
 /**
- * list_para_tags tool — returns all unique tags from the DuckDB-indexed
+ * list_para_tags tool — returns all unique tags from the SQLite-indexed
  * PARA documents (Areas/Projects/Resources). Useful for choosing existing
  * tags when creating a new document, rather than inventing new ones.
- *
- * Query: SELECT DISTINCT tag FROM tags ORDER BY tag
  *
  * Returns an array of tag strings. If the database doesn't exist yet,
  * returns an empty array (no tags indexed).
@@ -11,7 +9,11 @@
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
-import { withDb, allWithRecovery } from "../db.js";
+import { existsSync } from "node:fs";
+import { resolve } from "node:path";
+import { createDb, initDb } from "../db-sqlite.js";
+
+const DB_FILE = "notes.db";
 
 /**
  * Register the list_para_tags tool.
@@ -21,7 +23,7 @@ export function registerListTagsTool(pi: ExtensionAPI): void {
     name: "list_para_tags",
     label: "List PARA Tags",
     description:
-      "Return all unique tags from the DuckDB-indexed PARA documents " +
+      "Return all unique tags from the SQLite-indexed PARA documents " +
       "(Areas/Projects/Resources). Use this before create_para_doc to " +
       "choose existing tags and avoid tag proliferation.",
     promptSnippet: "List all existing unique tags in the PARA knowledge base",
@@ -29,17 +31,31 @@ export function registerListTagsTool(pi: ExtensionAPI): void {
 
     async execute(_toolCallId, _params, _signal, onUpdate, ctx) {
       onUpdate?.({
-        content: [{ type: "text" as const, text: "🏷️ notes.duckdb — querying unique tags…" }],
+        content: [{ type: "text" as const, text: "🏷️ notes.db — querying unique tags…" }],
         details: {},
       });
 
+      const dbPath = resolve(ctx.cwd, DB_FILE);
+      if (!existsSync(dbPath)) {
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: "📭 No documents indexed yet. Create a document first to populate the knowledge base.",
+            },
+          ],
+          details: { tags: [], count: 0 },
+        };
+      }
+
       try {
-        const tags = await withDb(ctx.cwd, "read", async (db) => {
-          const rows = await allWithRecovery(db, "SELECT DISTINCT tag FROM tags ORDER BY tag");
-          return (rows as Record<string, unknown>[]).map(
-            (r: Record<string, unknown>) => r.tag as string,
-          );
-        });
+        const db = createDb(dbPath);
+        initDb(db);
+        const rows = db.prepare("SELECT DISTINCT tag FROM tags ORDER BY tag")
+          .all<{ tag: string }>();
+        db.close();
+
+        const tags = rows.map((r) => r.tag);
 
         if (tags.length === 0) {
           return {
@@ -64,18 +80,16 @@ export function registerListTagsTool(pi: ExtensionAPI): void {
         };
       } catch (e: unknown) {
         const msg = e instanceof Error ? e.message : String(e);
-        if (msg === "DB_NOT_FOUND") {
-          return {
-            content: [
-              {
-                type: "text" as const,
-                text: "📭 No documents indexed yet. Create a document first to populate the knowledge base.",
-              },
-            ],
-            details: { tags: [], count: 0 },
-          };
-        }
-        throw e;
+        console.error("[list_para_tags] SQLite error:", msg);
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: "⚠️ Database error while querying tags.",
+            },
+          ],
+          details: { tags: [], count: 0, error: msg },
+        };
       }
     },
   });

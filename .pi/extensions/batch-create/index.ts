@@ -14,10 +14,8 @@ import { Type } from "typebox";
 import { mkdir, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { slugify, formatFrontmatter } from "./yaml.js";
-import { withDb, initDb } from "../para-knowledge/db.js";
-import { runWithRecovery, allWithRecovery } from "../para-knowledge/lock.js";
-import { tokenize } from "../_common/tokenize.js";
-import { insertTermIndexEntries } from "../para-knowledge/config.js";
+import { createDb, initDb, indexFile } from "../para-knowledge/db-sqlite.js";
+import type { DocIndex } from "../para-knowledge/db-sqlite.js";
 import { findRelated, appendLinks } from "./search.js";
 
 // ── Types ─────────────────────────────────────────────────────────────
@@ -71,101 +69,51 @@ async function createFilesOnDisk(docs: BatchDoc[], cwd: string): Promise<Created
   return created;
 }
 
-// ── Step 2: Index all documents in DuckDB ─────────────────────────────
-// Uses para-knowledge's withDb (retry queue + lock recovery).
+// ── Step 2: Index all documents in SQLite ────────────────────────────
 
 async function indexDocumentsInDb(
   docs: BatchDoc[],
   created: CreatedFile[],
   cwd: string,
 ): Promise<void> {
-  await withDb(cwd, "write", async (db) => {
-    await initDb(db);
-    const now = new Date().toISOString();
-
+  const dbPath = resolve(cwd, "notes.db");
+  const db = createDb(dbPath);
+  initDb(db);
+  try {
     for (let i = 0; i < docs.length; i++) {
       const doc = docs[i];
       const relPath = created[i].relPath;
-
-      // ── Insert/replace file row ──
-      await runWithRecovery(
-        db,
-        `INSERT OR REPLACE INTO files (path, title, body, author, editor, created, modified, file_mtime, source_url)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        relPath,
-        doc.title,
-        doc.content,
-        "pi",
-        "lam",
-        now,
-        now,
-        now,
-        doc.source ?? null,
-      );
-
-      // ── Re-index tags ──
-      await runWithRecovery(db, "DELETE FROM tags WHERE file_path = ?", relPath);
-      for (const tag of doc.tags) {
-        await runWithRecovery(
-          db,
-          "INSERT INTO tags (file_path, tag) VALUES (?, ?)",
-          relPath,
-          tag,
-        );
-      }
-
-      // ── Re-build BM25 term index (Phase 2a: via term_dict) ──
-      const boostedTitle = Array.from({ length: 3 }, () => doc.title).join(" ");
-      const terms = tokenize(`${boostedTitle} ${doc.content}`);
-      const tfMap = new Map<string, number>();
-      for (const t of terms) tfMap.set(t, (tfMap.get(t) ?? 0) + 1);
-      await insertTermIndexEntries(db, relPath, tfMap);
-
-      // ── Doc length ──
-      await runWithRecovery(
-        db,
-        "INSERT OR REPLACE INTO doc_lengths (file_path, doc_length) VALUES (?, ?)",
-        relPath,
-        terms.length,
-      );
+      const docIndex: DocIndex = {
+        path: relPath,
+        title: doc.title,
+        body: (doc.description ?? "") + "\n" + doc.content,
+        tags: doc.tags,
+        author: "pi",
+        editor: "lam",
+        created: new Date().toISOString(),
+        modified: new Date().toISOString(),
+        file_mtime: new Date().toISOString(),
+        source_url: doc.source ?? null,
+      };
+      indexFile(db, docIndex);
     }
-
-    // ── Recompute corpus stats ──
-    const rows = (await allWithRecovery(
-      db,
-      "SELECT COUNT(*) AS total_docs, COALESCE(AVG(doc_length), 1.0) AS avg_doc_length FROM doc_lengths",
-    )) as unknown as { total_docs: number | bigint; avg_doc_length: number }[];
-    if (rows.length > 0) {
-      const totalDocs: number =
-        typeof rows[0].total_docs === "bigint"
-          ? Number(rows[0].total_docs)
-          : (rows[0].total_docs as number);
-      await runWithRecovery(
-        db,
-        "UPDATE corpus_stats SET value = ? WHERE key = 'total_docs'",
-        totalDocs,
-      );
-      await runWithRecovery(
-        db,
-        "UPDATE corpus_stats SET value = ? WHERE key = 'avg_doc_length'",
-        rows[0].avg_doc_length,
-      );
-    }
-  });
+  } finally {
+    db.close();
+  }
 }
 
 // ── Step 3: Auto-link across the batch ────────────────────────────────
-// Uses para-knowledge's withDb (retry queue + lock recovery).
 
 async function autoLinkBatch(
   docs: BatchDoc[],
   created: CreatedFile[],
   cwd: string,
 ): Promise<number> {
-  return withDb(cwd, "read", async (db) => {
-    await initDb(db);
+  const dbPath = resolve(cwd, "notes.db");
+  const db = createDb(dbPath);
+  initDb(db);
+  try {
     let linkedCount = 0;
-
     for (let i = 0; i < docs.length; i++) {
       const doc = docs[i];
       const relPath = created[i].relPath;
@@ -175,9 +123,10 @@ async function autoLinkBatch(
         linkedCount++;
       }
     }
-
     return linkedCount;
-  });
+  } finally {
+    db.close();
+  }
 }
 
 // ── Tool registration ─────────────────────────────────────────────────
@@ -188,7 +137,7 @@ export default function (pi: ExtensionAPI): void {
     label: "Batch Create PARA Docs",
     description:
       "Create multiple PARA knowledge documents (markdown with YAML frontmatter) in one call, " +
-      "index all of them in notes.duckdb, and run semantic auto-linking across the batch. " +
+      "index all of them in notes.db, and run semantic auto-linking across the batch. " +
       "Fundamental/reference content should go in Resources/; practical content in Projects/.",
     promptSnippet: "Create several PARA documents at once, index them, and auto-link them",
     promptGuidelines: [
@@ -242,7 +191,7 @@ export default function (pi: ExtensionAPI): void {
 
       onUpdate?.({
         content: [
-          { type: "text", text: `📝 Created ${created.length} files. Indexing in notes.duckdb…` },
+          { type: "text", text: `📝 Created ${created.length} files. Indexing in notes.db…` },
         ],
         details: {},
       });

@@ -1,6 +1,6 @@
 /**
  * roadmap_scratchpad — temporary state files for the roadmap skill,
- * stored as PARA documents in Areas/ for searchability via notes.duckdb.
+ * stored as PARA documents in Areas/ for searchability via notes.db.
  *
  * Each scratchpad is a markdown file with YAML frontmatter (so it gets
  * indexed by the PARA knowledge system) and a JSON body containing the
@@ -37,14 +37,14 @@ export default function (pi: ExtensionAPI): void {
     label: "Init Scratchpad",
     description:
       "Create a new roadmap scratchpad file in Areas/ as a PARA document (markdown + YAML frontmatter) " +
-      "and register it in notes.duckdb for searchability.",
+      "and register it in notes.db for searchability.",
     promptSnippet: "Create a new roadmap scratchpad in Areas/",
     parameters: Type.Object({
       name: Type.String({
         description: "Short kebab-case name (e.g. 'statistics-bayesian-frequentist')",
       }),
       description: Type.String({
-        description: "Concise description for searchability in notes.duckdb",
+        description: "Concise description for searchability in notes.db",
       }),
       steps: Type.Array(
         Type.Object({
@@ -92,7 +92,7 @@ export default function (pi: ExtensionAPI): void {
       const indexOk = await registerInDb(cwd, relPath, name, content);
 
       const indexNote = indexOk
-        ? "🗄️ notes.duckdb — registered"
+        ? "🗄️ notes.db — registered"
         : "⚠️  File created but DuckDB indexing failed. Will sync on next search.";
 
       return {
@@ -213,7 +213,7 @@ export default function (pi: ExtensionAPI): void {
 
       const doneSteps = merged.steps.filter((s) => s.done).length;
       const indexNote = indexOk
-        ? "🗄️ notes.duckdb — updated"
+        ? "🗄️ notes.db — updated"
         : "⚠️  File updated but DuckDB re-index failed.";
 
       return {
@@ -242,7 +242,7 @@ export default function (pi: ExtensionAPI): void {
     name: "delete_scratchpad",
     label: "Delete Scratchpad",
     description:
-      "Delete a roadmap scratchpad file from Areas/ and remove all its entries from notes.duckdb.",
+      "Delete a roadmap scratchpad file from Areas/ and remove all its entries from notes.db.",
     promptSnippet: "Delete a roadmap scratchpad when the task is complete",
     parameters: Type.Object({
       path: Type.String({
@@ -274,7 +274,7 @@ export default function (pi: ExtensionAPI): void {
       }
 
       const dbNote = dbDeleted
-        ? "🗄️ notes.duckdb — entries removed"
+        ? "🗄️ notes.db — entries removed"
         : `⚠️  DuckDB cleanup: ${dbError ?? "failed"}. The index will sync on next search.`;
 
       return {

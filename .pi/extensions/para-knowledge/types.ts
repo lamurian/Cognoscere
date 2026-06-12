@@ -8,8 +8,8 @@ import type { ExtensionContext } from "@earendil-works/pi-coding-agent";
 export const PARA_DIRS = ["Areas", "Projects", "Resources"] as const;
 export type ParaDir = (typeof PARA_DIRS)[number];
 
-/** DuckDB database file name (relative to project root). */
-export const DB_FILE = "notes.duckdb";
+/** SQLite database file name (relative to project root). */
+export const DB_FILE = "notes.db";
 
 /** Parsed YAML frontmatter from a markdown file. */
 export interface Frontmatter {
