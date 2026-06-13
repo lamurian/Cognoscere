@@ -195,4 +195,11 @@ describe("SQLite FTS5 search", () => {
     const stop = searchDocs(db, "the");
     expect(Array.isArray(stop)).toBe(true);
   });
+
+  it("handles queries containing dots without FTS5 syntax error", () => {
+    // Dots (e.g., "paseo.sh") previously triggered an FTS5 column-prefix syntax error.
+    // They should be handled gracefully without throwing.
+    const results = searchDocs(db, "paseo.sh chat room agentic orchestration");
+    expect(Array.isArray(results)).toBe(true);
+  });
 });

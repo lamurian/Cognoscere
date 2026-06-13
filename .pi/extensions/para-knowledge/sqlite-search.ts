@@ -50,9 +50,7 @@ function searchByText(
 ): SearchResult[] {
   const ftsQuery = buildFts5Query(query);
   if (ftsQuery.length === 0) {
-    return filterTags && filterTags.length > 0
-      ? searchByTagsOnly(db, filterTags, maxResults)
-      : [];
+    return filterTags && filterTags.length > 0 ? searchByTagsOnly(db, filterTags, maxResults) : [];
   }
 
   const results: SearchResult[] = [];
@@ -79,62 +77,74 @@ function searchByText(
     const rows = db.prepare(sql).all<Record<string, unknown>>(...params);
 
     for (const row of rows) {
-      const path = row.path as string;
-      const matchedTags = filterTags
-        ? getFileTags(db, path).filter((t) =>
-            filterTags.some((ft) => t.toLowerCase() === ft.toLowerCase()),
-          )
-        : [];
-
-      results.push({
-        path,
-        title: (row.title as string) ?? "",
-        body: (row.body as string) ?? "",
-        author: (row.author as string) ?? "",
-        editor: (row.editor as string) ?? "",
-        file_mtime: (row.file_mtime as string) ?? "",
-        source_url: (row.source_url as string | null) ?? null,
-        description: null,
-        tags: getFileTags(db, path),
-        score: (row.bm25_score as number) ?? 0,
-        matchedByTag: false,
-        tagMatches: matchedTags,
-      });
+      results.push(rowToResult(db, row, filterTags));
     }
   }
 
   // Phase 2: Tag-only fallback — only when text matched nothing
   if (results.length === 0 && filterTags && filterTags.length > 0) {
-    const tagResults = searchByTagsOnly(db, filterTags, maxResults);
-    results.push(...tagResults);
+    results.push(...searchByTagsOnly(db, filterTags, maxResults));
   }
 
-  results.sort((a, b) => {
-    if (a.matchedByTag !== b.matchedByTag) {
-      return a.matchedByTag ? 1 : -1;
-    }
-    return a.score - b.score;
-  });
-
+  results.sort(byRelevance);
   return results.slice(0, maxResults);
+}
+
+/**
+ * Convert a raw FTS5 result row into a SearchResult with tag matching.
+ */
+function rowToResult(
+  db: SqliteDb,
+  row: Record<string, unknown>,
+  filterTags: string[] | undefined,
+): SearchResult {
+  const path = row.path as string;
+  const matchedTags = filterTags
+    ? getFileTags(db, path).filter((t) =>
+        filterTags.some((ft) => t.toLowerCase() === ft.toLowerCase()),
+      )
+    : [];
+
+  return {
+    path,
+    title: (row.title as string) ?? "",
+    body: (row.body as string) ?? "",
+    author: (row.author as string) ?? "",
+    editor: (row.editor as string) ?? "",
+    file_mtime: (row.file_mtime as string) ?? "",
+    source_url: (row.source_url as string | null) ?? null,
+    description: null,
+    tags: getFileTags(db, path),
+    score: (row.bm25_score as number) ?? 0,
+    matchedByTag: false,
+    tagMatches: matchedTags,
+  };
+}
+
+/**
+ * Sort comparator: text-matched results before tag-only, then by BM25 score.
+ */
+function byRelevance(a: SearchResult, b: SearchResult): number {
+  if (a.matchedByTag !== b.matchedByTag) {
+    return a.matchedByTag ? 1 : -1;
+  }
+  return a.score - b.score;
 }
 
 // ── Tag-only search ──
 
-function searchByTagsOnly(
-  db: SqliteDb,
-  tags: string[],
-  maxResults: number,
-): SearchResult[] {
+function searchByTagsOnly(db: SqliteDb, tags: string[], maxResults: number): SearchResult[] {
   const ph = tags.map(() => "?").join(", ");
-  const rows = db.prepare(
-    `SELECT DISTINCT f.path, f.title, f.author, f.editor, f.file_mtime, f.source_url
+  const rows = db
+    .prepare(
+      `SELECT DISTINCT f.path, f.title, f.author, f.editor, f.file_mtime, f.source_url
      FROM files f
      JOIN tags t ON f.path = t.file_path
      WHERE t.tag IN (${ph})
      ORDER BY f.title
      LIMIT ?`,
-  ).all<Record<string, unknown>>(...tags, maxResults);
+    )
+    .all<Record<string, unknown>>(...tags, maxResults);
 
   return rows.map((row) => {
     const path = row.path as string;
@@ -162,17 +172,100 @@ function searchByTagsOnly(
 
 // Stop words filtered from FTS5 queries to avoid impossibly strict AND matches.
 const STOP_WORDS = new Set([
-  "a", "an", "the", "and", "or", "but", "in", "on", "at", "to", "for", "of",
-  "with", "by", "is", "are", "was", "were", "be", "been", "being", "have",
-  "has", "had", "do", "does", "did", "will", "would", "could", "should",
-  "may", "might", "shall", "can", "need", "dare", "ought", "used", "about",
-  "above", "after", "again", "all", "also", "any", "because", "before",
-  "between", "both", "each", "few", "from", "here", "how", "into", "just",
-  "more", "most", "no", "not", "now", "only", "other", "over", "per",
-  "same", "such", "than", "that", "their", "them", "there", "these",
-  "they", "this", "those", "through", "under", "until", "very", "what",
-  "when", "where", "which", "while", "who", "why", "up", "down", "out",
-  "off", "about", "above",
+  "a",
+  "an",
+  "the",
+  "and",
+  "or",
+  "but",
+  "in",
+  "on",
+  "at",
+  "to",
+  "for",
+  "of",
+  "with",
+  "by",
+  "is",
+  "are",
+  "was",
+  "were",
+  "be",
+  "been",
+  "being",
+  "have",
+  "has",
+  "had",
+  "do",
+  "does",
+  "did",
+  "will",
+  "would",
+  "could",
+  "should",
+  "may",
+  "might",
+  "shall",
+  "can",
+  "need",
+  "dare",
+  "ought",
+  "used",
+  "about",
+  "above",
+  "after",
+  "again",
+  "all",
+  "also",
+  "any",
+  "because",
+  "before",
+  "between",
+  "both",
+  "each",
+  "few",
+  "from",
+  "here",
+  "how",
+  "into",
+  "just",
+  "more",
+  "most",
+  "no",
+  "not",
+  "now",
+  "only",
+  "other",
+  "over",
+  "per",
+  "same",
+  "such",
+  "than",
+  "that",
+  "their",
+  "them",
+  "there",
+  "these",
+  "they",
+  "this",
+  "those",
+  "through",
+  "under",
+  "until",
+  "very",
+  "what",
+  "when",
+  "where",
+  "which",
+  "while",
+  "who",
+  "why",
+  "up",
+  "down",
+  "out",
+  "off",
+  "about",
+  "above",
 ]);
 
 /**
@@ -180,9 +273,10 @@ const STOP_WORDS = new Set([
  * Removes stop words and single-character terms, then joins with AND.
  */
 function buildFts5Query(rawQuery: string): string {
-  // Replace hyphens with spaces: FTS5 parses `word-word` as `column:term`,
-  // which causes "no such column" errors.
-  const cleaned = rawQuery.replace(/-/g, " ");
+  // Replace FTS5-special characters with spaces to prevent syntax errors.
+  // FTS5 interprets `.` as column-prefix syntax, `"` for phrase queries,
+  // `()` for grouping, `+` `~` `^` `*` for operators, `-` as NOT operator.
+  const cleaned = rawQuery.replace(/[."()+~^*/-]/g, " ");
   const terms = cleaned
     .toLowerCase()
     .trim()
