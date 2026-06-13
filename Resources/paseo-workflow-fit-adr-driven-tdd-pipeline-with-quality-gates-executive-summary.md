@@ -3,7 +3,7 @@ title: 'Paseo Workflow Fit: ADR-Driven TDD Pipeline with Quality Gates — Execu
 description: Executive synthesis of how well paseo.sh supports a structured ADR → spec → plan workflow with pre-commit/pre-push hooks, TDD iteration, PR review cycles, and CI/CD.
 author: pi
 editor: lam
-date: 2026-06-13T04:02:05.232Z
+date: 2026-06-13T04:17:43.328Z
 tags:
   - paseo
   - orchestration
@@ -17,63 +17,96 @@ tags:
 
 ## Executive Summary
 
-This research evaluates how well paseo.sh fits a structured multi-step workflow: ADR → specification → plan hierarchy, pre-commit and pre-push quality gates, test-driven development per plan, PR-based CI/CD with review cycles, and automated branch cycling. The assessment draws on Paseo's official documentation, changelog, CLI reference, MCP tools, and orchestration skills as of June 2026 [@paseo-website] [@paseo-docs-skills] [@paseo-changelog].
+This research evaluates how well paseo.sh fits a structured multi-step workflow given that Pi agent handles the ADR/spec/plan hierarchy and pre-commit/pre-push hook retry. The question is: with those layers managed elsewhere, which parts of the pipeline can Paseo automate? The assessment draws on Paseo's official documentation, changelog, CLI reference, MCP tools, and orchestration skills as of June 2026 [@paseo-website] [@paseo-docs-skills] [@paseo-changelog].
 
-## Overall Fit: Strong with Custom Wiring
+## Assumed Division of Labor
 
-Paseo's worktree-per-agent model, git integration, and PR panel provide a strong foundation. No step in the workflow is impossible, but several steps require custom agent prompting or scripting rather than being built-in behaviors.
+| Layer | Handled By |
+|---|---|
+| ADR → spec → plan hierarchy (1:N:M) | Pi agent extension |
+| Pre-commit hook retry (fix → re-commit) | Pi agent |
+| Pre-push hook retry (fix → re-push) | Pi agent |
 
-## Step-by-Step Assessment
+Everything else is in scope for Paseo automation.
 
-| Workflow Step | Paseo Fit | Notes |
+## What Paseo Automates
+
+**Step 1: Environment setup per worktree.** `paseo.json` with `worktree.setup` runs `npm ci` and installs hook infrastructure automatically when Paseo creates a worktree. The agent doesn't need to remember — it just happens.
+
+**Step 2: TDD per plan.** Paseo creates an isolated git worktree for each plan (`paseo run --worktree plan-auth-flow "..."`). The agent writes tests and implements code. `/paseo-loop` wraps the test-fix-retry cycle with a verifier that checks `npm test` output. No other orchestrator gives you this isolated-per-plan execution model out of the box.
+
+**Step 3: Commit and push.** Paseo's git panel handles `commit` and `push` as UI actions or CLI commands. The Pi agent handles retry if hooks fail. But Paseo provides the git operations and surfaces the hook failure output to the agent in chat.
+
+**Step 4: Open PR.** Built into Paseo's git panel — `commit → push → open PR` is a single workflow. Branch names and PR titles are auto-generated from the agent's task description. No `gh` CLI wrangling needed.
+
+**Step 5: CI/CD visibility.** Paseo surfaces GitHub PR check status in the sidebar and hover card. The agent can see pass/fail for every check without leaving the workspace.
+
+**Step 6: Gather PR comments and failed checks.** This is Paseo's strongest differentiator. v0.1.94 added: "Attach pull request comments, reviews, threads, and failed check logs to chat from the PR panel" (#1400). One click feeds all PR feedback directly into the agent's context as chat messages. No manual copy-paste.
+
+**Step 7: Orchestrate revision.** With feedback attached to chat, the agent revises the worktree code. `/paseo-committee` can do root cause analysis on complex failures. `/paseo-advisor` provides second opinions on review comments.
+
+**Step 8: Push and iterate until green.** Wrap the revision cycle in `/paseo-loop` with `--sleep 10m` to poll CI status every 10 minutes. The loop checks GitHub check status, and if any check failed, it gathers the new failure logs (via the PR panel attachment feature), revises, pushes, and waits another 10 minutes. Stops when all checks pass.
+
+**Step 9: Merge PR.** Paseo's checkout pane has a merge button (v0.1.71). After merge, auto-archive cleans up the worktree (v0.1.76).
+
+**Step 10: Branch cycling (checkout master → pull rebase → new branch).** This can be automated — not as a single button, but through agent instructions using Paseo CLI and MCP tools:
+
+```
+# After PR merge and auto-archive:
+git checkout main
+git pull --rebase
+paseo run --worktree plan-next "implement the next plan from spec-042"
+```
+
+An orchestrator agent can execute this sequence using Paseo's MCP tools (`list_worktrees`, `archive_worktree`, `create_worktree`, `send_agent_prompt`). The source checkout's git state is accessible because Paseo worktrees share the same underlying repository. This is not a built-in "cycle" command, but it's a straightforward script an agent can run.
+
+## End-to-End Automated Pipeline
+
+With Pi handling hierarchy + hook retry and Paseo handling everything else, the pipeline looks like this:
+
+```
+Pi: ADR → spec1, spec2, spec3
+  Paseo: for each spec → for each plan →
+    paseo.json setup (npm ci, hooks)         ← automated
+    /paseo-loop TDD (test → code → pass)      ← automated
+    git commit → pre-commit (Pi retry)        ← Paseo git + Pi retry
+    git push → pre-push (Pi retry)            ← Paseo git + Pi retry
+    open PR on GitHub                         ← automated
+    CI runs (GitHub Actions)                  ← external
+    /paseo-loop CI poll every 10m             ← automated
+      attach PR comments + logs (v0.1.94)     ← automated
+      /paseo-committee RCA                    ← automated
+      revise worktree                         ← automated
+      commit + push → hooks (Pi retry)        ← Paseo git + Pi retry
+      wait 10m, re-check CI                   ← automated
+    merge PR                                  ← automated
+    auto-archive worktree                     ← automated
+    branch cycle: main → rebase → new branch  ← agent-scripted
+```
+
+## Paseo's Unique Value Add
+
+| Capability | What Paseo Provides | Alternative Without Paseo |
 |---|---|---|
-| ADR → Spec → Plan (1:N:M) | Partial | No native hierarchy. ADRs/specs are files; plans are worktrees. Cardinality and traceability are convention-based. |
-| Pre-commit hooks (lint, static check) | Functional | Git hooks block commits naturally. Agent must detect failure, self-correct, retry. No built-in hook retry. |
-| Pre-push hooks (tests) | Functional | Same as pre-commit. Long test suites need generous `--wait-timeout`. |
-| TDD iteration per plan | Strong | `/paseo-loop` with worker/verifier maps directly. `--output-schema` enables structured verdicts. |
-| Open PR per plan | Strong | Built-in git panel: commit → push → PR. Branch names auto-generated. |
-| CI/CD visibility | Strong | PR check status in sidebar and hover card. Paseo delegates CI to GitHub Actions. |
-| Gather PR comments + failed checks | Strong (v0.1.94+) | Attach PR comments, reviews, threads, and failed check logs to agent chat (#1400). |
-| Orchestrate revision from feedback | Strong | Feedback attached as agent context. `/paseo-committee` for RCA. `/paseo-advisor` for second opinions. |
-| Push → re-check → iterate | Functional | Wrap in `/paseo-loop` with CI status polling. CI wait time is unpredictable. |
-| Merge → master → rebase → new branch | Partial | Merge and auto-archive supported. The "checkout master → pull rebase → new worktree" transition is manual. |
-
-## Key Strengths
-
-- **Worktree isolation** is the right primitive for per-plan execution — agents never clobber each other
-- **PR panel with feedback attachment** (v0.1.94) directly addresses the gather-comments-and-revise cycle
-- **`/paseo-loop` and MCP tools** enable the TDD and CI revision loops with structured verification
-- **`paseo.json` setup scripts** can install hook infrastructure and dependencies in fresh worktrees
-- **Multi-provider flexibility** lets you use different agents for different phases (Claude for planning, Codex for implementation)
-- **Cross-device access** lets you monitor the pipeline from mobile while it runs autonomously
-
-## Key Gaps
-
-1. **No native hierarchy for ADR/spec/plan.** The 1:N:M relationship must be enforced through naming conventions or external scripts. No traceability links in Paseo's UI.
-2. **No built-in retry for hook failures.** Pre-commit and pre-push failures depend on the agent's ability to self-correct from error output. This is LLM-dependent and not guaranteed.
-3. **No CI polling primitive.** The PR revision loop relies on `/paseo-loop` polling GitHub status, which is inefficient for long CI runs.
-4. **Manual branch cycling.** "Master → rebase → new branch" requires explicit agent instructions rather than being an automated workflow transition.
-5. **Context window pressure.** Long revision cycles with many PR comments and CI logs may exceed agent context limits.
-
-## Recommendations
-
-- Use `paseo.json` setup scripts to install hooks and dependencies in worktrees automatically
-- Structure ADR/spec/plan as markdown files with a consistent naming convention (e.g., `adr-042/`, `spec-042-auth/`, `plan-042-auth-flow/`)
-- Set `--wait-timeout` generously on push operations that trigger test suites
-- Use `/paseo-loop` for TDD and CI revision loops with `--max-iterations` to prevent infinite loops
-- Consider an orchestrator agent that manages the workflow from ADR to merge, spawning sub-agents for each phase via MCP tools
-- The v0.1.94 PR feedback attachment feature is critical — ensure agents are configured with "Inject Paseo tools" enabled
+| Per-plan isolation | Git worktree per plan, no file conflicts | Manual git worktree or single directory |
+| CI polling + retry | `/paseo-loop --sleep 10m` with verifier | Custom bash script polling `gh` |
+| PR feedback ingestion | One-click attach comments + logs to chat (v0.1.94) | Manual copy-paste or `gh` API |
+| Multi-provider routing | Claude for planning, Codex for coding, different agents per phase | Single provider only |
+| Cross-device monitoring | Check pipeline from phone, merge from mobile | Must be at desk |
+| Per-worktree dev URLs | Each plan gets unique `http://plan--project.localhost:6767` | Port conflicts |
+| Unified workspace | Git, diff, terminal, PR, browser in one panel | Separate windows/tools |
 
 ## Confidence Assessment
 
 | Question | Confidence | Rationale |
 |---|---|---|
-| Does Paseo support worktree isolation per plan? | High | Core documented feature with CLI and MCP support |
-| Does Paseo surface PR feedback to agents? | High | v0.1.94 changelog explicitly documents this |
-| Can Paseo loop on CI status? | Moderate | Possible via `/paseo-loop` polling GitHub, but no native CI event system |
-| Does Paseo manage ADR/spec/plan hierarchy? | Low | No evidence of hierarchy primitives in any documentation |
+| Can Paseo automate TDD per plan via worktrees? | High | Core documented feature, `/paseo-loop` directly supports this |
+| Can Paseo poll CI every 10 minutes and stop on green? | High | `/paseo-loop --sleep 10m` with `--max-iterations` — verifier checks GitHub status |
+| Can Paseo attach PR comments + logs to agent chat? | High | v0.1.94 changelog explicitly documents this (#1400) |
+| Can Paseo automate the branch cycling sequence? | Moderate | Possible via agent using CLI/MCP tools, but no single "cycle" command exists |
+| Can Paseo replace Pi for hook retry or hierarchy? | N/A | Those are explicitly handled by Pi, not in scope |
 
-## Relevant Notes
+## Relevant notes
 
 - [[paseo-workflow-adr-to-spec-to-plan-hierarchy]]
 - [[paseo-workflow-pre-commit-and-pre-push-hooks-with-agents]]
