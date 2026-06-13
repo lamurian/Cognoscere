@@ -3,7 +3,7 @@ title: 'Paseo Architecture: Daemon-Based Cross-Device Agent Orchestration'
 description: "Paseo's daemon-based architecture: separates agent execution from UI, multi-provider via native adapters and ACP catalog, cross-device access"
 author: pi
 editor: lam
-date: 2026-06-12T18:12:36.761Z
+date: 2026-06-13T04:03:03.184Z
 tags:
   - research
   - paseo
@@ -11,7 +11,6 @@ tags:
   - orchestration
   - llm-agents
 ---
-## Summary
 
 Paseo (paseo.sh) is an open-source (AGPL-3.0) orchestration layer for AI coding agents, built around a daemon-based architecture that separates agent execution from the user interface. Created by solo maintainer Mo, it started as a push-to-talk voice interface for Claude Code and evolved into a full cross-device orchestration platform.
 
@@ -32,3 +31,8 @@ Paseo (paseo.sh) is an open-source (AGPL-3.0) orchestration layer for AI coding 
 - [[the-agent-orchestration-landscape-in-2026]]
 - [[state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering]]
 - [[architectural-patterns-for-llm-guardrail-systems-in-software-engineering]]
+- [[paseo-workflow-adr-to-spec-to-plan-hierarchy]]
+- [[paseo-workflow-pre-commit-and-pre-push-hooks-with-agents]]
+- [[paseo-workflow-tdd-iteration-loop-with-agents]]
+- [[paseo-workflow-pr-revision-cycle-with-agents]]
+- [[paseo-workflow-fit-adr-driven-tdd-pipeline-with-quality-gates-executive-summary]]

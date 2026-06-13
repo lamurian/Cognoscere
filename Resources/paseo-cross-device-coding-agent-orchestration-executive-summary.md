@@ -3,7 +3,7 @@ title: 'Paseo: Cross-Device Coding Agent Orchestration — Executive Summary'
 description: Executive synthesis of Paseo.sh architecture, comparative analysis with free open-source alternatives, and position in the 2026 agent orchestration landscape
 author: pi
 editor: lam
-date: 2026-06-12T18:12:36.763Z
+date: 2026-06-13T04:03:03.185Z
 tags:
   - research
   - paseo
@@ -11,6 +11,7 @@ tags:
   - orchestration
   - comparison
 ---
+
 ## Executive Summary
 
 This research examines Paseo.sh, an open-source (AGPL-3.0) orchestration layer for AI coding agents, and compares it with alternative free open-source programs in the rapidly converging 2026 agent orchestration ecosystem.
@@ -53,3 +54,8 @@ This research examines Paseo.sh, an open-source (AGPL-3.0) orchestration layer f
 - [[the-agent-orchestration-landscape-in-2026]]
 - [[state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering]]
 - [[architectural-patterns-for-llm-guardrail-systems-in-software-engineering]]
+- [[paseo-workflow-adr-to-spec-to-plan-hierarchy]]
+- [[paseo-workflow-pre-commit-and-pre-push-hooks-with-agents]]
+- [[paseo-workflow-tdd-iteration-loop-with-agents]]
+- [[paseo-workflow-pr-revision-cycle-with-agents]]
+- [[paseo-workflow-fit-adr-driven-tdd-pipeline-with-quality-gates-executive-summary]]

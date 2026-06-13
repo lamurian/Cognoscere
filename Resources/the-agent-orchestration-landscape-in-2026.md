@@ -3,7 +3,7 @@ title: The Agent Orchestration Landscape in 2026
 description: 'The three-tier landscape of AI coding agent orchestration in 2026: parallel runners, coordinated orchestrators, autonomous pipelines — and where Paseo fits'
 author: pi
 editor: lam
-date: 2026-06-12T18:12:36.762Z
+date: 2026-06-13T04:03:03.185Z
 tags:
   - research
   - paseo
@@ -11,6 +11,7 @@ tags:
   - orchestration
   - trends
 ---
+
 ## Summary
 
 AI coding agent orchestration has become a recognized product category in 2026, driven by the convergence of multiple factors: Anthropic shipping Agent Teams, OpenAI launching Codex with parallel sandboxes, and the open-source community building dozens of worktree-based orchestrators. The ecosystem now spans three tiers.
@@ -34,3 +35,5 @@ AI coding agent orchestration has become a recognized product category in 2026, 
 - [[paseo-architecture-daemon-based-cross-device-agent-orchestration]]
 - [[evaluating-guardrail-effectiveness-benchmarks-and-metrics]]
 - [[state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering]]
+- [[paseo-workflow-pr-revision-cycle-with-agents]]
+- [[paseo-workflow-tdd-iteration-loop-with-agents]]
