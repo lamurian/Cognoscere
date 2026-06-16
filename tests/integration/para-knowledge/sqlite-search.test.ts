@@ -196,6 +196,54 @@ describe("SQLite FTS5 search", () => {
     expect(Array.isArray(stop)).toBe(true);
   });
 
+  it("returns documents matching a subset of query terms when not all terms appear in every document", () => {
+    // This is the real-world scenario: user searches with several terms,
+    // but not every document contains every term. AND queries miss relevant docs.
+    // OR queries return them, ranked by BM25.
+
+    indexFile(db, {
+      path: "Resources/psychology-resources.md",
+      title: "Psychology Resources and Resilience",
+      body: "Psychological resources such as optimism and self-efficacy correlate with resilience. Stress buffering is a key mechanism.",
+      tags: ["psychology", "resilience"],
+      author: "pi",
+      editor: "lam",
+      created: "2024-06-01T00:00:00.000Z",
+      modified: "2024-06-01T00:00:00.000Z",
+      file_mtime: "2024-06-01T00:00:00.000Z",
+      source_url: null,
+    });
+
+    indexFile(db, {
+      path: "Resources/affect-study.md",
+      title: "Stress and Affect Study",
+      body: "This study examines the relationship between perceived stress and positive affect. Affect is measured as a unified continuum.",
+      tags: ["psychology", "affect"],
+      author: "pi",
+      editor: "lam",
+      created: "2024-06-02T00:00:00.000Z",
+      modified: "2024-06-02T00:00:00.000Z",
+      file_mtime: "2024-06-02T00:00:00.000Z",
+      source_url: null,
+    });
+
+    // Query with a mix of terms — "affect" only appears in affect-study.md
+    const results = searchDocs(db, "psychological resources resilience stress affect");
+
+    // Both documents should appear (OR semantics), ranked by BM25
+    const paths = results.map((r) => r.path);
+    expect(paths).toContain("Resources/psychology-resources.md");
+    expect(paths).toContain("Resources/affect-study.md");
+
+    // The document matching more terms should rank higher
+    const psyIdx = paths.indexOf("Resources/psychology-resources.md");
+    const affectIdx = paths.indexOf("Resources/affect-study.md");
+    // affect-study.md has "stress" + "affect", psychology-resources.md has "psychological" + "resources" + "resilience" + "stress"
+    // Either can rank first — what matters is both are present
+    expect(psyIdx).toBeGreaterThanOrEqual(0);
+    expect(affectIdx).toBeGreaterThanOrEqual(0);
+  });
+
   it("handles queries containing dots without FTS5 syntax error", () => {
     // Dots (e.g., "paseo.sh") previously triggered an FTS5 column-prefix syntax error.
     // They should be handled gracefully without throwing.

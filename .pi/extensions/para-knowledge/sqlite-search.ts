@@ -270,7 +270,10 @@ const STOP_WORDS = new Set([
 
 /**
  * Build an FTS5 match query from a raw string.
- * Removes stop words and single-character terms, then joins with AND.
+ * Removes stop words and single-character terms, then joins with OR.
+ * Using OR instead of AND prevents overly strict queries where a single
+ * missing term excludes all relevant documents. BM25 ranking naturally
+ * prioritises documents that match more of the query terms.
  */
 function buildFts5Query(rawQuery: string): string {
   // Replace FTS5-special characters with spaces to prevent syntax errors.
@@ -283,5 +286,5 @@ function buildFts5Query(rawQuery: string): string {
     .split(/\s+/)
     .filter((t) => t.length > 1 && !STOP_WORDS.has(t));
   if (terms.length === 0) return "";
-  return terms.join(" AND ");
+  return terms.join(" OR ");
 }
