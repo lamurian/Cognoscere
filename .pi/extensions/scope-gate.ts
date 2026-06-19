@@ -1,11 +1,10 @@
 /**
  * Scope Gate Extension
  *
- * Enforces path-scoped file access for write/edit/read tools:
+ * Enforces path-scoped file access for write/edit tools:
  * - Blocks writes/edits outside the current working directory
  * - Blocks writes/edits to .gitignored files (via `git check-ignore`)
  * - Blocks reads of .env / *.env.* files, except .env.example
- * - Blocks reads of files outside the working directory
  *
  * Works alongside the OS-level sandbox (which handles bash).
  */
@@ -24,16 +23,11 @@ function expandTilde(path: string): string {
   return path;
 }
 
-function isInsideCwd(cwd: string, targetPath: string): boolean {
-  const rel = relative(cwd, targetPath);
-  return !rel.startsWith("..") && !resolve(targetPath).startsWith(cwd);
-}
-
 function isGitIgnored(cwd: string, targetPath: string): boolean {
   try {
     const relPath = relative(cwd, targetPath);
     if (!relPath || relPath.startsWith("..")) return false;
-    const result = execSync("git check-ignore -q " + JSON.stringify(relPath), {
+    execSync("git check-ignore -q " + JSON.stringify(relPath), {
       cwd,
       stdio: ["ignore", "ignore", "ignore"],
       timeout: 3000,
@@ -58,7 +52,7 @@ export default function (pi: ExtensionAPI) {
   pi.on("tool_call", async (event, ctx) => {
     // ── Write / Edit tools ──────────────────────────────────────────────
     if (event.toolName === "write" || event.toolName === "edit") {
-      const targetPath = resolve(ctx.cwd, expandTilde(event.input.path));
+      const targetPath = resolve(ctx.cwd, expandTilde(event.input.path as string));
       const relPath = relative(ctx.cwd, targetPath);
       const fileName = basename(targetPath);
 
@@ -92,17 +86,9 @@ export default function (pi: ExtensionAPI) {
 
     // ── Read tool ────────────────────────────────────────────────────────
     if (event.toolName === "read") {
-      const targetPath = resolve(ctx.cwd, expandTilde(event.input.path));
+      const targetPath = resolve(ctx.cwd, expandTilde(event.input.path as string));
       const relPath = relative(ctx.cwd, targetPath);
       const fileName = basename(targetPath);
-
-      // Block reads outside cwd
-      if (relPath.startsWith("..")) {
-        return {
-          block: true,
-          reason: `Path "${relPath}" is outside the working directory (${ctx.cwd}). Reads are scoped to the repo.`,
-        };
-      }
 
       // Allow .env.example explicitly
       if (isEnvExample(fileName)) return;
