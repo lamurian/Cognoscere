@@ -25,8 +25,8 @@ In resource allocation, the softmax rule implements bounded rationality—agents
 
 ## Relevant notes
 
-- [[agent-architectures-and-decision-making-in-agent-based-simulation]]
-- [[agent-based-simulation-for-complex-adaptive-systems-executive-summary]]
-- [[llm-enhanced-agents-and-the-future-of-agent-based-modeling]]
-- [[resource-conservation-and-allocation-parameters]]
-- [[protective-factor-efficacy-and-allocation-parameters]]
+- [Agent Architectures and Decision-Making in Agent-Based Simulation](agent-architectures-and-decision-making-in-agent-based-simulation.md)
+- [Agent-Based Simulation for Complex Adaptive Systems — Executive Summary](agent-based-simulation-for-complex-adaptive-systems-executive-summary.md)
+- [LLM-Enhanced Agents and the Future of Agent-Based Modeling](llm-enhanced-agents-and-the-future-of-agent-based-modeling.md)
+- [Resource Conservation and Allocation Parameters](resource-conservation-and-allocation-parameters.md)
+- [Protective Factor Efficacy and Allocation Parameters](protective-factor-efficacy-and-allocation-parameters.md)

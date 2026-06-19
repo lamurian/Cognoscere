@@ -121,7 +121,7 @@ pm.summary(trace)
 
 ## Relevant notes
 
-- [[synthesis-reporting-communicating-statistical-findings]]
-- [[AGENTS]]
-- [[model-comparison-selection-bayesian-approach]]
-- [[frequentist-vs-bayesian-philosophy]]
+- [Synthesis & Reporting: Communicating Statistical Findings](../Resources/synthesis-reporting-communicating-statistical-findings.md)
+- [Projects — Agent Guidelines](AGENTS.md)
+- [Model Comparison & Selection: Bayesian Approach](../Resources/model-comparison-selection-bayesian-approach.md)
+- [Frequentist vs Bayesian Philosophy](../Resources/frequentist-vs-bayesian-philosophy.md)

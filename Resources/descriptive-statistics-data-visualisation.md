@@ -116,7 +116,7 @@ Python: `plt.scatter(x, y, color='steelblue')`
 
 ## Relevant notes
 
-- [[fundamental-mathematics-for-statistics]]
-- [[linear-algebra-essentials-for-statistics]]
-- [[frequentist-inference]]
-- [[frequentist-vs-bayesian-philosophy]]
+- [Fundamental Mathematics for Statistics](fundamental-mathematics-for-statistics.md)
+- [Linear Algebra Essentials for Statistics](linear-algebra-essentials-for-statistics.md)
+- [Frequentist Inference](frequentist-inference.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)

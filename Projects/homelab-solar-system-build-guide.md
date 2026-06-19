@@ -97,8 +97,8 @@ Victron SmartSolar connects via Bluetooth to the VictronConnect app. You can tra
 
 ## Relevant notes
 
-- [[low-power-solar-homelab-executive-summary]]
-- [[homelab-tailscale-configuration]]
-- [[homelab-hardware-build-guide]]
-- [[homelab-software-setup-guide]]
-- [[homelab-solar-feasibility-indonesia-and-netherlands]]
+- [Low-Power Solar Homelab: Executive Summary](../Resources/low-power-solar-homelab-executive-summary.md)
+- [Homelab Tailscale Configuration](homelab-tailscale-configuration.md)
+- [Homelab Hardware Build Guide](homelab-hardware-build-guide.md)
+- [Homelab Software Setup Guide](homelab-software-setup-guide.md)
+- [Homelab Solar Feasibility: Indonesia and Netherlands](../Resources/homelab-solar-feasibility-indonesia-and-netherlands.md)

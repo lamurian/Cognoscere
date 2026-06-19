@@ -41,6 +41,6 @@ Unobserved (missing) studies are integrated out of the likelihood analytically. 
 
 ## Related Notes
 
-- [[copas-selection-model-for-publication-bias]] — overview of the Copas model
-- [[meta-copas-step-by-step-algorithm]] — how the R function fits the model
-- [[interpreting-summary-from-meta-copas]] — how to read the summary output
+- [Copas Selection Model for Publication Bias](copas-selection-model-for-publication-bias.md) — overview of the Copas model
+- [meta::copas() Step-by-Step Algorithm](meta-copas-step-by-step-algorithm.md) — how the R function fits the model
+- [Interpreting summary() from meta::copas()](interpreting-summary-from-meta-copas.md) — how to read the summary output

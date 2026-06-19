@@ -36,8 +36,8 @@ Rather than sweeping technological modernisation, Indonesian solarpunk suggests 
 
 ## Relevant notes
 
-- [[solarpunk-in-southeast-asia]]
-- [[history-and-origins-of-the-solarpunk-movement]]
-- [[solarpunk-in-the-united-states]]
-- [[solarpunk-as-a-literary-and-art-movement]]
-- [[solarpunk-in-the-european-union]]
+- [Solarpunk in Southeast Asia](solarpunk-in-southeast-asia.md)
+- [History and Origins of the Solarpunk Movement](history-and-origins-of-the-solarpunk-movement.md)
+- [Solarpunk in the United States](solarpunk-in-the-united-states.md)
+- [Solarpunk as a Literary and Art Movement](solarpunk-as-a-literary-and-art-movement.md)
+- [Solarpunk in the European Union](solarpunk-in-the-european-union.md)

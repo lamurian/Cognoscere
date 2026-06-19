@@ -36,8 +36,8 @@ Criticism: Scholar Adam Flynn warns of 'greenwashing' - luxury condominiums with
 
 ## Relevant notes
 
-- [[history-and-origins-of-the-solarpunk-movement]]
-- [[solarpunk-in-southeast-asia]]
-- [[solarpunk-in-indonesia]]
-- [[global-trajectories-and-current-impact-of-solarpunk]]
-- [[solarpunk-in-the-united-states]]
+- [History and Origins of the Solarpunk Movement](history-and-origins-of-the-solarpunk-movement.md)
+- [Solarpunk in Southeast Asia](solarpunk-in-southeast-asia.md)
+- [Solarpunk in Indonesia](solarpunk-in-indonesia.md)
+- [Global Trajectories and Current Impact of Solarpunk](global-trajectories-and-current-impact-of-solarpunk.md)
+- [Solarpunk in the United States](solarpunk-in-the-united-states.md)

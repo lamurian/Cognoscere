@@ -42,8 +42,8 @@ _Source: Wikipedia -- Marine energy, Tidal power, Wave power_
 
 ## Relevant notes
 
-- [[core-principles-and-philosophy-of-solarpunk]]
-- [[energy-storage-technologies]]
-- [[comparative-analysis-of-sustainable-energy-sources]]
-- [[solar-photovoltaic-energy]]
-- [[global-trajectories-and-current-impact-of-solarpunk]]
+- [Core Principles and Philosophy of Solarpunk](core-principles-and-philosophy-of-solarpunk.md)
+- [Energy Storage Technologies](energy-storage-technologies.md)
+- [Comparative Analysis of Sustainable Energy Sources](comparative-analysis-of-sustainable-energy-sources.md)
+- [Solar Photovoltaic Energy](solar-photovoltaic-energy.md)
+- [Global Trajectories and Current Impact of Solarpunk](global-trajectories-and-current-impact-of-solarpunk.md)

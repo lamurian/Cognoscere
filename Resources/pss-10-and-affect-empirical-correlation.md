@@ -32,8 +32,8 @@ These consistent small-to-moderate negative correlations (r ≈ -0.15 to -0.30) 
 
 ## Relevant notes
 
-- [[current-stress-and-affect-empirical-correlation]]
-- [[stress-and-affect-empirical-correlations]]
-- [[correlation-pairs-validation-literature-based-executive-summary]]
-- [[affect-distribution-norms-panas-empirical-reference]]
-- [[resilience-and-affect-empirical-correlation]]
+- [Current Stress and Affect: Empirical Correlation](current-stress-and-affect-empirical-correlation.md)
+- [Stress and Affect: Empirical Correlations](stress-and-affect-empirical-correlations.md)
+- [Correlation Pairs Validation: Literature-Based Executive Summary](correlation-pairs-validation-literature-based-executive-summary.md)
+- [Affect Distribution Norms: PANAS Empirical Reference](affect-distribution-norms-panas-empirical-reference.md)
+- [Resilience and Affect: Empirical Correlation](resilience-and-affect-empirical-correlation.md)

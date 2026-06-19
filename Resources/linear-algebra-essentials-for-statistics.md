@@ -128,7 +128,7 @@ $$\Sigma_{ij} = \text{Cov}(X_i, X_j) = E[(X_i - \mu_i)(X_j - \mu_j)]$$
 
 ## Relevant notes
 
-- [[fundamental-mathematics-for-statistics]]
-- [[AGENTS]]
-- [[descriptive-statistics-data-visualisation]]
-- [[frequentist-vs-bayesian-philosophy]]
+- [Fundamental Mathematics for Statistics](fundamental-mathematics-for-statistics.md)
+- [Resources — Agent Guidelines](AGENTS.md)
+- [Descriptive Statistics & Data Visualisation](descriptive-statistics-data-visualisation.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)

@@ -65,9 +65,9 @@ Best-in-class forever free VPS — use it if your software runs on ARM and you c
 
 ## Relevant notes
 
-- [[forever-free-vps-comparison-and-executive-summary]]
-- [[google-cloud-free-tier-vps]]
-- [[ibm-cloud-free-lite-vps]]
-- [[budget-digital-homelab-for-sustainable-living]]
-- [[self-hosted-software-stack-for-off-grid-resilience]]
-- [[digital-homelab-hardening-core-security-practices]]
+- [Forever Free VPS Comparison and Executive Summary](forever-free-vps-comparison-and-executive-summary.md)
+- [Google Cloud Free Tier VPS](google-cloud-free-tier-vps.md)
+- [IBM Cloud Free Lite VPS](ibm-cloud-free-lite-vps.md)
+- [Budget Digital Homelab for Sustainable Living](../Areas/budget-digital-homelab-for-sustainable-living.md)
+- [Self-Hosted Software Stack for Off-Grid Resilience](self-hosted-software-stack-for-off-grid-resilience.md)
+- [Digital Homelab Hardening: Core Security Practices](digital-homelab-hardening-core-security-practices.md)

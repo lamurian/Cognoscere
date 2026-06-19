@@ -44,8 +44,8 @@ _Source: Wikipedia -- Geothermal energy, Geothermal power, Enhanced geothermal s
 
 ## Relevant notes
 
-- [[comparative-analysis-of-sustainable-energy-sources]]
-- [[marine-renewable-energy]]
-- [[core-principles-and-philosophy-of-solarpunk]]
-- [[energy-storage-technologies]]
-- [[solar-photovoltaic-energy]]
+- [Comparative Analysis of Sustainable Energy Sources](comparative-analysis-of-sustainable-energy-sources.md)
+- [Marine Renewable Energy](marine-renewable-energy.md)
+- [Core Principles and Philosophy of Solarpunk](core-principles-and-philosophy-of-solarpunk.md)
+- [Energy Storage Technologies](energy-storage-technologies.md)
+- [Solar Photovoltaic Energy](solar-photovoltaic-energy.md)

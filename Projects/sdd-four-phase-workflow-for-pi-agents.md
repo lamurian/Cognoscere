@@ -41,8 +41,8 @@ For the pi knowledge management workflow (research, summarisation, atomic note c
 
 ## Relevant notes
 
-- [[spec-driven-context-driven-tdd-workflow-overview]]
-- [[spec-architecture-for-ai-coding-agents]]
-- [[least-obstructive-workflow-principles]]
-- [[tdd-with-ai-coding-agents]]
-- [[multi-agent-orchestration-patterns]]
+- [Spec-Driven Context-Driven TDD Workflow for AI Coding Agents](../Resources/spec-driven-context-driven-tdd-workflow-for-ai-coding-agents.md)
+- [Spec Architecture for AI Coding Agents](../Resources/spec-architecture-for-ai-coding-agents.md)
+- [Least-Obstructive Workflow Principles](../Resources/least-obstructive-workflow-principles.md)
+- [TDD with AI Coding Agents](../Resources/tdd-with-ai-coding-agents.md)
+- [Multi-Agent Orchestration Patterns](../Resources/multi-agent-orchestration-patterns.md)

@@ -22,9 +22,9 @@ Masten et al. @masten2021 frame resilience through a multisystem lens, arguing t
 The choice of definition has practical consequences. Trait-based definitions favour dispositional measures such as the Connor-Davidson Resilience Scale (CD-RISC). Process-based definitions require longitudinal designs that capture person-environment interactions. Outcome-based definitions focus on observable functioning after adversity. Studies that mismatch their definition with their measurement instrument risk internal inconsistency, as documented in recent systematic reviews.
 
 ## Sources
-- [[How Resilience Interventions Improve Employee Wellbeing]] — documents the jingle-jangle problem in resilience intervention studies
-- [[Cost-Effective Organisation-Based Interventions for Psychological Resilience: Executive Summary]] — synthesis of cost-effective resilience interventions
-- [[Drivers of Cost-Effectiveness in Workplace Resilience Interventions]] — factors driving cost-effectiveness
+- [How Resilience Interventions Improve Employee Wellbeing](how-resilience-interventions-improve-employee-wellbeing.md) — documents the jingle-jangle problem in resilience intervention studies
+- [Cost-Effective Organisation-Based Interventions for Psychological Resilience: Executive Summary](cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary.md) — synthesis of cost-effective resilience interventions
+- [Drivers of Cost-Effectiveness in Workplace Resilience Interventions](drivers-of-cost-effectiveness-in-workplace-resilience-interventions.md) — factors driving cost-effectiveness
 - [@aburn2016] — integrative review of resilience definitions
 - [@masten2021] — multisystem perspectives on resilience
 - [@troy2023] — affect-regulation framework for resilience

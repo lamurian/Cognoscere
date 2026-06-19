@@ -60,7 +60,7 @@ Max 10 iterations.
 
 ## Relevant Notes
 
-- [[paseo-workflow-adr-to-spec-to-plan-hierarchy]]
-- [[paseo-workflow-pre-commit-and-pre-push-hooks-with-agents]]
-- [[paseo-workflow-tdd-iteration-loop-with-paseo]]
-- [[paseo-sh-chat-room-and-agentic-orchestration-platform]]
+- [Paseo Workflow: ADR-to-Spec-to-Plan Hierarchy](paseo-workflow-adr-to-spec-to-plan-hierarchy.md)
+- [Paseo Workflow: Pre-commit and Pre-push Hooks with Agents](paseo-workflow-pre-commit-and-pre-push-hooks-with-agents.md)
+- [Paseo Workflow: TDD Iteration Loop with Agents](paseo-workflow-tdd-iteration-loop-with-agents.md)
+- [Paseo.sh: Chat Room and Agentic Orchestration Platform](paseo-sh-chat-room-and-agentic-orchestration-platform.md)

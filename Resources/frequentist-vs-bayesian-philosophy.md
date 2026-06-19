@@ -146,7 +146,7 @@ Most modern statisticians are pragmatic:
 
 ## Relevant notes
 
-- [[frequentist-inference]]
-- [[bayesian-inference]]
-- [[fundamental-mathematics-for-statistics]]
-- [[descriptive-statistics-data-visualisation]]
+- [Frequentist Inference](frequentist-inference.md)
+- [Bayesian Inference](bayesian-inference.md)
+- [Fundamental Mathematics for Statistics](fundamental-mathematics-for-statistics.md)
+- [Descriptive Statistics & Data Visualisation](descriptive-statistics-data-visualisation.md)

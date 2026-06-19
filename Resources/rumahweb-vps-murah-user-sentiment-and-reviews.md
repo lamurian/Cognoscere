@@ -80,5 +80,5 @@ Rumahweb's dual-zone HA capability and established brand are genuine strengths, 
 
 ## Relevant notes
 
-- [[rumahweb-vps-murah-indonesia-512-mb-plan-at-rp50-000-month]]
-- [[cheapest-paid-vps-indonesia-executive-summary-and-recommendation-for-saas-production]]
+- [Rumahweb VPS Murah Indonesia — 512 MB Plan at Rp50,000/month](rumahweb-vps-murah-indonesia-512-mb-plan-at-rp50-000-month.md)
+- [Cheapest Paid VPS Indonesia — Executive Summary and Recommendation for SaaS Production](cheapest-paid-vps-indonesia-executive-summary-and-recommendation-for-saas-production.md)

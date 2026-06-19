@@ -27,8 +27,8 @@ This initialization assigns each agent a stable baseline (setpoint) that homeost
 
 ## Relevant notes
 
-- [[agent-based-simulation-for-complex-adaptive-systems-executive-summary]]
-- [[spatial-network-and-temporal-structures-in-agent-based-simulation]]
-- [[agent-architectures-and-decision-making-in-agent-based-simulation]]
-- [[watts-strogatz-small-world-network-parameters-for-social-simulation]]
-- [[AGENTS]]
+- [Agent-Based Simulation for Complex Adaptive Systems — Executive Summary](agent-based-simulation-for-complex-adaptive-systems-executive-summary.md)
+- [Spatial, Network, and Temporal Structures in Agent-Based Simulation](spatial-network-and-temporal-structures-in-agent-based-simulation.md)
+- [Agent Architectures and Decision-Making in Agent-Based Simulation](agent-architectures-and-decision-making-in-agent-based-simulation.md)
+- [Watts-Strogatz Small-World Network Parameters for Social Simulation](watts-strogatz-small-world-network-parameters-for-social-simulation.md)
+- [Resources — Agent Guidelines](AGENTS.md)

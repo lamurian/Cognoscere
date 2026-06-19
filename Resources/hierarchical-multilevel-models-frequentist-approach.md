@@ -99,7 +99,7 @@ R: `anova(model_with_rf, model_without_rf)` — note: p-value is conservative (b
 
 ## Relevant notes
 
-- [[hierarchical-multilevel-models-bayesian-approach]]
-- [[hierarchical-models-frequentist-vs-bayesian-comparison]]
-- [[experimental-design-anova-frequentist-vs-bayesian-comparison]]
-- [[regression-frequentist-vs-bayesian-comparison]]
+- [Hierarchical / Multilevel Models: Bayesian Approach](hierarchical-multilevel-models-bayesian-approach.md)
+- [Hierarchical Models: Frequentist vs Bayesian Comparison](hierarchical-models-frequentist-vs-bayesian-comparison.md)
+- [Experimental Design & ANOVA: Frequentist vs Bayesian Comparison](experimental-design-anova-frequentist-vs-bayesian-comparison.md)
+- [Regression: Frequentist vs Bayesian Comparison](regression-frequentist-vs-bayesian-comparison.md)

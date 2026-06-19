@@ -63,16 +63,16 @@ Indonesia has thousands of pesantren (Islamic boarding schools). Some are progre
 - Year 3-5: Village reaches seed scale (20-40), daily life integrated with local community.
 - Year 5+: Stable integration — local people participate as members, not just employees.
 
-Reference: [[solarpunk-in-indonesia]], [[solarpunk-village-real-world-case-studies]], [[solarpunk-village-implementation-roadmap]]
+Reference: [Solarpunk in Indonesia](../Resources/solarpunk-in-indonesia.md), [[solarpunk-village-real-world-case-studies]], [[solarpunk-village-implementation-roadmap]]
 
 [@GlobalEcovillageNetwork]: Solarpunk in Indonesia — existing note on gotong royong, subak, and kampung culture as solarpunk foundations.
 
 ## Relevant notes
 
-- [[solarpunk-village-indonesia-population-team-structure]]
-- [[solarpunk-village-indonesia-potential-locations]]
-- [[solarpunk-village-indonesia-local-beliefs-stigma-towards-outsiders]]
-- [[solarpunk-village-indonesia-conflict-segregation-risks]]
-- [[solarpunk-village-indonesia-land-legal-strategy]]
+- [Solarpunk Village Indonesia: Population & Team Structure](solarpunk-village-indonesia-population-team-structure.md)
+- [Solarpunk Village Indonesia: Potential Locations](solarpunk-village-indonesia-potential-locations.md)
+- [Solarpunk Village Indonesia: Local Beliefs & Stigma Towards Outsiders](solarpunk-village-indonesia-local-beliefs-stigma-towards-outsiders.md)
+- [Solarpunk Village Indonesia: Conflict & Segregation Risks](solarpunk-village-indonesia-conflict-segregation-risks.md)
+- [Solarpunk Village Indonesia: Land & Legal Strategy](solarpunk-village-indonesia-land-legal-strategy.md)
 - [[solarpunk-village-governance-decision-making]]
 - [[solarpunk-village-food-ecology]]

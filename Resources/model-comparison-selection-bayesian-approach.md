@@ -120,7 +120,7 @@ $$\gamma_j \sim \text{Bernoulli}(\pi)$$
 
 ## Relevant notes
 
-- [[model-comparison-frequentist-vs-bayesian-comparison]]
-- [[model-comparison-selection-frequentist-approach]]
-- [[linear-logistic-regression-bayesian-approach]]
-- [[experimental-design-anova-frequentist-vs-bayesian-comparison]]
+- [Model Comparison: Frequentist vs Bayesian Comparison](model-comparison-frequentist-vs-bayesian-comparison.md)
+- [Model Comparison & Selection: Frequentist Approach](model-comparison-selection-frequentist-approach.md)
+- [Linear & Logistic Regression: Bayesian Approach](linear-logistic-regression-bayesian-approach.md)
+- [Experimental Design & ANOVA: Frequentist vs Bayesian Comparison](experimental-design-anova-frequentist-vs-bayesian-comparison.md)

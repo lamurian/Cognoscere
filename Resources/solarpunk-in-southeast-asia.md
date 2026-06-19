@@ -39,8 +39,8 @@ SE Asian solarpunk functions as a decolonial alternative to Western science fict
 
 ## Relevant notes
 
-- [[solarpunk-in-indonesia]]
-- [[solarpunk-in-the-united-states]]
-- [[global-trajectories-and-current-impact-of-solarpunk]]
-- [[history-and-origins-of-the-solarpunk-movement]]
-- [[solarpunk-as-a-literary-and-art-movement]]
+- [Solarpunk in Indonesia](solarpunk-in-indonesia.md)
+- [Solarpunk in the United States](solarpunk-in-the-united-states.md)
+- [Global Trajectories and Current Impact of Solarpunk](global-trajectories-and-current-impact-of-solarpunk.md)
+- [History and Origins of the Solarpunk Movement](history-and-origins-of-the-solarpunk-movement.md)
+- [Solarpunk as a Literary and Art Movement](solarpunk-as-a-literary-and-art-movement.md)

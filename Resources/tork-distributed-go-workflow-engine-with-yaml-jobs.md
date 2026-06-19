@@ -39,8 +39,8 @@ Tork is a lightweight, distributed workflow engine written in pure Go (99.7%). J
 
 ## Relevant notes
 
-- [[lightweight-go-workflow-engines-executive-summary-and-recommendation]]
-- [[dagu-lightweight-go-workflow-engine-with-yaml-dag]]
-- [[hatchet-durable-task-orchestration-engine-in-go]]
-- [[task-yaml-automation-engine-by-ovh]]
-- [[the-agent-orchestration-landscape-in-2026]]
+- [Lightweight Go Workflow Engines: Executive Summary and Recommendation](lightweight-go-workflow-engines-executive-summary-and-recommendation.md)
+- [Dagu: Lightweight Go Workflow Engine with YAML DAG](dagu-lightweight-go-workflow-engine-with-yaml-dag.md)
+- [Hatchet: Durable Task Orchestration Engine in Go](hatchet-durable-task-orchestration-engine-in-go.md)
+- [µTask: YAML Automation Engine by OVH](task-yaml-automation-engine-by-ovh.md)
+- [The Agent Orchestration Landscape in 2026](the-agent-orchestration-landscape-in-2026.md)

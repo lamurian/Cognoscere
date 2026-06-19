@@ -41,8 +41,8 @@ Complex tasks decompose into small, independently verifiable units that fit with
 
 ## Relevant notes
 
-- [[spec-driven-context-driven-tdd-workflow-overview]]
-- [[spec-architecture-for-ai-coding-agents]]
-- [[context-engineering-for-pi-agents]]
-- [[multi-agent-orchestration-patterns]]
-- [[sdd-four-phase-workflow-for-pi-agents]]
+- [Spec-Driven Context-Driven TDD Workflow for AI Coding Agents](spec-driven-context-driven-tdd-workflow-for-ai-coding-agents.md)
+- [Spec Architecture for AI Coding Agents](spec-architecture-for-ai-coding-agents.md)
+- [Context Engineering for pi Agents](context-engineering-for-pi-agents.md)
+- [Multi-Agent Orchestration Patterns](multi-agent-orchestration-patterns.md)
+- [SDD Four-Phase Workflow for pi Agents](../Projects/sdd-four-phase-workflow-for-pi-agents.md)

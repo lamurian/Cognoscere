@@ -32,8 +32,8 @@ These small-to-moderate positive correlations suggest that perceived social supp
 
 ## Relevant notes
 
-- [[correlation-pairs-validation-literature-based-executive-summary]]
-- [[pss-10-and-affect-empirical-correlation]]
-- [[resilience-and-affect-empirical-correlation]]
-- [[current-stress-and-affect-empirical-correlation]]
-- [[social-support-and-coping-success-empirical-correlation]]
+- [Correlation Pairs Validation: Literature-Based Executive Summary](correlation-pairs-validation-literature-based-executive-summary.md)
+- [PSS-10 and Affect: Empirical Correlation](pss-10-and-affect-empirical-correlation.md)
+- [Resilience and Affect: Empirical Correlation](resilience-and-affect-empirical-correlation.md)
+- [Current Stress and Affect: Empirical Correlation](current-stress-and-affect-empirical-correlation.md)
+- [Social Support and Coping Success: Empirical Correlation](social-support-and-coping-success-empirical-correlation.md)

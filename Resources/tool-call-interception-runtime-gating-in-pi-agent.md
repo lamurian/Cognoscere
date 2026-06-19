@@ -27,8 +27,8 @@ Pi's extension system provides an `on("tool_call")` lifecycle hook that fires be
 
 ## Relevant notes
 
-- [[approaches-to-guardrail-design-in-pi-agent-for-llm-aided-software-engineering]]
-- [[layered-guardrail-architecture-with-pi-extensions]]
-- [[tool-override-wrapping-built-ins-with-guard-layers]]
-- [[sandboxing-and-execution-isolation-in-pi-agent]]
-- [[session-lifecycle-guards-in-pi-agent]]
+- [Approaches to Guardrail Design in Pi Agent for LLM-Aided Software Engineering](approaches-to-guardrail-design-in-pi-agent-for-llm-aided-software-engineering.md)
+- [Layered Guardrail Architecture with Pi Extensions](layered-guardrail-architecture-with-pi-extensions.md)
+- [Tool Override: Wrapping Built-Ins with Guard Layers](tool-override-wrapping-built-ins-with-guard-layers.md)
+- [Sandboxing and Execution Isolation in Pi Agent](sandboxing-and-execution-isolation-in-pi-agent.md)
+- [Session Lifecycle Guards in Pi Agent](session-lifecycle-guards-in-pi-agent.md)

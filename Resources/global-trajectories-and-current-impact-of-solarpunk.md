@@ -39,8 +39,8 @@ Key global projects:
 
 ## Relevant notes
 
-- [[solarpunk-in-the-european-union]]
-- [[history-and-origins-of-the-solarpunk-movement]]
-- [[solarpunk-in-the-united-states]]
-- [[core-principles-and-philosophy-of-solarpunk]]
-- [[solarpunk-in-indonesia]]
+- [Solarpunk in the European Union](solarpunk-in-the-european-union.md)
+- [History and Origins of the Solarpunk Movement](history-and-origins-of-the-solarpunk-movement.md)
+- [Solarpunk in the United States](solarpunk-in-the-united-states.md)
+- [Core Principles and Philosophy of Solarpunk](core-principles-and-philosophy-of-solarpunk.md)
+- [Solarpunk in Indonesia](solarpunk-in-indonesia.md)

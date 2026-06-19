@@ -44,8 +44,8 @@ _Source: Wikipedia -- Grid energy storage, Battery energy storage system, Pumped
 
 ## Relevant notes
 
-- [[comparative-analysis-of-sustainable-energy-sources]]
-- [[marine-renewable-energy]]
-- [[grid-integration-of-renewables]]
-- [[hydropower-generation]]
-- [[solar-photovoltaic-energy]]
+- [Comparative Analysis of Sustainable Energy Sources](comparative-analysis-of-sustainable-energy-sources.md)
+- [Marine Renewable Energy](marine-renewable-energy.md)
+- [Grid Integration of Renewables](grid-integration-of-renewables.md)
+- [Hydropower Generation](hydropower-generation.md)
+- [Solar Photovoltaic Energy](solar-photovoltaic-energy.md)

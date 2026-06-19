@@ -67,12 +67,12 @@ ssh user@192.168.x.x
 sudo apt update && sudo apt upgrade -y
 ```
 
-Now the hardware is ready for software setup. Proceed to [[homelab-software-setup-guide]].
+Now the hardware is ready for software setup. Proceed to [Homelab Software Setup Guide](homelab-software-setup-guide.md).
 
 ## Relevant notes
 
-- [[low-power-solar-homelab-executive-summary]]
-- [[homelab-software-setup-guide]]
-- [[homelab-tailscale-configuration]]
-- [[homelab-solar-system-build-guide]]
-- [[homelab-hardware-comparison]]
+- [Low-Power Solar Homelab: Executive Summary](../Resources/low-power-solar-homelab-executive-summary.md)
+- [Homelab Software Setup Guide](homelab-software-setup-guide.md)
+- [Homelab Tailscale Configuration](homelab-tailscale-configuration.md)
+- [Homelab Solar System Build Guide](homelab-solar-system-build-guide.md)
+- [Homelab Hardware Comparison](../Resources/homelab-hardware-comparison.md)

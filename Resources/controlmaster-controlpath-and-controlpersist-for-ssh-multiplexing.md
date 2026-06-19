@@ -21,8 +21,8 @@ SSH connection multiplexing lets multiple sessions share a single TCP connection
 Use multiplexing for: frequent git operations to the same host, automated scripts that make many SSH calls, or any workflow where connection latency is noticeable. Avoid it when you need absolute isolation between sessions (e.g., different users authenticating through the same jump host). If using multiple GitHub accounts, ensure `ControlPath` includes `%C` or `%k` so accounts don't share a multiplexed connection.
 
 ## Relevant notes
-- [[how-ssh-works-protocol-key-exchange-and-authentication]]
-- [[ssh-config-host-matching-and-stanza-precedence]]
-- [[serveraliveinterval-and-serveralivecountmax-in-ssh-config]]
-- [[proxyjump-for-bastion-hosts-and-jump-boxes]]
-- [[network-infrastructure-for-budget-homelab]]
+- [How SSH Works: Protocol, Key Exchange, and Authentication](how-ssh-works-protocol-key-exchange-and-authentication.md)
+- [SSH Config Host Matching and Stanza Precedence](ssh-config-host-matching-and-stanza-precedence.md)
+- [ServerAliveInterval and ServerAliveCountMax in SSH Config](serveraliveinterval-and-serveralivecountmax-in-ssh-config.md)
+- [ProxyJump for Bastion Hosts and Jump Boxes](proxyjump-for-bastion-hosts-and-jump-boxes.md)
+- [Network Infrastructure for Budget Homelab](network-infrastructure-for-budget-homelab.md)

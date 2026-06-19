@@ -24,13 +24,13 @@ For simulation: a right-skewed distribution (log-normal with meanlog ~ -0.3 to -
 - Luthans, F., Youssef-Morgan, C. M., & Avolio, B. J. (2017). Psychological capital and beyond. Oxford University Press.
 
 ## Existing Notes
-- [[psychological-resources-definition-and-core-constructs]]
-- [[psychological-resources-and-resilience-executive-summary]]
+- [Psychological Resources — Definition and Core Constructs](psychological-resources-definition-and-core-constructs.md)
+- [Psychological Resources and Resilience — Executive Summary](psychological-resources-and-resilience-executive-summary.md)
 
 ## Relevant notes
 
-- [[affect-distribution-norms-panas-empirical-reference]]
-- [[resource-regeneration-rates-cor-recovery-reference]]
-- [[psychological-resources-and-resilience-executive-summary]]
-- [[resilience-distribution-norms-cd-risc-empirical-reference]]
-- [[correlation-between-psychological-resources-and-resilience-empirical-range]]
+- [Affect Distribution Norms: PANAS Empirical Reference](affect-distribution-norms-panas-empirical-reference.md)
+- [Resource Regeneration Rates: COR Recovery Reference](resource-regeneration-rates-cor-recovery-reference.md)
+- [Psychological Resources and Resilience — Executive Summary](psychological-resources-and-resilience-executive-summary.md)
+- [Resilience Distribution Norms: CD-RISC Empirical Reference](resilience-distribution-norms-cd-risc-empirical-reference.md)
+- [Correlation Between Psychological Resources and Resilience — Empirical Range](correlation-between-psychological-resources-and-resilience-empirical-range.md)

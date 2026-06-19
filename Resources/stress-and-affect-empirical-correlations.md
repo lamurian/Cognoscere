@@ -32,8 +32,8 @@ Wollny and Jacobs [@wollny2021] found CD-RISC-10 (resilience) and PSS-4 correlat
 
 ## Relevant notes
 
-- [[pss-10-and-resilience-meta-analytic-correlation]]
-- [[psychological-resources-and-resilience-executive-summary]]
-- [[resilience-and-psychological-resources-empirical-correlations]]
-- [[correlation-between-psychological-resources-and-resilience-empirical-range]]
-- [[conceptual-demarcation-between-psychological-resources-and-resilience]]
+- [PSS-10 and Resilience: Meta-Analytic Correlation](pss-10-and-resilience-meta-analytic-correlation.md)
+- [Psychological Resources and Resilience — Executive Summary](psychological-resources-and-resilience-executive-summary.md)
+- [Resilience and Psychological Resources: Empirical Correlations](resilience-and-psychological-resources-empirical-correlations.md)
+- [Correlation Between Psychological Resources and Resilience — Empirical Range](correlation-between-psychological-resources-and-resilience-empirical-range.md)
+- [Conceptual Demarcation Between Psychological Resources and Resilience](conceptual-demarcation-between-psychological-resources-and-resilience.md)

@@ -20,9 +20,9 @@ Set `LogLevel DEBUG3` in a specific Host stanza when debugging authentication fa
 Common debugging scenario: when SSH uses the wrong key despite correct config, set `LogLevel DEBUG3` and `IdentitiesOnly yes` in the host stanza, then check the output for which `IdentityFile` paths SSH actually attempts.
 
 ## Sources
-- [[identityfile-and-identitiesonly-in-ssh-config]]
+- [IdentityFile and IdentitiesOnly in SSH Config](identityfile-and-identitiesonly-in-ssh-config.md)
 
 ## Relevant notes
-- [[how-ssh-works-protocol-key-exchange-and-authentication]]
-- [[ssh-config-host-matching-and-stanza-precedence]]
-- [[preferredauthentications-in-ssh-config]]
+- [How SSH Works: Protocol, Key Exchange, and Authentication](how-ssh-works-protocol-key-exchange-and-authentication.md)
+- [SSH Config Host Matching and Stanza Precedence](ssh-config-host-matching-and-stanza-precedence.md)
+- [PreferredAuthentications in SSH Config](preferredauthentications-in-ssh-config.md)

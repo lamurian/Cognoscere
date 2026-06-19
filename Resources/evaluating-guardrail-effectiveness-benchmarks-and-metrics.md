@@ -27,8 +27,8 @@ Standardized evaluation of guardrail effectiveness remains an open challenge. Cu
 
 ## Relevant notes
 
-- [[state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering]]
-- [[empirical-evidence-on-llm-failure-severity-in-software-engineering]]
-- [[the-no-free-lunch-tradeoff-in-guardrail-design]]
-- [[limitations-of-simple-output-filters-for-llm-guardrails]]
-- [[failure-modes-in-llm-driven-software-engineering]]
+- [State of the Art in Guardrail Design for LLM Orchestration in Software Engineering](state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering.md)
+- [Empirical Evidence on LLM Failure Severity in Software Engineering](empirical-evidence-on-llm-failure-severity-in-software-engineering.md)
+- [The No Free Lunch Tradeoff in Guardrail Design](the-no-free-lunch-tradeoff-in-guardrail-design.md)
+- [Limitations of Simple Output Filters for LLM Guardrails](limitations-of-simple-output-filters-for-llm-guardrails.md)
+- [Failure Modes in LLM-Driven Software Engineering](failure-modes-in-llm-driven-software-engineering.md)

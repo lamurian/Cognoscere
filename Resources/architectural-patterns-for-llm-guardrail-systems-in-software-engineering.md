@@ -27,8 +27,8 @@ Modern guardrail architecture for LLM orchestration in software engineering foll
 
 ## Relevant notes
 
-- [[state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering]]
-- [[failure-modes-in-llm-driven-software-engineering]]
-- [[limitations-of-simple-output-filters-for-llm-guardrails]]
-- [[the-no-free-lunch-tradeoff-in-guardrail-design]]
-- [[empirical-evidence-on-llm-failure-severity-in-software-engineering]]
+- [State of the Art in Guardrail Design for LLM Orchestration in Software Engineering](state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering.md)
+- [Failure Modes in LLM-Driven Software Engineering](failure-modes-in-llm-driven-software-engineering.md)
+- [Limitations of Simple Output Filters for LLM Guardrails](limitations-of-simple-output-filters-for-llm-guardrails.md)
+- [The No Free Lunch Tradeoff in Guardrail Design](the-no-free-lunch-tradeoff-in-guardrail-design.md)
+- [Empirical Evidence on LLM Failure Severity in Software Engineering](empirical-evidence-on-llm-failure-severity-in-software-engineering.md)

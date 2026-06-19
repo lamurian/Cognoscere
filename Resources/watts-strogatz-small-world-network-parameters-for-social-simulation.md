@@ -26,8 +26,8 @@ In agent-based models of health behavior, small-world networks with mean degree 
 
 ## Relevant notes
 
-- [[agent-architectures-and-decision-making-in-agent-based-simulation]]
-- [[agent-based-simulation-for-complex-adaptive-systems-executive-summary]]
-- [[spatial-network-and-temporal-structures-in-agent-based-simulation]]
-- [[frequentist-vs-bayesian-philosophy]]
-- [[why-agent-based-simulation-excels-over-equation-based-approaches-for-complex-adaptive-systems]]
+- [Agent Architectures and Decision-Making in Agent-Based Simulation](agent-architectures-and-decision-making-in-agent-based-simulation.md)
+- [Agent-Based Simulation for Complex Adaptive Systems — Executive Summary](agent-based-simulation-for-complex-adaptive-systems-executive-summary.md)
+- [Spatial, Network, and Temporal Structures in Agent-Based Simulation](spatial-network-and-temporal-structures-in-agent-based-simulation.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)
+- [Why Agent-Based Simulation Excels Over Equation-Based Approaches for Complex Adaptive Systems](why-agent-based-simulation-excels-over-equation-based-approaches-for-complex-adaptive-systems.md)

@@ -65,7 +65,7 @@ Paseo is branch-oriented (agents work in isolated git worktrees) and multi-provi
 
 ## Relevant notes
 
-- [[paseo-architecture-daemon-based-cross-device-agent-orchestration]]
-- [[paseo-cross-device-coding-agent-orchestration-executive-summary]]
-- [[paseo-vs-alternative-free-open-source-agent-orchestrators]]
-- [[the-agent-orchestration-landscape-in-2026]]
+- [Paseo Architecture: Daemon-Based Cross-Device Agent Orchestration](paseo-architecture-daemon-based-cross-device-agent-orchestration.md)
+- [Paseo: Cross-Device Coding Agent Orchestration — Executive Summary](paseo-cross-device-coding-agent-orchestration-executive-summary.md)
+- [Paseo vs Alternative Free Open Source Agent Orchestrators](paseo-vs-alternative-free-open-source-agent-orchestrators.md)
+- [The Agent Orchestration Landscape in 2026](the-agent-orchestration-landscape-in-2026.md)

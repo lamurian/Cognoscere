@@ -94,7 +94,7 @@ Used extensively in probability calculations for discrete outcomes and in non-pa
 
 ## Relevant notes
 
-- [[AGENTS]]
-- [[linear-algebra-essentials-for-statistics]]
-- [[descriptive-statistics-data-visualisation]]
-- [[frequentist-vs-bayesian-philosophy]]
+- [Resources — Agent Guidelines](AGENTS.md)
+- [Linear Algebra Essentials for Statistics](linear-algebra-essentials-for-statistics.md)
+- [Descriptive Statistics & Data Visualisation](descriptive-statistics-data-visualisation.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)

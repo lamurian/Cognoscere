@@ -70,8 +70,8 @@ As one Hacker News comment put it: "Free tier users get to use what's left over 
 
 ## Relevant notes
 
-- [[google-cloud-free-tier-vps]]
-- [[forever-free-vps-comparison-and-executive-summary]]
-- [[forever-free-vps-user-friendliness-comparison-and-recommendation]]
-- [[oracle-cloud-free-tier-user-sentiment-and-reviews]]
-- [[ibm-cloud-free-lite-user-sentiment-and-reviews]]
+- [Google Cloud Free Tier VPS](google-cloud-free-tier-vps.md)
+- [Forever Free VPS Comparison and Executive Summary](forever-free-vps-comparison-and-executive-summary.md)
+- [Forever Free VPS — User-Friendliness Comparison and Recommendation](forever-free-vps-user-friendliness-comparison-and-recommendation.md)
+- [Oracle Cloud Free Tier — User Sentiment and Reviews](oracle-cloud-free-tier-user-sentiment-and-reviews.md)
+- [IBM Cloud Free Lite — User Sentiment and Reviews](ibm-cloud-free-lite-user-sentiment-and-reviews.md)

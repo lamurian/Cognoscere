@@ -33,6 +33,6 @@ Key points for NMA publication bias assessment:
 
 ## Related Notes
 
-- [[executive-summary-comparing-publication-bias-detection-and-correction-methods]]
-- [[funnel-plot-for-publication-bias-detection]]
-- [[publication-bias-investigation-method-trade-offs-and-unified-workflow-guide]]
+- [Executive Summary: Comparing Publication Bias Detection and Correction Methods](executive-summary-comparing-publication-bias-detection-and-correction-methods.md)
+- [Funnel Plot for Publication Bias Detection](funnel-plot-for-publication-bias-detection.md)
+- [Publication Bias Investigation: Method Trade-Offs and Unified Workflow Guide](publication-bias-investigation-method-trade-offs-and-unified-workflow-guide.md)

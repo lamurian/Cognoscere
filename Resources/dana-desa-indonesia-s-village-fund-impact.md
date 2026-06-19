@@ -46,16 +46,16 @@ The KPK (Corruption Eradication Commission) reports 851 Village Fund corruption 
 
 ## Related Notes
 
-- [[village-modernization-in-indonesia-strategic-overview]]
-- [[smart-village-indonesia-the-6-pillar-framework]]
-- [[bumdes-and-agricultural-value-chain-upgrading]]
-- [[digital-transformation-for-rural-indonesia]]
+- [Village Modernization in Indonesia: Strategic Overview](village-modernization-in-indonesia-strategic-overview.md)
+- [Smart Village Indonesia: The 6-Pillar Framework](smart-village-indonesia-the-6-pillar-framework.md)
+- [BUMDes and Agricultural Value Chain Upgrading](bumdes-and-agricultural-value-chain-upgrading.md)
+- [Digital Transformation for Rural Indonesia](digital-transformation-for-rural-indonesia.md)
 
 ## Relevant notes
 
-- [[bumdes-and-agricultural-value-chain-upgrading]]
-- [[community-driven-development-in-indonesian-villages]]
-- [[digital-transformation-for-rural-indonesia]]
-- [[smart-village-indonesia-the-6-pillar-framework]]
-- [[solarpunk-in-indonesia]]
-- [[village-modernization-in-indonesia-strategic-overview]]
+- [BUMDes and Agricultural Value Chain Upgrading](bumdes-and-agricultural-value-chain-upgrading.md)
+- [Community-Driven Development in Indonesian Villages](community-driven-development-in-indonesian-villages.md)
+- [Digital Transformation for Rural Indonesia](digital-transformation-for-rural-indonesia.md)
+- [Smart Village Indonesia: The 6-Pillar Framework](smart-village-indonesia-the-6-pillar-framework.md)
+- [Solarpunk in Indonesia](solarpunk-in-indonesia.md)
+- [Village Modernization in Indonesia: Strategic Overview](village-modernization-in-indonesia-strategic-overview.md)

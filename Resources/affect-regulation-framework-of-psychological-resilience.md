@@ -18,8 +18,8 @@ This framework addresses two key obstacles in resilience research: lack of conce
 
 ## Relevant notes
 
-- [[resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms]]
-- [[variations-in-the-definition-of-psychological-resilience]]
-- [[neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation]]
-- [[positive-interpretation-bias-and-emotion-regulation-as-cognitive-mechanisms-of-resilience]]
-- [[challenge-stressors-build-resilience-while-hindrance-stressors-erode-it]]
+- [Resilience as a Dynamic, Multimodal Process: Integration Across Mechanisms](resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms.md)
+- [Variations in the Definition of Psychological Resilience](variations-in-the-definition-of-psychological-resilience.md)
+- [Neurobiological Mechanisms of Resilience: Prefrontal-Amygdala Circuitry and HPA Axis Regulation](neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation.md)
+- [Positive Interpretation Bias and Emotion Regulation as Cognitive Mechanisms of Resilience](positive-interpretation-bias-and-emotion-regulation-as-cognitive-mechanisms-of-resilience.md)
+- [Challenge Stressors Build Resilience While Hindrance Stressors Erode It](challenge-stressors-build-resilience-while-hindrance-stressors-erode-it.md)

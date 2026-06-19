@@ -114,7 +114,7 @@ Python: `from sklearn.metrics import mean_squared_error`
 
 ## Relevant notes
 
-- [[time-series-analysis-frequentist-vs-bayesian-comparison]]
-- [[time-series-analysis-bayesian-approach]]
-- [[descriptive-statistics-data-visualisation]]
-- [[causal-inference-frequentist-approach]]
+- [Time Series Analysis: Frequentist vs Bayesian Comparison](time-series-analysis-frequentist-vs-bayesian-comparison.md)
+- [Time Series Analysis: Bayesian Approach](time-series-analysis-bayesian-approach.md)
+- [Descriptive Statistics & Data Visualisation](descriptive-statistics-data-visualisation.md)
+- [Causal Inference: Frequentist Approach](causal-inference-frequentist-approach.md)

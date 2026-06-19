@@ -64,8 +64,8 @@ The grid-tie hybrid uses grid power during deep winter and solar the rest of the
 
 ## Relevant notes
 
-- [[low-power-solar-homelab-executive-summary]]
-- [[homelab-hardware-build-guide]]
-- [[homelab-hardware-comparison]]
-- [[arm-vps-options-free-and-cheap-tiers-for-homelab-and-saas-production]]
-- [[homelab-system-overview]]
+- [Low-Power Solar Homelab: Executive Summary](low-power-solar-homelab-executive-summary.md)
+- [Homelab Hardware Build Guide](../Projects/homelab-hardware-build-guide.md)
+- [Homelab Hardware Comparison](homelab-hardware-comparison.md)
+- [ARM VPS Options: Free and Cheap Tiers for Homelab and SaaS Production](arm-vps-options-free-and-cheap-tiers-for-homelab-and-saas-production.md)
+- [Homelab: System Overview](../Projects/homelab-system-overview.md)

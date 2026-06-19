@@ -33,8 +33,8 @@ Importantly, the social support ↔ coping success correlation is vulnerable to 
 
 ## Relevant notes
 
-- [[social-support-and-successful-coping-empirical-correlations]]
-- [[correlation-pairs-validation-literature-based-executive-summary]]
-- [[coping-effectiveness-rates-skinner-et-al-meta-analytic-reference]]
-- [[social-interaction-frequency-diary-study-reference]]
-- [[resilience-and-psychological-resources-empirical-correlations]]
+- [Social Support and Successful Coping: Empirical Correlations](social-support-and-successful-coping-empirical-correlations.md)
+- [Correlation Pairs Validation: Literature-Based Executive Summary](correlation-pairs-validation-literature-based-executive-summary.md)
+- [Coping Effectiveness Rates: Skinner et al. Meta-Analytic Reference](coping-effectiveness-rates-skinner-et-al-meta-analytic-reference.md)
+- [Social Interaction Frequency: Diary Study Reference](social-interaction-frequency-diary-study-reference.md)
+- [Resilience and Psychological Resources: Empirical Correlations](resilience-and-psychological-resources-empirical-correlations.md)

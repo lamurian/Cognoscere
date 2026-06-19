@@ -30,8 +30,8 @@ This negative correlation is consistent across populations. It reflects the conc
 
 ## Relevant notes
 
-- [[correlation-between-psychological-resources-and-resilience-empirical-range]]
-- [[psychological-resources-and-resilience-executive-summary]]
-- [[conceptual-demarcation-between-psychological-resources-and-resilience]]
-- [[psychological-resources-definition-and-core-constructs]]
-- [[limitations-of-simple-output-filters-for-llm-guardrails]]
+- [Correlation Between Psychological Resources and Resilience — Empirical Range](correlation-between-psychological-resources-and-resilience-empirical-range.md)
+- [Psychological Resources and Resilience — Executive Summary](psychological-resources-and-resilience-executive-summary.md)
+- [Conceptual Demarcation Between Psychological Resources and Resilience](conceptual-demarcation-between-psychological-resources-and-resilience.md)
+- [Psychological Resources — Definition and Core Constructs](psychological-resources-definition-and-core-constructs.md)
+- [Limitations of Simple Output Filters for LLM Guardrails](limitations-of-simple-output-filters-for-llm-guardrails.md)

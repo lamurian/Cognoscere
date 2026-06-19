@@ -30,8 +30,8 @@ L'Ecuyer Ming (2025) [@lecuyerming2025] introduced LALS (Large-Scale Agent-based
 
 ## Relevant notes
 
-- [[llm-enhanced-agents-and-the-future-of-agent-based-modeling]]
-- [[agent-architectures-and-decision-making-in-agent-based-simulation]]
-- [[agent-baseline-initialization-via-sigmoid-and-tanh-transforms]]
-- [[executive-summary-agent-based-simulation-of-psychological-resilience]]
-- [[psychological-resilience-mechanisms-in-working-age-population-executive-summary]]
+- [LLM-Enhanced Agents and the Future of Agent-Based Modeling](llm-enhanced-agents-and-the-future-of-agent-based-modeling.md)
+- [Agent Architectures and Decision-Making in Agent-Based Simulation](agent-architectures-and-decision-making-in-agent-based-simulation.md)
+- [Agent Baseline Initialization via Sigmoid and Tanh Transforms](agent-baseline-initialization-via-sigmoid-and-tanh-transforms.md)
+- [Executive Summary: Agent-Based Simulation of Psychological Resilience](executive-summary-agent-based-simulation-of-psychological-resilience.md)
+- [Psychological Resilience Mechanisms in Working-Age Population: Executive Summary](psychological-resilience-mechanisms-in-working-age-population-executive-summary.md)

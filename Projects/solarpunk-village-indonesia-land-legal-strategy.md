@@ -72,8 +72,8 @@ Reference: [[solarpunk-village-overview-blueprint]], [[solarpunk-village-impleme
 
 ## Relevant notes
 
-- [[solarpunk-village-indonesia-potential-locations]]
-- [[solarpunk-village-indonesia-assimilation-paths-with-locals]]
-- [[solarpunk-village-indonesia-conflict-segregation-risks]]
+- [Solarpunk Village Indonesia: Potential Locations](solarpunk-village-indonesia-potential-locations.md)
+- [Solarpunk Village Indonesia: Assimilation Paths with Locals](solarpunk-village-indonesia-assimilation-paths-with-locals.md)
+- [Solarpunk Village Indonesia: Conflict & Segregation Risks](solarpunk-village-indonesia-conflict-segregation-risks.md)
 - [[solarpunk-village-population-scaling]]
 - [[solarpunk-village-infrastructure-energy-systems]]

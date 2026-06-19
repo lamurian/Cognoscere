@@ -40,8 +40,8 @@ source: https://github.com/ovh/utask
 
 ## Relevant notes
 
-- [[lightweight-go-workflow-engines-executive-summary-and-recommendation]]
-- [[paseo-workflow-fit-adr-driven-tdd-pipeline-with-quality-gates-executive-summary]]
-- [[hatchet-durable-task-orchestration-engine-in-go]]
-- [[dagu-lightweight-go-workflow-engine-with-yaml-dag]]
-- [[tork-distributed-go-workflow-engine-with-yaml-jobs]]
+- [Lightweight Go Workflow Engines: Executive Summary and Recommendation](lightweight-go-workflow-engines-executive-summary-and-recommendation.md)
+- [Paseo Workflow Fit: ADR-Driven TDD Pipeline with Quality Gates — Executive Summary](paseo-workflow-fit-adr-driven-tdd-pipeline-with-quality-gates-executive-summary.md)
+- [Hatchet: Durable Task Orchestration Engine in Go](hatchet-durable-task-orchestration-engine-in-go.md)
+- [Dagu: Lightweight Go Workflow Engine with YAML DAG](dagu-lightweight-go-workflow-engine-with-yaml-dag.md)
+- [Tork: Distributed Go Workflow Engine with YAML Jobs](tork-distributed-go-workflow-engine-with-yaml-jobs.md)

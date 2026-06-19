@@ -67,8 +67,8 @@ A solid forever-free option for learning GCP, running VPN/proxy, or hosting a ti
 
 ## Relevant notes
 
-- [[forever-free-vps-comparison-and-executive-summary]]
-- [[oracle-cloud-always-free-vps]]
-- [[ibm-cloud-free-lite-vps]]
-- [[budget-digital-homelab-for-sustainable-living]]
-- [[self-hosted-software-stack-for-off-grid-resilience]]
+- [Forever Free VPS Comparison and Executive Summary](forever-free-vps-comparison-and-executive-summary.md)
+- [Oracle Cloud Always Free VPS](oracle-cloud-always-free-vps.md)
+- [IBM Cloud Free Lite VPS](ibm-cloud-free-lite-vps.md)
+- [Budget Digital Homelab for Sustainable Living](../Areas/budget-digital-homelab-for-sustainable-living.md)
+- [Self-Hosted Software Stack for Off-Grid Resilience](self-hosted-software-stack-for-off-grid-resilience.md)

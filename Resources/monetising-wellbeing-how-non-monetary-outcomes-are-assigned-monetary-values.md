@@ -30,8 +30,8 @@ Assigning monetary values to wellbeing and resilience outcomes is conceptually a
 
 ## Relevant notes
 
-- [[cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary]]
-- [[value-and-effect-in-cost-effectiveness-analysis-methodological-framework]]
-- [[choosing-the-effect-in-cost-effectiveness-analysis-outcome-rationale]]
-- [[how-resilience-interventions-improve-employee-wellbeing]]
-- [[core-principles-and-philosophy-of-solarpunk]]
+- [Cost-Effective Organisation-Based Interventions for Psychological Resilience: Executive Summary](cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary.md)
+- [Value and Effect in Cost-Effectiveness Analysis: Methodological Framework](value-and-effect-in-cost-effectiveness-analysis-methodological-framework.md)
+- [Choosing the 'Effect' in Cost-Effectiveness Analysis: Outcome Rationale](choosing-the-effect-in-cost-effectiveness-analysis-outcome-rationale.md)
+- [How Resilience Interventions Improve Employee Wellbeing](how-resilience-interventions-improve-employee-wellbeing.md)
+- [Core Principles and Philosophy of Solarpunk](core-principles-and-philosophy-of-solarpunk.md)

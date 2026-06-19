@@ -68,8 +68,8 @@ A decent forever-free VPS if you need 1 vCPU for lightweight tasks and can toler
 
 ## Relevant notes
 
-- [[forever-free-vps-comparison-and-executive-summary]]
-- [[oracle-cloud-always-free-vps]]
-- [[google-cloud-free-tier-vps]]
-- [[budget-digital-homelab-for-sustainable-living]]
-- [[self-hosted-software-stack-for-off-grid-resilience]]
+- [Forever Free VPS Comparison and Executive Summary](forever-free-vps-comparison-and-executive-summary.md)
+- [Oracle Cloud Always Free VPS](oracle-cloud-always-free-vps.md)
+- [Google Cloud Free Tier VPS](google-cloud-free-tier-vps.md)
+- [Budget Digital Homelab for Sustainable Living](../Areas/budget-digital-homelab-for-sustainable-living.md)
+- [Self-Hosted Software Stack for Off-Grid Resilience](self-hosted-software-stack-for-off-grid-resilience.md)

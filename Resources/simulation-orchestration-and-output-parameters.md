@@ -25,8 +25,8 @@ Data collection operates through Mesa's DataCollector framework at both model an
 
 ## Relevant notes
 
-- [[skills-architecture-single-responsibility-restructure]]
-- [[hierarchical-models-frequentist-vs-bayesian-comparison]]
-- [[watts-strogatz-small-world-network-parameters-for-social-simulation]]
-- [[digital-homelab-hardening-core-security-practices]]
-- [[bayesian-computation-mcmc-and-modern-tools]]
+- [Skills Architecture: Single-Responsibility Restructure](../Projects/skills-architecture-single-responsibility-restructure.md)
+- [Hierarchical Models: Frequentist vs Bayesian Comparison](hierarchical-models-frequentist-vs-bayesian-comparison.md)
+- [Watts-Strogatz Small-World Network Parameters for Social Simulation](watts-strogatz-small-world-network-parameters-for-social-simulation.md)
+- [Digital Homelab Hardening: Core Security Practices](digital-homelab-hardening-core-security-practices.md)
+- [Bayesian Computation: MCMC and Modern Tools](bayesian-computation-mcmc-and-modern-tools.md)

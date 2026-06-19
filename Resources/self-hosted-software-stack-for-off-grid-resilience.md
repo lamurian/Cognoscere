@@ -79,8 +79,8 @@ Every service above runs on a single $80 mini PC at under 20W. Together they rep
 
 ## Relevant notes
 
-- [[budget-digital-homelab-for-sustainable-living]]
-- [[global-trajectories-and-current-impact-of-solarpunk]]
-- [[solarpunk-in-the-european-union]]
-- [[major-nationwide-programs-soeharto-vs-prabowo-indonesia]]
-- [[grid-integration-of-renewables]]
+- [Budget Digital Homelab for Sustainable Living](../Areas/budget-digital-homelab-for-sustainable-living.md)
+- [Global Trajectories and Current Impact of Solarpunk](global-trajectories-and-current-impact-of-solarpunk.md)
+- [Solarpunk in the European Union](solarpunk-in-the-european-union.md)
+- [Major Nationwide Programs: Soeharto vs Prabowo Indonesia](major-nationwide-programs-soeharto-vs-prabowo-indonesia.md)
+- [Grid Integration of Renewables](grid-integration-of-renewables.md)

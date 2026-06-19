@@ -38,7 +38,7 @@ The hierarchy is managed through external tooling that Paseo agents interact wit
 
 ## Relevant Notes
 
-- [[paseo-sh-chat-room-and-agentic-orchestration-platform]]
-- [[paseo-workflow-precommit-prepush-hooks-with-paseo-agents]]
-- [[paseo-workflow-tdd-iteration-loop-with-paseo]]
-- [[paseo-workflow-pr-revision-cycle-with-paseo]]
+- [Paseo.sh: Chat Room and Agentic Orchestration Platform](paseo-sh-chat-room-and-agentic-orchestration-platform.md)
+- [Paseo Workflow: Pre-commit and Pre-push Hooks with Agents](paseo-workflow-pre-commit-and-pre-push-hooks-with-agents.md)
+- [Paseo Workflow: TDD Iteration Loop with Agents](paseo-workflow-tdd-iteration-loop-with-agents.md)
+- [Paseo Workflow: PR Revision Cycle with Agents](paseo-workflow-pr-revision-cycle-with-agents.md)

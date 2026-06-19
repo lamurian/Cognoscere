@@ -26,12 +26,12 @@ For simulation: subevents_per_day ~4-6 is defensible for substantive interaction
 - [@kahneman2004] Kahneman, D., Krueger, A. B., Schkade, D. A., Schwarz, N., & Stone, A. A. (2004). A survey method for characterizing daily life experience: The Day Reconstruction Method. Science, 306(5702), 1776-1780.
 
 ## Existing Notes
-- [[social-support-and-successful-coping-empirical-correlations]]
+- [Social Support and Successful Coping: Empirical Correlations](social-support-and-successful-coping-empirical-correlations.md)
 
 ## Relevant notes
 
-- [[daily-stress-event-norms-experience-sampling-reference]]
-- [[social-support-and-successful-coping-empirical-correlations]]
-- [[affect-distribution-norms-panas-empirical-reference]]
-- [[resilience-and-psychological-resources-empirical-correlations]]
-- [[coping-effectiveness-rates-skinner-et-al-meta-analytic-reference]]
+- [Daily Stress Event Norms: Experience Sampling Reference](daily-stress-event-norms-experience-sampling-reference.md)
+- [Social Support and Successful Coping: Empirical Correlations](social-support-and-successful-coping-empirical-correlations.md)
+- [Affect Distribution Norms: PANAS Empirical Reference](affect-distribution-norms-panas-empirical-reference.md)
+- [Resilience and Psychological Resources: Empirical Correlations](resilience-and-psychological-resources-empirical-correlations.md)
+- [Coping Effectiveness Rates: Skinner et al. Meta-Analytic Reference](coping-effectiveness-rates-skinner-et-al-meta-analytic-reference.md)

@@ -61,9 +61,9 @@ Yes. The call for abstracts is open to researchers from academia, and the themes
 
 ## Relevant notes
 
-- [[academic-digital-health-conferences-2026-2027-executive-summary]]
-- [[digital-health-conferences-2026-executive-summary]]
-- [[ict-and-health-world-conference-2026]]
-- [[ehealth2026-finnish-ehealth-conference]]
-- [[apru-global-health-conference-2026]]
-- [[dmea-2026-connecting-digital-health]]
+- [Academic Digital Health Conferences 2026-2027 Executive Summary](academic-digital-health-conferences-2026-2027-executive-summary.md)
+- [Digital Health Conferences 2026 Executive Summary](digital-health-conferences-2026-executive-summary.md)
+- [ICT&health World Conference 2026](ict-and-health-world-conference-2026.md)
+- [eHealth2026 - Finnish eHealth Conference](ehealth2026-finnish-ehealth-conference.md)
+- [APRU Global Health Conference 2026](apru-global-health-conference-2026.md)
+- [DMEA 2026 - Connecting Digital Health](dmea-2026-connecting-digital-health.md)

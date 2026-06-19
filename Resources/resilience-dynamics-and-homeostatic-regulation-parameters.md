@@ -27,8 +27,8 @@ Overload detection occurs when consecutive hindrance events exceed threshold (de
 
 ## Relevant notes
 
-- [[affect-dynamics-and-emotional-homeostasis-parameters]]
-- [[organisational-level-factors-as-modulators-of-individual-resilience-mechanisms-executive-summary]]
-- [[neurobiological-pathways-linking-organisational-factors-to-individual-resilience]]
-- [[positive-interpretation-bias-and-emotion-regulation-as-cognitive-mechanisms-of-resilience]]
-- [[agent-based-simulation-for-complex-adaptive-systems-executive-summary]]
+- [Affect Dynamics and Emotional Homeostasis Parameters](affect-dynamics-and-emotional-homeostasis-parameters.md)
+- [Organisational-Level Factors as Modulators of Individual Resilience Mechanisms: Executive Summary](organisational-level-factors-as-modulators-of-individual-resilience-mechanisms-executive-summary.md)
+- [Neurobiological Pathways Linking Organisational Factors to Individual Resilience](neurobiological-pathways-linking-organisational-factors-to-individual-resilience.md)
+- [Positive Interpretation Bias and Emotion Regulation as Cognitive Mechanisms of Resilience](positive-interpretation-bias-and-emotion-regulation-as-cognitive-mechanisms-of-resilience.md)
+- [Agent-Based Simulation for Complex Adaptive Systems — Executive Summary](agent-based-simulation-for-complex-adaptive-systems-executive-summary.md)

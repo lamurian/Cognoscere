@@ -135,17 +135,17 @@ All prices exclude 11% VAT.
 
 ## Relevant notes
 
-- [[nevacloud-nevalite-nvme-vps-cheapest-indonesia-based-vps]]
-- [[domainesia-cloud-vps-lite-indonesia-nvme-at-rp48-000-month]]
-- [[biznet-gio-neo-lite-vps-indonesia-60-gb-ssd-at-rp59-000-month]]
-- [[herza-cloud-vps-indonesia-budget-vps-with-multiple-data-center-zones]]
-- [[rumahweb-vps-murah-indonesia-512-mb-plan-at-rp50-000-month]]
-- [[host-id-cloud-vps-indonesia-nvme-with-free-backup-at-rp75-000-month]]
-- [[nevacloud-vps-user-sentiment-and-reviews]]
-- [[domainesia-cloud-vps-lite-user-sentiment-and-reviews]]
-- [[biznet-gio-neo-lite-vps-user-sentiment-and-reviews]]
-- [[herza-cloud-vps-user-sentiment-and-reviews]]
-- [[rumahweb-vps-murah-user-sentiment-and-reviews]]
-- [[host-id-cloud-vps-user-sentiment-and-reviews]]
-- [[forever-free-vps-comparison-and-executive-summary]]
-- [[cheapest-paid-vps-indonesia-executive-summary-and-recommendation-for-saas-production]]
+- [Nevacloud Nevalite NVMe VPS — Cheapest Indonesia-Based VPS](nevacloud-nevalite-nvme-vps-cheapest-indonesia-based-vps.md)
+- [DomaiNesia Cloud VPS Lite Indonesia — NVMe at Rp48,000/month](domainesia-cloud-vps-lite-indonesia-nvme-at-rp48-000-month.md)
+- [Biznet Gio NEO Lite VPS Indonesia — 60 GB SSD at Rp59,000/month](biznet-gio-neo-lite-vps-indonesia-60-gb-ssd-at-rp59-000-month.md)
+- [Herza Cloud VPS Indonesia — Budget VPS with Multiple Data Center Zones](herza-cloud-vps-indonesia-budget-vps-with-multiple-data-center-zones.md)
+- [Rumahweb VPS Murah Indonesia — 512 MB Plan at Rp50,000/month](rumahweb-vps-murah-indonesia-512-mb-plan-at-rp50-000-month.md)
+- [Host.ID Cloud VPS Indonesia — NVMe with Free Backup at Rp75,000/month](host-id-cloud-vps-indonesia-nvme-with-free-backup-at-rp75-000-month.md)
+- [Nevacloud VPS — User Sentiment and Reviews](nevacloud-vps-user-sentiment-and-reviews.md)
+- [DomaiNesia Cloud VPS Lite — User Sentiment and Reviews](domainesia-cloud-vps-lite-user-sentiment-and-reviews.md)
+- [Biznet Gio NEO Lite VPS — User Sentiment and Reviews](biznet-gio-neo-lite-vps-user-sentiment-and-reviews.md)
+- [Herza Cloud VPS — User Sentiment and Reviews](herza-cloud-vps-user-sentiment-and-reviews.md)
+- [Rumahweb VPS Murah — User Sentiment and Reviews](rumahweb-vps-murah-user-sentiment-and-reviews.md)
+- [Host.ID Cloud VPS — User Sentiment and Reviews](host-id-cloud-vps-user-sentiment-and-reviews.md)
+- [Forever Free VPS Comparison and Executive Summary](forever-free-vps-comparison-and-executive-summary.md)
+- [Cheapest Paid VPS Indonesia — Executive Summary and Recommendation for SaaS Production](cheapest-paid-vps-indonesia-executive-summary-and-recommendation-for-saas-production.md)

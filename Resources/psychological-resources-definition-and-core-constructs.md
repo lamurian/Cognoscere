@@ -21,6 +21,6 @@ Common across these frameworks is that psychological resources are relatively st
 
 ## Relevant notes
 
-- [[conceptual-demarcation-between-psychological-resources-and-resilience]]
-- [[correlation-between-psychological-resources-and-resilience-empirical-range]]
-- [[psychological-resources-and-resilience-executive-summary]]
+- [Conceptual Demarcation Between Psychological Resources and Resilience](conceptual-demarcation-between-psychological-resources-and-resilience.md)
+- [Correlation Between Psychological Resources and Resilience — Empirical Range](correlation-between-psychological-resources-and-resilience-empirical-range.md)
+- [Psychological Resources and Resilience — Executive Summary](psychological-resources-and-resilience-executive-summary.md)

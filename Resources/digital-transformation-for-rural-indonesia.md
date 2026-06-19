@@ -68,16 +68,16 @@ The government targets connecting 10,000+ villages to the internet by 2025. Succ
 
 ## Related Notes
 
-- [[smart-village-indonesia-the-6-pillar-framework]]
-- [[bumdes-and-agricultural-value-chain-upgrading]]
-- [[dana-desa-indonesia-s-village-fund-impact]]
-- [[village-modernization-in-indonesia-strategic-overview]]
+- [Smart Village Indonesia: The 6-Pillar Framework](smart-village-indonesia-the-6-pillar-framework.md)
+- [BUMDes and Agricultural Value Chain Upgrading](bumdes-and-agricultural-value-chain-upgrading.md)
+- [Dana Desa: Indonesia's Village Fund Impact](dana-desa-indonesia-s-village-fund-impact.md)
+- [Village Modernization in Indonesia: Strategic Overview](village-modernization-in-indonesia-strategic-overview.md)
 
 ## Relevant notes
 
-- [[bumdes-and-agricultural-value-chain-upgrading]]
-- [[community-driven-development-in-indonesian-villages]]
-- [[dana-desa-indonesia-s-village-fund-impact]]
-- [[smart-village-indonesia-the-6-pillar-framework]]
-- [[solarpunk-in-indonesia]]
-- [[village-modernization-in-indonesia-strategic-overview]]
+- [BUMDes and Agricultural Value Chain Upgrading](bumdes-and-agricultural-value-chain-upgrading.md)
+- [Community-Driven Development in Indonesian Villages](community-driven-development-in-indonesian-villages.md)
+- [Dana Desa: Indonesia's Village Fund Impact](dana-desa-indonesia-s-village-fund-impact.md)
+- [Smart Village Indonesia: The 6-Pillar Framework](smart-village-indonesia-the-6-pillar-framework.md)
+- [Solarpunk in Indonesia](solarpunk-in-indonesia.md)
+- [Village Modernization in Indonesia: Strategic Overview](village-modernization-in-indonesia-strategic-overview.md)

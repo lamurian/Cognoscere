@@ -33,7 +33,7 @@ The root context file should route, not dump. Include a 'Reference Documents' se
 
 ## Relevant notes
 
-- [[spec-architecture-for-ai-coding-agents]]
-- [[spec-driven-context-driven-tdd-workflow-overview]]
-- [[least-obstructive-workflow-principles]]
-- [[sdd-four-phase-workflow-for-pi-agents]]
+- [Spec Architecture for AI Coding Agents](spec-architecture-for-ai-coding-agents.md)
+- [Spec-Driven Context-Driven TDD Workflow for AI Coding Agents](spec-driven-context-driven-tdd-workflow-for-ai-coding-agents.md)
+- [Least-Obstructive Workflow Principles](least-obstructive-workflow-principles.md)
+- [SDD Four-Phase Workflow for pi Agents](../Projects/sdd-four-phase-workflow-for-pi-agents.md)

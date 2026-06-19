@@ -79,8 +79,8 @@ A sustainable homelab is not about buying the newest, most efficient hardware. I
 
 ## Relevant notes
 
-- [[budget-digital-homelab-for-sustainable-living]]
-- [[global-trajectories-and-current-impact-of-solarpunk]]
-- [[solarpunk-in-the-united-states]]
-- [[network-infrastructure-for-budget-homelab]]
-- [[geothermal-energy-harvesting]]
+- [Budget Digital Homelab for Sustainable Living](../Areas/budget-digital-homelab-for-sustainable-living.md)
+- [Global Trajectories and Current Impact of Solarpunk](global-trajectories-and-current-impact-of-solarpunk.md)
+- [Solarpunk in the United States](solarpunk-in-the-united-states.md)
+- [Network Infrastructure for Budget Homelab](network-infrastructure-for-budget-homelab.md)
+- [Geothermal Energy Harvesting](geothermal-energy-harvesting.md)

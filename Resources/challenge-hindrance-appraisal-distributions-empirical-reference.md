@@ -25,13 +25,13 @@ For simulation: challenge appraisal proportion ~0.4-0.5 in general population un
 - LePine, J. A., Podsakoff, N. P., & LePine, M. A. (2005). A meta-analytic test of the challenge stressor-hindrance stressor framework. Academy of Management Journal, 48(5), 764-775.
 
 ## Existing Notes
-- [[pss-10-item-level-descriptive-statistics]]
-- [[stress-and-affect-empirical-correlations]]
+- [PSS-10 Item-Level Descriptive Statistics](pss-10-item-level-descriptive-statistics.md)
+- [Stress and Affect: Empirical Correlations](stress-and-affect-empirical-correlations.md)
 
 ## Relevant notes
 
-- [[stress-and-affect-empirical-correlations]]
-- [[daily-stress-event-norms-experience-sampling-reference]]
-- [[pss-10-and-resilience-meta-analytic-correlation]]
-- [[resource-distribution-norms-cor-theory-empirical-reference]]
-- [[affect-distribution-norms-panas-empirical-reference]]
+- [Stress and Affect: Empirical Correlations](stress-and-affect-empirical-correlations.md)
+- [Daily Stress Event Norms: Experience Sampling Reference](daily-stress-event-norms-experience-sampling-reference.md)
+- [PSS-10 and Resilience: Meta-Analytic Correlation](pss-10-and-resilience-meta-analytic-correlation.md)
+- [Resource Distribution Norms: COR Theory Empirical Reference](resource-distribution-norms-cor-theory-empirical-reference.md)
+- [Affect Distribution Norms: PANAS Empirical Reference](affect-distribution-norms-panas-empirical-reference.md)

@@ -21,7 +21,7 @@ SSH reads the config file line by line and applies the **first matching stanza**
 Use more specific Host patterns when you need different keys, ports, or users for different servers. Use `Host *` for global defaults like `AddKeysToAgent yes` or `ServerAliveInterval 60`. Place negated patterns (`Host * !github.com`) when you want defaults for everything except a specific host.
 
 ## Relevant notes
-- [[how-ssh-works-protocol-key-exchange-and-authentication]]
-- [[identityfile-and-identitiesonly-in-ssh-config]]
-- [[user-port-and-hostname-directives-in-ssh-config]]
-- [[digital-homelab-hardening-core-security-practices]]
+- [How SSH Works: Protocol, Key Exchange, and Authentication](how-ssh-works-protocol-key-exchange-and-authentication.md)
+- [IdentityFile and IdentitiesOnly in SSH Config](identityfile-and-identitiesonly-in-ssh-config.md)
+- [User, Port, and HostName Directives in SSH Config](user-port-and-hostname-directives-in-ssh-config.md)
+- [Digital Homelab Hardening: Core Security Practices](digital-homelab-hardening-core-security-practices.md)

@@ -27,9 +27,9 @@ Cultural and contextual generalisability is unknown. The majority of evidence co
 
 ## Relevant notes
 
-- [[known-gaps-in-understanding-resilience-mechanisms-in-working-populations]]
-- [[variations-in-the-definition-of-psychological-resilience]]
-- [[psychological-resilience-mechanisms-in-working-age-population-executive-summary]]
-- [[job-design-and-the-challenge-hindrance-framework-in-individual-resilience]]
-- [[how-resilience-interventions-improve-employee-wellbeing]]
-- [[organisational-level-factors-as-modulators-of-individual-resilience-mechanisms-executive-summary]]
+- [Known Gaps in Understanding Resilience Mechanisms in Working Populations](known-gaps-in-understanding-resilience-mechanisms-in-working-populations.md)
+- [Variations in the Definition of Psychological Resilience](variations-in-the-definition-of-psychological-resilience.md)
+- [Psychological Resilience Mechanisms in Working-Age Population: Executive Summary](psychological-resilience-mechanisms-in-working-age-population-executive-summary.md)
+- [Job Design and the Challenge-Hindrance Framework in Individual Resilience](job-design-and-the-challenge-hindrance-framework-in-individual-resilience.md)
+- [How Resilience Interventions Improve Employee Wellbeing](how-resilience-interventions-improve-employee-wellbeing.md)
+- [Organisational-Level Factors as Modulators of Individual Resilience Mechanisms: Executive Summary](organisational-level-factors-as-modulators-of-individual-resilience-mechanisms-executive-summary.md)

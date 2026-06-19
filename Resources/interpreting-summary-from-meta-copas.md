@@ -73,6 +73,6 @@ At publprob = 1.00, pval.rsb = 0.006 (< 0.1) — the funnel has unexplained asym
 
 ## Related Notes
 
-- [[copas-selection-model-for-publication-bias]] — overview of the Copas model
-- [[copas-selection-model-publication-probability-as-a-latent-variable]] — latent variable and non-identifiability
-- [[meta-copas-step-by-step-algorithm]] — how the R function fits the model
+- [Copas Selection Model for Publication Bias](copas-selection-model-for-publication-bias.md) — overview of the Copas model
+- [Copas Selection Model — Publication Probability as a Latent Variable](copas-selection-model-publication-probability-as-a-latent-variable.md) — latent variable and non-identifiability
+- [meta::copas() Step-by-Step Algorithm](meta-copas-step-by-step-algorithm.md) — how the R function fits the model

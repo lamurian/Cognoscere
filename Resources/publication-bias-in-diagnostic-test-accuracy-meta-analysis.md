@@ -35,6 +35,6 @@ A likelihood-based sensitivity analysis for publication bias on the summary ROC 
 
 ## Related Notes
 
-- [[executive-summary-comparing-publication-bias-detection-and-correction-methods]]
-- [[trim-and-fill-for-estimating-missing-studies]]
-- [[publication-bias-investigation-method-trade-offs-and-unified-workflow-guide]]
+- [Executive Summary: Comparing Publication Bias Detection and Correction Methods](executive-summary-comparing-publication-bias-detection-and-correction-methods.md)
+- [Trim and Fill for Estimating Missing Studies](trim-and-fill-for-estimating-missing-studies.md)
+- [Publication Bias Investigation: Method Trade-Offs and Unified Workflow Guide](publication-bias-investigation-method-trade-offs-and-unified-workflow-guide.md)

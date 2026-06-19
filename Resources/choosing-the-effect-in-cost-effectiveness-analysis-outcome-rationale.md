@@ -24,8 +24,8 @@ The choice of outcome measure (the 'effect') in a cost-effectiveness analysis fu
 
 ## Relevant notes
 
-- [[cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary]]
-- [[value-and-effect-in-cost-effectiveness-analysis-methodological-framework]]
-- [[how-resilience-interventions-improve-employee-wellbeing]]
-- [[monetising-wellbeing-how-non-monetary-outcomes-are-assigned-monetary-values]]
-- [[drivers-of-cost-effectiveness-in-workplace-resilience-interventions]]
+- [Cost-Effective Organisation-Based Interventions for Psychological Resilience: Executive Summary](cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary.md)
+- [Value and Effect in Cost-Effectiveness Analysis: Methodological Framework](value-and-effect-in-cost-effectiveness-analysis-methodological-framework.md)
+- [How Resilience Interventions Improve Employee Wellbeing](how-resilience-interventions-improve-employee-wellbeing.md)
+- [Monetising Wellbeing: How Non-Monetary Outcomes Are Assigned Monetary Values](monetising-wellbeing-how-non-monetary-outcomes-are-assigned-monetary-values.md)
+- [Drivers of Cost-Effectiveness in Workplace Resilience Interventions](drivers-of-cost-effectiveness-in-workplace-resilience-interventions.md)

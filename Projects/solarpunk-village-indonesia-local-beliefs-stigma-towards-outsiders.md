@@ -50,8 +50,8 @@ Reference: [[solarpunk-and-marhaenism-points-of-convergence]], [[indonesian-poli
 
 ## Relevant notes
 
-- [[solarpunk-village-indonesia-conflict-segregation-risks]]
-- [[solarpunk-village-indonesia-assimilation-paths-with-locals]]
-- [[solarpunk-village-indonesia-potential-locations]]
+- [Solarpunk Village Indonesia: Conflict & Segregation Risks](solarpunk-village-indonesia-conflict-segregation-risks.md)
+- [Solarpunk Village Indonesia: Assimilation Paths with Locals](solarpunk-village-indonesia-assimilation-paths-with-locals.md)
+- [Solarpunk Village Indonesia: Potential Locations](solarpunk-village-indonesia-potential-locations.md)
 - [[indonesia-erasure-of-left-wing-politics-after-1965]]
-- [[solarpunk-in-indonesia]]
+- [Solarpunk in Indonesia](../Resources/solarpunk-in-indonesia.md)

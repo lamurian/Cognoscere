@@ -68,8 +68,8 @@ As one Stack Overflow user put it: "IBM Cloud free tier exists, but I wouldn't b
 
 ## Relevant notes
 
-- [[ibm-cloud-free-lite-vps]]
-- [[forever-free-vps-comparison-and-executive-summary]]
-- [[forever-free-vps-user-friendliness-comparison-and-recommendation]]
-- [[oracle-cloud-free-tier-user-sentiment-and-reviews]]
-- [[google-cloud-free-tier-user-sentiment-and-reviews]]
+- [IBM Cloud Free Lite VPS](ibm-cloud-free-lite-vps.md)
+- [Forever Free VPS Comparison and Executive Summary](forever-free-vps-comparison-and-executive-summary.md)
+- [Forever Free VPS — User-Friendliness Comparison and Recommendation](forever-free-vps-user-friendliness-comparison-and-recommendation.md)
+- [Oracle Cloud Free Tier — User Sentiment and Reviews](oracle-cloud-free-tier-user-sentiment-and-reviews.md)
+- [Google Cloud Free Tier — User Sentiment and Reviews](google-cloud-free-tier-user-sentiment-and-reviews.md)

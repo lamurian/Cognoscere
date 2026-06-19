@@ -19,8 +19,8 @@ Conflicting perspectives suggest that positive appraisal may not always be adapt
 
 ## Relevant notes
 
-- [[known-gaps-in-understanding-resilience-mechanisms-in-working-populations]]
-- [[resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms]]
-- [[positive-interpretation-bias-and-emotion-regulation-as-cognitive-mechanisms-of-resilience]]
-- [[neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation]]
-- [[optimism-and-self-compassion-as-key-mediators-of-resilience-in-working-adults]]
+- [Known Gaps in Understanding Resilience Mechanisms in Working Populations](known-gaps-in-understanding-resilience-mechanisms-in-working-populations.md)
+- [Resilience as a Dynamic, Multimodal Process: Integration Across Mechanisms](resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms.md)
+- [Positive Interpretation Bias and Emotion Regulation as Cognitive Mechanisms of Resilience](positive-interpretation-bias-and-emotion-regulation-as-cognitive-mechanisms-of-resilience.md)
+- [Neurobiological Mechanisms of Resilience: Prefrontal-Amygdala Circuitry and HPA Axis Regulation](neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation.md)
+- [Optimism and Self-Compassion as Key Mediators of Resilience in Working Adults](optimism-and-self-compassion-as-key-mediators-of-resilience-in-working-adults.md)

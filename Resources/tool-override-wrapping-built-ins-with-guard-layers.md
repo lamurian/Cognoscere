@@ -27,8 +27,8 @@ Pi extensions can register tools with the same name as built-in tools (`read`, `
 
 ## Relevant notes
 
-- [[sandboxing-and-execution-isolation-in-pi-agent]]
-- [[approaches-to-guardrail-design-in-pi-agent-for-llm-aided-software-engineering]]
-- [[tool-call-interception-runtime-gating-in-pi-agent]]
-- [[layered-guardrail-architecture-with-pi-extensions]]
-- [[session-lifecycle-guards-in-pi-agent]]
+- [Sandboxing and Execution Isolation in Pi Agent](sandboxing-and-execution-isolation-in-pi-agent.md)
+- [Approaches to Guardrail Design in Pi Agent for LLM-Aided Software Engineering](approaches-to-guardrail-design-in-pi-agent-for-llm-aided-software-engineering.md)
+- [Tool Call Interception: Runtime Gating in Pi Agent](tool-call-interception-runtime-gating-in-pi-agent.md)
+- [Layered Guardrail Architecture with Pi Extensions](layered-guardrail-architecture-with-pi-extensions.md)
+- [Session Lifecycle Guards in Pi Agent](session-lifecycle-guards-in-pi-agent.md)

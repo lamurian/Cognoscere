@@ -31,8 +31,8 @@ The AI coding agent orchestration space has converged rapidly through early 2026
 
 ## Relevant notes
 
-- [[paseo-cross-device-coding-agent-orchestration-executive-summary]]
-- [[the-agent-orchestration-landscape-in-2026]]
-- [[paseo-architecture-daemon-based-cross-device-agent-orchestration]]
-- [[frameworks-and-tools-for-llm-guardrails]]
-- [[state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering]]
+- [Paseo: Cross-Device Coding Agent Orchestration — Executive Summary](paseo-cross-device-coding-agent-orchestration-executive-summary.md)
+- [The Agent Orchestration Landscape in 2026](the-agent-orchestration-landscape-in-2026.md)
+- [Paseo Architecture: Daemon-Based Cross-Device Agent Orchestration](paseo-architecture-daemon-based-cross-device-agent-orchestration.md)
+- [Frameworks and Tools for LLM Guardrails](frameworks-and-tools-for-llm-guardrails.md)
+- [State of the Art in Guardrail Design for LLM Orchestration in Software Engineering](state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering.md)

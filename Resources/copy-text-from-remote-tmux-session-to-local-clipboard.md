@@ -77,4 +77,4 @@ tmux capture-pane -pS - | xclip -selection clipboard
 
 ## Relevant notes
 
-- [[how-tmux-set-clipboard-works-through-a-tty-over-ssh]]
+- [How Tmux Set-Clipboard Works Through a TTY over SSH](how-tmux-set-clipboard-works-through-a-tty-over-ssh.md)

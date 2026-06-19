@@ -133,7 +133,7 @@ Violation of any assumption can produce misleading results. The model is a sensi
 
 ## Related Notes
 
-- [[copas-selection-model-for-publication-bias]] — overview and practical usage
-- [[copas-selection-model-publication-probability-as-a-latent-variable]] — latent variable and non-identifiability
-- [[meta-copas-step-by-step-algorithm]] — how the R function fits the model
-- [[interpreting-summary-from-meta-copas]] — how to read the summary output
+- [Copas Selection Model for Publication Bias](copas-selection-model-for-publication-bias.md) — overview and practical usage
+- [Copas Selection Model — Publication Probability as a Latent Variable](copas-selection-model-publication-probability-as-a-latent-variable.md) — latent variable and non-identifiability
+- [meta::copas() Step-by-Step Algorithm](meta-copas-step-by-step-algorithm.md) — how the R function fits the model
+- [Interpreting summary() from meta::copas()](interpreting-summary-from-meta-copas.md) — how to read the summary output

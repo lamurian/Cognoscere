@@ -33,8 +33,8 @@ Other major simulation findings include:
 
 ## Related Notes
 
-- [[copas-selection-model-for-publication-bias]]
-- [[pet-peese-for-publication-bias-correction]]
-- [[p-curve-and-p-uniform-for-detecting-evidential-value]]
-- [[r-cker-s-limit-meta-analysis-for-small-study-effects]]
-- [[copas-method-sensitivity-to-selection-mechanisms]]
+- [Copas Selection Model for Publication Bias](copas-selection-model-for-publication-bias.md)
+- [PET-PEESE for Publication Bias Correction](pet-peese-for-publication-bias-correction.md)
+- [P-Curve and P-Uniform* for Detecting Evidential Value](p-curve-and-p-uniform-for-detecting-evidential-value.md)
+- [Rücker's Limit Meta-Analysis for Small-Study Effects](r-cker-s-limit-meta-analysis-for-small-study-effects.md)
+- [Copas Method Sensitivity to Selection Mechanisms](copas-method-sensitivity-to-selection-mechanisms.md)

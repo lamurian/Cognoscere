@@ -42,8 +42,8 @@ _Source: Wikipedia -- Solar panel, Solar cell_
 
 ## Relevant notes
 
-- [[marine-renewable-energy]]
-- [[solarpunk-in-the-european-union]]
-- [[comparative-analysis-of-sustainable-energy-sources]]
-- [[core-principles-and-philosophy-of-solarpunk]]
-- [[energy-storage-technologies]]
+- [Marine Renewable Energy](marine-renewable-energy.md)
+- [Solarpunk in the European Union](solarpunk-in-the-european-union.md)
+- [Comparative Analysis of Sustainable Energy Sources](comparative-analysis-of-sustainable-energy-sources.md)
+- [Core Principles and Philosophy of Solarpunk](core-principles-and-philosophy-of-solarpunk.md)
+- [Energy Storage Technologies](energy-storage-technologies.md)

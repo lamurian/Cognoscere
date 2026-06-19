@@ -29,8 +29,8 @@ Pi's extension architecture enables a layered guardrail design that mirrors the 
 
 ## Relevant notes
 
-- [[approaches-to-guardrail-design-in-pi-agent-for-llm-aided-software-engineering]]
-- [[sandboxing-and-execution-isolation-in-pi-agent]]
-- [[tool-call-interception-runtime-gating-in-pi-agent]]
-- [[tool-override-wrapping-built-ins-with-guard-layers]]
-- [[session-lifecycle-guards-in-pi-agent]]
+- [Approaches to Guardrail Design in Pi Agent for LLM-Aided Software Engineering](approaches-to-guardrail-design-in-pi-agent-for-llm-aided-software-engineering.md)
+- [Sandboxing and Execution Isolation in Pi Agent](sandboxing-and-execution-isolation-in-pi-agent.md)
+- [Tool Call Interception: Runtime Gating in Pi Agent](tool-call-interception-runtime-gating-in-pi-agent.md)
+- [Tool Override: Wrapping Built-Ins with Guard Layers](tool-override-wrapping-built-ins-with-guard-layers.md)
+- [Session Lifecycle Guards in Pi Agent](session-lifecycle-guards-in-pi-agent.md)

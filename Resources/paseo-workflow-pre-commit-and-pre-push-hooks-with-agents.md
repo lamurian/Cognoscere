@@ -52,6 +52,6 @@ Similarly, `git push` triggers pre-push hooks. If tests fail, the agent must fix
 
 ## Relevant Notes
 
-- [[paseo-workflow-adr-to-spec-to-plan-hierarchy]]
-- [[paseo-workflow-tdd-iteration-loop-with-paseo]]
-- [[paseo-workflow-pr-revision-cycle-with-paseo]]
+- [Paseo Workflow: ADR-to-Spec-to-Plan Hierarchy](paseo-workflow-adr-to-spec-to-plan-hierarchy.md)
+- [Paseo Workflow: TDD Iteration Loop with Agents](paseo-workflow-tdd-iteration-loop-with-agents.md)
+- [Paseo Workflow: PR Revision Cycle with Agents](paseo-workflow-pr-revision-cycle-with-agents.md)

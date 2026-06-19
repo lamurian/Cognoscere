@@ -79,10 +79,10 @@ No forever-free VPS should be considered production-grade. Oracle's reclaim poli
 
 ## Relevant notes
 
-- [[oracle-cloud-always-free-vps]]
-- [[google-cloud-free-tier-vps]]
-- [[ibm-cloud-free-lite-vps]]
-- [[budget-digital-homelab-for-sustainable-living]]
-- [[self-hosted-software-stack-for-off-grid-resilience]]
-- [[digital-homelab-hardening-core-security-practices]]
-- [[server-hardware-second-hand-mini-pcs-for-homelab]]
+- [Oracle Cloud Always Free VPS](oracle-cloud-always-free-vps.md)
+- [Google Cloud Free Tier VPS](google-cloud-free-tier-vps.md)
+- [IBM Cloud Free Lite VPS](ibm-cloud-free-lite-vps.md)
+- [Budget Digital Homelab for Sustainable Living](../Areas/budget-digital-homelab-for-sustainable-living.md)
+- [Self-Hosted Software Stack for Off-Grid Resilience](self-hosted-software-stack-for-off-grid-resilience.md)
+- [Digital Homelab Hardening: Core Security Practices](digital-homelab-hardening-core-security-practices.md)
+- [Server Hardware: Second-hand Mini PCs for Homelab](server-hardware-second-hand-mini-pcs-for-homelab.md)

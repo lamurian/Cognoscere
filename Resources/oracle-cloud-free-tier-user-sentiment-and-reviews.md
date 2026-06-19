@@ -73,8 +73,8 @@ Oracle free tier has the highest highs and lowest lows in user sentiment. Users 
 
 ## Relevant notes
 
-- [[oracle-cloud-always-free-vps]]
-- [[forever-free-vps-comparison-and-executive-summary]]
-- [[forever-free-vps-user-friendliness-comparison-and-recommendation]]
-- [[google-cloud-free-tier-user-sentiment-and-reviews]]
-- [[ibm-cloud-free-lite-user-sentiment-and-reviews]]
+- [Oracle Cloud Always Free VPS](oracle-cloud-always-free-vps.md)
+- [Forever Free VPS Comparison and Executive Summary](forever-free-vps-comparison-and-executive-summary.md)
+- [Forever Free VPS — User-Friendliness Comparison and Recommendation](forever-free-vps-user-friendliness-comparison-and-recommendation.md)
+- [Google Cloud Free Tier — User Sentiment and Reviews](google-cloud-free-tier-user-sentiment-and-reviews.md)
+- [IBM Cloud Free Lite — User Sentiment and Reviews](ibm-cloud-free-lite-user-sentiment-and-reviews.md)

@@ -52,8 +52,8 @@ SSDs last 5-10 years in a homelab. Enterprise HDDs (refurbished) from server pul
 
 ## Relevant notes
 
-- [[budget-digital-homelab-for-sustainable-living]]
-- [[global-trajectories-and-current-impact-of-solarpunk]]
-- [[solar-power-system-for-off-grid-homelab-in-indonesia]]
-- [[network-infrastructure-for-budget-homelab]]
-- [[solarpunk-in-the-united-states]]
+- [Budget Digital Homelab for Sustainable Living](../Areas/budget-digital-homelab-for-sustainable-living.md)
+- [Global Trajectories and Current Impact of Solarpunk](global-trajectories-and-current-impact-of-solarpunk.md)
+- [Solar Power System for Off-Grid Homelab in Indonesia](solar-power-system-for-off-grid-homelab-in-indonesia.md)
+- [Network Infrastructure for Budget Homelab](network-infrastructure-for-budget-homelab.md)
+- [Solarpunk in the United States](solarpunk-in-the-united-states.md)

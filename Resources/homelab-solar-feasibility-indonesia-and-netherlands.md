@@ -68,8 +68,8 @@ Indonesia is ideal for solar — consistent sun year-round with no winter dip. T
 
 ## Relevant notes
 
-- [[low-power-solar-homelab-executive-summary]]
-- [[homelab-component-prices-and-alternatives]]
-- [[homelab-solar-system-build-guide]]
-- [[homelab-system-overview]]
-- [[homelab-tailscale-configuration]]
+- [Low-Power Solar Homelab: Executive Summary](low-power-solar-homelab-executive-summary.md)
+- [Homelab Component Prices and Alternatives](homelab-component-prices-and-alternatives.md)
+- [Homelab Solar System Build Guide](../Projects/homelab-solar-system-build-guide.md)
+- [Homelab: System Overview](../Projects/homelab-system-overview.md)
+- [Homelab Tailscale Configuration](../Projects/homelab-tailscale-configuration.md)

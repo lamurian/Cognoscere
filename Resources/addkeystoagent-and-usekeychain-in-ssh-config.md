@@ -21,9 +21,9 @@ On macOS, `UseKeychain yes` additionally stores the key's passphrase in the macO
 Use `AddKeysToAgent yes` globally in `Host *` for convenience when you use passphrase-protected keys. But if you have multiple keys for different accounts (e.g., personal vs work GitHub), pair it with `IdentitiesOnly yes` in per-host stanzas to prevent the agent from offering the wrong key first.
 
 ## Sources
-- [[identityfile-and-identitiesonly-in-ssh-config]]
-- [[ssh-config-host-matching-and-stanza-precedence]]
+- [IdentityFile and IdentitiesOnly in SSH Config](identityfile-and-identitiesonly-in-ssh-config.md)
+- [SSH Config Host Matching and Stanza Precedence](ssh-config-host-matching-and-stanza-precedence.md)
 
 ## Relevant notes
-- [[how-ssh-works-protocol-key-exchange-and-authentication]]
-- [[preferredauthentications-in-ssh-config]]
+- [How SSH Works: Protocol, Key Exchange, and Authentication](how-ssh-works-protocol-key-exchange-and-authentication.md)
+- [PreferredAuthentications in SSH Config](preferredauthentications-in-ssh-config.md)

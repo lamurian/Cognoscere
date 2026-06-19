@@ -34,7 +34,7 @@ The Z-curve plot addresses a gap in existing visual diagnostics. While the funne
 
 ## Related Notes
 
-- [[bayesian-approaches-to-publication-bias]]
-- [[funnel-plot-for-publication-bias-detection]]
-- [[doi-plot-and-lfk-index-for-publication-bias]]
-- [[p-curve-and-p-uniform-for-detecting-evidential-value]]
+- [Bayesian Approaches to Publication Bias](bayesian-approaches-to-publication-bias.md)
+- [Funnel Plot for Publication Bias Detection](funnel-plot-for-publication-bias-detection.md)
+- [Doi Plot and LFK Index for Publication Bias](doi-plot-and-lfk-index-for-publication-bias.md)
+- [P-Curve and P-Uniform* for Detecting Evidential Value](p-curve-and-p-uniform-for-detecting-evidential-value.md)

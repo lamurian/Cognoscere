@@ -83,8 +83,8 @@ The homelab's 30W average load is modest enough that a single 300W panel (1.6 mÂ
 
 ## Relevant notes
 
-- [[budget-digital-homelab-for-sustainable-living]]
-- [[grid-integration-of-renewables]]
-- [[energy-storage-technologies]]
-- [[marine-renewable-energy]]
-- [[server-hardware-second-hand-mini-pcs-for-homelab]]
+- [Budget Digital Homelab for Sustainable Living](../Areas/budget-digital-homelab-for-sustainable-living.md)
+- [Grid Integration of Renewables](grid-integration-of-renewables.md)
+- [Energy Storage Technologies](energy-storage-technologies.md)
+- [Marine Renewable Energy](marine-renewable-energy.md)
+- [Server Hardware: Second-hand Mini PCs for Homelab](server-hardware-second-hand-mini-pcs-for-homelab.md)

@@ -23,8 +23,8 @@ LLM-driven software engineering introduces several critical failure modes that g
 
 ## Relevant notes
 
-- [[state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering]]
-- [[limitations-of-simple-output-filters-for-llm-guardrails]]
-- [[empirical-evidence-on-llm-failure-severity-in-software-engineering]]
-- [[the-no-free-lunch-tradeoff-in-guardrail-design]]
-- [[architectural-patterns-for-llm-guardrail-systems-in-software-engineering]]
+- [State of the Art in Guardrail Design for LLM Orchestration in Software Engineering](state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering.md)
+- [Limitations of Simple Output Filters for LLM Guardrails](limitations-of-simple-output-filters-for-llm-guardrails.md)
+- [Empirical Evidence on LLM Failure Severity in Software Engineering](empirical-evidence-on-llm-failure-severity-in-software-engineering.md)
+- [The No Free Lunch Tradeoff in Guardrail Design](the-no-free-lunch-tradeoff-in-guardrail-design.md)
+- [Architectural Patterns for LLM Guardrail Systems in Software Engineering](architectural-patterns-for-llm-guardrail-systems-in-software-engineering.md)

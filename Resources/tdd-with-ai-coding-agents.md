@@ -33,7 +33,7 @@ For spec-driven TDD, decompose OpenAPI or JSON Schema contracts into Gherkin sce
 
 ## Relevant notes
 
-- [[spec-driven-context-driven-tdd-workflow-overview]]
-- [[spec-architecture-for-ai-coding-agents]]
-- [[least-obstructive-workflow-principles]]
-- [[sdd-four-phase-workflow-for-pi-agents]]
+- [Spec-Driven Context-Driven TDD Workflow for AI Coding Agents](spec-driven-context-driven-tdd-workflow-for-ai-coding-agents.md)
+- [Spec Architecture for AI Coding Agents](spec-architecture-for-ai-coding-agents.md)
+- [Least-Obstructive Workflow Principles](least-obstructive-workflow-principles.md)
+- [SDD Four-Phase Workflow for pi Agents](../Projects/sdd-four-phase-workflow-for-pi-agents.md)

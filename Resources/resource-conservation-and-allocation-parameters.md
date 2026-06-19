@@ -26,8 +26,8 @@ Resource costs follow convex cost function: cost = R_allocation_cost * allocatio
 
 ## Relevant notes
 
-- [[theoretical-frameworks-for-organisational-individual-resilience-interaction]]
-- [[agent-based-simulation-for-complex-adaptive-systems-executive-summary]]
-- [[psychological-resilience-mechanisms-in-working-age-population-executive-summary]]
-- [[agent-architectures-and-decision-making-in-agent-based-simulation]]
-- [[coping-decision-parameters-in-stress-coping-models]]
+- [Theoretical Frameworks for Organisational-Individual Resilience Interaction](theoretical-frameworks-for-organisational-individual-resilience-interaction.md)
+- [Agent-Based Simulation for Complex Adaptive Systems — Executive Summary](agent-based-simulation-for-complex-adaptive-systems-executive-summary.md)
+- [Psychological Resilience Mechanisms in Working-Age Population: Executive Summary](psychological-resilience-mechanisms-in-working-age-population-executive-summary.md)
+- [Agent Architectures and Decision-Making in Agent-Based Simulation](agent-architectures-and-decision-making-in-agent-based-simulation.md)
+- [Coping Decision Parameters in Stress-Coping Models](coping-decision-parameters-in-stress-coping-models.md)

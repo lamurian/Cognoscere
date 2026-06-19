@@ -20,13 +20,13 @@ This relationship fits the stress-and-coping framework. People with higher resil
 
 ## Sources
 
-- [[PSS-10 vs Stress — small-to-moderate correlation with objective life events]]
-- [[PSS-10 vs Affect — differentiated links with positive and negative affect]]
-- [[Resources vs Stress — social support buffers perceived stress]]
-- [[Resilience vs Affect — strong positive link with positive affect, moderate negative with negative affect]]
-- [[Social Interaction vs Resilience — social support positively correlates with resilience]]
-- [[Challenge-Hindrance Stress Appraisal and Coping Pipeline]]
-- [[Challenge Stressors Build Resilience While Hindrance Stressors Erode It]]
+- [PSS-10 vs Stress — small-to-moderate correlation with objective life events](pss-10-vs-stress-small-to-moderate-correlation-with-objective-life-events.md)
+- [PSS-10 vs Affect — differentiated links with positive and negative affect](pss-10-vs-affect-differentiated-links-with-positive-and-negative-affect.md)
+- [Resources vs Stress — social support buffers perceived stress](resources-vs-stress-social-support-buffers-perceived-stress.md)
+- [Resilience vs Affect — strong positive link with positive affect, moderate negative with negative affect](resilience-vs-affect-strong-positive-link-with-positive-affect-moderate-negative-with-negative-affect.md)
+- [Social Interaction vs Resilience — social support positively correlates with resilience](social-interaction-vs-resilience-social-support-positively-correlates-with-resilience.md)
+- [Challenge-Hindrance Stress Appraisal and Coping Pipeline](challenge-hindrance-stress-appraisal-and-coping-pipeline.md)
+- [Challenge Stressors Build Resilience While Hindrance Stressors Erode It](challenge-stressors-build-resilience-while-hindrance-stressors-erode-it.md)
 - [@cohen1983] — PSS-10 original
 - [@thomas2020] — BRS-PSS correlation
 - [@smith2008] — BRS original

@@ -84,10 +84,10 @@ Remember: for any workload you genuinely depend on, budget $3-5/month for a paid
 
 ## Relevant notes
 
-- [[forever-free-vps-comparison-and-executive-summary]]
-- [[oracle-cloud-always-free-vps]]
-- [[google-cloud-free-tier-vps]]
-- [[ibm-cloud-free-lite-vps]]
-- [[oracle-cloud-free-tier-user-sentiment-and-reviews]]
-- [[google-cloud-free-tier-user-sentiment-and-reviews]]
-- [[ibm-cloud-free-lite-user-sentiment-and-reviews]]
+- [Forever Free VPS Comparison and Executive Summary](forever-free-vps-comparison-and-executive-summary.md)
+- [Oracle Cloud Always Free VPS](oracle-cloud-always-free-vps.md)
+- [Google Cloud Free Tier VPS](google-cloud-free-tier-vps.md)
+- [IBM Cloud Free Lite VPS](ibm-cloud-free-lite-vps.md)
+- [Oracle Cloud Free Tier — User Sentiment and Reviews](oracle-cloud-free-tier-user-sentiment-and-reviews.md)
+- [Google Cloud Free Tier — User Sentiment and Reviews](google-cloud-free-tier-user-sentiment-and-reviews.md)
+- [IBM Cloud Free Lite — User Sentiment and Reviews](ibm-cloud-free-lite-user-sentiment-and-reviews.md)

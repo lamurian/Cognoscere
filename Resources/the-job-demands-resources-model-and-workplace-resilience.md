@@ -19,8 +19,8 @@ Organisational interventions should focus on reducing hindrance demands, enhanci
 
 ## Relevant notes
 
-- [[challenge-stressors-build-resilience-while-hindrance-stressors-erode-it]]
-- [[how-resilience-interventions-improve-employee-wellbeing]]
-- [[choosing-the-effect-in-cost-effectiveness-analysis-outcome-rationale]]
-- [[drivers-of-cost-effectiveness-in-workplace-resilience-interventions]]
-- [[cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary]]
+- [Challenge Stressors Build Resilience While Hindrance Stressors Erode It](challenge-stressors-build-resilience-while-hindrance-stressors-erode-it.md)
+- [How Resilience Interventions Improve Employee Wellbeing](how-resilience-interventions-improve-employee-wellbeing.md)
+- [Choosing the 'Effect' in Cost-Effectiveness Analysis: Outcome Rationale](choosing-the-effect-in-cost-effectiveness-analysis-outcome-rationale.md)
+- [Drivers of Cost-Effectiveness in Workplace Resilience Interventions](drivers-of-cost-effectiveness-in-workplace-resilience-interventions.md)
+- [Cost-Effective Organisation-Based Interventions for Psychological Resilience: Executive Summary](cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary.md)

@@ -34,12 +34,12 @@ The strong association between resilience and positive affect supports the broad
 
 ## Relevant notes
 
-- [[correlation-pairs-validation-literature-based-executive-summary]]
-- [[stress-and-affect-empirical-correlations]]
-- [[pss-10-and-affect-empirical-correlation]]
-- [[social-support-and-successful-coping-empirical-correlations]]
-- [[affect-and-resources-social-support-empirical-correlation]]
-- [[affect-distribution-norms-panas-empirical-reference]]
-- [[resilience-distribution-norms-cd-risc-empirical-reference]]
-- [[psychological-resources-and-resilience-executive-summary]]
-- [[resilience-and-psychological-resources-empirical-correlations]]
+- [Correlation Pairs Validation: Literature-Based Executive Summary](correlation-pairs-validation-literature-based-executive-summary.md)
+- [Stress and Affect: Empirical Correlations](stress-and-affect-empirical-correlations.md)
+- [PSS-10 and Affect: Empirical Correlation](pss-10-and-affect-empirical-correlation.md)
+- [Social Support and Successful Coping: Empirical Correlations](social-support-and-successful-coping-empirical-correlations.md)
+- [Affect and Resources (Social Support): Empirical Correlation](affect-and-resources-social-support-empirical-correlation.md)
+- [Affect Distribution Norms: PANAS Empirical Reference](affect-distribution-norms-panas-empirical-reference.md)
+- [Resilience Distribution Norms: CD-RISC Empirical Reference](resilience-distribution-norms-cd-risc-empirical-reference.md)
+- [Psychological Resources and Resilience — Executive Summary](psychological-resources-and-resilience-executive-summary.md)
+- [Resilience and Psychological Resources: Empirical Correlations](resilience-and-psychological-resources-empirical-correlations.md)

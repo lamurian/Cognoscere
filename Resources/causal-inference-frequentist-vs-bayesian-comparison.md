@@ -53,7 +53,7 @@ Many modern causal inference methods are pragmatic: use Bayesian computation (MC
 
 ## Relevant notes
 
-- [[time-series-analysis-frequentist-vs-bayesian-comparison]]
-- [[causal-inference-frequentist-approach]]
-- [[model-comparison-frequentist-vs-bayesian-comparison]]
-- [[descriptive-statistics-data-visualisation]]
+- [Time Series Analysis: Frequentist vs Bayesian Comparison](time-series-analysis-frequentist-vs-bayesian-comparison.md)
+- [Causal Inference: Frequentist Approach](causal-inference-frequentist-approach.md)
+- [Model Comparison: Frequentist vs Bayesian Comparison](model-comparison-frequentist-vs-bayesian-comparison.md)
+- [Descriptive Statistics & Data Visualisation](descriptive-statistics-data-visualisation.md)

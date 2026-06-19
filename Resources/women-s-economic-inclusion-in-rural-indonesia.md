@@ -59,15 +59,15 @@ Closing the gender gap in agricultural productivity in Indonesia could increase 
 
 ## Related Notes
 
-- [[land-reform-and-tenure-security-in-rural-indonesia]]
-- [[bumdes-and-agricultural-value-chain-upgrading]]
-- [[community-driven-development-in-indonesian-villages]]
-- [[village-modernization-in-indonesia-strategic-overview]]
+- [Land Reform and Tenure Security in Rural Indonesia](land-reform-and-tenure-security-in-rural-indonesia.md)
+- [BUMDes and Agricultural Value Chain Upgrading](bumdes-and-agricultural-value-chain-upgrading.md)
+- [Community-Driven Development in Indonesian Villages](community-driven-development-in-indonesian-villages.md)
+- [Village Modernization in Indonesia: Strategic Overview](village-modernization-in-indonesia-strategic-overview.md)
 
 ## Relevant notes
 
-- [[bumdes-and-agricultural-value-chain-upgrading]]
-- [[community-driven-development-in-indonesian-villages]]
-- [[land-reform-and-tenure-security-in-rural-indonesia]]
-- [[smart-village-indonesia-the-6-pillar-framework]]
-- [[village-modernization-in-indonesia-strategic-overview]]
+- [BUMDes and Agricultural Value Chain Upgrading](bumdes-and-agricultural-value-chain-upgrading.md)
+- [Community-Driven Development in Indonesian Villages](community-driven-development-in-indonesian-villages.md)
+- [Land Reform and Tenure Security in Rural Indonesia](land-reform-and-tenure-security-in-rural-indonesia.md)
+- [Smart Village Indonesia: The 6-Pillar Framework](smart-village-indonesia-the-6-pillar-framework.md)
+- [Village Modernization in Indonesia: Strategic Overview](village-modernization-in-indonesia-strategic-overview.md)

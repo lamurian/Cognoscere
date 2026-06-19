@@ -20,12 +20,12 @@ Acoba [@acoba2024] found PSS-10 total vs Positive Affect r = -0.176 (p < .01) in
 
 ## Sources
 
-- [[PSS-10 vs Stress — small-to-moderate correlation with objective life events]]
-- [[PSS-10 vs Resilience — negative correlation]]
-- [[PSS-10 internal structure — self-efficacy and helplessness as challenge and hindrance dimensions]]
-- [[Resilience vs Affect — strong positive link with positive affect, moderate negative with negative affect]]
-- [[Affect vs Resources — positive affect associated with stronger perceived social support]]
-- [[Integrated Affect and Resilience Dynamics]]
+- [PSS-10 vs Stress — small-to-moderate correlation with objective life events](pss-10-vs-stress-small-to-moderate-correlation-with-objective-life-events.md)
+- [PSS-10 vs Resilience — negative correlation](pss-10-vs-resilience-negative-correlation.md)
+- [PSS-10 internal structure — self-efficacy and helplessness as challenge and hindrance dimensions](pss-10-internal-structure-self-efficacy-and-helplessness-as-challenge-and-hindrance-dimensions.md)
+- [Resilience vs Affect — strong positive link with positive affect, moderate negative with negative affect](resilience-vs-affect-strong-positive-link-with-positive-affect-moderate-negative-with-negative-affect.md)
+- [Affect vs Resources — positive affect associated with stronger perceived social support](affect-vs-resources-positive-affect-associated-with-stronger-perceived-social-support.md)
+- [Integrated Affect and Resilience Dynamics](integrated-affect-and-resilience-dynamics.md)
 - [@watson1988] — PANAS original
 - [@boluartecarbajal2021] — PSS-10 vs PANAS
 - [@acoba2024] — PSS-10 total vs PA

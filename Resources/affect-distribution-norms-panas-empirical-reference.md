@@ -22,13 +22,13 @@ For simulation: population affect valence can be modelled as a normal distributi
 - Diener, E., & Diener, C. (1996). Most people are happy. Psychological Science, 7(3), 181-185.
 
 ## Existing Notes
-- [[stress-and-affect-empirical-correlations]]
-- [[pss-10-item-level-descriptive-statistics]]
+- [Stress and Affect: Empirical Correlations](stress-and-affect-empirical-correlations.md)
+- [PSS-10 Item-Level Descriptive Statistics](pss-10-item-level-descriptive-statistics.md)
 
 ## Relevant notes
 
-- [[stress-and-affect-empirical-correlations]]
-- [[challenge-hindrance-appraisal-distributions-empirical-reference]]
-- [[resource-distribution-norms-cor-theory-empirical-reference]]
-- [[pss-10-item-level-descriptive-statistics]]
-- [[resilience-distribution-norms-cd-risc-empirical-reference]]
+- [Stress and Affect: Empirical Correlations](stress-and-affect-empirical-correlations.md)
+- [Challenge-Hindrance Appraisal Distributions: Empirical Reference](challenge-hindrance-appraisal-distributions-empirical-reference.md)
+- [Resource Distribution Norms: COR Theory Empirical Reference](resource-distribution-norms-cor-theory-empirical-reference.md)
+- [PSS-10 Item-Level Descriptive Statistics](pss-10-item-level-descriptive-statistics.md)
+- [Resilience Distribution Norms: CD-RISC Empirical Reference](resilience-distribution-norms-cd-risc-empirical-reference.md)

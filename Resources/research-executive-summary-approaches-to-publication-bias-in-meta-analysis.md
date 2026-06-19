@@ -23,12 +23,12 @@ Emerging methods address several gaps. **Bayesian approaches** (Robust Bayesian 
 
 ## Key Findings
 
-- **Comparative performance** — Copas and PET-PEESE are least biased; PET-PEESE preferred for robustness — [[comparative-performance-of-publication-bias-correction-methods]]
-- **Copas limitations** — Not robust when selection mechanism differs from SE-based assumption — [[copas-method-sensitivity-to-selection-mechanisms]]
-- **Bayesian methods** — Robust Bayesian Copas and RoBMA address normality assumptions and model uncertainty — [[bayesian-approaches-to-publication-bias]]
-- **Z-curve plot** — New visual diagnostic overlaying model-implied vs observed z-statistics, with EDR, FDR, and N-missing summaries — [[z-curve-plot-a-visual-diagnostic-for-publication-bias]]
-- **NMA bias assessment** — Comparison-adjusted funnel plots and IPW using trial registries — [[publication-bias-in-network-meta-analysis]]
-- **DTA bias assessment** — Trim-and-fill with log-DOR preferred; Deeks' test has low power — [[publication-bias-in-diagnostic-test-accuracy-meta-analysis]]
+- **Comparative performance** — Copas and PET-PEESE are least biased; PET-PEESE preferred for robustness — [Comparative Performance of Publication Bias Correction Methods](comparative-performance-of-publication-bias-correction-methods.md)
+- **Copas limitations** — Not robust when selection mechanism differs from SE-based assumption — [Copas Method Sensitivity to Selection Mechanisms](copas-method-sensitivity-to-selection-mechanisms.md)
+- **Bayesian methods** — Robust Bayesian Copas and RoBMA address normality assumptions and model uncertainty — [Bayesian Approaches to Publication Bias](bayesian-approaches-to-publication-bias.md)
+- **Z-curve plot** — New visual diagnostic overlaying model-implied vs observed z-statistics, with EDR, FDR, and N-missing summaries — [Z-Curve Plot: A Visual Diagnostic for Publication Bias](z-curve-plot-a-visual-diagnostic-for-publication-bias.md)
+- **NMA bias assessment** — Comparison-adjusted funnel plots and IPW using trial registries — [Publication Bias in Network Meta-Analysis](publication-bias-in-network-meta-analysis.md)
+- **DTA bias assessment** — Trim-and-fill with log-DOR preferred; Deeks' test has low power — [Publication Bias in Diagnostic Test Accuracy Meta-Analysis](publication-bias-in-diagnostic-test-accuracy-meta-analysis.md)
 
 ## Confidence Assessment
 
@@ -48,11 +48,11 @@ Emerging methods address several gaps. **Bayesian approaches** (Robust Bayesian 
 
 ## Related Notes
 
-- [[executive-summary-comparing-publication-bias-detection-and-correction-methods]]
-- [[publication-bias-investigation-method-trade-offs-and-unified-workflow-guide]]
-- [[copas-selection-model-for-publication-bias]]
-- [[pet-peese-for-publication-bias-correction]]
-- [[funnel-plot-for-publication-bias-detection]]
-- [[egger-s-regression-test-for-funnel-plot-asymmetry]]
-- [[selection-models-hedges-and-vevea-hedges-weight-function-approach]]
-- [[p-curve-and-p-uniform-for-detecting-evidential-value]]
+- [Executive Summary: Comparing Publication Bias Detection and Correction Methods](executive-summary-comparing-publication-bias-detection-and-correction-methods.md)
+- [Publication Bias Investigation: Method Trade-Offs and Unified Workflow Guide](publication-bias-investigation-method-trade-offs-and-unified-workflow-guide.md)
+- [Copas Selection Model for Publication Bias](copas-selection-model-for-publication-bias.md)
+- [PET-PEESE for Publication Bias Correction](pet-peese-for-publication-bias-correction.md)
+- [Funnel Plot for Publication Bias Detection](funnel-plot-for-publication-bias-detection.md)
+- [Egger's Regression Test for Funnel Plot Asymmetry](egger-s-regression-test-for-funnel-plot-asymmetry.md)
+- [Selection Models: Hedges and Vevea-Hedges Weight-Function Approach](selection-models-hedges-and-vevea-hedges-weight-function-approach.md)
+- [P-Curve and P-Uniform* for Detecting Evidential Value](p-curve-and-p-uniform-for-detecting-evidential-value.md)

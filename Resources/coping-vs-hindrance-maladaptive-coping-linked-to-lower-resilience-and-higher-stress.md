@@ -20,11 +20,11 @@ Within the challenge-hindrance framework, hindrance appraisal occurs when a stre
 
 ## Sources
 
-- [[Coping vs Challenge — adaptive coping linked to resilience and lower stress]]
-- [[PSS-10 internal structure — self-efficacy and helplessness as challenge and hindrance dimensions]]
-- [[PSS-10 vs Resilience — negative correlation]]
-- [[Challenge-Hindrance Stress Appraisal and Coping Pipeline]]
-- [[Challenge Stressors Build Resilience While Hindrance Stressors Erode It]]
+- [Coping vs Challenge — adaptive coping linked to resilience and lower stress](coping-vs-challenge-adaptive-coping-linked-to-resilience-and-lower-stress.md)
+- [PSS-10 internal structure — self-efficacy and helplessness as challenge and hindrance dimensions](pss-10-internal-structure-self-efficacy-and-helplessness-as-challenge-and-hindrance-dimensions.md)
+- [PSS-10 vs Resilience — negative correlation](pss-10-vs-resilience-negative-correlation.md)
+- [Challenge-Hindrance Stress Appraisal and Coping Pipeline](challenge-hindrance-stress-appraisal-and-coping-pipeline.md)
+- [Challenge Stressors Build Resilience While Hindrance Stressors Erode It](challenge-stressors-build-resilience-while-hindrance-stressors-erode-it.md)
 - [@chmitorz2018] — BRS and coping
 - [@smith2008] — BRS original
 - [@thomas2020] — reappraisal, suppression, stress

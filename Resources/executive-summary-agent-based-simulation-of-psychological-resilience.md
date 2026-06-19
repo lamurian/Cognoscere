@@ -22,19 +22,19 @@ This project implements an agent-based simulation of psychological resilience in
 **Validation.** The simulation integrates the PSS-10 bifactor model for empirical stress measurement, enabling comparison with epidemiological benchmarks. Resource management implements bounded rationality through softmax decision-making across four protective factors, grounded in behavioral economics and the broaden-and-build theory. Comprehensive data collection via Mesa's DataCollector supports individual trajectory analysis, network analysis, parameter sensitivity studies, and baseline-versus-intervention comparisons.
 
 **Key atomic notes**
-- [[Resources/agent-baseline-initialization-via-sigmoid-and-tanh-transforms]]
-- [[Resources/challenge-hindrance-stress-appraisal-and-coping-pipeline]]
-- [[Resources/social-interaction-and-emotional-contagion-mechanism]]
-- [[Resources/integrated-affect-and-resilience-dynamics]]
-- [[Resources/resource-management-and-protective-factor-allocation]]
-- [[Resources/daily-simulation-step-orchestration]]
-- [[Resources/perceived-stress-scale-pss10-integration-in-agent-based-simulation]]
-- [[Resources/mesa-based-simulation-architecture-and-data-collection-framework]]
+- [Agent Baseline Initialization via Sigmoid and Tanh Transforms](agent-baseline-initialization-via-sigmoid-and-tanh-transforms.md)
+- [Challenge-Hindrance Stress Appraisal and Coping Pipeline](challenge-hindrance-stress-appraisal-and-coping-pipeline.md)
+- [Social Interaction and Emotional Contagion Mechanism](social-interaction-and-emotional-contagion-mechanism.md)
+- [Integrated Affect and Resilience Dynamics](integrated-affect-and-resilience-dynamics.md)
+- [Resource Management and Protective Factor Allocation](resource-management-and-protective-factor-allocation.md)
+- [Daily Simulation Step Orchestration](daily-simulation-step-orchestration.md)
+- [Perceived Stress Scale (PSS-10) Integration in Agent-Based Simulation](perceived-stress-scale-pss-10-integration-in-agent-based-simulation.md)
+- [Mesa-Based Simulation Architecture and Data Collection Framework](mesa-based-simulation-architecture-and-data-collection-framework.md)
 
 ## Relevant notes
 
-- [[agent-based-simulation-for-complex-adaptive-systems-executive-summary]]
-- [[resource-conservation-and-allocation-parameters]]
-- [[mental-health-abm-parameter-index]]
-- [[resilience-dynamics-and-homeostatic-regulation-parameters]]
-- [[agent-initialization-state-parameters]]
+- [Agent-Based Simulation for Complex Adaptive Systems — Executive Summary](agent-based-simulation-for-complex-adaptive-systems-executive-summary.md)
+- [Resource Conservation and Allocation Parameters](resource-conservation-and-allocation-parameters.md)
+- [Mental Health ABM Parameter Index](mental-health-abm-parameter-index.md)
+- [Resilience Dynamics and Homeostatic Regulation Parameters](resilience-dynamics-and-homeostatic-regulation-parameters.md)
+- [Agent Initialization State Parameters](agent-initialization-state-parameters.md)

@@ -25,8 +25,8 @@ The direct neural evidence linking specific organisational factors (leadership s
 
 ## Relevant notes
 
-- [[neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation]]
-- [[pastor-theory-positive-appraisal-style-as-the-core-resilience-mechanism]]
-- [[organisational-climate-and-culture-as-resilience-modulators]]
-- [[psychological-resilience-mechanisms-in-working-age-population-executive-summary]]
-- [[known-gaps-in-understanding-resilience-mechanisms-in-working-populations]]
+- [Neurobiological Mechanisms of Resilience: Prefrontal-Amygdala Circuitry and HPA Axis Regulation](neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation.md)
+- [PASTOR Theory: Positive Appraisal Style as the Core Resilience Mechanism](pastor-theory-positive-appraisal-style-as-the-core-resilience-mechanism.md)
+- [Organisational Climate and Culture as Resilience Modulators](organisational-climate-and-culture-as-resilience-modulators.md)
+- [Psychological Resilience Mechanisms in Working-Age Population: Executive Summary](psychological-resilience-mechanisms-in-working-age-population-executive-summary.md)
+- [Known Gaps in Understanding Resilience Mechanisms in Working Populations](known-gaps-in-understanding-resilience-mechanisms-in-working-populations.md)

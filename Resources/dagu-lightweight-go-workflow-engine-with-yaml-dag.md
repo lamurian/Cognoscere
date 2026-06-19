@@ -38,8 +38,8 @@ Dagu is a self-contained, single-binary workflow engine written in Go that execu
 
 ## Relevant notes
 
-- [[lightweight-go-workflow-engines-executive-summary-and-recommendation]]
-- [[hatchet-durable-task-orchestration-engine-in-go]]
-- [[tork-distributed-go-workflow-engine-with-yaml-jobs]]
-- [[task-yaml-automation-engine-by-ovh]]
-- [[the-agent-orchestration-landscape-in-2026]]
+- [Lightweight Go Workflow Engines: Executive Summary and Recommendation](lightweight-go-workflow-engines-executive-summary-and-recommendation.md)
+- [Hatchet: Durable Task Orchestration Engine in Go](hatchet-durable-task-orchestration-engine-in-go.md)
+- [Tork: Distributed Go Workflow Engine with YAML Jobs](tork-distributed-go-workflow-engine-with-yaml-jobs.md)
+- [µTask: YAML Automation Engine by OVH](task-yaml-automation-engine-by-ovh.md)
+- [The Agent Orchestration Landscape in 2026](the-agent-orchestration-landscape-in-2026.md)

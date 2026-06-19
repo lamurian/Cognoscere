@@ -25,8 +25,8 @@ Simple rule-based output filters and content blacklists are insufficient for LLM
 
 ## Relevant notes
 
-- [[state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering]]
-- [[frameworks-and-tools-for-llm-guardrails]]
-- [[the-no-free-lunch-tradeoff-in-guardrail-design]]
-- [[failure-modes-in-llm-driven-software-engineering]]
-- [[architectural-patterns-for-llm-guardrail-systems-in-software-engineering]]
+- [State of the Art in Guardrail Design for LLM Orchestration in Software Engineering](state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering.md)
+- [Frameworks and Tools for LLM Guardrails](frameworks-and-tools-for-llm-guardrails.md)
+- [The No Free Lunch Tradeoff in Guardrail Design](the-no-free-lunch-tradeoff-in-guardrail-design.md)
+- [Failure Modes in LLM-Driven Software Engineering](failure-modes-in-llm-driven-software-engineering.md)
+- [Architectural Patterns for LLM Guardrail Systems in Software Engineering](architectural-patterns-for-llm-guardrail-systems-in-software-engineering.md)

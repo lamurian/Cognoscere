@@ -24,6 +24,6 @@ A persistent theoretical tension in the literature concerns whether resilience i
 
 ## Relevant notes
 
-- [[correlation-between-psychological-resources-and-resilience-empirical-range]]
-- [[psychological-resources-definition-and-core-constructs]]
-- [[psychological-resources-and-resilience-executive-summary]]
+- [Correlation Between Psychological Resources and Resilience — Empirical Range](correlation-between-psychological-resources-and-resilience-empirical-range.md)
+- [Psychological Resources — Definition and Core Constructs](psychological-resources-definition-and-core-constructs.md)
+- [Psychological Resources and Resilience — Executive Summary](psychological-resources-and-resilience-executive-summary.md)

@@ -103,14 +103,14 @@ These properties make the pi codebase more governable than an unstructured colle
 
 ## Sources
 
-- [[spec-driven-context-driven-tdd-workflow-for-ai-coding-agents]]
-- [[context-engineering-for-pi-agents]]
-- [[spec-architecture-for-ai-coding-agents]]
-- [[least-obstructive-workflow-principles]]
-- [[multi-agent-orchestration-patterns]]
-- [[tdd-with-ai-coding-agents]]
-- [[sdd-four-phase-workflow-for-pi-agents]]
-- [[skills-architecture-single-responsibility-restructure]]
+- [Spec-Driven Context-Driven TDD Workflow for AI Coding Agents](spec-driven-context-driven-tdd-workflow-for-ai-coding-agents.md)
+- [Context Engineering for pi Agents](context-engineering-for-pi-agents.md)
+- [Spec Architecture for AI Coding Agents](spec-architecture-for-ai-coding-agents.md)
+- [Least-Obstructive Workflow Principles](least-obstructive-workflow-principles.md)
+- [Multi-Agent Orchestration Patterns](multi-agent-orchestration-patterns.md)
+- [TDD with AI Coding Agents](tdd-with-ai-coding-agents.md)
+- [SDD Four-Phase Workflow for pi Agents](../Projects/sdd-four-phase-workflow-for-pi-agents.md)
+- [Skills Architecture: Single-Responsibility Restructure](../Projects/skills-architecture-single-responsibility-restructure.md)
 - [@bckeler2026] -- Birgitta Bockeler, "Harness Engineering for Coding Agent Users", martinfowler.com, 2026
 - [@lopopolo2026] -- Ryan Lopopolo/OpenAI, "Harness Engineering", openai.com, 2026
 - [@trivedy2026] -- Vivek Trivedy, "The Anatomy of an Agent Harness", langchain.com, 2026

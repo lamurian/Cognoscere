@@ -154,7 +154,7 @@ Key principle: The prior should be defensible — justify it with prior research
 
 ## Relevant notes
 
-- [[fundamental-mathematics-for-statistics]]
-- [[frequentist-vs-bayesian-philosophy]]
-- [[probability-distributions-random-variables]]
-- [[frequentist-inference]]
+- [Fundamental Mathematics for Statistics](fundamental-mathematics-for-statistics.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)
+- [Probability Distributions & Random Variables](probability-distributions-random-variables.md)
+- [Frequentist Inference](frequentist-inference.md)

@@ -28,8 +28,8 @@ Bifactor modeling in German validation studies [@reis2017] confirms the general 
 
 ## Relevant notes
 
-- [[mmpi-2-and-sexual-orientation-measurement-limitations-and-accuracy]]
-- [[stress-generation-and-poisson-event-frequency-parameters]]
-- [[limitations-and-contradictions-in-research-on-organisational-factors-and-resilience]]
-- [[positive-interpretation-bias-and-emotion-regulation-as-cognitive-mechanisms-of-resilience]]
-- [[frequentist-vs-bayesian-philosophy]]
+- [MMPI-2 and Sexual Orientation Measurement: Limitations and Accuracy](mmpi-2-and-sexual-orientation-measurement-limitations-and-accuracy.md)
+- [Stress Generation and Poisson Event Frequency Parameters](stress-generation-and-poisson-event-frequency-parameters.md)
+- [Limitations and Contradictions in Research on Organisational Factors and Resilience](limitations-and-contradictions-in-research-on-organisational-factors-and-resilience.md)
+- [Positive Interpretation Bias and Emotion Regulation as Cognitive Mechanisms of Resilience](positive-interpretation-bias-and-emotion-regulation-as-cognitive-mechanisms-of-resilience.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)

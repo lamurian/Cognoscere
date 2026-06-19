@@ -46,8 +46,8 @@ Yes. The call for abstracts was open to all researchers and professionals in dig
 
 ## Relevant notes
 
-- [[academic-digital-health-conferences-2026-2027-executive-summary]]
-- [[digital-health-conferences-2026-executive-summary]]
-- [[digital-health-week-2026]]
-- [[e-health26-conference-and-tradeshow]]
-- [[apru-global-health-conference-2026]]
+- [Academic Digital Health Conferences 2026-2027 Executive Summary](academic-digital-health-conferences-2026-2027-executive-summary.md)
+- [Digital Health Conferences 2026 Executive Summary](digital-health-conferences-2026-executive-summary.md)
+- [Digital Health Week 2026](digital-health-week-2026.md)
+- [e-Health26 Conference and Tradeshow](e-health26-conference-and-tradeshow.md)
+- [APRU Global Health Conference 2026](apru-global-health-conference-2026.md)

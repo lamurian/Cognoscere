@@ -21,11 +21,11 @@ The research confirms two core findings. First, ABM excels where equation-based 
 
 ## Key Findings
 
-- **Why ABM beats equation-based models** — [[Resources/why-agent-based-simulation-excels-over-equation-based-approaches-for-complex-adaptive-systems]]
-- **Agent architectures surveyed** — [[Resources/agent-architectures-and-decision-making-in-agent-based-simulation]]
-- **Validation and calibration methods** — [[Resources/validation-and-calibration-methods-for-agent-based-models]]
-- **Spatial, network, and temporal structures** — [[Resources/spatial-network-and-temporal-structures-in-agent-based-simulation]]
-- **LLM-enhanced agents and ABM's future** — [[Resources/llm-enhanced-agents-and-the-future-of-agent-based-modeling]]
+- **Why ABM beats equation-based models** — [Why Agent-Based Simulation Excels Over Equation-Based Approaches for Complex Adaptive Systems](why-agent-based-simulation-excels-over-equation-based-approaches-for-complex-adaptive-systems.md)
+- **Agent architectures surveyed** — [Agent Architectures and Decision-Making in Agent-Based Simulation](agent-architectures-and-decision-making-in-agent-based-simulation.md)
+- **Validation and calibration methods** — [Validation and Calibration Methods for Agent-Based Models](validation-and-calibration-methods-for-agent-based-models.md)
+- **Spatial, network, and temporal structures** — [Spatial, Network, and Temporal Structures in Agent-Based Simulation](spatial-network-and-temporal-structures-in-agent-based-simulation.md)
+- **LLM-enhanced agents and ABM's future** — [LLM-Enhanced Agents and the Future of Agent-Based Modeling](llm-enhanced-agents-and-the-future-of-agent-based-modeling.md)
 
 ## Confidence Assessment
 

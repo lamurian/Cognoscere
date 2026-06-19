@@ -106,7 +106,7 @@ Automated stepwise AIC/BIC selection is not recommended (it overfits, invalidate
 
 ## Relevant notes
 
-- [[model-comparison-selection-bayesian-approach]]
-- [[model-comparison-frequentist-vs-bayesian-comparison]]
-- [[experimental-design-anova-frequentist-approach]]
-- [[linear-logistic-regression-bayesian-approach]]
+- [Model Comparison & Selection: Bayesian Approach](model-comparison-selection-bayesian-approach.md)
+- [Model Comparison: Frequentist vs Bayesian Comparison](model-comparison-frequentist-vs-bayesian-comparison.md)
+- [Experimental Design & ANOVA: Frequentist Approach](experimental-design-anova-frequentist-approach.md)
+- [Linear & Logistic Regression: Bayesian Approach](linear-logistic-regression-bayesian-approach.md)

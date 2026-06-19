@@ -52,8 +52,8 @@ Yes. Student registration available at CA$342 with proof of full-time enrolment 
 
 ## Relevant notes
 
-- [[academic-digital-health-conferences-2026-2027-executive-summary]]
-- [[digital-health-conferences-2026-executive-summary]]
-- [[himss26-global-health-conference-and-exhibition]]
-- [[apru-global-health-conference-2026]]
-- [[africa-digital-health-summit-adhs-2026]]
+- [Academic Digital Health Conferences 2026-2027 Executive Summary](academic-digital-health-conferences-2026-2027-executive-summary.md)
+- [Digital Health Conferences 2026 Executive Summary](digital-health-conferences-2026-executive-summary.md)
+- [HIMSS26 Global Health Conference & Exhibition](himss26-global-health-conference-and-exhibition.md)
+- [APRU Global Health Conference 2026](apru-global-health-conference-2026.md)
+- [Africa Digital Health Summit (ADHS) 2026](africa-digital-health-summit-adhs-2026.md)

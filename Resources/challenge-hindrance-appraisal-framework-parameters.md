@@ -27,8 +27,8 @@ Meta-analytic evidence [@bakker2017] confirms challenge stressors positively pre
 
 ## Relevant notes
 
-- [[psychological-resilience-mechanisms-in-working-age-population-executive-summary]]
-- [[organisational-level-factors-as-modulators-of-individual-resilience-mechanisms-executive-summary]]
-- [[theoretical-frameworks-for-organisational-individual-resilience-interaction]]
-- [[limitations-and-contradictions-in-research-on-organisational-factors-and-resilience]]
-- [[resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms]]
+- [Psychological Resilience Mechanisms in Working-Age Population: Executive Summary](psychological-resilience-mechanisms-in-working-age-population-executive-summary.md)
+- [Organisational-Level Factors as Modulators of Individual Resilience Mechanisms: Executive Summary](organisational-level-factors-as-modulators-of-individual-resilience-mechanisms-executive-summary.md)
+- [Theoretical Frameworks for Organisational-Individual Resilience Interaction](theoretical-frameworks-for-organisational-individual-resilience-interaction.md)
+- [Limitations and Contradictions in Research on Organisational Factors and Resilience](limitations-and-contradictions-in-research-on-organisational-factors-and-resilience.md)
+- [Resilience as a Dynamic, Multimodal Process: Integration Across Mechanisms](resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms.md)

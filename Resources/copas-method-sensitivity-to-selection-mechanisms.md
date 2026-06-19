@@ -30,7 +30,7 @@ This limitation is not unique to Copas. All selection models and correction meth
 
 ## Related Notes
 
-- [[copas-selection-model-for-publication-bias]]
-- [[copas-selection-model-publication-probability-as-a-latent-variable]]
-- [[comparative-performance-of-publication-bias-correction-methods]]
-- [[publication-bias-investigation-method-trade-offs-and-unified-workflow-guide]]
+- [Copas Selection Model for Publication Bias](copas-selection-model-for-publication-bias.md)
+- [Copas Selection Model — Publication Probability as a Latent Variable](copas-selection-model-publication-probability-as-a-latent-variable.md)
+- [Comparative Performance of Publication Bias Correction Methods](comparative-performance-of-publication-bias-correction-methods.md)
+- [Publication Bias Investigation: Method Trade-Offs and Unified Workflow Guide](publication-bias-investigation-method-trade-offs-and-unified-workflow-guide.md)

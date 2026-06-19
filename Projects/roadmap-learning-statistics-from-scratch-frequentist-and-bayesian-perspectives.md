@@ -58,10 +58,10 @@ Checkpoint: Solve 20 probability problems from Stat 110; write a descriptive sum
 
 ### Steps
 
-1. [[fundamental-mathematics-for-statistics]] — Calculus basics (derivatives, integrals, optimisation), Kolmogorov's probability axioms, combinatorics, set theory, Bayes' theorem
-2. [[descriptive-statistics-data-visualisation]] — Measures of central tendency and dispersion, histograms, box plots, Q-Q plots, skewness, kurtosis. R: `ggplot2`; Python: `seaborn` + `matplotlib`
-3. [[linear-algebra-essentials-for-statistics]] — Vectors, matrices, dot products, matrix multiplication, eigenvalues, Cholesky decomposition. The hidden workhorse of all statistics.
-4. [[probability-distributions-random-variables]] — Discrete (Bernoulli, Binomial, Poisson) and continuous (Normal, Beta, Gamma, t) distributions, PDF/PMF/CDF, Law of Large Numbers, Central Limit Theorem, conjugate prior relationships
+1. [Fundamental Mathematics for Statistics](../Resources/fundamental-mathematics-for-statistics.md) — Calculus basics (derivatives, integrals, optimisation), Kolmogorov's probability axioms, combinatorics, set theory, Bayes' theorem
+2. [Descriptive Statistics & Data Visualisation](../Resources/descriptive-statistics-data-visualisation.md) — Measures of central tendency and dispersion, histograms, box plots, Q-Q plots, skewness, kurtosis. R: `ggplot2`; Python: `seaborn` + `matplotlib`
+3. [Linear Algebra Essentials for Statistics](../Resources/linear-algebra-essentials-for-statistics.md) — Vectors, matrices, dot products, matrix multiplication, eigenvalues, Cholesky decomposition. The hidden workhorse of all statistics.
+4. [Probability Distributions & Random Variables](../Resources/probability-distributions-random-variables.md) — Discrete (Bernoulli, Binomial, Poisson) and continuous (Normal, Beta, Gamma, t) distributions, PDF/PMF/CDF, Law of Large Numbers, Central Limit Theorem, conjugate prior relationships
 
 ### Guiding questions
 - What calculus concepts are essential for understanding MLE and Bayesian posterior computation?
@@ -86,9 +86,9 @@ Checkpoint: Take a simple dataset, compute both a frequentist 95% CI and a Bayes
 
 ### Steps
 
-1. [[frequentist-inference]] — Maximum Likelihood Estimation (MLE), hypothesis testing (Neyman-Pearson), p-values, confidence intervals, Type I/II errors, power analysis. R: `t.test`, `pwr`; Python: `scipy.stats`, `statsmodels`
-2. [[bayesian-inference]] — Bayes' theorem, prior/likelihood/posterior, conjugate priors (Beta-Binomial, Normal-Normal), credible intervals, MAP estimation. R: `brms`; Python: `PyMC`
-3. [[frequentist-vs-bayesian-philosophy]] — Epistemic vs aleatory uncertainty, interpretations of probability, the subjectivity/objectivity debate, the Fisher-Neyman-Pearson historical split, modern pragmatic reconciliation
+1. [Frequentist Inference](../Resources/frequentist-inference.md) — Maximum Likelihood Estimation (MLE), hypothesis testing (Neyman-Pearson), p-values, confidence intervals, Type I/II errors, power analysis. R: `t.test`, `pwr`; Python: `scipy.stats`, `statsmodels`
+2. [Bayesian Inference](../Resources/bayesian-inference.md) — Bayes' theorem, prior/likelihood/posterior, conjugate priors (Beta-Binomial, Normal-Normal), credible intervals, MAP estimation. R: `brms`; Python: `PyMC`
+3. [Frequentist vs Bayesian Philosophy](../Resources/frequentist-vs-bayesian-philosophy.md) — Epistemic vs aleatory uncertainty, interpretations of probability, the subjectivity/objectivity debate, the Fisher-Neyman-Pearson historical split, modern pragmatic reconciliation
 
 ### Guiding questions
 - How does the Neyman-Pearson framework formalise hypothesis testing, and what do p-values actually mean?
@@ -111,10 +111,10 @@ Checkpoint: Fit a linear regression to a real dataset using OLS (R: `lm`, Python
 
 ### Steps
 
-1. [[linear-logistic-regression-frequentist-approach]] — OLS estimation, normal equations, model diagnostics, logistic regression, regularisation (ridge/lasso via glmnet)
-2. [[linear-logistic-regression-bayesian-approach]] — Priors on coefficients, posterior inference, shrinkage (Bayesian = ridge), posterior predictive checks, Bayesian logistic regression
-3. [[regression-frequentist-vs-bayesian-comparison]] — When they agree (flat priors → OLS equivalent), when they diverge (small n, informative priors, prediction intervals)
-4. [[bayesian-computation-mcmc-and-modern-tools]] — Why MCMC is needed, Metropolis-Hastings, Gibbs sampling, Hamiltonian Monte Carlo (HMC) + NUTS, convergence diagnostics (R-hat, ESS, trace plots), Stan, PyMC, brms
+1. [Linear & Logistic Regression: Frequentist Approach](../Resources/linear-logistic-regression-frequentist-approach.md) — OLS estimation, normal equations, model diagnostics, logistic regression, regularisation (ridge/lasso via glmnet)
+2. [Linear & Logistic Regression: Bayesian Approach](../Resources/linear-logistic-regression-bayesian-approach.md) — Priors on coefficients, posterior inference, shrinkage (Bayesian = ridge), posterior predictive checks, Bayesian logistic regression
+3. [Regression: Frequentist vs Bayesian Comparison](../Resources/regression-frequentist-vs-bayesian-comparison.md) — When they agree (flat priors → OLS equivalent), when they diverge (small n, informative priors, prediction intervals)
+4. [Bayesian Computation: MCMC and Modern Tools](../Resources/bayesian-computation-mcmc-and-modern-tools.md) — Why MCMC is needed, Metropolis-Hastings, Gibbs sampling, Hamiltonian Monte Carlo (HMC) + NUTS, convergence diagnostics (R-hat, ESS, trace plots), Stan, PyMC, brms
 
 ### Guiding questions
 - How is linear regression estimated differently under OLS vs Bayesian posterior sampling?
@@ -138,12 +138,12 @@ Checkpoint: Design an A/B test, compute both a frequentist power analysis and a 
 
 ### Steps
 
-1. [[experimental-design-anova-frequentist-approach]] — t-tests (one, two, paired), one/two-way ANOVA, A/B testing, multiple comparisons (Bonferroni, Tukey, FDR), power analysis
-2. [[experimental-design-anova-bayesian-approach]] — BEST (Bayesian Estimation Supersedes the t-Test), Bayesian ANOVA, Bayesian A/B testing (Beta-Binomial), Bayesian power analysis via simulation
-3. [[experimental-design-anova-frequentist-vs-bayesian-comparison]] — Stopping rules, multiple comparisons debate, intuitive interpretation of results
-4. [[model-comparison-selection-frequentist-approach]] — Likelihood ratio tests, AIC, BIC, k-fold cross-validation, pitfalls of stepwise selection
-5. [[model-comparison-selection-bayesian-approach]] — Bayes factors, WAIC, LOO-CV (PSIS), spike-and-slab priors, Bayesian model averaging
-6. [[model-comparison-frequentist-vs-bayesian-comparison]] — When AIC ≈ LOO, when Bayes factors differ from BIC, practical decision flowchart
+1. [Experimental Design & ANOVA: Frequentist Approach](../Resources/experimental-design-anova-frequentist-approach.md) — t-tests (one, two, paired), one/two-way ANOVA, A/B testing, multiple comparisons (Bonferroni, Tukey, FDR), power analysis
+2. [Experimental Design & ANOVA: Bayesian Approach](../Resources/experimental-design-anova-bayesian-approach.md) — BEST (Bayesian Estimation Supersedes the t-Test), Bayesian ANOVA, Bayesian A/B testing (Beta-Binomial), Bayesian power analysis via simulation
+3. [Experimental Design & ANOVA: Frequentist vs Bayesian Comparison](../Resources/experimental-design-anova-frequentist-vs-bayesian-comparison.md) — Stopping rules, multiple comparisons debate, intuitive interpretation of results
+4. [Model Comparison & Selection: Frequentist Approach](../Resources/model-comparison-selection-frequentist-approach.md) — Likelihood ratio tests, AIC, BIC, k-fold cross-validation, pitfalls of stepwise selection
+5. [Model Comparison & Selection: Bayesian Approach](../Resources/model-comparison-selection-bayesian-approach.md) — Bayes factors, WAIC, LOO-CV (PSIS), spike-and-slab priors, Bayesian model averaging
+6. [Model Comparison: Frequentist vs Bayesian Comparison](../Resources/model-comparison-frequentist-vs-bayesian-comparison.md) — When AIC ≈ LOO, when Bayes factors differ from BIC, practical decision flowchart
 
 ### Guiding questions
 - How do classical t-tests/ANOVA differ from Bayesian alternatives (BEST, Bayesian ANOVA)?
@@ -167,10 +167,10 @@ Checkpoint: Fit a random-intercept model to grouped data in both frameworks (lme
 
 ### Steps
 
-1. [[hierarchical-multilevel-models-frequentist-approach]] — Mixed-effects models, random intercepts/slopes, REML estimation, ICC, lme4 syntax for nested and crossed structures
-2. [[hierarchical-multilevel-models-bayesian-approach]] — Bayesian hierarchical models, non-centred parameterisation, partial pooling, brms + PyMC for multilevel data
-3. [[hierarchical-models-frequentist-vs-bayesian-comparison]] — Boundary variance estimates, small number of groups, complex random effect correlations
-4. [[non-parametric-semi-parametric-methods]] — Bootstrap (frequentist), permutation tests, kernel density estimation, Gaussian processes (Bayesian non-parametric regression), Dirichlet processes (infinite mixtures)
+1. [Hierarchical / Multilevel Models: Frequentist Approach](../Resources/hierarchical-multilevel-models-frequentist-approach.md) — Mixed-effects models, random intercepts/slopes, REML estimation, ICC, lme4 syntax for nested and crossed structures
+2. [Hierarchical / Multilevel Models: Bayesian Approach](../Resources/hierarchical-multilevel-models-bayesian-approach.md) — Bayesian hierarchical models, non-centred parameterisation, partial pooling, brms + PyMC for multilevel data
+3. [Hierarchical Models: Frequentist vs Bayesian Comparison](../Resources/hierarchical-models-frequentist-vs-bayesian-comparison.md) — Boundary variance estimates, small number of groups, complex random effect correlations
+4. [Non-parametric & Semi-parametric Methods](../Resources/non-parametric-semi-parametric-methods.md) — Bootstrap (frequentist), permutation tests, kernel density estimation, Gaussian processes (Bayesian non-parametric regression), Dirichlet processes (infinite mixtures)
 
 ### Guiding questions
 - How do mixed-effects models (lme4) relate to hierarchical Bayesian models (brms)?
@@ -194,12 +194,12 @@ Checkpoint: Draw a DAG for a causal question, estimate a treatment effect with p
 
 ### Steps
 
-1. [[causal-inference-frequentist-approach]] — Potential outcomes framework, DAGs, backdoor criterion, propensity score matching, instrumental variables, difference-in-differences, randomised experiments
-2. [[causal-inference-bayesian-approach]] — Bayesian treatment effect estimation, Bayesian causal networks, Bayesian propensity scores, Bayesian additive regression trees (BART), sensitivity analysis for unmeasured confounding
-3. [[causal-inference-frequentist-vs-bayesian-comparison]] — When each excels, combining design-based and model-based approaches
-4. [[time-series-analysis-frequentist-approach]] — Stationarity, ACF/PACF, ARIMA/SARIMA, VAR, GARCH, forecasting evaluation (MSE, MAE, MAPE)
-5. [[time-series-analysis-bayesian-approach]] — Dynamic linear models, state-space models, Kalman filter, Bayesian structural time series (BSTS/CausalImpact), change point detection
-6. [[time-series-analysis-frequentist-vs-bayesian-comparison]] — Prediction intervals, short series, multi-seasonality, missing data handling
+1. [Causal Inference: Frequentist Approach](../Resources/causal-inference-frequentist-approach.md) — Potential outcomes framework, DAGs, backdoor criterion, propensity score matching, instrumental variables, difference-in-differences, randomised experiments
+2. [Causal Inference: Bayesian Approach](../Resources/causal-inference-bayesian-approach.md) — Bayesian treatment effect estimation, Bayesian causal networks, Bayesian propensity scores, Bayesian additive regression trees (BART), sensitivity analysis for unmeasured confounding
+3. [Causal Inference: Frequentist vs Bayesian Comparison](../Resources/causal-inference-frequentist-vs-bayesian-comparison.md) — When each excels, combining design-based and model-based approaches
+4. [Time Series Analysis: Frequentist Approach](../Resources/time-series-analysis-frequentist-approach.md) — Stationarity, ACF/PACF, ARIMA/SARIMA, VAR, GARCH, forecasting evaluation (MSE, MAE, MAPE)
+5. [Time Series Analysis: Bayesian Approach](../Resources/time-series-analysis-bayesian-approach.md) — Dynamic linear models, state-space models, Kalman filter, Bayesian structural time series (BSTS/CausalImpact), change point detection
+6. [Time Series Analysis: Frequentist vs Bayesian Comparison](../Resources/time-series-analysis-frequentist-vs-bayesian-comparison.md) — Prediction intervals, short series, multi-seasonality, missing data handling
 
 ### Guiding questions
 - How do frequentist (DAGs, do-calculus, propensity scores) and Bayesian (causal networks) approaches to causality differ?
@@ -224,8 +224,8 @@ Checkpoint: A complete reproducible report (Quarto or Jupyter) analysing a real 
 
 ### Steps
 
-1. [[end-to-end-comparative-statistical-analysis]] — Choose a dataset (penguins, wage data, housing, etc.), EDA in both R and Python, fit frequentist and Bayesian models, systematically compare results, identify robust findings and divergences
-2. [[synthesis-reporting-communicating-statistical-findings]] — Best practices for reporting frequentist vs Bayesian results, the ASA guidelines, reproducible research (Quarto/Jupyter), decision framework for choosing methods, common pitfalls
+1. [End-to-End Comparative Statistical Analysis](end-to-end-comparative-statistical-analysis.md) — Choose a dataset (penguins, wage data, housing, etc.), EDA in both R and Python, fit frequentist and Bayesian models, systematically compare results, identify robust findings and divergences
+2. [Synthesis & Reporting: Communicating Statistical Findings](../Resources/synthesis-reporting-communicating-statistical-findings.md) — Best practices for reporting frequentist vs Bayesian results, the ASA guidelines, reproducible research (Quarto/Jupyter), decision framework for choosing methods, common pitfalls
 
 ### Capstone project ideas
 | Dataset | Domain | What to analyse |
@@ -296,10 +296,10 @@ This roadmap synthesises knowledge from the following key resources:
 
 ## Relevant notes
 
-- [[fundamental-mathematics-for-statistics]] — Calculus and probability prerequisites
-- [[frequentist-inference]] — Core frequentist inference methodology
-- [[bayesian-inference]] — Core Bayesian inference methodology
-- [[frequentist-vs-bayesian-philosophy]] — Philosophical foundations comparing both frameworks
-- [[bayesian-computation-mcmc-and-modern-tools]] — Practical MCMC and Bayesian computation
-- [[end-to-end-comparative-statistical-analysis]] — Capstone project applying both frameworks
-- [[synthesis-reporting-communicating-statistical-findings]] — Communicating results from both perspectives
+- [Fundamental Mathematics for Statistics](../Resources/fundamental-mathematics-for-statistics.md) — Calculus and probability prerequisites
+- [Frequentist Inference](../Resources/frequentist-inference.md) — Core frequentist inference methodology
+- [Bayesian Inference](../Resources/bayesian-inference.md) — Core Bayesian inference methodology
+- [Frequentist vs Bayesian Philosophy](../Resources/frequentist-vs-bayesian-philosophy.md) — Philosophical foundations comparing both frameworks
+- [Bayesian Computation: MCMC and Modern Tools](../Resources/bayesian-computation-mcmc-and-modern-tools.md) — Practical MCMC and Bayesian computation
+- [End-to-End Comparative Statistical Analysis](end-to-end-comparative-statistical-analysis.md) — Capstone project applying both frameworks
+- [Synthesis & Reporting: Communicating Statistical Findings](../Resources/synthesis-reporting-communicating-statistical-findings.md) — Communicating results from both perspectives

@@ -124,7 +124,7 @@ pm.summary(trace)
 
 ## Relevant notes
 
-- [[frequentist-vs-bayesian-philosophy]]
-- [[experimental-design-anova-frequentist-vs-bayesian-comparison]]
-- [[linear-algebra-essentials-for-statistics]]
-- [[linear-logistic-regression-bayesian-approach]]
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)
+- [Experimental Design & ANOVA: Frequentist vs Bayesian Comparison](experimental-design-anova-frequentist-vs-bayesian-comparison.md)
+- [Linear Algebra Essentials for Statistics](linear-algebra-essentials-for-statistics.md)
+- [Linear & Logistic Regression: Bayesian Approach](linear-logistic-regression-bayesian-approach.md)

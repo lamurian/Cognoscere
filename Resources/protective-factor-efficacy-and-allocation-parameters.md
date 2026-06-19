@@ -27,8 +27,8 @@ Resource dynamics follow regeneration modulated by affect: R' = lambda_R * (R_ma
 
 ## Relevant notes
 
-- [[resilience-dynamics-and-homeostatic-regulation-parameters]]
-- [[resource-conservation-and-allocation-parameters]]
-- [[resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms]]
-- [[optimism-and-self-compassion-as-key-mediators-of-resilience-in-working-adults]]
-- [[organisational-climate-and-culture-as-resilience-modulators]]
+- [Resilience Dynamics and Homeostatic Regulation Parameters](resilience-dynamics-and-homeostatic-regulation-parameters.md)
+- [Resource Conservation and Allocation Parameters](resource-conservation-and-allocation-parameters.md)
+- [Resilience as a Dynamic, Multimodal Process: Integration Across Mechanisms](resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms.md)
+- [Optimism and Self-Compassion as Key Mediators of Resilience in Working Adults](optimism-and-self-compassion-as-key-mediators-of-resilience-in-working-adults.md)
+- [Organisational Climate and Culture as Resilience Modulators](organisational-climate-and-culture-as-resilience-modulators.md)

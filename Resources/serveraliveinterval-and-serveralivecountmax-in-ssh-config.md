@@ -20,9 +20,9 @@ These are different from TCP keep-alives (`TCPKeepAlive`) which operate at the t
 Use `ServerAliveInterval 60` globally in `Host *` when you frequently experience dropped connections, such as over VPN, mobile networks, or when leaving shells idle for long periods. Set a higher interval (300+) for laptops that sleep frequently to avoid unnecessary traffic.
 
 ## Sources
-- [[controlmaster-controlpath-and-controlpersist-for-ssh-multiplexing]]
+- [ControlMaster, ControlPath, and ControlPersist for SSH Multiplexing](controlmaster-controlpath-and-controlpersist-for-ssh-multiplexing.md)
 
 ## Relevant notes
-- [[how-ssh-works-protocol-key-exchange-and-authentication]]
-- [[ssh-config-host-matching-and-stanza-precedence]]
-- [[network-infrastructure-for-budget-homelab]]
+- [How SSH Works: Protocol, Key Exchange, and Authentication](how-ssh-works-protocol-key-exchange-and-authentication.md)
+- [SSH Config Host Matching and Stanza Precedence](ssh-config-host-matching-and-stanza-precedence.md)
+- [Network Infrastructure for Budget Homelab](network-infrastructure-for-budget-homelab.md)

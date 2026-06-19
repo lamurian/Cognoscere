@@ -37,8 +37,8 @@ Indonesia's Corruption Perceptions Index (CPI) score is 37 out of 100 (2024), ra
 
 ## Relevant notes
 
-- [[economic-growth-comparison-soeharto-vs-prabowo-indonesia]]
-- [[dana-desa-indonesia-s-village-fund-impact]]
-- [[village-modernization-in-indonesia-strategic-overview]]
-- [[political-system-and-governance-soeharto-vs-prabowo-indonesia]]
-- [[gdp-and-gdp-per-capita-soeharto-vs-prabowo-indonesia]]
+- [Economic Growth Comparison: Soeharto vs Prabowo Indonesia](economic-growth-comparison-soeharto-vs-prabowo-indonesia.md)
+- [Dana Desa: Indonesia's Village Fund Impact](dana-desa-indonesia-s-village-fund-impact.md)
+- [Village Modernization in Indonesia: Strategic Overview](village-modernization-in-indonesia-strategic-overview.md)
+- [Political System and Governance: Soeharto vs Prabowo Indonesia](political-system-and-governance-soeharto-vs-prabowo-indonesia.md)
+- [GDP and GDP per Capita: Soeharto vs Prabowo Indonesia](gdp-and-gdp-per-capita-soeharto-vs-prabowo-indonesia.md)

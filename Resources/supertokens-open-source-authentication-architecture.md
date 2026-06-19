@@ -80,7 +80,7 @@ PostgreSQL v13+ is the sole supported database. SuperTokens uses JSONB columns f
 
 ## Relevant notes
 
-- [[budget-digital-homelab-for-sustainable-living]]
-- [[digital-homelab-hardening-core-security-practices]]
-- [[securing-paseo-daemon-with-tailscale]]
-- [[self-hosted-software-stack-for-off-grid-resilience]]
+- [Budget Digital Homelab for Sustainable Living](../Areas/budget-digital-homelab-for-sustainable-living.md)
+- [Digital Homelab Hardening: Core Security Practices](digital-homelab-hardening-core-security-practices.md)
+- [Securing Paseo Daemon with Tailscale](securing-paseo-daemon-with-tailscale.md)
+- [Self-Hosted Software Stack for Off-Grid Resilience](self-hosted-software-stack-for-off-grid-resilience.md)

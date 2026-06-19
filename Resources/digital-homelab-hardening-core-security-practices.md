@@ -29,8 +29,8 @@ Hardening a digital homelab requires a layered approach starting with the most e
 **Monitoring and backups.** Uptime Kuma provides basic health monitoring with alerting. ClamAV scheduled scans catch file-system malware. Borg backup with off-site, immutable storage enables recovery from ransomware, accidental deletion, or disk failure [@davies2025].
 
 ## Sources
-- [[Network Infrastructure for Budget Homelab]] — foundational networking for homelab
-- [[Self-Hosted Software Stack for Off-Grid Resilience]] — complementary software stack
+- [Network Infrastructure for Budget Homelab](network-infrastructure-for-budget-homelab.md) — foundational networking for homelab
+- [Self-Hosted Software Stack for Off-Grid Resilience](self-hosted-software-stack-for-off-grid-resilience.md) — complementary software stack
 - [@homelabstarter2026] — practical SSH, firewall, container hardening guide
 - [@technotim2024] — layered security from hardware to reverse proxy
 - [@davies2025] — attack surface reduction, monitoring, and backup strategies

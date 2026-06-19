@@ -79,8 +79,8 @@ If the primary use case is structured business process automation — with human
 
 ## Relevant notes
 
-- [[dagu-lightweight-go-workflow-engine-with-yaml-dag]]
-- [[tork-distributed-go-workflow-engine-with-yaml-jobs]]
-- [[hatchet-durable-task-orchestration-engine-in-go]]
-- [[paseo-cross-device-coding-agent-orchestration-executive-summary]]
-- [[task-yaml-automation-engine-by-ovh]]
+- [Dagu: Lightweight Go Workflow Engine with YAML DAG](dagu-lightweight-go-workflow-engine-with-yaml-dag.md)
+- [Tork: Distributed Go Workflow Engine with YAML Jobs](tork-distributed-go-workflow-engine-with-yaml-jobs.md)
+- [Hatchet: Durable Task Orchestration Engine in Go](hatchet-durable-task-orchestration-engine-in-go.md)
+- [Paseo: Cross-Device Coding Agent Orchestration — Executive Summary](paseo-cross-device-coding-agent-orchestration-executive-summary.md)
+- [µTask: YAML Automation Engine by OVH](task-yaml-automation-engine-by-ovh.md)

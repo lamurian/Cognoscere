@@ -36,8 +36,8 @@ Prabowo inherited an economy growing at ~5% from the Jokowi administration. In 2
 
 ## Relevant notes
 
-- [[poverty-and-inequality-soeharto-vs-prabowo-indonesia]]
-- [[major-nationwide-programs-soeharto-vs-prabowo-indonesia]]
-- [[gdp-and-gdp-per-capita-soeharto-vs-prabowo-indonesia]]
-- [[political-system-and-governance-soeharto-vs-prabowo-indonesia]]
-- [[human-rights-record-soeharto-vs-prabowo-indonesia]]
+- [Poverty and Inequality: Soeharto vs Prabowo Indonesia](poverty-and-inequality-soeharto-vs-prabowo-indonesia.md)
+- [Major Nationwide Programs: Soeharto vs Prabowo Indonesia](major-nationwide-programs-soeharto-vs-prabowo-indonesia.md)
+- [GDP and GDP per Capita: Soeharto vs Prabowo Indonesia](gdp-and-gdp-per-capita-soeharto-vs-prabowo-indonesia.md)
+- [Political System and Governance: Soeharto vs Prabowo Indonesia](political-system-and-governance-soeharto-vs-prabowo-indonesia.md)
+- [Human Rights Record: Soeharto vs Prabowo Indonesia](human-rights-record-soeharto-vs-prabowo-indonesia.md)

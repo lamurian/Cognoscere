@@ -49,16 +49,16 @@ Ongoing initiatives include participatory mapping where communities document the
 
 ## Related Notes
 
-- [[village-modernization-in-indonesia-strategic-overview]]
-- [[bumdes-and-agricultural-value-chain-upgrading]]
-- [[community-driven-development-in-indonesian-villages]]
-- [[solarpunk-village-indonesia-land-legal-strategy]]
-- [[women-s-economic-inclusion-in-rural-indonesia]]
+- [Village Modernization in Indonesia: Strategic Overview](village-modernization-in-indonesia-strategic-overview.md)
+- [BUMDes and Agricultural Value Chain Upgrading](bumdes-and-agricultural-value-chain-upgrading.md)
+- [Community-Driven Development in Indonesian Villages](community-driven-development-in-indonesian-villages.md)
+- [Solarpunk Village Indonesia: Land & Legal Strategy](../Projects/solarpunk-village-indonesia-land-legal-strategy.md)
+- [Women's Economic Inclusion in Rural Indonesia](women-s-economic-inclusion-in-rural-indonesia.md)
 
 ## Relevant notes
 
-- [[dana-desa-indonesia-s-village-fund-impact]]
-- [[solarpunk-village-indonesia-conflict-segregation-risks]]
-- [[solarpunk-village-indonesia-land-legal-strategy]]
-- [[village-modernization-in-indonesia-strategic-overview]]
-- [[women-s-economic-inclusion-in-rural-indonesia]]
+- [Dana Desa: Indonesia's Village Fund Impact](dana-desa-indonesia-s-village-fund-impact.md)
+- [Solarpunk Village Indonesia: Conflict & Segregation Risks](../Projects/solarpunk-village-indonesia-conflict-segregation-risks.md)
+- [Solarpunk Village Indonesia: Land & Legal Strategy](../Projects/solarpunk-village-indonesia-land-legal-strategy.md)
+- [Village Modernization in Indonesia: Strategic Overview](village-modernization-in-indonesia-strategic-overview.md)
+- [Women's Economic Inclusion in Rural Indonesia](women-s-economic-inclusion-in-rural-indonesia.md)

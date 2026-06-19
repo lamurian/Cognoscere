@@ -28,8 +28,8 @@ Key sources: Wikipedia (2024), MDPI Philosophies journal (Gillam 2023), ABC Aust
 
 ## Relevant notes
 
-- [[solarpunk-as-a-literary-and-art-movement]]
-- [[solarpunk-in-southeast-asia]]
-- [[global-trajectories-and-current-impact-of-solarpunk]]
-- [[solarpunk-in-indonesia]]
-- [[solarpunk-in-the-united-states]]
+- [Solarpunk as a Literary and Art Movement](solarpunk-as-a-literary-and-art-movement.md)
+- [Solarpunk in Southeast Asia](solarpunk-in-southeast-asia.md)
+- [Global Trajectories and Current Impact of Solarpunk](global-trajectories-and-current-impact-of-solarpunk.md)
+- [Solarpunk in Indonesia](solarpunk-in-indonesia.md)
+- [Solarpunk in the United States](solarpunk-in-the-united-states.md)

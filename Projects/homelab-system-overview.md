@@ -25,7 +25,7 @@ The homelab is built around a single used enterprise mini PC running Debian 12 w
 
 ## Workloads
 
-- **paseo.sh daemon** — central orchestrator that distributes user commands across devices. See [[paseo-architecture-daemon-based-cross-device-agent-orchestration]] for the architecture.
+- **paseo.sh daemon** — central orchestrator that distributes user commands across devices. See [Paseo Architecture: Daemon-Based Cross-Device Agent Orchestration](../Resources/paseo-architecture-daemon-based-cross-device-agent-orchestration.md) for the architecture.
 - **pi agent** — default AI coding agent provider on this node
 - **10-20 Docker containers** — Bitwarden (Vaultwarden), Immich, Paperless-ngx, SearXNG, Obscura, Nginx Proxy Manager, Uptime Kuma
 - **Batch data processing** — Python/Node.js scripts triggered by paseo.sh
@@ -43,10 +43,10 @@ The LLM runs in the cloud. The homelab handles orchestration, data processing, a
 
 ## Relevant notes
 
-- [[low-power-solar-homelab-executive-summary]]
-- [[homelab-software-setup-guide]]
-- [[paseo-sh-chat-room-and-agentic-orchestration-platform]]
-- [[paseo-cross-device-coding-agent-orchestration-executive-summary]]
-- [[homelab-hardware-comparison]]
-- [[the-agent-orchestration-landscape-in-2026]]
-- [[arm-vps-options-free-and-cheap-tiers-for-homelab-and-saas-production]]
+- [Low-Power Solar Homelab: Executive Summary](../Resources/low-power-solar-homelab-executive-summary.md)
+- [Homelab Software Setup Guide](homelab-software-setup-guide.md)
+- [Paseo.sh: Chat Room and Agentic Orchestration Platform](../Resources/paseo-sh-chat-room-and-agentic-orchestration-platform.md)
+- [Paseo: Cross-Device Coding Agent Orchestration — Executive Summary](../Resources/paseo-cross-device-coding-agent-orchestration-executive-summary.md)
+- [Homelab Hardware Comparison](../Resources/homelab-hardware-comparison.md)
+- [The Agent Orchestration Landscape in 2026](../Resources/the-agent-orchestration-landscape-in-2026.md)
+- [ARM VPS Options: Free and Cheap Tiers for Homelab and SaaS Production](../Resources/arm-vps-options-free-and-cheap-tiers-for-homelab-and-saas-production.md)

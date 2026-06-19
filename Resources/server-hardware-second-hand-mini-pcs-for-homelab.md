@@ -49,8 +49,8 @@ A single mini PC running Proxmox (hypervisor) hosts all services in lightweight 
 
 ## Relevant notes
 
-- [[budget-digital-homelab-for-sustainable-living]]
-- [[sustainable-homelab-design-and-optimization]]
-- [[network-infrastructure-for-budget-homelab]]
-- [[storage-architecture-for-homelab]]
-- [[solar-power-system-for-off-grid-homelab-in-indonesia]]
+- [Budget Digital Homelab for Sustainable Living](../Areas/budget-digital-homelab-for-sustainable-living.md)
+- [Sustainable Homelab: Design and Optimization](sustainable-homelab-design-and-optimization.md)
+- [Network Infrastructure for Budget Homelab](network-infrastructure-for-budget-homelab.md)
+- [Storage Architecture for Homelab](storage-architecture-for-homelab.md)
+- [Solar Power System for Off-Grid Homelab in Indonesia](solar-power-system-for-off-grid-homelab-in-indonesia.md)

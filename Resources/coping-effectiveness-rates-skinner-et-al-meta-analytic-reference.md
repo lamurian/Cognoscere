@@ -25,13 +25,13 @@ For simulation: baseline coping success rate ~0.5-0.6 represents a mix of approa
 - Penley, J. A., Tomaka, J., & Wiebe, J. S. (2002). The association of coping to physical and psychological health outcomes: A meta-analytic review. Journal of Behavioral Medicine, 25(6), 551-603.
 
 ## Existing Notes
-- [[stress-and-affect-empirical-correlations]]
-- [[social-support-and-successful-coping-empirical-correlations]]
+- [Stress and Affect: Empirical Correlations](stress-and-affect-empirical-correlations.md)
+- [Social Support and Successful Coping: Empirical Correlations](social-support-and-successful-coping-empirical-correlations.md)
 
 ## Relevant notes
 
-- [[social-support-and-successful-coping-empirical-correlations]]
-- [[correlation-between-psychological-resources-and-resilience-empirical-range]]
-- [[pss-10-item-level-descriptive-statistics]]
-- [[psychological-resources-and-resilience-executive-summary]]
-- [[pss-10-and-resilience-meta-analytic-correlation]]
+- [Social Support and Successful Coping: Empirical Correlations](social-support-and-successful-coping-empirical-correlations.md)
+- [Correlation Between Psychological Resources and Resilience — Empirical Range](correlation-between-psychological-resources-and-resilience-empirical-range.md)
+- [PSS-10 Item-Level Descriptive Statistics](pss-10-item-level-descriptive-statistics.md)
+- [Psychological Resources and Resilience — Executive Summary](psychological-resources-and-resilience-executive-summary.md)
+- [PSS-10 and Resilience: Meta-Analytic Correlation](pss-10-and-resilience-meta-analytic-correlation.md)

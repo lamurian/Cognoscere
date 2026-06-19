@@ -28,8 +28,8 @@ Dynamic response parameters include sensitivity=0.5 (how quickly perceived stres
 
 ## Relevant notes
 
-- [[pss-10-bifactor-measurement-parameters-for-perceived-stress]]
-- [[mmpi-2-and-sexual-orientation-measurement-limitations-and-accuracy]]
-- [[affect-regulation-framework-of-psychological-resilience]]
-- [[limitations-and-contradictions-in-research-on-organisational-factors-and-resilience]]
-- [[agent-architectures-and-decision-making-in-agent-based-simulation]]
+- [PSS-10 Bifactor Measurement Parameters for Perceived Stress](pss-10-bifactor-measurement-parameters-for-perceived-stress.md)
+- [MMPI-2 and Sexual Orientation Measurement: Limitations and Accuracy](mmpi-2-and-sexual-orientation-measurement-limitations-and-accuracy.md)
+- [Affect-Regulation Framework of Psychological Resilience](affect-regulation-framework-of-psychological-resilience.md)
+- [Limitations and Contradictions in Research on Organisational Factors and Resilience](limitations-and-contradictions-in-research-on-organisational-factors-and-resilience.md)
+- [Agent Architectures and Decision-Making in Agent-Based Simulation](agent-architectures-and-decision-making-in-agent-based-simulation.md)

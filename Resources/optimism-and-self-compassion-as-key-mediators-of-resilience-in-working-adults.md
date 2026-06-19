@@ -18,8 +18,8 @@ The study has important methodological strengths: it was theory-driven (grounded
 
 ## Relevant notes
 
-- [[known-gaps-in-understanding-resilience-mechanisms-in-working-populations]]
-- [[the-job-demands-resources-model-and-workplace-resilience]]
-- [[resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms]]
-- [[cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary]]
-- [[drivers-of-cost-effectiveness-in-workplace-resilience-interventions]]
+- [Known Gaps in Understanding Resilience Mechanisms in Working Populations](known-gaps-in-understanding-resilience-mechanisms-in-working-populations.md)
+- [The Job Demands-Resources Model and Workplace Resilience](the-job-demands-resources-model-and-workplace-resilience.md)
+- [Resilience as a Dynamic, Multimodal Process: Integration Across Mechanisms](resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms.md)
+- [Cost-Effective Organisation-Based Interventions for Psychological Resilience: Executive Summary](cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary.md)
+- [Drivers of Cost-Effectiveness in Workplace Resilience Interventions](drivers-of-cost-effectiveness-in-workplace-resilience-interventions.md)

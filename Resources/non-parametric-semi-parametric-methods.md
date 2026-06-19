@@ -132,7 +132,7 @@ with pm.Model() as dpmm:
 
 ## Relevant notes
 
-- [[fundamental-mathematics-for-statistics]]
-- [[descriptive-statistics-data-visualisation]]
-- [[linear-algebra-essentials-for-statistics]]
-- [[causal-inference-bayesian-approach]]
+- [Fundamental Mathematics for Statistics](fundamental-mathematics-for-statistics.md)
+- [Descriptive Statistics & Data Visualisation](descriptive-statistics-data-visualisation.md)
+- [Linear Algebra Essentials for Statistics](linear-algebra-essentials-for-statistics.md)
+- [Causal Inference: Bayesian Approach](causal-inference-bayesian-approach.md)

@@ -19,16 +19,16 @@ This research reviewed published empirical correlations between psychological co
 
 ## Key Findings
 
-- **[[PSS-10 and Resilience: Empirical Correlation]]** — r ≈ -0.40 to -0.55. Bound |r|<0.6 is reasonable as upper limit but zero lower bound is too restrictive. Ad-hoc |r|<0.5 is slightly tight.
-- **[[PSS-10 and Affect: Empirical Correlation]]** — r ≈ -0.18 to -0.30. Both |r|<0.6 and |r|<0.5 cover the range, but more precise bounds would be |r|<0.35.
-- **[[PSS-10 and Resources (Social Support): Empirical Correlation]]** — r ≈ -0.08 to -0.22. Bound |r|<0.6 is far too wide; ±0.3 would be more appropriate.
-- **[[Resilience and Affect: Empirical Correlation]]** — r ≈ 0.30 to 0.70. Bound |r|<0.6 (tests #4, #14) is too restrictive, rejecting strong associations (γ=0.70) that are empirically documented.
-- **[[Affect and Resources (Social Support): Empirical Correlation]]** — r ≈ 0.15 to 0.30. |r|<0.70 is unnecessarily wide; |r|<0.5 still generous.
-- **[[Current Stress and Affect: Empirical Correlation]]** — r ≈ 0.30 to 0.50. Bound |r|<0.5 is right at the empirical limit, risk of Type I error.
-- **[[PSS-10 and Current Stress: Convergent Validity]]** — r ≈ 0.40 to 0.60. The asserted r>0.05 is a meaningless floor.
-- **[[Social Support and Coping Success: Empirical Correlation]]** — r ≈ 0.15 to 0.40. |r|<0.6 is wide but the cited theory range (0.20-0.40) is more accurate.
-- **[[Current Stress and Resources: Empirical Correlation]]** — r ≈ -0.08 to -0.25. Ad-hoc [-0.9,0.1] is excessively wide.
-- **[[Resilience and Resources: Empirical Correlation]]** — r ≈ 0.20 to 0.63. Asserted lower bound 0.10 is too permissive; empirical minimum ≈ 0.20. Upper bounds of 0.80-0.85 are generous but safe.
+- **[PSS-10 and Resilience: Empirical Correlation](pss-10-and-resilience-empirical-correlation.md)** — r ≈ -0.40 to -0.55. Bound |r|<0.6 is reasonable as upper limit but zero lower bound is too restrictive. Ad-hoc |r|<0.5 is slightly tight.
+- **[PSS-10 and Affect: Empirical Correlation](pss-10-and-affect-empirical-correlation.md)** — r ≈ -0.18 to -0.30. Both |r|<0.6 and |r|<0.5 cover the range, but more precise bounds would be |r|<0.35.
+- **[PSS-10 and Resources (Social Support): Empirical Correlation](pss-10-and-resources-social-support-empirical-correlation.md)** — r ≈ -0.08 to -0.22. Bound |r|<0.6 is far too wide; ±0.3 would be more appropriate.
+- **[Resilience and Affect: Empirical Correlation](resilience-and-affect-empirical-correlation.md)** — r ≈ 0.30 to 0.70. Bound |r|<0.6 (tests #4, #14) is too restrictive, rejecting strong associations (γ=0.70) that are empirically documented.
+- **[Affect and Resources (Social Support): Empirical Correlation](affect-and-resources-social-support-empirical-correlation.md)** — r ≈ 0.15 to 0.30. |r|<0.70 is unnecessarily wide; |r|<0.5 still generous.
+- **[Current Stress and Affect: Empirical Correlation](current-stress-and-affect-empirical-correlation.md)** — r ≈ 0.30 to 0.50. Bound |r|<0.5 is right at the empirical limit, risk of Type I error.
+- **[PSS-10 and Current Stress: Convergent Validity](pss-10-and-current-stress-convergent-validity.md)** — r ≈ 0.40 to 0.60. The asserted r>0.05 is a meaningless floor.
+- **[Social Support and Coping Success: Empirical Correlation](social-support-and-coping-success-empirical-correlation.md)** — r ≈ 0.15 to 0.40. |r|<0.6 is wide but the cited theory range (0.20-0.40) is more accurate.
+- **[Current Stress and Resources: Empirical Correlation](current-stress-and-resources-empirical-correlation.md)** — r ≈ -0.08 to -0.25. Ad-hoc [-0.9,0.1] is excessively wide.
+- **[Resilience and Resources: Empirical Correlation](resilience-and-resources-empirical-correlation.md)** — r ≈ 0.20 to 0.63. Asserted lower bound 0.10 is too permissive; empirical minimum ≈ 0.20. Upper bounds of 0.80-0.85 are generous but safe.
 
 ## Literature-Based Correlation Table
 
@@ -64,14 +64,14 @@ This research reviewed published empirical correlations between psychological co
 
 ## Relevant notes
 
-- [[pss-10-and-resilience-empirical-correlation]]
-- [[pss-10-and-current-stress-convergent-validity]]
-- [[social-support-and-coping-success-empirical-correlation]]
-- [[current-stress-and-resources-empirical-correlation]]
-- [[resilience-distribution-norms-cd-risc-empirical-reference]]
-- [[psychological-resources-and-resilience-executive-summary]]
-- [[correlation-between-psychological-resources-and-resilience-empirical-range]]
-- [[conceptual-demarcation-between-psychological-resources-and-resilience]]
-- [[pss-10-item-level-descriptive-statistics]]
-- [[stress-and-affect-empirical-correlations]]
-- [[resilience-and-resources-empirical-correlation]]
+- [PSS-10 and Resilience: Empirical Correlation](pss-10-and-resilience-empirical-correlation.md)
+- [PSS-10 and Current Stress: Convergent Validity](pss-10-and-current-stress-convergent-validity.md)
+- [Social Support and Coping Success: Empirical Correlation](social-support-and-coping-success-empirical-correlation.md)
+- [Current Stress and Resources: Empirical Correlation](current-stress-and-resources-empirical-correlation.md)
+- [Resilience Distribution Norms: CD-RISC Empirical Reference](resilience-distribution-norms-cd-risc-empirical-reference.md)
+- [Psychological Resources and Resilience — Executive Summary](psychological-resources-and-resilience-executive-summary.md)
+- [Correlation Between Psychological Resources and Resilience — Empirical Range](correlation-between-psychological-resources-and-resilience-empirical-range.md)
+- [Conceptual Demarcation Between Psychological Resources and Resilience](conceptual-demarcation-between-psychological-resources-and-resilience.md)
+- [PSS-10 Item-Level Descriptive Statistics](pss-10-item-level-descriptive-statistics.md)
+- [Stress and Affect: Empirical Correlations](stress-and-affect-empirical-correlations.md)
+- [Resilience and Resources: Empirical Correlation](resilience-and-resources-empirical-correlation.md)

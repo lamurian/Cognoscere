@@ -36,8 +36,8 @@ In the French lockdown study [@pellerin2022], social support was indirectly asso
 
 ## Relevant notes
 
-- [[resilience-and-psychological-resources-empirical-correlations]]
-- [[correlation-between-psychological-resources-and-resilience-empirical-range]]
-- [[pss-10-and-resilience-meta-analytic-correlation]]
-- [[stress-and-affect-empirical-correlations]]
-- [[psychological-resources-and-resilience-executive-summary]]
+- [Resilience and Psychological Resources: Empirical Correlations](resilience-and-psychological-resources-empirical-correlations.md)
+- [Correlation Between Psychological Resources and Resilience — Empirical Range](correlation-between-psychological-resources-and-resilience-empirical-range.md)
+- [PSS-10 and Resilience: Meta-Analytic Correlation](pss-10-and-resilience-meta-analytic-correlation.md)
+- [Stress and Affect: Empirical Correlations](stress-and-affect-empirical-correlations.md)
+- [Psychological Resources and Resilience — Executive Summary](psychological-resources-and-resilience-executive-summary.md)

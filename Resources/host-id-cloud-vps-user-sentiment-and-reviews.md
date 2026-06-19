@@ -79,5 +79,5 @@ Host.ID offers a compelling feature (free backup image) but at a premium price w
 
 ## Relevant notes
 
-- [[host-id-cloud-vps-indonesia-nvme-with-free-backup-at-rp75-000-month]]
-- [[cheapest-paid-vps-indonesia-executive-summary-and-recommendation-for-saas-production]]
+- [Host.ID Cloud VPS Indonesia — NVMe with Free Backup at Rp75,000/month](host-id-cloud-vps-indonesia-nvme-with-free-backup-at-rp75-000-month.md)
+- [Cheapest Paid VPS Indonesia — Executive Summary and Recommendation for SaaS Production](cheapest-paid-vps-indonesia-executive-summary-and-recommendation-for-saas-production.md)

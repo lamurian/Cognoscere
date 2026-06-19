@@ -56,6 +56,6 @@ paseo send <agent-id> "fix the lint errors and re-commit"
 
 ## Relevant Notes
 
-- [[paseo-workflow-adr-to-spec-to-plan-hierarchy]]
-- [[paseo-workflow-pre-commit-and-pre-push-hooks-with-agents]]
-- [[paseo-workflow-pr-revision-cycle-with-paseo]]
+- [Paseo Workflow: ADR-to-Spec-to-Plan Hierarchy](paseo-workflow-adr-to-spec-to-plan-hierarchy.md)
+- [Paseo Workflow: Pre-commit and Pre-push Hooks with Agents](paseo-workflow-pre-commit-and-pre-push-hooks-with-agents.md)
+- [Paseo Workflow: PR Revision Cycle with Agents](paseo-workflow-pr-revision-cycle-with-agents.md)

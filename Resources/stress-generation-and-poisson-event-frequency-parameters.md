@@ -26,8 +26,8 @@ Event magnitude follows exponential decay distributions, reflecting that most da
 
 ## Relevant notes
 
-- [[challenge-hindrance-appraisal-framework-parameters]]
-- [[neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation]]
-- [[affect-regulation-framework-of-psychological-resilience]]
-- [[psychological-resilience-mechanisms-in-working-age-population-executive-summary]]
-- [[organisational-climate-and-culture-as-resilience-modulators]]
+- [Challenge-Hindrance Appraisal Framework Parameters](challenge-hindrance-appraisal-framework-parameters.md)
+- [Neurobiological Mechanisms of Resilience: Prefrontal-Amygdala Circuitry and HPA Axis Regulation](neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation.md)
+- [Affect-Regulation Framework of Psychological Resilience](affect-regulation-framework-of-psychological-resilience.md)
+- [Psychological Resilience Mechanisms in Working-Age Population: Executive Summary](psychological-resilience-mechanisms-in-working-age-population-executive-summary.md)
+- [Organisational Climate and Culture as Resilience Modulators](organisational-climate-and-culture-as-resilience-modulators.md)

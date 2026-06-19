@@ -31,8 +31,8 @@ Economic evaluation in healthcare and workplace interventions rests on four prim
 
 ## Relevant notes
 
-- [[cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary]]
-- [[choosing-the-effect-in-cost-effectiveness-analysis-outcome-rationale]]
-- [[monetising-wellbeing-how-non-monetary-outcomes-are-assigned-monetary-values]]
-- [[drivers-of-cost-effectiveness-in-workplace-resilience-interventions]]
-- [[how-resilience-interventions-improve-employee-wellbeing]]
+- [Cost-Effective Organisation-Based Interventions for Psychological Resilience: Executive Summary](cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary.md)
+- [Choosing the 'Effect' in Cost-Effectiveness Analysis: Outcome Rationale](choosing-the-effect-in-cost-effectiveness-analysis-outcome-rationale.md)
+- [Monetising Wellbeing: How Non-Monetary Outcomes Are Assigned Monetary Values](monetising-wellbeing-how-non-monetary-outcomes-are-assigned-monetary-values.md)
+- [Drivers of Cost-Effectiveness in Workplace Resilience Interventions](drivers-of-cost-effectiveness-in-workplace-resilience-interventions.md)
+- [How Resilience Interventions Improve Employee Wellbeing](how-resilience-interventions-improve-employee-wellbeing.md)

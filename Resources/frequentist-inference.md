@@ -147,7 +147,7 @@ print(power.solve_power(nobs=30, effect_size=0.5, alpha=0.05))
 
 ## Relevant notes
 
-- [[fundamental-mathematics-for-statistics]]
-- [[frequentist-vs-bayesian-philosophy]]
-- [[probability-distributions-random-variables]]
-- [[bayesian-inference]]
+- [Fundamental Mathematics for Statistics](fundamental-mathematics-for-statistics.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)
+- [Probability Distributions & Random Variables](probability-distributions-random-variables.md)
+- [Bayesian Inference](bayesian-inference.md)

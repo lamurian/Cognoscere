@@ -30,8 +30,8 @@ Kermott et al. @kermott2019 reported r = -0.55 between PSS-14 and CD-RISC-10 (10
 
 ## Relevant notes
 
-- [[pss-10-and-resilience-meta-analytic-correlation]]
-- [[correlation-pairs-validation-literature-based-executive-summary]]
-- [[stress-and-affect-empirical-correlations]]
-- [[resilience-distribution-norms-cd-risc-empirical-reference]]
-- [[pss-10-and-affect-empirical-correlation]]
+- [PSS-10 and Resilience: Meta-Analytic Correlation](pss-10-and-resilience-meta-analytic-correlation.md)
+- [Correlation Pairs Validation: Literature-Based Executive Summary](correlation-pairs-validation-literature-based-executive-summary.md)
+- [Stress and Affect: Empirical Correlations](stress-and-affect-empirical-correlations.md)
+- [Resilience Distribution Norms: CD-RISC Empirical Reference](resilience-distribution-norms-cd-risc-empirical-reference.md)
+- [PSS-10 and Affect: Empirical Correlation](pss-10-and-affect-empirical-correlation.md)

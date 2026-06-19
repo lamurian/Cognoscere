@@ -150,7 +150,7 @@ replicate(100, sim_and_fit(30, 0.5)) |> mean()  # estimated power
 
 ## Relevant notes
 
-- [[experimental-design-anova-frequentist-approach]]
-- [[experimental-design-anova-frequentist-vs-bayesian-comparison]]
-- [[frequentist-vs-bayesian-philosophy]]
-- [[linear-logistic-regression-bayesian-approach]]
+- [Experimental Design & ANOVA: Frequentist Approach](experimental-design-anova-frequentist-approach.md)
+- [Experimental Design & ANOVA: Frequentist vs Bayesian Comparison](experimental-design-anova-frequentist-vs-bayesian-comparison.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)
+- [Linear & Logistic Regression: Bayesian Approach](linear-logistic-regression-bayesian-approach.md)

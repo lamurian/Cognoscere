@@ -21,8 +21,8 @@ Use `ProxyJump` when: your target server is not directly reachable from your net
 For performance, combine with `ControlMaster` on the jump host connection so repeated proxied connections reuse the same TCP channel. For security, ensure the jump host is properly hardened — it sees connection metadata even if the final connection is end-to-end encrypted.
 
 ## Relevant notes
-- [[how-ssh-works-protocol-key-exchange-and-authentication]]
-- [[ssh-config-host-matching-and-stanza-precedence]]
-- [[controlmaster-controlpath-and-controlpersist-for-ssh-multiplexing]]
-- [[forwardagent-and-forwardx11-in-ssh-config]]
-- [[digital-homelab-hardening-core-security-practices]]
+- [How SSH Works: Protocol, Key Exchange, and Authentication](how-ssh-works-protocol-key-exchange-and-authentication.md)
+- [SSH Config Host Matching and Stanza Precedence](ssh-config-host-matching-and-stanza-precedence.md)
+- [ControlMaster, ControlPath, and ControlPersist for SSH Multiplexing](controlmaster-controlpath-and-controlpersist-for-ssh-multiplexing.md)
+- [ForwardAgent and ForwardX11 in SSH Config](forwardagent-and-forwardx11-in-ssh-config.md)
+- [Digital Homelab Hardening: Core Security Practices](digital-homelab-hardening-core-security-practices.md)

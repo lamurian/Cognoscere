@@ -106,7 +106,7 @@ Randomisation ensures (in expectation) that treatment and control groups are exc
 
 ## Relevant notes
 
-- [[causal-inference-bayesian-approach]]
-- [[descriptive-statistics-data-visualisation]]
-- [[model-comparison-frequentist-vs-bayesian-comparison]]
-- [[frequentist-vs-bayesian-philosophy]]
+- [Causal Inference: Bayesian Approach](causal-inference-bayesian-approach.md)
+- [Descriptive Statistics & Data Visualisation](descriptive-statistics-data-visualisation.md)
+- [Model Comparison: Frequentist vs Bayesian Comparison](model-comparison-frequentist-vs-bayesian-comparison.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)

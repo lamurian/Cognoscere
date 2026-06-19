@@ -36,8 +36,8 @@ The poverty rate stands at 8.25% (national poverty line, September 2025) and 1.6
 
 ## Relevant notes
 
-- [[village-modernization-in-indonesia-strategic-overview]]
-- [[women-s-economic-inclusion-in-rural-indonesia]]
-- [[economic-growth-comparison-soeharto-vs-prabowo-indonesia]]
-- [[dana-desa-indonesia-s-village-fund-impact]]
-- [[corruption-indicators-soeharto-vs-prabowo-indonesia]]
+- [Village Modernization in Indonesia: Strategic Overview](village-modernization-in-indonesia-strategic-overview.md)
+- [Women's Economic Inclusion in Rural Indonesia](women-s-economic-inclusion-in-rural-indonesia.md)
+- [Economic Growth Comparison: Soeharto vs Prabowo Indonesia](economic-growth-comparison-soeharto-vs-prabowo-indonesia.md)
+- [Dana Desa: Indonesia's Village Fund Impact](dana-desa-indonesia-s-village-fund-impact.md)
+- [Corruption Indicators: Soeharto vs Prabowo Indonesia](corruption-indicators-soeharto-vs-prabowo-indonesia.md)

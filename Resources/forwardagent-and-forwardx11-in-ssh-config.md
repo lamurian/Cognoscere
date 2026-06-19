@@ -21,10 +21,10 @@ Both are powerful but risky. Agent forwarding means any user with root on the in
 Use `ForwardAgent yes` only when you need to git push or SSH onward from a bastion and cannot use `ProxyJump` (e.g., legacy tooling). Use `ForwardX11 yes` sparingly for occasional remote GUI apps. Set both to `no` by default in `Host *` and only enable per-host where needed.
 
 ## Sources
-- [[proxyjump-for-bastion-hosts-and-jump-boxes]]
+- [ProxyJump for Bastion Hosts and Jump Boxes](proxyjump-for-bastion-hosts-and-jump-boxes.md)
 
 ## Relevant notes
-- [[how-ssh-works-protocol-key-exchange-and-authentication]]
-- [[identityfile-and-identitiesonly-in-ssh-config]]
-- [[digital-homelab-hardening-core-security-practices]]
-- [[localforward-remoteforward-and-dynamicforward-in-ssh-config]]
+- [How SSH Works: Protocol, Key Exchange, and Authentication](how-ssh-works-protocol-key-exchange-and-authentication.md)
+- [IdentityFile and IdentitiesOnly in SSH Config](identityfile-and-identitiesonly-in-ssh-config.md)
+- [Digital Homelab Hardening: Core Security Practices](digital-homelab-hardening-core-security-practices.md)
+- [LocalForward, RemoteForward, and DynamicForward in SSH Config](localforward-remoteforward-and-dynamicforward-in-ssh-config.md)

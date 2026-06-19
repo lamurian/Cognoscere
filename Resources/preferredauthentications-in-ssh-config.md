@@ -20,9 +20,9 @@ Set `PreferredAuthentications publickey` to skip password and keyboard-interacti
 Common use case: GitHub always uses `publickey`, so forcing it avoids unnecessary method negotiation. For a server set up for key-only access, this shaves off a few seconds per connection.
 
 ## Sources
-- [[identityfile-and-identitiesonly-in-ssh-config]]
+- [IdentityFile and IdentitiesOnly in SSH Config](identityfile-and-identitiesonly-in-ssh-config.md)
 
 ## Relevant notes
-- [[how-ssh-works-protocol-key-exchange-and-authentication]]
-- [[ssh-config-host-matching-and-stanza-precedence]]
-- [[addkeystoagent-and-usekeychain-in-ssh-config]]
+- [How SSH Works: Protocol, Key Exchange, and Authentication](how-ssh-works-protocol-key-exchange-and-authentication.md)
+- [SSH Config Host Matching and Stanza Precedence](ssh-config-host-matching-and-stanza-precedence.md)
+- [AddKeysToAgent and UseKeychain in SSH Config](addkeystoagent-and-usekeychain-in-ssh-config.md)

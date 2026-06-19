@@ -79,9 +79,9 @@ Best choice if you need geographic diversity across Indonesian data centers or a
 
 ## Relevant notes
 
-- [[nevacloud-nevalite-nvme-vps-cheapest-indonesia-based-vps]]
-- [[domainesia-cloud-vps-lite-indonesia]]
-- [[biznet-gio-neo-lite-vps-indonesia]]
-- [[rumahweb-vps-murah-indonesia]]
-- [[host-id-cloud-vps-indonesia]]
-- [[cheapest-paid-vps-indonesia-executive-summary]]
+- [Nevacloud Nevalite NVMe VPS — Cheapest Indonesia-Based VPS](nevacloud-nevalite-nvme-vps-cheapest-indonesia-based-vps.md)
+- [DomaiNesia Cloud VPS Lite Indonesia — NVMe at Rp48,000/month](domainesia-cloud-vps-lite-indonesia-nvme-at-rp48-000-month.md)
+- [Biznet Gio NEO Lite VPS Indonesia — 60 GB SSD at Rp59,000/month](biznet-gio-neo-lite-vps-indonesia-60-gb-ssd-at-rp59-000-month.md)
+- [Rumahweb VPS Murah Indonesia — 512 MB Plan at Rp50,000/month](rumahweb-vps-murah-indonesia-512-mb-plan-at-rp50-000-month.md)
+- [Host.ID Cloud VPS Indonesia — NVMe with Free Backup at Rp75,000/month](host-id-cloud-vps-indonesia-nvme-with-free-backup-at-rp75-000-month.md)
+- [Cheapest Paid VPS Indonesia — Executive Summary and Recommendation for SaaS Production](cheapest-paid-vps-indonesia-executive-summary-and-recommendation-for-saas-production.md)

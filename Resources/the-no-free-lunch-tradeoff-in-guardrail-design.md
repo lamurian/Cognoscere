@@ -28,8 +28,8 @@ A fundamental finding across the guardrail literature is that no guardrail syste
 
 ## Relevant notes
 
-- [[state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering]]
-- [[limitations-of-simple-output-filters-for-llm-guardrails]]
-- [[evaluating-guardrail-effectiveness-benchmarks-and-metrics]]
-- [[failure-modes-in-llm-driven-software-engineering]]
-- [[frameworks-and-tools-for-llm-guardrails]]
+- [State of the Art in Guardrail Design for LLM Orchestration in Software Engineering](state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering.md)
+- [Limitations of Simple Output Filters for LLM Guardrails](limitations-of-simple-output-filters-for-llm-guardrails.md)
+- [Evaluating Guardrail Effectiveness: Benchmarks and Metrics](evaluating-guardrail-effectiveness-benchmarks-and-metrics.md)
+- [Failure Modes in LLM-Driven Software Engineering](failure-modes-in-llm-driven-software-engineering.md)
+- [Frameworks and Tools for LLM Guardrails](frameworks-and-tools-for-llm-guardrails.md)

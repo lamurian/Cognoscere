@@ -20,12 +20,12 @@ Together the two dimensions form a complete picture of the stress experience. He
 
 ## Sources
 
-- [[PSS-10 vs Stress — small-to-moderate correlation with objective life events]]
-- [[PSS-10 vs Resilience — negative correlation]]
-- [[PSS-10 vs Affect — differentiated links with positive and negative affect]]
-- [[Coping vs Challenge — adaptive coping linked to resilience and lower stress]]
-- [[Coping vs Hindrance — maladaptive coping linked to lower resilience and higher stress]]
-- [[Challenge-Hindrance Stress Appraisal and Coping Pipeline]]
-- [[Challenge Stressors Build Resilience While Hindrance Stressors Erode It]]
+- [PSS-10 vs Stress — small-to-moderate correlation with objective life events](pss-10-vs-stress-small-to-moderate-correlation-with-objective-life-events.md)
+- [PSS-10 vs Resilience — negative correlation](pss-10-vs-resilience-negative-correlation.md)
+- [PSS-10 vs Affect — differentiated links with positive and negative affect](pss-10-vs-affect-differentiated-links-with-positive-and-negative-affect.md)
+- [Coping vs Challenge — adaptive coping linked to resilience and lower stress](coping-vs-challenge-adaptive-coping-linked-to-resilience-and-lower-stress.md)
+- [Coping vs Hindrance — maladaptive coping linked to lower resilience and higher stress](coping-vs-hindrance-maladaptive-coping-linked-to-lower-resilience-and-higher-stress.md)
+- [Challenge-Hindrance Stress Appraisal and Coping Pipeline](challenge-hindrance-stress-appraisal-and-coping-pipeline.md)
+- [Challenge Stressors Build Resilience While Hindrance Stressors Erode It](challenge-stressors-build-resilience-while-hindrance-stressors-erode-it.md)
 - [@liu2020] — PSS-10 factor structure
 - [@cavanaugh2000] — challenge-hindrance model

@@ -28,8 +28,8 @@ Hollaar et al. (2025) conducted a systematic review of 24 studies covering 26 re
 
 ## Relevant notes
 
-- [[cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary]]
-- [[choosing-the-effect-in-cost-effectiveness-analysis-outcome-rationale]]
-- [[monetising-wellbeing-how-non-monetary-outcomes-are-assigned-monetary-values]]
-- [[value-and-effect-in-cost-effectiveness-analysis-methodological-framework]]
-- [[drivers-of-cost-effectiveness-in-workplace-resilience-interventions]]
+- [Cost-Effective Organisation-Based Interventions for Psychological Resilience: Executive Summary](cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary.md)
+- [Choosing the 'Effect' in Cost-Effectiveness Analysis: Outcome Rationale](choosing-the-effect-in-cost-effectiveness-analysis-outcome-rationale.md)
+- [Monetising Wellbeing: How Non-Monetary Outcomes Are Assigned Monetary Values](monetising-wellbeing-how-non-monetary-outcomes-are-assigned-monetary-values.md)
+- [Value and Effect in Cost-Effectiveness Analysis: Methodological Framework](value-and-effect-in-cost-effectiveness-analysis-methodological-framework.md)
+- [Drivers of Cost-Effectiveness in Workplace Resilience Interventions](drivers-of-cost-effectiveness-in-workplace-resilience-interventions.md)

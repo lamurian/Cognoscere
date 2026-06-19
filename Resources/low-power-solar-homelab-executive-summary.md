@@ -24,13 +24,13 @@ For solar power: in Indonesia, a single 200W panel + 100Ah LiFePO4 battery cover
 ## Key Documents
 
 - **System Overview** — [[homelab-overview]]
-- **Hardware Comparison** — [[homelab-hardware-comparison]]
-- **Component Prices and Alternatives** — [[homelab-component-prices-and-alternatives]]
-- **Solar Feasibility: Indonesia and Netherlands** — [[homelab-solar-feasibility-indonesia-and-netherlands]]
-- **Hardware Build Guide** — [[homelab-hardware-build-guide]]
-- **Software Setup Guide** — [[homelab-software-setup-guide]]
-- **Tailscale Configuration** — [[homelab-tailscale-configuration]]
-- **Solar System Build Guide** — [[homelab-solar-system-build-guide]]
+- **Hardware Comparison** — [Homelab Hardware Comparison](homelab-hardware-comparison.md)
+- **Component Prices and Alternatives** — [Homelab Component Prices and Alternatives](homelab-component-prices-and-alternatives.md)
+- **Solar Feasibility: Indonesia and Netherlands** — [Homelab Solar Feasibility: Indonesia and Netherlands](homelab-solar-feasibility-indonesia-and-netherlands.md)
+- **Hardware Build Guide** — [Homelab Hardware Build Guide](../Projects/homelab-hardware-build-guide.md)
+- **Software Setup Guide** — [Homelab Software Setup Guide](../Projects/homelab-software-setup-guide.md)
+- **Tailscale Configuration** — [Homelab Tailscale Configuration](../Projects/homelab-tailscale-configuration.md)
+- **Solar System Build Guide** — [Homelab Solar System Build Guide](../Projects/homelab-solar-system-build-guide.md)
 
 ## Confidence Assessment
 
@@ -49,8 +49,8 @@ For solar power: in Indonesia, a single 200W panel + 100Ah LiFePO4 battery cover
 
 ## Related Existing Notes
 
-- [[paseo-architecture-daemon-based-cross-device-agent-orchestration]]
-- [[paseo-cross-device-coding-agent-orchestration-executive-summary]]
-- [[arm-vps-options-free-and-cheap-tiers-for-homelab-and-saas-production]]
-- [[the-agent-orchestration-landscape-in-2026]]
-- [[paseo-vs-alternative-free-open-source-agent-orchestrators]]
+- [Paseo Architecture: Daemon-Based Cross-Device Agent Orchestration](paseo-architecture-daemon-based-cross-device-agent-orchestration.md)
+- [Paseo: Cross-Device Coding Agent Orchestration — Executive Summary](paseo-cross-device-coding-agent-orchestration-executive-summary.md)
+- [ARM VPS Options: Free and Cheap Tiers for Homelab and SaaS Production](arm-vps-options-free-and-cheap-tiers-for-homelab-and-saas-production.md)
+- [The Agent Orchestration Landscape in 2026](the-agent-orchestration-landscape-in-2026.md)
+- [Paseo vs Alternative Free Open Source Agent Orchestrators](paseo-vs-alternative-free-open-source-agent-orchestrators.md)

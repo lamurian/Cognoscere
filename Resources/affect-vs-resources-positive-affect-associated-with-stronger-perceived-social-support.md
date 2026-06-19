@@ -22,10 +22,10 @@ The effect sizes are small-to-moderate (r approx 0.20-0.27). Social resources ar
 
 ## Sources
 
-- [[PSS-10 vs Psychological Resources — negative association with social support]]
-- [[PSS-10 vs Affect — differentiated links with positive and negative affect]]
-- [[Resources vs Stress — social support buffers perceived stress]]
-- [[Resilience vs Affect — strong positive link with positive affect, moderate negative with negative affect]]
-- [[Social Interaction vs Resilience — social support positively correlates with resilience]]
+- [PSS-10 vs Psychological Resources — negative association with social support](pss-10-vs-psychological-resources-negative-association-with-social-support.md)
+- [PSS-10 vs Affect — differentiated links with positive and negative affect](pss-10-vs-affect-differentiated-links-with-positive-and-negative-affect.md)
+- [Resources vs Stress — social support buffers perceived stress](resources-vs-stress-social-support-buffers-perceived-stress.md)
+- [Resilience vs Affect — strong positive link with positive affect, moderate negative with negative affect](resilience-vs-affect-strong-positive-link-with-positive-affect-moderate-negative-with-negative-affect.md)
+- [Social Interaction vs Resilience — social support positively correlates with resilience](social-interaction-vs-resilience-social-support-positively-correlates-with-resilience.md)
 - [@acoba2024] — social support and affect
 - [@cohen1985] — stress-buffering model

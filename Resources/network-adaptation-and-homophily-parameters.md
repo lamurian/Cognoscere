@@ -25,8 +25,8 @@ The high homophily weight (0.7) reflects empirical findings that individuals pre
 
 ## Relevant notes
 
-- [[agent-based-simulation-for-complex-adaptive-systems-executive-summary]]
-- [[agent-architectures-and-decision-making-in-agent-based-simulation]]
-- [[watts-strogatz-small-world-network-parameters-for-social-simulation]]
-- [[simulation-orchestration-and-output-parameters]]
-- [[spatial-network-and-temporal-structures-in-agent-based-simulation]]
+- [Agent-Based Simulation for Complex Adaptive Systems — Executive Summary](agent-based-simulation-for-complex-adaptive-systems-executive-summary.md)
+- [Agent Architectures and Decision-Making in Agent-Based Simulation](agent-architectures-and-decision-making-in-agent-based-simulation.md)
+- [Watts-Strogatz Small-World Network Parameters for Social Simulation](watts-strogatz-small-world-network-parameters-for-social-simulation.md)
+- [Simulation Orchestration and Output Parameters](simulation-orchestration-and-output-parameters.md)
+- [Spatial, Network, and Temporal Structures in Agent-Based Simulation](spatial-network-and-temporal-structures-in-agent-based-simulation.md)

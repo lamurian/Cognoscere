@@ -39,8 +39,8 @@ Hatchet is a Go-based orchestration engine for background tasks, AI agents, and 
 
 ## Relevant notes
 
-- [[lightweight-go-workflow-engines-executive-summary-and-recommendation]]
-- [[dagu-lightweight-go-workflow-engine-with-yaml-dag]]
-- [[tork-distributed-go-workflow-engine-with-yaml-jobs]]
-- [[task-yaml-automation-engine-by-ovh]]
-- [[paseo-cross-device-coding-agent-orchestration-executive-summary]]
+- [Lightweight Go Workflow Engines: Executive Summary and Recommendation](lightweight-go-workflow-engines-executive-summary-and-recommendation.md)
+- [Dagu: Lightweight Go Workflow Engine with YAML DAG](dagu-lightweight-go-workflow-engine-with-yaml-dag.md)
+- [Tork: Distributed Go Workflow Engine with YAML Jobs](tork-distributed-go-workflow-engine-with-yaml-jobs.md)
+- [µTask: YAML Automation Engine by OVH](task-yaml-automation-engine-by-ovh.md)
+- [Paseo: Cross-Device Coding Agent Orchestration — Executive Summary](paseo-cross-device-coding-agent-orchestration-executive-summary.md)

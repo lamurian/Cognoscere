@@ -23,8 +23,8 @@ Evidence on negative leadership styles (abusive supervision, despotic leadership
 
 ## Relevant notes
 
-- [[pastor-theory-positive-appraisal-style-as-the-core-resilience-mechanism]]
-- [[organisational-climate-and-culture-as-resilience-modulators]]
-- [[the-job-demands-resources-model-and-workplace-resilience]]
-- [[psychological-resilience-mechanisms-in-working-age-population-executive-summary]]
-- [[known-gaps-in-understanding-resilience-mechanisms-in-working-populations]]
+- [PASTOR Theory: Positive Appraisal Style as the Core Resilience Mechanism](pastor-theory-positive-appraisal-style-as-the-core-resilience-mechanism.md)
+- [Organisational Climate and Culture as Resilience Modulators](organisational-climate-and-culture-as-resilience-modulators.md)
+- [The Job Demands-Resources Model and Workplace Resilience](the-job-demands-resources-model-and-workplace-resilience.md)
+- [Psychological Resilience Mechanisms in Working-Age Population: Executive Summary](psychological-resilience-mechanisms-in-working-age-population-executive-summary.md)
+- [Known Gaps in Understanding Resilience Mechanisms in Working Populations](known-gaps-in-understanding-resilience-mechanisms-in-working-populations.md)

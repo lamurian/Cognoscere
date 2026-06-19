@@ -36,8 +36,8 @@ Indonesia's nominal GDP in 2026 is projected at US$1.54 trillion with nominal GD
 
 ## Relevant notes
 
-- [[economic-growth-comparison-soeharto-vs-prabowo-indonesia]]
-- [[corruption-indicators-soeharto-vs-prabowo-indonesia]]
-- [[political-system-and-governance-soeharto-vs-prabowo-indonesia]]
-- [[human-rights-record-soeharto-vs-prabowo-indonesia]]
-- [[major-nationwide-programs-soeharto-vs-prabowo-indonesia]]
+- [Economic Growth Comparison: Soeharto vs Prabowo Indonesia](economic-growth-comparison-soeharto-vs-prabowo-indonesia.md)
+- [Corruption Indicators: Soeharto vs Prabowo Indonesia](corruption-indicators-soeharto-vs-prabowo-indonesia.md)
+- [Political System and Governance: Soeharto vs Prabowo Indonesia](political-system-and-governance-soeharto-vs-prabowo-indonesia.md)
+- [Human Rights Record: Soeharto vs Prabowo Indonesia](human-rights-record-soeharto-vs-prabowo-indonesia.md)
+- [Major Nationwide Programs: Soeharto vs Prabowo Indonesia](major-nationwide-programs-soeharto-vs-prabowo-indonesia.md)

@@ -20,12 +20,12 @@ Bajaj and Pande [@bajaj2016] found that resilience mediated the relationship bet
 
 ## Sources
 
-- [[PSS-10 vs Resilience — negative correlation]]
-- [[PSS-10 vs Affect — differentiated links with positive and negative affect]]
-- [[Affect vs Resources — positive affect associated with stronger perceived social support]]
-- [[Social Interaction vs Resilience — social support positively correlates with resilience]]
-- [[Integrated Affect and Resilience Dynamics]]
-- [[Affect-Regulation Framework of Psychological Resilience]]
+- [PSS-10 vs Resilience — negative correlation](pss-10-vs-resilience-negative-correlation.md)
+- [PSS-10 vs Affect — differentiated links with positive and negative affect](pss-10-vs-affect-differentiated-links-with-positive-and-negative-affect.md)
+- [Affect vs Resources — positive affect associated with stronger perceived social support](affect-vs-resources-positive-affect-associated-with-stronger-perceived-social-support.md)
+- [Social Interaction vs Resilience — social support positively correlates with resilience](social-interaction-vs-resilience-social-support-positively-correlates-with-resilience.md)
+- [Integrated Affect and Resilience Dynamics](integrated-affect-and-resilience-dynamics.md)
+- [Affect-Regulation Framework of Psychological Resilience](affect-regulation-framework-of-psychological-resilience.md)
 - [@monteromarin2015] — CD-RISC and PANAS in physicians
 - [@bajaj2016] — resilience as mediator
 - [@fredrickson2001] — broaden-and-build theory

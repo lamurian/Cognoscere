@@ -47,22 +47,22 @@ The combination that produces the best outcomes is: secure land tenure + coopera
 
 ## Related Notes
 
-- [[dana-desa-indonesia-s-village-fund-impact]]
-- [[smart-village-indonesia-the-6-pillar-framework]]
-- [[bumdes-and-agricultural-value-chain-upgrading]]
-- [[land-reform-and-tenure-security-in-rural-indonesia]]
-- [[community-driven-development-in-indonesian-villages]]
-- [[digital-transformation-for-rural-indonesia]]
-- [[women-s-economic-inclusion-in-rural-indonesia]]
+- [Dana Desa: Indonesia's Village Fund Impact](dana-desa-indonesia-s-village-fund-impact.md)
+- [Smart Village Indonesia: The 6-Pillar Framework](smart-village-indonesia-the-6-pillar-framework.md)
+- [BUMDes and Agricultural Value Chain Upgrading](bumdes-and-agricultural-value-chain-upgrading.md)
+- [Land Reform and Tenure Security in Rural Indonesia](land-reform-and-tenure-security-in-rural-indonesia.md)
+- [Community-Driven Development in Indonesian Villages](community-driven-development-in-indonesian-villages.md)
+- [Digital Transformation for Rural Indonesia](digital-transformation-for-rural-indonesia.md)
+- [Women's Economic Inclusion in Rural Indonesia](women-s-economic-inclusion-in-rural-indonesia.md)
 
 ## Relevant notes
 
-- [[bumdes-and-agricultural-value-chain-upgrading]]
-- [[community-driven-development-in-indonesian-villages]]
-- [[dana-desa-indonesia-s-village-fund-impact]]
-- [[digital-transformation-for-rural-indonesia]]
-- [[food-forest-and-permaculture-guide-for-indonesia]]
-- [[smart-village-indonesia-the-6-pillar-framework]]
-- [[solarpunk-in-indonesia]]
-- [[solarpunk-village-indonesia-assimilation-paths-with-locals]]
-- [[solarpunk-village-indonesia-land-legal-strategy]]
+- [BUMDes and Agricultural Value Chain Upgrading](bumdes-and-agricultural-value-chain-upgrading.md)
+- [Community-Driven Development in Indonesian Villages](community-driven-development-in-indonesian-villages.md)
+- [Dana Desa: Indonesia's Village Fund Impact](dana-desa-indonesia-s-village-fund-impact.md)
+- [Digital Transformation for Rural Indonesia](digital-transformation-for-rural-indonesia.md)
+- [Food Forest and Permaculture Guide for Indonesia](food-forest-and-permaculture-guide-for-indonesia.md)
+- [Smart Village Indonesia: The 6-Pillar Framework](smart-village-indonesia-the-6-pillar-framework.md)
+- [Solarpunk in Indonesia](solarpunk-in-indonesia.md)
+- [Solarpunk Village Indonesia: Assimilation Paths with Locals](../Projects/solarpunk-village-indonesia-assimilation-paths-with-locals.md)
+- [Solarpunk Village Indonesia: Land & Legal Strategy](../Projects/solarpunk-village-indonesia-land-legal-strategy.md)

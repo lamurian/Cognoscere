@@ -109,7 +109,7 @@ Python (arviz): `az.compare({"ri": trace_ri, "rs": trace_rs})`
 
 ## Relevant notes
 
-- [[hierarchical-multilevel-models-frequentist-approach]]
-- [[hierarchical-models-frequentist-vs-bayesian-comparison]]
-- [[experimental-design-anova-frequentist-vs-bayesian-comparison]]
-- [[regression-frequentist-vs-bayesian-comparison]]
+- [Hierarchical / Multilevel Models: Frequentist Approach](hierarchical-multilevel-models-frequentist-approach.md)
+- [Hierarchical Models: Frequentist vs Bayesian Comparison](hierarchical-models-frequentist-vs-bayesian-comparison.md)
+- [Experimental Design & ANOVA: Frequentist vs Bayesian Comparison](experimental-design-anova-frequentist-vs-bayesian-comparison.md)
+- [Regression: Frequentist vs Bayesian Comparison](regression-frequentist-vs-bayesian-comparison.md)

@@ -47,8 +47,8 @@ This research examines how to design guardrails for LLM-aided software engineeri
 
 ## Relevant notes
 
-- [[layered-guardrail-architecture-with-pi-extensions]]
-- [[the-no-free-lunch-tradeoff-in-guardrail-design]]
-- [[state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering]]
-- [[sandboxing-and-execution-isolation-in-pi-agent]]
-- [[tool-override-wrapping-built-ins-with-guard-layers]]
+- [Layered Guardrail Architecture with Pi Extensions](layered-guardrail-architecture-with-pi-extensions.md)
+- [The No Free Lunch Tradeoff in Guardrail Design](the-no-free-lunch-tradeoff-in-guardrail-design.md)
+- [State of the Art in Guardrail Design for LLM Orchestration in Software Engineering](state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering.md)
+- [Sandboxing and Execution Isolation in Pi Agent](sandboxing-and-execution-isolation-in-pi-agent.md)
+- [Tool Override: Wrapping Built-Ins with Guard Layers](tool-override-wrapping-built-ins-with-guard-layers.md)

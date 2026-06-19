@@ -25,9 +25,9 @@ The interaction between job design and individual resilience mechanisms is likel
 
 ## Relevant notes
 
-- [[the-job-demands-resources-model-and-workplace-resilience]]
-- [[challenge-stressors-build-resilience-while-hindrance-stressors-erode-it]]
-- [[leadership-behaviours-as-modulators-of-employee-resilience-mechanisms]]
-- [[psychological-resilience-mechanisms-in-working-age-population-executive-summary]]
-- [[known-gaps-in-understanding-resilience-mechanisms-in-working-populations]]
-- [[limitations-and-contradictions-in-research-on-organisational-factors-and-resilience]]
+- [The Job Demands-Resources Model and Workplace Resilience](the-job-demands-resources-model-and-workplace-resilience.md)
+- [Challenge Stressors Build Resilience While Hindrance Stressors Erode It](challenge-stressors-build-resilience-while-hindrance-stressors-erode-it.md)
+- [Leadership Behaviours as Modulators of Employee Resilience Mechanisms](leadership-behaviours-as-modulators-of-employee-resilience-mechanisms.md)
+- [Psychological Resilience Mechanisms in Working-Age Population: Executive Summary](psychological-resilience-mechanisms-in-working-age-population-executive-summary.md)
+- [Known Gaps in Understanding Resilience Mechanisms in Working Populations](known-gaps-in-understanding-resilience-mechanisms-in-working-populations.md)
+- [Limitations and Contradictions in Research on Organisational Factors and Resilience](limitations-and-contradictions-in-research-on-organisational-factors-and-resilience.md)

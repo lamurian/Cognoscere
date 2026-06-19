@@ -33,8 +33,8 @@ These uniformly small negative correlations (r ≈ -0.08 to -0.22) indicate that
 
 ## Relevant notes
 
-- [[current-stress-and-resources-empirical-correlation]]
-- [[correlation-pairs-validation-literature-based-executive-summary]]
-- [[pss-10-and-resilience-empirical-correlation]]
-- [[pss-10-and-affect-empirical-correlation]]
-- [[pss-10-and-current-stress-convergent-validity]]
+- [Current Stress and Resources: Empirical Correlation](current-stress-and-resources-empirical-correlation.md)
+- [Correlation Pairs Validation: Literature-Based Executive Summary](correlation-pairs-validation-literature-based-executive-summary.md)
+- [PSS-10 and Resilience: Empirical Correlation](pss-10-and-resilience-empirical-correlation.md)
+- [PSS-10 and Affect: Empirical Correlation](pss-10-and-affect-empirical-correlation.md)
+- [PSS-10 and Current Stress: Convergent Validity](pss-10-and-current-stress-convergent-validity.md)

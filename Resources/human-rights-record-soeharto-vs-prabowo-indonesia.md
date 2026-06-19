@@ -38,8 +38,8 @@ Prabowo himself is an alleged human rights violator from his military career -- 
 
 ## Relevant notes
 
-- [[political-system-and-governance-soeharto-vs-prabowo-indonesia]]
-- [[economic-growth-comparison-soeharto-vs-prabowo-indonesia]]
-- [[land-reform-and-tenure-security-in-rural-indonesia]]
-- [[corruption-indicators-soeharto-vs-prabowo-indonesia]]
-- [[gdp-and-gdp-per-capita-soeharto-vs-prabowo-indonesia]]
+- [Political System and Governance: Soeharto vs Prabowo Indonesia](political-system-and-governance-soeharto-vs-prabowo-indonesia.md)
+- [Economic Growth Comparison: Soeharto vs Prabowo Indonesia](economic-growth-comparison-soeharto-vs-prabowo-indonesia.md)
+- [Land Reform and Tenure Security in Rural Indonesia](land-reform-and-tenure-security-in-rural-indonesia.md)
+- [Corruption Indicators: Soeharto vs Prabowo Indonesia](corruption-indicators-soeharto-vs-prabowo-indonesia.md)
+- [GDP and GDP per Capita: Soeharto vs Prabowo Indonesia](gdp-and-gdp-per-capita-soeharto-vs-prabowo-indonesia.md)

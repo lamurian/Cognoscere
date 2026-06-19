@@ -34,8 +34,8 @@ These findings support the conservation of resources theory: psychological resou
 
 ## Relevant notes
 
-- [[psychological-resources-and-resilience-executive-summary]]
-- [[correlation-between-psychological-resources-and-resilience-empirical-range]]
-- [[pss-10-and-resilience-meta-analytic-correlation]]
-- [[conceptual-demarcation-between-psychological-resources-and-resilience]]
-- [[psychological-resources-definition-and-core-constructs]]
+- [Psychological Resources and Resilience — Executive Summary](psychological-resources-and-resilience-executive-summary.md)
+- [Correlation Between Psychological Resources and Resilience — Empirical Range](correlation-between-psychological-resources-and-resilience-empirical-range.md)
+- [PSS-10 and Resilience: Meta-Analytic Correlation](pss-10-and-resilience-meta-analytic-correlation.md)
+- [Conceptual Demarcation Between Psychological Resources and Resilience](conceptual-demarcation-between-psychological-resources-and-resilience.md)
+- [Psychological Resources — Definition and Core Constructs](psychological-resources-definition-and-core-constructs.md)

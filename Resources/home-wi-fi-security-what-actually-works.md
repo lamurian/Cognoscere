@@ -41,8 +41,8 @@ Apple's official guidance explicitly recommends disabling MAC address filtering 
 **Other recommended settings.** Set 2.4 GHz channel width to 20 MHz for stability. Leave channels on Auto. Use a unique SSID name (not the default). Enable NAT only on the router (not the modem). Set DHCP lease to 8 hours for home networks [@appleinc2025].
 
 ## Relevant notes
-- [[digital-homelab-hardening-core-security-practices]] — complementary security practices at the device and service layer
-- [[network-infrastructure-for-budget-homelab]] — hardware choices that enable secure network segmentation
+- [Digital Homelab Hardening: Core Security Practices](digital-homelab-hardening-core-security-practices.md) — complementary security practices at the device and service layer
+- [Network Infrastructure for Budget Homelab](network-infrastructure-for-budget-homelab.md) — hardware choices that enable secure network segmentation
 
 ## Sources
 - [@ikechukwu2024] — detailed explanation of MAC address filtering and SSID hiding ineffectiveness

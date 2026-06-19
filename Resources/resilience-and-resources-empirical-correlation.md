@@ -37,11 +37,11 @@ The test suite asserts bounds of 0.10 < r < 0.80 (test #12) and 0.10 < r < 0.85 
 
 ## Relevant notes
 
-- [[correlation-pairs-validation-literature-based-executive-summary]]
-- [[correlation-between-psychological-resources-and-resilience-empirical-range]]
-- [[psychological-resources-and-resilience-executive-summary]]
-- [[resilience-and-psychological-resources-empirical-correlations]]
-- [[conceptual-demarcation-between-psychological-resources-and-resilience]]
-- [[psychological-resources-definition-and-core-constructs]]
-- [[pss-10-and-resilience-empirical-correlation]]
-- [[resource-distribution-norms-cor-theory-empirical-reference]]
+- [Correlation Pairs Validation: Literature-Based Executive Summary](correlation-pairs-validation-literature-based-executive-summary.md)
+- [Correlation Between Psychological Resources and Resilience — Empirical Range](correlation-between-psychological-resources-and-resilience-empirical-range.md)
+- [Psychological Resources and Resilience — Executive Summary](psychological-resources-and-resilience-executive-summary.md)
+- [Resilience and Psychological Resources: Empirical Correlations](resilience-and-psychological-resources-empirical-correlations.md)
+- [Conceptual Demarcation Between Psychological Resources and Resilience](conceptual-demarcation-between-psychological-resources-and-resilience.md)
+- [Psychological Resources — Definition and Core Constructs](psychological-resources-definition-and-core-constructs.md)
+- [PSS-10 and Resilience: Empirical Correlation](pss-10-and-resilience-empirical-correlation.md)
+- [Resource Distribution Norms: COR Theory Empirical Reference](resource-distribution-norms-cor-theory-empirical-reference.md)

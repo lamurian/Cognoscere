@@ -30,8 +30,8 @@ Several factors determine whether a resilience intervention delivers strong cost
 
 ## Relevant notes
 
-- [[cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary]]
-- [[choosing-the-effect-in-cost-effectiveness-analysis-outcome-rationale]]
-- [[how-resilience-interventions-improve-employee-wellbeing]]
-- [[monetising-wellbeing-how-non-monetary-outcomes-are-assigned-monetary-values]]
-- [[value-and-effect-in-cost-effectiveness-analysis-methodological-framework]]
+- [Cost-Effective Organisation-Based Interventions for Psychological Resilience: Executive Summary](cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary.md)
+- [Choosing the 'Effect' in Cost-Effectiveness Analysis: Outcome Rationale](choosing-the-effect-in-cost-effectiveness-analysis-outcome-rationale.md)
+- [How Resilience Interventions Improve Employee Wellbeing](how-resilience-interventions-improve-employee-wellbeing.md)
+- [Monetising Wellbeing: How Non-Monetary Outcomes Are Assigned Monetary Values](monetising-wellbeing-how-non-monetary-outcomes-are-assigned-monetary-values.md)
+- [Value and Effect in Cost-Effectiveness Analysis: Methodological Framework](value-and-effect-in-cost-effectiveness-analysis-methodological-framework.md)

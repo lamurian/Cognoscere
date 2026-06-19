@@ -77,7 +77,7 @@ post.means <- colMeans(fit_bayes$one.step.prediction.errors)
 
 ## Relevant notes
 
-- [[time-series-analysis-bayesian-approach]]
-- [[time-series-analysis-frequentist-approach]]
-- [[descriptive-statistics-data-visualisation]]
-- [[frequentist-vs-bayesian-philosophy]]
+- [Time Series Analysis: Bayesian Approach](time-series-analysis-bayesian-approach.md)
+- [Time Series Analysis: Frequentist Approach](time-series-analysis-frequentist-approach.md)
+- [Descriptive Statistics & Data Visualisation](descriptive-statistics-data-visualisation.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)

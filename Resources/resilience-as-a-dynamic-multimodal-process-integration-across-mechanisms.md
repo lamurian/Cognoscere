@@ -19,8 +19,8 @@ Critically, context determines which mechanisms are most relevant. Challenge str
 
 ## Relevant notes
 
-- [[variations-in-the-definition-of-psychological-resilience]]
-- [[neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation]]
-- [[known-gaps-in-understanding-resilience-mechanisms-in-working-populations]]
-- [[positive-interpretation-bias-and-emotion-regulation-as-cognitive-mechanisms-of-resilience]]
-- [[how-resilience-interventions-improve-employee-wellbeing]]
+- [Variations in the Definition of Psychological Resilience](variations-in-the-definition-of-psychological-resilience.md)
+- [Neurobiological Mechanisms of Resilience: Prefrontal-Amygdala Circuitry and HPA Axis Regulation](neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation.md)
+- [Known Gaps in Understanding Resilience Mechanisms in Working Populations](known-gaps-in-understanding-resilience-mechanisms-in-working-populations.md)
+- [Positive Interpretation Bias and Emotion Regulation as Cognitive Mechanisms of Resilience](positive-interpretation-bias-and-emotion-regulation-as-cognitive-mechanisms-of-resilience.md)
+- [How Resilience Interventions Improve Employee Wellbeing](how-resilience-interventions-improve-employee-wellbeing.md)

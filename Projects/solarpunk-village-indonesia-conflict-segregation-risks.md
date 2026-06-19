@@ -60,9 +60,9 @@ Reference: [[indonesia-erasure-of-left-wing-politics-after-1965]], [[indonesian-
 
 ## Relevant notes
 
-- [[solarpunk-village-indonesia-local-beliefs-stigma-towards-outsiders]]
-- [[solarpunk-village-indonesia-assimilation-paths-with-locals]]
-- [[solarpunk-village-indonesia-land-legal-strategy]]
+- [Solarpunk Village Indonesia: Local Beliefs & Stigma Towards Outsiders](solarpunk-village-indonesia-local-beliefs-stigma-towards-outsiders.md)
+- [Solarpunk Village Indonesia: Assimilation Paths with Locals](solarpunk-village-indonesia-assimilation-paths-with-locals.md)
+- [Solarpunk Village Indonesia: Land & Legal Strategy](solarpunk-village-indonesia-land-legal-strategy.md)
 - [[solarpunk-and-marhaenism-points-of-convergence]]
 - [[solarpunk-village-governance-decision-making]]
 - [[solarpunk-village-economy-livelihood]]

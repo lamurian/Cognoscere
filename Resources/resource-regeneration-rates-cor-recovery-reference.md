@@ -25,13 +25,13 @@ For simulation: daily resource_base_regeneration ~0.2-0.3 on [0,1] over a waking
 - [@sonnentag2007] Sonnentag, S., & Fritz, C. (2007). The Recovery Experience Questionnaire: Development and validation of a measure for assessing recuperation and unwinding from work. Journal of Occupational Health Psychology, 12(3), 204-221.
 
 ## Existing Notes
-- [[psychological-resources-definition-and-core-constructs]]
-- [[correlation-between-psychological-resources-and-resilience-empirical-range]]
+- [Psychological Resources — Definition and Core Constructs](psychological-resources-definition-and-core-constructs.md)
+- [Correlation Between Psychological Resources and Resilience — Empirical Range](correlation-between-psychological-resources-and-resilience-empirical-range.md)
 
 ## Relevant notes
 
-- [[resource-distribution-norms-cor-theory-empirical-reference]]
-- [[psychological-resources-and-resilience-executive-summary]]
-- [[correlation-between-psychological-resources-and-resilience-empirical-range]]
-- [[coping-effectiveness-rates-skinner-et-al-meta-analytic-reference]]
-- [[empirical-evidence-on-llm-failure-severity-in-software-engineering]]
+- [Resource Distribution Norms: COR Theory Empirical Reference](resource-distribution-norms-cor-theory-empirical-reference.md)
+- [Psychological Resources and Resilience — Executive Summary](psychological-resources-and-resilience-executive-summary.md)
+- [Correlation Between Psychological Resources and Resilience — Empirical Range](correlation-between-psychological-resources-and-resilience-empirical-range.md)
+- [Coping Effectiveness Rates: Skinner et al. Meta-Analytic Reference](coping-effectiveness-rates-skinner-et-al-meta-analytic-reference.md)
+- [Empirical Evidence on LLM Failure Severity in Software Engineering](empirical-evidence-on-llm-failure-severity-in-software-engineering.md)

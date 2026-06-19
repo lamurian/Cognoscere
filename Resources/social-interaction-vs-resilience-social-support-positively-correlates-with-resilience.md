@@ -20,12 +20,12 @@ In the Ye et al. [@ye2022] analysis, the CD-RISC captures resource-based resilie
 
 ## Sources
 
-- [[PSS-10 vs Resilience — negative correlation]]
-- [[PSS-10 vs Psychological Resources — negative association with social support]]
-- [[Resources vs Stress — social support buffers perceived stress]]
-- [[Affect vs Resources — positive affect associated with stronger perceived social support]]
-- [[Resilience vs Affect — strong positive link with positive affect, moderate negative with negative affect]]
-- [[Social Interaction and Emotional Contagion Mechanism]]
+- [PSS-10 vs Resilience — negative correlation](pss-10-vs-resilience-negative-correlation.md)
+- [PSS-10 vs Psychological Resources — negative association with social support](pss-10-vs-psychological-resources-negative-association-with-social-support.md)
+- [Resources vs Stress — social support buffers perceived stress](resources-vs-stress-social-support-buffers-perceived-stress.md)
+- [Affect vs Resources — positive affect associated with stronger perceived social support](affect-vs-resources-positive-affect-associated-with-stronger-perceived-social-support.md)
+- [Resilience vs Affect — strong positive link with positive affect, moderate negative with negative affect](resilience-vs-affect-strong-positive-link-with-positive-affect-moderate-negative-with-negative-affect.md)
+- [Social Interaction and Emotional Contagion Mechanism](social-interaction-and-emotional-contagion-mechanism.md)
 - [@smith2008] — BRS original
 - [@connor2003] — CD-RISC original
 - [@chmitorz2018] — BRS German validation

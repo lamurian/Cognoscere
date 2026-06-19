@@ -21,8 +21,8 @@ Use `IdentitiesOnly yes` whenever you have multiple SSH keys loaded in your agen
 Per-repo alternative: `git config core.sshCommand 'ssh -i ~/.ssh/id_ed25519_work'` achieves the same effect without editing `~/.ssh/config`.
 
 ## Relevant notes
-- [[how-ssh-works-protocol-key-exchange-and-authentication]]
-- [[ssh-config-host-matching-and-stanza-precedence]]
-- [[addkeystoagent-and-usekeychain-in-ssh-config]]
-- [[preferredauthentications-in-ssh-config]]
-- [[digital-homelab-hardening-core-security-practices]]
+- [How SSH Works: Protocol, Key Exchange, and Authentication](how-ssh-works-protocol-key-exchange-and-authentication.md)
+- [SSH Config Host Matching and Stanza Precedence](ssh-config-host-matching-and-stanza-precedence.md)
+- [AddKeysToAgent and UseKeychain in SSH Config](addkeystoagent-and-usekeychain-in-ssh-config.md)
+- [PreferredAuthentications in SSH Config](preferredauthentications-in-ssh-config.md)
+- [Digital Homelab Hardening: Core Security Practices](digital-homelab-hardening-core-security-practices.md)

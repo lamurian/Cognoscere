@@ -28,9 +28,9 @@ This research examines Paseo.sh, an open-source (AGPL-3.0) orchestration layer f
 
 ## Key Findings
 
-- **Paseo Architecture** — [[paseo-architecture-daemon-based-cross-device-agent-orchestration]]
-- **Paseo vs Alternatives** — [[paseo-vs-alternative-free-open-source-agent-orchestrators]]
-- **Orchestration Landscape 2026** — [[the-agent-orchestration-landscape-in-2026]]
+- **Paseo Architecture** — [Paseo Architecture: Daemon-Based Cross-Device Agent Orchestration](paseo-architecture-daemon-based-cross-device-agent-orchestration.md)
+- **Paseo vs Alternatives** — [Paseo vs Alternative Free Open Source Agent Orchestrators](paseo-vs-alternative-free-open-source-agent-orchestrators.md)
+- **Orchestration Landscape 2026** — [The Agent Orchestration Landscape in 2026](the-agent-orchestration-landscape-in-2026.md)
 
 ## Confidence Assessment
 
@@ -49,13 +49,13 @@ This research examines Paseo.sh, an open-source (AGPL-3.0) orchestration layer f
 
 ## Relevant notes
 
-- [[paseo-vs-alternative-free-open-source-agent-orchestrators]]
-- [[paseo-architecture-daemon-based-cross-device-agent-orchestration]]
-- [[the-agent-orchestration-landscape-in-2026]]
-- [[state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering]]
-- [[architectural-patterns-for-llm-guardrail-systems-in-software-engineering]]
-- [[paseo-workflow-adr-to-spec-to-plan-hierarchy]]
-- [[paseo-workflow-pre-commit-and-pre-push-hooks-with-agents]]
-- [[paseo-workflow-tdd-iteration-loop-with-agents]]
-- [[paseo-workflow-pr-revision-cycle-with-agents]]
-- [[paseo-workflow-fit-adr-driven-tdd-pipeline-with-quality-gates-executive-summary]]
+- [Paseo vs Alternative Free Open Source Agent Orchestrators](paseo-vs-alternative-free-open-source-agent-orchestrators.md)
+- [Paseo Architecture: Daemon-Based Cross-Device Agent Orchestration](paseo-architecture-daemon-based-cross-device-agent-orchestration.md)
+- [The Agent Orchestration Landscape in 2026](the-agent-orchestration-landscape-in-2026.md)
+- [State of the Art in Guardrail Design for LLM Orchestration in Software Engineering](state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering.md)
+- [Architectural Patterns for LLM Guardrail Systems in Software Engineering](architectural-patterns-for-llm-guardrail-systems-in-software-engineering.md)
+- [Paseo Workflow: ADR-to-Spec-to-Plan Hierarchy](paseo-workflow-adr-to-spec-to-plan-hierarchy.md)
+- [Paseo Workflow: Pre-commit and Pre-push Hooks with Agents](paseo-workflow-pre-commit-and-pre-push-hooks-with-agents.md)
+- [Paseo Workflow: TDD Iteration Loop with Agents](paseo-workflow-tdd-iteration-loop-with-agents.md)
+- [Paseo Workflow: PR Revision Cycle with Agents](paseo-workflow-pr-revision-cycle-with-agents.md)
+- [Paseo Workflow Fit: ADR-Driven TDD Pipeline with Quality Gates — Executive Summary](paseo-workflow-fit-adr-driven-tdd-pipeline-with-quality-gates-executive-summary.md)

@@ -21,9 +21,9 @@ tags:
 All three are simple but foundational. Typical pattern: `Host myserver` with `HostName 192.168.1.100`, `User ubuntu`, `Port 22`. For GitHub: `Host github.com-personal` with `HostName github.com`, `User git` — the alias lets you differentiate keys while the real hostname stays correct.
 
 ## Sources
-- [[ssh-config-host-matching-and-stanza-precedence]]
-- [[identityfile-and-identitiesonly-in-ssh-config]]
+- [SSH Config Host Matching and Stanza Precedence](ssh-config-host-matching-and-stanza-precedence.md)
+- [IdentityFile and IdentitiesOnly in SSH Config](identityfile-and-identitiesonly-in-ssh-config.md)
 
 ## Relevant notes
-- [[how-ssh-works-protocol-key-exchange-and-authentication]]
-- [[digital-homelab-hardening-core-security-practices]]
+- [How SSH Works: Protocol, Key Exchange, and Authentication](how-ssh-works-protocol-key-exchange-and-authentication.md)
+- [Digital Homelab Hardening: Core Security Practices](digital-homelab-hardening-core-security-practices.md)

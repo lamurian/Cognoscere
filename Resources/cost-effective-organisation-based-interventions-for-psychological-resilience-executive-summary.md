@@ -19,11 +19,11 @@ Cost-effectiveness analysis (CEA) defines 'value' as the ratio of incremental co
 
 ## Key Findings
 
-- **How resilience interventions improve wellbeing** — [[How Resilience Interventions Improve Employee Wellbeing]]
-- **CEA frameworks and value definition** — [[Value and Effect in Cost-Effectiveness Analysis Methodological Framework]]
-- **Why specific outcomes are chosen as the 'effect'** — [[Choosing the Effect in Cost-Effectiveness Analysis Outcome Rationale]]
-- **Monetisation methods** — [[Monetising Wellbeing How Non-Monetary Outcomes Are Assigned Monetary Values]]
-- **Drivers of cost-effectiveness** — [[Drivers of Cost-Effectiveness in Workplace Resilience Interventions]]
+- **How resilience interventions improve wellbeing** — [How Resilience Interventions Improve Employee Wellbeing](how-resilience-interventions-improve-employee-wellbeing.md)
+- **CEA frameworks and value definition** — [Value and Effect in Cost-Effectiveness Analysis: Methodological Framework](value-and-effect-in-cost-effectiveness-analysis-methodological-framework.md)
+- **Why specific outcomes are chosen as the 'effect'** — [Choosing the 'Effect' in Cost-Effectiveness Analysis: Outcome Rationale](choosing-the-effect-in-cost-effectiveness-analysis-outcome-rationale.md)
+- **Monetisation methods** — [Monetising Wellbeing: How Non-Monetary Outcomes Are Assigned Monetary Values](monetising-wellbeing-how-non-monetary-outcomes-are-assigned-monetary-values.md)
+- **Drivers of cost-effectiveness** — [Drivers of Cost-Effectiveness in Workplace Resilience Interventions](drivers-of-cost-effectiveness-in-workplace-resilience-interventions.md)
 
 ## Confidence Assessment
 
@@ -45,8 +45,8 @@ Cost-effectiveness analysis (CEA) defines 'value' as the ratio of incremental co
 
 ## Relevant notes
 
-- [[choosing-the-effect-in-cost-effectiveness-analysis-outcome-rationale]]
-- [[drivers-of-cost-effectiveness-in-workplace-resilience-interventions]]
-- [[how-resilience-interventions-improve-employee-wellbeing]]
-- [[monetising-wellbeing-how-non-monetary-outcomes-are-assigned-monetary-values]]
-- [[value-and-effect-in-cost-effectiveness-analysis-methodological-framework]]
+- [Choosing the 'Effect' in Cost-Effectiveness Analysis: Outcome Rationale](choosing-the-effect-in-cost-effectiveness-analysis-outcome-rationale.md)
+- [Drivers of Cost-Effectiveness in Workplace Resilience Interventions](drivers-of-cost-effectiveness-in-workplace-resilience-interventions.md)
+- [How Resilience Interventions Improve Employee Wellbeing](how-resilience-interventions-improve-employee-wellbeing.md)
+- [Monetising Wellbeing: How Non-Monetary Outcomes Are Assigned Monetary Values](monetising-wellbeing-how-non-monetary-outcomes-are-assigned-monetary-values.md)
+- [Value and Effect in Cost-Effectiveness Analysis: Methodological Framework](value-and-effect-in-cost-effectiveness-analysis-methodological-framework.md)

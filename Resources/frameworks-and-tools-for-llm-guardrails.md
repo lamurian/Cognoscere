@@ -31,8 +31,8 @@ A diverse ecosystem of guardrail frameworks has emerged, each with distinct arch
 
 ## Relevant notes
 
-- [[state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering]]
-- [[failure-modes-in-llm-driven-software-engineering]]
-- [[the-no-free-lunch-tradeoff-in-guardrail-design]]
-- [[limitations-of-simple-output-filters-for-llm-guardrails]]
-- [[architectural-patterns-for-llm-guardrail-systems-in-software-engineering]]
+- [State of the Art in Guardrail Design for LLM Orchestration in Software Engineering](state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering.md)
+- [Failure Modes in LLM-Driven Software Engineering](failure-modes-in-llm-driven-software-engineering.md)
+- [The No Free Lunch Tradeoff in Guardrail Design](the-no-free-lunch-tradeoff-in-guardrail-design.md)
+- [Limitations of Simple Output Filters for LLM Guardrails](limitations-of-simple-output-filters-for-llm-guardrails.md)
+- [Architectural Patterns for LLM Guardrail Systems in Software Engineering](architectural-patterns-for-llm-guardrail-systems-in-software-engineering.md)

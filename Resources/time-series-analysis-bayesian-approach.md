@@ -118,7 +118,7 @@ Python: `pm.sample_posterior_predictive(trace, model=dlm)`
 
 ## Relevant notes
 
-- [[time-series-analysis-frequentist-vs-bayesian-comparison]]
-- [[time-series-analysis-frequentist-approach]]
-- [[descriptive-statistics-data-visualisation]]
-- [[frequentist-vs-bayesian-philosophy]]
+- [Time Series Analysis: Frequentist vs Bayesian Comparison](time-series-analysis-frequentist-vs-bayesian-comparison.md)
+- [Time Series Analysis: Frequentist Approach](time-series-analysis-frequentist-approach.md)
+- [Descriptive Statistics & Data Visualisation](descriptive-statistics-data-visualisation.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)

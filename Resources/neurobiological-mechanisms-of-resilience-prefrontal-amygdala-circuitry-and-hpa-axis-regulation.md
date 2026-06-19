@@ -19,8 +19,8 @@ Heart rate variability (HRV) serves as a peripheral index of prefrontal inhibito
 
 ## Relevant notes
 
-- [[resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms]]
-- [[pastor-theory-positive-appraisal-style-as-the-core-resilience-mechanism]]
-- [[positive-interpretation-bias-and-emotion-regulation-as-cognitive-mechanisms-of-resilience]]
-- [[known-gaps-in-understanding-resilience-mechanisms-in-working-populations]]
-- [[variations-in-the-definition-of-psychological-resilience]]
+- [Resilience as a Dynamic, Multimodal Process: Integration Across Mechanisms](resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms.md)
+- [PASTOR Theory: Positive Appraisal Style as the Core Resilience Mechanism](pastor-theory-positive-appraisal-style-as-the-core-resilience-mechanism.md)
+- [Positive Interpretation Bias and Emotion Regulation as Cognitive Mechanisms of Resilience](positive-interpretation-bias-and-emotion-regulation-as-cognitive-mechanisms-of-resilience.md)
+- [Known Gaps in Understanding Resilience Mechanisms in Working Populations](known-gaps-in-understanding-resilience-mechanisms-in-working-populations.md)
+- [Variations in the Definition of Psychological Resilience](variations-in-the-definition-of-psychological-resilience.md)

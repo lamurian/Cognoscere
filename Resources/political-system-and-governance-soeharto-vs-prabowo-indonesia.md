@@ -40,8 +40,8 @@ Formal democracy with regular, competitive elections since 1998. Prabowo won the
 
 ## Relevant notes
 
-- [[human-rights-record-soeharto-vs-prabowo-indonesia]]
-- [[bumdes-and-agricultural-value-chain-upgrading]]
-- [[corruption-indicators-soeharto-vs-prabowo-indonesia]]
-- [[economic-growth-comparison-soeharto-vs-prabowo-indonesia]]
-- [[major-nationwide-programs-soeharto-vs-prabowo-indonesia]]
+- [Human Rights Record: Soeharto vs Prabowo Indonesia](human-rights-record-soeharto-vs-prabowo-indonesia.md)
+- [BUMDes and Agricultural Value Chain Upgrading](bumdes-and-agricultural-value-chain-upgrading.md)
+- [Corruption Indicators: Soeharto vs Prabowo Indonesia](corruption-indicators-soeharto-vs-prabowo-indonesia.md)
+- [Economic Growth Comparison: Soeharto vs Prabowo Indonesia](economic-growth-comparison-soeharto-vs-prabowo-indonesia.md)
+- [Major Nationwide Programs: Soeharto vs Prabowo Indonesia](major-nationwide-programs-soeharto-vs-prabowo-indonesia.md)

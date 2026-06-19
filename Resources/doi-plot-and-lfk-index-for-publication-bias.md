@@ -40,10 +40,10 @@ Neither method distinguishes publication bias from other causes of asymmetry. Bo
 - Built-in LFK index quantifies asymmetry (no separate test needed).
 - Better performance than funnel plot for prevalence meta-analyses (proportions, rates).
 - Thresholds (1, 2) calibrated for prevalence outcomes — may not generalize.
-- See also: [[funnel-plot-for-publication-bias-detection]] (standard alternative).
+- See also: [Funnel Plot for Publication Bias Detection](funnel-plot-for-publication-bias-detection.md) (standard alternative).
 
 ## Related Notes
 
-- [[funnel-plot-for-publication-bias-detection]]
-- [[funnel-plot-versus-doi-plot-comparison-of-visual-diagnostics]]
-- [[executive-summary-comparing-publication-bias-detection-and-correction-methods]]
+- [Funnel Plot for Publication Bias Detection](funnel-plot-for-publication-bias-detection.md)
+- [Funnel Plot Versus Doi Plot: Comparison of Visual Diagnostics](funnel-plot-versus-doi-plot-comparison-of-visual-diagnostics.md)
+- [Executive Summary: Comparing Publication Bias Detection and Correction Methods](executive-summary-comparing-publication-bias-detection-and-correction-methods.md)

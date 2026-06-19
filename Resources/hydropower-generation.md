@@ -38,8 +38,8 @@ _Source: Wikipedia -- Hydropower, Hydroelectricity, Pumped-storage hydroelectric
 
 ## Relevant notes
 
-- [[comparative-analysis-of-sustainable-energy-sources]]
-- [[marine-renewable-energy]]
-- [[grid-integration-of-renewables]]
-- [[solar-photovoltaic-energy]]
-- [[geothermal-energy-harvesting]]
+- [Comparative Analysis of Sustainable Energy Sources](comparative-analysis-of-sustainable-energy-sources.md)
+- [Marine Renewable Energy](marine-renewable-energy.md)
+- [Grid Integration of Renewables](grid-integration-of-renewables.md)
+- [Solar Photovoltaic Energy](solar-photovoltaic-energy.md)
+- [Geothermal Energy Harvesting](geothermal-energy-harvesting.md)

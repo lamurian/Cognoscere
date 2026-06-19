@@ -46,8 +46,8 @@ _Source: Wikipedia -- Smart grid, Variable renewable energy, HVDC, Demand respon
 
 ## Relevant notes
 
-- [[marine-renewable-energy]]
-- [[energy-storage-technologies]]
-- [[digital-transformation-for-rural-indonesia]]
-- [[global-trajectories-and-current-impact-of-solarpunk]]
-- [[solarpunk-in-the-european-union]]
+- [Marine Renewable Energy](marine-renewable-energy.md)
+- [Energy Storage Technologies](energy-storage-technologies.md)
+- [Digital Transformation for Rural Indonesia](digital-transformation-for-rural-indonesia.md)
+- [Global Trajectories and Current Impact of Solarpunk](global-trajectories-and-current-impact-of-solarpunk.md)
+- [Solarpunk in the European Union](solarpunk-in-the-european-union.md)

@@ -79,5 +79,5 @@ Herza Cloud fills specific niches (MikroTik, anti-DDoS, multi-zone deployments) 
 
 ## Relevant notes
 
-- [[herza-cloud-vps-indonesia-budget-vps-with-multiple-data-center-zones]]
-- [[cheapest-paid-vps-indonesia-executive-summary-and-recommendation-for-saas-production]]
+- [Herza Cloud VPS Indonesia — Budget VPS with Multiple Data Center Zones](herza-cloud-vps-indonesia-budget-vps-with-multiple-data-center-zones.md)
+- [Cheapest Paid VPS Indonesia — Executive Summary and Recommendation for SaaS Production](cheapest-paid-vps-indonesia-executive-summary-and-recommendation-for-saas-production.md)

@@ -25,12 +25,12 @@ Fourth, the evidence for organisational-level interventions remains underdevelop
 
 ## Key Findings
 
-- **Leadership modulates resilience through promotion focus and insider identity** -- [[Resources/leadership-behaviours-as-modulators-of-employee-resilience-mechanisms.md]]
-- **Organisational climate and culture shape resilience capacity** -- [[Resources/organisational-climate-and-culture-as-resilience-modulators.md]]
-- **Neurobiological pathways link organisational factors to individual resilience** -- [[Resources/neurobiological-pathways-linking-organisational-factors-to-individual-resilience.md]]
-- **Job design interacts with resilience through challenge-hindrance dynamics** -- [[Resources/job-design-and-the-challenge-hindrance-framework-in-individual-resilience.md]]
-- **Theoretical frameworks for organisational-individual resilience interaction** -- [[Resources/theoretical-frameworks-for-organisational-individual-resilience-interaction.md]]
-- **Limitations and contradictions in the evidence base** -- [[Resources/limitations-and-contradictions-in-research-on-organisational-factors-and-resilience.md]]
+- **Leadership modulates resilience through promotion focus and insider identity** -- [Leadership Behaviours as Modulators of Employee Resilience Mechanisms](leadership-behaviours-as-modulators-of-employee-resilience-mechanisms.md)
+- **Organisational climate and culture shape resilience capacity** -- [Organisational Climate and Culture as Resilience Modulators](organisational-climate-and-culture-as-resilience-modulators.md)
+- **Neurobiological pathways link organisational factors to individual resilience** -- [Neurobiological Pathways Linking Organisational Factors to Individual Resilience](neurobiological-pathways-linking-organisational-factors-to-individual-resilience.md)
+- **Job design interacts with resilience through challenge-hindrance dynamics** -- [Job Design and the Challenge-Hindrance Framework in Individual Resilience](job-design-and-the-challenge-hindrance-framework-in-individual-resilience.md)
+- **Theoretical frameworks for organisational-individual resilience interaction** -- [Theoretical Frameworks for Organisational-Individual Resilience Interaction](theoretical-frameworks-for-organisational-individual-resilience-interaction.md)
+- **Limitations and contradictions in the evidence base** -- [Limitations and Contradictions in Research on Organisational Factors and Resilience](limitations-and-contradictions-in-research-on-organisational-factors-and-resilience.md)
 
 ## Confidence Assessment
 
@@ -52,13 +52,13 @@ Fourth, the evidence for organisational-level interventions remains underdevelop
 
 ## Relevant notes
 
-- [[the-job-demands-resources-model-and-workplace-resilience]]
-- [[known-gaps-in-understanding-resilience-mechanisms-in-working-populations]]
-- [[psychological-resilience-mechanisms-in-working-age-population-executive-summary]]
-- [[pastor-theory-positive-appraisal-style-as-the-core-resilience-mechanism]]
-- [[challenge-stressors-build-resilience-while-hindrance-stressors-erode-it]]
-- [[neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation]]
-- [[how-resilience-interventions-improve-employee-wellbeing]]
-- [[affect-regulation-framework-of-psychological-resilience]]
-- [[resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms]]
-- [[variations-in-the-definition-of-psychological-resilience]]
+- [The Job Demands-Resources Model and Workplace Resilience](the-job-demands-resources-model-and-workplace-resilience.md)
+- [Known Gaps in Understanding Resilience Mechanisms in Working Populations](known-gaps-in-understanding-resilience-mechanisms-in-working-populations.md)
+- [Psychological Resilience Mechanisms in Working-Age Population: Executive Summary](psychological-resilience-mechanisms-in-working-age-population-executive-summary.md)
+- [PASTOR Theory: Positive Appraisal Style as the Core Resilience Mechanism](pastor-theory-positive-appraisal-style-as-the-core-resilience-mechanism.md)
+- [Challenge Stressors Build Resilience While Hindrance Stressors Erode It](challenge-stressors-build-resilience-while-hindrance-stressors-erode-it.md)
+- [Neurobiological Mechanisms of Resilience: Prefrontal-Amygdala Circuitry and HPA Axis Regulation](neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation.md)
+- [How Resilience Interventions Improve Employee Wellbeing](how-resilience-interventions-improve-employee-wellbeing.md)
+- [Affect-Regulation Framework of Psychological Resilience](affect-regulation-framework-of-psychological-resilience.md)
+- [Resilience as a Dynamic, Multimodal Process: Integration Across Mechanisms](resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms.md)
+- [Variations in the Definition of Psychological Resilience](variations-in-the-definition-of-psychological-resilience.md)

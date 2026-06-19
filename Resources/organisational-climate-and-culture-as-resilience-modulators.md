@@ -25,9 +25,9 @@ Hollaar et al. (2025) found that only 2 of 24 studies on workplace resilience in
 
 ## Relevant notes
 
-- [[leadership-behaviours-as-modulators-of-employee-resilience-mechanisms]]
-- [[the-job-demands-resources-model-and-workplace-resilience]]
-- [[neurobiological-pathways-linking-organisational-factors-to-individual-resilience]]
-- [[challenge-stressors-build-resilience-while-hindrance-stressors-erode-it]]
-- [[how-resilience-interventions-improve-employee-wellbeing]]
-- [[known-gaps-in-understanding-resilience-mechanisms-in-working-populations]]
+- [Leadership Behaviours as Modulators of Employee Resilience Mechanisms](leadership-behaviours-as-modulators-of-employee-resilience-mechanisms.md)
+- [The Job Demands-Resources Model and Workplace Resilience](the-job-demands-resources-model-and-workplace-resilience.md)
+- [Neurobiological Pathways Linking Organisational Factors to Individual Resilience](neurobiological-pathways-linking-organisational-factors-to-individual-resilience.md)
+- [Challenge Stressors Build Resilience While Hindrance Stressors Erode It](challenge-stressors-build-resilience-while-hindrance-stressors-erode-it.md)
+- [How Resilience Interventions Improve Employee Wellbeing](how-resilience-interventions-improve-employee-wellbeing.md)
+- [Known Gaps in Understanding Resilience Mechanisms in Working Populations](known-gaps-in-understanding-resilience-mechanisms-in-working-populations.md)

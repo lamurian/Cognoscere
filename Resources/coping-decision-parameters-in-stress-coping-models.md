@@ -27,8 +27,8 @@ The asymmetric effect (hindrance penalty > challenge bonus) reflects the well-es
 
 ## Relevant notes
 
-- [[affect-regulation-framework-of-psychological-resilience]]
-- [[neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation]]
-- [[resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms]]
-- [[psychological-resilience-mechanisms-in-working-age-population-executive-summary]]
-- [[agent-architectures-and-decision-making-in-agent-based-simulation]]
+- [Affect-Regulation Framework of Psychological Resilience](affect-regulation-framework-of-psychological-resilience.md)
+- [Neurobiological Mechanisms of Resilience: Prefrontal-Amygdala Circuitry and HPA Axis Regulation](neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation.md)
+- [Resilience as a Dynamic, Multimodal Process: Integration Across Mechanisms](resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms.md)
+- [Psychological Resilience Mechanisms in Working-Age Population: Executive Summary](psychological-resilience-mechanisms-in-working-age-population-executive-summary.md)
+- [Agent Architectures and Decision-Making in Agent-Based Simulation](agent-architectures-and-decision-making-in-agent-based-simulation.md)

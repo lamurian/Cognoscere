@@ -21,7 +21,7 @@ Use `StrictHostKeyChecking yes` for production servers, CI/CD pipelines, or any 
 Never use `StrictHostKeyChecking no` globally. If you must disable it for ephemeral hosts (e.g., cloud instances with rotating IPs), scope it to a narrow Host pattern and combine it with `UserKnownHostsFile /dev/null` to avoid accumulating junk entries.
 
 ## Relevant notes
-- [[how-ssh-works-protocol-key-exchange-and-authentication]]
-- [[ssh-config-host-matching-and-stanza-precedence]]
-- [[digital-homelab-hardening-core-security-practices]]
-- [[proxyjump-for-bastion-hosts-and-jump-boxes]]
+- [How SSH Works: Protocol, Key Exchange, and Authentication](how-ssh-works-protocol-key-exchange-and-authentication.md)
+- [SSH Config Host Matching and Stanza Precedence](ssh-config-host-matching-and-stanza-precedence.md)
+- [Digital Homelab Hardening: Core Security Practices](digital-homelab-hardening-core-security-practices.md)
+- [ProxyJump for Bastion Hosts and Jump Boxes](proxyjump-for-bastion-hosts-and-jump-boxes.md)

@@ -83,7 +83,7 @@ ranef(fit_bayes)$Subject[1:5, , 1]
 
 ## Relevant notes
 
-- [[experimental-design-anova-frequentist-vs-bayesian-comparison]]
-- [[hierarchical-multilevel-models-bayesian-approach]]
-- [[regression-frequentist-vs-bayesian-comparison]]
-- [[model-comparison-frequentist-vs-bayesian-comparison]]
+- [Experimental Design & ANOVA: Frequentist vs Bayesian Comparison](experimental-design-anova-frequentist-vs-bayesian-comparison.md)
+- [Hierarchical / Multilevel Models: Bayesian Approach](hierarchical-multilevel-models-bayesian-approach.md)
+- [Regression: Frequentist vs Bayesian Comparison](regression-frequentist-vs-bayesian-comparison.md)
+- [Model Comparison: Frequentist vs Bayesian Comparison](model-comparison-frequentist-vs-bayesian-comparison.md)

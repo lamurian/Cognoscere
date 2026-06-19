@@ -52,9 +52,9 @@ Accepted abstracts are published in the Conference Book, and the best abstracts 
 
 ## Relevant notes
 
-- [[academic-digital-health-conferences-2026-2027-executive-summary]]
-- [[digital-health-conferences-2026-executive-summary]]
-- [[dmea-2026-connecting-digital-health]]
-- [[apru-global-health-conference-2026]]
-- [[intellihealth-2027-digital-health-conference-amsterdam]]
-- [[ict-and-health-world-conference-2026]]
+- [Academic Digital Health Conferences 2026-2027 Executive Summary](academic-digital-health-conferences-2026-2027-executive-summary.md)
+- [Digital Health Conferences 2026 Executive Summary](digital-health-conferences-2026-executive-summary.md)
+- [DMEA 2026 - Connecting Digital Health](dmea-2026-connecting-digital-health.md)
+- [APRU Global Health Conference 2026](apru-global-health-conference-2026.md)
+- [IntelliHealth 2027 - Digital Health Conference Amsterdam](intellihealth-2027-digital-health-conference-amsterdam.md)
+- [ICT&health World Conference 2026](ict-and-health-world-conference-2026.md)

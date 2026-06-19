@@ -33,10 +33,10 @@ The moderate magnitude of this correlation (typically r = 0.40-0.60) supports tr
 
 ## Relevant notes
 
-- [[pss-10-and-resilience-empirical-correlation]]
-- [[correlation-pairs-validation-literature-based-executive-summary]]
-- [[current-stress-and-resources-empirical-correlation]]
-- [[current-stress-and-affect-empirical-correlation]]
-- [[pss-10-item-level-descriptive-statistics]]
-- [[daily-stress-event-norms-experience-sampling-reference]]
-- [[pss-10-and-resilience-meta-analytic-correlation]]
+- [PSS-10 and Resilience: Empirical Correlation](pss-10-and-resilience-empirical-correlation.md)
+- [Correlation Pairs Validation: Literature-Based Executive Summary](correlation-pairs-validation-literature-based-executive-summary.md)
+- [Current Stress and Resources: Empirical Correlation](current-stress-and-resources-empirical-correlation.md)
+- [Current Stress and Affect: Empirical Correlation](current-stress-and-affect-empirical-correlation.md)
+- [PSS-10 Item-Level Descriptive Statistics](pss-10-item-level-descriptive-statistics.md)
+- [Daily Stress Event Norms: Experience Sampling Reference](daily-stress-event-norms-experience-sampling-reference.md)
+- [PSS-10 and Resilience: Meta-Analytic Correlation](pss-10-and-resilience-meta-analytic-correlation.md)

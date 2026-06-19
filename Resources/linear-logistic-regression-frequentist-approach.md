@@ -102,7 +102,7 @@ Python: `from sklearn.linear_model import Ridge, Lasso`
 
 ## Relevant notes
 
-- [[linear-logistic-regression-bayesian-approach]]
-- [[linear-algebra-essentials-for-statistics]]
-- [[regression-frequentist-vs-bayesian-comparison]]
-- [[frequentist-vs-bayesian-philosophy]]
+- [Linear & Logistic Regression: Bayesian Approach](linear-logistic-regression-bayesian-approach.md)
+- [Linear Algebra Essentials for Statistics](linear-algebra-essentials-for-statistics.md)
+- [Regression: Frequentist vs Bayesian Comparison](regression-frequentist-vs-bayesian-comparison.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)

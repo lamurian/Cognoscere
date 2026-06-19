@@ -63,5 +63,5 @@ Nevacloud has the strongest price-to-performance ratio among budget Indonesia VP
 
 ## Relevant notes
 
-- [[nevacloud-nevalite-nvme-vps-cheapest-indonesia-based-vps]]
-- [[cheapest-paid-vps-indonesia-executive-summary-and-recommendation-for-saas-production]]
+- [Nevacloud Nevalite NVMe VPS — Cheapest Indonesia-Based VPS](nevacloud-nevalite-nvme-vps-cheapest-indonesia-based-vps.md)
+- [Cheapest Paid VPS Indonesia — Executive Summary and Recommendation for SaaS Production](cheapest-paid-vps-indonesia-executive-summary-and-recommendation-for-saas-production.md)

@@ -41,8 +41,8 @@ In **public-key authentication**, the client sends a key ID. The server looks up
 - [@jones2022] — SSH handshake steps (ECDH, forward secrecy, key derivation)
 
 ## Relevant notes
-- [[digital-homelab-hardening-core-security-practices]] — practical SSH hardening on top of the protocol
-- [[network-infrastructure-for-budget-homelab]] — network layer SSH depends on
-- [[supertokens-open-source-authentication-architecture]] — authentication challenge-response in a different domain
-- [[home-wi-fi-security-what-actually-works]] — network security at a complementary layer
-- [[self-hosted-software-stack-for-off-grid-resilience]] — self-hosting context where SSH is a core tool
+- [Digital Homelab Hardening: Core Security Practices](digital-homelab-hardening-core-security-practices.md) — practical SSH hardening on top of the protocol
+- [Network Infrastructure for Budget Homelab](network-infrastructure-for-budget-homelab.md) — network layer SSH depends on
+- [SuperTokens: Open-Source Authentication Architecture](supertokens-open-source-authentication-architecture.md) — authentication challenge-response in a different domain
+- [Home Wi-Fi Security: What Actually Works](home-wi-fi-security-what-actually-works.md) — network security at a complementary layer
+- [Self-Hosted Software Stack for Off-Grid Resilience](self-hosted-software-stack-for-off-grid-resilience.md) — self-hosting context where SSH is a core tool

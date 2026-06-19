@@ -20,10 +20,10 @@ The modest effect size (r approx 0.20-0.40) is theoretically important. Perceive
 
 ## Sources
 
-- [[PSS-10 vs Resilience — negative correlation]]
-- [[PSS-10 internal structure — self-efficacy and helplessness as challenge and hindrance dimensions]]
-- [[Resources vs Stress — social support buffers perceived stress]]
-- [[Stress Threshold and Appraisal Parameters]]
-- [[Stress Generation and Poisson Event Frequency Parameters]]
+- [PSS-10 vs Resilience — negative correlation](pss-10-vs-resilience-negative-correlation.md)
+- [PSS-10 internal structure — self-efficacy and helplessness as challenge and hindrance dimensions](pss-10-internal-structure-self-efficacy-and-helplessness-as-challenge-and-hindrance-dimensions.md)
+- [Resources vs Stress — social support buffers perceived stress](resources-vs-stress-social-support-buffers-perceived-stress.md)
+- [Stress Threshold and Appraisal Parameters](stress-threshold-and-appraisal-parameters.md)
+- [Stress Generation and Poisson Event Frequency Parameters](stress-generation-and-poisson-event-frequency-parameters.md)
 - [@cohen1983] — PSS-14 original validation
 - [@cohen1988] — US national norms

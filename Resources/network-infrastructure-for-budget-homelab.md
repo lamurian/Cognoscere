@@ -50,8 +50,8 @@ Network segmentation via VLANs reduces attack surface, extending the life of the
 
 ## Relevant notes
 
-- [[budget-digital-homelab-for-sustainable-living]]
-- [[solar-power-system-for-off-grid-homelab-in-indonesia]]
-- [[major-nationwide-programs-soeharto-vs-prabowo-indonesia]]
-- [[storage-architecture-for-homelab]]
-- [[sustainable-homelab-design-and-optimization]]
+- [Budget Digital Homelab for Sustainable Living](../Areas/budget-digital-homelab-for-sustainable-living.md)
+- [Solar Power System for Off-Grid Homelab in Indonesia](solar-power-system-for-off-grid-homelab-in-indonesia.md)
+- [Major Nationwide Programs: Soeharto vs Prabowo Indonesia](major-nationwide-programs-soeharto-vs-prabowo-indonesia.md)
+- [Storage Architecture for Homelab](storage-architecture-for-homelab.md)
+- [Sustainable Homelab: Design and Optimization](sustainable-homelab-design-and-optimization.md)

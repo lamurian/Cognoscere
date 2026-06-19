@@ -18,8 +18,8 @@ Findings showed cross-sectional and longitudinal relationships between perceived
 
 ## Relevant notes
 
-- [[resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms]]
-- [[neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation]]
-- [[affect-regulation-framework-of-psychological-resilience]]
-- [[pastor-theory-positive-appraisal-style-as-the-core-resilience-mechanism]]
-- [[frequentist-vs-bayesian-philosophy]]
+- [Resilience as a Dynamic, Multimodal Process: Integration Across Mechanisms](resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms.md)
+- [Neurobiological Mechanisms of Resilience: Prefrontal-Amygdala Circuitry and HPA Axis Regulation](neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation.md)
+- [Affect-Regulation Framework of Psychological Resilience](affect-regulation-framework-of-psychological-resilience.md)
+- [PASTOR Theory: Positive Appraisal Style as the Core Resilience Mechanism](pastor-theory-positive-appraisal-style-as-the-core-resilience-mechanism.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)

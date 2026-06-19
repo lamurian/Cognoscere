@@ -23,8 +23,8 @@ Fifth, organisational-level factors (leadership quality, organisational culture,
 
 ## Relevant notes
 
-- [[cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary]]
-- [[choosing-the-effect-in-cost-effectiveness-analysis-outcome-rationale]]
-- [[the-job-demands-resources-model-and-workplace-resilience]]
-- [[variations-in-the-definition-of-psychological-resilience]]
-- [[mmpi-2-and-sexual-orientation-measurement-limitations-and-accuracy]]
+- [Cost-Effective Organisation-Based Interventions for Psychological Resilience: Executive Summary](cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary.md)
+- [Choosing the 'Effect' in Cost-Effectiveness Analysis: Outcome Rationale](choosing-the-effect-in-cost-effectiveness-analysis-outcome-rationale.md)
+- [The Job Demands-Resources Model and Workplace Resilience](the-job-demands-resources-model-and-workplace-resilience.md)
+- [Variations in the Definition of Psychological Resilience](variations-in-the-definition-of-psychological-resilience.md)
+- [MMPI-2 and Sexual Orientation Measurement: Limitations and Accuracy](mmpi-2-and-sexual-orientation-measurement-limitations-and-accuracy.md)

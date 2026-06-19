@@ -88,9 +88,9 @@ Best choice if you need generous storage (60 GB) at the entry level and value lo
 
 ## Relevant notes
 
-- [[nevacloud-nevalite-nvme-vps-cheapest-indonesia-based-vps]]
-- [[herza-cloud-vps-indonesia]]
-- [[domainesia-cloud-vps-lite-indonesia]]
-- [[rumahweb-vps-murah-indonesia]]
-- [[host-id-cloud-vps-indonesia]]
-- [[cheapest-paid-vps-indonesia-executive-summary]]
+- [Nevacloud Nevalite NVMe VPS — Cheapest Indonesia-Based VPS](nevacloud-nevalite-nvme-vps-cheapest-indonesia-based-vps.md)
+- [Herza Cloud VPS Indonesia — Budget VPS with Multiple Data Center Zones](herza-cloud-vps-indonesia-budget-vps-with-multiple-data-center-zones.md)
+- [DomaiNesia Cloud VPS Lite Indonesia — NVMe at Rp48,000/month](domainesia-cloud-vps-lite-indonesia-nvme-at-rp48-000-month.md)
+- [Rumahweb VPS Murah Indonesia — 512 MB Plan at Rp50,000/month](rumahweb-vps-murah-indonesia-512-mb-plan-at-rp50-000-month.md)
+- [Host.ID Cloud VPS Indonesia — NVMe with Free Backup at Rp75,000/month](host-id-cloud-vps-indonesia-nvme-with-free-backup-at-rp75-000-month.md)
+- [Cheapest Paid VPS Indonesia — Executive Summary and Recommendation for SaaS Production](cheapest-paid-vps-indonesia-executive-summary-and-recommendation-for-saas-production.md)

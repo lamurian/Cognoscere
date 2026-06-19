@@ -140,7 +140,7 @@ print(az.ess(trace))
 
 ## Relevant notes
 
-- [[frequentist-vs-bayesian-philosophy]]
-- [[linear-algebra-essentials-for-statistics]]
-- [[descriptive-statistics-data-visualisation]]
-- [[bayesian-inference]]
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)
+- [Linear Algebra Essentials for Statistics](linear-algebra-essentials-for-statistics.md)
+- [Descriptive Statistics & Data Visualisation](descriptive-statistics-data-visualisation.md)
+- [Bayesian Inference](bayesian-inference.md)

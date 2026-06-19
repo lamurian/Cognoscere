@@ -38,11 +38,11 @@ The funnel plot is the universal standard required by Cochrane and PRISMA [@ster
 - Asymmetry can indicate publication bias, but also heterogeneity, confounding, or metric choice.
 - Always complement with a formal test. Use contour-enhanced versions to distinguish causes.
 - Cochrane and PRISMA require it. Use with 10+ studies minimum.
-- See also: [[doi-plot-and-lfk-index-for-publication-bias]] (alternative with built-in asymmetry metric).
+- See also: [Doi Plot and LFK Index for Publication Bias](doi-plot-and-lfk-index-for-publication-bias.md) (alternative with built-in asymmetry metric).
 
 ## Related Notes
 
-- [[egger-s-regression-test-for-funnel-plot-asymmetry]]
-- [[doi-plot-and-lfk-index-for-publication-bias]]
-- [[funnel-plot-versus-doi-plot-comparison-of-visual-diagnostics]]
-- [[executive-summary-comparing-publication-bias-detection-and-correction-methods]]
+- [Egger's Regression Test for Funnel Plot Asymmetry](egger-s-regression-test-for-funnel-plot-asymmetry.md)
+- [Doi Plot and LFK Index for Publication Bias](doi-plot-and-lfk-index-for-publication-bias.md)
+- [Funnel Plot Versus Doi Plot: Comparison of Visual Diagnostics](funnel-plot-versus-doi-plot-comparison-of-visual-diagnostics.md)
+- [Executive Summary: Comparing Publication Bias Detection and Correction Methods](executive-summary-comparing-publication-bias-detection-and-correction-methods.md)

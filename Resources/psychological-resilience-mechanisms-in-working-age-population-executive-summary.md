@@ -23,15 +23,15 @@ An integrative affect-regulation framework combines stress-and-coping with emoti
 
 ## Key Findings
 
-- **Positive appraisal style as core mechanism** — [[Resources/pastor-theory-positive-appraisal-style-as-the-core-resilience-mechanism.md]]
-- **Affect-regulation framework integrating stress and emotion approaches** — [[Resources/affect-regulation-framework-of-psychological-resilience.md]]
-- **Challenge stressors build, hindrance stressors erode resilience** — [[Resources/challenge-stressors-build-resilience-while-hindrance-stressors-erode-it.md]]
-- **Optimism and self-compassion are key intervention mediators** — [[Resources/optimism-and-self-compassion-as-key-mediators-of-resilience-in-working-adults.md]]
-- **Positive interpretation bias predicts resilience longitudinally** — [[Resources/positive-interpretation-bias-and-emotion-regulation-as-cognitive-mechanisms-of-resilience.md]]
-- **Prefrontal-amygdala circuitry and HPA axis as neurobiological substrates** — [[Resources/neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation.md]]
-- **JD-R model positions resilience as a buffering personal resource** — [[Resources/the-job-demands-resources-model-and-workplace-resilience.md]]
-- **Resilience as a dynamic, multimodal process** — [[Resources/resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms.md]]
-- **Known gaps in understanding resilience mechanisms** — [[Resources/known-gaps-in-understanding-resilience-mechanisms-in-working-populations.md]]
+- **Positive appraisal style as core mechanism** — [PASTOR Theory: Positive Appraisal Style as the Core Resilience Mechanism](pastor-theory-positive-appraisal-style-as-the-core-resilience-mechanism.md)
+- **Affect-regulation framework integrating stress and emotion approaches** — [Affect-Regulation Framework of Psychological Resilience](affect-regulation-framework-of-psychological-resilience.md)
+- **Challenge stressors build, hindrance stressors erode resilience** — [Challenge Stressors Build Resilience While Hindrance Stressors Erode It](challenge-stressors-build-resilience-while-hindrance-stressors-erode-it.md)
+- **Optimism and self-compassion are key intervention mediators** — [Optimism and Self-Compassion as Key Mediators of Resilience in Working Adults](optimism-and-self-compassion-as-key-mediators-of-resilience-in-working-adults.md)
+- **Positive interpretation bias predicts resilience longitudinally** — [Positive Interpretation Bias and Emotion Regulation as Cognitive Mechanisms of Resilience](positive-interpretation-bias-and-emotion-regulation-as-cognitive-mechanisms-of-resilience.md)
+- **Prefrontal-amygdala circuitry and HPA axis as neurobiological substrates** — [Neurobiological Mechanisms of Resilience: Prefrontal-Amygdala Circuitry and HPA Axis Regulation](neurobiological-mechanisms-of-resilience-prefrontal-amygdala-circuitry-and-hpa-axis-regulation.md)
+- **JD-R model positions resilience as a buffering personal resource** — [The Job Demands-Resources Model and Workplace Resilience](the-job-demands-resources-model-and-workplace-resilience.md)
+- **Resilience as a dynamic, multimodal process** — [Resilience as a Dynamic, Multimodal Process: Integration Across Mechanisms](resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms.md)
+- **Known gaps in understanding resilience mechanisms** — [Known Gaps in Understanding Resilience Mechanisms in Working Populations](known-gaps-in-understanding-resilience-mechanisms-in-working-populations.md)
 
 ## Confidence Assessment
 
@@ -51,7 +51,7 @@ An integrative affect-regulation framework combines stress-and-coping with emoti
 
 ## Relevant notes
 
-- [[variations-in-the-definition-of-psychological-resilience]]
-- [[how-resilience-interventions-improve-employee-wellbeing]]
-- [[cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary]]
-- [[drivers-of-cost-effectiveness-in-workplace-resilience-interventions]]
+- [Variations in the Definition of Psychological Resilience](variations-in-the-definition-of-psychological-resilience.md)
+- [How Resilience Interventions Improve Employee Wellbeing](how-resilience-interventions-improve-employee-wellbeing.md)
+- [Cost-Effective Organisation-Based Interventions for Psychological Resilience: Executive Summary](cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary.md)
+- [Drivers of Cost-Effectiveness in Workplace Resilience Interventions](drivers-of-cost-effectiveness-in-workplace-resilience-interventions.md)

@@ -27,8 +27,8 @@ Appraised stress computation uses alpha parameters: alpha_challenge=0.8 reduces 
 
 ## Relevant notes
 
-- [[coping-decision-parameters-in-stress-coping-models]]
-- [[resilience-dynamics-and-homeostatic-regulation-parameters]]
-- [[pss-10-item-parameters-and-dynamic-response]]
-- [[challenge-hindrance-appraisal-framework-parameters]]
-- [[psychological-resilience-mechanisms-in-working-age-population-executive-summary]]
+- [Coping Decision Parameters in Stress-Coping Models](coping-decision-parameters-in-stress-coping-models.md)
+- [Resilience Dynamics and Homeostatic Regulation Parameters](resilience-dynamics-and-homeostatic-regulation-parameters.md)
+- [PSS-10 Item Parameters and Dynamic Response](pss-10-item-parameters-and-dynamic-response.md)
+- [Challenge-Hindrance Appraisal Framework Parameters](challenge-hindrance-appraisal-framework-parameters.md)
+- [Psychological Resilience Mechanisms in Working-Age Population: Executive Summary](psychological-resilience-mechanisms-in-working-age-population-executive-summary.md)

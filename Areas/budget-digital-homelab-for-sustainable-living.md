@@ -19,12 +19,12 @@ This document series covers the complete build of a budget digital homelab desig
 
 ## What Each Atomic Note Covers
 
-- **[[Server Hardware Second-hand Mini PCs|Server Hardware]]**: Selecting used mini PCs (ThinkCentre M720q/M920q, HP EliteDesk 800 G4/G5, Dell OptiPlex Micro). Power consumption (10-25W idle), price ($50-150), rationale for each component.
-- **[[Network Infrastructure for Budget Homelab|Network Infrastructure]]**: Router with OpenWrt, managed switch, access point. Power draw (5-20W), cost ($30-100), VLAN segmentation for security.
-- **[[Storage Architecture for Homelab|Storage Architecture]]**: Boot SSD + data HDD configuration. Power draw (3-10W), cost ($20-60), backup strategy with remote sync.
-- **[[Solar Power System for Off-Grid Homelab in Indonesia|Solar Power System]]**: Panel sizing using NASA POWER solar insolation data for Jakarta (4.64 kWh/m²/day average). Required panels (~1.6 m²), LiFePO4 battery (2.5 kWh), charge controller, inverter. Total system cost ($370-610).
-- **[[Self-Hosted Software Stack for Off-Grid Resilience|Self-Hosted Software Stack]]**: Essential services — Vaultwarden, SearXNG, Home Assistant, Mosquitto MQTT, Tailscale, Gitea, Syncthing, Grafana + Prometheus. All run as Docker containers on Alpine Linux.
-- **[[Sustainable Homelab Design and Optimization|Sustainable Design]]**: Power optimization strategies, hardware lifecycle management, cooling without AC, and e-waste reduction.
+- **[Server Hardware](../Resources/server-hardware-second-hand-mini-pcs-for-homelab.md)**: Selecting used mini PCs (ThinkCentre M720q/M920q, HP EliteDesk 800 G4/G5, Dell OptiPlex Micro). Power consumption (10-25W idle), price ($50-150), rationale for each component.
+- **[Network Infrastructure](../Resources/network-infrastructure-for-budget-homelab.md)**: Router with OpenWrt, managed switch, access point. Power draw (5-20W), cost ($30-100), VLAN segmentation for security.
+- **[Storage Architecture](../Resources/storage-architecture-for-homelab.md)**: Boot SSD + data HDD configuration. Power draw (3-10W), cost ($20-60), backup strategy with remote sync.
+- **[Solar Power System](../Resources/solar-power-system-for-off-grid-homelab-in-indonesia.md)**: Panel sizing using NASA POWER solar insolation data for Jakarta (4.64 kWh/m²/day average). Required panels (~1.6 m²), LiFePO4 battery (2.5 kWh), charge controller, inverter. Total system cost ($370-610).
+- **[Self-Hosted Software Stack](../Resources/self-hosted-software-stack-for-off-grid-resilience.md)**: Essential services — Vaultwarden, SearXNG, Home Assistant, Mosquitto MQTT, Tailscale, Gitea, Syncthing, Grafana + Prometheus. All run as Docker containers on Alpine Linux.
+- **[Sustainable Design](../Resources/sustainable-homelab-design-and-optimization.md)**: Power optimization strategies, hardware lifecycle management, cooling without AC, and e-waste reduction.
 
 ## System Power Budget Summary
 
@@ -52,8 +52,8 @@ A self-hosted digital ecosystem that runs entirely on solar power, reduces depen
 
 ## Relevant notes
 
-- [[global-trajectories-and-current-impact-of-solarpunk]]
-- [[major-nationwide-programs-soeharto-vs-prabowo-indonesia]]
-- [[smart-village-indonesia-the-6-pillar-framework]]
-- [[solarpunk-in-the-european-union]]
-- [[digital-transformation-for-rural-indonesia]]
+- [Global Trajectories and Current Impact of Solarpunk](../Resources/global-trajectories-and-current-impact-of-solarpunk.md)
+- [Major Nationwide Programs: Soeharto vs Prabowo Indonesia](../Resources/major-nationwide-programs-soeharto-vs-prabowo-indonesia.md)
+- [Smart Village Indonesia: The 6-Pillar Framework](../Resources/smart-village-indonesia-the-6-pillar-framework.md)
+- [Solarpunk in the European Union](../Resources/solarpunk-in-the-european-union.md)
+- [Digital Transformation for Rural Indonesia](../Resources/digital-transformation-for-rural-indonesia.md)

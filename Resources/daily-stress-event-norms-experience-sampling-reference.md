@@ -25,8 +25,8 @@ For simulation: stress event controllability ~0.4-0.6 (SD ~0.2-0.3) and overload
 
 ## Relevant notes
 
-- [[resource-regeneration-rates-cor-recovery-reference]]
-- [[pss-10-item-level-descriptive-statistics]]
-- [[affect-distribution-norms-panas-empirical-reference]]
-- [[social-interaction-frequency-diary-study-reference]]
-- [[resilience-distribution-norms-cd-risc-empirical-reference]]
+- [Resource Regeneration Rates: COR Recovery Reference](resource-regeneration-rates-cor-recovery-reference.md)
+- [PSS-10 Item-Level Descriptive Statistics](pss-10-item-level-descriptive-statistics.md)
+- [Affect Distribution Norms: PANAS Empirical Reference](affect-distribution-norms-panas-empirical-reference.md)
+- [Social Interaction Frequency: Diary Study Reference](social-interaction-frequency-diary-study-reference.md)
+- [Resilience Distribution Norms: CD-RISC Empirical Reference](resilience-distribution-norms-cd-risc-empirical-reference.md)

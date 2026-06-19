@@ -61,18 +61,18 @@ From the experience of solarpunk and eco-village initiatives integrating with In
 
 ## Related Notes
 
-- [[village-modernization-in-indonesia-strategic-overview]]
-- [[dana-desa-indonesia-s-village-fund-impact]]
-- [[solarpunk-in-indonesia]]
-- [[food-forest-and-permaculture-guide-for-indonesia]]
-- [[women-s-economic-inclusion-in-rural-indonesia]]
+- [Village Modernization in Indonesia: Strategic Overview](village-modernization-in-indonesia-strategic-overview.md)
+- [Dana Desa: Indonesia's Village Fund Impact](dana-desa-indonesia-s-village-fund-impact.md)
+- [Solarpunk in Indonesia](solarpunk-in-indonesia.md)
+- [Food Forest and Permaculture Guide for Indonesia](food-forest-and-permaculture-guide-for-indonesia.md)
+- [Women's Economic Inclusion in Rural Indonesia](women-s-economic-inclusion-in-rural-indonesia.md)
 
 ## Relevant notes
 
-- [[bumdes-and-agricultural-value-chain-upgrading]]
-- [[food-forest-and-permaculture-guide-for-indonesia]]
-- [[solarpunk-in-indonesia]]
-- [[solarpunk-village-indonesia-assimilation-paths-with-locals]]
-- [[solarpunk-village-indonesia-local-beliefs-stigma-towards-outsiders]]
-- [[solarpunk-village-indonesia-potential-locations]]
-- [[village-modernization-in-indonesia-strategic-overview]]
+- [BUMDes and Agricultural Value Chain Upgrading](bumdes-and-agricultural-value-chain-upgrading.md)
+- [Food Forest and Permaculture Guide for Indonesia](food-forest-and-permaculture-guide-for-indonesia.md)
+- [Solarpunk in Indonesia](solarpunk-in-indonesia.md)
+- [Solarpunk Village Indonesia: Assimilation Paths with Locals](../Projects/solarpunk-village-indonesia-assimilation-paths-with-locals.md)
+- [Solarpunk Village Indonesia: Local Beliefs & Stigma Towards Outsiders](../Projects/solarpunk-village-indonesia-local-beliefs-stigma-towards-outsiders.md)
+- [Solarpunk Village Indonesia: Potential Locations](../Projects/solarpunk-village-indonesia-potential-locations.md)
+- [Village Modernization in Indonesia: Strategic Overview](village-modernization-in-indonesia-strategic-overview.md)

@@ -20,11 +20,11 @@ Within the challenge-hindrance framework [@cavanaugh2000; @searle2015], people w
 
 ## Sources
 
-- [[Coping vs Hindrance — maladaptive coping linked to lower resilience and higher stress]]
-- [[PSS-10 internal structure — self-efficacy and helplessness as challenge and hindrance dimensions]]
-- [[PSS-10 vs Resilience — negative correlation]]
-- [[Challenge-Hindrance Stress Appraisal and Coping Pipeline]]
-- [[Coping Decision Parameters in Stress-Coping Models]]
+- [Coping vs Hindrance — maladaptive coping linked to lower resilience and higher stress](coping-vs-hindrance-maladaptive-coping-linked-to-lower-resilience-and-higher-stress.md)
+- [PSS-10 internal structure — self-efficacy and helplessness as challenge and hindrance dimensions](pss-10-internal-structure-self-efficacy-and-helplessness-as-challenge-and-hindrance-dimensions.md)
+- [PSS-10 vs Resilience — negative correlation](pss-10-vs-resilience-negative-correlation.md)
+- [Challenge-Hindrance Stress Appraisal and Coping Pipeline](challenge-hindrance-stress-appraisal-and-coping-pipeline.md)
+- [Coping Decision Parameters in Stress-Coping Models](coping-decision-parameters-in-stress-coping-models.md)
 - [@thomas2020] — reappraisal, BRS, PSS-10
 - [@chmitorz2018] — BRS validation
 - [@cavanaugh2000] — challenge-hindrance model

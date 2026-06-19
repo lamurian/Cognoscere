@@ -37,7 +37,7 @@ Use a single agent for isolated modules and prototyping. Use sub-agent delegatio
 
 ## Relevant notes
 
-- [[spec-driven-context-driven-tdd-workflow-overview]]
-- [[least-obstructive-workflow-principles]]
-- [[sdd-four-phase-workflow-for-pi-agents]]
-- [[context-engineering-for-pi-agents]]
+- [Spec-Driven Context-Driven TDD Workflow for AI Coding Agents](spec-driven-context-driven-tdd-workflow-for-ai-coding-agents.md)
+- [Least-Obstructive Workflow Principles](least-obstructive-workflow-principles.md)
+- [SDD Four-Phase Workflow for pi Agents](../Projects/sdd-four-phase-workflow-for-pi-agents.md)
+- [Context Engineering for pi Agents](context-engineering-for-pi-agents.md)

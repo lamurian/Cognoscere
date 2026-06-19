@@ -40,18 +40,18 @@ For a typical meta-analysis: (1) start with a **funnel plot** and **Egger's test
 
 ## Related Notes
 
-- [[funnel-plot-for-publication-bias-detection]]
-- [[doi-plot-and-lfk-index-for-publication-bias]]
-- [[eggers-regression-test-for-funnel-plot-asymmetry]]
-- [[pet-peese-for-publication-bias-correction]]
-- [[copas-selection-model-for-publication-bias]]
-- [[trim-and-fill-for-estimating-missing-studies]]
-- [[begg-and-mazumdars-rank-correlation-test]]
-- [[selection-models-hedges-and-vevea-hedges-weight-function-approach]]
-- [[p-curve-and-p-uniformstar-for-detecting-evidential-value]]
-- [[fail-safe-n-and-orwins-fail-safe-n]]
-- [[r-cker-s-limit-meta-analysis-for-small-study-effects]]
-- [[harbord-and-macaskill-tests-for-binary-outcome-meta-analysis]]
-- [[synthesis-reporting-communicating-statistical-findings]]
-- [[limitations-and-contradictions-in-research-on-organisational-factors-and-resilience]]
-- [[roadmap-learning-statistics-from-scratch-frequentist-and-bayesian-perspectives]]
+- [Funnel Plot for Publication Bias Detection](funnel-plot-for-publication-bias-detection.md)
+- [Doi Plot and LFK Index for Publication Bias](doi-plot-and-lfk-index-for-publication-bias.md)
+- [Egger's Regression Test for Funnel Plot Asymmetry](egger-s-regression-test-for-funnel-plot-asymmetry.md)
+- [PET-PEESE for Publication Bias Correction](pet-peese-for-publication-bias-correction.md)
+- [Copas Selection Model for Publication Bias](copas-selection-model-for-publication-bias.md)
+- [Trim and Fill for Estimating Missing Studies](trim-and-fill-for-estimating-missing-studies.md)
+- [Begg and Mazumdar's Rank Correlation Test](begg-and-mazumdar-s-rank-correlation-test.md)
+- [Selection Models: Hedges and Vevea-Hedges Weight-Function Approach](selection-models-hedges-and-vevea-hedges-weight-function-approach.md)
+- [P-Curve and P-Uniform* for Detecting Evidential Value](p-curve-and-p-uniform-for-detecting-evidential-value.md)
+- [Fail-Safe N and Orwin's Fail-Safe N](fail-safe-n-and-orwin-s-fail-safe-n.md)
+- [Rücker's Limit Meta-Analysis for Small-Study Effects](r-cker-s-limit-meta-analysis-for-small-study-effects.md)
+- [Harbord and Macaskill Tests for Binary Outcome Meta-Analysis](harbord-and-macaskill-tests-for-binary-outcome-meta-analysis.md)
+- [Synthesis & Reporting: Communicating Statistical Findings](synthesis-reporting-communicating-statistical-findings.md)
+- [Limitations and Contradictions in Research on Organisational Factors and Resilience](limitations-and-contradictions-in-research-on-organisational-factors-and-resilience.md)
+- [Roadmap: Learning Statistics from Scratch — Frequentist and Bayesian Perspectives](../Projects/roadmap-learning-statistics-from-scratch-frequentist-and-bayesian-perspectives.md)

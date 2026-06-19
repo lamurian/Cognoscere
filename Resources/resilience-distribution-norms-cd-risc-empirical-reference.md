@@ -22,13 +22,13 @@ For simulation: a population mean of ~0.7-0.8 on [0,1] with slight left skew is 
 - [@nartovabochaver2021] Nartova-Bochaver, S., Korneev, A., & Bochaver, K. (2021). Validation of the 10-Item Connor-Davidson Resilience Scale: The case of Russian youth. Frontiers in Psychiatry, 12, 611026.
 
 ## Existing Notes
-- [[pss-10-and-resilience-meta-analytic-correlation]]
-- [[psychological-resources-definition-and-core-constructs]]
+- [PSS-10 and Resilience: Meta-Analytic Correlation](pss-10-and-resilience-meta-analytic-correlation.md)
+- [Psychological Resources — Definition and Core Constructs](psychological-resources-definition-and-core-constructs.md)
 
 ## Relevant notes
 
-- [[resource-distribution-norms-cor-theory-empirical-reference]]
-- [[resilience-and-psychological-resources-empirical-correlations]]
-- [[pss-10-and-resilience-meta-analytic-correlation]]
-- [[affect-distribution-norms-panas-empirical-reference]]
-- [[correlation-between-psychological-resources-and-resilience-empirical-range]]
+- [Resource Distribution Norms: COR Theory Empirical Reference](resource-distribution-norms-cor-theory-empirical-reference.md)
+- [Resilience and Psychological Resources: Empirical Correlations](resilience-and-psychological-resources-empirical-correlations.md)
+- [PSS-10 and Resilience: Meta-Analytic Correlation](pss-10-and-resilience-meta-analytic-correlation.md)
+- [Affect Distribution Norms: PANAS Empirical Reference](affect-distribution-norms-panas-empirical-reference.md)
+- [Correlation Between Psychological Resources and Resilience — Empirical Range](correlation-between-psychological-resources-and-resilience-empirical-range.md)

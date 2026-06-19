@@ -30,10 +30,10 @@ AI coding agent orchestration has become a recognized product category in 2026, 
 
 ## Relevant notes
 
-- [[paseo-cross-device-coding-agent-orchestration-executive-summary]]
-- [[paseo-vs-alternative-free-open-source-agent-orchestrators]]
-- [[paseo-architecture-daemon-based-cross-device-agent-orchestration]]
-- [[evaluating-guardrail-effectiveness-benchmarks-and-metrics]]
-- [[state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering]]
-- [[paseo-workflow-pr-revision-cycle-with-agents]]
-- [[paseo-workflow-tdd-iteration-loop-with-agents]]
+- [Paseo: Cross-Device Coding Agent Orchestration — Executive Summary](paseo-cross-device-coding-agent-orchestration-executive-summary.md)
+- [Paseo vs Alternative Free Open Source Agent Orchestrators](paseo-vs-alternative-free-open-source-agent-orchestrators.md)
+- [Paseo Architecture: Daemon-Based Cross-Device Agent Orchestration](paseo-architecture-daemon-based-cross-device-agent-orchestration.md)
+- [Evaluating Guardrail Effectiveness: Benchmarks and Metrics](evaluating-guardrail-effectiveness-benchmarks-and-metrics.md)
+- [State of the Art in Guardrail Design for LLM Orchestration in Software Engineering](state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering.md)
+- [Paseo Workflow: PR Revision Cycle with Agents](paseo-workflow-pr-revision-cycle-with-agents.md)
+- [Paseo Workflow: TDD Iteration Loop with Agents](paseo-workflow-tdd-iteration-loop-with-agents.md)

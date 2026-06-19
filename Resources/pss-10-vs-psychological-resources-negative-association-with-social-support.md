@@ -20,9 +20,9 @@ This aligns with Lazarus and Folkman's stress-and-coping theory. Social support 
 
 ## Sources
 
-- [[Resources vs Stress — social support buffers perceived stress]]
-- [[Affect vs Resources — positive affect associated with stronger perceived social support]]
-- [[Social Interaction vs Resilience — social support positively correlates with resilience]]
-- [[Protective Factor Efficacy and Allocation Parameters]]
+- [Resources vs Stress — social support buffers perceived stress](resources-vs-stress-social-support-buffers-perceived-stress.md)
+- [Affect vs Resources — positive affect associated with stronger perceived social support](affect-vs-resources-positive-affect-associated-with-stronger-perceived-social-support.md)
+- [Social Interaction vs Resilience — social support positively correlates with resilience](social-interaction-vs-resilience-social-support-positively-correlates-with-resilience.md)
+- [Protective Factor Efficacy and Allocation Parameters](protective-factor-efficacy-and-allocation-parameters.md)
 - [@acoba2024] — mediation analysis
 - [@zimet1988] — MSPSS original

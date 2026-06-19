@@ -27,8 +27,8 @@ Pi's session lifecycle hooks provide guard points before and after key transitio
 
 ## Relevant notes
 
-- [[approaches-to-guardrail-design-in-pi-agent-for-llm-aided-software-engineering]]
-- [[layered-guardrail-architecture-with-pi-extensions]]
-- [[tool-override-wrapping-built-ins-with-guard-layers]]
-- [[tool-call-interception-runtime-gating-in-pi-agent]]
-- [[sandboxing-and-execution-isolation-in-pi-agent]]
+- [Approaches to Guardrail Design in Pi Agent for LLM-Aided Software Engineering](approaches-to-guardrail-design-in-pi-agent-for-llm-aided-software-engineering.md)
+- [Layered Guardrail Architecture with Pi Extensions](layered-guardrail-architecture-with-pi-extensions.md)
+- [Tool Override: Wrapping Built-Ins with Guard Layers](tool-override-wrapping-built-ins-with-guard-layers.md)
+- [Tool Call Interception: Runtime Gating in Pi Agent](tool-call-interception-runtime-gating-in-pi-agent.md)
+- [Sandboxing and Execution Isolation in Pi Agent](sandboxing-and-execution-isolation-in-pi-agent.md)

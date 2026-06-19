@@ -27,8 +27,8 @@ Resource exchange during interactions follows exchange_rate=0.5, with minimum th
 
 ## Relevant notes
 
-- [[resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms]]
-- [[agent-based-simulation-for-complex-adaptive-systems-executive-summary]]
-- [[affect-dynamics-and-emotional-homeostasis-parameters]]
-- [[organisational-level-factors-as-modulators-of-individual-resilience-mechanisms-executive-summary]]
-- [[theoretical-frameworks-for-organisational-individual-resilience-interaction]]
+- [Resilience as a Dynamic, Multimodal Process: Integration Across Mechanisms](resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms.md)
+- [Agent-Based Simulation for Complex Adaptive Systems — Executive Summary](agent-based-simulation-for-complex-adaptive-systems-executive-summary.md)
+- [Affect Dynamics and Emotional Homeostasis Parameters](affect-dynamics-and-emotional-homeostasis-parameters.md)
+- [Organisational-Level Factors as Modulators of Individual Resilience Mechanisms: Executive Summary](organisational-level-factors-as-modulators-of-individual-resilience-mechanisms-executive-summary.md)
+- [Theoretical Frameworks for Organisational-Individual Resilience Interaction](theoretical-frameworks-for-organisational-individual-resilience-interaction.md)

@@ -34,10 +34,10 @@ The correlation between DASS-21 stress subscale (measuring more current stress s
 
 ## Relevant notes
 
-- [[correlation-pairs-validation-literature-based-executive-summary]]
-- [[pss-10-and-affect-empirical-correlation]]
-- [[affect-distribution-norms-panas-empirical-reference]]
-- [[stress-and-affect-empirical-correlations]]
-- [[current-stress-and-resources-empirical-correlation]]
-- [[daily-stress-event-norms-experience-sampling-reference]]
-- [[pss-10-and-current-stress-convergent-validity]]
+- [Correlation Pairs Validation: Literature-Based Executive Summary](correlation-pairs-validation-literature-based-executive-summary.md)
+- [PSS-10 and Affect: Empirical Correlation](pss-10-and-affect-empirical-correlation.md)
+- [Affect Distribution Norms: PANAS Empirical Reference](affect-distribution-norms-panas-empirical-reference.md)
+- [Stress and Affect: Empirical Correlations](stress-and-affect-empirical-correlations.md)
+- [Current Stress and Resources: Empirical Correlation](current-stress-and-resources-empirical-correlation.md)
+- [Daily Stress Event Norms: Experience Sampling Reference](daily-stress-event-norms-experience-sampling-reference.md)
+- [PSS-10 and Current Stress: Convergent Validity](pss-10-and-current-stress-convergent-validity.md)

@@ -146,7 +146,7 @@ Conjugate priors lead to posteriors in the same distribution family:
 
 ## Relevant notes
 
-- [[fundamental-mathematics-for-statistics]]
-- [[frequentist-vs-bayesian-philosophy]]
-- [[bayesian-inference]]
-- [[frequentist-inference]]
+- [Fundamental Mathematics for Statistics](fundamental-mathematics-for-statistics.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)
+- [Bayesian Inference](bayesian-inference.md)
+- [Frequentist Inference](frequentist-inference.md)

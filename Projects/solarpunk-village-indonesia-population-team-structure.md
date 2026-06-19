@@ -43,7 +43,7 @@ Key Indonesian adaptation: Leverage gotong royong (mutual assistance) as the lab
 - Seed village (20-40 people): 50-150 acres, 85-95% green space
 - Stable village (50-150): 150-500 acres, 90% green space conserved
 
-References: [[solarpunk-village-population-scaling]], [[solarpunk-village-roles-labor]], [[solarpunk-in-indonesia]]
+References: [[solarpunk-village-population-scaling]], [[solarpunk-village-roles-labor]], [Solarpunk in Indonesia](../Resources/solarpunk-in-indonesia.md)
 
 [@DunbarSosis2018Optimising]: Dunbar, R. et al. (2018). Optimising human community sizes. Human Biology, 39, 106-112.
 [@Kasper2008Redefining]: Kasper, D.V.S. (2008). Redefining Community in the Ecovillage. Human Ecology Review, 15(1), 12-24.
@@ -51,8 +51,8 @@ References: [[solarpunk-village-population-scaling]], [[solarpunk-village-roles-
 
 ## Relevant notes
 
-- [[solarpunk-village-indonesia-assimilation-paths-with-locals]]
-- [[solarpunk-village-indonesia-potential-locations]]
+- [Solarpunk Village Indonesia: Assimilation Paths with Locals](solarpunk-village-indonesia-assimilation-paths-with-locals.md)
+- [Solarpunk Village Indonesia: Potential Locations](solarpunk-village-indonesia-potential-locations.md)
 - [[solarpunk-village-implementation-roadmap]]
 - [[solarpunk-village-overview-blueprint]]
 - [[solarpunk-village-governance-decision-making]]

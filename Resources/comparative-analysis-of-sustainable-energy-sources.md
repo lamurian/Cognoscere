@@ -48,8 +48,8 @@ _Sources: Wikipedia -- Cost of electricity by source, Lazard LCOE analysis, IREN
 
 ## Relevant notes
 
-- [[core-principles-and-philosophy-of-solarpunk]]
-- [[end-to-end-comparative-statistical-analysis]]
-- [[energy-storage-technologies]]
-- [[solarpunk-in-the-european-union]]
-- [[roadmap-learning-statistics-from-scratch-frequentist-and-bayesian-perspectives]]
+- [Core Principles and Philosophy of Solarpunk](core-principles-and-philosophy-of-solarpunk.md)
+- [End-to-End Comparative Statistical Analysis](../Projects/end-to-end-comparative-statistical-analysis.md)
+- [Energy Storage Technologies](energy-storage-technologies.md)
+- [Solarpunk in the European Union](solarpunk-in-the-european-union.md)
+- [Roadmap: Learning Statistics from Scratch — Frequentist and Bayesian Perspectives](../Projects/roadmap-learning-statistics-from-scratch-frequentist-and-bayesian-perspectives.md)

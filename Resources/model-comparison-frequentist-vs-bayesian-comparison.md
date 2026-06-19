@@ -109,7 +109,7 @@ waic(bfit1, bfit2, bfit3)
 
 ## Relevant notes
 
-- [[experimental-design-anova-frequentist-vs-bayesian-comparison]]
-- [[regression-frequentist-vs-bayesian-comparison]]
-- [[frequentist-vs-bayesian-philosophy]]
-- [[model-comparison-selection-bayesian-approach]]
+- [Experimental Design & ANOVA: Frequentist vs Bayesian Comparison](experimental-design-anova-frequentist-vs-bayesian-comparison.md)
+- [Regression: Frequentist vs Bayesian Comparison](regression-frequentist-vs-bayesian-comparison.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)
+- [Model Comparison & Selection: Bayesian Approach](model-comparison-selection-bayesian-approach.md)

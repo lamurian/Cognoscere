@@ -33,8 +33,8 @@ Solarpunk practices prefigurative politics: enacting its principles in real life
 
 ## Relevant notes
 
-- [[history-and-origins-of-the-solarpunk-movement]]
-- [[solarpunk-in-the-european-union]]
-- [[solarpunk-in-indonesia]]
-- [[solarpunk-in-southeast-asia]]
-- [[global-trajectories-and-current-impact-of-solarpunk]]
+- [History and Origins of the Solarpunk Movement](history-and-origins-of-the-solarpunk-movement.md)
+- [Solarpunk in the European Union](solarpunk-in-the-european-union.md)
+- [Solarpunk in Indonesia](solarpunk-in-indonesia.md)
+- [Solarpunk in Southeast Asia](solarpunk-in-southeast-asia.md)
+- [Global Trajectories and Current Impact of Solarpunk](global-trajectories-and-current-impact-of-solarpunk.md)

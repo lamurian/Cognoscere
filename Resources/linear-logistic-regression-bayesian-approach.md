@@ -115,7 +115,7 @@ Python: `pm.sample_posterior_predictive(trace, model=bayes_lm)`
 
 ## Relevant notes
 
-- [[linear-logistic-regression-frequentist-approach]]
-- [[linear-algebra-essentials-for-statistics]]
-- [[regression-frequentist-vs-bayesian-comparison]]
-- [[frequentist-vs-bayesian-philosophy]]
+- [Linear & Logistic Regression: Frequentist Approach](linear-logistic-regression-frequentist-approach.md)
+- [Linear Algebra Essentials for Statistics](linear-algebra-essentials-for-statistics.md)
+- [Regression: Frequentist vs Bayesian Comparison](regression-frequentist-vs-bayesian-comparison.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)

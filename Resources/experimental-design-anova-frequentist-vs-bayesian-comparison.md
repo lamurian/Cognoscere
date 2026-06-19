@@ -95,7 +95,7 @@ fit <- brm(value ~ group, data = data,
 
 ## Relevant notes
 
-- [[experimental-design-anova-bayesian-approach]]
-- [[experimental-design-anova-frequentist-approach]]
-- [[regression-frequentist-vs-bayesian-comparison]]
-- [[frequentist-vs-bayesian-philosophy]]
+- [Experimental Design & ANOVA: Bayesian Approach](experimental-design-anova-bayesian-approach.md)
+- [Experimental Design & ANOVA: Frequentist Approach](experimental-design-anova-frequentist-approach.md)
+- [Regression: Frequentist vs Bayesian Comparison](regression-frequentist-vs-bayesian-comparison.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)

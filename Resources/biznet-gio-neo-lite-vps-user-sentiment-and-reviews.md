@@ -78,5 +78,5 @@ Biznet Gio has the strongest network quality and the most passionate user advoca
 
 ## Relevant notes
 
-- [[biznet-gio-neo-lite-vps-indonesia-60-gb-ssd-at-rp59-000-month]]
-- [[cheapest-paid-vps-indonesia-executive-summary-and-recommendation-for-saas-production]]
+- [Biznet Gio NEO Lite VPS Indonesia — 60 GB SSD at Rp59,000/month](biznet-gio-neo-lite-vps-indonesia-60-gb-ssd-at-rp59-000-month.md)
+- [Cheapest Paid VPS Indonesia — Executive Summary and Recommendation for SaaS Production](cheapest-paid-vps-indonesia-executive-summary-and-recommendation-for-saas-production.md)

@@ -38,8 +38,8 @@ tags:
 
 ## Relevant notes
 
-- [[economic-growth-comparison-soeharto-vs-prabowo-indonesia]]
-- [[women-s-economic-inclusion-in-rural-indonesia]]
-- [[community-driven-development-in-indonesian-villages]]
-- [[digital-transformation-for-rural-indonesia]]
-- [[corruption-indicators-soeharto-vs-prabowo-indonesia]]
+- [Economic Growth Comparison: Soeharto vs Prabowo Indonesia](economic-growth-comparison-soeharto-vs-prabowo-indonesia.md)
+- [Women's Economic Inclusion in Rural Indonesia](women-s-economic-inclusion-in-rural-indonesia.md)
+- [Community-Driven Development in Indonesian Villages](community-driven-development-in-indonesian-villages.md)
+- [Digital Transformation for Rural Indonesia](digital-transformation-for-rural-indonesia.md)
+- [Corruption Indicators: Soeharto vs Prabowo Indonesia](corruption-indicators-soeharto-vs-prabowo-indonesia.md)

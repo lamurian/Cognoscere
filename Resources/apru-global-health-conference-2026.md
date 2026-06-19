@@ -52,9 +52,9 @@ Yes. Abstract submissions welcome from researchers, practitioners, policymakers,
 
 ## Relevant notes
 
-- [[academic-digital-health-conferences-2026-2027-executive-summary]]
-- [[digital-health-conferences-2026-executive-summary]]
-- [[ehealth2026-finnish-ehealth-conference]]
-- [[e-health26-conference-and-tradeshow]]
-- [[intellihealth-2027-digital-health-conference-amsterdam]]
-- [[africa-digital-health-summit-adhs-2026]]
+- [Academic Digital Health Conferences 2026-2027 Executive Summary](academic-digital-health-conferences-2026-2027-executive-summary.md)
+- [Digital Health Conferences 2026 Executive Summary](digital-health-conferences-2026-executive-summary.md)
+- [eHealth2026 - Finnish eHealth Conference](ehealth2026-finnish-ehealth-conference.md)
+- [e-Health26 Conference and Tradeshow](e-health26-conference-and-tradeshow.md)
+- [IntelliHealth 2027 - Digital Health Conference Amsterdam](intellihealth-2027-digital-health-conference-amsterdam.md)
+- [Africa Digital Health Summit (ADHS) 2026](africa-digital-health-summit-adhs-2026.md)

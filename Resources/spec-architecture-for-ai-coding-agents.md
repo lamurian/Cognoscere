@@ -45,7 +45,7 @@ While LLMs excel at natural language, structured inputs improve reasoning perfor
 
 ## Relevant notes
 
-- [[spec-driven-context-driven-tdd-workflow-overview]]
-- [[context-engineering-for-pi-agents]]
-- [[least-obstructive-workflow-principles]]
-- [[sdd-four-phase-workflow-for-pi-agents]]
+- [Spec-Driven Context-Driven TDD Workflow for AI Coding Agents](spec-driven-context-driven-tdd-workflow-for-ai-coding-agents.md)
+- [Context Engineering for pi Agents](context-engineering-for-pi-agents.md)
+- [Least-Obstructive Workflow Principles](least-obstructive-workflow-principles.md)
+- [SDD Four-Phase Workflow for pi Agents](../Projects/sdd-four-phase-workflow-for-pi-agents.md)

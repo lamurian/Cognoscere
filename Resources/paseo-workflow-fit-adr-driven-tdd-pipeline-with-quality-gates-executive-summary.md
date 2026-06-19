@@ -108,9 +108,9 @@ Pi: ADR → spec1, spec2, spec3
 
 ## Relevant notes
 
-- [[paseo-workflow-adr-to-spec-to-plan-hierarchy]]
-- [[paseo-workflow-pre-commit-and-pre-push-hooks-with-agents]]
-- [[paseo-workflow-tdd-iteration-loop-with-agents]]
-- [[paseo-workflow-pr-revision-cycle-with-agents]]
-- [[paseo-sh-chat-room-and-agentic-orchestration-platform]]
-- [[the-agent-orchestration-landscape-in-2026]]
+- [Paseo Workflow: ADR-to-Spec-to-Plan Hierarchy](paseo-workflow-adr-to-spec-to-plan-hierarchy.md)
+- [Paseo Workflow: Pre-commit and Pre-push Hooks with Agents](paseo-workflow-pre-commit-and-pre-push-hooks-with-agents.md)
+- [Paseo Workflow: TDD Iteration Loop with Agents](paseo-workflow-tdd-iteration-loop-with-agents.md)
+- [Paseo Workflow: PR Revision Cycle with Agents](paseo-workflow-pr-revision-cycle-with-agents.md)
+- [Paseo.sh: Chat Room and Agentic Orchestration Platform](paseo-sh-chat-room-and-agentic-orchestration-platform.md)
+- [The Agent Orchestration Landscape in 2026](the-agent-orchestration-landscape-in-2026.md)

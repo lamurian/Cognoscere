@@ -58,15 +58,15 @@ Foreigners in Indonesia cannot own freehold land (Hak Milik). Options:
 
 Recommendation: Partner with an existing nagari or desa by offering skills, infrastructure, and market access in exchange for a long-term land agreement. This is the most culturally legitimate path.
 
-Reference: [[solarpunk-in-indonesia]], [[solarpunk-in-southeast-asia]]
+Reference: [Solarpunk in Indonesia](../Resources/solarpunk-in-indonesia.md), [Solarpunk in Southeast Asia](../Resources/solarpunk-in-southeast-asia.md)
 
 [@GlobalEcovillageNetwork]: Solarpunk in Indonesia — existing note on subak and gotong royong.
 [@Dharmaraj2024Digital]: Nagari (settlement) - Wikipedia. Minangkabau autonomous village republics.
 
 ## Relevant notes
 
-- [[solarpunk-village-indonesia-land-legal-strategy]]
-- [[solarpunk-village-indonesia-assimilation-paths-with-locals]]
-- [[solarpunk-village-indonesia-local-beliefs-stigma-towards-outsiders]]
+- [Solarpunk Village Indonesia: Land & Legal Strategy](solarpunk-village-indonesia-land-legal-strategy.md)
+- [Solarpunk Village Indonesia: Assimilation Paths with Locals](solarpunk-village-indonesia-assimilation-paths-with-locals.md)
+- [Solarpunk Village Indonesia: Local Beliefs & Stigma Towards Outsiders](solarpunk-village-indonesia-local-beliefs-stigma-towards-outsiders.md)
 - [[solarpunk-village-overview-blueprint]]
 - [[solarpunk-village-economy-livelihood]]

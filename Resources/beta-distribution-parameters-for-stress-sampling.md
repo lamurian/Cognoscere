@@ -25,8 +25,8 @@ Stress decay rate delta=0.05 applies exponential decay S_{t+1} = S_t * (1 - delt
 
 ## Relevant notes
 
-- [[bayesian-inference]]
-- [[linear-algebra-essentials-for-statistics]]
-- [[frequentist-vs-bayesian-philosophy]]
-- [[simulation-orchestration-and-output-parameters]]
-- [[regression-frequentist-vs-bayesian-comparison]]
+- [Bayesian Inference](bayesian-inference.md)
+- [Linear Algebra Essentials for Statistics](linear-algebra-essentials-for-statistics.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)
+- [Simulation Orchestration and Output Parameters](simulation-orchestration-and-output-parameters.md)
+- [Regression: Frequentist vs Bayesian Comparison](regression-frequentist-vs-bayesian-comparison.md)

@@ -131,7 +131,7 @@ Do you have strong prior information?
 
 ## Relevant notes
 
-- [[end-to-end-comparative-statistical-analysis]]
-- [[model-comparison-selection-bayesian-approach]]
-- [[model-comparison-frequentist-vs-bayesian-comparison]]
-- [[frequentist-vs-bayesian-philosophy]]
+- [End-to-End Comparative Statistical Analysis](../Projects/end-to-end-comparative-statistical-analysis.md)
+- [Model Comparison & Selection: Bayesian Approach](model-comparison-selection-bayesian-approach.md)
+- [Model Comparison: Frequentist vs Bayesian Comparison](model-comparison-frequentist-vs-bayesian-comparison.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)

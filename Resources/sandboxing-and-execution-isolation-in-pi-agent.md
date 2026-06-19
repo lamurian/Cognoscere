@@ -27,8 +27,8 @@ Pi provides two levels of execution isolation: OS-level sandboxing via the Sandb
 
 ## Relevant notes
 
-- [[approaches-to-guardrail-design-in-pi-agent-for-llm-aided-software-engineering]]
-- [[layered-guardrail-architecture-with-pi-extensions]]
-- [[tool-override-wrapping-built-ins-with-guard-layers]]
-- [[tool-call-interception-runtime-gating-in-pi-agent]]
-- [[session-lifecycle-guards-in-pi-agent]]
+- [Approaches to Guardrail Design in Pi Agent for LLM-Aided Software Engineering](approaches-to-guardrail-design-in-pi-agent-for-llm-aided-software-engineering.md)
+- [Layered Guardrail Architecture with Pi Extensions](layered-guardrail-architecture-with-pi-extensions.md)
+- [Tool Override: Wrapping Built-Ins with Guard Layers](tool-override-wrapping-built-ins-with-guard-layers.md)
+- [Tool Call Interception: Runtime Gating in Pi Agent](tool-call-interception-runtime-gating-in-pi-agent.md)
+- [Session Lifecycle Guards in Pi Agent](session-lifecycle-guards-in-pi-agent.md)

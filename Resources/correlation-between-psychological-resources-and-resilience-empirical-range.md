@@ -38,6 +38,6 @@ A key caveat from COR theory: resource loss correlates more strongly with distre
 
 ## Relevant notes
 
-- [[conceptual-demarcation-between-psychological-resources-and-resilience]]
-- [[psychological-resources-definition-and-core-constructs]]
-- [[psychological-resources-and-resilience-executive-summary]]
+- [Conceptual Demarcation Between Psychological Resources and Resilience](conceptual-demarcation-between-psychological-resources-and-resilience.md)
+- [Psychological Resources — Definition and Core Constructs](psychological-resources-definition-and-core-constructs.md)
+- [Psychological Resources and Resilience — Executive Summary](psychological-resources-and-resilience-executive-summary.md)

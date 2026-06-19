@@ -186,7 +186,7 @@ A food forest managed individually fails in the long term. Follow the gotong roy
 
 ## Related Notes
 
-- [[solarpunk-village-indonesia-assimilation-paths-with-locals]]
-- [[solarpunk-in-indonesia]]
-- [[core-principles-and-philosophy-of-solarpunk]]
-- [[solarpunk-in-southeast-asia]]
+- [Solarpunk Village Indonesia: Assimilation Paths with Locals](../Projects/solarpunk-village-indonesia-assimilation-paths-with-locals.md)
+- [Solarpunk in Indonesia](solarpunk-in-indonesia.md)
+- [Core Principles and Philosophy of Solarpunk](core-principles-and-philosophy-of-solarpunk.md)
+- [Solarpunk in Southeast Asia](solarpunk-in-southeast-asia.md)

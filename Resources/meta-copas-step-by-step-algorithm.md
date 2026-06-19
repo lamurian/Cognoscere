@@ -61,6 +61,6 @@ The `summary()` function prints a table with one row per orthogonal-line interse
 
 ## Related Notes
 
-- [[copas-selection-model-for-publication-bias]] — overview of the Copas model
-- [[copas-selection-model-publication-probability-as-a-latent-variable]] — latent variable and non-identifiability
-- [[interpreting-summary-from-meta-copas]] — how to read the summary output
+- [Copas Selection Model for Publication Bias](copas-selection-model-for-publication-bias.md) — overview of the Copas model
+- [Copas Selection Model — Publication Probability as a Latent Variable](copas-selection-model-publication-probability-as-a-latent-variable.md) — latent variable and non-identifiability
+- [Interpreting summary() from meta::copas()](interpreting-summary-from-meta-copas.md) — how to read the summary output

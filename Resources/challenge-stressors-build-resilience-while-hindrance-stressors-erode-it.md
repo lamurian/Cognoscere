@@ -18,8 +18,8 @@ This research provides a nuanced understanding of workplace stress by showing th
 
 ## Relevant notes
 
-- [[resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms]]
-- [[drivers-of-cost-effectiveness-in-workplace-resilience-interventions]]
-- [[the-job-demands-resources-model-and-workplace-resilience]]
-- [[cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary]]
-- [[choosing-the-effect-in-cost-effectiveness-analysis-outcome-rationale]]
+- [Resilience as a Dynamic, Multimodal Process: Integration Across Mechanisms](resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms.md)
+- [Drivers of Cost-Effectiveness in Workplace Resilience Interventions](drivers-of-cost-effectiveness-in-workplace-resilience-interventions.md)
+- [The Job Demands-Resources Model and Workplace Resilience](the-job-demands-resources-model-and-workplace-resilience.md)
+- [Cost-Effective Organisation-Based Interventions for Psychological Resilience: Executive Summary](cost-effective-organisation-based-interventions-for-psychological-resilience-executive-summary.md)
+- [Choosing the 'Effect' in Cost-Effectiveness Analysis: Outcome Rationale](choosing-the-effect-in-cost-effectiveness-analysis-outcome-rationale.md)

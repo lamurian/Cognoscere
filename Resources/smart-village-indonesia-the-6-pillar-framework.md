@@ -51,17 +51,17 @@ Efficient and quality rural transportation for cheaper, faster, environmentally 
 
 ## Related Notes
 
-- [[village-modernization-in-indonesia-strategic-overview]]
-- [[dana-desa-indonesia-s-village-fund-impact]]
-- [[digital-transformation-for-rural-indonesia]]
-- [[bumdes-and-agricultural-value-chain-upgrading]]
+- [Village Modernization in Indonesia: Strategic Overview](village-modernization-in-indonesia-strategic-overview.md)
+- [Dana Desa: Indonesia's Village Fund Impact](dana-desa-indonesia-s-village-fund-impact.md)
+- [Digital Transformation for Rural Indonesia](digital-transformation-for-rural-indonesia.md)
+- [BUMDes and Agricultural Value Chain Upgrading](bumdes-and-agricultural-value-chain-upgrading.md)
 
 ## Relevant notes
 
-- [[bumdes-and-agricultural-value-chain-upgrading]]
-- [[community-driven-development-in-indonesian-villages]]
-- [[dana-desa-indonesia-s-village-fund-impact]]
-- [[digital-transformation-for-rural-indonesia]]
-- [[solarpunk-in-indonesia]]
-- [[solarpunk-in-southeast-asia]]
-- [[village-modernization-in-indonesia-strategic-overview]]
+- [BUMDes and Agricultural Value Chain Upgrading](bumdes-and-agricultural-value-chain-upgrading.md)
+- [Community-Driven Development in Indonesian Villages](community-driven-development-in-indonesian-villages.md)
+- [Dana Desa: Indonesia's Village Fund Impact](dana-desa-indonesia-s-village-fund-impact.md)
+- [Digital Transformation for Rural Indonesia](digital-transformation-for-rural-indonesia.md)
+- [Solarpunk in Indonesia](solarpunk-in-indonesia.md)
+- [Solarpunk in Southeast Asia](solarpunk-in-southeast-asia.md)
+- [Village Modernization in Indonesia: Strategic Overview](village-modernization-in-indonesia-strategic-overview.md)

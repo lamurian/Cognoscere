@@ -34,7 +34,7 @@ Key advantages of Bayesian approaches:
 
 ## Related Notes
 
-- [[copas-selection-model-for-publication-bias]]
-- [[z-curve-plot-a-visual-diagnostic-for-publication-bias]]
-- [[comparative-performance-of-publication-bias-correction-methods]]
-- [[publication-bias-investigation-method-trade-offs-and-unified-workflow-guide]]
+- [Copas Selection Model for Publication Bias](copas-selection-model-for-publication-bias.md)
+- [Z-Curve Plot: A Visual Diagnostic for Publication Bias](z-curve-plot-a-visual-diagnostic-for-publication-bias.md)
+- [Comparative Performance of Publication Bias Correction Methods](comparative-performance-of-publication-bias-correction-methods.md)
+- [Publication Bias Investigation: Method Trade-Offs and Unified Workflow Guide](publication-bias-investigation-method-trade-offs-and-unified-workflow-guide.md)

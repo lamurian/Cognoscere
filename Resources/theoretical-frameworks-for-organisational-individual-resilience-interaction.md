@@ -27,9 +27,9 @@ A key limitation across these frameworks is insufficient integration. The JD-R a
 
 ## Relevant notes
 
-- [[the-job-demands-resources-model-and-workplace-resilience]]
-- [[resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms]]
-- [[pastor-theory-positive-appraisal-style-as-the-core-resilience-mechanism]]
-- [[organisational-level-factors-as-modulators-of-individual-resilience-mechanisms-executive-summary]]
-- [[known-gaps-in-understanding-resilience-mechanisms-in-working-populations]]
-- [[neurobiological-pathways-linking-organisational-factors-to-individual-resilience]]
+- [The Job Demands-Resources Model and Workplace Resilience](the-job-demands-resources-model-and-workplace-resilience.md)
+- [Resilience as a Dynamic, Multimodal Process: Integration Across Mechanisms](resilience-as-a-dynamic-multimodal-process-integration-across-mechanisms.md)
+- [PASTOR Theory: Positive Appraisal Style as the Core Resilience Mechanism](pastor-theory-positive-appraisal-style-as-the-core-resilience-mechanism.md)
+- [Organisational-Level Factors as Modulators of Individual Resilience Mechanisms: Executive Summary](organisational-level-factors-as-modulators-of-individual-resilience-mechanisms-executive-summary.md)
+- [Known Gaps in Understanding Resilience Mechanisms in Working Populations](known-gaps-in-understanding-resilience-mechanisms-in-working-populations.md)
+- [Neurobiological Pathways Linking Organisational Factors to Individual Resilience](neurobiological-pathways-linking-organisational-factors-to-individual-resilience.md)

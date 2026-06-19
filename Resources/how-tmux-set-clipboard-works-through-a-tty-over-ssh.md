@@ -61,4 +61,4 @@ The remote server has no requirements beyond `set -g set-clipboard on` or `exter
 
 ## Relevant notes
 
-- [[copy-text-from-remote-tmux-session-to-local-clipboard]]
+- [Copy Text from Remote Tmux Session to Local Clipboard](copy-text-from-remote-tmux-session-to-local-clipboard.md)

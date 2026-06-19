@@ -39,6 +39,6 @@ The normative data consistently show three patterns. First, women report higher 
 A PSS-10 score of 27 or higher is considered clinically elevated stress. The normative mean of 12-14 falls well within the low-stress range (0-13) or lower end of the moderate range (14-26), consistent with a general population sample not selected for any disorder or acute stressor.
 
 ## Relevant notes
-- [[pss-10-item-parameters-and-dynamic-response]]
-- [[perceived-stress-scale-pss-10-integration-in-agent-based-simulation]]
-- [[pss-10-bifactor-measurement-parameters-for-perceived-stress]]
+- [PSS-10 Item Parameters and Dynamic Response](pss-10-item-parameters-and-dynamic-response.md)
+- [Perceived Stress Scale (PSS-10) Integration in Agent-Based Simulation](perceived-stress-scale-pss-10-integration-in-agent-based-simulation.md)
+- [PSS-10 Bifactor Measurement Parameters for Perceived Stress](pss-10-bifactor-measurement-parameters-for-perceived-stress.md)

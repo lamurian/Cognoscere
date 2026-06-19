@@ -28,10 +28,10 @@ SDD provides the contract, CDD provides the context, and TDD provides the verifi
 
 ## Relevant notes
 
-- [[spec-architecture-for-ai-coding-agents]]
-- [[context-engineering-for-pi-agents]]
-- [[tdd-with-ai-coding-agents]]
-- [[least-obstructive-workflow-principles]]
-- [[multi-agent-orchestration-patterns]]
-- [[sdd-four-phase-workflow-for-pi-agents]]
-- [[skills-architecture-single-responsibility-restructure]] -- concrete implementation of single-responsibility agent design in the pi ecosystem
+- [Spec Architecture for AI Coding Agents](spec-architecture-for-ai-coding-agents.md)
+- [Context Engineering for pi Agents](context-engineering-for-pi-agents.md)
+- [TDD with AI Coding Agents](tdd-with-ai-coding-agents.md)
+- [Least-Obstructive Workflow Principles](least-obstructive-workflow-principles.md)
+- [Multi-Agent Orchestration Patterns](multi-agent-orchestration-patterns.md)
+- [SDD Four-Phase Workflow for pi Agents](../Projects/sdd-four-phase-workflow-for-pi-agents.md)
+- [Skills Architecture: Single-Responsibility Restructure](../Projects/skills-architecture-single-responsibility-restructure.md) -- concrete implementation of single-responsibility agent design in the pi ecosystem

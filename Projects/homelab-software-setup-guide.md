@@ -12,7 +12,7 @@ tags:
 ---
 ## Prerequisites
 
-- Debian 12 installed per [[homelab-hardware-build-guide]]
+- Debian 12 installed per [Homelab Hardware Build Guide](homelab-hardware-build-guide.md)
 - SSH access to the homelab
 
 ## Step 1: Install Docker
@@ -103,12 +103,12 @@ docker run -d -p 3001:3001 \
 
 Access at `http://homelab-ip:3001`
 
-Next step: configure Tailscale for remote access in [[homelab-tailscale-configuration]].
+Next step: configure Tailscale for remote access in [Homelab Tailscale Configuration](homelab-tailscale-configuration.md).
 
 ## Relevant notes
 
-- [[homelab-hardware-build-guide]]
-- [[homelab-tailscale-configuration]]
-- [[low-power-solar-homelab-executive-summary]]
-- [[homelab-solar-system-build-guide]]
-- [[homelab-system-overview]]
+- [Homelab Hardware Build Guide](homelab-hardware-build-guide.md)
+- [Homelab Tailscale Configuration](homelab-tailscale-configuration.md)
+- [Low-Power Solar Homelab: Executive Summary](../Resources/low-power-solar-homelab-executive-summary.md)
+- [Homelab Solar System Build Guide](homelab-solar-system-build-guide.md)
+- [Homelab: System Overview](homelab-system-overview.md)

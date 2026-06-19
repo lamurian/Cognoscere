@@ -21,10 +21,10 @@ tags:
 Port forwarding works with `ControlMaster` — once a multiplexed connection is established, additional forwards can be added with `ssh -O forward` commands. Use `GatewayPorts yes` on the server for `RemoteForward` to bind to `0.0.0.0` instead of just `localhost`.
 
 ## Sources
-- [[controlmaster-controlpath-and-controlpersist-for-ssh-multiplexing]]
-- [[proxyjump-for-bastion-hosts-and-jump-boxes]]
+- [ControlMaster, ControlPath, and ControlPersist for SSH Multiplexing](controlmaster-controlpath-and-controlpersist-for-ssh-multiplexing.md)
+- [ProxyJump for Bastion Hosts and Jump Boxes](proxyjump-for-bastion-hosts-and-jump-boxes.md)
 
 ## Relevant notes
-- [[how-ssh-works-protocol-key-exchange-and-authentication]]
-- [[forwardagent-and-forwardx11-in-ssh-config]]
-- [[ssh-config-host-matching-and-stanza-precedence]]
+- [How SSH Works: Protocol, Key Exchange, and Authentication](how-ssh-works-protocol-key-exchange-and-authentication.md)
+- [ForwardAgent and ForwardX11 in SSH Config](forwardagent-and-forwardx11-in-ssh-config.md)
+- [SSH Config Host Matching and Stanza Precedence](ssh-config-host-matching-and-stanza-precedence.md)

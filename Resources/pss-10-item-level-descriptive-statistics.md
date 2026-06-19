@@ -57,5 +57,5 @@ Note: Liu et al. used a 1--5 scale (range 10--50). Their total mean on the 1--5 
 
 ## Existing Notes
 
-- [[pss-10-and-resilience-meta-analytic-correlation]]
-- [[stress-and-affect-empirical-correlations]]
+- [PSS-10 and Resilience: Meta-Analytic Correlation](pss-10-and-resilience-meta-analytic-correlation.md)
+- [Stress and Affect: Empirical Correlations](stress-and-affect-empirical-correlations.md)

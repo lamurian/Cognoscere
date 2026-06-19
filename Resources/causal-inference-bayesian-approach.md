@@ -121,7 +121,7 @@ Approach:
 
 ## Relevant notes
 
-- [[causal-inference-frequentist-approach]]
-- [[descriptive-statistics-data-visualisation]]
-- [[model-comparison-frequentist-vs-bayesian-comparison]]
-- [[frequentist-vs-bayesian-philosophy]]
+- [Causal Inference: Frequentist Approach](causal-inference-frequentist-approach.md)
+- [Descriptive Statistics & Data Visualisation](descriptive-statistics-data-visualisation.md)
+- [Model Comparison: Frequentist vs Bayesian Comparison](model-comparison-frequentist-vs-bayesian-comparison.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)

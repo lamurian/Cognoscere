@@ -27,9 +27,9 @@ Si (2015) [@si2015] developed computational models of emotion-focused coping wit
 
 ## Relevant notes
 
-- [[coping-decision-parameters-in-stress-coping-models]]
-- [[positive-interpretation-bias-and-emotion-regulation-as-cognitive-mechanisms-of-resilience]]
-- [[challenge-hindrance-stress-appraisal-and-coping-pipeline]]
-- [[stress-threshold-and-appraisal-parameters]]
-- [[affect-regulation-framework-of-psychological-resilience]]
-- [[agent-architectures-and-decision-making-in-agent-based-simulation]]
+- [Coping Decision Parameters in Stress-Coping Models](coping-decision-parameters-in-stress-coping-models.md)
+- [Positive Interpretation Bias and Emotion Regulation as Cognitive Mechanisms of Resilience](positive-interpretation-bias-and-emotion-regulation-as-cognitive-mechanisms-of-resilience.md)
+- [Challenge-Hindrance Stress Appraisal and Coping Pipeline](challenge-hindrance-stress-appraisal-and-coping-pipeline.md)
+- [Stress Threshold and Appraisal Parameters](stress-threshold-and-appraisal-parameters.md)
+- [Affect-Regulation Framework of Psychological Resilience](affect-regulation-framework-of-psychological-resilience.md)
+- [Agent Architectures and Decision-Making in Agent-Based Simulation](agent-architectures-and-decision-making-in-agent-based-simulation.md)

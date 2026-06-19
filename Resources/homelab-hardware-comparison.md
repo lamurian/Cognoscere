@@ -38,8 +38,8 @@ With Debian 12 and `powertop --auto-tune`, an HP EliteDesk 800 G3 can hit 3.5W i
 
 ## Relevant notes
 
-- [[low-power-solar-homelab-executive-summary]]
-- [[homelab-hardware-build-guide]]
-- [[homelab-component-prices-and-alternatives]]
-- [[homelab-system-overview]]
-- [[homelab-software-setup-guide]]
+- [Low-Power Solar Homelab: Executive Summary](low-power-solar-homelab-executive-summary.md)
+- [Homelab Hardware Build Guide](../Projects/homelab-hardware-build-guide.md)
+- [Homelab Component Prices and Alternatives](homelab-component-prices-and-alternatives.md)
+- [Homelab: System Overview](../Projects/homelab-system-overview.md)
+- [Homelab Software Setup Guide](../Projects/homelab-software-setup-guide.md)

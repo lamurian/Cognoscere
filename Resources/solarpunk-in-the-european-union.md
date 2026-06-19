@@ -36,8 +36,8 @@ Strong municipal governance, existing public transit infrastructure, high enviro
 
 ## Relevant notes
 
-- [[global-trajectories-and-current-impact-of-solarpunk]]
-- [[history-and-origins-of-the-solarpunk-movement]]
-- [[core-principles-and-philosophy-of-solarpunk]]
-- [[solarpunk-in-the-united-states]]
-- [[solarpunk-as-a-literary-and-art-movement]]
+- [Global Trajectories and Current Impact of Solarpunk](global-trajectories-and-current-impact-of-solarpunk.md)
+- [History and Origins of the Solarpunk Movement](history-and-origins-of-the-solarpunk-movement.md)
+- [Core Principles and Philosophy of Solarpunk](core-principles-and-philosophy-of-solarpunk.md)
+- [Solarpunk in the United States](solarpunk-in-the-united-states.md)
+- [Solarpunk as a Literary and Art Movement](solarpunk-as-a-literary-and-art-movement.md)

@@ -24,9 +24,9 @@ This research investigates the relationship between psychological resources and 
 
 ## Key Findings
 
-- **[Psychological Resources — Definition and Core Constructs]** — [[psychological-resources-definition-and-core-constructs]]
-- **[Conceptual Demarcation Between Psychological Resources and Resilience]** — [[conceptual-demarcation-between-psychological-resources-and-resilience]]
-- **[Correlation Between Psychological Resources and Resilience — Empirical Range]** — [[correlation-between-psychological-resources-and-resilience-empirical-range]]
+- **[Psychological Resources — Definition and Core Constructs]** — [Psychological Resources — Definition and Core Constructs](psychological-resources-definition-and-core-constructs.md)
+- **[Conceptual Demarcation Between Psychological Resources and Resilience]** — [Conceptual Demarcation Between Psychological Resources and Resilience](conceptual-demarcation-between-psychological-resources-and-resilience.md)
+- **[Correlation Between Psychological Resources and Resilience — Empirical Range]** — [Correlation Between Psychological Resources and Resilience — Empirical Range](correlation-between-psychological-resources-and-resilience-empirical-range.md)
 
 ## Confidence Assessment
 

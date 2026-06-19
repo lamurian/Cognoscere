@@ -79,12 +79,12 @@ Now only Tailscale peer traffic can reach the homelab. The machine is invisible 
 
 ## Next Steps
 
-Your homelab is now accessible from anywhere via SSH. Proceed to [[homelab-solar-system-build-guide]] to set up the solar power system, or start deploying your Docker services.
+Your homelab is now accessible from anywhere via SSH. Proceed to [Homelab Solar System Build Guide](homelab-solar-system-build-guide.md) to set up the solar power system, or start deploying your Docker services.
 
 ## Relevant notes
 
-- [[homelab-software-setup-guide]]
-- [[low-power-solar-homelab-executive-summary]]
-- [[homelab-system-overview]]
-- [[homelab-hardware-build-guide]]
-- [[homelab-solar-system-build-guide]]
+- [Homelab Software Setup Guide](homelab-software-setup-guide.md)
+- [Low-Power Solar Homelab: Executive Summary](../Resources/low-power-solar-homelab-executive-summary.md)
+- [Homelab: System Overview](homelab-system-overview.md)
+- [Homelab Hardware Build Guide](homelab-hardware-build-guide.md)
+- [Homelab Solar System Build Guide](homelab-solar-system-build-guide.md)

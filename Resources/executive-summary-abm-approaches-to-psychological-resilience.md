@@ -22,7 +22,7 @@ Agent-based simulation has emerged as a powerful methodology for modeling psycho
 
 **LLM-based simulation.** L'Ecuyer Ming (2025) [@lecuyerming2025] introduced LALS (Large-Scale Agent-based Longitudinal Simulation), a framework using 2,500 LLM-powered agent personas cloned across a 2x2 factorial experiment to measure the lifelong impact of resilience interventions. The simulation revealed that resilience training at age 6 produced more than double the wealth impact of the same intervention at age 18, with the strongest effects for low-SES agents.
 
-**Existing implementation.** A companion project (see [[Resources/executive-summary-agent-based-simulation-of-psychological-resilience]]) implements a Mesa-based simulation of psychological resilience with six integrated mechanism groups: stress appraisal, affect dynamics, resilience homeostasis, social interaction networks, resource management, and PSS-10 empirical validation.
+**Existing implementation.** A companion project (see [Executive Summary: Agent-Based Simulation of Psychological Resilience](executive-summary-agent-based-simulation-of-psychological-resilience.md)) implements a Mesa-based simulation of psychological resilience with six integrated mechanism groups: stress appraisal, affect dynamics, resilience homeostasis, social interaction networks, resource management, and PSS-10 empirical validation.
 
 ## Key Findings
 
@@ -48,8 +48,8 @@ Agent-based simulation has emerged as a powerful methodology for modeling psycho
 
 ## Relevant notes
 
-- [[agent-based-simulation-for-complex-adaptive-systems-executive-summary]]
-- [[executive-summary-agent-based-simulation-of-psychological-resilience]]
-- [[llm-enhanced-agents-and-the-future-of-agent-based-modeling]]
-- [[affect-regulation-framework-of-psychological-resilience]]
-- [[validation-and-calibration-methods-for-agent-based-models]]
+- [Agent-Based Simulation for Complex Adaptive Systems — Executive Summary](agent-based-simulation-for-complex-adaptive-systems-executive-summary.md)
+- [Executive Summary: Agent-Based Simulation of Psychological Resilience](executive-summary-agent-based-simulation-of-psychological-resilience.md)
+- [LLM-Enhanced Agents and the Future of Agent-Based Modeling](llm-enhanced-agents-and-the-future-of-agent-based-modeling.md)
+- [Affect-Regulation Framework of Psychological Resilience](affect-regulation-framework-of-psychological-resilience.md)
+- [Validation and Calibration Methods for Agent-Based Models](validation-and-calibration-methods-for-agent-based-models.md)

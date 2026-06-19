@@ -48,8 +48,8 @@ _Source: Wikipedia -- Wind power, Wind turbine_
 
 ## Relevant notes
 
-- [[marine-renewable-energy]]
-- [[grid-integration-of-renewables]]
-- [[comparative-analysis-of-sustainable-energy-sources]]
-- [[geothermal-energy-harvesting]]
-- [[core-principles-and-philosophy-of-solarpunk]]
+- [Marine Renewable Energy](marine-renewable-energy.md)
+- [Grid Integration of Renewables](grid-integration-of-renewables.md)
+- [Comparative Analysis of Sustainable Energy Sources](comparative-analysis-of-sustainable-energy-sources.md)
+- [Geothermal Energy Harvesting](geothermal-energy-harvesting.md)
+- [Core Principles and Philosophy of Solarpunk](core-principles-and-philosophy-of-solarpunk.md)

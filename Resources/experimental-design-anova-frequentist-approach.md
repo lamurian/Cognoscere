@@ -151,7 +151,7 @@ power.solve_power(effect_size=0.5, power=0.8, alpha=0.05)
 
 ## Relevant notes
 
-- [[experimental-design-anova-bayesian-approach]]
-- [[experimental-design-anova-frequentist-vs-bayesian-comparison]]
-- [[frequentist-vs-bayesian-philosophy]]
-- [[linear-logistic-regression-frequentist-approach]]
+- [Experimental Design & ANOVA: Bayesian Approach](experimental-design-anova-bayesian-approach.md)
+- [Experimental Design & ANOVA: Frequentist vs Bayesian Comparison](experimental-design-anova-frequentist-vs-bayesian-comparison.md)
+- [Frequentist vs Bayesian Philosophy](frequentist-vs-bayesian-philosophy.md)
+- [Linear & Logistic Regression: Frequentist Approach](linear-logistic-regression-frequentist-approach.md)

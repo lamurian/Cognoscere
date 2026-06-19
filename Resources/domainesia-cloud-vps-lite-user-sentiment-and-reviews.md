@@ -75,5 +75,5 @@ DomaiNesia has the most positive and consistent user sentiment among the budget 
 
 ## Relevant notes
 
-- [[domainesia-cloud-vps-lite-indonesia-nvme-at-rp48-000-month]]
-- [[cheapest-paid-vps-indonesia-executive-summary-and-recommendation-for-saas-production]]
+- [DomaiNesia Cloud VPS Lite Indonesia — NVMe at Rp48,000/month](domainesia-cloud-vps-lite-indonesia-nvme-at-rp48-000-month.md)
+- [Cheapest Paid VPS Indonesia — Executive Summary and Recommendation for SaaS Production](cheapest-paid-vps-indonesia-executive-summary-and-recommendation-for-saas-production.md)

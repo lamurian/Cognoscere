@@ -38,8 +38,8 @@ Key US locations of solarpunk activity:
 
 ## Relevant notes
 
-- [[history-and-origins-of-the-solarpunk-movement]]
-- [[global-trajectories-and-current-impact-of-solarpunk]]
-- [[solarpunk-as-a-literary-and-art-movement]]
-- [[solarpunk-in-southeast-asia]]
-- [[solarpunk-in-indonesia]]
+- [History and Origins of the Solarpunk Movement](history-and-origins-of-the-solarpunk-movement.md)
+- [Global Trajectories and Current Impact of Solarpunk](global-trajectories-and-current-impact-of-solarpunk.md)
+- [Solarpunk as a Literary and Art Movement](solarpunk-as-a-literary-and-art-movement.md)
+- [Solarpunk in Southeast Asia](solarpunk-in-southeast-asia.md)
+- [Solarpunk in Indonesia](solarpunk-in-indonesia.md)

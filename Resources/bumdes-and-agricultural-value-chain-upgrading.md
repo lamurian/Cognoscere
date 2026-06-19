@@ -58,17 +58,17 @@ Historical lessons from the KUD (Koperasi Unit Desa) system of the 1970s-90s, wh
 
 ## Related Notes
 
-- [[dana-desa-indonesia-s-village-fund-impact]]
-- [[smart-village-indonesia-the-6-pillar-framework]]
-- [[village-modernization-in-indonesia-strategic-overview]]
-- [[digital-transformation-for-rural-indonesia]]
-- [[food-forest-and-permaculture-guide-for-indonesia]]
+- [Dana Desa: Indonesia's Village Fund Impact](dana-desa-indonesia-s-village-fund-impact.md)
+- [Smart Village Indonesia: The 6-Pillar Framework](smart-village-indonesia-the-6-pillar-framework.md)
+- [Village Modernization in Indonesia: Strategic Overview](village-modernization-in-indonesia-strategic-overview.md)
+- [Digital Transformation for Rural Indonesia](digital-transformation-for-rural-indonesia.md)
+- [Food Forest and Permaculture Guide for Indonesia](food-forest-and-permaculture-guide-for-indonesia.md)
 
 ## Relevant notes
 
-- [[dana-desa-indonesia-s-village-fund-impact]]
-- [[digital-transformation-for-rural-indonesia]]
-- [[food-forest-and-permaculture-guide-for-indonesia]]
-- [[smart-village-indonesia-the-6-pillar-framework]]
-- [[village-modernization-in-indonesia-strategic-overview]]
-- [[women-s-economic-inclusion-in-rural-indonesia]]
+- [Dana Desa: Indonesia's Village Fund Impact](dana-desa-indonesia-s-village-fund-impact.md)
+- [Digital Transformation for Rural Indonesia](digital-transformation-for-rural-indonesia.md)
+- [Food Forest and Permaculture Guide for Indonesia](food-forest-and-permaculture-guide-for-indonesia.md)
+- [Smart Village Indonesia: The 6-Pillar Framework](smart-village-indonesia-the-6-pillar-framework.md)
+- [Village Modernization in Indonesia: Strategic Overview](village-modernization-in-indonesia-strategic-overview.md)
+- [Women's Economic Inclusion in Rural Indonesia](women-s-economic-inclusion-in-rural-indonesia.md)
