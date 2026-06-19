@@ -3,7 +3,7 @@ title: 'Research Synthesis: LLM Impact on Healthcare and Software Engineering'
 description: Executive summary synthesising research on LLM impact at the intersection of healthcare, software engineering, and medical informatics.
 author: pi
 editor: lam
-date: 2026-06-19T23:00:38.393Z
+date: 2026-06-19T23:09:51.768Z
 tags:
   - LLM
   - healthcare
@@ -33,6 +33,8 @@ The evidence base — drawn from over 1,600 papers reviewed in comprehensive sur
 - **[Regulatory Frameworks]** — [[research-llm-regulatory-frameworks]]
 - **[Software Engineering for Digital Health]** — [[research-llm-se-digital-health]]
 - **[Issues, Opportunities, Best Practices]** — [[research-llm-healthcare-issues-opportunities]]
+- **[LLM-Generated Code and Clinical Safety]** — [[how-llm-generated-health-it-code-affects-downstream-clinical-safety]]
+- **[Mitigating Clinical Safety Risks]** — [[mitigating-clinical-safety-risks-from-llm-generated-health-it-code]]
 
 ## Confidence Assessment
 
@@ -40,6 +42,7 @@ The evidence base — drawn from over 1,600 papers reviewed in comprehensive sur
 |---|---|---|
 | Q1 (WHY): Why do LLMs present distinct opportunities and risks in healthcare? | Moderate | Multiple systematic reviews confirm opportunities and risks, but few large-scale clinical trials. Confidence is moderate because most evidence comes from benchmark evaluations rather than real clinical deployments. |
 | Q2 (HOW): How can LLMs be integrated safely into digital health software? | Moderate | RAG and human-in-the-loop patterns have strong theoretical support and early positive results. However, best practices are still emergent and regulatory frameworks are immature. |
+| Q3 (SAFETY): How does LLM-generated health IT code affect downstream clinical safety? | Low-Moderate | Three pathways identified (coding errors, data handling, regulatory non-compliance) with strong conceptual support from adjacent evidence. However, no study directly evaluates clinical safety impact of LLM-generated health IT code. |
 
 ## Known Gaps
 
@@ -48,4 +51,4 @@ The evidence base — drawn from over 1,600 papers reviewed in comprehensive sur
 3. Limited research on long-term effects of LLM use on clinical skill retention
 4. Insufficient adversarial testing methodologies specific to medical LLMs
 5. Lack of standardised benchmarks for clinical safety (as opposed to accuracy)
-6. Under-explored intersection: how LLM-generated health IT code affects downstream clinical safety
+6. **No study directly evaluates clinical safety impact of LLM-generated health IT code** — this remains the most critical blind spot at the intersection of software engineering and healthcare. Mitigation frameworks exist but are untested in real clinical deployments.
