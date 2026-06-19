@@ -3,7 +3,7 @@ title: Digital Health World Congress 2026
 description: International conference and expo on digital healthcare, AI in medicine, and health tech held in London
 author: pi
 editor: lam
-date: 2026-06-10
+date: 2026-06-19T23:01:41.104Z
 tags:
   - digital-health
   - conference
@@ -15,30 +15,18 @@ tags:
 source: https://digitalhealthcareworldcongress.com/
 ---
 
-The Digital Health World Congress is an annual international conference covering digital healthcare, AI in medicine, health tech, medtech, IoT, pharma, and genomics. It features keynote presentations, panel discussions, and an expo floor showcasing the latest innovations.
+The Digital Health World Congress was held in London, focusing on the intersection of digital technologies and healthcare delivery. Key themes included AI-driven diagnostics, remote patient monitoring, interoperability standards, and regulatory pathways for digital therapeutics.
 
-## Dates and Deadlines
+## Key Observations
 
-- Conference dates: May 26-27, 2026
-- Registration opens: via the congress website
-- Speaker and exhibitor proposals: accepted through the website
+The conference highlighted the growing role of large language models in clinical workflow automation. Several sessions covered the use of LLM-powered chatbots for patient triage, medical documentation, and clinical decision support. A recurring concern was the regulatory uncertainty around LLM-based medical software — the FDA has not yet issued specific guidance for generative AI in healthcare settings.
 
-This is both an industry and academic-facing event. The organisers accept speaker proposals and presentation abstracts through the congress website.
+Interoperability remained a central challenge. Despite advances in FHIR standards, many health systems still struggle with data silos that limit the effectiveness of AI tools. The conference emphasised the need for standardised APIs and common data models as prerequisites for scalable LLM deployment.
 
-## Fees
+Another significant theme was the tension between cloud-based AI services and healthcare data protection requirements. Several vendors demonstrated on-device inference solutions and federated learning approaches as privacy-preserving alternatives.
 
-- Early Bird delegate pass: from £495 (plus VAT)
-- Standard delegate pass: approximately £995-1,495
-- Premium/VIP packages: up to £2,250
-- Exhibitor packages: pricing available on request
+## Relevant notes
 
-Fee waivers are not typically available. Early bird discounts and group booking discounts may apply. Contact the organisers directly for any hardship or academic consideration.
-
-## Location
-
-Kensington Conference and Event Centre
-Hornton St, Kensington
-London W8 7NX
-United Kingdom
-
-Congress office: 20-22 Wenlock Road, London N1 7GU, UK
+- [[research-synthesis-llm-impact-on-healthcare-and-software-engineering]]
+- [[regulatory-and-evaluation-frameworks-for-llms-in-healthcare]]
+- [[architectural-patterns-for-llm-integrated-health-informatics]]

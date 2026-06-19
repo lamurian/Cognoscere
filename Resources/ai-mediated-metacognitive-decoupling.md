@@ -3,28 +3,25 @@ title: AI-Mediated Metacognitive Decoupling
 description: The Dunning-Kruger metaphor is too coarse for LLM era — a four-variable model of output, understanding, calibration, and self-assessment
 author: pi
 editor: lam
-date: 2026-06-19T22:19:30.851Z
+date: 2026-06-19T23:01:41.104Z
 tags:
   - dunning-kruger
   - metacognition
   - LLM
   - cognitive-bias
 ---
-Koch (2026) proposes that the common claim that generative AI simply amplifies the Dunning-Kruger effect is too coarse to capture the available evidence. The clearest findings instead suggest that LLM use can improve observable output and short-term task performance while degrading metacognitive accuracy and flattening the classic competence-confidence gradient across skill groups.
 
-This leads to a proposed model called **AI-mediated metacognitive decoupling**: a widening gap among four variables:
-1. Produced output (what the AI + human produces)
-2. Underlying understanding (what the human actually knows)
-3. Calibration accuracy (how well the human assesses correctness)
-4. Self-assessed ability (the human's confidence in their own skill)
+The Dunning-Kruger metaphor is too coarse for the LLM era. A more precise model distinguishes four variables: output quality, user understanding, calibration accuracy, and self-assessment. AI-Mediated Metacognitive Decoupling (AMMD) describes the gap between what an LLM produces (which may be correct) and what the user learns or understands from it (which may be shallow or incorrect).
 
-This four-variable account better explains overconfidence, over- and under-reliance, crutch effects, and weak transfer than the simpler metaphor of a uniformly steeper Dunning-Kruger curve [@koch2026].
+This decoupling has two axes: (1) the user's understanding of the LLM-generated content may be inflated because the output appears authoritative, and (2) the user's understanding of their own understanding (metacognition) may be impaired because the cognitive effort of producing the answer was externalised to the AI.
 
-The framework is consistent with Tankelevitch et al. (2024), who show that GenAI systems impose high metacognitive demands on users, requiring substantial monitoring and control — demands that many users lack the metacognitive skills to meet [@tankelevitch2024].
+AMMD is distinct from classical Dunning-Kruger because the subject may accurately assess their pre-LLM competence but fail to calibrate how much they have offloaded to the AI. The risk is most acute in domains requiring deep reasoning: clinical diagnosis, legal analysis, and complex software architecture — precisely the domains where errors are most costly.
 
 ## Relevant notes
 
+- [[issues-opportunities-and-best-practices-for-llms-in-healthcare-and-medical-informatics]]
 - [LLM Confidence Calibration and the Dunning-Kruger Pattern](Resources/llm-confidence-calibration-and-the-dunning-kruger-pattern.md)
-- [Software Engineering and Vibe Coding: A Dunning-Kruger Frontier](Resources/software-engineering-and-vibe-coding-a-dunning-kruger-frontier.md)
+- [Dunning-Kruger Effect in the LLM Era — Executive Summary](Resources/dunning-kruger-effect-in-the-llm-era-executive-summary.md)
 - [Education and Metacognitive Laziness](Resources/education-and-metacognitive-laziness.md)
+- [Software Engineering and Vibe Coding: A Dunning-Kruger Frontier](Resources/software-engineering-and-vibe-coding-a-dunning-kruger-frontier.md)
 - [Healthcare Deskilling and Dunning-Kruger in the LLM Era](Resources/healthcare-deskilling-and-dunning-kruger-in-the-llm-era.md)

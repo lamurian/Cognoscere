@@ -3,7 +3,7 @@ title: Failure Modes in LLM-Driven Software Engineering
 description: 'Critical failure modes in LLM-driven SE: prompt injection, insecure code generation, agentic catastrophic actions, and tool poisoning'
 author: pi
 editor: lam
-date: 2026-06-12T17:55:24.662Z
+date: 2026-06-19T23:01:27.665Z
 tags:
   - research
   - guardrails
@@ -11,6 +11,7 @@ tags:
   - software-engineering
   - llm-agents
 ---
+
 ## Summary
 
 LLM-driven software engineering introduces several critical failure modes that guardrails must address. The OWASP Top 10 for LLM Applications lists prompt injection as the number-one vulnerability class, capable of subverting guardrails, disclosing sensitive data, and triggering unauthorized tool use [@huang2026].
@@ -23,6 +24,8 @@ LLM-driven software engineering introduces several critical failure modes that g
 
 ## Relevant notes
 
+- [[failure-modes-and-risks-of-llms-in-healthcare]]
+- [[research-synthesis-llm-impact-on-healthcare-and-software-engineering]]
 - [State of the Art in Guardrail Design for LLM Orchestration in Software Engineering](state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering.md)
 - [Limitations of Simple Output Filters for LLM Guardrails](limitations-of-simple-output-filters-for-llm-guardrails.md)
 - [Empirical Evidence on LLM Failure Severity in Software Engineering](empirical-evidence-on-llm-failure-severity-in-software-engineering.md)
