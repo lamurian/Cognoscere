@@ -13,13 +13,13 @@ tags:
 
 ## Executive Summary
 
-Psychological resilience — maintaining mental health despite significant stress exposure — is a dynamic, multimodal process involving the interaction of cognitive, emotional, neurobiological, and social mechanisms [@troy2023a; @kalisch2015]. Research on working-age populations (25–65 years) reveals that resilience is not a fixed trait but a modifiable capacity shaped by stressor type, personal resources, workplace context, and neurobiological functioning.
+Psychological resilience — maintaining mental health despite significant stress exposure — is a dynamic, multimodal process involving the interaction of cognitive, emotional, neurobiological, and social mechanisms [@troy2023; @kalisch2015]. Research on working-age populations (25–65 years) reveals that resilience is not a fixed trait but a modifiable capacity shaped by stressor type, personal resources, workplace context, and neurobiological functioning.
 
 The Positive Appraisal Style Theory of Resilience (PASTOR) identifies a positive (non-negative) appraisal style as the core mechanism, mediated by three cognitive processes: positive situation classification, reappraisal, and interference inhibition [@kalisch2015]. This is supported by longitudinal evidence showing positive interpretation bias predicts resilience over time in working-age adults, and by an RCT demonstrating that optimism and self-compassion mediate resilience intervention effects [@hannibal2026]. At the neurobiological level, prefrontal-amygdala circuitry enables cognitive control over emotional reactivity, while HPA axis flexibility and vagal tone (HRV) provide physiological substrates [@mcewen2007].
 
 Workplace context critically shapes these mechanisms. Challenge stressors (high workload, responsibility) can build resilience through mastery experiences, whereas hindrance stressors (role ambiguity, politics) erode it [@crane2016]. The Job Demands-Resources model positions resilience as a personal resource that buffers the impact of job demands on burnout and engagement. Resilience partially mediates the relationship between workplace well-being and psychological distress, with working hours as a direct risk factor.
 
-An integrative affect-regulation framework combines stress-and-coping with emotion-regulation perspectives, emphasising that resilience depends on flexible deployment of regulatory strategies matched to stressor characteristics [@troy2023a]. Interventions that cultivate optimism and self-compassion show strongest effects [@hannibal2026], and these findings converge across occupational groups including healthcare, education, and general office workers.
+An integrative affect-regulation framework combines stress-and-coping with emotion-regulation perspectives, emphasising that resilience depends on flexible deployment of regulatory strategies matched to stressor characteristics [@troy2023]. Interventions that cultivate optimism and self-compassion show strongest effects [@hannibal2026], and these findings converge across occupational groups including healthcare, education, and general office workers.
 
 ## Key Findings
 

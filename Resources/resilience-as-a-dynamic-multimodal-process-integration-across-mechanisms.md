@@ -9,7 +9,7 @@ tags:
   - clinical-psychology
   - mechanisms
 ---
-Psychological resilience in working-age adults is best understood as a dynamic, multimodal process involving the interaction of multiple mechanisms across cognitive, emotional, neurobiological, and social levels [@troy2023a; @kalisch2015]. No single mechanism fully explains resilience — rather, protective factors operate together through common appraisal pathways.
+Psychological resilience in working-age adults is best understood as a dynamic, multimodal process involving the interaction of multiple mechanisms across cognitive, emotional, neurobiological, and social levels [@troy2023; @kalisch2015]. No single mechanism fully explains resilience — rather, protective factors operate together through common appraisal pathways.
 
 At the cognitive level, positive interpretation bias and reappraisal capacity shape how individuals initially appraise and subsequently re-interpret stressful situations. At the emotional level, adaptive emotion regulation strategies, particularly those involving cognitive change, promote faster recovery from negative affect. At the neurobiological level, prefrontal-amygdala circuitry enables this cognitive control over emotional reactivity, while HPA axis flexibility ensures appropriate cortisol responses to stress. At the social level, perceived social support and positive workplace relationships provide external resources that buffer against stress.
 

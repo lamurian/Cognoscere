@@ -10,7 +10,7 @@ tags:
   - emotion-regulation
 source: 10.1146/annurev-psych-020122-041854
 ---
-Troy, Mauss, and colleagues [@troy2023a] propose an integrative affect-regulation framework that combines the complementary strengths of the stress and coping approach with the emotion and emotion-regulation approach. They define psychological resilience as faring better than expected given adversity — outcomes ranging from minimal disruption to improvements in functioning despite significant stress exposure.
+Troy, Mauss, and colleagues [@troy2023] propose an integrative affect-regulation framework that combines the complementary strengths of the stress and coping approach with the emotion and emotion-regulation approach. They define psychological resilience as faring better than expected given adversity — outcomes ranging from minimal disruption to improvements in functioning despite significant stress exposure.
 
 The framework identifies families of affect-regulation strategies — including situation selection, attentional deployment, cognitive change (reappraisal), and response modulation — that predict short-term affective and physiological consequences, which in turn predict long-term resilience outcomes. Crucially, the effectiveness of any given strategy depends on features of the adversity (e.g., controllability, intensity, duration) and the broader context (e.g., available resources, cultural norms).
 
