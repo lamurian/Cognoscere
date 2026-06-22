@@ -18,7 +18,7 @@ source: https://www.emqx.com/en/blog/hands-on-guide-on-esp32
 
 A capacitive soil moisture sensor connected to an ESP32 microcontroller provides real-time soil moisture readings over the local WiFi network via MQTT. This is the core sensing component for automated drip irrigation in a homestead garden. The system runs fully on LAN with no cloud dependency.
 
-The capacitive sensor (v1.2) measures soil moisture as an analog voltage. Unlike resistive sensors, capacitive sensors resist corrosion and last years in soil. The ESP32 reads the analog value, publishes it as JSON over MQTT to a local broker (Mosquitto), and Home Assistant subscribes to trigger irrigation when soil is dry [@EMQX-ESP32-MQTT]. Total cost per sensor node is approximately $8-12.
+The capacitive sensor (v1.2) measures soil moisture as an analog voltage. Unlike resistive sensors, capacitive sensors resist corrosion and last years in soil. The ESP32 reads the analog value, publishes it as JSON over MQTT to a local broker (Mosquitto), and Home Assistant subscribes to trigger irrigation when soil is dry [@tao2024]. Total cost per sensor node is approximately $8-12.
 
 ## Key Points
 

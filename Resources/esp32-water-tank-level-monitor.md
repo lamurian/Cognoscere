@@ -29,7 +29,7 @@ A JSN-SR04T waterproof ultrasonic sensor is mounted at the top of the tank point
 - **Alerts**: Home Assistant notifies when tank drops below 20% (refill needed) or pump runs dry
 - **Extension**: Pair with pressure sensor at tank bottom for cross-validation; second sensor detects leaks
 
-For tanks beyond WiFi range, use ESP32-LoRa (TTGO LoRa32) to relay readings via long-range radio to a base station receiver that publishes to MQTT [@RandomNerd-LoRa-Sensor].
+For tanks beyond WiFi range, use ESP32-LoRa (TTGO LoRa32) to relay readings via long-range radio to a base station receiver that publishes to MQTT [@santos2020].
 
 ## Relevant notes
 

@@ -17,7 +17,7 @@ source: https://randomnerdtutorials.com/esp32-lora-sensor-web-server/
 ---
 ## Summary
 
-LoRa (Long Range) radio modules paired with ESP32 microcontrollers create a wireless sensor network that spans kilometers, not meters. This solves the range limitation of WiFi for homestead monitoring. A LoRa sender node in a remote field reads temperature, humidity, barometric pressure, and soil moisture, transmits via LoRa radio to a receiver base station, which displays data on a web server or Home Assistant dashboard [@RandomNerd-LoRa-Sensor].
+LoRa (Long Range) radio modules paired with ESP32 microcontrollers create a wireless sensor network that spans kilometers, not meters. This solves the range limitation of WiFi for homestead monitoring. A LoRa sender node in a remote field reads temperature, humidity, barometric pressure, and soil moisture, transmits via LoRa radio to a receiver base station, which displays data on a web server or Home Assistant dashboard [@santos2020].
 
 The system uses TTGO LoRa32 boards (ESP32 + SX1276 LoRa + OLED) each costing approximately $15-20. A single sender node with BME280 sensor draws about 80mA during transmission and can be solar-powered with deep sleep to achieve years of operation. Range tested reliably at 180m (600 ft) in suburban conditions and several kilometers with optimized antennas and lower data rates [@RandomNerd-LoRa-Range].
 
