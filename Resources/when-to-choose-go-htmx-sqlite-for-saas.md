@@ -25,11 +25,11 @@ The Go + HTMX + SQLite stack is a compelling choice for SaaS applications where 
 
 **Read-heavy workloads (>90% reads).** Most SaaS applications are predominantly read-heavy. With WAL mode enabled, SQLite supports unlimited concurrent readers while a single writer operates, handling 100,000+ reads per second on modern NVMe hardware [@shayan2025]. This makes the stack ideal for dashboards, content management, monitoring tools, and API backends where reads dominate.
 
-**Single-server deployments.** The stack thrives when app and database live on the same machine. There is no connection pool exhaustion, no network latency, no split-brain scenarios, no replication lag. Backups are a file copy. Deployment is a single binary plus a database file [@thunderhooksteam2026; @shayan2025]. The ThunderHooks SaaS (webhook capture, real-time streaming, uptime monitoring) runs this entire stack on a GCP e2-micro free-tier VM with zero monthly database cost [@thunderhooksteam2026].
+**Single-server deployments.** The stack thrives when app and database live on the same machine. There is no connection pool exhaustion, no network latency, no split-brain scenarios, no replication lag. Backups are a file copy. Deployment is a single binary plus a database file [@thunderhooksteam2026; @shayan2025]. The [[ThunderHooks: Go+HTMX+SQLite SaaS on a Free-Tier VM|ThunderHooks SaaS]] (webhook capture, real-time streaming, uptime monitoring) runs this entire stack on a GCP e2-micro free-tier VM with zero monthly database cost [@thunderhooksteam2026].
 
-**Database-per-tenant multi-tenancy.** For B2B SaaS with isolated tenants, SQLite per tenant provides physical data isolation, per-file backups, and instant tenant deletion (just rm the file). HelperX runs 200+ slot databases this way, each ~2.4MB after 90 days, with sub-millisecond query times and zero database management overhead [@helperx2026].
+**Database-per-tenant multi-tenancy.** For B2B SaaS with isolated tenants, SQLite per tenant provides physical data isolation, per-file backups, and instant tenant deletion (just rm the file). [[HelperX: SQLite per-Tenant Architecture for Multi-Tenant SaaS|HelperX]] runs 200+ slot databases this way, each ~2.4MB after 90 days, with sub-millisecond query times and zero database management overhead [@helperx2026].
 
-**Prototyping and indie development.** Four production SaaS products built on SQLite by a solo developer handle signups, API keys, usage tracking, and webhook captures on a single $48/month VPS. Total database ops: ~500/day against a comfortable range of ~100,000/day — operating at 0.5% capacity [@wenthe2026]. The stack eliminates frontend build tooling, database ops, and deployment complexity.
+**Prototyping and indie development.** Four production SaaS products built on SQLite by a solo developer (see [[PropFirm: 50K Daily Visitors on a Single 47MB SQLite Database|PropFirm case study]]) handle signups, API keys, usage tracking, and webhook captures on a single $48/month VPS. Total database ops: ~500/day against a comfortable range of ~100,000/day — operating at 0.5% capacity [@carter2026]. The stack eliminates frontend build tooling, database ops, and deployment complexity.
 
 ## When It Falls Short
 
@@ -48,5 +48,11 @@ Avoid this stack when the application requires high write concurrency (sustained
 - [SQLite Database Location in a Go+HTMX SaaS](Resources/sqlite-database-location-in-a-go-htmx-saas.md)
 - [Auth Service Resource Consumption at 100k MAU: Executive Summary](Resources/auth-service-resource-consumption-at-100k-mau-executive-summary.md)
 - [Cheapest Paid VPS Indonesia — Executive Summary and Recommendation for SaaS Production](Resources/cheapest-paid-vps-indonesia-executive-summary-and-recommendation-for-saas-production.md)
+- [ThunderHooks: Go+HTMX+SQLite SaaS on a Free-Tier VM](Resources/thunderhooks-go-htmx-sqlite-saas-on-a-free-tier-vm.md)
+- [HelperX: SQLite per-Tenant Architecture for Multi-Tenant SaaS](Resources/helperx-sqlite-per-tenant-architecture-for-multi-tenant-saas.md)
+- [QuietPulse: Solo Founder Choosing SQLite Over Postgres](Resources/quietpulse-solo-founder-choosing-sqlite-over-postgres.md)
+- [Congo: Go+HTMX+LibSQL Framework for Boring Production](Resources/congo-go-htmx-libsql-framework-for-boring-production.md)
+- [Crawshaw: One-Process Programming with Go and SQLite](Resources/crawshaw-one-process-programming-with-go-and-sqlite.md)
+- [PropFirm: 50K Daily Visitors on a Single 47MB SQLite Database](Resources/propfirm-50k-daily-visitors-on-a-single-47mb-sqlite-database.md)
 - [Open-Source Go Auth Services: Feature Comparison](Resources/open-source-go-auth-services-feature-comparison.md)
 - [Scaling R Analytics to Production](Resources/scaling-r-analytics-to-production.md)
