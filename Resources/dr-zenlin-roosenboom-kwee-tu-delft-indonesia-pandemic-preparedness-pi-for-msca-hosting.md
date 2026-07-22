@@ -3,7 +3,7 @@ title: 'Dr. Zenlin Roosenboom-Kwee — TU Delft: Indonesia Pandemic Preparedness
 description: Leads TU Delft Global Health Initiative; coordinates PARAATHEID project with Universitas Indonesia on pandemic preparedness and health system resilience
 author: pi
 editor: lam
-date: 2026-07-22T13:28:02.236Z
+date: 2026-07-22T13:45:02.612Z
 tags:
   - delft
   - global-health
@@ -15,38 +15,46 @@ tags:
   - PI
   - NWO
 ---
-## Summary
 
-Dr. Zenlin Roosenboom-Kwee is a researcher at TU Delft (Faculty of Technology, Policy and Management) who leads the TU Delft Global Health Initiative. She coordinates the PARAATHEID project — a multi-year NWO-funded research collaboration between TU Delft, Universitas Indonesia (FPH UI), Bandung Institute of Technology (ITB), and Erasmus University Rotterdam [@roosenboomkwee2025]. The project focuses on assessing the resilience of healthcare facilities (puskesmas and hospitals) against climate change impacts that may trigger emerging infectious diseases. This represents the first collaboration between TU Delft and a public health faculty in Indonesia.
+## Education
 
-## Key Details
+Dr. Zenlin Roosenboom-Kwee (also publishes as Zenlin Kwee) holds a **Doctorate in Management (PhD)** from the **Rotterdam School of Management, Erasmus University**, and a **Master of Science in Systems Engineering, Policy Analysis and Management (Cum Laude)** from **Delft University of Technology** [@roosenboomkwee-tudelft]. Her PhD research investigated strategic renewal and corporate longevity, with a thesis titled "Investigating three key principles of sustained strategic renewal: A longitudinal study of long-lived firms" (2009).
 
-- **Institution**: Faculty of Technology, Policy and Management, TU Delft
-- **Role**: Lead, TU Delft Global Health Initiative; PARAATHEID project coordinator
-- **Field**: Health systems resilience, pandemic preparedness, climate change and health, healthcare facility assessment
-- **Contact**: Via TU Delft Global Health Initiative
-- **MSCA suitability**: Medium-High — active Indonesia consortium with established partnership with Universitas Indonesia
+## Current Role
 
-## Top Publications
+- **Associate Professor**, Department of Values, Technology and Innovation, Faculty of Technology, Policy and Management (TPM), TU Delft
+- **Director of Interfaculty Education**, TPM Faculty, TU Delft
+- **Lead**, TU Delft Global Health Initiative
+- **Principal Investigator**, PARAATHEID project (NWO Merian Fund)
 
-Limited publication information available from public profiles. The PARAATHEID consortium produces joint publications with Indonesian partners. More details would need to be obtained directly.
+Her Google Scholar profile shows **1,155 total citations**, **h-index of 15**, and **i10-index of 16** [@kwee-googlescholar].
 
-## Industry Collaboration Possibility
+## Current Ongoing Research
 
-Moderate. The PARAATHEID project involves cross-disciplinary methodology development with potential for digital health components. TU Delft's engineering focus provides strong industry connections.
+Dr. Roosenboom-Kwee's research explores how innovation is governed and managed within complex socio-technical systems, with increasing focus on system resilience in health, energy, and digital infrastructures. Key research streams:
 
-## MSCA Fit Assessment
+1. **PARAATHEID project (Principal Investigator)** — A multi-year NWO Merian Fund project on "Pandemic Preparedness and Building Resilient Healthcare Systems against Human Pathogenic Diseases." This is a transdisciplinary collaboration between TU Delft, Universitas Indonesia (FPH UI), Bandung Institute of Technology (ITB), and Erasmus University Rotterdam. The project focuses on assessing the resilience of healthcare facilities (puskesmas and hospitals) against climate change impacts that may trigger emerging infectious diseases [@roosenboomkwee2025].
+2. **Healthcare system resilience** — Studying how governance structures and adaptive capacity influence the ability of health systems to respond to disruption, including climate-driven disease outcomes. Recent publication on healthcare system preparedness as a mediating factor in climate-driven tuberculosis outcomes in Indonesia [@septiono2026].
+3. **Digital public infrastructures** — EU-funded NGI Local for Local project exploring decentralized, community-driven digital infrastructures and urban commons.
+4. **Responsible innovation governance** — DECIDE project (NWA-ORC funded) on democratizing AI through transparent decision-making and citizen participation.
+5. **Decentralized Autonomous Organizations (DAOs)** — Blockchain-based governance models and their implications for organizational and institutional innovation.
 
-- **Indonesia connection**: Very strong — PARAATHEID consortium directly involves Universitas Indonesia, ITB, and is funded by NWO-Dikti-LPDP
-- **Digital health relevance**: Moderate — project currently targets healthcare system resilience assessments; could incorporate digital health implementation
-- **Funding track record**: NWO-funded consortium
-- **Travel to Indonesia**: Yes — annual consortium activities include in-person meetings in Indonesia
-- **Note**: An MSCA proposal on digital health for pandemic preparedness in rural Indonesia would align well with this consortium's scope
+## Top 3 Publications
 
-## Relevant notes
+1. **Roosenboom-Kwee, Z.**, Van Den Bosch, F.A.J., & Volberda, H.W. (2011). The influence of top management team's corporate governance orientation on strategic renewal trajectories: a longitudinal analysis of Royal Dutch Shell plc, 1907-2004. *Journal of Management Studies*, 48(5), 984-1014. DOI (via Google Scholar)
+   - Citations: 175. Longitudinal study on strategic renewal governance.
+2. **Septiono, W., ..., Roosenboom-Kwee, Z.** (2026). Healthcare system preparedness as a mediating factor in climate-driven tuberculosis outcomes: an ecological study. *BMC Health Services Research*, 26(1). DOI: 10.1186/s12913-026-14777-8 [@septiono2026]
+   - First PARAATHEID project publication, analyzing Indonesia's healthcare system preparedness and its impact on TB outcomes.
+3. Rikken, O., Janssen, M., & **Roosenboom-Kwee, Z.** (2019). Governance challenges of blockchain and decentralized autonomous organizations. *Information Polity*, 24(4), 397-417.
+   - Citations: 254. Most-cited work on blockchain governance and decentralized systems.
 
-- [Dr. Caroline Figueroa — TU Delft: Digital Health Equity PI for MSCA Hosting](Resources/dr-caroline-figueroa-tu-delft-digital-health-equity-pi-for-msca-hosting.md)
-- [Other Dutch PIs with Indonesia Health Research: Bailey, Sparrow, Pradhan, van Leth — Wageningen/Utrecht](Resources/other-dutch-pis-with-indonesia-health-research-bailey-sparrow-pradhan-van-leth-wageningen-utrecht.md)
-- [AIGHD: Amsterdam Institute for Global Health and Development](Resources/aighd-amsterdam-institute-for-global-health-and-development.md)
-- [Dr. Ruth Peters — VU Amsterdam: Indonesia-Focused Global Health PI for MSCA Hosting](Resources/dr-ruth-peters-vu-amsterdam-indonesia-focused-global-health-pi-for-msca-hosting.md)
-- [Prof. Matthias Rieger — Erasmus University Rotterdam: Development Economics PI for MSCA Hosting](Resources/prof-matthias-rieger-erasmus-university-rotterdam-development-economics-pi-for-msca-hosting.md)
+## Relevance to LoRaWAN/FHIR Mesh Network for Rural Digital Health
+
+Dr. Roosenboom-Kwee is arguably the **strongest candidate** among the three PIs to host an MSCA proposal on this topic, for the following reasons:
+
+- **Active Indonesia consortium**: The PARAATHEID project directly involves Universitas Indonesia and Bandung Institute of Technology, with NWO funding. The consortium already studies health system resilience at the puskesmas (community health centre) level in Indonesia — the exact deployment setting for a LoRaWAN mesh network.
+- **Health system resilience framing**: Her research on adaptive governance and system resilience provides the theoretical framework for evaluating how a LoRa-based remote health monitoring system strengthens rural health system resilience.
+- **Digital infrastructure governance**: Her work on decentralized digital infrastructures (NGI Local for Local project, DAOs) directly parallels the proposed LoRa mesh network — both are decentralized, community-driven infrastructures. Her expertise in governance of such systems would inform the socio-technical design.
+- **Established Indonesian partnerships**: The consortium already has formal partnerships, ethics approvals, and field access in Indonesia, dramatically reducing the start-up time for an MSCA project.
+
+**Specific alignment with the proposed technical stack**: The PARAATHEID project assesses puskesmas-level preparedness. A LoRaWAN mesh network connecting ESP32 sensors via Protobuf to FHIR would directly serve the consortium's goal of strengthening healthcare facility resilience through digital innovation. Dr. Roosenboom-Kwee's governance expertise complements the technical implementation with the necessary socio-technical and institutional analysis.
