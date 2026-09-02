@@ -3,7 +3,7 @@ title: Validation Challenges for Agent-Based Resilience Models
 description: Key challenges in calibrating and validating agent-based simulations of psychological resilience
 author: pi
 editor: lam
-date: 2026-06-04T11:31:26.046Z
+date: 2026-09-02T02:30:20.267Z
 tags:
   - simulation
   - resilience
@@ -25,6 +25,8 @@ Validation remains the central methodological challenge for agent-based simulati
 
 **Cultural and demographic validity.** LLM-based agents [@lecuyerming2025] may project culturally dominant scripts onto all agents, failing to capture genuine cultural variation in resilience expression. A recent large-scale study found that LLMs relying solely on pre-training data systematically misrepresent subjective well-being in underrepresented populations. Mitigation through RAG over diverse empirical literature (as in LALS) helps but does not fully resolve this.
 
+**Validated frameworks.** As of 2025, LALS represents the most comprehensively validated framework for resilience simulation, reproducing meta-analytic benchmarks (13% mortality reduction per SD). Component mechanisms like emotion contagion have been individually validated against laboratory data [@vanhaeringen2024]. However, no framework has achieved full construct validation across all resilience dimensions. See [Synthesis: Validated Frameworks for Simulating Psychological Resilience](synthesis-validated-frameworks-for-simulating-psychological-resilience.md) for a comprehensive overview.
+
 **Recommendations.** Pattern-oriented modeling (POM) at multiple levels (individual trajectories, population distributions, network structures) provides the strongest validation framework. The field would benefit from standardised benchmark scenarios and open-source model repositories comparable to those in climate science or epidemiology.
 
 ## Relevant notes
@@ -34,3 +36,5 @@ Validation remains the central methodological challenge for agent-based simulati
 - [Mental Health ABM Parameter Index](mental-health-abm-parameter-index.md)
 - [Resilience Dynamics and Homeostatic Regulation Parameters](resilience-dynamics-and-homeostatic-regulation-parameters.md)
 - [Known Gaps in Understanding Resilience Mechanisms in Working Populations](known-gaps-in-understanding-resilience-mechanisms-in-working-populations.md)
+- [Synthesis: Validated Frameworks for Simulating Psychological Resilience](synthesis-validated-frameworks-for-simulating-psychological-resilience.md)
+- [LALS Framework for Simulating Resilience Intervention Lifelong Impact](lals-framework-for-simulating-resilience-intervention-lifelong-impact.md)
