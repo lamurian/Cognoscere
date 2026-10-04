@@ -3,7 +3,7 @@ title: Frameworks and Tools for LLM Guardrails
 description: 'Ecosystem of guardrail frameworks: NeMo Guardrails, Guardrails AI, Llama Guard, provider APIs, agent-specific guards, and LLM evaluators'
 author: pi
 editor: lam
-date: 2026-06-12T17:55:24.672Z
+date: 2026-10-02T19:30:00.000Z
 tags:
   - research
   - guardrails
@@ -15,7 +15,7 @@ tags:
 
 A diverse ecosystem of guardrail frameworks has emerged, each with distinct architectural philosophies.
 
-**NeMo Guardrails** (NVIDIA, 2023). An open-source toolkit for adding programmable guardrails to LLM-based conversational systems. Uses a runtime inspired by dialogue management, routing all queries through chains of classifiers and transformations. Independent of the underlying LLM and interpretable [@rebedea2023]. Supports topical rails, dialogue path enforcement, and language style control.
+**NeMo Guardrails** (NVIDIA, 2023; library state as of 2026 [@nvidia2026]). An open-source toolkit for adding programmable guardrails to LLM-based conversational systems. Uses a runtime inspired by dialogue management, routing all queries through chains of classifiers and transformations. Independent of the underlying LLM and interpretable [@rebedea2023]. Supports topical rails, dialogue path enforcement, and language style control. The 2026 library adds agentic-security rails: input, retrieval, dialog, execution, and output rails run at different stages of an LLM interaction; execution rails validate tool inputs and outputs before and after invocation; configurations in YAML and Colang are portable between the local Python library and a production Kubernetes microservice; the security guidance isolates authentication information from the LLM and monitors agent behavior for unexpected actions [@nvidia2026].
 
 **Guardrails AI.** Operates as a policy specification layer allowing developers to define output schemas, acceptance criteria, and recourse steps if outputs violate policy (e.g., re-prompting the model). Supports structured data validation beyond simple content filtering [@akheel2025].
 
@@ -32,6 +32,8 @@ A diverse ecosystem of guardrail frameworks has emerged, each with distinct arch
 ## Relevant notes
 
 - [State of the Art in Guardrail Design for LLM Orchestration in Software Engineering](state-of-the-art-in-guardrail-design-for-llm-orchestration-in-software-engineering.md)
+- [Enforcement Outside the Context Window](enforcement-outside-the-context-window.md)
+- [Deterministic Versus Model-Based Guardrails](deterministic-versus-model-based-guardrails.md)
 - [Failure Modes in LLM-Driven Software Engineering](failure-modes-in-llm-driven-software-engineering.md)
 - [The No Free Lunch Tradeoff in Guardrail Design](the-no-free-lunch-tradeoff-in-guardrail-design.md)
 - [Limitations of Simple Output Filters for LLM Guardrails](limitations-of-simple-output-filters-for-llm-guardrails.md)

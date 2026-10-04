@@ -3,7 +3,7 @@ title: State of the Art in Guardrail Design for LLM Orchestration in Software En
 description: Executive synthesis of state-of-the-art guardrail design for LLM orchestration in software engineering
 author: pi
 editor: lam
-date: 2026-10-02T10:01:52.697Z
+date: 2026-10-02T19:30:00.000Z
 tags:
   - research
   - guardrails
@@ -42,6 +42,15 @@ This research examines the state of the art in guardrail design for LLM orchestr
 - **Regulatory and Agency Guidance** — [[nsa-guidance-on-careful-adoption-of-agentic-ai]]
 - **Policy-to-Runtime Layering** — [[policy-configuration-runtime-layering-of-agent-guardrails]]
 - **Runtime Enforcement Standards** — [[owasp-agent-control-standard-for-runtime-enforcement]]
+- **Runtime Detection of Compromised Agents** — [[runtime-detection-of-compromised-agents]]
+- **Enforcement Outside the Context Window** — [[enforcement-outside-the-context-window]]
+- **Sequence-Aware Authorization** — [[sequence-aware-authorization-for-agent-trajectories]]
+- **Out-of-Band Supervision and Kill Switches** — [[out-of-band-supervision-for-agents]]
+- **Agent-as-Adversary Containment** — [[agent-as-adversary-containment-requirements]]
+- **Governance-to-Control Translation** — [[layered-translation-of-governance-standards-into-runtime-controls]]
+- **TRiSM for Multi-Agent Systems** — [[trism-framework-for-agentic-multi-agent-systems]]
+- **OWASP Ranking vs Incident Data** — [[incident-data-robustness-of-the-owasp-llm-top-10]]
+- **Deterministic vs Model-Based Guardrails** — [[deterministic-versus-model-based-guardrails]]
 
 ## Confidence Assessment
 
@@ -71,3 +80,12 @@ This research examines the state of the art in guardrail design for LLM orchestr
 - [Prompt Injection Is an Architectural Problem](prompt-injection-is-an-architectural-problem.md)
 - [Five-Layer Defense-in-Depth for Production Agents](five-layer-defense-in-depth-for-production-agents.md)
 - [Agent Identity as a Guardrail](agent-identity-as-a-guardrail.md)
+- [Runtime Detection of Compromised Agents](runtime-detection-of-compromised-agents.md)
+- [Enforcement Outside the Context Window](enforcement-outside-the-context-window.md)
+- [Sequence-Aware Authorization for Agent Trajectories](sequence-aware-authorization-for-agent-trajectories.md)
+- [Out-of-Band Supervision for Agents](out-of-band-supervision-for-agents.md)
+- [Agent-as-Adversary Containment Requirements](agent-as-adversary-containment-requirements.md)
+- [Layered Translation of Governance Standards into Runtime Controls](layered-translation-of-governance-standards-into-runtime-controls.md)
+- [TRiSM Framework for Agentic Multi-Agent Systems](trism-framework-for-agentic-multi-agent-systems.md)
+- [Incident-Data Robustness of the OWASP LLM Top 10](incident-data-robustness-of-the-owasp-llm-top-10.md)
+- [Deterministic Versus Model-Based Guardrails](deterministic-versus-model-based-guardrails.md)
